@@ -1,0 +1,108 @@
+/*
+ * Course palette.
+ *
+ *   orange-vivid           #e73c00   (interaction)
+ *   orange-primary         #d45d35   (header bar)
+ *   orange-dark-secondary  #693b2e
+ *   orange-light-secondary #e5c1b3
+ *
+ * Starlight derives every accent from three steps per colour scheme:
+ * `accent` (links and controls), `accent-high` (emphasis) and `accent-low`
+ * (tinted backgrounds). The greys are Starlight's own ramp rotated from its
+ * default blue hue to the warm hue of the palette above — delete the two grey
+ * blocks to go back to stock Starlight greys.
+ */
+
+/* Dark mode */
+:root {
+	--sl-color-accent-low: hsl(13, 40%, 20%);
+	--sl-color-accent: hsl(15, 65%, 52%);
+	/* 10.5:1 on the page background */
+	--sl-color-accent-high: hsl(17, 49%, 80%);
+
+	--sl-color-white: hsl(0, 0%, 100%);
+	--sl-color-gray-1: hsl(20, 20%, 94%);
+	--sl-color-gray-2: hsl(20, 6%, 77%);
+	--sl-color-gray-3: hsl(20, 6%, 56%);
+	--sl-color-gray-4: hsl(20, 7%, 36%);
+	--sl-color-gray-5: hsl(20, 10%, 23%);
+	--sl-color-gray-6: hsl(20, 14%, 16%);
+	--sl-color-black: hsl(20, 10%, 10%);
+}
+
+/* Light mode */
+:root[data-theme='light'] {
+	--sl-color-accent-low: hsl(17, 60%, 90%);
+	/*
+	 * The primary orange is 3.9:1 on white and misses WCAG AA, so links use the
+	 * same hue darkened to 4.7:1.
+	 */
+	--sl-color-accent: hsl(15, 70%, 46%);
+	--sl-color-accent-high: hsl(15, 70%, 30%);
+
+	--sl-color-white: hsl(20, 10%, 10%);
+	--sl-color-gray-1: hsl(20, 14%, 16%);
+	--sl-color-gray-2: hsl(20, 10%, 23%);
+	--sl-color-gray-3: hsl(20, 7%, 36%);
+	--sl-color-gray-4: hsl(20, 6%, 56%);
+	--sl-color-gray-5: hsl(20, 6%, 77%);
+	--sl-color-gray-6: hsl(20, 20%, 94%);
+	--sl-color-gray-7: hsl(20, 19%, 97%);
+	--sl-color-black: hsl(0, 0%, 100%);
+}
+
+/*
+ * Two oranges, by role: the primary fills the header bar, the vivid one marks
+ * interaction — the focus ring, hovered links and selected text. Neither is
+ * used for body text; that is what the muted accent above is for.
+ */
+:root {
+	--gar-orange: #d45d35;
+	--gar-orange-vivid: #e73c00;
+	/* Surface the native theme-select dropdown paints itself on. */
+	--gar-option-bg: hsl(20, 14%, 16%);
+	--gar-option-text: hsl(20, 20%, 94%);
+}
+
+:root[data-theme='light'] {
+	--gar-option-bg: hsl(20, 19%, 97%);
+	--gar-option-text: hsl(20, 14%, 16%);
+}
+
+/*
+ * The site header, in both colour schemes. Scoped to the <header> element:
+ * Expressive Code gives its code-block title bars a `header` class too, so a
+ * bare `.header` selector would follow the colour into every code sample.
+ */
+header.header {
+	background-color: var(--gar-orange);
+	border-bottom-color: rgb(0 0 0 / 0.2);
+	color: #fff;
+
+	/* Re-point the tokens the bar's contents read, for white on orange. */
+	--sl-color-text-accent: #fff;
+	--sl-color-white: #fff;
+	--sl-color-gray-1: #fff;
+	--sl-color-gray-2: rgb(255 255 255 / 0.9);
+	--sl-color-gray-3: rgb(255 255 255 / 0.85);
+	--sl-color-gray-5: rgb(255 255 255 / 0.35);
+}
+
+/* The dropdown opens off the bar, so it keeps the page's own surface. */
+header.header option {
+	background-color: var(--gar-option-bg);
+	color: var(--gar-option-text);
+}
+
+:focus-visible {
+	outline-color: var(--gar-orange-vivid);
+}
+
+.sl-markdown-content a:hover {
+	text-decoration-color: var(--gar-orange-vivid);
+	text-decoration-thickness: 0.125em;
+}
+
+::selection {
+	background-color: rgb(231 60 0 / 0.25);
+}

@@ -24,6 +24,7 @@ export default defineConfig({
 			title: 'GAR',
 			description: 'Course site for Game Architecture (GAR).',
 			lastUpdated: true,
+			customCss: ['./src/styles/theme.css'],
 			logo: {
 				src: './src/assets/logo.png',
 				alt: 'GAR',
