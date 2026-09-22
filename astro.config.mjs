@@ -30,6 +30,7 @@ export default defineConfig({
 			},
 			favicon: '/favicon.ico',
 			sidebar: [
+				{ label: 'Home', slug: '' },
 				{
 					label: 'Course',
 					items: [
@@ -39,7 +40,7 @@ export default defineConfig({
 					],
 				},
 				{ label: 'Sessions', items: [{ autogenerate: { directory: 'sessions' } }] },
-				{ label: 'Resources', items: [{ autogenerate: { directory: 'resources' } }] },
+				{ label: 'Student Games', slug: 'student-games' },
 			],
 		}),
 	],
