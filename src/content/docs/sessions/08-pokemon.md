@@ -21,6 +21,17 @@ We go through the fundamental steps of a primitive Pokémon clone, focusing on:
 **Source code:** [Metamate/gmd2-pokemon](https://github.com/Metamate/gmd2-pokemon)
 (walkthrough in the README)
 
+The code is split into steps, one project per concept. Each section below names the step
+that introduces it. Compare neighbouring steps to see exactly what changed.
+
+| Step | Topic |
+| --- | --- |
+| `Pokemon0` | The overworld: tile-based movement with tweens |
+| `Pokemon1` | The state stack: title, fades and dialogue |
+| `Pokemon2` | Battles: encounters, the battle scene and menus (run only) |
+| `Pokemon3` | Turn-based combat and RPG mechanics |
+| `Pokemon4` | Audio through the service locator (the finished game) |
+
 ## Prepare
 
 - [19: User Interface Fundamentals](https://docs.monogame.net/articles/tutorials/building_2d_games/19_user_interface_fundamentals)
@@ -32,12 +43,14 @@ We go through the fundamental steps of a primitive Pokémon clone, focusing on:
 
 ## Explore the Codebase
 
-Take about 10 minutes:
+Take about 10 minutes with the finished game, `Pokemon4`:
 
 - Clone, build and play the game. Go through a few encounters to level up your monster.
 - How is the codebase split between the core library and the Pokémon-specific project?
 
 ## State Stack
+
+_Steps `Pokemon1` → `Pokemon2`_
 
 A finite state machine has exactly one current state. A **state stack** (a _pushdown
 automaton_) lets us **push** a state on top of others and **pop** it to return to exactly
@@ -72,6 +85,8 @@ Files: `StateStack.cs`, `BattleState.cs`, `BattleMenuState.cs`, `FadeState.cs`
 
 ## Tweening System
 
+_Step `Pokemon0` onwards_
+
 In [Zelda](../06-the-legend-of-zelda/) we tweened by hand. Here, a reusable tween system
 does it for us:
 
@@ -85,6 +100,8 @@ A battle attack is a chain of tweens: pause → lunge → hit sound → blink �
 Each step triggers the next when it finishes, with no `if`/`else` chain.
 
 ## GUIs
+
+_Steps `Pokemon1` → `Pokemon2`_
 
 A GUI is built from reusable widgets:
 
@@ -110,6 +127,8 @@ this idea.
 
 ## Overworld & Turn-Based Battles
 
+_Steps `Pokemon0`, `Pokemon2` and `Pokemon3`_
+
 - **Tile-based movement:** entities have a tile position (`MapX`/`MapY`, used for logic)
   and a pixel position (`X`/`Y`, tweened between tiles for smooth movement).
 - **Random encounters:** each step in tall grass rolls for a battle. The transition (stop
@@ -130,6 +149,8 @@ this idea.
 [Type Object](https://gameprogrammingpatterns.com/type-object.html) pattern.
 
 ## Data Definitions & Serialization
+
+_Steps `Pokemon0` → `Pokemon1`_
 
 Game data lives in JSON, game logic lives in C#:
 
@@ -156,6 +177,12 @@ Save _data_, not objects. Store what you need to rebuild the game state (species
 level, current HP), not textures or references to other game objects.
 
 ## Service Locator
+
+_Steps `Pokemon0` and `Pokemon4`_
+
+From `Pokemon0`, the locator hands out the tween manager and the game's assets. In
+`Pokemon4`, audio is added as one more service: every class that plays a sound asks the
+locator for an `IAudio`, and `Game1` registers the real `SoundManager`.
 
 Many classes need shared services such as audio, tweens and assets. How do they find them?
 
@@ -190,6 +217,8 @@ MonoGame has a built-in locator, `Game.Services`
 here to see how it works.
 
 ## Exercises
+
+Start from `Pokemon4`.
 
 1. **Overworld encounters:** find where the game goes from `PlayState` to `BattleState`.
    Which states are on the stack at that moment? What happens when a battle ends?
