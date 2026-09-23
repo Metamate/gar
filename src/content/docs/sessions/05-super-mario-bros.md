@@ -19,6 +19,21 @@ We go through the fundamental steps of a basic Super Mario Bros. clone, focusing
 
 **Source code:** [Metamate/gmd2-platformer](https://github.com/Metamate/gmd2-platformer)
 
+The code is split into steps, one project per concept. Each section below names the step
+that introduces it. Compare neighbouring steps to see exactly what changed.
+
+| Step | Topic |
+| --- | --- |
+| `Platformer0` | A tilemap generated in code |
+| `Platformer1` | Level makers (Strategy pattern) |
+| `Platformer2` | Player and platformer physics, with state as an enum |
+| `Platformer3` | The State pattern |
+| `Platformer4` | Camera |
+| `Platformer5` | Game states |
+| `Platformer6` | Entities |
+| `Platformer7` | Basic AI |
+| `Platformer8` | Audio (the finished game) |
+
 ## Prepare
 
 - [14: Sound Effects and Music](https://docs.monogame.net/articles/tutorials/building_2d_games/14_soundeffects_and_music)
@@ -28,21 +43,26 @@ We go through the fundamental steps of a basic Super Mario Bros. clone, focusing
 - [18: Texture Sampling](https://docs.monogame.net/articles/tutorials/building_2d_games/18_texture_sampling)
 - [State](https://gameprogrammingpatterns.com/state.html)
 
-## Levels: From Data and From Code
+## Levels From Code
 
-In Snake, the tilemap was loaded from an XML file. Levels can also be **generated**:
+_Step `Platformer0`_
+
+In Snake, the tilemap was loaded from an XML file. Levels can also be **generated** in code:
 
 ```csharp
-public Tilemap Generate(int columns, int rows)
+private void GenerateLevel()
 {
-    var tilemap = new Tilemap(Tileset, columns, rows);
-    int groundHeight = 2;
+    Tileset tileset = _tilesets[Random.Shared.Next(_tilesets.Count)];
+    _tilemap = new Tilemap(tileset, Columns, Rows);
 
-    for (int x = 0; x < columns; x++)
-        for (int y = rows - groundHeight; y < rows; y++)
-            tilemap.SetTile(x, y, new Tile(graphicId: 1, isSolid: true));
-
-    return tilemap;
+    for (int x = 0; x < Columns; x++)
+    {
+        for (int y = Rows - GroundHeight; y < Rows; y++)
+        {
+            // A tile is more than a graphic: it also knows whether it is solid.
+            _tilemap.SetTile(x, y, new Tile(GroundTile, isSolid: true));
+        }
+    }
 }
 ```
 
@@ -61,14 +81,68 @@ public readonly struct Tile(int graphicId = -1, int topperId = -1, bool isSolid 
 }
 ```
 
+Because the graphics are separate from the level's structure, the same level can be drawn
+with any of the 60 tilesets in `tiles.png` (press `R`).
+
 ### Strategy pattern: level makers
 
+_Step `Platformer1`_
+
 Different kinds of levels are produced by interchangeable **level makers** sharing one
-base: `FlatLevelMaker`, `PillarLevelMaker`, `PitLevelMaker`, `ComplexLevelMaker`… The
-game asks _a_ level maker for a level without knowing which algorithm it uses. This is the
-**Strategy pattern**: a family of interchangeable algorithms behind a common interface.
+base: `SimpleLevelMaker`, `FlatLevelMaker`, `PillarLevelMaker`, `PitLevelMaker`,
+`ComplexLevelMaker` (keys `1`–`5` in this step). The game asks _a_ level maker for a level
+without knowing which algorithm it uses. This is the **Strategy pattern**: a family of
+interchangeable algorithms behind a common interface.
+
+```mermaid
+classDiagram
+    class LevelMakerBase {
+        <<abstract>>
+        +Generate(columns, rows) GameLevel
+        #CreateGroundColumn(x, height)
+    }
+    LevelMakerBase <|-- SimpleLevelMaker
+    LevelMakerBase <|-- FlatLevelMaker
+    LevelMakerBase <|-- PillarLevelMaker
+    LevelMakerBase <|-- PitLevelMaker
+    LevelMakerBase <|-- ComplexLevelMaker
+    LevelMakerBase ..> GameLevel : creates
+```
+
+Each ground column also gets a **topper** (a grass or snow edge on the top tile) from a
+separate topperset, and each level a random background.
+
+## Platformer Physics
+
+_Step `Platformer2`_
+
+- **Gravity and jumping:** gravity adds to the vertical velocity every frame; a jump sets it
+  to a negative impulse.
+- **Hitbox inset:** the player is as wide as a tile, which makes pits impossible to fall
+  into. We shrink the hitbox by 2 px on each side.
+- **Tile collision:** move one axis at a time. After moving, check the tiles at the hitbox
+  corners in the direction of movement, then **snap** the player to the tile edge and zero
+  the velocity on that axis.
+- **Ground check:** probe one pixel below the hitbox for solid tiles.
+- **Coyote time:** allow a jump for a moment after walking off a ledge. It feels fairer.
+
+### Performance
+
+Do we need to test the player against every tile? No. The grid is static, so we can look
+up the tile at a position directly (`IsSolidAt(x, y)`). That costs the same for a level of
+10 or 10,000 tiles: **O(1)** instead of **O(n)**. Moving entities can't be looked up this
+way. Testing all pairs of entities is **O(n²)**.
+
+### Input: GameController
+
+The platformer maps keys to actions through a `GameController` class (`GameController.Jump`
+instead of `Keys.Space`).
+
+**Discuss:** this is _not_ the Command pattern. Why not?
 
 ## Character State
+
+_Steps `Platformer2` → `Platformer3`_
 
 Consider this (from _Game Programming Patterns_):
 
@@ -94,9 +168,31 @@ void Heroine::handleInput(Input input)
 With one boolean per condition, you can end up in **illegal states**. Can you spot the bug?
 (We prevent air-jumping while jumping, but not while diving, so we need yet another flag.)
 
-An **enum** makes illegal combinations impossible: the heroine is in exactly one state.
-But it still doesn't scale. Every method switches over every state, and what if a state
-needs its own data (e.g. charge time while ducking)?
+An **enum** makes illegal combinations impossible: the player is in exactly one state. In
+`Platformer2`, the player's state is an enum, and its behaviour lives in `switch`
+statements:
+
+```csharp
+switch (State)
+{
+    case PlayerState.Idle:
+        if (Velocity.X != 0) ChangeState(PlayerState.Walking);
+        if (GameController.Down) ChangeState(PlayerState.Ducking);
+        if (GameController.Jump) ChangeState(PlayerState.Jumping);
+        if (!IsOnGround()) ChangeState(PlayerState.Falling);
+        break;
+
+    case PlayerState.Jumping:
+        if (Velocity.Y > 0) ChangeState(PlayerState.Falling);
+        break;
+
+    // ...
+}
+```
+
+It works, but it doesn't scale. Every method switches over every state (`ChangeState`
+has its own switch, and `HandleHorizontalMovement` a special case for ducking), and what if a
+state needs its own data, e.g. charge time while ducking?
 
 ### The State pattern
 
@@ -106,36 +202,53 @@ needs its own data (e.g. charge time while ducking)?
 - The entity delegates to its current state object.
 - Adding a state doesn't touch existing states.
 
-In the platformer, both the **game** (title, play, game over) and the **player** (idle,
-walking, jumping, falling) use state machines, using the same `IState` idea as in Flappy
-Bird.
+In `Platformer3`, each case becomes a class: `PlayerIdleState`, `PlayerWalkState`,
+`PlayerJumpState`, `PlayerFallState` and `PlayerDuckState`. The shared physics moves to
+`PlayerStateBase`, and `Player` just forwards `Update` and `Draw` to its current state.
 
 ```mermaid
 stateDiagram-v2
     [*] --> Idle
     Idle --> Walking : move input
     Walking --> Idle : no input
+    Idle --> Ducking : down
+    Walking --> Ducking : down
+    Ducking --> Idle : release down
     Idle --> Jumping : jump
     Walking --> Jumping : jump
     Jumping --> Falling : velocity.y > 0
+    Idle --> Falling : no ground
     Walking --> Falling : no ground
     Falling --> Idle : landed
+    Falling --> Walking : landed, moving
+    Falling --> Jumping : jump during coyote time
 ```
 
-## Basic AI: Snail States
+## Camera
 
-Enemy AI can be built from states too:
+_Step `Platformer4`_
 
-- **Base:** shared collision resolution, gravity, ground detection
-- **Idle:** plays an idle animation for a random duration
-- **Move:** walks, turns around at edges or when blocked
-- **Chase:** moves towards the player when close
+Our previous games fit on one screen. A level wider than the screen needs a **camera**: a
+transform that shifts the world so the target (the player) is centred. It is passed to
+`SpriteBatch.Begin()` together with the screen scale matrix. Here we only follow the
+x-axis, and clamp the camera to the level's edges. The background scrolls at half the
+camera's speed, for a parallax effect.
+
+## Game States
+
+_Step `Platformer5`_
+
+The game itself also uses the State pattern, like Flappy Bird: a `StartState` with the
+title screen, and a `PlayState` that creates the level and the player. Falling into a pit
+sends you back to the title screen.
 
 ## Entities
 
+_Step `Platformer6`_
+
 An **entity** is any "thing" in the game that isn't part of the tilemap: the player,
-snails, blocks, powerups. Entities don't align to the grid, they move, and they can have
-their own states.
+snails, bushes, mystery boxes, gems. Entities don't align to the grid, they move, and they
+can have their own states.
 
 ```csharp
 public interface IEntity
@@ -153,40 +266,27 @@ public interface IEntity
 ```
 
 The level updates all entities through the Update Method pattern, and each entity decides
-how to respond to collisions.
+how to respond to collisions. Solid entities (mystery boxes) block the player just like
+tiles. Hitting a box from below pops out a gem, and collecting gems raises the score.
 
-## Camera
+## Basic AI: Snail States
 
-Our previous games fit on one screen. A level wider than the screen needs a **camera**: a
-transform that shifts the world so the target (the player) is centred. It is passed to
-`SpriteBatch.Begin()` together with the screen scale matrix. Here we only follow the
-x-axis, and clamp the camera to the level's edges.
+_Step `Platformer7`_
 
-## Platformer Physics
+Enemy AI can be built from states too:
 
-- **Hitbox inset:** the player is as wide as a tile, which makes pits impossible to fall
-  into. We shrink the hitbox by 2 px on each side.
-- **Tile collision:** check the tiles at the hitbox corners in the direction of movement,
-  then **snap** the player to the tile edge and zero the velocity on that axis.
-- **Ground check:** probe one pixel below the hitbox for solid tiles or solid entities.
-- **Coyote time:** allow a jump for a few frames after walking off a ledge. It feels
-  fairer.
+- **Base:** shared collision resolution, gravity, ground detection
+- **Idle:** plays an idle animation for a while
+- **Walk:** walks, turns around at edges or when blocked
+- **Chase:** moves towards the player when close
 
-### Performance
+Landing on a snail from above stomps it. Touching it any other way ends the game.
 
-Do we need to test the player against every tile? No. The grid is static, so we can look
-up the tile at a position directly (`IsSolidAt(x, y)`). That costs the same for a level of
-10 or 10,000 tiles: **O(1)** instead of **O(n)**. Moving entities can't be looked up this
-way. Testing all pairs of entities is **O(n²)**.
-
-## Input: GameController
-
-The platformer maps keys to actions through a `GameController` class (`controller.Jump`
-instead of `Keys.Space`).
-
-**Discuss:** this is _not_ the Command pattern. Why not?
+`Platformer8` adds music and sound effects: the finished game.
 
 ## Exercises
+
+Start from `Platformer8`.
 
 1. **Custom level maker:** create a new level maker with varying ground height and pit
    widths, platforms, several enemy types, and a goal flag. Touching the flag loads a
