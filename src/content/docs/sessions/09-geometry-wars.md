@@ -241,7 +241,7 @@ In the codebase: `GameAssets.cs`, `GameplayDefinitions.cs`.
 
 _Not in the code yet: this is exercise 3._
 
-Collision between all pairs of `n` entities costs `n × (n − 1) / 2` checks: about 5
+Collision between all pairs of `n` entities costs `n × (n − 1) / 2` checks: about 4.5
 million per frame for 3,000 entities. A **broad phase** reduces this by only testing
 entities that are near each other.
 
