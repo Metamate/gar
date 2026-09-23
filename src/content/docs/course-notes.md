@@ -34,7 +34,7 @@ patterns.
   per step (`Snake0`, `Snake1`, …), each with its own `Content`, all sharing one final
   `GMDCore`, and a README table of steps. The site page and the deck name the step for
   each topic.
-- **Still single-project:** Geometry Wars. (Snake, Platformer, Zelda and Pokemon are split into steps.)
+- **Steps:** every game repo is split into step projects (one per exercise for Pong and Flappy, one per concept for the rest), with the finished game as the last step.
 - **Content pipeline:** all repos use the MonoGame 3.8.5 content builder (C# build rules in
   `Content/Builder/Builder.cs`, no `.mgcb`) and target .NET 10. `Content/BuildContent.targets`
   is identical in every repo; Pong and Flappy steps set `ContentAssets` to their own `Assets`

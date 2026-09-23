@@ -25,6 +25,20 @@ real bottleneck:
 
 The goal isn't to understand every system in the codebase, but the overall architecture.
 
+The code is split into steps. Each step adds components to the entity recipes in
+`EntityFactory`, plus the systems they need. Each section below names the step that
+introduces it.
+
+| Step | Topic |
+| --- | --- |
+| `GeometryWars0` | Entities & components: the player ship |
+| `GeometryWars1` | Shooting & Object Pool |
+| `GeometryWars2` | Enemies, collisions, score and lives |
+| `GeometryWars3` | Particles |
+| `GeometryWars4` | The spring grid and black holes |
+| `GeometryWars5` | Bloom |
+| `GeometryWars6` | Audio (the finished game) |
+
 ## Prepare
 
 - [Component](https://gameprogrammingpatterns.com/component.html)
@@ -36,7 +50,7 @@ The goal isn't to understand every system in the codebase, but the overall archi
 
 ## Explore the Codebase
 
-Take about 10 minutes:
+Take about 10 minutes with the finished game, `GeometryWars6`:
 
 - Clone, build and play the game. How high a score can you get?
 - How is the codebase split between the core library and the Geometry Wars project?
@@ -62,6 +76,8 @@ flowchart LR
 - **Systems** handle concerns that cut across components.
 
 ## Component Pattern
+
+_Step `GeometryWars0` onwards_
 
 **The problem.** Inheritance seems natural: `Enemy → ShootingEnemy →
 HomingShootingEnemy…`. But each new combination of behaviours grows the hierarchy. Want a
@@ -106,6 +122,8 @@ with a given set of components. Unity DOTS and Bevy work like this.
 
 ## Data-Oriented Design
 
+_Steps `GeometryWars3` (particles) and `GeometryWars4` (grid)_
+
 Think in data, not objects. OOP asks _"what is a bullet?"_; DOD asks _"how does bullet
 data flow?"_
 
@@ -145,6 +163,8 @@ public class BulletSystem
 In the codebase: `Grid.cs`, `ParticleManager.cs`.
 
 ## Object Pool
+
+_Step `GeometryWars1`_
 
 **The problem.** 20 bullets per second, 30 particles per hit, 50 debris pieces per enemy:
 thousands of short-lived allocations per second. In C#, every `new` object will
@@ -187,6 +207,8 @@ In the codebase: `ObjectPool.cs`, `BulletSpawner.cs`.
 
 ## Flyweight
 
+_Step `GeometryWars0` onwards_
+
 **Share what's shared, store what's unique.** 500 enemies on screen, all using the same
 sprite and stats.
 
@@ -217,6 +239,8 @@ In the codebase: `GameAssets.cs`, `GameplayDefinitions.cs`.
 
 ## Spatial Partitioning
 
+_Not in the code yet: this is exercise 3._
+
 Collision between all pairs of `n` entities costs `n × (n − 1) / 2` checks: about 5
 million per frame for 3,000 entities. A **broad phase** reduces this by only testing
 entities that are near each other.
@@ -228,6 +252,8 @@ distributions, at the cost of more complexity.
 
 ## Profiling
 
+_Step `GeometryWars0` onwards: press `F3` in the game for FPS, memory and entity count._
+
 Don't guess, measure. A few tools, from simple to thorough:
 
 - **Stopwatch:** time a block of code with `System.Diagnostics.Stopwatch`.
@@ -238,6 +264,8 @@ Don't guess, measure. A few tools, from simple to thorough:
   `dotnet-trace`, show where time and allocations actually go.
 
 ## Shaders (Showcase)
+
+_Step `GeometryWars5`_
 
 Geometry Wars' neon glow and warping grid are shader work. We look at it as a demo; it
 isn't required for your project.
@@ -260,6 +288,8 @@ isn't required for your project.
 | How entities look | Shaders |
 
 ## Exercises
+
+Start from `GeometryWars6`.
 
 1. **Composition:** create a new enemy type purely by combining existing components in
    `EntityFactory`. Then add one new component (e.g. a shield that absorbs one hit) and
