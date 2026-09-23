@@ -20,6 +20,21 @@ systems that we add to GMDCore:
 
 **Source code:** [Metamate/gmd2-snake](https://github.com/Metamate/gmd2-snake)
 
+The code is split into steps, one project per concept. Each section below names the step
+that introduces it. Compare neighbouring steps to see exactly what changed.
+
+| Step | Topic |
+| --- | --- |
+| `Snake0` | Starting point: drawing parts of an image with hardcoded rectangles |
+| `Snake1` | Texture atlas |
+| `Snake2` | Sprites |
+| `Snake3` | Animation |
+| `Snake4` | Input, polled directly in the `Snake` class |
+| `Snake5` | Command pattern |
+| `Snake6` | Undo & redo |
+| `Snake7` | Collision detection |
+| `Snake8` | Tilemap (the finished game) |
+
 ## Prepare
 
 - [07: Optimizing Texture Rendering](https://docs.monogame.net/articles/tutorials/building_2d_games/07_optimizing_texture_rendering)
@@ -33,49 +48,107 @@ systems that we add to GMDCore:
 
 ## Texture Atlases
 
+_Steps `Snake0` → `Snake1`_
+
 Loading `mario1.png`, `mario2.png`, `ground1.png`… as separate textures means the GPU must
 switch texture between draws, which breaks batching. A **texture atlas** (sprite sheet)
-packs many images into one texture. A **texture region** is a named rectangle within the
-atlas.
+packs many images into one texture.
+
+`Snake0` draws parts of the atlas by passing hardcoded source rectangles to
+`SpriteBatch.Draw()`. That doesn't scale. In `Snake1`, an XML atlas definition gives each
+rectangle a name, and a **texture region** is a named rectangle within the atlas:
+
+```xml
+<TextureAtlas>
+    <Texture>images/atlas</Texture>
+    <Regions>
+        <Region name="snake-1" x="0" y="0" width="20" height="20" />
+        <Region name="bat-1" x="20" y="0" width="20" height="20" />
+    </Regions>
+</TextureAtlas>
+```
+
+```csharp
+TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
+TextureRegion snake = atlas.GetRegion("snake-1");
+```
 
 ```mermaid
 classDiagram
     class TextureAtlas {
         +Texture2D Texture
-        +AddRegion(name, x, y, w, h)
+        +FromFile(content, fileName)$ TextureAtlas
         +GetRegion(name) TextureRegion
-        +CreateSprite(name) Sprite
-        +CreateAnimation(name) Animation
+        +CreateSprite(regionName) Sprite
+        +CreateAnimatedSprite(animationName) AnimatedSprite
     }
     class TextureRegion {
         +Texture2D Texture
         +Rectangle SourceRectangle
         +Draw(spriteBatch, position, color)
     }
+    class Sprite {
+        +TextureRegion Region
+        +Color Color
+        +float Rotation
+        +Vector2 Scale
+        +Vector2 Origin
+        +Draw(spriteBatch, position)
+    }
+    class AnimatedSprite {
+        +Animation Animation
+        +Update(gameTime)
+    }
+    class Animation {
+        +List~TextureRegion~ Frames
+        +TimeSpan Delay
+    }
     TextureAtlas o-- TextureRegion
+    Sprite --> TextureRegion
+    Sprite <|-- AnimatedSprite
+    AnimatedSprite --> Animation
+    Animation o-- TextureRegion
 ```
 
 ## Sprites & Animation
 
-A `Sprite` wraps a texture region together with everything needed to draw it: color mask,
-rotation, scale, origin, sprite effects and layer depth.
+_Steps `Snake2` and `Snake3`_
 
-An **animation** is a list of regions and a frame interval. An `AnimatedSprite` is a
-`Sprite` that accumulates elapsed time and advances to the next frame when the interval
-has passed.
+A `Sprite` wraps a texture region together with everything needed to draw it: color mask,
+rotation, scale, origin, sprite effects and layer depth. `Snake2` scales the bat and spins
+it around its centre (`CenterOrigin()`).
+
+An **animation** is a list of regions and a frame delay, also defined in the atlas XML. An
+`AnimatedSprite` is a `Sprite` that accumulates elapsed time in `Update()` and advances to
+the next frame when the delay has passed (`Snake3`).
 
 ## Input & the Command Pattern
 
-Snake's input starts out like this:
+_Steps `Snake4` → `Snake6`_
+
+In `Snake4`, the `Snake` class reads the keyboard itself:
 
 ```csharp
-if (IsPressed(Keys.Up)) MoveUp();
-if (IsPressed(Keys.Down)) MoveDown();
-// ...
+private void HandleInput()
+{
+    if (Core.Input.Keyboard.WasKeyJustPressed(Keys.W))
+    {
+        TryMove(-Vector2.UnitY);
+    }
+    else if (Core.Input.Keyboard.WasKeyJustPressed(Keys.S))
+    {
+        TryMove(Vector2.UnitY);
+    }
+    // ...
+}
 ```
 
-Physical keys are hardwired to actions. The **Command pattern** turns the action into an
-object:
+Physical keys are hardwired to actions, inside gameplay code. Rebinding keys, adding a
+gamepad or letting an AI control the snake all mean editing the `Snake` class.
+
+### Commands
+
+The **Command pattern** turns the action into an object:
 
 > "A command is a reified method call." — Robert Nystrom
 
@@ -85,35 +158,80 @@ public interface ICommand
     void Execute();
 }
 
-public class MoveCommand(Snake snake, Point direction) : ICommand
+public class MoveCommand(Snake snake, Vector2 direction) : ICommand
 {
-    public void Execute() => snake.Move(direction);
+    public void Execute()
+    {
+        if (snake.IsValidMove(direction))
+        {
+            snake.Move(direction);
+        }
+    }
 }
 ```
 
-Input handling now looks up _which command_ a key is bound to, instead of _which method_
-to call:
+In `Snake5`, an `InputHandler` binds each button to a command. The snake no longer knows
+the keyboard exists:
 
 ```csharp
-public Dictionary<Keys, ICommand> Bindings { get; } = new();
+public ICommand ButtonW { get; set; }
+public ICommand ButtonS { get; set; }
+// ...
 
-foreach (var (key, command) in Bindings)
-    if (Input.Keyboard.WasKeyJustPressed(key))
-        command.Execute();
+public void HandleInput()
+{
+    if (Core.Input.Keyboard.WasKeyJustPressed(Keys.W))
+    {
+        ButtonW.Execute();
+    }
+    // ...
+}
 ```
 
-What this buys us:
+Because bindings are just objects, changing what a button does is an assignment. Pressing
+`R` executes a `ReverseInputCommand`, which swaps the bindings so up becomes down and left
+becomes right:
 
-- **Rebinding:** swap the command bound to a key at runtime.
-- **Undo/redo:** commands that know how to reverse themselves (`Undo()`) can be kept in a
-  history stack.
+```csharp
+public void ReverseInput()
+{
+    (ButtonW, ButtonS) = (ButtonS, ButtonW);
+    (ButtonA, ButtonD) = (ButtonD, ButtonA);
+}
+```
+
+### Undo & redo
+
+In `Snake6`, commands can also be undone:
+
+```csharp
+public interface ICommand
+{
+    void Execute();
+    void Undo();
+}
+```
+
+A `CommandInvoker` executes commands and keeps them on an undo stack. Undoing pops a
+command, calls `Undo()` and pushes it onto a redo stack (`Q` and `E` in the game). Two
+details matter:
+
+- Each action now creates a **new command object**, because each one must remember what
+  _it_ did. In `Snake5`, one shared command per button was enough.
+- Only **valid** moves are executed. Otherwise, undoing a move that was blocked by a wall
+  would move the snake backwards even though it never moved forwards.
+
+### What commands buy us
+
+- **Rebinding:** swap the command bound to a button at runtime.
+- **Undo/redo:** commands that know how to reverse themselves can be kept in a history.
 - **Replay:** a deterministic game plus a recorded list of commands can be replayed.
-- **Same interface for players and AI:** an AI can issue the same commands as the player.
-
-**Input buffering:** in Snake, a quick Up-then-Left between two ticks shouldn't lose the
-second key press. Queue direction commands and consume one per movement tick.
+- **The same interface for players and AI:** an AI can issue the same commands as the
+  player.
 
 ## Collision Detection
+
+_Step `Snake7`_
 
 - **Distance-based / circles:** two circles overlap if the distance between their centres
   is less than the sum of their radii. Compare _squared_ values
@@ -121,10 +239,15 @@ second key press. Queue direction commands and consume one per movement tick.
 - **AABB:** built into MonoGame as `Rectangle.Intersects()` and `Rectangle.Contains()`.
 - **Complex polygons:** precise, but expensive. Rarely worth it in 2D games.
 
-We add a `Circle` struct with `Intersects(Circle)` to GMDCore.
+MonoGame has no circle type, so GMDCore has a `Circle` struct with `Intersects(Circle)`.
+Both the snake and the bat expose their `Bounds` as a `Circle`.
 
-**Collision response** is what happens _after_ a hit: blocking (push objects apart),
-triggering (fire an event, pick up an item) or bouncing (`Vector2.Reflect`).
+**Collision response** is what happens _after_ a hit:
+
+- **Blocking:** push objects apart or prevent the move (the snake can't leave the room).
+- **Triggering:** something happens (the snake eats the bat, and a new bat appears).
+- **Bouncing:** reflect the velocity off the surface (the bat uses `Vector2.Reflect` with
+  the wall's normal).
 
 **Performance:** checking every pair of `n` objects costs `n × (n − 1) / 2` checks. 100
 objects means 4,950 checks every frame. Real engines split this into a cheap **broad
@@ -133,30 +256,44 @@ We return to this in [Geometry Wars](../09-geometry-wars/).
 
 ## Tilemaps
 
-A **tileset** is an atlas of equally sized tiles. A **tilemap** is a grid of indices into
-that tileset:
+_Step `Snake8`_
 
-```text
-00 01 02 01 03
-04 05 06 05 07
-08 09 10 09 11
-04 09 09 09 07
-12 13 14 13 15
+A **tileset** is an atlas of equally sized tiles. A **tilemap** is a grid of indices into
+that tileset, defined in XML:
+
+```xml
+<Tilemap>
+    <Tileset region="0 40 80 80" tileWidth="20" tileHeight="20">images/atlas</Tileset>
+    <Tiles>
+        00 01 02 01 03
+        04 05 06 05 07
+        08 09 10 09 11
+        04 09 09 09 07
+        12 13 14 13 15
+    </Tiles>
+</Tilemap>
 ```
 
-The level is data (an XML file), not code. Collision with a static grid is also cheap: to
-find what is at a position, divide by the tile size. No need to check every tile.
+The level is data, not code. In `Snake8`, the room's walls are the tilemap's outer ring of
+tiles, so the playable area shrinks by one tile on each side. Collision with a static grid
+is also cheap: to find what is at a position, divide by the tile size. No need to check
+every tile.
 
 ## Exercises
 
+Start from `Snake8`.
+
 1. **Custom tilemap:** find or create a tileset and apply it to the game (texture atlas and
    XML tilemap definition). Change sprites and animations if you like.
-2. **Classic Snake:** add a tail that grows when the snake eats. Colliding with the tail or
-   a wall ends the game. Make the snake move continuously and add a score.
-3. **Command pattern:** move input handling to commands bound to keys.
-   - Add a "confusion" pickup (or a key) that reverses all direction bindings by swapping
-     the commands, without touching the snake's code.
-   - Add input buffering, so fast key presses between ticks aren't lost.
+2. **Classic Snake:** add a tail that grows when the snake eats the bat. Colliding with the
+   tail or a wall ends the game. Make the snake move continuously on a timer, and add a
+   score. (Continuous movement makes undo pointless; remove it.)
+3. **Commands:**
+   - Make eating a bat reverse the controls for five seconds, by swapping commands, without
+     touching the `Snake` class.
+   - Add input buffering: with continuous movement, a quick Up-then-Left between two ticks
+     shouldn't lose the second key press. Queue direction commands and consume one per
+     tick.
 4. **Replay (stretch):** record every executed command with its tick number. After game
    over, replay the run from the start.
 

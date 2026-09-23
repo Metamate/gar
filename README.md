@@ -18,6 +18,7 @@ Course site built with [Astro](https://docs.astro.build) and [Starlight](https:/
 ├── .github/workflows/deploy.yml   # GitHub Pages deploy on push to main
 ├── astro.config.mjs               # Site title, logo and sidebar
 ├── public/favicon.ico
+├── slides/                        # Edited slide decks (.pptx), named by session number
 └── src/
     ├── assets/                    # Images referenced from pages (logo, session figures)
     ├── components/                # Interactive components used in MDX pages

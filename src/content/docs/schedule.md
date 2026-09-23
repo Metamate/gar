@@ -11,7 +11,7 @@ sessions for the course project.
 | 01 | [Pong](../sessions/01-pong/) | MonoGame, game loop, delta time, AABB collision, Update Method |
 | 02 | [Flappy Bird](../sessions/02-flappy-bird/) | Class library (GMDCore), textures, procedural generation, state machines, Singleton |
 | 03 | [Snake](../sessions/03-snake/) | Texture atlases, sprites & animation, Command pattern, collision detection, tilemaps |
-| 04 | [Project Kick-Off](../sessions/04-project-kick-off/) | Groups, game concept, version control, value vs. reference types |
+| 04 | [Project Kick-Off](../sessions/04-project-kick-off/) | Groups, game concept, version control, architecture sketch |
 | 05 | [Super Mario Bros](../sessions/05-super-mario-bros/) | Procedural levels, State pattern, Strategy, camera, platformer physics, basic AI |
 | 06 | [The Legend of Zelda](../sessions/06-the-legend-of-zelda/) | Observer & C# events, composition vs. inheritance, tweening, data-driven design |
 | 07 | [Project Checkpoint](../sessions/07-project-work/) | Class diagram, event map, self-review |

@@ -25,17 +25,28 @@ patterns.
 - **CS50 GD50:** the game line-up follows CS50's Introduction to Game Development closely.
   Check its license and credit it where assets or structure are derived from it.
 
+## Materials
+
+- **Slides:** edited decks live in `slides/` (version controlled), named by session number.
+  A deck moves there from `in-progress/slides-ppt/` (the untouched originals, not in git)
+  the first time it is edited.
+- **Code:** the `gmd2-*` repos. Every game should follow the Pong/Flappy layout: one project
+  per step (`Snake0`, `Snake1`, …), each with its own `Content`, all sharing one final
+  `GMDCore`, and a README table of steps. The site page and the deck name the step for
+  each topic.
+- **Still single-project:** Platformer, Zelda, Pokemon, Geometry Wars.
+
 ## Slide & Code TODOs
 
 - **01 Pong:** update the slides to cover the Update Method pattern properly (Encapsulation
   exercise), plus fixed vs. variable timestep and double buffering (now on the site).
 - **02 Flappy:** update the implementation to contain a Singleton example, and use it to
   contrast static classes vs. Singleton (`Art`, `Core.Input`).
-- **03 Snake:** the Command pattern implementation and the game can be improved (key
-  rebinding, input buffering, replay). Exercises on the site assume these.
+- **03 Snake:** done. Split into `Snake0`–`Snake8` (`steps` branch in `gmd2-snake`, not yet
+  pushed); site page and `slides/03 Snake.pptx` updated to match.
 - **05 Mario:** the `GameController` is deliberately _not_ the Command pattern; keep the
   discussion slide.
-- **07 Checkpoint:** the value vs. reference types slides moved to 04 Project Kick-Off.
+- **07 Project Work slides:** drop the value vs. reference types slides (assumed prior knowledge).
 - **08 Pokemon:** add a save/load exercise to the repo (party + position to JSON).
 - **09 Geometry Wars:** add a spatial grid broad phase (or leave as exercise), and an
   allocation/GC counter overlay for the profiling exercise. Shaders are now a showcase only.
