@@ -240,7 +240,6 @@ Resources:
 - [26: Publishing Your Game to itch.io](https://docs.monogame.net/articles/tutorials/building_2d_games/26_publish_to_itch)
 - [27: Conclusion and Next Steps](https://docs.monogame.net/articles/tutorials/building_2d_games/27_conclusion)
 
-
 ## Resources and topics currently not associated with a session (not sure whether to include)
 
 - [Dirty Flag](https://gameprogrammingpatterns.com/dirty-flag.html)
