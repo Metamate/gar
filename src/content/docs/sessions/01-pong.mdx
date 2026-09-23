@@ -1,6 +1,6 @@
 ---
 title: 01 Pong
-description: The basic principles of making a game in MonoGame.
+description: Make it work. A naive but complete Pong game, and the basic principles of making a game in MonoGame.
 sidebar:
   order: 1
 ---
@@ -8,45 +8,81 @@ sidebar:
 import GameLoopDemo from '../../../components/GameLoopDemo.astro';
 import pong from '../../../assets/session01/pong.gif';
 
-<img src={pong.src} alt="Pong" />
-
-Quick Pong introduction. Show GIF of final Pong game. Link to source code.
+<img src={pong.src} alt="The finished Pong game" />
 
 ## Today's Goal
 
-"Make it work". We end up with a working, very basic game. The implementation will be
-"naive" in the sense that it doesn't consider good practices in terms of architecture and
-design, but it keeps things simple and gets us to a working prototype relatively quickly.
+**"Make it work."** We end up with a working, very basic Pong game. The implementation is
+deliberately _naive_: it ignores good architecture and design practices, but it keeps things
+simple and gets us to a working prototype quickly. The rest of the course is about making
+games like this one _better_ as they grow.
 
-By the end of the session, we will have a basic Pong game with:
+By the end of the session, we will have a game with:
 
-- A basic update loop
-- Rendering
+- An update loop
+- Primitive graphics
 - Collision detection
-- Input
-- Basic state management
-- Audio
+- Hardcoded input
+- Crude state management
+- Homemade 8-bit audio
 
-## MonoGame
+**Source code:** [Metamate/gmd2-pong](https://github.com/Metamate/gmd2-pong)
 
-- [What is MonoGame?](https://docs.monogame.net/articles/tutorials/building_2d_games/01_what_is_monogame/index.html)
-- [Getting Started](https://docs.monogame.net/articles/tutorials/building_2d_games/02_getting_started/index.html)
-- [The Game1 File](https://docs.monogame.net/articles/tutorials/building_2d_games/03_the_game1_file/index.html)
+## Prepare
+
+- [01: What Is MonoGame?](https://docs.monogame.net/articles/tutorials/building_2d_games/01_what_is_monogame)
+- [02: Getting Started](https://docs.monogame.net/articles/tutorials/building_2d_games/02_getting_started) — install the tooling before class
+- [03: The Game1 File](https://docs.monogame.net/articles/tutorials/building_2d_games/03_the_game1_file)
+- [Game Loop](https://gameprogrammingpatterns.com/game-loop.html) (Game Programming Patterns)
+- [Update Method](https://gameprogrammingpatterns.com/update-method.html) (Game Programming Patterns)
+
+## MonoGame & Tooling
+
+MonoGame is a _framework_, not an engine. It gives us libraries for graphics, input, audio,
+content loading and math, but no editor, no scene graph and no entity system. We build
+those ourselves, which is exactly why it is a good fit for a course about game architecture.
+
+Tooling used in the course:
+
+- .NET 9+
+- VS Code with the C# Dev Kit and MonoGame extensions
+- MonoGame templates: `dotnet new install MonoGame.Templates.CSharp`
+- MonoGame Content Builder (MGCB) Editor (optional)
+
+Create new games from the **Cross-Platform Desktop Application** (OpenGL) template.
 
 ## Game Loop
 
-- [Game Loop Pattern](https://gameprogrammingpatterns.com/game-loop.html)
-- [Update Method Pattern](https://gameprogrammingpatterns.com/update-method.html)
+Every game runs a loop: process input, update the simulation, render, repeat. In MonoGame,
+the `Game` class runs the loop and calls your `Update` and `Draw` overrides.
 
 ![Lifecycle of a MonoGame game](../../../assets/session01/monogame-lifecycle.png)
 
 _Figure 1-1: Lifecycle of a MonoGame game_
 
-For a more comprehensible explanation of the MonoGame game loop, see
+Unlike Unity, there is no hidden object system calling `Update` on your behalf. `Game1`
+gets one `Update` and one `Draw` call per frame, and everything else in your game only runs
+if you call it from there. For more detail, see
 [What is the Game Loop](https://docs.monogame.net/articles/getting_to_know/whatis/game_loop/index.html).
 
-You own the loop (unlike in Unity). This means that you have to manually call update, it is
-not done for you.
+**Why separate `Update` and `Draw`?** `Update` changes the state of the world; `Draw` only
+reads that state and renders it. Keeping them apart lets the simulation and the rendering
+run at different rates, which is the idea behind a fixed timestep.
+
+Rendering itself uses a _double buffer_: we draw into a back buffer that isn't visible,
+and MonoGame presents it (`GraphicsDevice.Present()`, called at the end of `Draw`) so the
+player never sees a half-drawn frame. See
+[Double Buffer](https://gameprogrammingpatterns.com/double-buffer.html) for the pattern.
+
+### Fixed vs. variable timestep
+
+- **Variable timestep:** update once per rendered frame and scale all movement by the
+  elapsed time (`deltaTime`). Simple, but the simulation behaves slightly differently at
+  different frame rates.
+- **Fixed timestep:** update the simulation in fixed-size steps (e.g. 60 per second),
+  running zero, one or several steps per rendered frame. This makes the simulation
+  deterministic and stable, at the cost of some complexity. MonoGame uses a fixed timestep
+  by default (`IsFixedTimeStep = true`).
 
 ### Try it
 
@@ -58,32 +94,153 @@ even when the simulation updates only a few times per second.
 
 ## Content Pipeline
 
-## Drawing Sprites
+Assets (fonts, images, sounds) are added to `Content.mgcb`, built into an optimized format
+at compile time, and loaded at runtime with `Content.Load<T>("name")` in `LoadContent`.
 
-- MG Coordinate System
+## Drawing to the Screen
 
-- [What is a sprite?](https://docs.monogame.net/articles/getting_to_know/whatis/graphics/WhatIs_Sprite.html)
+- MonoGame's 2D coordinate system has its origin in the **top-left** corner, with Y
+  pointing **down**.
+- All 2D drawing goes through a `SpriteBatch`, between `Begin()` and `End()`.
+- Pong doesn't need image assets, but we still need a texture to draw rectangles. A 1×1
+  white texture stretched to any `Rectangle` does the job:
 
-## Drawing Text
+```csharp
+_pixel = new Texture2D(GraphicsDevice, 1, 1);
+_pixel.SetData([Color.White]);
+
+_spriteBatch.Draw(_pixel, new Rectangle(x, y, width, height), Color.White);
+```
+
+- Text is drawn with a `SpriteFont` asset and `SpriteBatch.DrawString()`.
+- **Virtual resolution:** we render the game at a fixed internal resolution and scale it
+  to the window with a transform matrix passed to `SpriteBatch.Begin()`. The game logic
+  never needs to know how big the window is.
+- **Texture filtering:** use `SamplerState.PointClamp` for crisp pixel art when scaling up.
+
+See [What is a sprite?](https://docs.monogame.net/articles/getting_to_know/whatis/graphics/WhatIs_Sprite.html).
+
+## Input
+
+We poll the keyboard every frame:
+
+```csharp
+KeyboardState keyboard = Keyboard.GetState();
+
+if (keyboard.IsKeyDown(Keys.W))
+    _player1Y -= PaddleSpeed * deltaTime;
+if (keyboard.IsKeyDown(Keys.S))
+    _player1Y += PaddleSpeed * deltaTime;
+```
+
+MonoGame has no built-in "was this key _just_ pressed?". We emulate it by comparing with
+last frame's state:
+
+```csharp
+bool enterPressed = keyboard.IsKeyDown(Keys.Enter) && !_previousKeyboard.IsKeyDown(Keys.Enter);
+_previousKeyboard = keyboard;
+```
 
 ## DeltaTime & Velocity
 
+`deltaTime` is the time since the last update, in seconds:
+
+```csharp
+float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+```
+
+Multiplying movement by `deltaTime` makes speed independent of frame rate: a paddle moving
+at 200 units per second moves 200 units per second, whether the game runs at 30 or 144 FPS.
+_Velocity_ (a direction and a speed, e.g. a `Vector2`) lets the ball keep moving without
+input.
+
+## Encapsulation & the Update Method Pattern
+
+Our first version puts everything in `Game1`. As soon as we have a paddle and a ball, we
+move their data and behaviour into `Paddle` and `Ball` classes, each with its own `Update`
+and `Draw` methods. `Game1` then just calls them. This is the
+[Update Method](https://gameprogrammingpatterns.com/update-method.html) pattern: each
+object knows how to simulate one frame of its own behaviour.
+
+## Collision Detection (AABB)
+
+Axis-Aligned Bounding Boxes are rectangles that never rotate. Two of them overlap if they
+overlap on both axes:
+
+```csharp
+public static bool AABB(Rectangle a, Rectangle b)
+{
+    return a.Left < b.Right &&
+           a.Right > b.Left &&
+           a.Top < b.Bottom &&
+           a.Bottom > b.Top;
+}
+```
+
+(MonoGame provides the same check as `Rectangle.Intersects()`, but it's worth writing
+yourself once.)
+
 ## Game State
 
-## Encapsulation
-
-## Collision Detection
+Pong has distinct phases: _start_, _serve_, _play_ and _done_. Today we track them with a
+simple `string` field and `if`-checks in `Update` and `Draw`. It works, but it doesn't
+scale. Keep it in mind; we fix it in [Flappy Bird](../02-flappy-bird/).
 
 ## Sound Effects
 
-You can make your own 8-bit style sound effects using [bfxr.net](https://www.bfxr.net/).
+`SoundEffect` is for short clips (hits, jumps, clicks). They are loaded fully into memory
+and several can play at once. Longer music uses `Song` (next session).
 
-## Knowledge Test
+Make your own 8-bit sounds with [bfxr.net](https://www.bfxr.net/).
+
+## Exercises
+
+Build Pong step by step:
+
+0. **New Game:** create a MonoGame project "Pong" and run it.
+1. **Hello Pong:** draw "Hello Pong!" centred on a black 1280×720 window.
+2. **Virtual Resolution:** make the game resolution independent of the window size, make
+   the window resizable, and use point filtering.
+3. **Drawing Rectangles:** draw two paddles and a ball. Use a custom retro font and the
+   background colour `(40, 45, 52)`.
+4. **Paddle Movement:** W/S and Up/Down move the paddles, independent of frame rate.
+5. **Ball Movement:** launch the ball in a random direction on Enter. Keep the paddles on
+   screen (`Math.Clamp`).
+6. **Encapsulation:** refactor into `Paddle` and `Ball` classes using the Update Method
+   pattern. The game must behave exactly as before.
+7. **Collision Detection:** bounce off paddles and walls with AABB. Speed up the ball by
+   10% on each paddle hit.
+8. **Scoring:** keep and display the score in a bigger font.
+9. **Serve State:** the player who was scored on serves next.
+10. **Victory:** add a _done_ state when a player reaches 10 points.
+11. **Audio:** add distinct sounds for paddle hit, wall hit and score.
+
+## Check Yourself
 
 <details>
-<summary>What is the difference between a game engine and a framework?</summary>
+<summary>What is the difference between a game engine and a game framework?</summary>
 
-A game engine is a complete solution for game development, while a framework is a set of
-tools and libraries that provide a foundation for game development.
+An engine is a complete environment: editor, scene and object model, and a loop that calls
+your scripts. A framework like MonoGame is a set of libraries. You write the game's
+structure yourself, including the loop's contents.
 
 </details>
+
+<details>
+<summary>Why do we multiply movement by deltaTime?</summary>
+
+So that movement per second is the same no matter how many frames are rendered per second.
+
+</details>
+
+<details>
+<summary>Why is a string field a fragile way to store game state?</summary>
+
+Typos aren't caught by the compiler, every `Update`/`Draw` needs an `if`-chain over all
+states, and adding a state means editing all of those chains.
+
+</details>
+
+Related exam questions: [1](../../exam/#1-game-loop--update-method),
+[6](../../exam/#6-sprites-texture-atlases-animation--rendering),
+[7](../../exam/#7-tilemaps-collision-detection--procedural-generation).

@@ -71,7 +71,7 @@ Prototype, Object Pooling, Spatial Partitioning, Data-Driven Design, Optimizatio
 
 12 sessions (48 lessons). Lessons consist of discussion of theory and exercises, as well as
 project work. The total workload of the student is expected to be around 140 hours. The
-course includes one [course project](project/).
+course includes one [course project](../project/).
 
 ## Exam
 
@@ -81,7 +81,7 @@ Attendance (≥ 75%)
 
 **Type of exam:**
 Individual oral exam, 20 minutes, without preparation.
-The student will draw from a pool of known questions and is expected to reference their
+The student will draw from a [pool of known questions](../exam/) and is expected to reference their
 course project as part of the answer. This involves analyzing source code, as well as
 potentially writing or modifying source code during the exam. The final grade will be based
 on an overall assessment of the project presented and the oral examination. Internal

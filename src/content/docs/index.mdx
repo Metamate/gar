@@ -6,38 +6,50 @@ description: Software design and architecture in the context of game development
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 Welcome to the course website for **GAR** (Game Architecture). This course explores
-**software design and architecture in the context of game development**. Together, we will
-examine game programming patterns, engine architecture, and software design principles,
-providing you with the skills to build robust and maintainable games.
+**software design and architecture in the context of game development**. We build seven
+classic games in MonoGame, starting with a naive but working Pong and ending with a
+Geometry Wars clone that handles thousands of entities. Along the way, each game introduces
+the game programming patterns and design principles needed to keep a growing game robust
+and maintainable.
 
-Use the sidebar to navigate through the course sessions, which include preparation materials
-and practical exercises.
+Use the sidebar to navigate through the course. The [schedule](schedule/) gives an
+overview of all sessions, and the [exam](exam/) page lists every exam question together
+with the sessions that cover it.
 
-## Course Structure
+## Session Structure
 
-The course spans 12 sessions. Each session typically follows this structure:
+Each game session follows the same structure:
 
 <CardGrid>
-	<Card title="1. Preparation" icon="open-book">
-		Engage with assigned learning paths and readings before class. We cover most
-		theoretical content here to maximize practical time during class.
+	<Card title="1. Prepare" icon="open-book">
+		Read the linked chapters and tutorials before class. They cover the basics, so class
+		time can go to building.
 	</Card>
-	<Card title="2. Recap" icon="comment">
-		A focused review of essential concepts to kick off the class.
+	<Card title="2. Build & Explore" icon="laptop">
+		The first games are built step by step from scratch. From Snake onwards, we start from
+		a working codebase and explore and extend it.
 	</Card>
-	<Card title="3. Exercises" icon="laptop">
-		Hands-on practice to reinforce and expand your skills.
+	<Card title="3. Apply to Your Project" icon="puzzle">
+		Each session ends with questions that bring the day's patterns into your own course
+		project.
 	</Card>
-	<Card title="4. Review & Discussion" icon="approve-check">
-		Collaborative review of exercises and solutions.
+	<Card title="4. Check Yourself" icon="approve-check">
+		Short questions to test your understanding, linked to the exam questions they prepare
+		you for.
 	</Card>
 </CardGrid>
 
-This approach allows you to learn theory at your own pace, enabling us to focus class time
-on practical application and problem-solving. Active preparation and participation is key to
-your success in this course.
+Active preparation and participation are key to your success in this course.
+
+## GMDCore
+
+Throughout the course, reusable code moves from the individual games into **GMDCore**, a
+shared class library that grows into a small game framework: screen scaling, input, sprites,
+animation, tilemaps, state machines and more. Deciding what belongs in the core and what
+belongs in the game is itself an architectural decision, and one we return to every
+session.
 
 ## Resources
 
-- [Game Programming Patterns](https://gameprogrammingpatterns.com/): The course uses several chapters from this book.
-- [MonoGame Documentation](https://docs.monogame.net/): Documentation, API reference, guides and tutorials used in the course.
+- [Game Programming Patterns](https://gameprogrammingpatterns.com/): the course uses many chapters from this (free, online) book.
+- [MonoGame Documentation](https://docs.monogame.net/): documentation, API reference, guides and the _Building 2D Games_ tutorial used for preparation.

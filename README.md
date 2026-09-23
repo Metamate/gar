@@ -25,18 +25,20 @@ Course site built with [Astro](https://docs.astro.build) and [Starlight](https:/
         ├── index.mdx              # Home page
         ├── syllabus.md            # Official course description
         ├── schedule.md            # Overview of the 12 sessions
-        ├── project.md             # Course project brief
-        ├── sessions/              # One page per session (sidebar order via `sidebar.order`)
-        └── resources/
+        ├── project.md             # Course project brief and milestones
+        ├── exam.md                # Exam format and question pool
+        ├── course-notes.md        # Instructor notes and TODOs (draft: dev only, not published)
+        └── sessions/              # One page per session (sidebar order via `sidebar.order`)
 ```
 
 ## Writing pages
 
 - Add a `.md` file under `src/content/docs/`. Its path becomes its URL.
-- Files in `sessions/` and `resources/` appear in the sidebar automatically.
+- Files in `sessions/` appear in the sidebar automatically.
   Set `sidebar.order` in frontmatter to control their order.
 - Rename a page to `.mdx` to use components like `<Aside>`, `<Tabs>`, `<Steps>`, or your own
   components from `src/components/`. `sessions/01-pong.mdx` shows examples.
+- Add `draft: true` to the frontmatter to keep a page out of the production build.
 - Link between pages with **relative** links, such as `../schedule/`, so links still work when
   the site is served from a subpath on GitHub Pages.
 

@@ -38,6 +38,7 @@ export default defineConfig({
             { label: "Syllabus", slug: "syllabus" },
             { label: "Schedule", slug: "schedule" },
             { label: "Project", slug: "project" },
+            { label: "Exam", slug: "exam" },
           ],
         },
         {

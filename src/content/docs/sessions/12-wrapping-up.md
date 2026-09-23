@@ -7,30 +7,23 @@ sidebar:
 
 ## Project Show-Off
 
-Show off!
+Each group shows off its game (about 5 minutes): a short playthrough, and one part of the
+architecture you are proud of.
 
-Everybody must upload the GitHub link of their game project (to assignment on itslearning).
+Everybody must upload the GitHub link of their game project to the assignment on
+itslearning.
 
 ## Exam Preparation
 
-Bla bla.
+The exam is an individual oral exam based on a known pool of questions. See the
+[Exam](../../exam/) page for the format and all questions.
 
-### Exam Questions (Under Construction)
+Prepare by going through each question with your own project open:
 
-1. Game Loop & Architecture
-   - Explain the Update/Draw separation in MonoGame.
-   - How do you decouple game logic from rendering?
-   - Discuss how delta time influences game determinism.
-2. Design Patterns
-   - Show how you implemented a SceneManager using the State pattern.
-   - Explain a situation where object pooling is required and why.
-   - How does the Observer pattern improve decoupling?
-3. Data-Driven Systems
-   - Show how you load and parse a JSON tilemap.
-   - What are the advantages of data-driven entity creation?
-4. Debugging & Optimization
-   - How do you detect and fix a framerate spike?
-   - Explain GC pressure and how to reduce allocations.
-5. Your Project
-   - Walk through the architecture of your game.
-   - Discuss a specific engineering challenge and how you solved it.
+- For each question, find the place(s) in your code you would show. If your project
+  doesn't cover a sub-question, find an example in one of the course games instead.
+- Practice explaining your architecture in about 5 minutes, using your class diagram.
+- Choose the pattern you will present in detail in question 0, plus a backup in case you
+  draw the question that covers it.
+- Be ready to modify code live: a small change such as adding a state, an event or a
+  command.

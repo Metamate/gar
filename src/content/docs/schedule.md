@@ -3,19 +3,20 @@ title: Schedule
 description: Overview of the 12 course sessions.
 ---
 
-The course spans 12 sessions. Topics are tentative and may shift — check back each week.
+The course spans 12 sessions: seven game sessions, each building a classic game, and five
+sessions for the course project.
 
-| Session | Topic | Summary |
+| Session | Topic | Key concepts |
 | --- | --- | --- |
-| 01 | [Pong](../sessions/01-pong/) | The basic principles of making a game in MonoGame. |
-| 02 | [Flappy Bird](../sessions/02-flappy-bird/) | Organizing and designing our game as it grows. Building a game engine of reusable components. |
-| 03 | [Snake](../sessions/03-snake/) | Input, commands, and composition over inheritance. |
-| 04 | [Project Work](../sessions/04-project-work/) | Project setup, game design document, version control. |
-| 05 | [Super Mario Bros](../sessions/05-super-mario-bros/) | Tile maps, animation, cameras, and platformer physics. |
-| 06 | [The Legend of Zelda](../sessions/06-the-legend-of-zelda/) | Data-driven design and event-based messaging. |
-| 07 | [Angry Birds](../sessions/07-angry-birds/) | Physics, collision response, and spatial partitioning. |
-| 08 | [Project Work](../sessions/08-project-work/) | Project status and follow-up. |
-| 09 | [Pokemon](../sessions/09-pokemon/) | State stacks, turn-based systems, and UI architecture. |
-| 10 | [Geometry Wars](../sessions/10-geometry-wars/) | Data-oriented design, pooling, performance, shaders. |
-| 11 | [Project Work](../sessions/11-project-work/) | Finalizing, building, and releasing your game. |
-| 12 | [Wrapping Up](../sessions/12-wrapping-up/) | Project show-off and exam preparation. |
+| 01 | [Pong](../sessions/01-pong/) | MonoGame, game loop, delta time, AABB collision, Update Method |
+| 02 | [Flappy Bird](../sessions/02-flappy-bird/) | Class library (GMDCore), textures, procedural generation, state machines, Singleton |
+| 03 | [Snake](../sessions/03-snake/) | Texture atlases, sprites & animation, Command pattern, collision detection, tilemaps |
+| 04 | [Project Kick-Off](../sessions/04-project-kick-off/) | Groups, game concept, version control, value vs. reference types |
+| 05 | [Super Mario Bros](../sessions/05-super-mario-bros/) | Procedural levels, State pattern, Strategy, camera, platformer physics, basic AI |
+| 06 | [The Legend of Zelda](../sessions/06-the-legend-of-zelda/) | Observer & C# events, composition vs. inheritance, tweening, data-driven design |
+| 07 | [Project Checkpoint](../sessions/07-project-work/) | Class diagram, event map, self-review |
+| 08 | [Pokemon](../sessions/08-pokemon/) | State stack, GUIs, turn-based systems, Service Locator, serialization |
+| 09 | [Geometry Wars](../sessions/09-geometry-wars/) | Component pattern, data-oriented design, Object Pool, Flyweight, spatial partitioning, profiling |
+| 10 | [Release](../sessions/10-release/) | Packaging, publishing to itch.io |
+| 11 | [Architecture Review](../sessions/11-architecture-review/) | Peer review, refactoring |
+| 12 | [Wrapping Up](../sessions/12-wrapping-up/) | Project show-off, exam preparation |
