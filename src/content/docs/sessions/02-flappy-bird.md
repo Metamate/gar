@@ -25,7 +25,6 @@ your solution with each step, and compare neighbouring steps to see exactly what
 
 - [04: Creating a Class Library](https://docs.monogame.net/articles/tutorials/building_2d_games/04_creating_a_class_library)
 - [Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html)
-  (the MonoGame tutorial's chapter 05 uses the older MGCB Editor instead; see [Pong](../01-pong/#content-pipeline))
 - [06: Working with Textures](https://docs.monogame.net/articles/tutorials/building_2d_games/06_working_with_textures)
 - [Architecture, Performance, and Games](https://gameprogrammingpatterns.com/architecture-performance-and-games.html)
 - [Interfaces (C#)](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces)

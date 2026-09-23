@@ -34,7 +34,7 @@ your solution with each step, and compare neighbouring steps to see exactly what
 ## Prepare
 
 - [01: What Is MonoGame?](https://docs.monogame.net/articles/tutorials/building_2d_games/01_what_is_monogame)
-- [02: Getting Started](https://docs.monogame.net/articles/tutorials/building_2d_games/02_getting_started) — install the .NET SDK and VS Code before class (we don't use the MonoGame templates or MGCB Editor; see [Tooling](#monogame--tooling))
+- [02: Getting Started](https://docs.monogame.net/articles/tutorials/building_2d_games/02_getting_started) — install the tooling before class
 - [03: The Game1 File](https://docs.monogame.net/articles/tutorials/building_2d_games/03_the_game1_file)
 - [Game Loop](https://gameprogrammingpatterns.com/game-loop.html) (Game Programming Patterns)
 - [Update Method](https://gameprogrammingpatterns.com/update-method.html) (Game Programming Patterns)
@@ -52,11 +52,6 @@ Tooling used in the course:
 - Git
 - The course repositories on GitHub. Each game's code is split into steps, one project per
   exercise.
-
-Start new games from `Pong0` in [gmd2-pong](https://github.com/Metamate/gmd2-pong): an empty
-MonoGame game (MonoGame 3.8.5) that is already set up with the content builder. MonoGame's
-own `dotnet new` templates still create projects with the older MGCB content setup, which we
-don't use.
 
 ## Game Loop
 
@@ -142,7 +137,7 @@ public class Builder : ContentBuilder
 Each game project imports `Content/BuildContent.targets`, which runs the builder before
 compiling. To add an asset, put it in the project's `Assets` folder; if no rule matches it,
 add one. In Pong, every step has its own `Assets` folder, because the assets change as the
-game grows. This replaces the `.mgcb` file and MGCB Editor used before MonoGame 3.8.5. See
+game grows. See
 [Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html).
 
 ## Drawing to the Screen
