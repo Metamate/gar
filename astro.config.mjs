@@ -21,7 +21,7 @@ export default defineConfig({
 			enableLog: false,
 		}),
 		starlight({
-			title: 'GAR',
+			title: 'Game Architecture',
 			description: 'Course site for Game Architecture (GAR).',
 			lastUpdated: true,
 			customCss: ['./src/styles/theme.css'],
