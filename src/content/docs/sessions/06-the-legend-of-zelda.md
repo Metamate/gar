@@ -22,6 +22,20 @@ on:
 **Source code:** [Metamate/gmd2-zelda](https://github.com/Metamate/gmd2-zelda) (walkthrough
 in the README)
 
+The code is split into steps, one project per concept. Each section below names the step
+that introduces it. Compare neighbouring steps to see exactly what changed.
+
+| Step | Topic |
+| --- | --- |
+| `Zelda0` | Rooms generated as tilemaps |
+| `Zelda1` | The player: top-down movement |
+| `Zelda2` | Enemies and AI |
+| `Zelda3` | Combat: hitboxes, hurtboxes and damage |
+| `Zelda4` | Events: player death, the floor switch and doorways |
+| `Zelda5` | Screen scrolling between rooms |
+| `Zelda6` | Stenciling the door arches |
+| `Zelda7` | Audio (the finished game) |
+
 ## Prepare
 
 - [Observer](https://gameprogrammingpatterns.com/observer.html)
@@ -31,7 +45,7 @@ in the README)
 
 ## Explore the Codebase
 
-Take about 15 minutes to browse the code, using the README as a guide:
+Take about 15 minutes to browse the finished game, `Zelda7`, using the README as a guide:
 
 - Find where the game transitions between the title screen, gameplay and game over.
 - How does the player move?
@@ -42,10 +56,20 @@ Take about 15 minutes to browse the code, using the README as a guide:
 
 ## Top-Down Perspective & Dungeon Generation
 
-The dungeon is an endless series of rooms. Each room is generated when entered: walls,
-floor, doorways, enemies and objects (such as switches that open the doors).
+_Steps `Zelda0` → `Zelda2`_
+
+The dungeon is an endless series of rooms. Each room is a tilemap generated when entered:
+solid walls and corners around the edge, and a floor of random floor tiles (`Zelda0`). Then
+come the player (`Zelda1`), enemies (`Zelda2`), and doorways and objects such as the switch
+that opens the doors (`Zelda4`).
+
+In a top-down game, the player's sprite is taller than the part that collides: the sprite is
+drawn a few pixels above its collision box, so the character looks like it stands _on_ the
+floor.
 
 ## Hitboxes & Hurtboxes
+
+_Step `Zelda3`_
 
 - **Hitbox:** the area that _deals_ damage (e.g. the sword swing).
 - **Hurtbox:** the area that _receives_ damage (e.g. the enemy's body).
@@ -54,6 +78,8 @@ Keeping them separate means the sword's reach and the enemy's body don't have to
 the sprite.
 
 ## Composition vs. Inheritance
+
+_Steps `Zelda1` → `Zelda2`_
 
 The player and enemies share a common base class that provides movement, collision and
 animation. Inheritance works well while there is one axis of variation, but what about an
@@ -66,6 +92,21 @@ something. Keep this in mind for your project. We look at it in depth with the C
 pattern in [Geometry Wars](../09-geometry-wars/).
 
 ## Events & the Observer Pattern
+
+_Steps `Zelda3` → `Zelda4`_
+
+In `Zelda3`, the play state checks every frame whether the player has died:
+
+```csharp
+if (_player.Health <= 0)
+    Game.SetState(new GameOverState(Game));
+```
+
+In `Zelda4`, the room announces it instead, and the play state reacts:
+
+```csharp
+_room.OnPlayerDied += OnPlayerDied;
+```
 
 Games are full of moments where something happens and other things need to react. The
 thing that happened shouldn't need to know what those other things are.
@@ -159,6 +200,8 @@ and the audio system plays them in one place, merging duplicates.
 
 ## Screen Scrolling & Tweening
 
+_Step `Zelda5`_
+
 **Tweening** ("in-betweening") animates a value from A to B over time, instead of
 snapping it. The simplest curve is linear interpolation:
 
@@ -182,7 +225,18 @@ _player.Position = Vector2.Lerp(_shiftPlayerStart, _shiftPlayerEnd, _shiftProgre
 When the shift is done, the new room becomes the current room and the camera and player
 positions are reset.
 
+## Stenciling
+
+_Step `Zelda6`_
+
+While walking through a door in `Zelda5`, the player is drawn on top of the door arch. `Zelda6`
+fixes this with the **stencil buffer**: an extra per-pixel mask. The dungeon draws in three
+passes: the rooms, then the arch areas into the stencil buffer only (no colour), and finally
+the player, only where the stencil is empty. The player seems to walk _under_ the arch.
+
 ## Data-Driven Design
+
+_Steps `Zelda1`, `Zelda2` and `Zelda4`_
 
 **Content lives in data files, behaviour lives in C#.**
 
@@ -207,6 +261,8 @@ its own position and health. This is the
 compile error. Validate data when loading it and fail loudly.
 
 ## Exercises
+
+Start from `Zelda7`.
 
 **Make Zelda (more) event-driven.** Pick one and refactor it. The class firing the event
 must have no reference to the class reacting to it.
