@@ -46,55 +46,26 @@ that introduces it. Compare neighbouring steps to see exactly what changed.
 - [13: Working With Tilemaps](https://docs.monogame.net/articles/tutorials/building_2d_games/13_working_with_tilemaps)
 - [Command Pattern](https://gameprogrammingpatterns.com/command.html)
 
-## The Content Builder
+## Content
 
-In Pong and Flappy Bird, assets were listed in a `Content.mgcb` file and edited with the MGCB
-Editor. From MonoGame 3.8.5, the **content builder** replaces both: the rules for building
-assets are plain C# in a small console project that runs when the game builds.
-
-```text
-Content/
-├── Assets/                  # The raw assets
-├── Builder/Builder.cs       # The build rules, in C#
-├── BuildContent.targets     # Runs the builder when a game project builds
-└── Content.csproj
-```
+Snake uses the same [content builder](../01-pong/#content-pipeline) as Pong and Flappy Bird,
+but here all steps share one assets folder, `Content/Assets`. Its rules build the images into
+textures and copy our own XML definitions as they are, because our code reads those itself:
 
 ```csharp title="Builder.cs"
-public class Builder : ContentBuilder
+// Images are built into textures. Magenta pixels become transparent (color keying).
+content.Include<WildcardRule>("*.png", new TextureImporter(), new TextureProcessor
 {
-    public override IContentCollection GetContentCollection()
-    {
-        var content = new ContentCollection();
+    ColorKeyEnabled = true,
+    ColorKeyColor = Color.Magenta,
+    GenerateMipmaps = false,
+    PremultiplyAlpha = true,
+});
 
-        // Images are built into textures. Magenta pixels become transparent.
-        content.Include<WildcardRule>("*.png", new TextureImporter(), new TextureProcessor
-        {
-            ColorKeyEnabled = true,
-            ColorKeyColor = Color.Magenta,
-            GenerateMipmaps = false,
-            PremultiplyAlpha = true,
-        });
-
-        // Our own XML definitions are read at runtime, so they are copied as they are.
-        content.IncludeCopy<WildcardRule>("*.xml");
-
-        return content;
-    }
-}
+// The atlas and tilemap definitions are read by our own code at runtime,
+// so they are copied as they are instead of being built.
+content.IncludeCopy<WildcardRule>("*.xml");
 ```
-
-Each game project imports the targets file, which builds the content into the game's output
-folder, where `Content.Load` finds it as before:
-
-```xml
-<Import Project="..\Content\BuildContent.targets" />
-```
-
-All Snake steps share one `Content` project. To add an asset, put it in `Content/Assets`; if no
-existing rule matches it, add a rule. See
-[Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html)
-in the MonoGame documentation.
 
 ## Texture Atlases
 

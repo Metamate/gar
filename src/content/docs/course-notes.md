@@ -35,11 +35,14 @@ patterns.
   `GMDCore`, and a README table of steps. The site page and the deck name the step for
   each topic.
 - **Still single-project:** Platformer, Zelda, Pokemon, Geometry Wars.
-- **Content pipeline:** Snake uses the MonoGame 3.8.5 content builder (C# build rules in
-  `Content/Builder/Builder.cs`, no `.mgcb`) and targets .NET 10. Pong and Flappy (and the
-  other repos) still use MGCB and .NET 9; migrate them the same way. Once Pong is migrated,
-  update the Content Pipeline section and tooling list on the Pong page, and drop the
-  "introducing the content builder" section from the Snake page.
+- **Content pipeline:** all repos use the MonoGame 3.8.5 content builder (C# build rules in
+  `Content/Builder/Builder.cs`, no `.mgcb`) and target .NET 10. `Content/BuildContent.targets`
+  is identical in every repo; Pong and Flappy steps set `ContentAssets` to their own `Assets`
+  folder, the other repos share `Content/Assets`.
+- **Starting a new project:** MonoGame's `dotnet new` templates (3.8.5.1) still create MGCB
+  projects, so students start from a copy of `Pong0` plus the `Content` folder (Pong page,
+  Flappy exercise 2, project kick-off). Revisit when MonoGame ships its new Empty template
+  (MonoGame/MonoGame.EmptyGame.CSharp), or consider a small starter repo of our own.
 
 ## Slide & Code TODOs
 

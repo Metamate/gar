@@ -18,10 +18,14 @@ interfaces, state machines and the Singleton pattern.
 
 **Source code:** [Metamate/gmd2-flappy](https://github.com/Metamate/gmd2-flappy)
 
+The code is split into steps, one project per exercise (`Flappy0` → `Flappy12`), so you can compare
+your solution with each step, and compare neighbouring steps to see exactly what changed.
+
 ## Prepare
 
 - [04: Creating a Class Library](https://docs.monogame.net/articles/tutorials/building_2d_games/04_creating_a_class_library)
-- [05: Content Pipeline](https://docs.monogame.net/articles/tutorials/building_2d_games/05_content_pipeline)
+- [Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html)
+  (the MonoGame tutorial's chapter 05 uses the older MGCB Editor instead; see [Pong](../01-pong/#content-pipeline))
 - [06: Working with Textures](https://docs.monogame.net/articles/tutorials/building_2d_games/06_working_with_textures)
 - [Architecture, Performance, and Games](https://gameprogrammingpatterns.com/architecture-performance-and-games.html)
 - [Interfaces (C#)](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces)
@@ -191,10 +195,12 @@ Locator pattern in [Pokemon](../08-pokemon/).
 1. **Class Library:** create `GMDCore` with a `Core` class deriving from `Game`. Move the
    screen scaling from Pong into it, and add a constructor taking title, window size and
    virtual size.
-2. **Consume the library:** create "Flappy", derive `Game1` from `Core`, use a 512×288
-   virtual resolution in a 1280×720 window.
-3. **Background & parallax:** add the background and ground, and scroll them at different
-   speeds (looping points: background 413, ground 512).
+2. **Consume the library:** create "Flappy" from a copy of the empty `Pong0` project and the
+   `Content` builder, derive `Game1` from `Core`, and use a 512×288 virtual resolution in a
+   1280×720 window.
+3. **Background & parallax:** add the background and ground images to an `images` folder in
+   your `Assets` folder, and scroll them at different speeds (looping points: background 413,
+   ground 512).
 4. **Bird & assets:** add a `Bird` class and a static `Art` class for asset references.
 5. **Gravity & flap:** add gravity. Add `KeyboardInfo` and `InputManager` to GMDCore, and
    flap on `WasKeyJustPressed(Keys.Space)`.

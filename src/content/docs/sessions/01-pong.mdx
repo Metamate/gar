@@ -28,10 +28,13 @@ By the end of the session, we will have a game with:
 
 **Source code:** [Metamate/gmd2-pong](https://github.com/Metamate/gmd2-pong)
 
+The code is split into steps, one project per exercise (`Pong0` → `Pong11`), so you can compare
+your solution with each step, and compare neighbouring steps to see exactly what changed.
+
 ## Prepare
 
 - [01: What Is MonoGame?](https://docs.monogame.net/articles/tutorials/building_2d_games/01_what_is_monogame)
-- [02: Getting Started](https://docs.monogame.net/articles/tutorials/building_2d_games/02_getting_started) — install the tooling before class
+- [02: Getting Started](https://docs.monogame.net/articles/tutorials/building_2d_games/02_getting_started) — install the .NET SDK and VS Code before class (we don't use the MonoGame templates or MGCB Editor; see [Tooling](#monogame--tooling))
 - [03: The Game1 File](https://docs.monogame.net/articles/tutorials/building_2d_games/03_the_game1_file)
 - [Game Loop](https://gameprogrammingpatterns.com/game-loop.html) (Game Programming Patterns)
 - [Update Method](https://gameprogrammingpatterns.com/update-method.html) (Game Programming Patterns)
@@ -44,12 +47,16 @@ those ourselves, which is exactly why it is a good fit for a course about game a
 
 Tooling used in the course:
 
-- .NET 9+
-- VS Code with the C# Dev Kit and MonoGame extensions
-- MonoGame templates: `dotnet new install MonoGame.Templates.CSharp`
-- MonoGame Content Builder (MGCB) Editor (optional)
+- [.NET 10 SDK](https://dotnet.microsoft.com/download)
+- VS Code with the C# Dev Kit extension
+- Git
+- The course repositories on GitHub. Each game's code is split into steps, one project per
+  exercise.
 
-Create new games from the **Cross-Platform Desktop Application** (OpenGL) template.
+Start new games from `Pong0` in [gmd2-pong](https://github.com/Metamate/gmd2-pong): an empty
+MonoGame game (MonoGame 3.8.5) that is already set up with the content builder. MonoGame's
+own `dotnet new` templates still create projects with the older MGCB content setup, which we
+don't use.
 
 ## Game Loop
 
@@ -94,8 +101,49 @@ even when the simulation updates only a few times per second.
 
 ## Content Pipeline
 
-Assets (fonts, images, sounds) are added to `Content.mgcb`, built into an optimized format
-at compile time, and loaded at runtime with `Content.Load<T>("name")` in `LoadContent`.
+Raw assets (fonts, images, sounds) aren't loaded directly. When the game builds, the
+**content builder** converts them into an optimized format (`.xnb` files) for the target
+platform, and at runtime we load them with `Content.Load<T>("name")` in `LoadContent`.
+
+```mermaid
+flowchart LR
+    A["Raw assets<br/>Assets/"] --> B["Builder.cs<br/>rules in C#"] --> C["Content builder<br/>runs on build"] --> D[".xnb files<br/>bin/…/Content"] --> E["ContentManager<br/>Content.Load&lt;T&gt;()"]
+```
+
+The rules for building assets are ordinary C# in `Content/Builder/Builder.cs`. For Pong, we
+need fonts and sounds:
+
+```csharp title="Builder.cs"
+public class Builder : ContentBuilder
+{
+    public override IContentCollection GetContentCollection()
+    {
+        var content = new ContentCollection();
+
+        // A .spritefont describes a font (e.g. a .ttf next to it), a size and a set of
+        // characters. The builder renders those characters into a texture.
+        content.Include<WildcardRule>("*.spritefont", new FontDescriptionImporter(), new FontDescriptionProcessor
+        {
+            PremultiplyAlpha = true,
+            TextureFormat = TextureProcessorOutputFormat.Compressed,
+        });
+
+        // Short sounds become sound effects, loaded fully into memory.
+        content.Include<WildcardRule>("*.wav", new WavImporter(), new SoundEffectProcessor
+        {
+            Quality = ConversionQuality.Best,
+        });
+
+        return content;
+    }
+}
+```
+
+Each game project imports `Content/BuildContent.targets`, which runs the builder before
+compiling. To add an asset, put it in the project's `Assets` folder; if no rule matches it,
+add one. In Pong, every step has its own `Assets` folder, because the assets change as the
+game grows. This replaces the `.mgcb` file and MGCB Editor used before MonoGame 3.8.5. See
+[Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html).
 
 ## Drawing to the Screen
 
@@ -197,7 +245,9 @@ Make your own 8-bit sounds with [bfxr.net](https://www.bfxr.net/).
 
 Build Pong step by step:
 
-0. **New Game:** create a MonoGame project "Pong" and run it.
+0. **New Game:** clone [gmd2-pong](https://github.com/Metamate/gmd2-pong), open `Pong0` (an
+   empty MonoGame game set up with the content builder) and run it with
+   `dotnet run --project Pong0`.
 1. **Hello Pong:** draw "Hello Pong!" centred on a black 1280×720 window.
 2. **Virtual Resolution:** make the game resolution independent of the window size, make
    the window resizable, and use point filtering.
