@@ -44,6 +44,12 @@ patterns.
   every repo, all steps share one `Content/Assets` folder; a step's `Content.Load` calls
   show which assets it uses. Where an asset changes between steps, keep both versions and
   swap them in code (Pong: `arial` → `font` in `Pong3`).
+- **GMDCore lineage:** GMDCore is one library that grows through the course: Flappy →
+  Snake → Platformer → Zelda → Pokemon → Geometry Wars. Each repo's `GMDCore` keeps the
+  previous session's core and adds to it or deliberately changes it; nothing is dropped,
+  even if the game doesn't use it. Each README has a "New in GMDCore" section, and
+  `python tools/core-lineage.py` lists the differences between sessions (and fails if a
+  file was removed). Run it after changing any `GMDCore`.
 - **Project files:** keep every `.csproj` to the essentials (output type, framework,
   `MonoGamePlatform`, package/project references, the content import). No icons, app
   manifests or publish settings; publish options go on the `dotnet publish` command line.
@@ -62,10 +68,10 @@ patterns.
 - **Keep exercises unsolved:** Pokemon save/load (exercise 4), the Geometry Wars
   allocation counter (exercise 2) and spatial grid (exercise 3) stay out of the repos, so the
   finished games don't give away the answers. Shaders in Geometry Wars are a showcase only.
-- **Tilemap:** GMDCore's `Tile` is a graphic ID plus `IsSolid`, and `Tilemap` has a
-  `Position`. Game-specific layers (the Platformer's toppers, Pokemon's tall grass) are
-  separate tilemaps drawn on top. Snake and Pokemon still have their own simpler tilemaps
-  (int IDs); worth aligning if GMDCore is ever shared between repos.
+- **Tilemap:** Snake introduces a tilemap of plain tile IDs; the Platformer upgrades it to
+  `Tile` values (graphic ID plus `IsSolid`) with collision helpers and a `Position`.
+  Game-specific layers (the Platformer's toppers, Pokemon's tall grass) are separate
+  tilemaps drawn on top.
 
 ## General Notes
 
