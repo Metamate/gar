@@ -195,7 +195,7 @@ Locator pattern in [Pokemon](../08-pokemon/).
    screen scaling from Pong into it, and add a constructor taking title, window size and
    virtual size.
 2. **Consume the library:** create "Flappy" from the
-   [gmd2-starter](https://github.com/Metamate/gmd2-starter) template, reference `GMDCore`,
+   [gar-starter](https://github.com/Metamate/gar-starter) template, reference `GMDCore`,
    derive `Game1` from `Core`, and use a 512×288 virtual resolution in a 1280×720 window.
 3. **Background & parallax:** add the background and ground images to an `images` folder in
    your `Assets` folder, and scroll them at different speeds (looping points: background 413,

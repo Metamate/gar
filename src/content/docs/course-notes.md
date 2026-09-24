@@ -48,7 +48,7 @@ patterns.
   manifests or publish settings; publish options go on the `dotnet publish` command line.
 - **Starting a new project:** MonoGame's `dotnet new` templates (3.8.5.1) still create MGCB
   projects, so students start from our own template repo,
-  [gmd2-starter](https://github.com/Metamate/gmd2-starter) (Flappy exercise 2, project
+  [gar-starter](https://github.com/Metamate/gar-starter) (Flappy exercise 2, project
   kick-off): one empty `MyGame` project plus the `Content` builder, with general rules for
   images, fonts, sounds, music and JSON/XML. Keep its `Content.csproj` and
   `BuildContent.targets` identical to the course repos. Revisit when MonoGame ships its new

@@ -25,10 +25,11 @@ systems you expect to need (e.g. scenes, tilemap, enemies with AI, UI, save data
 
 Spend 15 minutes setting up the repository:
 
-- Create the repository from the [gmd2-starter](https://github.com/Metamate/gmd2-starter)
+- Create the repository from the [gar-starter](https://github.com/Metamate/gar-starter)
   template (**Use this template** on GitHub): an empty game set up with the content
   builder. Its README shows how to rename it and add GMDCore if you want to reuse it.
-- Add a `.gitignore` for .NET (`bin/`, `obj/`, `.vs/`, …).
+- Check that build output stays out of git: the template's `.gitignore` already ignores
+  `bin/`, `obj/`, `.vs/`, ….
 - Create a GitHub remote and add your group members as collaborators.
 - Upload the repository link to itslearning.
 
