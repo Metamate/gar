@@ -74,8 +74,8 @@ Notes for building it:
   `Snake0`–`Snake9`, a real Snake with fixed-tick movement, input as actions and buffering;
   its room is still drawn from a tilemap, as asset data, while Sokoban uses the grid as game
   state); mouse input moves into Flappy's
-  `InputManager`; debug drawing moves to Mario; State is introduced in Pac-Man and
-  reinforced in Mario; tweening moves from Pokemon to Zelda; data definitions move from
+  `InputManager` (done); debug drawing moves to Mario (done: `DebugDraw` in GMDCore, `F1`
+  from `Platformer2`); State is introduced in Pac-Man and reinforced in Mario (page done); tweening moves from Pokemon to Zelda; data definitions move from
   Pokemon to Plants vs. Zombies; data-oriented design, spatial partitioning and profiling
   move from Geometry Wars to Vampire Survivors.
 - **GMDCore lineage** follows the new order; new games join it in session order.

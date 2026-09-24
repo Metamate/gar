@@ -1,6 +1,6 @@
 ---
 title: 06 Super Mario Bros
-description: A 2D platformer. Procedural levels, the State pattern for entities, cameras, platformer physics and basic AI.
+description: A 2D platformer. Platformer physics and tile collision, debug drawing, a camera, level makers, and the State pattern for the player.
 sidebar:
   order: 6
 ---
@@ -9,13 +9,14 @@ sidebar:
 
 Make a **2D platformer**.
 
-We go through the fundamental steps of a basic Super Mario Bros. clone, focusing on:
+We go through the fundamental steps of a basic Super Mario Bros. clone. The main topic is
+**platformer physics and tile collision**: making a character run, jump and land on a tile
+world, and seeing what the collision code actually does. Along the way:
 
-- Procedural level generation
-- The State pattern for characters
-- Camera
-- Platformer physics
-- Basic AI
+- Debug drawing
+- A camera for levels wider than the screen
+- Level makers: the Strategy pattern again
+- The State pattern again, now for the player
 
 **Source code:** [Metamate/gmd2-platformer](https://github.com/Metamate/gmd2-platformer)
 
@@ -26,7 +27,7 @@ that introduces it. Compare neighbouring steps to see exactly what changed.
 | --- | --- |
 | `Platformer0` | A tilemap generated in code |
 | `Platformer1` | Level makers (Strategy pattern) |
-| `Platformer2` | Player and platformer physics, with state as an enum |
+| `Platformer2` | Player and platformer physics, debug drawing, with state as an enum |
 | `Platformer3` | The State pattern |
 | `Platformer4` | Camera |
 | `Platformer5` | Game states |
@@ -92,8 +93,8 @@ _Step `Platformer1`_
 Different kinds of levels are produced by interchangeable **level makers** sharing one
 base: `SimpleLevelMaker`, `FlatLevelMaker`, `PillarLevelMaker`, `PitLevelMaker`,
 `ComplexLevelMaker` (keys `1`–`5` in this step). The game asks _a_ level maker for a level
-without knowing which algorithm it uses. This is the **Strategy pattern**: a family of
-interchangeable algorithms behind a common interface.
+without knowing which algorithm it uses. This is the **Strategy pattern** from
+[Pac-Man](../05-pac-man/): a family of interchangeable algorithms behind a common interface.
 
 The grass or snow on top of the ground (the _toppers_) is a detail of this game, not of
 tilemaps in general, so it isn't part of `Tile`. Instead, a `GameLevel` has two tilemaps
@@ -138,19 +139,46 @@ _Step `Platformer2`_
 Do we need to test the player against every tile? No. The grid is static, so we can look
 up the tile at a position directly (`IsSolidAt(x, y)`). That costs the same for a level of
 10 or 10,000 tiles: **O(1)** instead of **O(n)**. Moving entities can't be looked up this
-way. Testing all pairs of entities is **O(n²)**.
+way. Testing all pairs of entities is **O(n²)**; in
+[Vampire Survivors](../12-vampire-survivors/) we make that fast too.
+
+### Debug drawing
+
+Collision bugs are hard to see: the hitbox is invisible, and a player that stops a few
+pixels early looks just like one that works. So we **draw what the game can't show**. Press
+`F1` to outline the solid tiles in red and the player's hitbox in green (from `Platformer6`,
+the entities in yellow too). You can see the hitbox inset, and exactly where the player
+collides.
+
+GMDCore gets a small `DebugDraw` class. Its drawing calls do nothing unless
+`DebugDraw.Enabled` is true, so they can stay in the code:
+
+```csharp title="GameLevel.cs"
+if (Tilemap.GetTile(column, row).IsSolid)
+{
+    Vector2 position = Tilemap.TileToPoint(column, row);
+    DebugDraw.Rectangle(spriteBatch, new Rectangle((int)position.X, (int)position.Y,
+        (int)Tilemap.TileWidth, (int)Tilemap.TileHeight), Color.Red);
+}
+```
+
+Debug drawing and the debugger complement each other. The debugger shows the exact values
+at one moment (set a breakpoint in the collision code and inspect the hitbox); debug drawing
+shows what happens over time, while the game runs.
 
 ### Input: GameController
 
-The platformer maps keys to actions through a `GameController` class (`GameController.Jump`
-instead of `Keys.Space`).
+As in [Snake](../03-snake/), the platformer maps keys to actions through a `GameController`
+class (`GameController.Jump` instead of `Keys.Space`).
 
-**Discuss:** this is _not_ the Command pattern. Why not?
+**Discuss:** this is _not_ the Command pattern from [Sokoban](../04-sokoban/). Why not?
 
 ## Character State
 
 _Steps `Platformer2` → `Platformer3`_
 
+In [Pac-Man](../05-pac-man/), each ghost's mode was a state object. The player of a
+platformer needs the same pattern, and it shows well why the simpler options break down.
 Consider this (from _Game Programming Patterns_):
 
 ```cpp
@@ -302,9 +330,14 @@ Start from `Platformer8`.
    up the key and touching the lock spawns the goal flag.
 3. **Powerups:** add a star (invincibility with a timer) and a mushroom (the player grows).
    How do you add these without piling flags onto the `Player` class?
+4. **Debug drawing:** also draw the probe below the player that checks for ground, and show
+   the player's current state and velocity on screen. Use it to find where coyote time
+   starts and ends.
 
 ## Apply It to Your Project
 
+- What would you want to see while debugging your game? Add debug drawing for your
+  hitboxes, triggers or AI targets, behind a key.
 - Which entities in your game have distinct behaviour modes? Draw a state diagram for one
   of them.
 - Is anything in your game currently a set of booleans that should be a state machine?
@@ -324,6 +357,14 @@ and state-specific data has nowhere natural to live.
 
 Tiles never move and sit in a grid, so a position maps directly to a tile index. Entities
 move freely, so we have to check them against each other.
+
+</details>
+
+<details>
+<summary>Why keep debug drawing in the code, behind a switch, instead of deleting it once a bug is fixed?</summary>
+
+The next bug needs it too. Behind a switch it costs nothing when it is off, and anyone
+working on the game can turn it on to see what the collision code is doing.
 
 </details>
 
