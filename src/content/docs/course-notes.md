@@ -70,8 +70,10 @@ Notes for building it:
   the step, and a foreign C-style API that makes the Adapter lesson concrete. Keep the Angry
   Birds steps focused on the adapter, syncing and events, not physics tuning. Write a small
   debug renderer for it (or make it an exercise).
-- **Changes to existing sessions:** Command moves from Snake to Sokoban (tilemaps too);
-  Snake gains fixed-tick movement and input as actions; mouse input moves into Flappy's
+- **Changes to existing sessions:** Command moves from Snake to Sokoban (done: Snake is now
+  `Snake0`–`Snake9`, a real Snake with fixed-tick movement, input as actions and buffering;
+  its room is still drawn from a tilemap, as asset data, while Sokoban uses the grid as game
+  state); mouse input moves into Flappy's
   `InputManager`; debug drawing moves to Mario; State is introduced in Pac-Man and
   reinforced in Mario; tweening moves from Pokemon to Zelda; data definitions move from
   Pokemon to Plants vs. Zombies; data-oriented design, spatial partitioning and profiling
