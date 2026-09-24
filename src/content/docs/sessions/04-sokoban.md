@@ -16,7 +16,8 @@ pattern, which turns every move into an object, and gives us **undo and redo**. 
 the way:
 
 - Levels as data: plain text files
-- Rules separated from drawing, so they can be tested without starting the game
+- Rules separated from drawing
+- Unit tests: checking the rules automatically, without starting the game
 
 **Source code:** [gar-games/04-sokoban](https://github.com/Metamate/gar-games/tree/main/04-sokoban)
 
@@ -24,17 +25,16 @@ the way:
 | --- | --- |
 | `Sokoban0` | Levels as data: a text file drawn character by character |
 | `Sokoban1` | Rules apart from drawing: `Level` and `LevelView` |
-| `Sokoban2` | Testable rules: unit tests for `Level` |
-| `Sokoban3` | Command: every move is an object |
-| `Sokoban4` | Undo and redo |
-| `Sokoban5` | The whole game: seven levels, restart, move counter (the finished game) |
+| `Sokoban2` | Command: every move is an object |
+| `Sokoban3` | Undo and redo |
+| `Sokoban4` | The whole game: seven levels, restart, move counter (the finished game) |
+| `Sokoban.Tests` | Unit tests for the finished game's rules, and for undo and redo |
 
 ## Prepare
 
 - [Command](https://gameprogrammingpatterns.com/command.html) (the whole chapter, including
   undo and redo)
-- [Unit testing C# with xUnit](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-csharp-with-xunit)
-  (skim)
+- No reading on testing: this session introduces it from the start.
 
 ## Levels as Data
 
@@ -167,43 +167,133 @@ drawing, so it lives in `LevelView`, not in `Level`. The `GameController` is the
 Why split them? Each part can now change on its own: new art only touches `LevelView`, a
 new rule only touches `Level`. And the rules can be tested.
 
-## Testable Rules
+## Unit Tests
 
-_Step `Sokoban2`_
+_Project `Sokoban.Tests`_
 
-`Level` needs no window, no graphics device and no content, so a test can create one from
-a string and check what a move does. `Sokoban2.Tests` is an
-[xUnit](https://xunit.net/) project that references `Sokoban2`:
+How do you know the rules work? So far, by playing: start the game, walk into a box, and
+look. That's slow, it's easy to skip a case (a box against another box?), and every
+change to the code means playing it all again.
+
+A **unit test** is a small piece of code that checks one thing about your code
+automatically: it sets up a situation, does one thing, and checks the result. A test
+passes or fails, and hundreds of them run in about a second. Whenever you change the code,
+you run the tests again, and they tell you at once if something that used to work is now
+broken.
+
+### A Test Needs Code That Can Be Tested
+
+Try to test a rule written inside `Game1.Update`. To call it, you would need a window, a
+graphics device, the content, and a real key press. That's why the split in `Sokoban1`
+matters: `Level` needs none of those. A test can create a level from a string and move the
+player with a method call.
+
+### The Test Project
+
+Tests live in their own project, `Sokoban.Tests`, next to the game. It's a class library
+that references the game project, plus three packages:
+
+```xml title="Sokoban.Tests.csproj"
+<ItemGroup>
+  <!-- The test framework (xunit), and what lets dotnet test and editors find and run the tests. -->
+  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
+  <PackageReference Include="xunit" Version="2.*" />
+  <PackageReference Include="xunit.runner.visualstudio" Version="3.*" />
+</ItemGroup>
+<ItemGroup>
+  <!-- The code under test: the finished game. -->
+  <ProjectReference Include="..\Sokoban4\Sokoban4.csproj" />
+</ItemGroup>
+```
+
+[xUnit](https://xunit.net/) is a **test framework**: it finds your tests, runs them, and
+reports the results. The game itself knows nothing about the tests; they are never part of
+the game you ship.
+
+### Anatomy of a Test
 
 ```csharp title="LevelTests.cs"
-private const string Corridor = """
-    #######
-    # @$ .#
-    #######
-    """;
-
-[Fact]
-public void Walking_into_a_box_pushes_it()
+public class LevelTests
 {
-    Level level = Level.Parse(Corridor);
+    private const string Corridor = """
+        #######
+        # @$ .#
+        #######
+        """;
 
-    Assert.Equal(MoveResult.Pushed, level.Move(Direction.Right));
-    Assert.Equal(new Point(3, 1), level.Player);
-    Assert.Equal([new Point(4, 1)], level.Boxes);
+    [Fact]
+    public void Walking_into_a_box_pushes_it()
+    {
+        // Arrange: set up the situation
+        Level level = Level.Parse(Corridor);
+
+        // Act: do one thing
+        MoveResult result = level.Move(Direction.Right);
+
+        // Assert: check the result
+        Assert.Equal(MoveResult.Pushed, result);
+        Assert.Equal(new Point(3, 1), level.Player);
+        Assert.Equal([new Point(4, 1)], level.Boxes);
+    }
 }
 ```
 
-Run the tests with `dotnet test Sokoban2.Tests`, or from the test explorer in your editor.
-A test runs in milliseconds and checks the same rule every time, while play-testing a
-rule by hand takes minutes and is easy to skip. Tests also make refactoring safer: when we
-add undo in `Sokoban4`, the old tests still check that moving works.
+- **`[Fact]`** marks a method as a test. xUnit runs every method marked with it.
+- **The name** says what the test checks, in plain words. When a test fails, its name is
+  the first thing you see.
+- **Arrange, act, assert:** most tests have these three parts. Keep them short: one
+  situation, one action.
+- **`Assert.Equal(expected, actual)`** fails the test when the two values differ. There
+  are others, like `Assert.True` and `Assert.False`.
 
-Testing is only this easy because the rules are separate. A rule written inside
-`Game1.Update`, next to key presses and drawing, can't be tested without starting the game.
+The corridor level is written right in the test, in the same text format as the level
+files. Each test builds exactly the small level it needs, so it's clear what is being
+tested.
+
+### Running the Tests
+
+In the `04-sokoban` folder, run `dotnet test`:
+
+```text
+Passed!  - Failed:     0, Passed:    12, Skipped:     0, Total:    12, Duration: 56 ms - Sokoban.Tests.dll (net10.0)
+```
+
+Your editor can run them too, and shows each test with a green or red mark: the **Test
+Explorer** in Visual Studio, the **Unit Tests** window in Rider, or the **Testing** view in
+VS Code (with the C# Dev Kit).
+
+Now break a rule on purpose. Say a change in `Level.Move` puts the pushed box in the wrong
+cell:
+
+```text
+Failed Sokoban.Tests.LevelTests.Walking_into_a_box_pushes_it [6 ms]
+  Error Message:
+   Assert.Equal() Failure: Collections differ
+Expected: [{X:4 Y:1}]
+Actual:   [{X:5 Y:1}]
+  Stack Trace:
+     at Sokoban.Tests.LevelTests.Walking_into_a_box_pushes_it() in ...\LevelTests.cs:line 70
+
+Failed!  - Failed:     1, Passed:    11, Skipped:     0, Total:    12
+```
+
+The test names the rule that broke, what it expected, what it got, and the line. You
+didn't have to play the game to find it.
+
+### What to Test
+
+Test the **rules**: the code that decides what happens. In Sokoban, that's moving,
+pushing, being blocked, solving a level, and (later) undo and redo. Don't unit-test
+drawing: whether a level _looks_ right is easier to check by looking at it.
+
+`Sokoban.Tests` tests the finished game, `Sokoban4`. The tests for `Level` would work on
+`Sokoban1` just as well, since the rules haven't changed since then. When undo arrives in
+`Sokoban3`, the old tests keep checking that moving still works while we change the code
+around it.
 
 ## The Command Pattern
 
-_Step `Sokoban3`_
+_Step `Sokoban2`_
 
 In `Sokoban1`, a key press calls `_level.Move(direction)` directly, and the move is gone
 the moment it's done. The **Command** pattern turns a request into an **object**:
@@ -251,7 +341,7 @@ private void Move(Point direction)
 
 Only moves that change something become commands. Walking into a wall is not a move.
 
-A move that is an object can be kept. `Sokoban3` only keeps a list, to count the moves
+A move that is an object can be kept. `Sokoban2` only keeps a list, to count the moves
 (shown in the window title), but once moves are objects they can also be:
 
 - **Queued:** executed later, for example one per tick or after an animation.
@@ -265,7 +355,7 @@ action ("move the player up in this level"), and it's that object we keep.
 
 ## Undo and Redo
 
-_Step `Sokoban4`_
+_Step `Sokoban3`_
 
 To be undone, a command must remember enough to reverse exactly what it did. Moving the
 player back is not enough: if the move pushed a box, the box must be pulled back too. So
@@ -331,7 +421,8 @@ public void Redo()
 ```
 
 `Z` undoes and `Y` redoes. The move counter is now simply the number of commands on the
-undo stack. `Sokoban4.Tests` adds tests for undo and redo.
+undo stack. `UndoTests.cs` in `Sokoban.Tests` checks that undo and redo restore the
+level exactly.
 
 There are two ways to undo:
 
@@ -345,29 +436,33 @@ the commands' changes are worth storing.
 
 ## The Whole Game
 
-_Step `Sokoban5`_
+_Step `Sokoban4`_
 
-`Sokoban5` adds seven levels (`level1.txt` … `level7.txt`), `R` to restart a level, a move
+`Sokoban4` adds seven levels (`level1.txt` … `level7.txt`), `R` to restart a level, a move
 counter, and a message when the level is solved. Loading a level parses a new `Level` and
 clears the history. Nothing in the rules or the commands changed.
 
 ## Exercises
 
-Start from `Sokoban5`.
+Start from `Sokoban4`.
 
 1. **A new level:** design your own level in `level8.txt`. Is it solvable? How do you know?
-2. **Test first:** add a rule where boxes can't be pushed onto some tiles (ice, `~`). Write
-   the tests before the code.
-3. **Replay:** when a level is solved, replay the solution from the start, one command
+2. **Your first tests:** add tests to `LevelTests.cs` for two cases that aren't tested yet:
+   pushing a box off a goal makes the level unsolved again, and the player can walk onto a
+   goal. Run them. Then break `Level.Move` on purpose and watch them fail.
+3. **Test first:** add ice (`~`): boxes can't be pushed onto it, but the player can walk on
+   it. Write the tests before the code, see them fail, then make them pass.
+4. **Replay:** when a level is solved, replay the solution from the start, one command
    every 200 ms.
-4. **Restart as a command:** make `R` a command too, so a restart can be undone. What must
+5. **Restart as a command:** make `R` a command too, so a restart can be undone. What must
    it remember?
-5. **Snapshot undo (stretch):** replace `CommandHistory` with a history of `Level`
+6. **Snapshot undo (stretch):** replace `CommandHistory` with a history of `Level`
    snapshots. Compare the two: code, memory, and how easy each is to get wrong.
 
 ## Apply It to Your Project
 
-- Which of your game's rules could be separated from drawing and input, and tested?
+- Which of your game's rules could be separated from drawing and input? Write one unit test
+  for one of them.
 - Would undo, replays or queued actions be useful in your game? Which actions would become
   commands, and what would each need to remember?
 - Could your levels, or part of them, be data files?
@@ -396,6 +491,14 @@ level after the move doesn't tell which one happened, so the command must rememb
 
 The undone commands belong to a different future. After a new move, the state they were
 made for no longer exists, so redoing them could leave the level in an impossible state.
+
+</details>
+
+<details>
+<summary>What is a unit test, and what are its three parts?</summary>
+
+A small piece of code that checks one thing about your code automatically. It arranges a
+situation, acts (does one thing), and asserts that the result is what it should be.
 
 </details>
 
