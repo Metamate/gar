@@ -1,6 +1,6 @@
 ---
 title: 10 Pokemon
-description: A turn-based RPG. State stacks, tweening, GUIs, the Service Locator pattern, and saving and loading data.
+description: A turn-based RPG. Scenes and UI with a state stack and GUI widgets, separating UI from game data, the Service Locator pattern, and saving and loading.
 sidebar:
   order: 10
 ---
@@ -9,14 +9,14 @@ sidebar:
 
 Make a **turn-based RPG**.
 
-We go through the fundamental steps of a primitive Pokémon clone, focusing on:
+We go through the fundamental steps of a primitive Pokémon clone. The main topic is
+**scenes and UI**: an RPG is a stack of screens on top of each other (the overworld, a
+battle, a menu, a dialogue box), built from reusable UI widgets. Along the way:
 
-- State stacks
-- Tweening
-- GUIs and separating UI from game logic
-- Turn-based systems
-- Service Locator
-- Data definitions and save/load
+- Separating UI from game data
+- Turn-based battles
+- The Service Locator pattern
+- Saving and loading
 
 **Source code:** [Metamate/gmd2-pokemon](https://github.com/Metamate/gmd2-pokemon)
 (walkthrough in the README)
@@ -83,21 +83,14 @@ Files: `StateStack.cs`, `BattleState.cs`, `BattleMenuState.cs`, `FadeState.cs`
   _replaced_ the current state instead?
 - Design a `PauseState`. Where do you push and pop it?
 
-## Tweening System
+## Tweens Everywhere
 
 _Step `Pokemon0` onwards_
 
-In [Zelda](../08-the-legend-of-zelda/) we tweened by hand. Here, a reusable tween system
-does it for us:
-
-- **Tween:** change a number from A to B over a set time.
-- **After:** wait N seconds, then run a method.
-- **Every:** repeat a method at a fixed interval (`.Limit` to stop after N times).
-- **Chaining:** `.Add()` animates several values at once, and `.Finish()` runs code when
-  done. Callbacks can push/pop states or change game data.
-
-A battle attack is a chain of tweens: pause → lunge → hit sound → blink → HP bar drops.
-Each step triggers the next when it finishes, with no `if`/`else` chain.
+Pokemon leans heavily on the tween system from [Zelda](../08-the-legend-of-zelda/#screen-scrolling--tweening):
+walking between tiles, fades, the HP bar. A battle attack is a chain of tweens: pause →
+lunge → hit sound → blink → HP bar drops. Each step's `.Finish()` starts the next, and a
+callback can push or pop a state, with no `if`/`else` chain.
 
 ## GUIs
 
@@ -145,24 +138,18 @@ _Steps `Pokemon0`, `Pokemon2` and `Pokemon3`_
   them.
 - `Party` holds your team; `Party.Current` is the one in battle.
 
-`PokemonSpecies` vs. `Mon` is another example of the
-[Type Object](https://gameprogrammingpatterns.com/type-object.html) pattern.
+`PokemonSpecies` vs. `Mon` is the [Type Object](../09-plants-vs-zombies/) pattern again:
+the species are defined in `pokemon_definitions.json`, as the plants were in Plants vs.
+Zombies.
 
-## Data Definitions & Serialization
+## Save & Load
 
-_Steps `Pokemon0` → `Pokemon1`_
+_The species definitions from `Pokemon0`; saving is [exercise 4](#exercises)_
 
-Game data lives in JSON, game logic lives in C#:
-
-- `pokemon_definitions.json`: species, base stats, growth rates, sprite paths
-- `entity_animations.json`: animation frames and timing
-
-The files are loaded into C# `record` types with `System.Text.Json`. Adding a new species
-means editing JSON, not C#.
-
-**Serialization** is converting an object into a format that can be stored or sent
-(JSON text, bytes), and **deserialization** turns it back into an object. Loading
-definitions is deserialization. **Saving the game** is the same process in reverse:
+**Serialization** is converting an object into a format that can be stored or sent (JSON
+text, bytes), and **deserialization** turns it back into an object. Loading the species
+definitions with `System.Text.Json` is deserialization. **Saving the game** is the same
+process in reverse:
 
 ```csharp
 public record SaveData(List<MonSaveData> Party, int MapX, int MapY);

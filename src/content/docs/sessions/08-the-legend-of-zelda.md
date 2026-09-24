@@ -1,6 +1,6 @@
 ---
 title: 08 The Legend of Zelda
-description: A top-down dungeon crawler. The Observer pattern and C# events, composition vs. inheritance, tweening and data-driven design.
+description: A top-down dungeon crawler. Composition vs. inheritance, the Observer pattern and C# events, hitboxes, and a tweening system.
 sidebar:
   order: 8
 ---
@@ -9,15 +9,14 @@ sidebar:
 
 Make a **top-down dungeon crawler**.
 
-We go through the fundamental steps of a primitive _The Legend of Zelda_ clone, focusing
-on:
+We go through the fundamental steps of a primitive _The Legend of Zelda_ clone. The main
+topic is **composition vs. inheritance**: the game has many kinds of things (a player,
+several enemies, switches, doorways), and how we build them decides how easy it is to add
+the next one. Along the way:
 
-- Assets and tooling
-- Dungeon generation
-- Hitboxes and hurtboxes
 - The Observer pattern (delegates and events)
-- Screen scrolling and tweening
-- Data-driven design
+- Hitboxes and hurtboxes
+- A tweening system for screen scrolling
 
 **Source code:** [Metamate/gmd2-zelda](https://github.com/Metamate/gmd2-zelda) (walkthrough
 in the README)
@@ -54,6 +53,63 @@ Take about 15 minutes to browse the finished game, `Zelda7`, using the README as
   provides.
 - Trace what happens from the moment the player presses Space to an enemy taking damage.
 
+## Composition vs. Inheritance
+
+_Steps `Zelda1` → `Zelda4`_
+
+The player and the enemies share an abstract `Entity` base class. It provides what every
+creature needs: a position and a collision box, a sprite offset for the top-down look,
+animations, health, invulnerability after a hit, and a current state. `Player` and `Enemy`
+inherit it and add their own parts.
+
+```mermaid
+classDiagram
+    class Entity {
+        <<abstract>>
+        +Position
+        +Bounds
+        +Health
+        +ChangeState(state)
+        +GoInvulnerable(duration)
+    }
+    Entity <|-- Player
+    Entity <|-- Enemy
+    Entity --> EntityStateBase : current state
+    class GameObject {
+        +State
+        +event OnCollide
+    }
+```
+
+**Inheritance works well while there is one axis of variation.** But what about an enemy
+that shoots _and_ flies _and_ explodes, or a pot that the player can carry _and_ throw?
+Deep hierarchies (`Entity → Movable → Enemy → ShootingEnemy → HomingShootingEnemy…`) lead
+to one of two problems:
+
+- **Duplicated code:** two branches of the tree need the same behaviour, so it is copied.
+- **A bloated base class:** the shared behaviour moves up into `Entity`, until every entity
+  carries every feature, used or not.
+
+**Composition** is the alternative: an object _has_ behaviours instead of _being_ a kind of
+something. Zelda already composes in several places:
+
+- **Behaviour in state objects:** an enemy's AI isn't in `Enemy` itself, but in the state
+  object it currently holds (`EntityWalkState`, `EntityIdleState`). Changing the behaviour
+  means swapping the object, not the class.
+- **Behaviour wired from outside:** a floor switch is a plain `GameObject`. What happens
+  when the player steps on it isn't in a `SwitchObject` subclass, but in a handler the room
+  attaches to its `OnCollide` event (see the next section).
+- **Data instead of subclasses:** enemy types (their size, speed, health and animations)
+  come from a data file, not from one class per enemy type (see
+  [Data-Driven Design](#data-driven-design)).
+
+> "Favor object composition over class inheritance." — Gang of Four, _Design Patterns_
+
+Inheritance isn't wrong: `Entity` is a sensible base here. But every time you add a
+subclass, ask whether you're describing _what something is_ or _what it can do_. The second
+is usually better as a part the object has. In [Plants vs. Zombies](../09-plants-vs-zombies/),
+we take this all the way with the **Component pattern**.
+
 ## Top-Down Perspective & Dungeon Generation
 
 _Steps `Zelda0` → `Zelda2`_
@@ -76,20 +132,6 @@ _Step `Zelda3`_
 
 Keeping them separate means the sword's reach and the enemy's body don't have to match
 the sprite.
-
-## Composition vs. Inheritance
-
-_Steps `Zelda1` → `Zelda2`_
-
-The player and enemies share a common base class that provides movement, collision and
-animation. Inheritance works well while there is one axis of variation, but what about an
-enemy that shoots _and_ flies _and_ explodes? Deep hierarchies (`Entity → Movable → Enemy
-→ ShootingEnemy → HomingShootingEnemy…`) quickly lead to duplicated code or bloated base
-classes.
-
-The alternative is **composition**: an entity _has_ behaviours rather than _is_ a kind of
-something. Keep this in mind for your project. We look at it in depth with the Component
-pattern in [Geometry Wars](../11-geometry-wars/).
 
 ## Events & the Observer Pattern
 
@@ -212,18 +254,28 @@ lerp(a, b, t) = a + (b - a) * t        where t goes from 0 to 1
 Non-linear curves (ease-in, ease-out, see [easings.net](https://easings.net)) often feel
 more natural.
 
-When the player walks through a door, the camera and the player tween at the same time.
-The next room is placed one screen away, and the camera travelling towards it creates the
-scroll:
+When the player walks through a door, the camera and the player move at the same time. The
+next room is placed one screen away, and the camera travelling towards it creates the
+scroll. We could keep a progress value, advance it every frame and lerp by hand, but games
+tween _all the time_: fades, flashes, menus sliding in, damage numbers floating up. So
+GMDCore gets a small, reusable **tween system**, a `TweenManager`:
 
-```csharp
-_shiftProgress = Math.Min(1f, _shiftProgress + dt / GameSettings.RoomShiftDuration);
-_camera.Position = Vector2.Lerp(Vector2.Zero, _shiftTarget, _shiftProgress);
-_player.Position = Vector2.Lerp(_shiftPlayerStart, _shiftPlayerEnd, _shiftProgress);
+- **Tween:** change one or more values from A to B over a set time.
+- **After:** wait N seconds, then run a method.
+- **Every:** repeat a method at a fixed interval (`.Limit` to stop after N times).
+- **Chaining:** `.Add()` animates several values at once, and `.Finish()` runs code when
+  done.
+
+```csharp title="Dungeon.cs"
+_tweens.Tween(GameSettings.RoomShiftDuration)
+    .Add(t => _camera.Position = Vector2.Lerp(Vector2.Zero, _shiftTarget, t), 0f, 1f)
+    .Add(t => _player.Position = Vector2.Lerp(playerStart, playerEnd, t), 0f, 1f)
+    .Finish(FinishShift);
 ```
 
-When the shift is done, the new room becomes the current room and the camera and player
-positions are reset.
+The dungeon only has to call `_tweens.Update(gameTime)` while shifting. When the tween
+ends, `FinishShift` makes the new room the current room and resets the camera. No progress
+variable, no "is it done yet?" check: the timing lives in the tween system.
 
 ## Stenciling
 
@@ -238,7 +290,7 @@ the player, only where the stencil is empty. The player seems to walk _under_ th
 
 _Steps `Zelda1`, `Zelda2` and `Zelda4`_
 
-**Content lives in data files, behaviour lives in C#.**
+Enemies and game objects are defined in XML, not in C#:
 
 ```xml
 <Enemy type="skeleton" width="16" height="16" walkSpeed="20" health="1">
@@ -247,18 +299,9 @@ _Steps `Zelda1`, `Zelda2` and `Zelda4`_
 </Enemy>
 ```
 
-- Definition classes parse the XML once at startup into dictionaries. The rest of the
-  code never touches XML.
-- Adding a new enemy type means one `<Enemy>` block plus a spritesheet row: no C# changes
-  and no recompile.
-- `GameObject` contains no `if (type == "switch")`. The data defines the valid states.
-
-Each enemy definition is shared by all enemies of that type, while each enemy instance has
-its own position and health. This is the
-[Type Object](https://gameprogrammingpatterns.com/type-object.html) pattern.
-
-**Trade-off:** a typo in XML (`type="skelton"`) becomes a runtime error instead of a
-compile error. Validate data when loading it and fail loudly.
+Adding a new enemy type means one `<Enemy>` block plus a spritesheet row: no new class.
+That's composition through data. [Plants vs. Zombies](../09-plants-vs-zombies/) builds a
+whole game this way, with the Type Object pattern.
 
 ## Exercises
 
@@ -274,6 +317,11 @@ must have no reference to the class reacting to it.
 - `SoundManager.PlaySound(...)` is called directly from several unrelated classes. Find
   all the call sites. Why is this a problem, and how would events fix it?
 
+**Composition:** sketch the class hierarchy you would need for enemies that can walk, fly,
+shoot or explode, in any combination. Then sketch the same with composition: which parts
+would an enemy _have_? Implement one of them (e.g. a shooting behaviour that any enemy can
+be given).
+
 **Extend Zelda:**
 
 - Some enemies randomly drop hearts that heal the player for one whole heart.
@@ -287,9 +335,19 @@ must have no reference to the class reacting to it.
 - What are the meaningful moments in your game that other systems might care about? Map
   out at least two: what fires the event, and what should react?
 - Is there anywhere a class knows too much about another class? Could an event fix that?
-- Which hardcoded values or entity types in your game could be moved to data files?
+- Where does your game use inheritance? For each subclass, is it _what something is_ or
+  _what it can do_?
 
 ## Check Yourself
+
+<details>
+<summary>When does inheritance fit, and when is composition better?</summary>
+
+Inheritance fits when there is one clear "is a" axis and the shared behaviour is needed by
+every subclass. Composition fits when behaviours combine freely: instead of one subclass
+per combination, an object has the parts it needs, and they can even change at runtime.
+
+</details>
 
 <details>
 <summary>Why does Observer suit UI code particularly well?</summary>

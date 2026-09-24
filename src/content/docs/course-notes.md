@@ -75,8 +75,9 @@ Notes for building it:
   its room is still drawn from a tilemap, as asset data, while Sokoban uses the grid as game
   state); mouse input moves into Flappy's
   `InputManager` (done); debug drawing moves to Mario (done: `DebugDraw` in GMDCore, `F1`
-  from `Platformer2`); State is introduced in Pac-Man and reinforced in Mario (page done); tweening moves from Pokemon to Zelda; data definitions move from
-  Pokemon to Plants vs. Zombies; data-oriented design, spatial partitioning and profiling
+  from `Platformer2`); State is introduced in Pac-Man and reinforced in Mario (page done); tweening moves from Pokemon to Zelda (done: `Zelda5`'s room shift
+  uses `TweenManager`, which now enters GMDCore with Zelda); data definitions move from
+  Pokemon to Plants vs. Zombies (Pokemon page and deck done); data-oriented design, spatial partitioning and profiling
   move from Geometry Wars to Vampire Survivors.
 - **GMDCore lineage** follows the new order; new games join it in session order.
 - **Exam pool:** add Prototype and Adapter; split question 9 between Geometry Wars
