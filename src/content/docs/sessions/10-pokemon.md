@@ -1,8 +1,8 @@
 ---
-title: 08 Pokemon
+title: 10 Pokemon
 description: A turn-based RPG. State stacks, tweening, GUIs, the Service Locator pattern, and saving and loading data.
 sidebar:
-  order: 8
+  order: 10
 ---
 
 ## Today's Goal
@@ -87,7 +87,7 @@ Files: `StateStack.cs`, `BattleState.cs`, `BattleMenuState.cs`, `FadeState.cs`
 
 _Step `Pokemon0` onwards_
 
-In [Zelda](../06-the-legend-of-zelda/) we tweened by hand. Here, a reusable tween system
+In [Zelda](../08-the-legend-of-zelda/) we tweened by hand. Here, a reusable tween system
 does it for us:
 
 - **Tween:** change a number from A to B over a set time.
@@ -120,7 +120,7 @@ saves a lot of work.
 The HP bar should _show_ a monster's health, but the monster shouldn't know the HP bar
 exists. Keep game data and rules (the _model_) separate from the UI (the _view_), and let
 the view observe the model through events (see
-[Observer](../06-the-legend-of-zelda/#events--the-observer-pattern)). Architectural
+[Observer](../08-the-legend-of-zelda/#events--the-observer-pattern)). Architectural
 patterns such as [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter)
 and [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) formalize
 this idea.

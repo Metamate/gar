@@ -156,8 +156,8 @@ to the state machine. `Enter()` and `Exit()` give each state a place to set up a
 (for example, `PlayState.Enter()` resets the bird, pipes and score so every retry starts
 clean).
 
-This is a _game-level_ state machine. In [Super Mario Bros](../05-super-mario-bros/) we
-apply the same idea to entities (the State pattern), and in [Pokemon](../08-pokemon/) we
+This is a _game-level_ state machine. In [Super Mario Bros](../06-super-mario-bros/) we
+apply the same idea to entities (the State pattern), and in [Pokemon](../10-pokemon/) we
 stack states on top of each other.
 
 ## Singleton Pattern
@@ -192,7 +192,7 @@ that needs it.
 
 **Discuss:** do `Audio` and `Art` have the same problems? Which one would be easier to
 replace with a muted version for testing? We come back to this with the Service Locator
-pattern in [Pokemon](../08-pokemon/).
+pattern in [Pokemon](../10-pokemon/).
 
 ## Exercises
 

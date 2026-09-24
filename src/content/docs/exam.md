@@ -37,7 +37,8 @@ welcome to refer to the games from the course. You may use their source code at 
 
 ### 1. Game Loop & Update Method
 
-_Covered in: [01 Pong](../sessions/01-pong/), [09 Geometry Wars](../sessions/09-geometry-wars/)_
+_Covered in: [01 Pong](../sessions/01-pong/), [03 Snake](../sessions/03-snake/),
+[11 Geometry Wars](../sessions/11-geometry-wars/)_
 
 1. Explain the structure of a traditional game loop. What are the responsibilities of the
    `Update` and `Draw` phases, and why are they usually kept separate?
@@ -50,8 +51,10 @@ _Covered in: [01 Pong](../sessions/01-pong/), [09 Geometry Wars](../sessions/09-
 
 ### 2. State Pattern & State Stack
 
-_Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-flappy-bird/),
-[05 Super Mario Bros](../sessions/05-super-mario-bros/), [08 Pokemon](../sessions/08-pokemon/)_
+_Covered in: [02 Flappy Bird](../sessions/02-flappy-bird/),
+[05 Pac-Man](../sessions/05-pac-man/),
+[06 Super Mario Bros](../sessions/06-super-mario-bros/),
+[10 Pokemon](../sessions/10-pokemon/)_
 
 1. Explain the State pattern. What problem does it solve compared to using `if`/`switch`
    statements on an enum or boolean flags?
@@ -64,7 +67,8 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 
 ### 3. Singleton & Service Locator
 
-_Covered in: [02 Flappy Bird](../sessions/02-flappy-bird/), [08 Pokemon](../sessions/08-pokemon/)_
+_Covered in: [02 Flappy Bird](../sessions/02-flappy-bird/),
+[10 Pokemon](../sessions/10-pokemon/), [11 Geometry Wars](../sessions/11-geometry-wars/)_
 
 1. Explain the Singleton pattern. Why is it both widespread and controversial in game
    development?
@@ -78,7 +82,7 @@ _Covered in: [02 Flappy Bird](../sessions/02-flappy-bird/), [08 Pokemon](../sess
 ### 4. Command Pattern & Input Handling
 
 _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-flappy-bird/),
-[03 Snake](../sessions/03-snake/), [05 Super Mario Bros](../sessions/05-super-mario-bros/)_
+[03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-sokoban/)_
 
 1. Explain the Command pattern. What is the core idea, and what are its main benefits in a
    game context?
@@ -92,8 +96,9 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 
 ### 5. Observer Pattern, Events & UI
 
-_Covered in: [06 The Legend of Zelda](../sessions/06-the-legend-of-zelda/),
-[08 Pokemon](../sessions/08-pokemon/)_
+_Covered in: [07 Angry Birds](../sessions/07-angry-birds/),
+[08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/),
+[10 Pokemon](../sessions/10-pokemon/)_
 
 1. Explain the Observer pattern. How is it implemented in C# with `event` and `delegate`
    (or `Action<T>`)?
@@ -120,9 +125,10 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 ### 7. Tilemaps, Collision Detection & Procedural Generation
 
 _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-flappy-bird/),
-[03 Snake](../sessions/03-snake/), [05 Super Mario Bros](../sessions/05-super-mario-bros/),
-[06 The Legend of Zelda](../sessions/06-the-legend-of-zelda/),
-[09 Geometry Wars](../sessions/09-geometry-wars/)_
+[04 Sokoban](../sessions/04-sokoban/),
+[06 Super Mario Bros](../sessions/06-super-mario-bros/),
+[08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/),
+[12 Vampire Survivors](../sessions/12-vampire-survivors/)_
 
 1. Explain how a tile-based level is represented in memory, and how rendering a tilemap
    differs from rendering individual sprites.
@@ -134,9 +140,9 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 
 ### 8. Data-Driven Design & Serialization
 
-_Covered in: [03 Snake](../sessions/03-snake/),
-[06 The Legend of Zelda](../sessions/06-the-legend-of-zelda/),
-[08 Pokemon](../sessions/08-pokemon/)_
+_Covered in: [03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-sokoban/),
+[09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
+[10 Pokemon](../sessions/10-pokemon/)_
 
 1. What does it mean for a game to be data-driven? Compare hardcoded gameplay values with
    externalized data (JSON, configuration files).
@@ -150,8 +156,9 @@ _Covered in: [03 Snake](../sessions/03-snake/),
 
 ### 9. Components, Memory & Performance
 
-_Covered in: [06 The Legend of Zelda](../sessions/06-the-legend-of-zelda/),
-[09 Geometry Wars](../sessions/09-geometry-wars/)_
+_Covered in: [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
+[11 Geometry Wars](../sessions/11-geometry-wars/),
+[12 Vampire Survivors](../sessions/12-vampire-survivors/)_
 
 1. Explain the Component pattern. What problems with deep inheritance hierarchies does it
    solve, and what does it cost?

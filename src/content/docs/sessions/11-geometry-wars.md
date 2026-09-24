@@ -1,8 +1,8 @@
 ---
-title: 09 Geometry Wars
+title: 11 Geometry Wars
 description: A top-down shooter with thousands of entities. The Component pattern, data-oriented design, object pooling, flyweights, spatial partitioning and profiling.
 sidebar:
-  order: 9
+  order: 11
 ---
 
 ## Today's Goal

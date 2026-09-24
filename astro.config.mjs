@@ -39,6 +39,7 @@ export default defineConfig({
             { label: "Schedule", slug: "schedule" },
             { label: "Project", slug: "project" },
             { label: "Exam", slug: "exam" },
+            { label: "Course Recap", slug: "recap" },
           ],
         },
         {

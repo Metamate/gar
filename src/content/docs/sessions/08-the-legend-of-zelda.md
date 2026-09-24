@@ -1,8 +1,8 @@
 ---
-title: 06 The Legend of Zelda
+title: 08 The Legend of Zelda
 description: A top-down dungeon crawler. The Observer pattern and C# events, composition vs. inheritance, tweening and data-driven design.
 sidebar:
-  order: 6
+  order: 8
 ---
 
 ## Today's Goal
@@ -89,7 +89,7 @@ classes.
 
 The alternative is **composition**: an entity _has_ behaviours rather than _is_ a kind of
 something. Keep this in mind for your project. We look at it in depth with the Component
-pattern in [Geometry Wars](../09-geometry-wars/).
+pattern in [Geometry Wars](../11-geometry-wars/).
 
 ## Events & the Observer Pattern
 

@@ -1,8 +1,8 @@
 ---
-title: 05 Super Mario Bros
+title: 06 Super Mario Bros
 description: A 2D platformer. Procedural levels, the State pattern for entities, cameras, platformer physics and basic AI.
 sidebar:
-  order: 5
+  order: 6
 ---
 
 ## Today's Goal
@@ -99,7 +99,7 @@ The grass or snow on top of the ground (the _toppers_) is a detail of this game,
 tilemaps in general, so it isn't part of `Tile`. Instead, a `GameLevel` has two tilemaps
 of the same size: `Tilemap` for the ground and `Toppers`, drawn on top with its own
 tileset. Layering tilemaps like this is how most tile editors (e.g. Tiled) work, and
-[Pokemon](../08-pokemon/) uses it for its tall grass.
+[Pokemon](../10-pokemon/) uses it for its tall grass.
 
 ```mermaid
 classDiagram

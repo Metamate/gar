@@ -3,20 +3,21 @@ title: Schedule
 description: Overview of the 12 course sessions.
 ---
 
-The course spans 12 sessions: seven game sessions, each building a classic game, and five
-sessions for the course project.
+The course spans 12 sessions, each building a classic game. Every session has one main
+topic, supported by a few related ones. The [course project](../project/) runs alongside,
+in your own time.
 
-| Session | Topic | Key concepts |
-| --- | --- | --- |
-| 01 | [Pong](../sessions/01-pong/) | MonoGame, game loop, delta time, AABB collision, Update Method |
-| 02 | [Flappy Bird](../sessions/02-flappy-bird/) | Class library (GMDCore), textures, procedural generation, state machines, Singleton |
-| 03 | [Snake](../sessions/03-snake/) | Texture atlases, sprites & animation, Command pattern, collision detection, tilemaps |
-| 04 | [Project Kick-Off](../sessions/04-project-kick-off/) | Groups, game concept, version control, architecture sketch |
-| 05 | [Super Mario Bros](../sessions/05-super-mario-bros/) | Procedural levels, State pattern, Strategy, camera, platformer physics, basic AI |
-| 06 | [The Legend of Zelda](../sessions/06-the-legend-of-zelda/) | Observer & C# events, composition vs. inheritance, tweening, data-driven design |
-| 07 | [Project Checkpoint](../sessions/07-project-work/) | Class diagram, event map, self-review |
-| 08 | [Pokemon](../sessions/08-pokemon/) | State stack, GUIs, turn-based systems, Service Locator, serialization |
-| 09 | [Geometry Wars](../sessions/09-geometry-wars/) | Component pattern, data-oriented design, Object Pool, Flyweight, spatial partitioning, profiling |
-| 10 | [Release](../sessions/10-release/) | Packaging, publishing to itch.io |
-| 11 | [Architecture Review](../sessions/11-architecture-review/) | Peer review, refactoring |
-| 12 | [Wrapping Up](../sessions/12-wrapping-up/) | Project show-off, exam preparation |
+| Session | Game | Main topic | Also |
+| --- | --- | --- | --- |
+| 01 | [Pong](../sessions/01-pong/) | The game loop | delta time, input, drawing, AABB collision, Update Method |
+| 02 | [Flappy Bird](../sessions/02-flappy-bird/) | Organizing a growing game | class library (GMDCore), game states, textures & parallax, procedural generation, Singleton, keyboard & mouse input |
+| 03 | [Snake](../sessions/03-snake/) | Assets as data | texture atlases, sprites & animation, fixed-tick movement, input as actions |
+| 04 | [Sokoban](../sessions/04-sokoban/) | Command pattern | undo & redo, levels as data (tilemaps), testable game rules |
+| 05 | [Pac-Man](../sessions/05-pac-man/) | State pattern | Strategy, State vs. Strategy |
+| 06 | [Super Mario Bros](../sessions/06-super-mario-bros/) | Physics & tile collision | camera, debug drawing, level makers |
+| 07 | [Angry Birds](../sessions/07-angry-birds/) | Integrating a third-party library | Adapter & Facade, physics world vs. game world, contact events, Prototype |
+| 08 | [The Legend of Zelda](../sessions/08-the-legend-of-zelda/) | Composition vs. inheritance | Observer & events, hitboxes, tweening |
+| 09 | [Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | Component pattern | Type Object, game types as data, picking |
+| 10 | [Pokemon](../sessions/10-pokemon/) | Scenes & UI | state stack, separating UI from game data, Service Locator, save/load |
+| 11 | [Geometry Wars](../sessions/11-geometry-wars/) | Components vs. systems | dependency injection, Object Pool, Flyweight |
+| 12 | [Vampire Survivors](../sessions/12-vampire-survivors/) | Performance | data-oriented design, spatial partitioning, profiling, [course recap](../recap/) |

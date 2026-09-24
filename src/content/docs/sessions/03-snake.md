@@ -273,7 +273,7 @@ Both the snake and the bat expose their `Bounds` as a `Circle`.
 **Performance:** checking every pair of `n` objects costs `n × (n − 1) / 2` checks. 100
 objects means 4,950 checks every frame. Real engines split this into a cheap **broad
 phase** that finds _possible_ pairs, and a precise **narrow phase** for those pairs only.
-We return to this in [Geometry Wars](../09-geometry-wars/).
+We return to this in [Geometry Wars](../11-geometry-wars/).
 
 ## Tilemaps
 

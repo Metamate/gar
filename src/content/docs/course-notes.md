@@ -12,63 +12,74 @@ production build. Keep instructor notes here, not on the public pages.
 ## Open Decisions
 
 Decided: the course is English only, and the [Exam](../exam/) page is the authoritative
-question pool (question 9 added for session 09). Projects must document at least three
+question pool (question 9 added for Geometry Wars). Projects must document at least three
 patterns.
 
 - **CS50 GD50:** the game line-up follows CS50's Introduction to Game Development closely.
   Check its license and credit it where assets or structure are derived from it.
 
-## Planned Session Plan
+## Session Plan
 
-Decided (September 2026), not yet on the public pages. The 2026 midterm evaluation said
-the pace was too fast, so every session becomes a game session with **one main topic**
-and 2–3 supporting ones. The course project is done in the students' own time: the
-[project page](../project/) takes over the kick-off, milestone, release and review
-guidance. The official [syllabus](../syllabus/) stays as it is.
+Decided in September 2026. The 2026 midterm evaluation said the pace was too fast, so
+every session is now a game session with **one main topic** and 2–3 supporting ones (see
+the [schedule](../schedule/)). The course project is done in the students' own time: the
+[project page](../project/) holds the kick-off, milestone, self-review, release and exam
+guidance. The official [syllabus](../syllabus/) stays as it is. The last lesson of session
+12 walks through the [course recap](../recap/).
+
+Session pages for the new games (Sokoban, Pac-Man, Angry Birds, Plants vs. Zombies,
+Vampire Survivors) are placeholders marked "In development" until their games exist.
 
 | # | Game | Main topic | Supporting |
 | --- | --- | --- | --- |
 | 1 | Pong | The game loop | delta time, input, drawing, AABB, Update Method |
-| 2 | Flappy Bird | Organizing a growing game (reusable core, game states) | textures & parallax, procedural generation, Singleton |
-| 3 | Snake | Assets as data (atlases & animations in XML) | sprites & animation, grid movement on a fixed tick |
-| 4 | Sokoban (new) | Command pattern (with undo/redo) | levels as data (tilemaps), rules separated from rendering |
+| 2 | Flappy Bird | Organizing a growing game | class library, game states, textures & parallax, procedural generation, Singleton, keyboard & mouse input |
+| 3 | Snake | Assets as data | atlases, sprites & animation, fixed-tick movement (the timestep in practice), input as actions & buffering |
+| 4 | Sokoban (new) | Command pattern (undo/redo) | levels as data (tilemaps), rules separated from rendering (testable) |
 | 5 | Pac-Man (new) | State pattern | Strategy (per-ghost targeting), State vs. Strategy |
 | 6 | Super Mario Bros | Physics & tile collision | camera, debug drawing, level makers (Strategy again) |
-| 7 | The Legend of Zelda | Composition vs. inheritance | Observer & events, hitboxes, tweening |
-| 8 | Plants vs. Zombies (new) | Component pattern | Type Object, game types as data, mouse input |
-| 9 | Pokemon | Scenes & UI (state stack, GUI) | separating UI from game data, Service Locator, save/load |
-| 10 | Angry Birds (new) | Integrating a third-party library (Adapter/Facade) | physics world vs. game world, collision callbacks as events, Prototype |
-| 11 | Geometry Wars | Components vs. systems | dependency injection vs. Service Locator, Object Pool, Flyweight, particles as a system |
-| 12 | Vampire Survivors (new) | Performance (data-oriented design) | spatial partitioning, profiling |
+| 7 | Angry Birds (new) | Integrating a third-party library (Adapter/Facade) | physics world vs. game world, contact events & safe destruction, Prototype (prefabs) |
+| 8 | The Legend of Zelda | Composition vs. inheritance | Observer & events, hitboxes, tweening |
+| 9 | Plants vs. Zombies (new) | Component pattern | Type Object, game types as data, picking (screen → grid) |
+| 10 | Pokemon | Scenes & UI | state stack, separating UI from game data, Service Locator, save/load |
+| 11 | Geometry Wars | Components vs. systems | dependency injection vs. Service Locator, Object Pool, Flyweight |
+| 12 | Vampire Survivors (new) | Performance: the same genre built data-first | data-oriented design, spatial partitioning, profiling, course recap |
 
-Threads that run through the plan:
+Threads that run through the plan (the recap page lists them for students):
 
-- **Game families:** free movement (1–2), grids (3–5), tile worlds (6–9), physics and free
-  movement at scale (10–12). Each game reuses most of the previous one's code.
-- **Data:** assets as data (3) → levels as data (4) → game types as data (8) → save/load (9).
-- **Entities:** inheritance strains (7) → components (8) → components vs. systems (11) →
-  data-oriented design (12).
-- **Dependencies:** Singleton (2) → Service Locator (9) → dependency injection (11).
-- **Pattern pairs:** State vs. Strategy (5), Type Object (8) vs. Prototype (10), Object Pool
+- **Game families:** free movement (1–2), grids (3–5), tile worlds and physics (6–10),
+  free movement at scale (11–12). Each game reuses most of the previous one's code.
+- **Build vs. buy:** hand-written platformer physics (6), then a physics library (7).
+- **Data:** assets as data (3) → levels as data (4) → game types as data (9) → save/load (10).
+- **Entities:** composition vs. inheritance (8) → components (9) → components vs. systems
+  (11) → data-oriented design (12, same genre as 11 built a second way).
+- **Dependencies:** Singleton (2) → Service Locator (10) → dependency injection (11).
+- **Coordinate spaces:** virtual resolution (2) → camera (6) → physics units (7) → picking (9).
+- **Pattern pairs:** State vs. Strategy (5), Prototype (7) vs. Type Object (9), Object Pool
   vs. Flyweight (11).
 - **Recurring:** a Mermaid class diagram on every session page, "Apply It to Your Project"
-  in every session, and a refactoring exercise from Sokoban onwards (UML, analysis and
-  refactoring competences, previously covered by the project sessions).
+  in every session, and a refactoring exercise from Sokoban onwards (the UML, analysis and
+  refactoring competences the project sessions used to cover). No references to other
+  engines: the students haven't met Unity yet.
 
 Notes for building it:
 
-- **Physics library:** `Aether.Physics2D.MG` 2.2.0 (C# port of Box2D, namespace
-  `nkast.Aether.Physics2D`) works with MonoGame 3.8.5 on .NET 10 (checked with a falling
-  box and a collision callback). Keep the Angry Birds steps focused on the adapter, syncing
-  and events, not physics tuning.
+- **Physics library:** [Box2D.NET](https://github.com/ikpil/Box2D.NET) 3.1 (C# port of Box2D
+  v3.1, MIT, targets .NET 10) works with MonoGame 3.8.5 (checked with a falling box and its
+  contact event). Chosen over Aether.Physics2D for v3's stable stacking, events read after
+  the step, and a foreign C-style API that makes the Adapter lesson concrete. Keep the Angry
+  Birds steps focused on the adapter, syncing and events, not physics tuning. Write a small
+  debug renderer for it (or make it an exercise).
 - **Changes to existing sessions:** Command moves from Snake to Sokoban (tilemaps too);
-  Observer stays in Zelda; debug drawing moves to Mario; State is introduced in Pac-Man
-  and reinforced in Mario; tweening moves from Pokemon to Zelda; data definitions move
-  from Pokemon to Plants vs. Zombies; data-oriented design, spatial partitioning and
-  profiling move from Geometry Wars to Vampire Survivors.
+  Snake gains fixed-tick movement and input as actions; mouse input moves into Flappy's
+  `InputManager`; debug drawing moves to Mario; State is introduced in Pac-Man and
+  reinforced in Mario; tweening moves from Pokemon to Zelda; data definitions move from
+  Pokemon to Plants vs. Zombies; data-oriented design, spatial partitioning and profiling
+  move from Geometry Wars to Vampire Survivors.
 - **GMDCore lineage** follows the new order; new games join it in session order.
 - **Exam pool:** add Prototype and Adapter; split question 9 between Geometry Wars
-  (components vs. systems) and Vampire Survivors (performance).
+  (components vs. systems) and Vampire Survivors (performance). The "Covered in" lines
+  already point at the new sessions.
 - **Sokoban vs. Snake:** Sokoban is the textbook Command/undo game. Snake's continuous
   movement makes undo pointless (replay works instead).
 
@@ -77,9 +88,6 @@ Notes for building it:
 - **Slides:** edited decks live in `slides/` (version controlled), named by session number.
   A deck moves there from `in-progress/slides-ppt/` (the untouched originals, not in git)
   the first time it is edited.
-- **No deck for 07:** the old Project Work session only exists as a PDF
-  (`in-progress/slides/07 Project Work.pdf`). The site's Project Checkpoint page replaces
-  it; its value vs. reference types slides are dropped (assumed prior knowledge).
 - **Code:** the `gmd2-*` repos. Every repo is split into step projects (`Snake0`,
   `Snake1`, …; one per exercise for Pong and Flappy, one per concept for the rest), with
   the finished game as the last step. Steps share one final `GMDCore`, and the README has
@@ -102,8 +110,8 @@ Notes for building it:
   manifests or publish settings; publish options go on the `dotnet publish` command line.
 - **Starting a new project:** MonoGame's `dotnet new` templates (3.8.5.1) still create MGCB
   projects, so students start from our own template repo,
-  [gar-starter](https://github.com/Metamate/gar-starter) (Flappy exercise 2, project
-  kick-off): one empty `MyGame` project plus the `Content` builder, with general rules for
+  [gar-starter](https://github.com/Metamate/gar-starter) (Flappy exercise 2, the
+  project page): one empty `MyGame` project plus the `Content` builder, with general rules for
   images, fonts, sounds, music and JSON/XML. Keep its `Content.csproj` and
   `BuildContent.targets` identical to the course repos. Revisit when MonoGame ships its new
   Empty template (MonoGame/MonoGame.EmptyGame.CSharp).
@@ -143,7 +151,7 @@ code over adding new sessions.
 | Adapter, Proxy, Facade, Iterator, Builder | Probably out of scope |
 | Game math (sin/cos, atan2, lerp, radians, normalization) | Short primer in Pong/Flappy |
 | Debugging (debug overlay, hitbox drawing) | GMDCore, early |
-| [Refactoring](https://refactoring.guru) | 11 Architecture Review |
+| [Refactoring](https://refactoring.guru) | 04 Sokoban, then an exercise in every session |
 | Pathfinding (A\*), steering behaviours | Zelda or Geometry Wars (seek & flee is in the GW code) |
 | ECS in practice (e.g. MonoGame.Extended) | Geometry Wars, briefly |
 
