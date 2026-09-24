@@ -79,7 +79,8 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 [03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-sokoban/)_
 
 1. Explain the Command pattern. What is the core idea, and what are its main benefits in a
-   game context?
+   game context? How can commands support undo and redo, and what must a command remember
+   to be undone?
 2. Explain how input is handled at the lowest level in MonoGame (polling
    `Keyboard.GetState()` / `Mouse.GetState()`). What problems arise if you poll directly
    inside gameplay code?

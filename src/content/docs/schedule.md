@@ -12,7 +12,7 @@ in your own time.
 | 01 | [Pong](../sessions/01-pong/) | The game loop | delta time, input, drawing, AABB collision, Update Method |
 | 02 | [Flappy Bird](../sessions/02-flappy-bird/) | Organizing a growing game | class library (GMDCore), game states, textures & parallax, procedural generation, Singleton, keyboard & mouse input |
 | 03 | [Snake](../sessions/03-snake/) | Assets as data | texture atlases, sprites & animation, fixed-tick movement, input as actions |
-| 04 | [Sokoban](../sessions/04-sokoban/) | Command pattern | undo & redo, levels as data (tilemaps), testable game rules |
+| 04 | [Sokoban](../sessions/04-sokoban/) | Command pattern | undo & redo, levels as text files, testable game rules |
 | 05 | [Pac-Man](../sessions/05-pac-man/) | State pattern | Strategy, State vs. Strategy |
 | 06 | [Super Mario Bros](../sessions/06-super-mario-bros/) | Physics & tile collision | camera, debug drawing, level makers |
 | 07 | [Angry Birds](../sessions/07-angry-birds/) | Integrating a third-party library | Adapter & Facade, physics world vs. game world, contact events, Prototype |
