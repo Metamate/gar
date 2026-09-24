@@ -17,7 +17,7 @@ in data files, not hardcoded. Along the way:
 - Movement on a fixed tick
 - Input as actions, and input buffering
 
-**Source code:** [Metamate/gmd2-snake](https://github.com/Metamate/gmd2-snake)
+**Source code:** [gar-games/03-snake](https://github.com/Metamate/gar-games/tree/main/03-snake)
 
 The code is split into steps, one project per concept. Each section below names the step
 that introduces it. Compare neighbouring steps to see exactly what changed.

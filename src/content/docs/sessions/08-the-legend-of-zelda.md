@@ -18,7 +18,7 @@ the next one. Along the way:
 - Hitboxes and hurtboxes
 - A tweening system for screen scrolling
 
-**Source code:** [Metamate/gmd2-zelda](https://github.com/Metamate/gmd2-zelda) (walkthrough
+**Source code:** [gar-games/08-zelda](https://github.com/Metamate/gar-games/tree/main/08-zelda) (walkthrough
 in the README)
 
 The code is split into steps, one project per concept. Each section below names the step

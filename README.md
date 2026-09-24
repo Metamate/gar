@@ -19,7 +19,6 @@ Course site built with [Astro](https://docs.astro.build) and [Starlight](https:/
 ├── astro.config.mjs               # Site title, logo and sidebar
 ├── public/favicon.ico
 ├── slides/                        # Edited slide decks (.pptx), named by session number
-├── tools/core-lineage.py          # Compares GMDCore between the game repos, session by session
 └── src/
     ├── assets/                    # Images referenced from pages (logo, session figures)
     ├── components/                # Interactive components used in MDX pages

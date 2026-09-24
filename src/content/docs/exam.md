@@ -17,13 +17,7 @@ through in full.
 
 If you can't answer part of the question you drew using your own game project, you are
 welcome to refer to the games from the course. You may use their source code at the exam:
-[Pong](https://github.com/Metamate/gmd2-pong),
-[Flappy Bird](https://github.com/Metamate/gmd2-flappy),
-[Snake](https://github.com/Metamate/gmd2-snake),
-[Platformer](https://github.com/Metamate/gmd2-platformer),
-[Zelda](https://github.com/Metamate/gmd2-zelda),
-[Pokemon](https://github.com/Metamate/gmd2-pokemon),
-[Geometry Wars](https://github.com/Metamate/gmd2-geometrywars).
+all of them are in [gar-games](https://github.com/Metamate/gar-games), one folder per game.
 
 ## Questions
 

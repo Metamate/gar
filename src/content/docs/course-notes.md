@@ -94,7 +94,10 @@ Notes for building it:
 - **Slides:** edited decks live in `slides/` (version controlled), named by session number.
   A deck moves there from `in-progress/slides-ppt/` (the untouched originals, not in git)
   the first time it is edited.
-- **Code:** the `gmd2-*` repos. Every repo is split into step projects (`Snake0`,
+- **Code:** one repository, [gar-games](https://github.com/Metamate/gar-games), with one
+  folder per game, numbered by session (`01-pong`, `03-snake`, …). It replaced the separate
+  `gmd2-*` repositories (imported with their history). Every game is split into step
+  projects (`Snake0`,
   `Snake1`, …; one per exercise for Pong and Flappy, one per concept for the rest), with
   the finished game as the last step. Steps share one final `GMDCore`, and the README has
   a table of steps. The site page and the deck name the step for each topic.
@@ -109,8 +112,10 @@ Notes for building it:
   Snake → Platformer → Zelda → Pokemon → Geometry Wars. Each repo's `GMDCore` keeps the
   previous session's core and adds to it or deliberately changes it; nothing is dropped,
   even if the game doesn't use it. Each README has a "New in GMDCore" section, and
-  `python tools/core-lineage.py` lists the differences between sessions (and fails if a
-  file was removed). Run it after changing any `GMDCore`.
+  `python tools/check.py` in gar-games lists the differences between games (and fails if a
+  file was removed, or if the build files differ between games). The GitHub build runs it.
+  Each game folder stays self-contained, like a single-game repo and like gar-starter, so
+  the two build files are duplicated on purpose; the check keeps them identical.
 - **Project files:** keep every `.csproj` to the essentials (output type, framework,
   `MonoGamePlatform`, package/project references, the content import). No icons, app
   manifests or publish settings; publish options go on the `dotnet publish` command line.

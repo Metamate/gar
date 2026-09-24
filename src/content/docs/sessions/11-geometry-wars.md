@@ -19,7 +19,7 @@ particles and a warping grid. Its entities are built from components, as in
 - Flyweight
 - Particles as a system
 
-**Source code:** [Metamate/gmd2-geometrywars](https://github.com/Metamate/gmd2-geometrywars)
+**Source code:** [gar-games/11-geometry-wars](https://github.com/Metamate/gar-games/tree/main/11-geometry-wars)
 (walkthrough in the README)
 
 The goal isn't to understand every system in the codebase, but the overall architecture.

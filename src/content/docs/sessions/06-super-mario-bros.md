@@ -18,7 +18,7 @@ world, and seeing what the collision code actually does. Along the way:
 - Level makers: the Strategy pattern again
 - The State pattern again, now for the player
 
-**Source code:** [Metamate/gmd2-platformer](https://github.com/Metamate/gmd2-platformer)
+**Source code:** [gar-games/06-platformer](https://github.com/Metamate/gar-games/tree/main/06-platformer)
 
 The code is split into steps, one project per concept. Each section below names the step
 that introduces it. Compare neighbouring steps to see exactly what changed.

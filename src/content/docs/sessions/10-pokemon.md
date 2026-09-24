@@ -18,7 +18,7 @@ battle, a menu, a dialogue box), built from reusable UI widgets. Along the way:
 - The Service Locator pattern
 - Saving and loading
 
-**Source code:** [Metamate/gmd2-pokemon](https://github.com/Metamate/gmd2-pokemon)
+**Source code:** [gar-games/10-pokemon](https://github.com/Metamate/gar-games/tree/main/10-pokemon)
 (walkthrough in the README)
 
 The code is split into steps, one project per concept. Each section below names the step

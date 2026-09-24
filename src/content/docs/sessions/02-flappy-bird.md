@@ -16,7 +16,7 @@ the course, and replace the string-based state with a proper **state machine**.
 New concepts: class libraries, textures, parallax scrolling, procedural generation,
 interfaces, state machines and the Singleton pattern.
 
-**Source code:** [Metamate/gmd2-flappy](https://github.com/Metamate/gmd2-flappy)
+**Source code:** [gar-games/02-flappy](https://github.com/Metamate/gar-games/tree/main/02-flappy)
 
 The code is split into steps, one project per exercise (`Flappy0` → `Flappy12`), so you can compare
 your solution with each step, and compare neighbouring steps to see exactly what changed.
