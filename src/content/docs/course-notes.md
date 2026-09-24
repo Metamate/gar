@@ -15,15 +15,62 @@ Decided: the course is English only, and the [Exam](../exam/) page is the author
 question pool (question 9 added for session 09). Projects must document at least three
 patterns.
 
-- **Pacing:** the 2026 midterm evaluation said the pace was too fast, with a lot of content
-  per session, and the level was split 50/50 between too high and about right. The slide
-  numbering (01 Pong, 03 Flappy, 05 Snake) suggests Pong and Flappy each needed two
-  sessions. The schedule has one session each; if they need two again, merge 10 Release
-  and 11 Architecture Review.
-- **Snake vs. Sokoban:** Sokoban is the textbook Command/undo game. Snake's continuous
-  movement makes undo pointless (replay works instead).
 - **CS50 GD50:** the game line-up follows CS50's Introduction to Game Development closely.
   Check its license and credit it where assets or structure are derived from it.
+
+## Planned Session Plan
+
+Decided (September 2026), not yet on the public pages. The 2026 midterm evaluation said
+the pace was too fast, so every session becomes a game session with **one main topic**
+and 2–3 supporting ones. The course project is done in the students' own time: the
+[project page](../project/) takes over the kick-off, milestone, release and review
+guidance. The official [syllabus](../syllabus/) stays as it is.
+
+| # | Game | Main topic | Supporting |
+| --- | --- | --- | --- |
+| 1 | Pong | The game loop | delta time, input, drawing, AABB, Update Method |
+| 2 | Flappy Bird | Organizing a growing game (reusable core, game states) | textures & parallax, procedural generation, Singleton |
+| 3 | Snake | Assets as data (atlases & animations in XML) | sprites & animation, grid movement on a fixed tick |
+| 4 | Sokoban (new) | Command pattern (with undo/redo) | levels as data (tilemaps), rules separated from rendering |
+| 5 | Pac-Man (new) | State pattern | Strategy (per-ghost targeting), State vs. Strategy |
+| 6 | Super Mario Bros | Physics & tile collision | camera, debug drawing, level makers (Strategy again) |
+| 7 | The Legend of Zelda | Composition vs. inheritance | Observer & events, hitboxes, tweening |
+| 8 | Plants vs. Zombies (new) | Component pattern | Type Object, game types as data, mouse input |
+| 9 | Pokemon | Scenes & UI (state stack, GUI) | separating UI from game data, Service Locator, save/load |
+| 10 | Angry Birds (new) | Integrating a third-party library (Adapter/Facade) | physics world vs. game world, collision callbacks as events, Prototype |
+| 11 | Geometry Wars | Components vs. systems | dependency injection vs. Service Locator, Object Pool, Flyweight, particles as a system |
+| 12 | Vampire Survivors (new) | Performance (data-oriented design) | spatial partitioning, profiling |
+
+Threads that run through the plan:
+
+- **Game families:** free movement (1–2), grids (3–5), tile worlds (6–9), physics and free
+  movement at scale (10–12). Each game reuses most of the previous one's code.
+- **Data:** assets as data (3) → levels as data (4) → game types as data (8) → save/load (9).
+- **Entities:** inheritance strains (7) → components (8) → components vs. systems (11) →
+  data-oriented design (12).
+- **Dependencies:** Singleton (2) → Service Locator (9) → dependency injection (11).
+- **Pattern pairs:** State vs. Strategy (5), Type Object (8) vs. Prototype (10), Object Pool
+  vs. Flyweight (11).
+- **Recurring:** a Mermaid class diagram on every session page, "Apply It to Your Project"
+  in every session, and a refactoring exercise from Sokoban onwards (UML, analysis and
+  refactoring competences, previously covered by the project sessions).
+
+Notes for building it:
+
+- **Physics library:** `Aether.Physics2D.MG` 2.2.0 (C# port of Box2D, namespace
+  `nkast.Aether.Physics2D`) works with MonoGame 3.8.5 on .NET 10 (checked with a falling
+  box and a collision callback). Keep the Angry Birds steps focused on the adapter, syncing
+  and events, not physics tuning.
+- **Changes to existing sessions:** Command moves from Snake to Sokoban (tilemaps too);
+  Observer stays in Zelda; debug drawing moves to Mario; State is introduced in Pac-Man
+  and reinforced in Mario; tweening moves from Pokemon to Zelda; data definitions move
+  from Pokemon to Plants vs. Zombies; data-oriented design, spatial partitioning and
+  profiling move from Geometry Wars to Vampire Survivors.
+- **GMDCore lineage** follows the new order; new games join it in session order.
+- **Exam pool:** add Prototype and Adapter; split question 9 between Geometry Wars
+  (components vs. systems) and Vampire Survivors (performance).
+- **Sokoban vs. Snake:** Sokoban is the textbook Command/undo game. Snake's continuous
+  movement makes undo pointless (replay works instead).
 
 ## Materials
 
