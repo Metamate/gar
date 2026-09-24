@@ -185,9 +185,14 @@ controversial:
 > "Friends don't let friends create singletons."
 > — Robert Nystrom, _Game Programming Patterns_
 
-**Discuss:** our `Art` class and `Core.Input` are static, not singletons. What is the
-difference, and do they have the same problems? We come back to this with the Service
-Locator pattern in [Pokemon](../08-pokemon/).
+In the finished game (`Flappy12`), `Audio` is a Singleton, used as
+`Audio.Instance.PlayFlap()`, while `Art` and `Core.Input` are static. Both give global
+access, but `Audio` is an object: it could implement an interface or be passed to the code
+that needs it.
+
+**Discuss:** do `Audio` and `Art` have the same problems? Which one would be easier to
+replace with a muted version for testing? We come back to this with the Service Locator
+pattern in [Pokemon](../08-pokemon/).
 
 ## Exercises
 
@@ -213,7 +218,7 @@ Locator pattern in [Pokemon](../08-pokemon/).
     state get the score?
 11. **Countdown:** add a `CountdownState` between title/score and play.
 12. **Audio:** add background music (`Song` + `MediaPlayer.Play`) and flap, hurt and score
-    sounds, organized in an `Audio` class.
+    sounds, organized in an `Audio` class made a Singleton (`Audio.Instance.PlayFlap()`).
 
 ## Check Yourself
 

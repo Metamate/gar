@@ -57,10 +57,6 @@ patterns.
 
 ## Slide & Code TODOs
 
-- **01 Pong:** update the slides to cover the Update Method pattern properly (Encapsulation
-  exercise), plus fixed vs. variable timestep and double buffering (now on the site).
-- **02 Flappy:** update the implementation to contain a Singleton example, and use it to
-  contrast static classes vs. Singleton (`Art`, `Core.Input`).
 - **05 Mario:** the `GameController` is deliberately _not_ the Command pattern; keep the
   discussion slide.
 - **08 Pokemon:** add a save/load exercise to the repo (party + position to JSON).
