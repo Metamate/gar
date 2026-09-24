@@ -11,6 +11,12 @@ This session is being written. The plan for it is below.
 
 **Main topic:** Performance: the same genre built data-first
 
+**Prepare:**
+
+- [Data Locality](https://gameprogrammingpatterns.com/data-locality.html)
+- [Spatial Partition](https://gameprogrammingpatterns.com/spatial-partition.html)
+- [Data-Oriented Design](https://www.youtube.com/watch?v=WwkuAqObplU) (video)
+
 - Data-oriented design: thousands of enemies in arrays, compared with Geometry Wars' components
 - Spatial partitioning
 - Profiling

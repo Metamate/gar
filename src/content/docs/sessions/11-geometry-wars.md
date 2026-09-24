@@ -1,6 +1,6 @@
 ---
 title: 11 Geometry Wars
-description: A top-down shooter with thousands of entities. The Component pattern, data-oriented design, object pooling, flyweights, spatial partitioning and profiling.
+description: A top-down shooter with thousands of entities. Components vs. systems, dependency injection, object pooling and flyweights.
 sidebar:
   order: 11
 ---
@@ -9,16 +9,15 @@ sidebar:
 
 Make a **top-down shooter**.
 
-Geometry Wars puts thousands of entities on screen at 60 FPS. Naive OOP breaks down here:
-deep inheritance, garbage collector churn and cache misses. Every pattern today solves a
-real bottleneck:
+Geometry Wars puts thousands of entities on screen: the player, enemies, bullets,
+particles and a warping grid. Its entities are built from components, as in
+[Plants vs. Zombies](../09-plants-vs-zombies/), but at this size a new question matters:
+**which behaviour belongs in a component, and which in a system?** Along the way:
 
-- Component pattern
-- Data-oriented design
+- Dependency injection, compared with the Service Locator
 - Object Pool
 - Flyweight
-- Spatial partitioning
-- Profiling
+- Particles as a system
 
 **Source code:** [Metamate/gmd2-geometrywars](https://github.com/Metamate/gmd2-geometrywars)
 (walkthrough in the README)
@@ -41,12 +40,10 @@ introduces it.
 
 ## Prepare
 
-- [Component](https://gameprogrammingpatterns.com/component.html)
-- [Data Locality](https://gameprogrammingpatterns.com/data-locality.html)
+- [Component](https://gameprogrammingpatterns.com/component.html) (review from Plants vs. Zombies)
+- [Dependency injection in .NET](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) (the idea; we do it by hand)
 - [Object Pool](https://gameprogrammingpatterns.com/object-pool.html)
 - [Flyweight](https://gameprogrammingpatterns.com/flyweight.html)
-- [Spatial Partition](https://gameprogrammingpatterns.com/spatial-partition.html)
-- [Data-Oriented Design](https://www.youtube.com/watch?v=WwkuAqObplU) (video)
 
 ## Explore the Codebase
 
@@ -75,92 +72,92 @@ flowchart LR
 - **Components** implement the actual behaviour.
 - **Systems** handle concerns that cut across components.
 
-## Component Pattern
+## Components at Scale
 
 _Step `GeometryWars0` onwards_
 
-**The problem.** Inheritance seems natural: `Enemy → ShootingEnemy →
-HomingShootingEnemy…`. But each new combination of behaviours grows the hierarchy. Want a
-homing enemy that also explodes? Copy-paste the homing code. You end up with fragile base
-classes and dead code everywhere.
+Every entity is a bag of components, composed in one place, `EntityFactory`. There is no
+class per enemy type: an enemy is an entity with the components it needs. Each component
+represents one clear capability, such as `Health`, `FaceVelocity`, `ApplyMovementInput` or
+`TakeDamageOnBulletCollision`.
 
-**The solution.** An entity is just an ID plus a bag of components. Each component holds
-data and a small slice of behaviour (`Transform`, `Sprite`, `Collider`, `Health`,
-`Weapon`…). A homing, exploding enemy is simply an entity with `Homing` and `Explode`
-components.
+In the codebase: `GMDCore/ECS/Entity.cs`, `GMDCore/ECS/Components/Component.cs`,
+`Systems/EntityFactory.cs`.
 
-```csharp
-public class Entity
-{
-    public int Id;
-    public List<Component> Components = [];
-}
+## Components vs. Systems
 
-public abstract class Component { public Entity Owner; }
+_Steps `GeometryWars0` → `GeometryWars4`_
 
-public class Transform : Component { public Vector2 Position; public float Rotation, Scale; }
-public class Sprite : Component { public Texture2D Texture; public Color Tint; }
-public class Health : Component { public int HP; }
+Not all behaviour fits in a component. A component is about **its owner**: its own state,
+and what happens to it. But some rules span **many entities** or the **whole run**: which
+pairs of entities collide, when the next enemies spawn, what happens to the arena when the
+player dies. Putting those in a component means one entity reaching into all the others.
+They belong in **systems**.
 
-// Spawn a grunt enemy: no new class needed
-var grunt = new Entity();
-grunt.Components.Add(new Transform { Position = spawnPoint });
-grunt.Components.Add(new Sprite { Texture = gruntTexture });
-grunt.Components.Add(new Health { HP = 1 });
-```
+A rule of thumb from the codebase:
 
-**Favour composition over inheritance**, and keep each component to a single
-responsibility so it can be reused.
+| Use a component when the logic… | Use a system when the logic… |
+| --- | --- |
+| is mostly about its owner and its own state | touches many entities |
+| can be reused on other entities | owns game or session rules |
+| | needs a central order, or processes entities in bulk |
+| `Health`, `Weapon`, `FaceVelocity`, `SeekTarget` | `CollisionSystem`, `EnemyDirector`, `BulletSpawner`, `PlaySession` |
 
-In the codebase: `Component.cs`, `Entity.cs`, `EntityFactory.cs`.
+For example, `BeginRespawnOnLethalCollision` is a component: it only decides when _its_
+player has taken a lethal hit. `PlaySession` handles the consequences for the whole arena
+(clearing enemies, resetting spawning), because those are rules of the run, not of the
+player.
+
+The **particles** (`GeometryWars3`) are the extreme case. Thousands of short-lived sparks
+aren't entities with components at all: one `ParticleManager` system owns all of them and
+updates them in bulk. That's a step towards data-oriented design, which
+[Vampire Survivors](../12-vampire-survivors/) takes all the way.
 
 :::note[ECS]
-Taken further, this becomes an **Entity Component System**. Entities are only IDs,
-components are pure data, and all behaviour lives in systems that process every entity
-with a given set of components. Unity DOTS and Bevy work like this.
+Taken to the end, this becomes an **Entity Component System**: entities are only IDs,
+components are pure data, and all behaviour lives in systems. Geometry Wars is a hybrid:
+components may contain behaviour, as long as it is local to one entity.
 :::
 
-## Data-Oriented Design
+## Dependency Injection
 
-_Steps `GeometryWars3` (particles) and `GeometryWars4` (grid)_
+_Step `GeometryWars0` onwards_
 
-Think in data, not objects. OOP asks _"what is a bullet?"_; DOD asks _"how does bullet
-data flow?"_
+Components need shared services: the input, the assets, the audio, the frame time.
+[Pokemon](../10-pokemon/#service-locator) found them through a Service Locator. Geometry
+Wars **passes them in**: `Game1` creates the services once, bundles them in a
+`PlayContext`, and hands it to the code that builds and runs gameplay.
 
-- **Array of Structs (AoS):** `Bullet[]`, where each bullet holds all its fields.
-- **Struct of Arrays (SoA):** separate arrays for positions, velocities, lifetimes…
-
-### Memory layout matters
-
-- L1 cache hit: about 1 ns. Main memory: about 100 ns, a 100× penalty.
-- The CPU fetches 64 bytes (one _cache line_) at a time.
-- With AoS, updating positions drags sprites, tags and pointers through the cache too.
-- With SoA, the loop only reads the data it needs, packed tightly together.
-
-```csharp
-public class BulletSystem
+```csharp title="PlayContext.cs"
+public sealed class PlayContext
 {
-    const int Max = 10_000;
-    public Vector2[] Position = new Vector2[Max];
-    public Vector2[] Velocity = new Vector2[Max];
-    public float[] Lifetime = new float[Max];
-    public bool[] Active = new bool[Max];
-    int _count;
+    public FrameInfo Frame { get; }
+    public GameController Controller { get; }
+    public GameAssets Assets { get; }
+    public AudioManager Audio { get; }
+    public PerformanceMonitor Performance { get; }
 
-    public void Update(float dt)
+    public PlayContext(FrameInfo frame, GameController controller, GameAssets assets,
+        AudioManager audio, PerformanceMonitor performance)
     {
-        for (int i = 0; i < _count; i++)
-        {
-            if (!Active[i]) continue;
-            Position[i] += Velocity[i] * dt;
-            Lifetime[i] -= dt;
-            if (Lifetime[i] <= 0) Active[i] = false;
-        }
+        // ...
     }
 }
 ```
 
-In the codebase: `Grid.cs`, `ParticleManager.cs`.
+- **Explicit:** a constructor shows exactly what a class depends on.
+- **Testable:** a test can pass in a fake audio service.
+- **The cost:** everything that needs a service must be given it, so the context is passed
+  through several layers.
+
+Three ways to reach a shared service, each seen in this course:
+
+| | Singleton ([Flappy Bird](../02-flappy-bird/)) | Service Locator ([Pokemon](../10-pokemon/)) | Dependency injection (here) |
+| --- | --- | --- | --- |
+| How code gets it | `Audio.Instance` | `Locator.Audio` | passed in |
+| Depends on | one concrete class | an interface | whatever is passed |
+| Dependencies visible? | no | no | yes, in the constructor |
+| Easy to replace? | no | yes, at runtime | yes, when constructing |
 
 ## Object Pool
 
@@ -237,32 +234,6 @@ public struct EnemyInstance
 
 In the codebase: `GameAssets.cs`, `GameplayDefinitions.cs`.
 
-## Spatial Partitioning
-
-_Not in the code yet: this is exercise 3._
-
-Collision between all pairs of `n` entities costs `n × (n − 1) / 2` checks: about 4.5
-million per frame for 3,000 entities. A **broad phase** reduces this by only testing
-entities that are near each other.
-
-A **uniform grid** (spatial hash) is the simplest option: divide the world into cells,
-insert each entity into the cell(s) it overlaps each frame, and only test entities that
-share a cell. Quadtrees and bounding volume hierarchies adapt better to uneven
-distributions, at the cost of more complexity.
-
-## Profiling
-
-_Step `GeometryWars0` onwards: press `F3` in the game for FPS, memory and entity count._
-
-Don't guess, measure. A few tools, from simple to thorough:
-
-- **Stopwatch:** time a block of code with `System.Diagnostics.Stopwatch`.
-- **Allocations and GCs:** `GC.GetAllocatedBytesForCurrentThread()` and
-  `GC.CollectionCount(0)` before and after a frame.
-- **Frame time overlay:** draw the frame time (in ms, not FPS) on screen.
-- **Profilers:** the Visual Studio / Rider profilers, or `dotnet-counters` and
-  `dotnet-trace`, show where time and allocations actually go.
-
 ## Shaders (Showcase)
 
 _Step `GeometryWars5`_
@@ -278,14 +249,14 @@ isn't required for your project.
 
 ## Summary
 
-| Concern | Pattern |
+| Concern | Answer |
 | --- | --- |
-| What an entity _is_ | Component |
-| How entities live in memory | Data-oriented design |
+| What an entity _is_ | Components |
+| Where behaviour across entities lives | Systems |
+| How code gets shared services | Dependency injection |
 | When entities are allocated | Object Pool |
 | What entities share | Flyweight |
-| Which entities are tested against each other | Spatial partitioning |
-| How entities look | Shaders |
+| How entities look | Shaders (demo) |
 
 ## Exercises
 
@@ -294,25 +265,42 @@ Start from `GeometryWars6`.
 1. **Composition:** create a new enemy type purely by combining existing components in
    `EntityFactory`. Then add one new component (e.g. a shield that absorbs one hit) and
    give it to an existing enemy.
-2. **Measure pooling:** add an on-screen counter of allocated bytes and gen-0 GCs per
-   second. Temporarily replace the bullet pool with `new` and compare.
-3. **Spatial grid:** implement a uniform grid broad phase for bullet-vs-enemy collisions.
-   Measure the collision time before and after with a `Stopwatch` at high entity counts.
+2. **Component or system?** Add a bomb (one per life, on a key) that destroys every enemy
+   on screen. Which parts are components, and which belong in a system? Where does "one
+   per life" live?
+3. **Dependency injection:** add a screen-shake service to `PlayContext`, and shake the
+   screen when the player dies. Which classes had to change? What would change with a
+   Service Locator instead?
+4. **Measure pooling:** add an on-screen counter of allocated bytes and gen-0 GCs per
+   second (`F3` already shows the memory). Temporarily replace the bullet pool with `new`
+   and compare.
 
 ## Apply It to Your Project
 
-- Does your game have an inheritance hierarchy that is starting to hurt? Which behaviours
-  could become components?
+- Which of your game's rules are about one entity, and which span many? Where do they
+  live today?
+- How do your classes get shared services (audio, assets, input)? Would passing them in
+  make the dependencies clearer?
 - Does anything in your game allocate every frame?
 - Which data is shared between many instances, and which is unique?
 
 ## Check Yourself
 
 <details>
-<summary>Why does SoA perform better than AoS for bulk updates?</summary>
+<summary>When should behaviour live in a system rather than a component?</summary>
 
-The loop only reads the fields it uses, packed together in memory, so every cache line
-fetched is full of useful data.
+When it spans many entities, owns rules of the whole game or session, or needs a central
+order. A component should be about its owner; otherwise it ends up reaching into other
+entities.
+
+</details>
+
+<details>
+<summary>What does dependency injection give you that a Service Locator doesn't?</summary>
+
+The dependencies are explicit: a constructor shows what a class needs, and a test can pass
+in a replacement. The cost is that services must be passed through every layer that needs
+them.
 
 </details>
 
@@ -325,5 +313,5 @@ between many instances to avoid duplicating it.
 </details>
 
 Related exam questions: [1](../../exam/#1-game-loop--update-method),
-[7](../../exam/#7-tilemaps-collision-detection--procedural-generation),
+[3](../../exam/#3-singleton--service-locator),
 [9](../../exam/#9-components-memory--performance).
