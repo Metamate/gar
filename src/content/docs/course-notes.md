@@ -62,8 +62,10 @@ patterns.
 - **Keep exercises unsolved:** Pokemon save/load (exercise 4), the Geometry Wars
   allocation counter (exercise 2) and spatial grid (exercise 3) stay out of the repos, so the
   finished games don't give away the answers. Shaders in Geometry Wars are a showcase only.
-- Make "Tilemap" more generic early on. In the platformer and Zelda it contains a lot of
-  game-specific decisions.
+- **Tilemap:** GMDCore's `Tile` is a graphic ID plus `IsSolid`, and `Tilemap` has a
+  `Position`. Game-specific layers (the Platformer's toppers, Pokemon's tall grass) are
+  separate tilemaps drawn on top. Snake and Pokemon still have their own simpler tilemaps
+  (int IDs); worth aligning if GMDCore is ever shared between repos.
 
 ## General Notes
 

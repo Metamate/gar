@@ -70,17 +70,18 @@ Our tilemap is getting smarter. Instead of plain integer ids, it now stores `Til
 that know more than their graphic:
 
 ```csharp
-public readonly struct Tile(int graphicId = -1, int topperId = -1, bool isSolid = false)
+// One cell of a tilemap: which tileset graphic to draw, and whether it blocks movement.
+public readonly struct Tile(int graphicId = -1, bool isSolid = false)
 {
     public static readonly Tile Empty = new();
 
     public int GraphicId { get; init; } = graphicId;
-    public int TopperId { get; init; } = topperId;
     public bool IsSolid { get; init; } = isSolid;
-    public bool HasTopper => TopperId >= 0;
+    public bool IsEmpty => GraphicId < 0;
 }
 ```
 
+`Tile` and `Tilemap` live in GMDCore, so they only hold what any tile-based game needs.
 Because the graphics are separate from the level's structure, the same level can be drawn
 with any of the 60 tilesets in `tiles.png` (press `R`).
 
@@ -93,6 +94,12 @@ base: `SimpleLevelMaker`, `FlatLevelMaker`, `PillarLevelMaker`, `PitLevelMaker`,
 `ComplexLevelMaker` (keys `1`–`5` in this step). The game asks _a_ level maker for a level
 without knowing which algorithm it uses. This is the **Strategy pattern**: a family of
 interchangeable algorithms behind a common interface.
+
+The grass or snow on top of the ground (the _toppers_) is a detail of this game, not of
+tilemaps in general, so it isn't part of `Tile`. Instead, a `GameLevel` has two tilemaps
+of the same size: `Tilemap` for the ground and `Toppers`, drawn on top with its own
+tileset. Layering tilemaps like this is how most tile editors (e.g. Tiled) work, and
+[Pokemon](../08-pokemon/) uses it for its tall grass.
 
 ```mermaid
 classDiagram
