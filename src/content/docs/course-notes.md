@@ -97,8 +97,7 @@ Notes for building it:
 - **Code:** one repository, [gar-games](https://github.com/Metamate/gar-games), with one
   folder per game, numbered by session (`01-pong`, `03-snake`, …). It replaced the separate
   `gmd2-*` repositories (started from a single commit; no imported history). Every game is
-  split into step
-  projects (`Snake0`,
+  split into step projects (`Snake0`,
   `Snake1`, …; one per exercise for Pong and Flappy, one per concept for the rest), with
   the finished game as the last step. Steps share one final `GMDCore`, and the README has
   a table of steps. The site page and the deck name the step for each topic.
