@@ -25,8 +25,9 @@ systems you expect to need (e.g. scenes, tilemap, enemies with AI, UI, save data
 
 Spend 15 minutes setting up the repository:
 
-- Create the project from a copy of the empty `Pong0` project and the `Content` builder
-  (reuse GMDCore if you like).
+- Create the repository from the [gmd2-starter](https://github.com/Metamate/gmd2-starter)
+  template (**Use this template** on GitHub): an empty game set up with the content
+  builder. Its README shows how to rename it and add GMDCore if you want to reuse it.
 - Add a `.gitignore` for .NET (`bin/`, `obj/`, `.vs/`, …).
 - Create a GitHub remote and add your group members as collaborators.
 - Upload the repository link to itslearning.

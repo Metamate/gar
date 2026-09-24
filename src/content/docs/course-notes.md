@@ -30,19 +30,29 @@ patterns.
 - **Slides:** edited decks live in `slides/` (version controlled), named by session number.
   A deck moves there from `in-progress/slides-ppt/` (the untouched originals, not in git)
   the first time it is edited.
-- **Code:** the `gmd2-*` repos. Every game should follow the Pong/Flappy layout: one project
-  per step (`Snake0`, `Snake1`, …), each with its own `Content`, all sharing one final
-  `GMDCore`, and a README table of steps. The site page and the deck name the step for
-  each topic.
-- **Steps:** every game repo is split into step projects (one per exercise for Pong and Flappy, one per concept for the rest), with the finished game as the last step.
+- **No deck for 07:** the old Project Work session only exists as a PDF
+  (`in-progress/slides/07 Project Work.pdf`). The site's Project Checkpoint page replaces
+  it; its value vs. reference types slides are dropped (assumed prior knowledge).
+- **Code:** the `gmd2-*` repos. Every repo is split into step projects (`Snake0`,
+  `Snake1`, …; one per exercise for Pong and Flappy, one per concept for the rest), with
+  the finished game as the last step. Steps share one final `GMDCore`, and the README has
+  a table of steps. The site page and the deck name the step for each topic.
 - **Content pipeline:** all repos use the MonoGame 3.8.5 content builder (C# build rules in
-  `Content/Builder/Builder.cs`, no `.mgcb`) and target .NET 10. `Content/BuildContent.targets`
-  is identical in every repo; Pong and Flappy steps set `ContentAssets` to their own `Assets`
-  folder, the other repos share `Content/Assets`.
+  `Content/Builder/Builder.cs`, no `.mgcb`) and target .NET 10. `Content/Content.csproj`
+  and `Content/BuildContent.targets` are identical in every repo. The targets file restores
+  and runs the builder, copies the output, and makes asset changes trigger a rebuild. Pong
+  and Flappy steps set `ContentAssets` to their own `Assets` folder; the other repos share
+  `Content/Assets`.
+- **Project files:** keep every `.csproj` to the essentials (output type, framework,
+  `MonoGamePlatform`, package/project references, the content import). No icons, app
+  manifests or publish settings; publish options go on the `dotnet publish` command line.
 - **Starting a new project:** MonoGame's `dotnet new` templates (3.8.5.1) still create MGCB
-  projects, so students start from a copy of `Pong0` plus the `Content` folder (Pong page,
-  Flappy exercise 2, project kick-off). Revisit when MonoGame ships its new Empty template
-  (MonoGame/MonoGame.EmptyGame.CSharp), or consider a small starter repo of our own.
+  projects, so students start from our own template repo,
+  [gmd2-starter](https://github.com/Metamate/gmd2-starter) (Flappy exercise 2, project
+  kick-off): one empty `MyGame` project plus the `Content` builder, with general rules for
+  images, fonts, sounds, music and JSON/XML. Keep its `Content.csproj` and
+  `BuildContent.targets` identical to the course repos. Revisit when MonoGame ships its new
+  Empty template (MonoGame/MonoGame.EmptyGame.CSharp).
 
 ## Slide & Code TODOs
 
@@ -50,11 +60,8 @@ patterns.
   exercise), plus fixed vs. variable timestep and double buffering (now on the site).
 - **02 Flappy:** update the implementation to contain a Singleton example, and use it to
   contrast static classes vs. Singleton (`Art`, `Core.Input`).
-- **03 Snake:** done. Split into `Snake0`–`Snake8` (`steps` branch in `gmd2-snake`, not yet
-  pushed); site page and `slides/03 Snake.pptx` updated to match.
 - **05 Mario:** the `GameController` is deliberately _not_ the Command pattern; keep the
   discussion slide.
-- **07 Project Work slides:** drop the value vs. reference types slides (assumed prior knowledge).
 - **08 Pokemon:** add a save/load exercise to the repo (party + position to JSON).
 - **09 Geometry Wars:** add a spatial grid broad phase (or leave as exercise), and an
   allocation/GC counter overlay for the profiling exercise. Shaders are now a showcase only.
