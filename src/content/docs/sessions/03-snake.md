@@ -49,7 +49,7 @@ that introduces it. Compare neighbouring steps to see exactly what changed.
 ## Content
 
 Snake uses the same [content builder](../01-pong/#content-pipeline) as Pong and Flappy Bird,
-but here all steps share one assets folder, `Content/Assets`. Its rules build the images into
+with all steps sharing one assets folder, `Content/Assets`. Its rules build the images into
 textures and copy our own XML definitions as they are, because our code reads those itself:
 
 ```csharp title="Builder.cs"

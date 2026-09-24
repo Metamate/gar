@@ -40,9 +40,10 @@ patterns.
 - **Content pipeline:** all repos use the MonoGame 3.8.5 content builder (C# build rules in
   `Content/Builder/Builder.cs`, no `.mgcb`) and target .NET 10. `Content/Content.csproj`
   and `Content/BuildContent.targets` are identical in every repo. The targets file restores
-  and runs the builder, copies the output, and makes asset changes trigger a rebuild. Pong
-  and Flappy steps set `ContentAssets` to their own `Assets` folder; the other repos share
-  `Content/Assets`.
+  and runs the builder, copies the output, and makes asset changes trigger a rebuild. In
+  every repo, all steps share one `Content/Assets` folder; a step's `Content.Load` calls
+  show which assets it uses. Where an asset changes between steps, keep both versions and
+  swap them in code (Pong: `arial` → `font` in `Pong3`).
 - **Project files:** keep every `.csproj` to the essentials (output type, framework,
   `MonoGamePlatform`, package/project references, the content import). No icons, app
   manifests or publish settings; publish options go on the `dotnet publish` command line.

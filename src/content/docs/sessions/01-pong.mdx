@@ -135,9 +135,9 @@ public class Builder : ContentBuilder
 ```
 
 Each game project imports `Content/BuildContent.targets`, which runs the builder before
-compiling. To add an asset, put it in the project's `Assets` folder; if no rule matches it,
-add one. In Pong, every step has its own `Assets` folder, because the assets change as the
-game grows. See
+compiling. To add an asset, put it in `Content/Assets`; if no rule matches it, add one. All
+Pong steps share that folder: step 3 swaps the default `arial` font for the retro `font`
+in code. See
 [Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html).
 
 ## Drawing to the Screen
