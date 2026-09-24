@@ -59,9 +59,9 @@ patterns.
 
 - **05 Mario:** the `GameController` is deliberately _not_ the Command pattern; keep the
   discussion slide.
-- **08 Pokemon:** add a save/load exercise to the repo (party + position to JSON).
-- **09 Geometry Wars:** add a spatial grid broad phase (or leave as exercise), and an
-  allocation/GC counter overlay for the profiling exercise. Shaders are now a showcase only.
+- **Keep exercises unsolved:** Pokemon save/load (exercise 4), the Geometry Wars
+  allocation counter (exercise 2) and spatial grid (exercise 3) stay out of the repos, so the
+  finished games don't give away the answers. Shaders in Geometry Wars are a showcase only.
 - Make "Tilemap" more generic early on. In the platformer and Zelda it contains a lot of
   game-specific decisions.
 
