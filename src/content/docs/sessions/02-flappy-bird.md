@@ -102,8 +102,15 @@ Pairs that scroll off-screen are flagged and removed.
 ## Input: InputManager
 
 The "was just pressed" check from Pong moves into GMDCore as a `KeyboardInfo` class
-(`IsKeyDown`, `IsKeyUp`, `WasKeyJustPressed`, `WasKeyJustReleased`), wrapped by an
-`InputManager` that `Core` updates every frame.
+(`IsKeyDown`, `IsKeyUp`, `WasKeyJustPressed`, `WasKeyJustReleased`). A `MouseInfo` class does
+the same for the mouse (`IsLeftButtonDown`, `WasLeftButtonJustPressed`, `Position`). Both are
+wrapped by an `InputManager` that `Core` updates every frame, so any code can ask
+`Core.Input.Keyboard` or `Core.Input.Mouse`. The bird flaps on Space _or_ a left click.
+
+Note that the mouse position is in **window** coordinates. Because the game is drawn at a
+virtual resolution and scaled to the window, a click at the window's centre is not at
+(256, 144) in the game unless you convert it. We don't need positions for Flappy Bird, but
+this difference between coordinate spaces comes back in several later games.
 
 ## State Machines
 
@@ -206,8 +213,8 @@ pattern in [Pokemon](../10-pokemon/).
    your `Assets` folder, and scroll them at different speeds (looping points: background 413,
    ground 512).
 4. **Bird & assets:** add a `Bird` class and a static `Art` class for asset references.
-5. **Gravity & flap:** add gravity. Add `KeyboardInfo` and `InputManager` to GMDCore, and
-   flap on `WasKeyJustPressed(Keys.Space)`.
+5. **Gravity & flap:** add gravity. Add `KeyboardInfo`, `MouseInfo` and `InputManager` to
+   GMDCore, and flap on `WasKeyJustPressed(Keys.Space)` or `WasLeftButtonJustPressed`.
 6. **Infinite pipes:** spawn pipes on a timer at random heights.
 7. **Pipe pairs:** wrap pipes in a `PipePair` with a gap. Vary the gap height smoothly and
    remove pairs that leave the screen.
