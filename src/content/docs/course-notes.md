@@ -27,8 +27,8 @@ the [schedule](../schedule/)). The course project is done in the students' own t
 guidance. The official [syllabus](../syllabus/) stays as it is. The last lesson of session
 12 walks through the [course recap](../recap/).
 
-Session pages for the new games that aren't written yet (Plants vs. Zombies, Vampire
-Survivors) are placeholders marked "In development" until their games exist.
+The session page for the one game that isn't written yet (Vampire Survivors) is a
+placeholder, marked "In development" until its game exists.
 
 | # | Game | Main topic | Supporting |
 | --- | --- | --- | --- |
