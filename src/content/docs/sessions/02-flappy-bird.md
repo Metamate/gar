@@ -163,9 +163,9 @@ to the state machine. `Enter()` and `Exit()` give each state a place to set up a
 (for example, `PlayState.Enter()` resets the bird, pipes and score so every retry starts
 clean).
 
-This is a _game-level_ state machine. In [Super Mario Bros](../06-super-mario-bros/) we
-apply the same idea to entities (the State pattern), and in [Pokemon](../10-pokemon/) we
-stack states on top of each other.
+This is a _game-level_ state machine. In [Pac-Man](../05-pac-man/) we apply the same idea
+to objects in the game (the State pattern), and in [Pokemon](../10-pokemon/) we stack
+states on top of each other.
 
 ## Singleton Pattern
 

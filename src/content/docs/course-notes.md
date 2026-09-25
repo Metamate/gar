@@ -27,8 +27,8 @@ the [schedule](../schedule/)). The course project is done in the students' own t
 guidance. The official [syllabus](../syllabus/) stays as it is. The last lesson of session
 12 walks through the [course recap](../recap/).
 
-Session pages for the new games that aren't written yet (Pac-Man, Angry Birds, Plants vs.
-Zombies, Vampire Survivors) are placeholders marked "In development" until their games exist.
+Session pages for the new games that aren't written yet (Angry Birds, Plants vs. Zombies,
+Vampire Survivors) are placeholders marked "In development" until their games exist.
 
 | # | Game | Main topic | Supporting |
 | --- | --- | --- | --- |
@@ -36,7 +36,7 @@ Zombies, Vampire Survivors) are placeholders marked "In development" until their
 | 2 | Flappy Bird | Organizing a growing game | class library, game states, textures & parallax, procedural generation, Singleton, keyboard & mouse input |
 | 3 | Snake | Assets as data | atlases, sprites & animation, fixed-tick movement (the timestep in practice), input as actions & buffering |
 | 4 | Sokoban (new) | Command pattern (undo/redo) | levels as text files, rules separated from rendering (tested with xUnit) |
-| 5 | Pac-Man (new) | State pattern | Strategy (per-ghost targeting), State vs. Strategy |
+| 5 | Pac-Man (new) | State pattern | Strategy (per-ghost targeting), State vs. Strategy, targeting tests |
 | 6 | Super Mario Bros | Physics & tile collision | camera, debug drawing, level makers (Strategy again) |
 | 7 | Angry Birds (new) | Integrating a third-party library (Adapter/Facade) | physics world vs. game world, contact events & safe destruction, Prototype (prefabs) |
 | 8 | The Legend of Zelda | Composition vs. inheritance | Observer & events, hitboxes, tweening |
