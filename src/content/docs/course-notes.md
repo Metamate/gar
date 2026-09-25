@@ -86,6 +86,14 @@ Notes for building it:
 - **Exam pool:** add Prototype and Adapter; split question 9 between Geometry Wars
   (components vs. systems) and Vampire Survivors (performance). The "Covered in" lines
   already point at the new sessions.
+- **Testing thread:** unit testing is introduced from scratch in Sokoban (students meet
+  testing in another course the same semester, but not concretely). After that, tests only
+  appear where they show off the session's topic, never as a test project in every game:
+  Pac-Man (each ghost strategy tested on its own), Pokemon (a save/load round-trip test,
+  part of the unsolved save/load exercise), Geometry Wars (`GeometryWars.Tests`: fakes
+  passed in through DI) and Vampire Survivors (the spatial grid checked against brute
+  force). Mario, Angry Birds, Zelda and Plants vs. Zombies have none. In the project, tests
+  are recommended at the self-review, not required (the syllabus doesn't mention testing).
 - **Sokoban vs. Snake:** Sokoban is the textbook Command/undo game. Snake's continuous
   movement makes undo pointless (replay works instead).
 

@@ -81,6 +81,9 @@ group:
 - Do gameplay classes read the keyboard directly?
 - Which classes know about each other that shouldn't need to?
 - Which values are hardcoded that should be data?
+- Which rules could be tested without starting the game? A few unit tests for your core
+  rules, set up like `Sokoban.Tests` in [Sokoban](../sessions/04-sokoban/#unit-tests), are
+  recommended: they make the refactoring below safer.
 
 Pick at least one issue and fix it. In your commit message, describe the design problem
 and how the change solves it. This makes good material to talk about at the exam.

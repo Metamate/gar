@@ -52,6 +52,11 @@ answer.
 - **Dependencies:** Singleton ([02](../sessions/02-flappy-bird/)) → Service Locator
   ([10](../sessions/10-pokemon/)) → dependency injection ([11](../sessions/11-geometry-wars/)).
   Exam [3](../exam/#3-singleton--service-locator).
+- **Testing:** rules apart from drawing, and unit tests ([04](../sessions/04-sokoban/)) →
+  ghost strategies tested one by one ([05](../sessions/05-pac-man/)) → a save/load
+  round trip ([10](../sessions/10-pokemon/)) → fakes passed in through dependency injection
+  ([11](../sessions/11-geometry-wars/)) → the fast spatial grid checked against the slow,
+  obvious search ([12](../sessions/12-vampire-survivors/)).
 - **Collision:** AABB ([01](../sessions/01-pong/)) → grid lookups ([04](../sessions/04-sokoban/))
   → tile collision ([06](../sessions/06-super-mario-bros/)) → a physics library
   ([07](../sessions/07-angry-birds/)) → hitboxes ([08](../sessions/08-the-legend-of-zelda/)) →

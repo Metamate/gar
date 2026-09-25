@@ -14,7 +14,7 @@ particles and a warping grid. Its entities are built from components, as in
 [Plants vs. Zombies](../09-plants-vs-zombies/), but at this size a new question matters:
 **which behaviour belongs in a component, and which in a system?** Along the way:
 
-- Dependency injection, compared with the Service Locator
+- Dependency injection, compared with the Service Locator, and testing with fakes
 - Object Pool
 - Flyweight
 - Particles as a system
@@ -37,6 +37,7 @@ introduces it.
 | `GeometryWars4` | The spring grid and black holes |
 | `GeometryWars5` | Bloom |
 | `GeometryWars6` | Audio (the finished game) |
+| `GeometryWars.Tests` | Unit tests that pass in fake services |
 
 ## Prepare
 
@@ -146,7 +147,7 @@ public sealed class PlayContext
 ```
 
 - **Explicit:** a constructor shows exactly what a class depends on.
-- **Testable:** a test can pass in a fake audio service.
+- **Testable:** a test can pass in its own services, including fakes (see below).
 - **The cost:** everything that needs a service must be given it, so the context is passed
   through several layers.
 
@@ -158,6 +159,56 @@ Three ways to reach a shared service, each seen in this course:
 | Depends on | one concrete class | an interface | whatever is passed |
 | Dependencies visible? | no | no | yes, in the constructor |
 | Easy to replace? | no | yes, at runtime | yes, when constructing |
+
+### Testing With Fakes
+
+_Project `GeometryWars.Tests`_
+
+In [Sokoban](../04-sokoban/#unit-tests), `Level` needed nothing, so testing it was easy. Most
+code needs something. `AwardScoreOnDestroyed` needs a score tracker, and the real one saves
+a high-score file and belongs to a whole play session. But the component doesn't create it
+or look it up: it gets an `IScoreTracker` in its constructor. So a test can hand it a
+**fake**, a small class that only records what it was asked to do:
+
+```csharp title="FakeScoreTracker.cs"
+public sealed class FakeScoreTracker : IScoreTracker
+{
+    public List<int> PointsAdded { get; } = [];
+    public int MultiplierIncreases { get; private set; }
+
+    public bool IsGameOver => false;
+    public void AddPoints(int basePoints) => PointsAdded.Add(basePoints);
+    public void IncreaseMultiplier() => MultiplierIncreases++;
+    public void RemoveLife() { }
+}
+```
+
+```csharp title="AwardScoreOnDestroyedTests.cs"
+[Fact]
+public void Destroying_the_enemy_awards_its_points()
+{
+    var score = new FakeScoreTracker();
+    var enemy = new Entity();
+    var destroyable = enemy.AddComponent(new Destroyable());
+    enemy.AddComponent(new AwardScoreOnDestroyed(score, 50));
+    enemy.Start();
+
+    destroyable.Destroy();
+
+    Assert.Equal([50], score.PointsAdded);
+    Assert.Equal(1, score.MultiplierIncreases);
+}
+```
+
+One entity, two components, no world, no graphics. The same goes for time: `ScoreTracker`
+gets the frame time through the `FrameInfo` passed into its constructor, so
+`ScoreTrackerTests` decides how much time passes, and checks that the multiplier expires
+without waiting for it.
+
+Compare the other two ways to reach a service. With `Audio.Instance` or
+`Locator.Audio`, the dependency is hidden inside the class. A test can only replace a
+Service Locator's service by changing global state, and a Singleton not at all. With
+dependency injection, the test simply passes something else in.
 
 ## Object Pool
 
@@ -271,7 +322,11 @@ Start from `GeometryWars6`.
 3. **Dependency injection:** add a screen-shake service to `PlayContext`, and shake the
    screen when the player dies. Which classes had to change? What would change with a
    Service Locator instead?
-4. **Measure pooling:** add an on-screen counter of allocated bytes and gen-0 GCs per
+4. **Test with a fake:** `SpawnTwinBulletsOnFired` gets an `IBulletSpawner` in its
+   constructor. Write a `FakeBulletSpawner` and a test that checks that firing the weapon
+   spawns two bullets. What makes this harder to test than the score? (Hint: the spread
+   uses `Random.Shared`.)
+5. **Measure pooling:** add an on-screen counter of allocated bytes and gen-0 GCs per
    second (`F3` already shows the memory). Temporarily replace the bullet pool with `new`
    and compare.
 
@@ -280,7 +335,7 @@ Start from `GeometryWars6`.
 - Which of your game's rules are about one entity, and which span many? Where do they
   live today?
 - How do your classes get shared services (audio, assets, input)? Would passing them in
-  make the dependencies clearer?
+  make the dependencies clearer, and let you test the class with a fake?
 - Does anything in your game allocate every frame?
 - Which data is shared between many instances, and which is unique?
 
@@ -301,6 +356,16 @@ entities.
 The dependencies are explicit: a constructor shows what a class needs, and a test can pass
 in a replacement. The cost is that services must be passed through every layer that needs
 them.
+
+</details>
+
+<details>
+<summary>What is a fake, and why does dependency injection make it easy to use one?</summary>
+
+A small stand-in for a real dependency, written for a test, that records what it was asked
+to do. When a class gets its dependencies through its constructor, the test simply passes
+the fake in. When the class finds them itself (a Singleton or a Service Locator), the fake
+has to replace global state, or can't be used at all.
 
 </details>
 

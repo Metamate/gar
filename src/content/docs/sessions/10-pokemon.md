@@ -163,6 +163,25 @@ SaveData loaded = JsonSerializer.Deserialize<SaveData>(File.ReadAllText(SavePath
 Save _data_, not objects. Store what you need to rebuild the game state (species name,
 level, current HP), not textures or references to other game objects.
 
+Saving is also easy to get subtly wrong: a field you forgot to save only shows up the next
+time someone loads the game. A **round-trip test** catches it: save some data, load it back,
+and check that you got the same values. It's a unit test like the ones in
+[Sokoban](../04-sokoban/#unit-tests), and it needs no window or battle, only the save data:
+
+```csharp
+[Fact]
+public void A_saved_party_loads_back_the_same()
+{
+    var saved = new SaveData([new MonSaveData("Agnite", Level: 5, CurrentHp: 12)], MapX: 3, MapY: 7);
+
+    SaveData loaded = JsonSerializer.Deserialize<SaveData>(JsonSerializer.Serialize(saved));
+
+    Assert.Equal(saved.Party, loaded.Party);
+    Assert.Equal(saved.MapX, loaded.MapX);
+    Assert.Equal(saved.MapY, loaded.MapY);
+}
+```
+
 ## Service Locator
 
 _Steps `Pokemon0` and `Pokemon4`_
@@ -217,7 +236,8 @@ Start from `Pokemon4`.
    - Add a `type` field (Fire/Water/Grass) to the JSON and to `PokemonSpecies`. Make
      attacks take the defender's type into account (super effective / not very effective).
 4. **Save & load:** save the player's party and position to a JSON file (e.g. on a key
-   press), and load it on startup if it exists.
+   press), and load it on startup if it exists. Then add a `Pokemon.Tests` project, set up
+   like `Sokoban.Tests`, with a round-trip test for your save data.
 5. **Pause:** add a `PauseState` using the state stack.
 
 ## Apply It to Your Project

@@ -13,3 +13,4 @@ This session is being written. The plan for it is below.
 
 - Strategy: one targeting rule per ghost
 - State vs. Strategy: similar code, different reasons for change
+- Unit tests for each ghost's targeting rule, one strategy at a time

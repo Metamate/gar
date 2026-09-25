@@ -18,7 +18,7 @@ This session is being written. The plan for it is below.
 - [Data-Oriented Design](https://www.youtube.com/watch?v=WwkuAqObplU) (video)
 
 - Data-oriented design: thousands of enemies in arrays, compared with Geometry Wars' components
-- Spatial partitioning
+- Spatial partitioning, with a test that checks the fast grid against the slow, obvious search
 - Profiling
 
 The last lesson of this session is a [course recap](../../recap/): the patterns and
