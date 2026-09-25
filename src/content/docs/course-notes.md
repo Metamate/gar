@@ -27,8 +27,7 @@ the [schedule](../schedule/)). The course project is done in the students' own t
 guidance. The official [syllabus](../syllabus/) stays as it is. The last lesson of session
 12 walks through the [course recap](../recap/).
 
-The session page for the one game that isn't written yet (Vampire Survivors) is a
-placeholder, marked "In development" until its game exists.
+Every session has its game in gar-games, its page and its deck.
 
 | # | Game | Main topic | Supporting |
 | --- | --- | --- | --- |
@@ -83,9 +82,8 @@ Notes for building it:
   text and slides are in git history, and the Component pattern intro slides too, for the
   new decks). All existing sessions are now reshaped.
 - **GMDCore lineage** follows the new order; new games join it in session order.
-- **Exam pool:** Prototype and Adapter/Facade are sub-questions of 8 and 7 (done); split question 9 between Geometry Wars
-  (components vs. systems) and Vampire Survivors (performance). The "Covered in" lines
-  already point at the new sessions.
+- **Exam pool:** Prototype and Adapter/Facade are sub-questions of 8 and 7 (done); question 9 is split into 9 (components &
+  systems) and 10 (memory & performance), so students draw from 1–10 (done).
 - **Testing thread:** unit testing is introduced from scratch in Sokoban (students meet
   testing in another course the same semester, but not concretely). After that, tests only
   appear where they show off the session's topic, never as a test project in every game:

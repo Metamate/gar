@@ -21,12 +21,12 @@ starting point for exam preparation (see [the project at the exam](../project/#t
 | Adapter & Facade | [07 Angry Birds](../sessions/07-angry-birds/) | | [7](../exam/#7-tilemaps-collision-detection--procedural-generation) |
 | Prototype | [07 Angry Birds](../sessions/07-angry-birds/) | | [8](../exam/#8-data-driven-design--serialization) |
 | Observer | [08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/) | [10 Pokemon](../sessions/10-pokemon/), [11 Geometry Wars](../sessions/11-geometry-wars/) | [5](../exam/#5-observer-pattern-events--ui) |
-| Component | [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | [11 Geometry Wars](../sessions/11-geometry-wars/) | [9](../exam/#9-components-memory--performance) |
+| Component | [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | [11 Geometry Wars](../sessions/11-geometry-wars/) | [9](../exam/#9-components--systems) |
 | Type Object | [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | [10 Pokemon](../sessions/10-pokemon/) | [8](../exam/#8-data-driven-design--serialization) |
 | State stack | [10 Pokemon](../sessions/10-pokemon/) | [11 Geometry Wars](../sessions/11-geometry-wars/) | [2](../exam/#2-state-pattern--state-stack) |
 | Service Locator | [10 Pokemon](../sessions/10-pokemon/) | | [3](../exam/#3-singleton--service-locator) |
-| Object Pool | [11 Geometry Wars](../sessions/11-geometry-wars/) | | [9](../exam/#9-components-memory--performance) |
-| Flyweight | [11 Geometry Wars](../sessions/11-geometry-wars/) | | [9](../exam/#9-components-memory--performance) |
+| Object Pool | [11 Geometry Wars](../sessions/11-geometry-wars/) | | [10](../exam/#10-memory--performance) |
+| Flyweight | [11 Geometry Wars](../sessions/11-geometry-wars/) | | [10](../exam/#10-memory--performance) |
 
 ## Threads Through the Course
 
@@ -48,7 +48,8 @@ answer.
   inheritance ([08](../sessions/08-the-legend-of-zelda/)) → components
   ([09](../sessions/09-plants-vs-zombies/)) → components vs. systems
   ([11](../sessions/11-geometry-wars/)) → data-oriented design
-  ([12](../sessions/12-vampire-survivors/)). Exam [9](../exam/#9-components-memory--performance).
+  ([12](../sessions/12-vampire-survivors/)). Exam [9](../exam/#9-components--systems),
+  [10](../exam/#10-memory--performance).
 - **Dependencies:** Singleton ([02](../sessions/02-flappy-bird/)) → Service Locator
   ([10](../sessions/10-pokemon/)) → dependency injection ([11](../sessions/11-geometry-wars/)).
   Exam [3](../exam/#3-singleton--service-locator).
@@ -69,5 +70,9 @@ answer.
   ([02](../sessions/02-flappy-bird/)) → atlases, sprites & animation
   ([03](../sessions/03-snake/)) → debug drawing ([06](../sessions/06-super-mario-bros/)).
   Exam [6](../exam/#6-sprites-texture-atlases-animation--rendering).
+- **Performance:** the fixed timestep ([01](../sessions/01-pong/)) → Object Pool and
+  Flyweight ([11](../sessions/11-geometry-wars/)) → profiling, spatial partitioning and
+  data-oriented design ([12](../sessions/12-vampire-survivors/)). Exam
+  [10](../exam/#10-memory--performance).
 - **GMDCore:** every game adds to the same core library. Each repository's README lists
   what is new in `GMDCore` since the previous game.

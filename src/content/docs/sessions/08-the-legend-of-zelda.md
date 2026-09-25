@@ -376,4 +376,4 @@ behaviour is split between code and data files.
 
 Related exam questions: [5](../../exam/#5-observer-pattern-events--ui),
 [8](../../exam/#8-data-driven-design--serialization),
-[9](../../exam/#9-components-memory--performance).
+[9](../../exam/#9-components--systems).

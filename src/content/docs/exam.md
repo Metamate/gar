@@ -8,7 +8,7 @@ description: Exam format and the full pool of exam questions.
 Individual oral exam, **20 minutes including grading**, without preparation. See the
 [syllabus](../syllabus/#exam) for the formal description.
 
-1. You draw a number from **1–9**.
+1. You draw a number from **1–10**.
 2. The exam starts with **question 0** (your project), followed by the question you drew.
 3. That gives about **7–8 minutes per question**.
 
@@ -27,7 +27,7 @@ all of them are in [gar-games](https://github.com/Metamate/gar-games), one folde
 - Briefly describe the gameplay and systems in the game.
 - What is the overall architecture?
 - Which design patterns does the project use? Choose one and describe its implementation
-  in detail. It must be a different pattern from the one in the question (1–9) you drew.
+  in detail. It must be a different pattern from the one in the question (1–10) you drew.
 
 ### 1. Game Loop & Update Method
 
@@ -154,16 +154,29 @@ _Covered in: [03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-soko
 5. Explain the Prototype pattern. How can prototypes (prefabs) and data files be used to
    build levels, and what must you watch out for when copying objects?
 
-### 9. Components, Memory & Performance
+### 9. Components & Systems
 
-_Covered in: [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
-[11 Geometry Wars](../sessions/11-geometry-wars/),
-[12 Vampire Survivors](../sessions/12-vampire-survivors/)_
+_Covered in: [08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/),
+[09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
+[11 Geometry Wars](../sessions/11-geometry-wars/)_
 
 1. Explain the Component pattern. What problems with deep inheritance hierarchies does it
    solve, and what does it cost?
-2. Explain the difference between an Array of Structs and a Struct of Arrays. Why can the
+2. How do components of the same entity work together, and how do they find out about other
+   entities?
+3. When should behaviour live in a system rather than in a component? Give an example.
+4. Show a class in your project that does several unrelated things. How could it be split
+   into components, and what would you gain?
+
+### 10. Memory & Performance
+
+_Covered in: [11 Geometry Wars](../sessions/11-geometry-wars/),
+[12 Vampire Survivors](../sessions/12-vampire-survivors/)_
+
+1. Explain the difference between an Array of Structs and a Struct of Arrays. Why can the
    memory layout of game data affect performance?
+2. Explain spatial partitioning. What problem does a uniform grid solve, and when would
+   checking every pair still be the better choice?
 3. Explain the Object Pool and Flyweight patterns. What problem does each solve, and how do
    they differ?
 4. Show a place in your project that would become a bottleneck with many more entities

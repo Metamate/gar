@@ -402,4 +402,4 @@ which of two overlapping objects gets the click.
 </details>
 
 Related exam questions: [8](../../exam/#8-data-driven-design--serialization),
-[9](../../exam/#9-components-memory--performance).
+[9](../../exam/#9-components--systems).

@@ -379,4 +379,5 @@ between many instances to avoid duplicating it.
 
 Related exam questions: [1](../../exam/#1-game-loop--update-method),
 [3](../../exam/#3-singleton--service-locator),
-[9](../../exam/#9-components-memory--performance).
+[9](../../exam/#9-components--systems),
+[10](../../exam/#10-memory--performance).
