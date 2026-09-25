@@ -18,8 +18,8 @@ starting point for exam preparation (see [the project at the exam](../project/#t
 | Command | [04 Sokoban](../sessions/04-sokoban/) | | [4](../exam/#4-command-pattern--input-handling) |
 | State (entities) | [05 Pac-Man](../sessions/05-pac-man/) | [06 Super Mario Bros](../sessions/06-super-mario-bros/), [08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/) | [2](../exam/#2-state-pattern--state-stack) |
 | Strategy | [05 Pac-Man](../sessions/05-pac-man/) | [06 Super Mario Bros](../sessions/06-super-mario-bros/) | |
-| Adapter & Facade | [07 Angry Birds](../sessions/07-angry-birds/) | | |
-| Prototype | [07 Angry Birds](../sessions/07-angry-birds/) | | |
+| Adapter & Facade | [07 Angry Birds](../sessions/07-angry-birds/) | | [7](../exam/#7-tilemaps-collision-detection--procedural-generation) |
+| Prototype | [07 Angry Birds](../sessions/07-angry-birds/) | | [8](../exam/#8-data-driven-design--serialization) |
 | Observer | [08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/) | [10 Pokemon](../sessions/10-pokemon/), [11 Geometry Wars](../sessions/11-geometry-wars/) | [5](../exam/#5-observer-pattern-events--ui) |
 | Component | [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | [11 Geometry Wars](../sessions/11-geometry-wars/) | [9](../exam/#9-components-memory--performance) |
 | Type Object | [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | [10 Pokemon](../sessions/10-pokemon/) | [8](../exam/#8-data-driven-design--serialization) |

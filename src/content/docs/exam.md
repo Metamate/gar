@@ -122,6 +122,7 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-flappy-bird/),
 [04 Sokoban](../sessions/04-sokoban/),
 [06 Super Mario Bros](../sessions/06-super-mario-bros/),
+[07 Angry Birds](../sessions/07-angry-birds/),
 [08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/),
 [12 Vampire Survivors](../sessions/12-vampire-survivors/)_
 
@@ -132,11 +133,13 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 3. How can collision detection be made efficient when there are many entities?
 4. Explain a procedural generation technique you have used or studied (e.g. infinite
    scrolling with obstacles).
+5. How would you bring a physics library into a game without the rest of the code depending
+   on it? Explain the Adapter and Facade patterns, and what problems they solve.
 
 ### 8. Data-Driven Design & Serialization
 
 _Covered in: [03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-sokoban/),
-[09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
+[07 Angry Birds](../sessions/07-angry-birds/), [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
 [10 Pokemon](../sessions/10-pokemon/)_
 
 1. What does it mean for a game to be data-driven? Compare hardcoded gameplay values with
@@ -148,6 +151,8 @@ _Covered in: [03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-soko
 4. Identify a part of your project that is currently hardcoded but would benefit from
    being data-driven. What would the data file look like, and what code would need to
    change?
+5. Explain the Prototype pattern. How can prototypes (prefabs) and data files be used to
+   build levels, and what must you watch out for when copying objects?
 
 ### 9. Components, Memory & Performance
 

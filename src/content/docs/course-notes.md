@@ -27,8 +27,8 @@ the [schedule](../schedule/)). The course project is done in the students' own t
 guidance. The official [syllabus](../syllabus/) stays as it is. The last lesson of session
 12 walks through the [course recap](../recap/).
 
-Session pages for the new games that aren't written yet (Angry Birds, Plants vs. Zombies,
-Vampire Survivors) are placeholders marked "In development" until their games exist.
+Session pages for the new games that aren't written yet (Plants vs. Zombies, Vampire
+Survivors) are placeholders marked "In development" until their games exist.
 
 | # | Game | Main topic | Supporting |
 | --- | --- | --- | --- |
@@ -83,7 +83,7 @@ Notes for building it:
   text and slides are in git history, and the Component pattern intro slides too, for the
   new decks). All existing sessions are now reshaped.
 - **GMDCore lineage** follows the new order; new games join it in session order.
-- **Exam pool:** add Prototype and Adapter; split question 9 between Geometry Wars
+- **Exam pool:** Prototype and Adapter/Facade are sub-questions of 8 and 7 (done); split question 9 between Geometry Wars
   (components vs. systems) and Vampire Survivors (performance). The "Covered in" lines
   already point at the new sessions.
 - **Testing thread:** unit testing is introduced from scratch in Sokoban (students meet
