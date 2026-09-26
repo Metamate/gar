@@ -76,7 +76,8 @@ _Covered in: [02 Flappy Bird](../sessions/02-flappy-bird/),
 ### 4. Command Pattern & Input Handling
 
 _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-flappy-bird/),
-[03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-sokoban/)_
+[03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-sokoban/),
+[06 Super Mario Bros](../sessions/06-super-mario-bros/)_
 
 1. Explain the Command pattern. What is the core idea, and what are its main benefits in a
    game context? How can commands support undo and redo, and what must a command remember
@@ -139,7 +140,8 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 ### 8. Data-Driven Design & Serialization
 
 _Covered in: [03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-sokoban/),
-[07 Angry Birds](../sessions/07-angry-birds/), [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
+[07 Angry Birds](../sessions/07-angry-birds/),
+[08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/), [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
 [10 Pokemon](../sessions/10-pokemon/)_
 
 1. What does it mean for a game to be data-driven? Compare hardcoded gameplay values with

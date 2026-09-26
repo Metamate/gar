@@ -31,6 +31,21 @@ By the end of the session, we will have a game with:
 The code is split into steps, one project per exercise (`Pong0` → `Pong11`), so you can compare
 your solution with each step, and compare neighbouring steps to see exactly what changed.
 
+| Step | Exercise |
+| --- | --- |
+| `Pong0` | New game |
+| `Pong1` | Hello Pong |
+| `Pong2` | Virtual resolution |
+| `Pong3` | Drawing rectangles |
+| `Pong4` | Paddle movement |
+| `Pong5` | Ball movement |
+| `Pong6` | Encapsulation |
+| `Pong7` | Collision detection |
+| `Pong8` | Scoring |
+| `Pong9` | Serve state |
+| `Pong10` | Victory |
+| `Pong11` | Audio |
+
 ## Prepare
 
 - [01: What Is MonoGame?](https://docs.monogame.net/articles/tutorials/building_2d_games/01_what_is_monogame)
@@ -50,8 +65,9 @@ Tooling used in the course:
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
 - VS Code with the C# Dev Kit extension
 - Git
-- The course repositories on GitHub. Each game's code is split into steps, one project per
-  exercise.
+- The course's games, in one repository on GitHub:
+  [gar-games](https://github.com/Metamate/gar-games). Each game's code is split into steps,
+  one project per exercise.
 
 ## Game Loop
 
@@ -260,6 +276,13 @@ Build Pong step by step:
 10. **Victory:** add a _done_ state when a player reaches 10 points.
 11. **Audio:** add distinct sounds for paddle hit, wall hit and score.
 
+## Apply It to Your Project
+
+- Which games would you like to make? Pick two or three candidates for your course project.
+- For each, what updates every frame, and what is drawn? That's its game loop.
+- Could you build a naive prototype of the core idea first, like this Pong, before worrying
+  about architecture?
+
 ## Check Yourself
 
 <details>
@@ -287,5 +310,6 @@ states, and adding a state means editing all of those chains.
 </details>
 
 Related exam questions: [1](../../exam/#1-game-loop--update-method),
+[4](../../exam/#4-command-pattern--input-handling),
 [6](../../exam/#6-sprites-texture-atlases-animation--rendering),
 [7](../../exam/#7-tilemaps-collision-detection--procedural-generation).

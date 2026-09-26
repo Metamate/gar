@@ -21,6 +21,22 @@ interfaces, state machines and the Singleton pattern.
 The code is split into steps, one project per exercise (`Flappy0` → `Flappy12`), so you can compare
 your solution with each step, and compare neighbouring steps to see exactly what changed.
 
+| Step | Exercise |
+| --- | --- |
+| `Flappy0` | Consuming the class library |
+| `Flappy1` | Background |
+| `Flappy2` | Parallax |
+| `Flappy3` | Bird & assets |
+| `Flappy4` | Gravity |
+| `Flappy5` | Flap |
+| `Flappy6` | Infinite pipes |
+| `Flappy7` | Pipe pairs |
+| `Flappy8` | Collisions |
+| `Flappy9` | State machine |
+| `Flappy10` | Scoring |
+| `Flappy11` | Countdown |
+| `Flappy12` | Audio |
+
 ## Prepare
 
 - [04: Creating a Class Library](https://docs.monogame.net/articles/tutorials/building_2d_games/04_creating_a_class_library)
@@ -227,6 +243,14 @@ pattern in [Pokemon](../10-pokemon/).
 12. **Audio:** add background music (`Song` + `MediaPlayer.Play`) and flap, hurt and score
     sounds, organized in an `Audio` class made a Singleton (`Audio.Instance.PlayFlap()`).
 
+## Apply It to Your Project
+
+- Which code in your game could be reused by another game? That belongs in a class library,
+  like GMDCore.
+- Which states does your game have (title, play, pause, game over)? Draw them as a state
+  diagram, with what triggers each transition.
+- Is anything in your game global? Does it need to be?
+
 ## Check Yourself
 
 <details>
@@ -256,4 +280,6 @@ testing and reasoning harder, and the "exactly one instance" guarantee is rarely
 
 Related exam questions: [2](../../exam/#2-state-pattern--state-stack),
 [3](../../exam/#3-singleton--service-locator),
+[4](../../exam/#4-command-pattern--input-handling),
+[6](../../exam/#6-sprites-texture-atlases-animation--rendering),
 [7](../../exam/#7-tilemaps-collision-detection--procedural-generation).

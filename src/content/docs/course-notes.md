@@ -12,8 +12,7 @@ production build. Keep instructor notes here, not on the public pages.
 ## Open Decisions
 
 Decided: the course is English only, and the [Exam](../exam/) page is the authoritative
-question pool (question 9 added for Geometry Wars). Projects must document at least three
-patterns.
+question pool (questions 0–10). Projects must document at least three patterns.
 
 - **CS50 GD50:** the game line-up follows CS50's Introduction to Game Development closely.
   Check its license and credit it where assets or structure are derived from it.
@@ -57,8 +56,8 @@ Threads that run through the plan (the recap page lists them for students):
 - **Pattern pairs:** State vs. Strategy (5), Prototype (7) vs. Type Object (9), Object Pool
   vs. Flyweight (11).
 - **Recurring:** a Mermaid class diagram on every session page, "Apply It to Your Project"
-  in every session, and a refactoring exercise from Sokoban onwards (the UML, analysis and
-  refactoring competences the project sessions used to cover). No references to other
+  in every session, and a design or refactoring exercise in most sessions from Sokoban on
+  (the UML, analysis and refactoring competences the project sessions used to cover). No references to other
   engines: the students haven't met Unity yet.
 
 Notes for building it:
@@ -69,19 +68,12 @@ Notes for building it:
   the step, and a foreign C-style API that makes the Adapter lesson concrete. Keep the Angry
   Birds steps focused on the adapter, syncing and events, not physics tuning. Write a small
   debug renderer for it (or make it an exercise).
-- **Changes to existing sessions:** Command moves from Snake to Sokoban (done: Snake is now
-  `Snake0`–`Snake9`, a real Snake with fixed-tick movement, input as actions and buffering;
-  its room is still drawn from a tilemap, as asset data, while Sokoban uses the grid as game
-  state); mouse input moves into Flappy's
-  `InputManager` (done); debug drawing moves to Mario (done: `DebugDraw` in GMDCore, `F1`
-  from `Platformer2`); State is introduced in Pac-Man and reinforced in Mario (page done); tweening moves from Pokemon to Zelda (done: `Zelda5`'s room shift
-  uses `TweenManager`, which now enters GMDCore with Zelda); data definitions move from
-  Pokemon to Plants vs. Zombies (Pokemon page and deck done); data-oriented design, spatial partitioning and profiling
-  move from Geometry Wars to Vampire Survivors (done: Geometry Wars now teaches components
-  vs. systems and dependency injection; the removed DOD, spatial partitioning and profiling
-  text and slides are in git history, and the Component pattern intro slides too, for the
-  new decks). All existing sessions are now reshaped.
-- **GMDCore lineage** follows the new order; new games join it in session order.
+- **Changes to existing sessions:** all done. Command moved from Snake to Sokoban, mouse
+  input into Flappy's `InputManager`, debug drawing to Mario, State to Pac-Man (reinforced
+  in Mario), tweening from Pokemon to Zelda, data definitions from Pokemon to Plants vs.
+  Zombies, and data-oriented design, spatial partitioning and profiling from Geometry Wars
+  to Vampire Survivors.
+- **GMDCore lineage** follows the session order (see Materials).
 - **Exam pool:** Prototype and Adapter/Facade are sub-questions of 8 and 7 (done); question 9 is split into 9 (components &
   systems) and 10 (memory & performance), so students draw from 1–10 (done).
 - **Testing thread:** unit testing is introduced from scratch in Sokoban (students meet
@@ -107,16 +99,19 @@ Notes for building it:
   `Snake1`, …; one per exercise for Pong and Flappy, one per concept for the rest), with
   the finished game as the last step. Steps share one final `GMDCore`, and the README has
   a table of steps. The site page and the deck name the step for each topic.
-- **Content pipeline:** all repos use the MonoGame 3.8.5 content builder (C# build rules in
+- **Content pipeline:** every game uses the MonoGame 3.8.5 content builder (C# build rules in
   `Content/Builder/Builder.cs`, no `.mgcb`) and target .NET 10. `Content/Content.csproj`
-  and `Content/BuildContent.targets` are identical in every repo. The targets file restores
+  and `Content/BuildContent.targets` are identical in every game. The targets file restores
   and runs the builder, copies the output, and makes asset changes trigger a rebuild. In
-  every repo, all steps share one `Content/Assets` folder; a step's `Content.Load` calls
+  every game, all steps share one `Content/Assets` folder; a step's `Content.Load` calls
   show which assets it uses. Where an asset changes between steps, keep both versions and
   swap them in code (Pong: `arial` → `font` in `Pong3`).
-- **GMDCore lineage:** GMDCore is one library that grows through the course: Flappy →
-  Snake → Platformer → Zelda → Pokemon → Geometry Wars. Each repo's `GMDCore` keeps the
-  previous session's core and adds to it or deliberately changes it; nothing is dropped,
+- **GMDCore lineage:** GMDCore is one library that grows through the course, in session
+  order: Flappy → Snake (Sokoban and Pac-Man unchanged) → Platformer (Angry Birds
+  unchanged) → Zelda (Plants vs. Zombies unchanged) → Pokemon → Geometry Wars (Vampire
+  Survivors unchanged). Game-specific code (the Box2D adapter, the components in Plants vs.
+  Zombies) stays in the game, so later cores don't inherit it. Each game's `GMDCore` keeps
+  the previous session's core and adds to it or deliberately changes it; nothing is dropped,
   even if the game doesn't use it. Each README has a "New in GMDCore" section, and
   `python tools/check.py` in gar-games lists the differences between games (and fails if a
   file was removed, or if the build files differ between games). The GitHub build runs it.
@@ -130,16 +125,16 @@ Notes for building it:
   [gar-starter](https://github.com/Metamate/gar-starter) (Flappy exercise 2, the
   project page): one empty `MyGame` project plus the `Content` builder, with general rules for
   images, fonts, sounds, music and JSON/XML. Keep its `Content.csproj` and
-  `BuildContent.targets` identical to the course repos. Revisit when MonoGame ships its new
+  `BuildContent.targets` identical to the course's games. Revisit when MonoGame ships its new
   Empty template (MonoGame/MonoGame.EmptyGame.CSharp).
 
 ## Slide & Code TODOs
 
-- **05 Mario:** the `GameController` is deliberately _not_ the Command pattern; keep the
+- **06 Mario:** the `GameController` is deliberately _not_ the Command pattern; keep the
   discussion slide.
-- **Keep exercises unsolved:** Pokemon save/load (exercise 4), the Geometry Wars
-  allocation counter (exercise 2) and spatial grid (exercise 3) stay out of the repos, so the
-  finished games don't give away the answers. Shaders in Geometry Wars are a showcase only.
+- **Keep exercises unsolved:** Pokemon save/load (exercise 4) and the Geometry Wars pooling
+  measurement (exercise 5) stay out of the repos, so the finished games don't give away the
+  answers. Shaders in Geometry Wars are a showcase only.
 - **Tilemap:** Snake introduces a tilemap of plain tile IDs; the Platformer upgrades it to
   `Tile` values (graphic ID plus `IsSolid`) with collision helpers and a `Position`.
   Game-specific layers (the Platformer's toppers, Pokemon's tall grass) are separate
@@ -159,15 +154,14 @@ code over adding new sessions.
 | Topic | Possible home |
 | --- | --- |
 | [Dirty Flag](https://gameprogrammingpatterns.com/dirty-flag.html) | Screen scale / camera matrix recalculation |
-| [Prototype](https://gameprogrammingpatterns.com/prototype.html), Abstract Factory vs. Factory Method | Geometry Wars `EntityFactory` |
+| Abstract Factory vs. Factory Method | Geometry Wars `EntityFactory` |
 | [Subclass Sandbox](https://gameprogrammingpatterns.com/subclass-sandbox.html) | Zelda/Mario entity base classes |
 | Decorator | Mario powerups |
 | Event bus / message bus | Zelda, alongside Event Queue |
 | MVVM / MVP | Pokemon UI (currently only mentioned) |
 | SOLID principles | Weave into sessions rather than a standalone lecture |
-| Adapter, Proxy, Facade, Iterator, Builder | Probably out of scope |
+| Proxy, Iterator, Builder | Probably out of scope |
 | Game math (sin/cos, atan2, lerp, radians, normalization) | Short primer in Pong/Flappy |
-| Debugging (debug overlay, hitbox drawing) | GMDCore, early |
 | [Refactoring](https://refactoring.guru) | 04 Sokoban, then an exercise in every session |
 | Pathfinding (A\*), steering behaviours | Zelda or Geometry Wars (seek & flee is in the GW code) |
 | ECS in practice (e.g. MonoGame.Extended) | Geometry Wars, briefly |
@@ -176,10 +170,6 @@ code over adding new sessions.
 
 - **Space Invaders / Asteroids:** object pool, spatial partitioning, Prototype (splitting
   asteroids)
-- **Pac-Man:** per-ghost AI as State/Strategy, pathfinding
 - **Tetris:** pure grid logic
-- **Sokoban:** Command pattern with undo
-- **Vampire Survivors-like:** alternative to Geometry Wars (components, pooling, spatial
-  hash, Type Object enemies, Decorator upgrades)
 - **Tower defence / turn-based strategy:** mouse input, Type Object, pathfinding
 - Minecraft, Terraria, Stardew Valley: probably too big, but good for inspiration

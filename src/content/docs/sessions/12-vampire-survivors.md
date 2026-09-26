@@ -10,8 +10,9 @@ sidebar:
 Make **Vampire Survivors**: walk around while your weapons fire by themselves, and survive
 five minutes against an ever-growing swarm.
 
-The swarm is the point. [Geometry Wars](../11-geometry-wars/) had hundreds of entities;
-here we want thousands, and the code we've written so far can't keep up. The main topic is
+The swarm is the point. [Geometry Wars](../11-geometry-wars/) had hundreds of enemies
+and bullets (its thousands of particles were already handled apart, by one system). Here we
+want thousands of enemies, and the code we've written so far can't keep up. The main topic is
 **performance**, in the order you should do it:
 
 - **Profiling**: measure where the time goes, before changing anything
@@ -304,7 +305,49 @@ as data, by one system, in bulk. Many engines mix the two in the same way.
 
 _Step `Survivors4`_
 
-`Survivors4` makes it a game, reusing much of the course along the way:
+`Survivors4` makes it a game, reusing much of the course along the way. A `Run` holds one
+game, and the states on the state stack decide when it runs:
+
+```mermaid
+classDiagram
+    class Run {
+        +Player Player
+        +Swarm Swarm
+        +Gems Gems
+        +Update(deltaSeconds)
+    }
+    class Swarm {
+        +Move(deltaSeconds, target)
+        +Separate()
+        +Nearest(point, range) int
+        +Within(point, radius) List~int~
+    }
+    class Enemies {
+        +Vector2[] Position
+        +float[] Health
+        +float[] Speed
+        +float[] Radius
+        +byte[] Kind
+        +RemoveAt(index)
+    }
+    class FlatGrid {
+        +Build(center, positions, count)
+        +Query(center, radius, results)
+    }
+    Run --> Player
+    Run --> Swarm
+    Run --> Gems
+    Run --> BoltWeapon
+    Run --> Aura
+    Swarm --> Enemies
+    Swarm --> FlatGrid
+    Enemies ..> EnemyKind : kind index
+    BoltWeapon ..> Swarm : asks
+    Aura ..> Swarm : asks
+    PlayState --> Run
+    LevelUpState ..> Run : upgrades
+```
+
 
 - Enemies drop **gems**, also stored as arrays. Gems near the player fly to them.
 - Enough experience and you **level up**: a `LevelUpState` is pushed on the **state stack**

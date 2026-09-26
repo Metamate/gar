@@ -1,6 +1,6 @@
 ---
 title: 11 Geometry Wars
-description: A top-down shooter with thousands of entities. Components vs. systems, dependency injection, object pooling and flyweights.
+description: A top-down shooter with thousands of entities. Components vs. systems, dependency injection and testing with fakes, object pooling and flyweights.
 sidebar:
   order: 11
 ---

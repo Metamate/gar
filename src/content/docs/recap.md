@@ -13,7 +13,7 @@ starting point for exam preparation (see [the project at the exam](../project/#t
 | Pattern | Introduced in | Also in | Exam |
 | --- | --- | --- | --- |
 | Update Method | [01 Pong](../sessions/01-pong/) | every game | [1](../exam/#1-game-loop--update-method) |
-| State (game states) | [02 Flappy Bird](../sessions/02-flappy-bird/) | every game from here | [2](../exam/#2-state-pattern--state-stack) |
+| State (game states) | [02 Flappy Bird](../sessions/02-flappy-bird/) | most games from here | [2](../exam/#2-state-pattern--state-stack) |
 | Singleton | [02 Flappy Bird](../sessions/02-flappy-bird/) | | [3](../exam/#3-singleton--service-locator) |
 | Command | [04 Sokoban](../sessions/04-sokoban/) | | [4](../exam/#4-command-pattern--input-handling) |
 | State (entities) | [05 Pac-Man](../sessions/05-pac-man/) | [06 Super Mario Bros](../sessions/06-super-mario-bros/), [08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/) | [2](../exam/#2-state-pattern--state-stack) |
@@ -22,11 +22,14 @@ starting point for exam preparation (see [the project at the exam](../project/#t
 | Prototype | [07 Angry Birds](../sessions/07-angry-birds/) | | [8](../exam/#8-data-driven-design--serialization) |
 | Observer | [08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/) | [10 Pokemon](../sessions/10-pokemon/), [11 Geometry Wars](../sessions/11-geometry-wars/) | [5](../exam/#5-observer-pattern-events--ui) |
 | Component | [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | [11 Geometry Wars](../sessions/11-geometry-wars/) | [9](../exam/#9-components--systems) |
-| Type Object | [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | [10 Pokemon](../sessions/10-pokemon/) | [8](../exam/#8-data-driven-design--serialization) |
-| State stack | [10 Pokemon](../sessions/10-pokemon/) | [11 Geometry Wars](../sessions/11-geometry-wars/) | [2](../exam/#2-state-pattern--state-stack) |
+| Type Object | [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | [10 Pokemon](../sessions/10-pokemon/), [12 Vampire Survivors](../sessions/12-vampire-survivors/) | [8](../exam/#8-data-driven-design--serialization) |
+| State stack | [10 Pokemon](../sessions/10-pokemon/) | [11 Geometry Wars](../sessions/11-geometry-wars/), [12 Vampire Survivors](../sessions/12-vampire-survivors/) | [2](../exam/#2-state-pattern--state-stack) |
 | Service Locator | [10 Pokemon](../sessions/10-pokemon/) | | [3](../exam/#3-singleton--service-locator) |
 | Object Pool | [11 Geometry Wars](../sessions/11-geometry-wars/) | | [10](../exam/#10-memory--performance) |
 | Flyweight | [11 Geometry Wars](../sessions/11-geometry-wars/) | | [10](../exam/#10-memory--performance) |
+| Dependency injection | [11 Geometry Wars](../sessions/11-geometry-wars/) | | [3](../exam/#3-singleton--service-locator) |
+| Spatial Partition | [12 Vampire Survivors](../sessions/12-vampire-survivors/) | | [7](../exam/#7-tilemaps-collision-detection--procedural-generation), [10](../exam/#10-memory--performance) |
+| Data Locality | [12 Vampire Survivors](../sessions/12-vampire-survivors/) | | [10](../exam/#10-memory--performance) |
 
 ## Threads Through the Course
 
@@ -42,7 +45,8 @@ answer.
   picking ([09](../sessions/09-plants-vs-zombies/)). Exam
   [4](../exam/#4-command-pattern--input-handling).
 - **Data:** assets as data ([03](../sessions/03-snake/)) → levels as data
-  ([04](../sessions/04-sokoban/)) → game types as data ([09](../sessions/09-plants-vs-zombies/))
+  ([04](../sessions/04-sokoban/)) → prefabs ([07](../sessions/07-angry-birds/)) → game types as
+  data ([09](../sessions/09-plants-vs-zombies/))
   → save/load ([10](../sessions/10-pokemon/)). Exam [8](../exam/#8-data-driven-design--serialization).
 - **Entities:** inheritance ([06](../sessions/06-super-mario-bros/)) → composition vs.
   inheritance ([08](../sessions/08-the-legend-of-zelda/)) → components
@@ -74,5 +78,6 @@ answer.
   Flyweight ([11](../sessions/11-geometry-wars/)) → profiling, spatial partitioning and
   data-oriented design ([12](../sessions/12-vampire-survivors/)). Exam
   [10](../exam/#10-memory--performance).
-- **GMDCore:** every game adds to the same core library. Each repository's README lists
-  what is new in `GMDCore` since the previous game.
+- **GMDCore:** every game adds to the same core library. Each game's README (in
+  [gar-games](https://github.com/Metamate/gar-games)) lists what is new in `GMDCore` since the
+  previous game.

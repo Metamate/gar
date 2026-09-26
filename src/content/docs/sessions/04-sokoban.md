@@ -1,6 +1,6 @@
 ---
 title: 04 Sokoban
-description: The Command pattern with undo and redo, levels as data, and game rules separated from drawing so they can be tested.
+description: The Command pattern with undo and redo, levels as data, and game rules separated from drawing so they can be unit tested.
 sidebar:
   order: 4
 ---
@@ -511,4 +511,5 @@ needs a window, a graphics device, content and real key presses.
 </details>
 
 Related exam questions: [4](../../exam/#4-command-pattern--input-handling),
+[7](../../exam/#7-tilemaps-collision-detection--procedural-generation),
 [8](../../exam/#8-data-driven-design--serialization).

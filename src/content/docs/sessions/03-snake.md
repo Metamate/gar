@@ -370,4 +370,5 @@ two quick turns that together reverse it into its own neck.
 
 Related exam questions: [1](../../exam/#1-game-loop--update-method),
 [4](../../exam/#4-command-pattern--input-handling),
-[6](../../exam/#6-sprites-texture-atlases-animation--rendering).
+[6](../../exam/#6-sprites-texture-atlases-animation--rendering),
+[8](../../exam/#8-data-driven-design--serialization).

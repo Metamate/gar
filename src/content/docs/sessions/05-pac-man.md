@@ -1,6 +1,6 @@
 ---
 title: 05 Pac-Man
-description: The State pattern through the ghosts' modes, the Strategy pattern through their targeting, and how the two differ.
+description: The State pattern through the ghosts' modes, the Strategy pattern through their targeting, how the two differ, and testing each ghost.
 sidebar:
   order: 5
 ---
