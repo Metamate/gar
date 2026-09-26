@@ -15,7 +15,8 @@ Decided: the course is English only, and the [Exam](../exam/) page is the author
 question pool (questions 0–10). Projects must document at least three patterns.
 
 - **CS50 GD50:** the game line-up follows CS50's Introduction to Game Development closely.
-  Check its license and credit it where assets or structure are derived from it.
+  The art, sounds and fonts are no longer derived from it: they are our own, or Press Start 2P
+  (SIL OFL). Still open: whether to credit GD50 for the line-up and structure.
 
 ## Session Plan
 
@@ -143,7 +144,8 @@ Notes for building it:
 ## General Notes
 
 - Use consistent, simple UML diagrams (Mermaid is supported on the site).
-- Redo graphics and make the games less 1:1 compared to CS50.
+- The graphics are redone in one simple classic style (our own art, generated sounds,
+  Press Start 2P). The games can still become less 1:1 compared to CS50.
 - End each game session with "what moved into GMDCore this week, and why?"
 
 ## Topic Backlog
