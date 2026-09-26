@@ -18,22 +18,10 @@ the next one. Along the way:
 - Hitboxes and hurtboxes
 - A tweening system for screen scrolling
 
-**Source code:** [gar-games/08-zelda](https://github.com/Metamate/gar-games/tree/main/08-zelda) (walkthrough
-in the README)
-
-The code is split into steps, one project per concept. Each section below names the step
-that introduces it. Compare neighbouring steps to see exactly what changed.
-
-| Step | Topic |
-| --- | --- |
-| `Zelda0` | Rooms generated as tilemaps |
-| `Zelda1` | The player: top-down movement |
-| `Zelda2` | Enemies and AI |
-| `Zelda3` | Combat: hitboxes, hurtboxes and damage |
-| `Zelda4` | Events: player death, the floor switch and doorways |
-| `Zelda5` | Screen scrolling between rooms |
-| `Zelda6` | Stenciling the door arches |
-| `Zelda7` | Audio (the finished game) |
+**Source code:** [gar-games/08-zelda](https://github.com/Metamate/gar-games/tree/main/08-zelda).
+Its README lists the steps (`Zelda0` to `Zelda7`, one project per concept), maps the code,
+and says how to run it. Each section below names the steps that introduce it; compare
+neighbouring steps to see exactly what changed.
 
 ## Prepare
 
@@ -123,6 +111,12 @@ In a top-down game, the player's sprite is taller than the part that collides: t
 drawn a few pixels above its collision box, so the character looks like it stands _on_ the
 floor.
 
+The rooms' tiles and the XML files refer to tiles by their number in the sprite sheet
+(`frames="9,10,11,10"`). Nobody can read those numbers off an image, so the repo has a small
+tool, `LabelTiles`, that writes each tile's number onto a copy of a sheet. Small throwaway
+tools like this, which the game never uses, are common in game projects: they make working
+with data practical.
+
 ## Hitboxes & Hurtboxes
 
 _Step `Zelda3`_
@@ -131,7 +125,24 @@ _Step `Zelda3`_
 - **Hurtbox:** the area that _receives_ damage (e.g. the enemy's body).
 
 Keeping them separate means the sword's reach and the enemy's body don't have to match
-the sprite.
+the sprite. The player's hurtbox is only the lower half of its sprite, its feet, which suits
+the top-down look. The sword's hitbox is a rectangle in front of the player, built when the
+swing starts. The swing is a state: it checks the hitbox against the enemies every frame,
+and ends when its one-shot animation has played once.
+
+**Where does collision live?** There is no central collision system. Each kind of
+collision is checked where the knowledge it needs already is:
+
+| Collision | Checked in | Because |
+| --- | --- | --- |
+| Player and enemy | The room | The consequence (damage, maybe death) needs the room |
+| Player and switch | The room | Opening the doors needs the room's doorways |
+| Sword and enemy | The sword-swing state | It belongs to the swing and its timing |
+| Entity and wall | The walk state | Stopping at walls is part of moving |
+
+That trades a single overview for locality: reading a state or a room method shows exactly
+what that interaction does. Compare it with the dedicated collision system in
+[Geometry Wars](../11-geometry-wars/), which has far more things colliding.
 
 ## Events & the Observer Pattern
 
@@ -148,6 +159,15 @@ In `Zelda4`, the room announces it instead, and the play state reacts:
 
 ```csharp
 _room.OnPlayerDied += OnPlayerDied;
+```
+
+Once there is a dungeon of rooms (`Zelda5`), the event is passed up one layer at a time:
+the room announces it, the dungeon forwards it, and the play state reacts. The room knows
+nothing about the dungeon, and the dungeon nothing about the play state; each class only
+knows the one below it.
+
+```csharp title="Dungeon.cs"
+room.OnPlayerDied += () => OnPlayerDied?.Invoke();
 ```
 
 Games are full of moments where something happens and other things need to react. The
@@ -282,9 +302,28 @@ variable, no "is it done yet?" check: the timing lives in the tween system.
 _Step `Zelda6`_
 
 While walking through a door in `Zelda5`, the player is drawn on top of the door arch. `Zelda6`
-fixes this with the **stencil buffer**: an extra per-pixel mask. The dungeon draws in three
-passes: the rooms, then the arch areas into the stencil buffer only (no colour), and finally
-the player, only where the stencil is empty. The player seems to walk _under_ the arch.
+fixes this with the **stencil buffer**: an extra per-pixel mask, next to the colour of each
+pixel. The dungeon draws in three passes:
+
+1. The rooms and everything in them, as usual.
+2. A rectangle over each door arch, with colour writes switched off: it draws nothing you
+   can see, but writes 1 into the stencil buffer there.
+3. The player again, only where the stencil is still 0.
+
+The player seems to walk _under_ the arch. All three passes use the same camera transform,
+so the mask follows the camera while the rooms scroll.
+
+```csharp title="Dungeon.cs"
+// Pass 2: mark the arches in the stencil buffer, without drawing any colour
+spriteBatch.Begin(transformMatrix: worldTransform, blendState: StencilOnlyBlend, depthStencilState: WriteStencilState);
+DrawArchMasks(spriteBatch, pixel);
+spriteBatch.End();
+
+// Pass 3: the player, only where the stencil is 0
+spriteBatch.Begin(transformMatrix: worldTransform, depthStencilState: ReadStencilState);
+_player.Draw(spriteBatch);
+spriteBatch.End();
+```
 
 ## Data-Driven Design
 
@@ -300,7 +339,10 @@ Enemies and game objects are defined in XML, not in C#:
 ```
 
 Adding a new enemy type means one `<Enemy>` block plus a spritesheet row: no new class.
-That's composition through data. [Plants vs. Zombies](../09-plants-vs-zombies/) builds a
+The C# code only knows animation _names_ like `walk-down`, never frame numbers. Objects work
+the same way: a switch's states (`unpressed`, `pressed`) and their frames come from
+`object_definitions.xml`, and each doorway's tiles from `door_layouts.xml`. The rule is
+**content in data, behaviour in C#**. That's composition through data. [Plants vs. Zombies](../09-plants-vs-zombies/) builds a
 whole game this way, with the Type Object pattern.
 
 ## Exercises
