@@ -19,25 +19,13 @@ particles and a warping grid. Its entities are built from components, as in
 - Flyweight
 - Particles as a system
 
-**Source code:** [gar-games/11-geometry-wars](https://github.com/Metamate/gar-games/tree/main/11-geometry-wars)
-(walkthrough in the README)
+**Source code:** [gar-games/11-geometry-wars](https://github.com/Metamate/gar-games/tree/main/11-geometry-wars).
+Its README lists the steps (`GeometryWars0` to `GeometryWars6`, each adding components to
+the entity recipes plus the systems they need, and the `GeometryWars.Tests` project), maps
+the code and suggests an order to read it in. Each section below names the steps that
+introduce it.
 
 The goal isn't to understand every system in the codebase, but the overall architecture.
-
-The code is split into steps. Each step adds components to the entity recipes in
-`EntityFactory`, plus the systems they need. Each section below names the step that
-introduces it.
-
-| Step | Topic |
-| --- | --- |
-| `GeometryWars0` | Entities & components: the player ship |
-| `GeometryWars1` | Shooting & Object Pool |
-| `GeometryWars2` | Enemies, collisions, score and lives |
-| `GeometryWars3` | Particles |
-| `GeometryWars4` | The spring grid and black holes |
-| `GeometryWars5` | Bloom |
-| `GeometryWars6` | Audio (the finished game) |
-| `GeometryWars.Tests` | Unit tests that pass in fake services |
 
 ## Prepare
 
@@ -82,6 +70,26 @@ class per enemy type: an enemy is an entity with the components it needs. Each c
 represents one clear capability, such as `Health`, `FaceVelocity`, `ApplyMovementInput` or
 `TakeDamageOnBulletCollision`.
 
+A capability can be split further when its parts change for different reasons. Firing the
+player's weapon is four components: `FireWeaponOnInput` reads the trigger, `Weapon` keeps
+the rate of fire, `SpawnTwinBulletsOnFired` makes the bullet pattern, and
+`PlaySoundOnWeaponFired` plays the sound. A different gun swaps one of them. Split a
+component when it has several unrelated reasons to change, but not so finely that nobody
+can follow the pieces.
+
+**The lifecycle.** Every component can hook into the same phases, which the entity runs in
+a fixed order every frame: `OnAdded` and `OnStart` once, then `PreUpdate`, `Update`,
+`Simulate`, `PostUpdate`, `OnCollision` and `Draw`, and `OnRemoved` when the entity leaves
+the world. `OnRemoved` is housekeeping (unsubscribing, for example); it is not the same as
+a gameplay event such as an enemy being destroyed.
+
+**Local events.** The components of one entity talk through small events, not a global
+event bus. `Health` announces `Damaged` and `Depleted`; other components on the same
+entity react: `PlayHitParticlesOnDamage` shows sparks, `DestroyWhenHealthDepleted` removes
+the entity. Health doesn't know either of them exists. That's
+[Observer](../08-the-legend-of-zelda/#events--the-observer-pattern) inside one entity. The
+core flow (update, collide, draw) stays as direct calls, so it's still easy to follow.
+
 In the codebase: `GMDCore/ECS/Entity.cs`, `GMDCore/ECS/Components/Component.cs`,
 `Systems/EntityFactory.cs`.
 
@@ -111,8 +119,22 @@ player.
 
 The **particles** (`GeometryWars3`) are the extreme case. Thousands of short-lived sparks
 aren't entities with components at all: one `ParticleManager` system owns all of them and
-updates them in bulk. That's a step towards data-oriented design, which
-[Vampire Survivors](../12-vampire-survivors/) takes all the way.
+updates them in bulk. The spring **grid** (`GeometryWars4`) goes the same way: its points
+live in flat arrays and are updated in tight loops, for speed. Not every part of a game
+needs the same style: components where clarity matters, flat data where volume does. That's
+a step towards data-oriented design, which [Vampire Survivors](../12-vampire-survivors/)
+takes all the way.
+
+### Where does new code go?
+
+The architecture above gives every kind of code a home:
+
+1. The application and its screens: `Game1` and the game states.
+2. The rules of one run: `PlaySession` and the systems.
+3. How an entity is put together: `EntityFactory`.
+4. Behaviour of one entity: a component, named for what it does (`Health`), not for who has
+   it (`PlayerHealth`).
+5. Behaviour across entities: a system.
 
 :::note[ECS]
 Taken to the end, this becomes an **Entity Component System**: entities are only IDs,

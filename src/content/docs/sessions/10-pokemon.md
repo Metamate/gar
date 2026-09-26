@@ -18,19 +18,10 @@ battle, a menu, a dialogue box), built from reusable UI widgets. Along the way:
 - The Service Locator pattern
 - Saving and loading
 
-**Source code:** [gar-games/10-pokemon](https://github.com/Metamate/gar-games/tree/main/10-pokemon)
-(walkthrough in the README)
-
-The code is split into steps, one project per concept. Each section below names the step
-that introduces it. Compare neighbouring steps to see exactly what changed.
-
-| Step | Topic |
-| --- | --- |
-| `Pokemon0` | The overworld: tile-based movement with tweens |
-| `Pokemon1` | The state stack: title, fades and dialogue |
-| `Pokemon2` | Battles: encounters, the battle scene and menus (run only) |
-| `Pokemon3` | Turn-based combat and RPG mechanics |
-| `Pokemon4` | Audio through the service locator (the finished game) |
+**Source code:** [gar-games/10-pokemon](https://github.com/Metamate/gar-games/tree/main/10-pokemon).
+Its README lists the steps (`Pokemon0` to `Pokemon4`, one project per concept), maps the
+code and suggests an order to read it in. Each section below names the steps that introduce
+it; compare neighbouring steps to see exactly what changed.
 
 ## Prepare
 
@@ -47,6 +38,10 @@ Take about 10 minutes with the finished game, `Pokemon4`:
 
 - Clone, build and play the game. Go through a few encounters to level up your monster.
 - How is the codebase split between the core library and the Pokémon-specific project?
+
+The rule of thumb for that split: a class that mentions monsters, grass, battles or
+levelling belongs to the game. A class you could use unchanged in another game (the state
+stack, the tweens, a panel, a progress bar) belongs to GMDCore.
 
 ## State Stack
 
@@ -92,6 +87,16 @@ walking between tiles, fades, the HP bar. A battle attack is a chain of tweens: 
 lunge → hit sound → blink → HP bar drops. Each step's `.Finish()` starts the next, and a
 callback can push or pop a state, with no `if`/`else` chain.
 
+Two details make this safe:
+
+- **Order of updates:** every frame, the game updates the tweens _before_ the state stack.
+  A tween that finishes and pushes a state has done so before the states run, so the new
+  state is live in the same frame.
+- **New tweens wait a frame:** a callback that starts a tween doesn't add it to the list
+  that is being updated; the manager adds new tweens at the start of the next update.
+  Changing a list while looping over it is a classic bug (see the re-entrancy pitfall in
+  [Zelda](../08-the-legend-of-zelda/#pitfalls)).
+
 ## GUIs
 
 _Steps `Pokemon1` → `Pokemon2`_
@@ -123,19 +128,38 @@ this idea.
 _Steps `Pokemon0`, `Pokemon2` and `Pokemon3`_
 
 - **Tile-based movement:** entities have a tile position (`MapX`/`MapY`, used for logic)
-  and a pixel position (`X`/`Y`, tweened between tiles for smooth movement).
+  and a pixel position (`X`/`Y`, tweened between tiles for smooth movement). The logic moves
+  first: a step sets the new tile at once, and the sprite catches up over half a second.
+  When it arrives, the walk state checks for an encounter, then keeps walking if a
+  direction is still held.
 - **Random encounters:** each step in tall grass rolls for a battle. The transition (stop
   field music, start battle music, fade, push `BattleState`, fade in) is all push/pop.
 - **Battle flow:** `BattleMenuState` (Fight/Run) → `TakeTurnState` (faster monster
   attacks first) → back to the menu if both are alive, otherwise victory/defeat.
 
+Each phase of a battle is its own state, with one job:
+
+| State | Owns |
+| --- | --- |
+| `BattleState` | The scene: sprites, HP and EXP bars. It stays at the bottom and keeps drawing. |
+| `BattleMenuState` | The player's choice |
+| `TakeTurnState` | The order of events in one turn |
+| `BattleMessageState` | A message on top, until the player confirms |
+
+Each class stays small because it has one reason to change, and none of them needs to know
+which state comes next: they push and pop.
+
 ### RPG mechanics
 
 - `PokemonSpecies` defines a species: name, base stats, growth rates, sprites.
 - `Mon` is one actual monster with its own level, stats and HP.
+- Stats grow by chance: at each level, every stat gets three rolls of a die, and each roll
+  at or under the species' growth value (its _IV_, 1 to 5) adds 1. A monster at level 5 is
+  built by rolling five level-ups.
 - Damage: `(Attack × BasePower / 10) − Defense`, minimum 1.
-- Beating a monster gives EXP. `LevelUp()` returns the stat increases so the UI can show
-  them.
+- Beating a monster gives EXP (more for higher levels and IVs); the EXP to the next level
+  grows with the square of the level. `LevelUp()` returns the stat increases so the UI can
+  show them, without comparing the monster before and after.
 - `Party` holds your team; `Party.Current` is the one in battle.
 
 `PokemonSpecies` vs. `Mon` is the [Type Object](../09-plants-vs-zombies/) pattern again:
@@ -162,6 +186,11 @@ SaveData loaded = JsonSerializer.Deserialize<SaveData>(File.ReadAllText(SavePath
 
 Save _data_, not objects. Store what you need to rebuild the game state (species name,
 level, current HP), not textures or references to other game objects.
+
+The game already reads its data this way: the JSON is deserialized into small `record`
+types that mirror the file's shape exactly, and the game builds its real objects from
+those. Records suit this: they are plain data, and their constructors match the JSON's
+fields.
 
 Saving is also easy to get subtly wrong: a field you forgot to save only shows up the next
 time someone loads the game. A **round-trip test** catches it: save some data, load it back,
