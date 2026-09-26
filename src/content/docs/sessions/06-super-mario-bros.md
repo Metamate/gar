@@ -18,22 +18,11 @@ world, and seeing what the collision code actually does. Along the way:
 - Level makers: the Strategy pattern again
 - The State pattern again, now for the player
 
-**Source code:** [gar-games/06-platformer](https://github.com/Metamate/gar-games/tree/main/06-platformer)
-
-The code is split into steps, one project per concept. Each section below names the step
-that introduces it. Compare neighbouring steps to see exactly what changed.
-
-| Step | Topic |
-| --- | --- |
-| `Platformer0` | A tilemap generated in code |
-| `Platformer1` | Level makers (Strategy pattern) |
-| `Platformer2` | Player and platformer physics, debug drawing, with state as an enum |
-| `Platformer3` | The State pattern |
-| `Platformer4` | Camera |
-| `Platformer5` | Game states |
-| `Platformer6` | Entities |
-| `Platformer7` | Basic AI |
-| `Platformer8` | Audio (the finished game) |
+**Source code:**
+[gar-games/06-platformer](https://github.com/Metamate/gar-games/tree/main/06-platformer).
+Its README lists the steps (`Platformer0` to `Platformer8`, one project per concept), maps
+the code, and says how to run it. Each section below names the steps that introduce it;
+compare neighbouring steps to see exactly what changed.
 
 ## Prepare
 

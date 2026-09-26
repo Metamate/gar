@@ -19,16 +19,11 @@ the way:
 - Rules separated from drawing
 - Unit tests: checking the rules automatically, without starting the game
 
-**Source code:** [gar-games/04-sokoban](https://github.com/Metamate/gar-games/tree/main/04-sokoban)
-
-| Step | Topic |
-| --- | --- |
-| `Sokoban0` | Levels as data: a text file drawn character by character |
-| `Sokoban1` | Rules apart from drawing: `Level` and `LevelView` |
-| `Sokoban2` | Command: every move is an object |
-| `Sokoban3` | Undo and redo |
-| `Sokoban4` | The whole game: seven levels, restart, move counter (the finished game) |
-| `Sokoban.Tests` | Unit tests for the finished game's rules, and for undo and redo |
+**Source code:**
+[gar-games/04-sokoban](https://github.com/Metamate/gar-games/tree/main/04-sokoban). Its
+README lists the steps (`Sokoban0` to `Sokoban4`, one project per concept, plus the
+`Sokoban.Tests` project), maps the code, and says how to run it. Each section below names
+the steps that introduce it; compare neighbouring steps to see exactly what changed.
 
 ## Prepare
 

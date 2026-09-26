@@ -141,6 +141,23 @@ Notes for building it:
   Game-specific layers (the Platformer's toppers, Pokemon's tall grass) are separate
   tilemaps drawn on top.
 
+## Where Content Goes
+
+Each piece of content has one home; the others link to it. If a fact changes, only one
+file should need editing.
+
+| | Deck | Session page | Game README |
+| --- | --- | --- | --- |
+| For | The class, live, with the teacher talking | A student alone, before and after class, and for the exam | Someone with the repo open |
+| Answers | What are we doing now? | Why does this work, and when would I use it? | How do I run this, and where is X? |
+| Holds | The session's flow, the goal demo, diagrams, a few key excerpts, discussion questions, exercise prompts | Concepts and patterns with trade-offs, readings, exercises, Apply it, Check yourself, links to key files | The steps, what's new in GMDCore, a code map, tests and tools, content, controls, running, credits |
+| Leaves out | Explanations that only work when read | Run instructions, file-by-file tours, the step list | Explaining patterns or design reasoning |
+
+- The step list lives in the README; a session page names the steps each section is about.
+- A session page shows short snippets that illustrate a concept; a README points to files
+  and says what they hold.
+- A dense bullet slide is a sign its text belongs on the site.
+
 ## General Notes
 
 - Use consistent, simple UML diagrams (Mermaid is supported on the site).

@@ -17,23 +17,11 @@ in data files, not hardcoded. Along the way:
 - Movement on a fixed tick
 - Input as actions, and input buffering
 
-**Source code:** [gar-games/03-snake](https://github.com/Metamate/gar-games/tree/main/03-snake)
-
-The code is split into steps, one project per concept. Each section below names the step
-that introduces it. Compare neighbouring steps to see exactly what changed.
-
-| Step | Topic |
-| --- | --- |
-| `Snake0` | Starting point: drawing parts of an image with hardcoded rectangles |
-| `Snake1` | Texture atlas |
-| `Snake2` | Sprites |
-| `Snake3` | Animation |
-| `Snake4` | The room, drawn from a tilemap definition |
-| `Snake5` | Fixed-tick movement: the snake moves by itself, one cell per tick |
-| `Snake6` | Input as actions |
-| `Snake7` | Input buffering |
-| `Snake8` | The bat: collision, eating and growing |
-| `Snake9` | Game over (the finished game) |
+**Source code:**
+[gar-games/03-snake](https://github.com/Metamate/gar-games/tree/main/03-snake). Its README
+lists the steps (`Snake0` to `Snake9`, one project per concept), maps the code, and says how
+to run it. Each section below names the steps that introduce it; compare neighbouring steps
+to see exactly what changed.
 
 ## Prepare
 

@@ -21,16 +21,11 @@ want thousands of enemies, and the code we've written so far can't keep up. The 
 
 The last lesson of the session is the [course recap](#course-recap).
 
-**Source code:** [gar-games/12-vampire-survivors](https://github.com/Metamate/gar-games/tree/main/12-vampire-survivors)
-
-| Step | Topic |
-| --- | --- |
-| `Survivors0` | Enemies as objects, checking every pair |
-| `Survivors1` | Profiling: where does the time go? |
-| `Survivors2` | Spatial partitioning: a uniform grid |
-| `Survivors3` | Data-oriented design: enemies as arrays, and a flat grid |
-| `Survivors4` | The whole game: gems, levels, upgrades (the finished game) |
-| `Survivors.Tests` | Tests that check the grid against checking every point |
+**Source code:**
+[gar-games/12-vampire-survivors](https://github.com/Metamate/gar-games/tree/main/12-vampire-survivors).
+Its README lists the steps (`Survivors0` to `Survivors4`, one project per concept, plus the
+`Survivors.Tests` project), maps the code, and says how to run it. Each section below names
+the steps that introduce it; compare neighbouring steps to see exactly what changed.
 
 ## Prepare
 

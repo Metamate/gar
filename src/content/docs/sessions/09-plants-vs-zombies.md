@@ -19,15 +19,11 @@ pattern. Along the way:
 - **Type Object**: plant and zombie types as data, not as classes
 - Picking: from a mouse click to a seed packet or a cell on the lawn
 
-**Source code:** [gar-games/09-plants-vs-zombies](https://github.com/Metamate/gar-games/tree/main/09-plants-vs-zombies)
-
-| Step | Topic |
-| --- | --- |
-| `Pvz0` | Picking: choose a seed packet, click a cell to plant |
-| `Pvz1` | Plants and zombies, as a class hierarchy |
-| `Pvz2` | The Component pattern |
-| `Pvz3` | Type Object: plant and zombie types from JSON |
-| `Pvz4` | The whole game: a level from data, sun from the sky, winning and losing (the finished game) |
+**Source code:**
+[gar-games/09-plants-vs-zombies](https://github.com/Metamate/gar-games/tree/main/09-plants-vs-zombies).
+Its README lists the steps (`Pvz0` to `Pvz4`, one project per concept), maps the code, and
+says how to run it. Each section below names the steps that introduce it; compare
+neighbouring steps to see exactly what changed.
 
 ## Prepare
 

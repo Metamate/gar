@@ -20,15 +20,11 @@ architecture, so that the rest of your game doesn't have to know about it. Along
 - Contact events, and destroying bodies safely
 - The **Prototype** pattern: building levels from prefabs
 
-**Source code:** [gar-games/07-angry-birds](https://github.com/Metamate/gar-games/tree/main/07-angry-birds)
-
-| Step | Topic |
-| --- | --- |
-| `Birds0` | Box2D, used directly in `Game1` |
-| `Birds1` | Adapter & Facade: `PhysicsWorld` and `PhysicsBody` |
-| `Birds2` | Contact events: hits that damage, removed safely after the step |
-| `Birds3` | Prototype: prefabs, and levels as text files |
-| `Birds4` | The whole game: three levels, a few birds each, an aiming curve (the finished game) |
+**Source code:**
+[gar-games/07-angry-birds](https://github.com/Metamate/gar-games/tree/main/07-angry-birds).
+Its README lists the steps (`Birds0` to `Birds4`, one project per concept), maps the code,
+and says how to run it. Each section below names the steps that introduce it; compare
+neighbouring steps to see exactly what changed.
 
 ## Prepare
 

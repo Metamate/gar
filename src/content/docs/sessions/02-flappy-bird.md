@@ -16,26 +16,11 @@ the course, and replace the string-based state with a proper **state machine**.
 New concepts: class libraries, textures, parallax scrolling, procedural generation,
 interfaces, state machines and the Singleton pattern.
 
-**Source code:** [gar-games/02-flappy](https://github.com/Metamate/gar-games/tree/main/02-flappy)
-
-The code is split into steps, one project per exercise (`Flappy0` → `Flappy12`), so you can compare
-your solution with each step, and compare neighbouring steps to see exactly what changed.
-
-| Step | Exercise |
-| --- | --- |
-| `Flappy0` | Consuming the class library |
-| `Flappy1` | Background |
-| `Flappy2` | Parallax |
-| `Flappy3` | Bird & assets |
-| `Flappy4` | Gravity |
-| `Flappy5` | Flap |
-| `Flappy6` | Infinite pipes |
-| `Flappy7` | Pipe pairs |
-| `Flappy8` | Collisions |
-| `Flappy9` | State machine |
-| `Flappy10` | Scoring |
-| `Flappy11` | Countdown |
-| `Flappy12` | Audio |
+**Source code:**
+[gar-games/02-flappy](https://github.com/Metamate/gar-games/tree/main/02-flappy). Its README
+lists the steps (`Flappy0` to `Flappy12`, one project per exercise below), maps the code,
+and says how to run it. Compare your solution with the matching step, and neighbouring steps
+to see exactly what changed.
 
 ## Prepare
 

@@ -19,16 +19,11 @@ which turns each mode into an object. Along the way:
 - State vs. Strategy: similar code, different reasons
 - Unit tests for each ghost's targeting, one strategy at a time
 
-**Source code:** [gar-games/05-pacman](https://github.com/Metamate/gar-games/tree/main/05-pacman)
-
-| Step | Topic |
-| --- | --- |
-| `Pacman0` | The maze and Pac-Man |
-| `Pacman1` | Ghosts, with their modes as an enum |
-| `Pacman2` | The State pattern: each mode becomes a class |
-| `Pacman3` | The Strategy pattern: each ghost chases in its own way |
-| `Pacman4` | The whole game: lives, death, levels and game states (the finished game) |
-| `Pacman.Tests` | Unit tests for the targeting strategies, the ghost states and Pac-Man's movement |
+**Source code:**
+[gar-games/05-pacman](https://github.com/Metamate/gar-games/tree/main/05-pacman). Its README
+lists the steps (`Pacman0` to `Pacman4`, one project per concept, plus the `Pacman.Tests`
+project), maps the code, and says how to run it. Each section below names the steps that
+introduce it; compare neighbouring steps to see exactly what changed.
 
 ## Prepare
 
