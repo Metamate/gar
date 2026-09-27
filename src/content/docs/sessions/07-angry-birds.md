@@ -417,14 +417,20 @@ it hits something, so its position at time _t_ is `start + velocity * t + gravit
 
 Start from `Birds4`.
 
-1. **A new level:** design `level4.txt` from the prefabs. Add a new prefab too, e.g. a long
-   stone plank. How much code did you change?
+1. **A new level:** design `level4.txt` from the prefabs (raise `LevelCount` in `Game1` to
+   play it). Add a new prefab too, e.g. a long stone plank. How much code did you change?
 2. **A new bird:** a heavy bird that's twice the size. Make it a prefab, and give each
    level a list of birds instead of a count (e.g. `birds red red heavy`).
 3. **Explosive:** a TNT box that, when destroyed, pushes everything nearby away. What does
    the facade need to offer (e.g. `ApplyImpulse`)? Add it without letting Box2D types out.
-4. **Unit test the conversion:** `Units` is small, but easy to get wrong. Write tests that
-   convert a point to metres and back, and check that y flips.
+   A TNT crate is drawn in `sprites.png` (50 × 50 at x = 120, y = 204), ready for a
+   region.
+4. **Unit test the conversion:** `Units` is small, but easy to get wrong. Add a
+   `Birds.Tests` project, set up like `Sokoban.Tests` in
+   [Sokoban](../04-sokoban/#the-test-project), and write tests that convert a point to
+   metres and back, and check that y flips. `Units` is `internal` (only the physics code
+   should use it), so the test project can't see it until `Birds4.csproj` says
+   `<InternalsVisibleTo Include="Birds.Tests" />` in an `ItemGroup`.
 5. **Swap the library (stretch):** which files would change if you replaced Box2D with
    another physics library? Try it with
    [Aether.Physics2D](https://github.com/nkast/Aether.Physics2D).
