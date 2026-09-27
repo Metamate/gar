@@ -130,6 +130,9 @@ classDiagram
     Animation o-- TextureRegion
 ```
 
+**Try it** (`Snake1`): draw the bat with its second frame by changing only
+`atlas-definition.xml`. Then misspell `bat-1` in the XML: what happens, and when?
+
 ## Sprites & Animation
 
 _Steps `Snake2` and `Snake3`_
@@ -152,6 +155,10 @@ An **animation** is a list of regions and a frame delay, also defined in the atl
 An `AnimatedSprite` is a `Sprite` that accumulates elapsed time in `Update()` and advances
 to the next frame when the delay has passed (`Snake3`).
 
+**Try it** (`Snake2` and `Snake3`): make the bat bigger and spin it the other way, then
+remove `CenterOrigin()` and explain what changes. In the XML only, make the bat flap twice
+as fast and give its animation one more frame.
+
 ## The Room
 
 _Step `Snake4`_
@@ -173,6 +180,9 @@ The room is data too. A tilemap definition lists which tile of the atlas goes in
 GMDCore's `Tilemap.FromFile` reads it and draws the room. Here the tilemap is only a
 picture: the walls are simply the cells outside the room's `Rectangle`. In
 [Sokoban](../04-sokoban/), the grid becomes the game's state itself.
+
+**Try it** (`Snake4`): rearrange the room in `tilemap-definition.xml`. Then put a 20 in it:
+what happens, and when?
 
 ## Fixed-Tick Movement
 
@@ -267,6 +277,10 @@ turns), so the snake never acts on presses the player has long forgotten.
 
 Many games buffer input like this: a jump pressed just before landing, or a combo pressed
 slightly early, still counts.
+
+**Try it** (`Snake7`): make the snake twice as fast, and add I, J, K and L as a third set
+of keys. Which file did each change need? Then press two turns within one tick, in `Snake6`
+and in `Snake7`.
 
 ## Eating & Growing
 
