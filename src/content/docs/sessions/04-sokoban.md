@@ -441,12 +441,15 @@ clears the history. Nothing in the rules or the commands changed.
 
 Start from `Sokoban4`.
 
-1. **A new level:** design your own level in `level8.txt`. Is it solvable? How do you know?
+1. **A new level:** design your own level in `level8.txt`. To play it, you also have to raise
+   `LevelCount` in `Game1`: how could the game find its levels without that line? Is your
+   level solvable? How do you know?
 2. **Your first tests:** add tests to `LevelTests.cs` for two cases that aren't tested yet:
    pushing a box off a goal makes the level unsolved again, and the player can walk onto a
    goal. Run them. Then break `Level.Move` on purpose and watch them fail.
 3. **Test first:** add ice (`~`): boxes can't be pushed onto it, but the player can walk on
-   it. Write the tests before the code, see them fail, then make them pass.
+   it. Write the tests before the code, see them fail, then make them pass. The tilesheet
+   already has an ice tile (number 9) for `LevelView`.
 4. **Replay:** when a level is solved, replay the solution from the start, one command
    every 200 ms.
 5. **Restart as a command:** make `R` a command too, so a restart can be undone. What must
