@@ -5,6 +5,8 @@ sidebar:
   order: 11
 ---
 
+![The finished Geometry Wars game](../../../assets/session11/geometry-wars.png)
+
 ## Today's Goal
 
 Make a **top-down shooter**.

@@ -5,6 +5,8 @@ sidebar:
   order: 9
 ---
 
+![The finished Plants vs. Zombies game](../../../assets/session09/plants-vs-zombies.png)
+
 ## Today's Goal
 
 Make **Plants vs. Zombies**: zombies walk across a lawn towards your house, one row each.

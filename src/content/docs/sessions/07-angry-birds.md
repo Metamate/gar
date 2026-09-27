@@ -5,6 +5,8 @@ sidebar:
   order: 7
 ---
 
+![The finished Angry Birds game](../../../assets/session07/angry-birds.png)
+
 ## Today's Goal
 
 Make **Angry Birds**: pull back the slingshot, let go, and knock down the pigs' huts.

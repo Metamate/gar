@@ -5,6 +5,8 @@ sidebar:
   order: 6
 ---
 
+![The finished platformer](../../../assets/session06/platformer.gif)
+
 ## Today's Goal
 
 Make a **2D platformer**.

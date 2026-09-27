@@ -5,6 +5,8 @@ sidebar:
   order: 8
 ---
 
+![The finished dungeon crawler](../../../assets/session08/zelda.gif)
+
 ## Today's Goal
 
 Make a **top-down dungeon crawler**.

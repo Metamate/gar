@@ -5,6 +5,8 @@ sidebar:
   order: 3
 ---
 
+![The finished Snake game](../../../assets/session03/snake.png)
+
 ## Today's Goal
 
 Make a **Snake** game.

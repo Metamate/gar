@@ -5,6 +5,8 @@ sidebar:
   order: 12
 ---
 
+![The finished Vampire Survivors game](../../../assets/session12/vampire-survivors.png)
+
 ## Today's Goal
 
 Make **Vampire Survivors**: walk around while your weapons fire by themselves, and survive

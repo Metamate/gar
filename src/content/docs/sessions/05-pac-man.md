@@ -5,6 +5,8 @@ sidebar:
   order: 5
 ---
 
+![The finished Pac-Man game](../../../assets/session05/pacman.png)
+
 ## Today's Goal
 
 Make **Pac-Man**: eat every dot in the maze while four ghosts hunt you. After a power pellet,

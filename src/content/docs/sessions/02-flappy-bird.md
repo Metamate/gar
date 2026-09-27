@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+![The finished Flappy Bird game](../../../assets/session02/flappy.gif)
+
 ## Today's Goal
 
 Make a **Flappy Bird** clone.

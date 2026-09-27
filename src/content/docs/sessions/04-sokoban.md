@@ -5,6 +5,8 @@ sidebar:
   order: 4
 ---
 
+![The finished Sokoban game](../../../assets/session04/sokoban.png)
+
 ## Today's Goal
 
 Make a **Sokoban** game: push every box onto a goal. You can only push, never pull, and
