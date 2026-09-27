@@ -314,14 +314,17 @@ Start from `Platformer8`.
 
 1. **A chunk level maker:** design a handful of short level chunks by hand (a pit with a
    platform over it, a staircase, a snail on a ledge), each a small grid of tiles in a data
-   file. Write a level maker that strings random chunks together, and make each level a few
+   file in `Content/Assets`. The builder copies `.xml` files as they are; for another
+   format, such as `.txt`, add an `IncludeCopy` rule in `Builder.cs`. Write a level maker that strings random chunks together, and make each level a few
    chunks longer than the last when the player reaches its right edge.
 2. **Moving platforms:** a platform that glides back and forth and carries the player
    standing on it. Where does “carried along” belong: in the platform, in the player, or
    in the collision code?
 3. **Powerups:** add a star (invincibility with a timer) and a mushroom (the player grows).
+   Both are drawn in `images/extras.png`.
    How do you add these without piling flags onto the `Player` class?
-4. **Debug drawing:** also draw the probe below the player that checks for ground, and show
+4. **Debug drawing:** also draw the probe below the player that checks for ground
+   (`IsOnGround` in `PlayerStateBase`), and show
    the player's current state and velocity on screen. Use it to find where coyote time
    starts and ends.
 
