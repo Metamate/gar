@@ -24,7 +24,9 @@ to see exactly what changed.
 
 ## Prepare
 
-- [04: Creating a Class Library](https://docs.monogame.net/articles/tutorials/building_2d_games/04_creating_a_class_library)
+- [04: Creating a Class Library](https://docs.monogame.net/articles/tutorials/building_2d_games/04_creating_a_class_library),
+  for background. It uses the MonoGame templates; we make the same library without them
+  ([exercise 1](#exercises)).
 - [Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html)
 - [06: Working with Textures](https://docs.monogame.net/articles/tutorials/building_2d_games/06_working_with_textures)
 - [Architecture, Performance, and Games](https://gameprogrammingpatterns.com/architecture-performance-and-games.html)
@@ -47,7 +49,8 @@ performance. Good architecture is about choosing _where_ flexibility is worth th
 ## Class Libraries: GMDCore
 
 Code that isn't specific to one game (screen scaling, input helpers, and later sprites,
-tilemaps, state machines…) goes into a **MonoGame Game Library** project called `GMDCore`.
+tilemaps, state machines…) goes into a **class library** called `GMDCore`: an ordinary
+.NET class library that references MonoGame.
 Each game references it, and its `Game1` derives from `Core` instead of `Game`.
 
 ```mermaid
@@ -204,20 +207,37 @@ pattern in [Pokemon](../10-pokemon/).
 
 ## Exercises
 
-1. **A class library:** create `GMDCore` with a `Core` class deriving from `Game`. Move the
-   screen scaling from Pong into it, and add a constructor taking title, window size and
-   virtual size.
-2. **A game on the library:** create "Flappy" from the
-   [gar-starter](https://github.com/Metamate/gar-starter) template, reference `GMDCore`,
-   derive `Game1` from `Core`, and use a 512×288 virtual resolution in a 1280×720 window.
-3. **Drawing images and parallax scrolling:** add the background and ground images to an `images` folder in
-   your `Assets` folder, and scroll them at different speeds (looping points: background 413,
-   ground 512).
+1. **A class library:** create your own repository from the
+   [gar-starter](https://github.com/Metamate/gar-starter) template, and rename `MyGame` to
+   `Flappy` (its README shows how). Then add the library next to the game, from the
+   repository's folder:
+
+   ```
+   dotnet new classlib -o GMDCore
+   dotnet add GMDCore package MonoGame.Framework.DesktopGL --version "3.8.*"
+   dotnet sln Flappy.slnx add GMDCore/GMDCore.csproj
+   dotnet add Flappy reference GMDCore/GMDCore.csproj
+   ```
+
+   Delete `GMDCore/Class1.cs`, and the `<Nullable>enable</Nullable>` line in
+   `GMDCore.csproj` (the course's code doesn't use nullable annotations, so it would only
+   give you warnings). Then write a `Core` class deriving from `Game`: move the screen
+   scaling from Pong into it, with a constructor taking title, window size and virtual size.
+2. **A game on the library:** derive `Game1` from `Core`, with a 512×288 virtual resolution
+   in a 1280×720 window.
+3. **Drawing images and parallax scrolling:** copy the `images` folder from
+   `gar-games/02-flappy/Content/Assets` into your `Content/Assets` (later, copy `fonts` and
+   `audio` the same way; the starter's builder already handles all of them). Draw the
+   background and the ground, and scroll them at different speeds: 30 and 60 pixels per
+   second, looping at 413 and 512.
 4. **The bird and the Art class:** add a `Bird` class and a static `Art` class for asset references.
-5. **Gravity and an input manager:** add gravity. Add `KeyboardInfo`, `MouseInfo` and `InputManager` to
-   GMDCore, and flap on `WasKeyJustPressed(Keys.Space)` or `WasLeftButtonJustPressed`.
-6. **Spawning on a timer:** spawn pipes on a timer at random heights.
-7. **A drifting gap:** wrap pipes in a `PipePair` with a gap. Vary the gap height smoothly and
+5. **Gravity and an input manager:** add gravity (980 pixels per second, per second). Add
+   `KeyboardInfo`, `MouseInfo` and `InputManager` to GMDCore, and flap on
+   `WasKeyJustPressed(Keys.Space)` or `WasLeftButtonJustPressed`: a flap sets the
+   vertical velocity to 300 upwards.
+6. **Spawning on a timer:** spawn a pipe every 2 seconds at a random height, scrolling at
+   the ground's speed.
+7. **A drifting gap:** wrap pipes in a `PipePair` with a 90-pixel gap. Vary the gap height smoothly and
    remove pairs that leave the screen.
 8. **Hitboxes:** stop the game when the bird hits a pipe, the ground or the ceiling. Can
    you make collisions more forgiving?
