@@ -364,13 +364,13 @@ shoot or explode, in any combination. Then sketch the same with composition: whi
 would an enemy _have_? Implement one of them (e.g. a shooting behaviour that any enemy can
 be given).
 
-**Extend Zelda:**
+**Keys and locked doors:**
 
-- Some enemies randomly drop hearts that heal the player for one whole heart.
-- The player can lift pots (animations are in the sprite sheet). Carried pots follow the
-  player.
-- The player can throw pots to damage enemies. A pot breaks when it hits a wall or an
-  enemy, or after travelling four tiles.
+- Some enemies drop a key when they die. Use an event for it, as above.
+- Some doorways are locked. Add a `locked` state to `door_layouts.xml` (draw a lock on the
+  door tiles, or tint them), so the look stays in data.
+- Walking into a locked door with a key uses up the key and opens the door for good. Show
+  the keys the player carries next to the hearts.
 
 ## Apply It to Your Project
 

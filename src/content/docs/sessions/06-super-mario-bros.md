@@ -312,11 +312,13 @@ Landing on a snail from above stomps it. Touching it any other way ends the game
 
 Start from `Platformer8`.
 
-1. **Custom level maker:** create a new level maker with varying ground height and pit
-   widths, platforms, several enemy types, and a goal flag. Touching the flag loads a
-   longer, harder level.
-2. **Keys & locks:** spawn a random coloured key and matching lock in each level. Picking
-   up the key and touching the lock spawns the goal flag.
+1. **A chunk level maker:** design a handful of short level chunks by hand (a pit with a
+   platform over it, a staircase, a snail on a ledge), each a small grid of tiles in a data
+   file. Write a level maker that strings random chunks together, and make each level a few
+   chunks longer than the last when the player reaches its right edge.
+2. **Moving platforms:** a platform that glides back and forth and carries the player
+   standing on it. Where does “carried along” belong: in the platform, in the player, or
+   in the collision code?
 3. **Powerups:** add a star (invincibility with a timer) and a mushroom (the player grows).
    How do you add these without piling flags onto the `Player` class?
 4. **Debug drawing:** also draw the probe below the player that checks for ground, and show
