@@ -156,7 +156,14 @@ file should need editing.
 - The step list lives in the README; a session page names the steps each section is about.
 - A session page shows short snippets that illustrate a concept; a README points to files
   and says what they hold.
-- A dense bullet slide is a sign its text belongs on the site.
+- Decks and session pages cover the **same essentials in a different form**: every essential
+  appears in both, no paragraph does. In class, a concept is problem first (show it break,
+  ask how to fix it, then name the pattern), then one headline sentence, a visual (diagram,
+  code, labelled screenshot) and a question. The site has the full explanation.
+- A dense bullet slide is a sign its text belongs on the site, or in the speaker notes as
+  talking points. Exercise slides give a one-line goal; the instructions are on the site.
+- Decks end with a few of the site's "Check yourself" questions, asked live.
+- Pilot: the Pokemon deck (September 2026). The other decks follow once it's approved.
 
 ## General Notes
 
