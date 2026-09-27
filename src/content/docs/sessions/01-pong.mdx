@@ -141,7 +141,7 @@ public class Builder : ContentBuilder
 
 Each game project imports `Content/BuildContent.targets`, which runs the builder before
 compiling. To add an asset, put it in `Content/Assets`; if no rule matches it, add one. All
-Pong steps share that folder: step 3 swaps the default `arial` font for the retro `font`
+Pong steps share that folder: step 3 swaps the plain `sans` font for the retro `font`
 in code. See
 [Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html).
 
@@ -250,7 +250,7 @@ Build Pong step by step:
    the `01-pong` folder with `dotnet run --project Pong0`. Do the exercises in `Pong0`;
    step `PongN` is a solution to exercise N, to compare with when you're done.
 1. **Text on screen:** draw "Hello, MonoGame!" centred on a black 1280×720 window. The
-   font is already in `Content/Assets`: load it with `Content.Load<SpriteFont>("arial")`,
+   font is already in `Content/Assets`: load it with `Content.Load<SpriteFont>("sans")`,
    and centre the text with `MeasureString`.
 2. **Virtual resolution:** draw the game at 432×243, scaled to fit a resizable window,
    with point filtering. Scale by the smaller of the two ratios (window width / 432,

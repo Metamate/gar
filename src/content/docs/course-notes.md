@@ -106,7 +106,7 @@ Notes for building it:
   and runs the builder, copies the output, and makes asset changes trigger a rebuild. In
   every game, all steps share one `Content/Assets` folder; a step's `Content.Load` calls
   show which assets it uses. Where an asset changes between steps, keep both versions and
-  swap them in code (Pong: `arial` → `font` in `Pong3`).
+  swap them in code (Pong: `sans` → `font` in `Pong3`).
 - **GMDCore lineage:** GMDCore is one library that grows through the course, in session
   order: Flappy → Snake (Sokoban and Pac-Man unchanged) → Platformer (Angry Birds
   unchanged) → Zelda (Plants vs. Zombies unchanged) → Pokemon → Geometry Wars (Vampire
