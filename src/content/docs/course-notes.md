@@ -163,7 +163,8 @@ file should need editing.
 - A dense bullet slide is a sign its text belongs on the site, or in the speaker notes as
   talking points. Exercise slides give a one-line goal; the instructions are on the site.
 - Decks end with a few of the site's "Check yourself" questions, asked live.
-- Pilot: the Pokemon deck (September 2026). The other decks follow once it's approved.
+- All twelve decks follow this since September 2026; each slide's old text is kept in its speaker
+  notes as talking points.
 
 ## General Notes
 
