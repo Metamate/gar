@@ -262,7 +262,8 @@ Start from `Pokemon4`.
    is damage calculated? How does the game decide the battle is over?
 3. **Data-driven definitions:**
    - Add a new species to `pokemon_definitions.json`: a glass cannon with high attack and
-     low defence. Run the game and fight it.
+     low defence. Its battle sprites are ready in `images/pokemon/` (`shardling-front` and
+     `shardling-back`). Run the game and fight it.
    - Add a `type` field (Fire/Water/Grass) to the JSON and to `PokemonSpecies`. Make
      attacks take the defender's type into account (super effective / not very effective).
 4. **Save & load:** save the player's party and position to a JSON file (e.g. on a key
