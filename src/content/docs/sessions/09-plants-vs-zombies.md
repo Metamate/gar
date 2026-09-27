@@ -339,10 +339,14 @@ many new things are one component away.
 
 ## Exercises
 
-Start from `Pvz4`.
+Start from `Pvz4`. The art for the exercises is already in `images/sprites.png`, in its
+bottom row (y = 248), but not in `atlas-definition.xml`: a Tall-nut (80 × 90 at x = 0),
+a Snow Pea (80 × 90 at x = 82), a Pumpkin (80 × 90 at x = 164), a shovel (64 × 64 at
+x = 246) and a cold pea (20 × 20 at x = 312). Describing them is part of each exercise.
 
 1. **New types:** add a Tall-nut (twice the Wall-nut's health) and a Flag Zombie (faster,
-   with a bucket) to the data. Did you need any code?
+   with a bucket) to the data, and send a few Flag Zombies in `level1.json`. Did you need
+   any code?
 2. **Snow Pea:** peas that slow the zombie they hit. Which new component do you need, where
    does it go (the pea? the zombie?), and how does the data say which peas are cold?
 3. **Pumpkin:** armour for plants. Can you reuse `Armour`? What needs to change?
