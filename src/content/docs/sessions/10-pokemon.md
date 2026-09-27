@@ -201,7 +201,7 @@ and check that you got the same values. It's a unit test like the ones in
 [Fact]
 public void A_saved_party_loads_back_the_same()
 {
-    var saved = new SaveData([new MonSaveData("Agnite", Level: 5, CurrentHp: 12)], MapX: 3, MapY: 7);
+    var saved = new SaveData([new MonSaveData("Cindrel", Level: 5, CurrentHp: 12)], MapX: 3, MapY: 7);
 
     SaveData loaded = JsonSerializer.Deserialize<SaveData>(JsonSerializer.Serialize(saved));
 
