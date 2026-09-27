@@ -204,28 +204,28 @@ pattern in [Pokemon](../10-pokemon/).
 
 ## Exercises
 
-1. **Class Library:** create `GMDCore` with a `Core` class deriving from `Game`. Move the
+1. **A class library:** create `GMDCore` with a `Core` class deriving from `Game`. Move the
    screen scaling from Pong into it, and add a constructor taking title, window size and
    virtual size.
-2. **Consume the library:** create "Flappy" from the
+2. **A game on the library:** create "Flappy" from the
    [gar-starter](https://github.com/Metamate/gar-starter) template, reference `GMDCore`,
    derive `Game1` from `Core`, and use a 512×288 virtual resolution in a 1280×720 window.
-3. **Background & parallax:** add the background and ground images to an `images` folder in
+3. **Drawing images and parallax scrolling:** add the background and ground images to an `images` folder in
    your `Assets` folder, and scroll them at different speeds (looping points: background 413,
    ground 512).
-4. **Bird & assets:** add a `Bird` class and a static `Art` class for asset references.
-5. **Gravity & flap:** add gravity. Add `KeyboardInfo`, `MouseInfo` and `InputManager` to
+4. **The bird and the Art class:** add a `Bird` class and a static `Art` class for asset references.
+5. **Gravity and an input manager:** add gravity. Add `KeyboardInfo`, `MouseInfo` and `InputManager` to
    GMDCore, and flap on `WasKeyJustPressed(Keys.Space)` or `WasLeftButtonJustPressed`.
-6. **Infinite pipes:** spawn pipes on a timer at random heights.
-7. **Pipe pairs:** wrap pipes in a `PipePair` with a gap. Vary the gap height smoothly and
+6. **Spawning on a timer:** spawn pipes on a timer at random heights.
+7. **A drifting gap:** wrap pipes in a `PipePair` with a gap. Vary the gap height smoothly and
    remove pairs that leave the screen.
-8. **Collisions:** stop the game when the bird hits a pipe, the ground or the ceiling. Can
+8. **Hitboxes:** stop the game when the bird hits a pipe, the ground or the ceiling. Can
    you make collisions more forgiving?
-9. **State machine:** add `IState`, a `StateMachine`, a `TitleState` and a `PlayState`.
-10. **Scoring:** score when passing a pipe pair, and add a `ScoreState`. How does the score
+9. **A state machine:** add `IState`, a `StateMachine`, a `TitleState` and a `PlayState`.
+10. **Passing data between states:** score when passing a pipe pair, and add a `ScoreState`. How does the score
     state get the score?
-11. **Countdown:** add a `CountdownState` between title/score and play.
-12. **Audio:** add background music (`Song` + `MediaPlayer.Play`) and flap, hurt and score
+11. **A countdown state:** add a `CountdownState` between title/score and play.
+12. **Audio as a Singleton:** add background music (`Song` + `MediaPlayer.Play`) and flap, hurt and score
     sounds, organized in an `Audio` class made a Singleton (`Audio.Instance.PlayFlap()`).
 
 ## Apply It to Your Project
