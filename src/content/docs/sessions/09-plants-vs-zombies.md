@@ -12,6 +12,11 @@ sidebar:
 Make **Plants vs. Zombies**: zombies walk across a lawn towards your house, one row each.
 Plant sunflowers to make sun, and spend the sun on plants that stop the zombies.
 
+<figure class="original">
+<img src="../../originals/plants-vs-zombies.png" alt="A lawn defended by plants in Plants vs. Zombies" class="pixelated" />
+<figcaption>The original: <em>Plants vs. Zombies</em> (PopCap Games, 2009). Screenshot © PopCap Games.</figcaption>
+</figure>
+
 The game has many kinds of plants and zombies, and they mix and match abilities: one plant
 shoots, another makes sun, another just blocks; a zombie may wear a cone or a bucket. In
 [Zelda](../08-the-legend-of-zelda/#composition-vs-inheritance) we asked whether something

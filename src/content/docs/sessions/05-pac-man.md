@@ -12,6 +12,11 @@ sidebar:
 Make **Pac-Man**: eat every dot in the maze while four ghosts hunt you. After a power pellet,
 the ghosts run from you for a few seconds.
 
+<figure class="original">
+<img src="../../originals/pac-man.png" alt="The maze of the arcade Pac-Man" class="pixelated" />
+<figcaption>The original: <em>Pac-Man</em> (Namco, 1980). Image: Bandai Namco Entertainment America, <a href="https://commons.wikimedia.org/wiki/File:Pac-Man_gameplay_(1x_pixel-perfect_recreation).png">CC BY 3.0</a>, via Wikimedia Commons.</figcaption>
+</figure>
+
 The ghosts are what make Pac-Man interesting to build. Each ghost switches between modes
 (waiting in the house, scattering, chasing, frightened, eaten), and each mode changes how it
 moves and what happens when it touches Pac-Man. The main topic is the **State** pattern,

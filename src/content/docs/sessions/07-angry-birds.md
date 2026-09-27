@@ -11,6 +11,11 @@ sidebar:
 
 Make **Angry Birds**: pull back the slingshot, let go, and knock down the pigs' huts.
 
+<figure class="original">
+<img src="../../originals/angry-birds.png" alt="A bird flying towards the pigs' tower in Angry Birds" />
+<figcaption>The original: <em>Angry Birds</em> (Rovio, 2009). Image: Sony Pictures, <a href="https://commons.wikimedia.org/wiki/File:Angry_Birds_gameplay.png">CC BY 3.0</a>, via Wikimedia Commons.</figcaption>
+</figure>
+
 In [Super Mario Bros](../06-super-mario-bros/) we wrote our own physics: gravity, velocity,
 and collisions with tiles. For stacks of blocks that tip over, bounce and break, that isn't
 enough. Real games use a **physics library** for that, and here we use **Box2D**. The main

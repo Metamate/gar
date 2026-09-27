@@ -11,6 +11,11 @@ sidebar:
 
 Make a **2D platformer**.
 
+<figure class="original">
+<img src="../../originals/super-mario-bros.png" alt="World 1-1 of Super Mario Bros." class="pixelated" />
+<figcaption>The original: <em>Super Mario Bros.</em> (Nintendo, 1985). Screenshot © Nintendo.</figcaption>
+</figure>
+
 We go through the fundamental steps of a basic Super Mario Bros. clone. The main topic is
 **platformer physics and tile collision**: making a character run, jump and land on a tile
 world, and seeing what the collision code actually does. Along the way:

@@ -11,6 +11,11 @@ sidebar:
 
 Make a **turn-based RPG**.
 
+<figure class="original">
+<img src="../../originals/pokemon.png" alt="A battle in one of the first Pokémon games" />
+<figcaption>The original: the first <em>Pokémon</em> games (Game Freak, 1996). Screenshot © Nintendo / Game Freak.</figcaption>
+</figure>
+
 We go through the fundamental steps of a primitive Pokémon clone. The main topic is
 **scenes and UI**: an RPG is a stack of screens on top of each other (the overworld, a
 battle, a menu, a dialogue box), built from reusable UI widgets. Along the way:

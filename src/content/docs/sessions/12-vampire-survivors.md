@@ -12,6 +12,11 @@ sidebar:
 Make **Vampire Survivors**: walk around while your weapons fire by themselves, and survive
 five minutes against an ever-growing swarm.
 
+<figure class="original">
+<img src="../../originals/vampire-survivors.png" alt="A swarm around the player in Vampire Survivors" class="pixelated" />
+<figcaption>The original: <em>Vampire Survivors</em> (poncle, 2022). Screenshot © poncle.</figcaption>
+</figure>
+
 The swarm is what makes this game hard. [Geometry Wars](../11-geometry-wars/) had hundreds of enemies
 and bullets (its thousands of particles were already handled apart, by one system). Here we
 want thousands of enemies, and the code we've written so far can't keep up. The main topic is

@@ -11,6 +11,11 @@ sidebar:
 
 Make a **top-down dungeon crawler**.
 
+<figure class="original">
+<img src="../../originals/the-legend-of-zelda.png" alt="The first cave of The Legend of Zelda" />
+<figcaption>The original: <em>The Legend of Zelda</em> (Nintendo, 1986). Screenshot © Nintendo.</figcaption>
+</figure>
+
 We go through the fundamental steps of a primitive _The Legend of Zelda_ clone. The main
 topic is **composition vs. inheritance**: the game has many kinds of things (a player,
 several enemies, switches, doorways), and how we build them decides how easy it is to add

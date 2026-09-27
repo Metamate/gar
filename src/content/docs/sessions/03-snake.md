@@ -11,6 +11,11 @@ sidebar:
 
 Make a **Snake** game.
 
+<figure class="original">
+<img src="../../originals/snake.gif" alt="A game of Snake, played to the end" class="pixelated" />
+<figcaption>The original: Snake, a game idea that goes back to <em>Blockade</em> (Gremlin, 1976), and became famous on mobile phones. Image: Ustone07, <a href="https://commons.wikimedia.org/wiki/File:Snake_can_be_completed.gif">CC BY-SA 3.0</a>, via Wikimedia Commons.</figcaption>
+</figure>
+
 This time we don't start from scratch. We start from a working codebase, and the main
 topic is **assets as data**: which images, animations and rooms the game uses is described
 in data files, not hardcoded. Along the way:

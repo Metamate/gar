@@ -11,6 +11,11 @@ sidebar:
 
 Make a **top-down shooter**.
 
+<figure class="original">
+<img src="../../originals/geometry-wars.png" alt="Geometry Wars: Retro Evolved" />
+<figcaption>The original: <em>Geometry Wars: Retro Evolved</em> (Bizarre Creations, 2005). Screenshot © Bizarre Creations / Microsoft.</figcaption>
+</figure>
+
 Geometry Wars puts thousands of entities on screen: the player, enemies, bullets,
 particles and a warping grid. Its entities are built from components, as in
 [Plants vs. Zombies](../09-plants-vs-zombies/), but at this size a new question matters:

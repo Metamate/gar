@@ -12,6 +12,11 @@ sidebar:
 Make a **Sokoban** game: push every box onto a goal. You can only push, never pull, and
 only one box at a time.
 
+<figure class="original">
+<img src="../../originals/sokoban.png" alt="The first level of the original Sokoban" class="pixelated" />
+<figcaption>The original: <em>Sokoban</em> (Thinking Rabbit, 1982), on the PC-8801. Screenshot © Thinking Rabbit.</figcaption>
+</figure>
+
 Snake's grid was a picture with a snake on top. In Sokoban, the grid holds the whole game:
 the walls, the boxes and the player are all the state there is. The main topic is the **Command**
 pattern, which turns every move into an object, and gives us **undo and redo**. Along
