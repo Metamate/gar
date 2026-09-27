@@ -415,12 +415,15 @@ Start from `Pacman4`.
    original, and shows the points. Add a short `PausedState` for the eaten ghost before
    `EatenState`. Which classes did you change? Compare with adding it to `Pacman1`'s enum.
 2. **A new personality:** add a fifth ghost with its own `ITargetStrategy`, e.g. one that
-   targets the tile Pac-Man was at five seconds ago. Write a test for it first.
+   targets the tile Pac-Man was at five seconds ago. Write a test for it first, next to
+   the others in `TargetingTests.cs`. Its two frames are already in `sprites.png` (row 1,
+   at x = 256 and 288); add the regions and an animation in `atlas-definition.xml`.
 3. **Frightened in the house:** in the original, ghosts waiting in the house also turn blue
    after a power pellet (but stay in the house). Change `InHouseState` to do that. What does
    the state need to remember?
 4. **Fruit:** after 70 dots, a fruit appears below the house for ten seconds. Where does
-   that rule belong: in `World`, in `Maze`, or in a class of its own?
+   that rule belong: in `World`, in `Maze`, or in a class of its own? A cherry is in
+   `sprites.png` (row 0, at x = 96), ready for a region.
 5. **Tunnel (stretch):** in the original, ghosts slow down in the tunnel. Which class should
    know that the ghost is in the tunnel, and which should know how fast to go there?
 
