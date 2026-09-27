@@ -218,6 +218,9 @@ with the Service Locator pattern.
 
 ## Exercises
 
+Build Flappy Bird step by step. As with Pong, you start in class and continue at
+home.
+
 1. **A class library:** create your own repository from the
    [gar-starter](https://github.com/Metamate/gar-starter) template, and rename `MyGame` to
    `Flappy` (its README shows how). It comes with an empty class library, `GMDCore`. Find

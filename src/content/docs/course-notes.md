@@ -14,9 +14,8 @@ production build. Keep instructor notes here, not on the public pages.
 Decided: the course is English only, and the [Exam](../exam/) page is the authoritative
 question pool (questions 0–10). Projects must document at least three patterns.
 
-- **CS50 GD50:** the game line-up follows CS50's Introduction to Game Development closely.
-  The art, sounds and fonts are no longer derived from it: they are our own, or Press Start 2P
-  (SIL OFL). Still open: whether to credit GD50 for the line-up and structure.
+- **CS50 GD50:** decided in September 2026 not to credit it. The course is its own: our
+  own art, sounds, names, rules and exercises, with Press Start 2P (SIL OFL) as the font.
 
 ## Session Plan
 
@@ -28,6 +27,36 @@ guidance. The official [syllabus](../syllabus/) stays as it is. The last lesson 
 12 walks through the [course recap](../recap/).
 
 Every session has its game in gar-games, its page and its deck.
+
+## Session Timing
+
+Each session is 4 blocks of 45 minutes: 180 minutes. Estimated from the decks in September
+2026 (concept slide 3 min, demo 6, pair activity 10, exploring a codebase 12, a Pong or
+Flappy build step 12, an exercise slide 20, Check Yourself 10, Apply 8). Rough, but the
+same rules for every session.
+
+| Session | Estimate | vs. 180 | Notes |
+| --- | --- | --- | --- |
+| 01 Pong | ~270 | +90 | course intro (~40) and 12 build steps (~145) |
+| 02 Flappy Bird | ~255 | +75 | 14 build steps (~170) |
+| 03 Snake | ~180 | 0 | |
+| 04 Sokoban | ~150 | −30 | |
+| 05 Pac-Man | ~140 | −40 | |
+| 06 Super Mario Bros | ~165 | −15 | |
+| 07 Angry Birds | ~140 | −40 | |
+| 08 The Legend of Zelda | ~175 | −5 | |
+| 09 Plants vs. Zombies | ~140 | −40 | |
+| 10 Pokemon | ~140 | −40 | |
+| 11 Geometry Wars | ~125 | −55 | |
+| 12 Vampire Survivors | ~145 | −35 | the course recap also takes time |
+
+- **Pong and Flappy Bird:** students start the build steps in class and continue at home;
+  few will finish in class, and that is expected (the pages say so). Nothing is marked as
+  homework in advance. With the midterm evaluation in mind, cover the concept slides in
+  class even when the building runs behind: they are what the next session builds on.
+- **The other sessions** have 15–55 minutes to spare. Use it for the exercises and for
+  project work in class, which the syllabus includes, rather than for more material.
+- Re-estimate after running a session: `timing.py` in the working notes did the counting.
 
 | # | Game | Main topic | Supporting |
 | --- | --- | --- | --- |
