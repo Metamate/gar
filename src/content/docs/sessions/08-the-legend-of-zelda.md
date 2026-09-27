@@ -366,9 +366,12 @@ be given).
 
 **Keys and locked doors:**
 
-- Some enemies drop a key when they die. Use an event for it, as above.
-- Some doorways are locked. Add a `locked` state to `door_layouts.xml` (draw a lock on the
-  door tiles, or tint them), so the look stays in data.
+- Some enemies drop a key when they die. Use an event for it, as above. The key is drawn
+  in `hearts.png` (its last frame, `frame_6`).
+- Some doorways are locked. Add `locked` layouts to `door_layouts.xml`, so the look stays in
+  data: a closed door's four tiles, plus a padlock on top. The padlock is drawn over four
+  tiles of the tilesheet: 243 (top left), 244 (top right), 245 (bottom left) and 246
+  (bottom right).
 - Walking into a locked door with a key uses up the key and opens the door for good. Show
   the keys the player carries next to the hearts.
 
