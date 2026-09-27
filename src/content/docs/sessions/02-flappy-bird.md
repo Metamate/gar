@@ -228,6 +228,8 @@ pattern in [Pokemon](../10-pokemon/).
 12. **Audio as a Singleton:** add background music (`Song` + `MediaPlayer.Play`) and flap, hurt and score
     sounds, organized in an `Audio` class made a Singleton (`Audio.Instance.PlayFlap()`).
 
+**Going further (optional):** a cave flyer. Hold the button to rise and let go to fall, through a cave whose ceiling and floor are generated as you go. What changes, and what stays: the states, the scrolling, the spawning?
+
 ## Apply It to Your Project
 
 - Which code in your game could be reused by another game? That belongs in a class library,

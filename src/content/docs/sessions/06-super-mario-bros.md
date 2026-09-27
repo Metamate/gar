@@ -325,6 +325,8 @@ Start from `Platformer8`.
    the player's current state and velocity on screen. Use it to find where coyote time
    starts and ends.
 
+**Going further (optional):** auto-tiling. Instead of the level maker choosing each tile's graphic, look at a solid tile's neighbours (which of up, down, left and right are solid) and pick the matching edge or corner graphic. Where does that belong: in the level maker, or in the tilemap?
+
 ## Apply It to Your Project
 
 - What would you want to see while debugging your game? Add debug drawing for your

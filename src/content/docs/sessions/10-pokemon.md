@@ -270,6 +270,8 @@ Start from `Pokemon4`.
    like `Sokoban.Tests`, with a round-trip test for your save data.
 5. **Pause:** add a `PauseState` using the state stack.
 
+**Going further (optional):** catching. Add a Catch option to the battle menu that can add a weakened wild monster to your party (more likely the lower its HP), and a field menu to choose who goes first. Which states do you add, and which existing ones change?
+
 ## Apply It to Your Project
 
 - Would your game benefit from layered states (pause menus, dialogue, transitions)?

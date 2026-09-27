@@ -140,6 +140,7 @@ Notes for building it:
   `Tile` values (graphic ID plus `IsSolid`) with collision helpers and a `Position`.
   Game-specific layers (the Platformer's toppers, Pokemon's tall grass) are separate
   tilemaps drawn on top.
+- **Repo naming pass (later):** make the game folder and project names consistent. `06-platformer` / `Platformer0` is the only generic name (the others name the game), and some use shortened names (`Birds`, `Pvz`, `Survivors`) while others use the full name (`GeometryWars`, `Pokemon`). Renaming touches the site, the decks, the READMEs and CI.
 
 ## Where Content Goes
 

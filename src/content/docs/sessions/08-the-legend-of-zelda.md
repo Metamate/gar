@@ -372,6 +372,8 @@ be given).
 - Walking into a locked door with a key uses up the key and opens the door for good. Show
   the keys the player carries next to the hearts.
 
+**Going further (optional):** a dungeon map. Keep track of the rooms the player has visited, and show them as a small map on a key press, with the current room highlighted. Which state shows it, and what does it need to know?
+
 ## Apply It to Your Project
 
 - What are the meaningful moments in your game that other systems might care about? Map
