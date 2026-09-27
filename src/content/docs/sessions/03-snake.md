@@ -303,13 +303,18 @@ if (!_room.Contains(_snake.Head) || _snake.IsBitingItself)
 
 Start from `Snake9`.
 
-1. **Data, not code:** add a second enemy with its own animation (new regions and an
-   animation in `atlas-definition.xml`), and change the room layout in
-   `tilemap-definition.xml`. How much C# did you need to change?
+1. **Data, not code:** the atlas image also holds a beetle the game doesn't use yet: two
+   frames, at (40, 20) and (60, 0). Describe it in `atlas-definition.xml` (two regions and a
+   `beetle-animation`), and make the enemy a beetle instead of a bat. Then change the room
+   layout in `tilemap-definition.xml`. How much C# did you need to change? And for a beetle
+   _next to_ the bat: what in `Game1` would have to change, and what does that say about
+   where the bat's rules live?
 2. **Speed up:** make the tick shorter each time the snake eats, down to a minimum. Where
    does that rule belong?
-3. **New input:** add gamepad support (D-pad and left stick) by changing only
-   `GameController`.
+3. **New input:** add gamepad support for the D-pad. A press needs last frame's state, so
+   first add a `GamePadInfo` to GMDCore's `InputManager`, modelled on `KeyboardInfo` (`Core`
+   already updates the `InputManager` every frame). Then map the D-pad in `GameController`.
+   Which files in the game itself did you change?
 4. **Pause:** add a pause action. While paused, the snake doesn't move and turns aren't
    buffered.
 5. **Refactor (stretch):** the tick timer lives in `Snake`. Move it into a reusable
