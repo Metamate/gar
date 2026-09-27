@@ -375,10 +375,12 @@ Start from `Survivors4` (or `Survivors3` for the measuring exercises), in Releas
    happens to the time, and why? Why can't the cells be smaller than the biggest overlap?
 2. **Bolts as arrays?** Convert the bolts to arrays. Measure: was it worth it? When would
    it be?
-3. **Find the next bottleneck:** with 20,000 enemies, what does the profiler say now? Try
+3. **Find the next bottleneck:** with 20,000 enemies (in `Survivors3`, press `Space` twenty
+   times), what does the profiler say now? Try
    to make it faster, and keep the tests green.
 4. **A new enemy kind:** a fast, weak one that appears in groups. What changes in
-   `EnemyKind`, `Enemies` and the spawner?
+   `EnemyKind`, `Enemies` and the spawner? A rat is drawn in `sprites.png` (38 × 24 at
+   x = 0, y = 62), ready for a region.
 5. **Stretch:** separation could run on several cores (`Parallel.For` over rows of cells).
    What goes wrong when two threads push the same enemy? How could you avoid it?
 
