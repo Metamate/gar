@@ -163,8 +163,9 @@ file should need editing.
 - A dense bullet slide is a sign its text belongs on the site, or in the speaker notes as
   talking points. Exercise slides give a one-line goal; the instructions are on the site.
 - Decks end with a few of the site's "Check yourself" questions, asked live.
-- All twelve decks follow this since September 2026; each slide's old text is kept in its speaker
-  notes as talking points.
+- All twelve decks follow this since September 2026. Every slide has speaker notes written for
+  presenting: what to say, what to ask (with the expected answer), and how to run each demo;
+  the Check yourself slides carry the site's answers.
 
 ## General Notes
 
