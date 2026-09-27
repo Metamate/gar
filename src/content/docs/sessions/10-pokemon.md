@@ -153,13 +153,14 @@ which state comes next: they push and pop.
 
 - `PokemonSpecies` defines a species: name, base stats, growth rates, sprites.
 - `Mon` is one actual monster with its own level, stats and HP.
-- Stats grow by chance: at each level, every stat gets three rolls of a die, and each roll
-  at or under the species' growth value (its _IV_, 1 to 5) adds 1. A monster at level 5 is
-  built by rolling five level-ups.
+- Stats follow from the level: each stat is the species' base value plus half its growth
+  value (1 to 5) per level. No dice: a level 5 Cindrel always has the same stats, so a
+  battle can be worked out on paper.
 - Damage: `(Attack × BasePower / 10) − Defense`, minimum 1.
-- Beating a monster gives EXP (more for higher levels and IVs); the EXP to the next level
-  grows with the square of the level. `LevelUp()` returns the stat increases so the UI can
-  show them, without comparing the monster before and after.
+- Beating a monster gives 5 EXP per level of the loser, and the next level takes 10 EXP per
+  current level: two wins against an equal monster. `LevelUp()` returns the stat increases
+  so the UI can show them.
+- Walking onto the spring in the field heals the monster in front of the party.
 - `Party` holds your team; `Party.Current` is the one in battle.
 
 `PokemonSpecies` vs. `Mon` is the [Type Object](../09-plants-vs-zombies/) pattern again:
