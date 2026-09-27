@@ -51,8 +51,7 @@ same rules for every session.
 | 12 Vampire Survivors | ~145 | −35 | the course recap also takes time |
 
 - **Pong and Flappy Bird:** students start the build steps in class and continue at home;
-  few will finish in class, and that is expected (the pages say so). Nothing is marked as
-  homework in advance. With the midterm evaluation in mind, cover the concept slides in
+  few will finish in class. Nothing is marked as homework in advance. With the midterm evaluation in mind, cover the concept slides in
   class even when the building runs behind: they are what the next session builds on.
 - **The other sessions** have 15–55 minutes to spare. Use it for the exercises and for
   project work in class, which the syllabus includes, rather than for more material.
