@@ -35,7 +35,10 @@ see exactly what changed.
 ## Prepare
 
 - [01: What Is MonoGame?](https://docs.monogame.net/articles/tutorials/building_2d_games/01_what_is_monogame)
-- [02: Getting Started](https://docs.monogame.net/articles/tutorials/building_2d_games/02_getting_started) — install the tooling before class
+- [02: Getting Started](https://docs.monogame.net/articles/tutorials/building_2d_games/02_getting_started),
+  for background. Install only the tooling [below](#monogame--tooling): our projects
+  build their content with `Builder.cs`, so you don't need the MonoGame templates, the
+  VS Code extension or the MGCB Editor.
 - [03: The Game1 File](https://docs.monogame.net/articles/tutorials/building_2d_games/03_the_game1_file)
 - [Game Loop](https://gameprogrammingpatterns.com/game-loop.html) (Game Programming Patterns)
 - [Update Method](https://gameprogrammingpatterns.com/update-method.html) (Game Programming Patterns)
@@ -244,25 +247,34 @@ Build Pong step by step:
 
 0. **An empty game:** clone [gar-games](https://github.com/Metamate/gar-games), open
    `01-pong/Pong0` (an empty MonoGame game set up with the content builder) and run it from
-   the `01-pong` folder with `dotnet run --project Pong0`.
-1. **Text on screen:** draw "Hello, MonoGame!" centred on a black 1280×720 window.
-2. **Virtual resolution:** make the game resolution independent of the window size, make
-   the window resizable, and use point filtering.
+   the `01-pong` folder with `dotnet run --project Pong0`. Do the exercises in `Pong0`;
+   step `PongN` is a solution to exercise N, to compare with when you're done.
+1. **Text on screen:** draw "Hello, MonoGame!" centred on a black 1280×720 window. The
+   font is already in `Content/Assets`: load it with `Content.Load<SpriteFont>("arial")`,
+   and centre the text with `MeasureString`.
+2. **Virtual resolution:** draw the game at 432×243, scaled to fit a resizable window,
+   with point filtering. Scale by the smaller of the two ratios (window width / 432,
+   window height / 243) so nothing is stretched, and centre the result with
+   `GraphicsDevice.Viewport`: black bars fill the rest. Recalculate when
+   `Window.ClientSizeChanged` fires.
 3. **Rectangles from a pixel:** draw two paddles and a ball, stretched from one white
-   pixel. Use a custom retro font and the background colour `(40, 45, 52)`.
+   pixel. Switch to the retro font (`"font"`, also in `Content/Assets`) and the
+   background colour `(40, 45, 52)`.
 4. **Input and delta time:** W/S and Up/Down move the paddles, at the same speed whatever
    the frame rate.
-5. **A moving ball:** launch the ball in a random direction on Enter. Keep the paddles on
-   screen (`Math.Clamp`).
+5. **A moving ball:** launch the ball in a random direction on Enter. A `string` field
+   remembers the game's mode (`"start"` or `"play"`), and the start mode shows "Press
+   Enter to launch the ball". Keep the paddles on screen (`Math.Clamp`).
 6. **The Update Method:** refactor into `Paddle` and `Ball` classes using the Update Method
    pattern. The game must behave exactly as before.
 7. **Collisions and the bounce:** bounce off paddles and walls with AABB. Where the ball
    hits the paddle sets the new angle: straight back from the middle, steeply from the
    ends. Speed up the ball by 10% on each paddle hit.
-8. **Scoring:** keep and display the score in a bigger font.
+8. **Scoring:** keep and display the score in a bigger font (`"font-big"`).
 9. **A serve mode:** the player who was scored on serves next.
 10. **A winner:** add a _done_ mode when a player reaches 10 points.
-11. **Sound effects:** add distinct sounds for paddle hit, wall hit and score.
+11. **Sound effects:** add distinct sounds for paddle hit, wall hit and score. Three are
+    in `Content/Assets/sounds`, or make your own with bfxr.
 
 ## Apply It to Your Project
 
