@@ -242,25 +242,27 @@ Make your own 8-bit sounds with [bfxr.net](https://www.bfxr.net/).
 
 Build Pong step by step:
 
-0. **New Game:** clone [gar-games](https://github.com/Metamate/gar-games), open
+0. **An empty game:** clone [gar-games](https://github.com/Metamate/gar-games), open
    `01-pong/Pong0` (an empty MonoGame game set up with the content builder) and run it from
    the `01-pong` folder with `dotnet run --project Pong0`.
-1. **Hello Pong:** draw "Hello Pong!" centred on a black 1280×720 window.
-2. **Virtual Resolution:** make the game resolution independent of the window size, make
+1. **Text on screen:** draw "Hello, MonoGame!" centred on a black 1280×720 window.
+2. **Virtual resolution:** make the game resolution independent of the window size, make
    the window resizable, and use point filtering.
-3. **Drawing Rectangles:** draw two paddles and a ball. Use a custom retro font and the
-   background colour `(40, 45, 52)`.
-4. **Paddle Movement:** W/S and Up/Down move the paddles, independent of frame rate.
-5. **Ball Movement:** launch the ball in a random direction on Enter. Keep the paddles on
+3. **Rectangles from a pixel:** draw two paddles and a ball, stretched from one white
+   pixel. Use a custom retro font and the background colour `(40, 45, 52)`.
+4. **Input and delta time:** W/S and Up/Down move the paddles, at the same speed whatever
+   the frame rate.
+5. **A moving ball:** launch the ball in a random direction on Enter. Keep the paddles on
    screen (`Math.Clamp`).
-6. **Encapsulation:** refactor into `Paddle` and `Ball` classes using the Update Method
+6. **The Update Method:** refactor into `Paddle` and `Ball` classes using the Update Method
    pattern. The game must behave exactly as before.
-7. **Collision Detection:** bounce off paddles and walls with AABB. Speed up the ball by
-   10% on each paddle hit.
+7. **Collisions and the bounce:** bounce off paddles and walls with AABB. Where the ball
+   hits the paddle sets the new angle: straight back from the middle, steeply from the
+   ends. Speed up the ball by 10% on each paddle hit.
 8. **Scoring:** keep and display the score in a bigger font.
-9. **Serve State:** the player who was scored on serves next.
-10. **Victory:** add a _done_ state when a player reaches 10 points.
-11. **Audio:** add distinct sounds for paddle hit, wall hit and score.
+9. **A serve mode:** the player who was scored on serves next.
+10. **A winner:** add a _done_ mode when a player reaches 10 points.
+11. **Sound effects:** add distinct sounds for paddle hit, wall hit and score.
 
 ## Apply It to Your Project
 
