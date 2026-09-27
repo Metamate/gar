@@ -154,12 +154,12 @@ which state comes next: they push and pop.
 - `PokemonSpecies` defines a species: name, base stats, growth rates, sprites.
 - `Mon` is one actual monster with its own level, stats and HP.
 - Stats follow from the level: each stat is the species' base value plus half its growth
-  value (1 to 5) per level. No dice: a level 5 Cindrel always has the same stats, so a
-  battle can be worked out on paper.
+  value (1 to 5) per level. There is no randomness, so a level 5 Cindrel always has the
+  same stats, and a battle can be worked out on paper.
 - Damage: `(Attack × BasePower / 10) − Defense`, minimum 1.
 - Beating a monster gives 5 EXP per level of the loser, and the next level takes 10 EXP per
-  current level: two wins against an equal monster. `LevelUp()` returns the stat increases
-  so the UI can show them.
+  current level, so two wins against a monster of your own level make a level.
+  `LevelUp()` returns the stat increases so the UI can show them.
 - Walking onto the spring in the field heals the monster in front of the party.
 - `Party` holds your team; `Party.Current` is the one in battle.
 
@@ -220,7 +220,8 @@ From `Pokemon0`, the locator hands out the tween manager and the game's assets. 
 `Pokemon4`, audio is added as one more service: every class that plays a sound asks the
 locator for an `IAudio`, and `Game1` registers the real `SoundManager`.
 
-Many classes need shared services such as audio, tweens and assets. How do they find them?
+Many classes need shared services such as audio, tweens and assets. There are three common
+ways for them to get one:
 
 - **Pass them in** (dependency injection): explicit and testable, but tedious when a
   service is needed deep in the object graph.

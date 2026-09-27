@@ -7,8 +7,8 @@ sidebar:
 
 ## Today's Goal
 
-Make **Pac-Man**: eat every dot in the maze while four ghosts hunt you. Eat a power pellet,
-and for a few seconds the hunters become the hunted.
+Make **Pac-Man**: eat every dot in the maze while four ghosts hunt you. After a power pellet,
+the ghosts run from you for a few seconds.
 
 The ghosts are what make Pac-Man interesting to build. Each ghost switches between modes
 (waiting in the house, scattering, chasing, frightened, eaten), and each mode changes how it
@@ -16,7 +16,7 @@ moves and what happens when it touches Pac-Man. The main topic is the **State** 
 which turns each mode into an object. Along the way:
 
 - The **Strategy** pattern: each ghost chases in its own way
-- State vs. Strategy: similar code, different reasons
+- State vs. Strategy: why two patterns with the same shape are used differently
 - Unit tests for each ghost's targeting, one strategy at a time
 
 **Source code:**
@@ -169,7 +169,7 @@ public void Update(float deltaSeconds)
 }
 ```
 
-It works. But look at the whole class:
+It works, but the class as a whole has problems:
 
 - **Every method switches over the mode:** `Update`, `ChooseDirection`, `OnPowerPellet`,
   `Touch`, `Look`, and `SetMode` for what happens when a mode starts. To understand

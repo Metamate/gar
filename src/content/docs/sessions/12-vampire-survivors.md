@@ -10,7 +10,7 @@ sidebar:
 Make **Vampire Survivors**: walk around while your weapons fire by themselves, and survive
 five minutes against an ever-growing swarm.
 
-The swarm is the point. [Geometry Wars](../11-geometry-wars/) had hundreds of enemies
+The swarm is what makes this game hard. [Geometry Wars](../11-geometry-wars/) had hundreds of enemies
 and bullets (its thousands of particles were already handled apart, by one system). Here we
 want thousands of enemies, and the code we've written so far can't keep up. The main topic is
 **performance**, in the order you should do it:
@@ -58,8 +58,8 @@ The weapons ask the swarm questions too: which enemy is nearest? Which enemies a
 the aura? Each question looks at every enemy.
 
 It plays fine at first. Press Space a few times to add a thousand enemies each time, and
-the game slows to a crawl. But **why**? Guessing is how you end up optimizing the wrong
-thing.
+the game slows to a crawl. Before changing anything, we find out **why**: guessing is how
+you end up optimizing the wrong thing.
 
 ## Profiling
 
@@ -92,11 +92,11 @@ Moving, the weapons and drawing are tiny in comparison. At 60 frames per second 
 | 5,000 | 12.5 million | 27 |
 | 10,000 | 50 million | 107 |
 
-Twice the enemies, four times the work: the cost grows with the **square** of the number
+Twice the enemies means four times the work: the cost grows with the **square** of the number
 of enemies, O(n²). No amount of tuning the inside of the loop fixes that.
 
 (These numbers, and the ones below, are from one laptop, with a Release build. Yours will
-differ, but the shape won't. Measure with `dotnet run -c Release`: a Debug build is slower,
+differ, but they should grow the same way. Measure with `dotnet run -c Release`: a Debug build is slower,
 and slower in different places.)
 
 The profiler also shows **allocations**: `Survivors0` allocates a little every frame,
@@ -109,7 +109,8 @@ Performance Profiler in Visual Studio, `dotnet-counters` and `dotnet-trace`).
 
 _Step `Survivors2`_
 
-An enemy can only overlap enemies that are close to it. So don't look at the others.
+An enemy can only overlap enemies that are close to it, so there is no need to look at the
+others.
 **Spatial partitioning** organizes objects by where they are, so that finding the ones near
 a point only looks near that point.
 
@@ -234,8 +235,8 @@ because the hot loops read them for every enemy, every step.
 
 ### Measure again
 
-We first converted only the enemies to arrays, and kept the grid. The result: no
-difference. With 10,000 enemies, 3.9 ms instead of 4.1 ms. The time wasn't in reading
+We first converted only the enemies to arrays, and kept the grid. It made almost no
+difference: with 10,000 enemies, 3.9 ms instead of 4.1 ms. The time wasn't in reading
 enemies; it was in the grid, which looks up cells in a dictionary and walks lists of tuples
 for every query. The data layout that matters is the data **in the hot loop**, and only
 measuring tells you which loop that is.
@@ -273,14 +274,14 @@ allocated, and there's no dictionary.
 | 10,000 | 107 ms | 4.1 ms | 1.3 ms |
 | 20,000 | — | 14.5 ms | 4.9 ms |
 
-Three to five times faster than the object grid, and about 80 times faster than where we
-started, at 10,000 enemies.
+At 10,000 enemies, that is three to five times faster than the object grid, and about 80
+times faster than where we started.
 
 ### What it costs
 
 - **An enemy is an index.** There's no object to pass around, and an index changes when
   another enemy is removed (the last one moves into the hole). Holding on to an index
-  across frames is a bug waiting to happen.
+  across frames leads to bugs that are hard to find.
 - **Harder to read.** `positions[i] += ... * speeds[i]` says less than
   `enemy.Position += ... * enemy.Kind.Speed`.
 - **Harder to change.** A new enemy field means a new array, and every place that copies or

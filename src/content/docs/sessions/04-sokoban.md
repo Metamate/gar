@@ -10,8 +10,8 @@ sidebar:
 Make a **Sokoban** game: push every box onto a goal. You can only push, never pull, and
 only one box at a time.
 
-Snake's grid was a picture with a snake on top. In Sokoban, the grid _is_ the game: the
-walls, the boxes and the player are the whole state. The main topic is the **Command**
+Snake's grid was a picture with a snake on top. In Sokoban, the grid holds the whole game:
+the walls, the boxes and the player are all the state there is. The main topic is the **Command**
 pattern, which turns every move into an object, and gives us **undo and redo**. Along
 the way:
 
@@ -159,15 +159,15 @@ public bool IsSolved => _boxes.All(_goals.Contains);
 drawing, so it lives in `LevelView`, not in `Level`. The `GameController` is the one from
 [Snake](../03-snake/#input-as-actions).
 
-Why split them? Each part can now change on its own: new art only touches `LevelView`, a
-new rule only touches `Level`. And the rules can be tested.
+With the two apart, each can change on its own. New art only touches `LevelView`, and a
+new rule only touches `Level`. The rules can also be tested, as the next section shows.
 
 ## Unit Tests
 
 _Project `Sokoban.Tests`_
 
-How do you know the rules work? So far, by playing: start the game, walk into a box, and
-look. That's slow, it's easy to skip a case (a box against another box?), and every
+So far, the only way to check the rules is to play: start the game, walk into a box, and
+look. That is slow, it is easy to skip a case (a box against another box?), and every
 change to the code means playing it all again.
 
 A **unit test** is a small piece of code that checks one thing about your code
@@ -340,13 +340,14 @@ A move that is an object can be kept. `Sokoban2` only keeps a list, to count the
 (shown in the window title), but once moves are objects they can also be:
 
 - **Queued:** executed later, for example one per tick or after an animation.
-- **Logged and replayed:** a list of commands _is_ a replay, or a solution to show.
+- **Logged and replayed:** a list of commands can be played back as a replay, or shown as
+  a solution.
 - **Sent:** over the network, in a multiplayer game.
 - **Undone:** if a command knows how to reverse itself.
 
-Note the difference from [Snake](../03-snake/#input-as-actions): the `GameController` maps
-keys to _actions_ ("the player wants to go up"). A command is what the game _does_ with an
-action ("move the player up in this level"), and it's that object we keep.
+The `GameController` from [Snake](../03-snake/#input-as-actions) maps keys to _actions_
+("the player wants to go up"). A command is what the game _does_ with an action ("move the
+player up in this level"), and that is the object we keep.
 
 ## Undo and Redo
 

@@ -12,8 +12,8 @@ Make **Angry Birds**: pull back the slingshot, let go, and knock down the pigs' 
 In [Super Mario Bros](../06-super-mario-bros/) we wrote our own physics: gravity, velocity,
 and collisions with tiles. For stacks of blocks that tip over, bounce and break, that isn't
 enough. Real games use a **physics library** for that, and here we use **Box2D**. The main
-topic isn't physics, though. It's how you bring someone else's library into your
-architecture, so that the rest of your game doesn't have to know about it. Along the way:
+topic is how you bring someone else's library into your architecture, so that the rest of
+your game doesn't have to know about it. Along the way:
 
 - The **Adapter** and **Facade** patterns
 - Two worlds: the physics world (metres, y up) and the game world (pixels, y down)
@@ -71,8 +71,7 @@ private void AddBox(float x, float y, float width, float height, string sprite)
 }
 ```
 
-It works: the hut stands, the bird flies, the blocks tumble. But look at what `Game1` now
-has to know:
+It works, but `Game1` now has to know a lot about Box2D:
 
 - **A foreign API.** Box2D is written in C, and the port keeps its style: functions like
   `b2CreateBody` instead of methods, structs passed with `in`, and IDs (`B2BodyId`)
@@ -83,7 +82,7 @@ has to know:
   body, when launching the bird, and every frame when drawing. Box2D also turns
   counter-clockwise, and SpriteBatch clockwise. Forget one conversion, and a body appears
   in the wrong place, or falls up.
-- **Everywhere.** Box2D's types and conversions are spread all through the game. Moving
+- **Spread through the game.** Box2D's types and conversions are all over `Game1`. Moving
   to another physics library, or to a new version of this one, would mean changing all of
   it.
 
@@ -181,7 +180,7 @@ public Block(PhysicsWorld world, Vector2 center, Vector2 size, float rotation, P
 }
 ```
 
-What did we gain?
+This gives us:
 
 - **One place to change.** A new version of Box2D, or another physics library, means
   changing the `Physics` folder only.
@@ -190,9 +189,8 @@ What did we gain?
 - **A smaller surface.** The facade only offers what the game needs, so the game can't
   come to depend on the rest of Box2D.
 
-And what does it cost? Every Box2D feature the game needs later (joints, raycasts,
-sensors) has to be added to the facade first. That's the point, but it is work. Wrap a
-library when it's foreign to your code, when you might swap it, or when you use a small
+The cost is that every Box2D feature the game needs later (joints, raycasts, sensors) has
+to be added to the facade first. That is on purpose, but it is extra work. Wrap a library when it's foreign to your code, when you might swap it, or when you use a small
 part of it. A library that already fits your code, like MonoGame itself, doesn't need it.
 
 `Units` is `internal`, and so are the IDs. In a bigger project, the `Physics` folder would
@@ -266,7 +264,8 @@ pattern.)
 ### Destroying safely
 
 When an entity's health runs out, it must go: its body leaves the physics world, and the
-entity leaves the game's list. The obvious place to do that is in the hit handler. Don't:
+entity leaves the game's list. The obvious place to do that is the hit handler, but the
+handler only damages the entities:
 
 ```csharp
 private void OnHit(PhysicsBody a, PhysicsBody b, float speed)
@@ -277,6 +276,8 @@ private void OnHit(PhysicsBody a, PhysicsBody b, float speed)
     // Not here: _physics.Destroy(...) or _entities.Remove(...)
 }
 ```
+
+Destroying them here would cause two problems:
 
 - **The physics world is still reporting.** More hits from the same step may follow, and
   one may be about the body you just destroyed. In many physics libraries (including older

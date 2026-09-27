@@ -45,9 +45,10 @@ see exactly what changed.
 
 ## MonoGame & Tooling
 
-MonoGame is a _framework_, not an engine. It gives us libraries for graphics, input, audio,
-content loading and math, but no editor, no scene graph and no entity system. We build
-those ourselves, which is exactly why it is a good fit for a course about game architecture.
+MonoGame is a _framework_. It gives us libraries for graphics, input, audio, content loading
+and math, but it has no editor, scene graph or entity system like an engine such as Unity
+has. We write those parts ourselves, and that makes it a good fit for a course about game
+architecture.
 
 Tooling used in the course:
 
@@ -72,9 +73,9 @@ gets one `Update` and one `Draw` call per frame, and everything else in your gam
 if you call it from there. For more detail, see
 [What is the Game Loop](https://docs.monogame.net/articles/getting_to_know/whatis/game_loop/index.html).
 
-**Why separate `Update` and `Draw`?** `Update` changes the state of the world; `Draw` only
-reads that state and renders it. Keeping them apart lets the simulation and the rendering
-run at different rates, which is the idea behind a fixed timestep.
+`Update` changes the state of the world, and `Draw` only reads that state and renders it.
+Because they are kept apart, the simulation and the rendering can run at different rates,
+which is the idea behind a fixed timestep.
 
 Rendering itself uses a _double buffer_: we draw into a back buffer that isn't visible,
 and MonoGame presents it (`GraphicsDevice.Present()`, called at the end of `Draw`) so the
@@ -231,8 +232,9 @@ yourself once.)
 ## Game State
 
 Pong has distinct phases: _start_, _serve_, _play_ and _done_. Today we track them with a
-simple `string` field and `if`-checks in `Update` and `Draw`. It works, but it doesn't
-scale. Keep it in mind; we fix it in [Flappy Bird](../02-flappy-bird/).
+simple `string` field and `if`-checks in `Update` and `Draw`. That is fine for four states,
+but every new state means another `if` in each method. In
+[Flappy Bird](../02-flappy-bird/) we replace it with a state machine.
 
 ## Sound Effects
 

@@ -10,8 +10,8 @@ sidebar:
 Make a **Flappy Bird** clone.
 
 Pong worked, but everything lived in `Game1` and game state was a string. Today we start
-organizing: we create **GMDCore**, a class library of reusable code that grows throughout
-the course, and replace the string-based state with a proper **state machine**.
+organizing the code. We create **GMDCore**, a class library of reusable code that grows
+throughout the course, and we replace the string with a **state machine**.
 
 New concepts: class libraries, textures, parallax scrolling, procedural generation,
 interfaces, state machines and the Singleton pattern.
@@ -35,9 +35,9 @@ to see exactly what changed.
 
 ## Game Architecture
 
-What is _good_ software architecture? A good architecture makes **change** cheap. The key
-to that is **decoupling**: when you change one part of the code, you shouldn't have to
-understand or touch many other parts.
+Good software architecture makes **change** cheap. Much of that comes from
+**decoupling**: when you change one part of the code, you shouldn't have to understand or
+touch many other parts.
 
 - **Coupling:** how much one module depends on another. Aim for low.
 - **Cohesion:** how closely related the responsibilities inside one module are. Aim for
@@ -49,13 +49,12 @@ performance. Good architecture is about choosing _where_ flexibility is worth th
 ## Class Libraries: GMDCore
 
 Code that isn't specific to one game (screen scaling, input helpers, and later sprites,
-tilemaps, state machines…) goes into a **class library** called `GMDCore`: an ordinary
-.NET class library that references MonoGame.
-Each game references it, and its `Game1` derives from `Core` instead of `Game`.
+tilemaps, state machines…) goes into an ordinary .NET class library, `GMDCore`, that
+references MonoGame. Each game references the library, and its `Game1` derives from
+`Core` instead of `Game`.
 
-The reference goes **one way**: the game knows the library, and the library never knows
-the game. Nothing in `GMDCore` may use a class from Flappy. That rule is what makes the
-library reusable: if `Core` needed Flappy's `Bird`, no other game could use it.
+The reference only goes one way. Flappy uses GMDCore, but nothing in GMDCore may use a
+class from Flappy. If `Core` needed Flappy's `Bird`, no other game could use the library.
 
 ```mermaid
 classDiagram
@@ -74,8 +73,8 @@ classDiagram
     note for Game1 "Flappy project"
 ```
 
-Every session from now on, ask: **does this belong to the game, or to the core?** Where
-you draw that line is an architectural decision.
+From now on we ask the same question in every session: does this code belong to the
+game, or to the core?
 
 ## Images & Parallax Scrolling
 
@@ -86,7 +85,8 @@ An image is just a `Texture2D`, loaded with `Content.Load<Texture2D>()` and draw
 the background scrolls slower than the ground. Each layer loops by wrapping its offset
 with `%` at its "looping point".
 
-**Games are illusions.** The bird never moves horizontally; the world scrolls past it.
+The bird never actually moves sideways. The world scrolls past it, and the player sees
+a bird flying.
 
 ## Where Do Assets Live?
 
@@ -98,8 +98,8 @@ trade-off:
 3. A static `ContentManager` on `Core`: global access to loading.
 4. A static `Art` class holding references to all loaded assets.
 
-We use option 4 today. Note that it is _global state_, which is exactly what the Singleton
-discussion below is about.
+We use option 4 today. It is _global state_, and the Singleton section below discusses
+what that costs.
 
 ## Procedural Generation
 
@@ -115,16 +115,16 @@ the same for the mouse (`IsLeftButtonDown`, `WasLeftButtonJustPressed`, `Positio
 wrapped by an `InputManager` that `Core` updates every frame, so any code can ask
 `Core.Input.Keyboard` or `Core.Input.Mouse`. The bird flaps on Space _or_ a left click.
 
-Note that the mouse position is in **window** coordinates. Because the game is drawn at a
+The mouse position is in **window** coordinates. Because the game is drawn at a
 virtual resolution and scaled to the window, a click at the window's centre is not at
 (256, 144) in the game unless you convert it. We don't need positions for Flappy Bird, but
-this difference between coordinate spaces comes back in several later games.
+several later games have to convert between coordinate spaces like this.
 
 ## State Machines
 
-Recall Pong's `string` state. Every `Update` and `Draw` was an `if`-chain over every state,
-and adding a state meant editing all of them. Instead, we make each state an object that
-implements a common **interface**:
+In Pong, the state was a `string`. Every `Update` and `Draw` was an `if`-chain over the
+states, and adding a state meant editing all of them. Now each state becomes an object
+that implements a common **interface**:
 
 ```mermaid
 stateDiagram-v2
@@ -166,8 +166,8 @@ public class StateMachine(Game1 game)
 }
 ```
 
-Each state contains only its own behaviour, and `Game1` just forwards `Update` and `Draw`
-to the state machine. `Enter()` and `Exit()` give each state a place to set up and clean up
+Each state contains only its own behaviour, and `Game1` passes `Update` and `Draw` on to
+the state machine. `Enter()` and `Exit()` give each state a place to set up and clean up
 (for example, `PlayState.Enter()` resets the bird, pipes and score so every retry starts
 clean).
 
@@ -195,19 +195,19 @@ controversial:
 
 - They are **global state**: any code can reach them, so any code can depend on them.
 - Dependencies become hidden, which makes code hard to reason about and to test.
-- "Only one instance" is rarely a real requirement; usually we just want easy access.
+- Games rarely need to guarantee "only one instance". Usually we only want easy access.
 
 > "Friends don't let friends create singletons."
 > — Robert Nystrom, _Game Programming Patterns_
 
 In the finished game (`Flappy12`), `Audio` is a Singleton, used as
 `Audio.Instance.PlayFlap()`, while `Art` and `Core.Input` are static. Both give global
-access, but `Audio` is an object: it could implement an interface or be passed to the code
-that needs it.
+access, but `Audio` is an object, so it could implement an interface or be passed to the
+code that needs it.
 
 **Discuss:** do `Audio` and `Art` have the same problems? Which one would be easier to
-replace with a muted version for testing? We come back to this with the Service Locator
-pattern in [Pokemon](../10-pokemon/).
+replace with a muted version for testing? [Pokemon](../10-pokemon/) picks this up again
+with the Service Locator pattern.
 
 ## Exercises
 
@@ -276,8 +276,8 @@ subscriptions stay alive, timers keep running.
 <details>
 <summary>Why is Singleton considered an anti-pattern by many game programmers?</summary>
 
-It is global state in disguise. It hides dependencies, couples code together and makes
-testing and reasoning harder, and the "exactly one instance" guarantee is rarely needed.
+It is global state. It hides dependencies, couples code together and makes testing and
+reasoning harder, and games rarely need the "exactly one instance" guarantee.
 
 </details>
 

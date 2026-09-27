@@ -12,8 +12,8 @@ Individual oral exam, **20 minutes including grading**, without preparation. See
 2. The exam starts with **question 0** (your project), followed by the question you drew.
 3. That gives about **7–8 minutes per question**.
 
-The sub-questions are prompts to guide the conversation, not a checklist you must get
-through in full.
+The sub-questions are there to guide the conversation. You aren't expected to get through
+all of them.
 
 If you can't answer part of the question you drew using your own game project, you are
 welcome to refer to the games from the course. You may use their source code at the exam:
@@ -68,7 +68,7 @@ _Covered in: [02 Flappy Bird](../sessions/02-flappy-bird/),
    development?
 2. Which concrete problems does the Service Locator pattern solve, and how does it differ
    from a Singleton in terms of coupling and testability?
-3. Show how `GameServices` (or a similar locator) is used in your project. Which services
+3. Show how a locator (like `Locator` in Pokemon) is used in your project. Which services
    have you registered, and why?
 4. Discuss the trade-offs: when would you prefer dependency injection (passing references
    in through constructors) over a Service Locator?

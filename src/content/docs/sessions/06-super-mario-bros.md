@@ -56,8 +56,8 @@ private void GenerateLevel()
 }
 ```
 
-Our tilemap is getting smarter. Instead of plain integer ids, it now stores `Tile` values
-that know more than their graphic:
+The tilemap now stores `Tile` values instead of plain integer ids. A tile knows more than
+its graphic:
 
 ```csharp
 // One cell of a tilemap: which tileset graphic to draw, and whether it blocks movement.
@@ -125,8 +125,8 @@ _Step `Platformer2`_
 
 ### Performance
 
-Do we need to test the player against every tile? No. The grid is static, so we can look
-up the tile at a position directly (`IsSolidAt(x, y)`). That costs the same for a level of
+The player doesn't need to be tested against every tile. The grid is static, so we can
+look up the tile at a position directly (`IsSolidAt(x, y)`). That costs the same for a level of
 10 or 10,000 tiles: **O(1)** instead of **O(n)**. Moving entities can't be looked up this
 way. Testing all pairs of entities is **O(n²)**; in
 [Vampire Survivors](../12-vampire-survivors/) we make that fast too.
@@ -134,7 +134,7 @@ way. Testing all pairs of entities is **O(n²)**; in
 ### Debug drawing
 
 Collision bugs are hard to see: the hitbox is invisible, and a player that stops a few
-pixels early looks just like one that works. So we **draw what the game can't show**. Press
+pixels early looks just like one that works. **Debug drawing** makes them visible. Press
 `F1` to outline the solid tiles in red and the player's hitbox in green (from `Platformer6`,
 the entities in yellow too). You can see the hitbox inset, and exactly where the player
 collides.
@@ -214,9 +214,9 @@ switch (State)
 }
 ```
 
-It works, but it doesn't scale. Every method switches over every state (`ChangeState`
-has its own switch, and `HandleHorizontalMovement` a special case for ducking), and what if a
-state needs its own data, e.g. charge time while ducking?
+It works, but every method switches over every state (`ChangeState` has its own switch,
+and `HandleHorizontalMovement` a special case for ducking), and there is no good place for
+data that only one state needs, such as a charge time while ducking.
 
 ### The State pattern
 
@@ -315,18 +315,18 @@ Start from `Platformer8`.
 1. **A chunk level maker:** design a handful of short level chunks by hand (a pit with a
    platform over it, a staircase, a snail on a ledge), each a small grid of tiles in a data
    file in `Content/Assets`. The builder copies `.xml` files as they are; for another
-   format, such as `.txt`, add an `IncludeCopy` rule in `Builder.cs`. Write a level maker that strings random chunks together, and make each level a few
-   chunks longer than the last when the player reaches its right edge.
+   format, such as `.txt`, add an `IncludeCopy` rule in `Builder.cs`. Write a level maker
+   that strings random chunks together, and make each level a few chunks longer than the
+   last when the player reaches its right edge.
 2. **Moving platforms:** a platform that glides back and forth and carries the player
-   standing on it. Where does “carried along” belong: in the platform, in the player, or
+   standing on it. Where does "carried along" belong: in the platform, in the player, or
    in the collision code?
 3. **Powerups:** add a star (invincibility with a timer) and a mushroom (the player grows).
-   Both are drawn in `images/extras.png`.
-   How do you add these without piling flags onto the `Player` class?
+   Both are drawn in `images/extras.png`. How do you add these without piling flags onto
+   the `Player` class?
 4. **Debug drawing:** also draw the probe below the player that checks for ground
-   (`IsOnGround` in `PlayerStateBase`), and show
-   the player's current state and velocity on screen. Use it to find where coyote time
-   starts and ends.
+   (`IsOnGround` in `PlayerStateBase`), and show the player's current state and velocity
+   on screen. Use it to find where coyote time starts and ends.
 
 **Going further (optional):** auto-tiling. Instead of the level maker choosing each tile's graphic, look at a solid tile's neighbours (which of up, down, left and right are solid) and pick the matching edge or corner graphic. Where does that belong: in the level maker, or in the tilemap?
 

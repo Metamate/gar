@@ -54,9 +54,9 @@ content.Include<WildcardRule>("*.png", new TextureImporter(), new TextureProcess
 content.IncludeCopy<WildcardRule>("*.xml");
 ```
 
-Why bother? Because data can change without the code changing. A new animation frame, a
-faster bat or a different room is an edit to an XML file, not to C#. An artist or designer
-can make it without touching the game's code, and the code stays smaller and more general.
+The benefit is that the data can change while the code stays the same. A new animation
+frame, a faster bat or a different room is an edit to an XML file. An artist or designer can
+make it without touching the game's code, and the code stays smaller and more general.
 
 ## Texture Atlases
 
@@ -67,8 +67,9 @@ switch texture between draws, which breaks batching. A **texture atlas** (sprite
 packs many images into one texture.
 
 `Snake0` draws parts of the atlas by passing hardcoded source rectangles to
-`SpriteBatch.Draw()`. That doesn't scale. In `Snake1`, an XML atlas definition gives each
-rectangle a name, and a **texture region** is a named rectangle within the atlas:
+`SpriteBatch.Draw()`, which gets hard to maintain as the number of sprites grows. In
+`Snake1`, an XML atlas definition gives each rectangle a name, and a **texture region** is
+a named rectangle within the atlas:
 
 ```xml
 <TextureAtlas>

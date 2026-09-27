@@ -69,9 +69,9 @@ classDiagram
     }
 ```
 
-**Inheritance works well while there is one axis of variation.** But what about an enemy
-that shoots _and_ flies _and_ explodes, or a pot that the player can carry _and_ throw?
-Deep hierarchies (`Entity → Movable → Enemy → ShootingEnemy → HomingShootingEnemy…`) lead
+**Inheritance works well while there is one axis of variation.** It gets harder with an
+enemy that shoots _and_ flies _and_ explodes, or a pot that the player can carry _and_
+throw. Deep hierarchies (`Entity → Movable → Enemy → ShootingEnemy → HomingShootingEnemy…`) lead
 to one of two problems:
 
 - **Duplicated code:** two branches of the tree need the same behaviour, so it is copied.
@@ -81,14 +81,14 @@ to one of two problems:
 **Composition** is the alternative: an object _has_ behaviours instead of _being_ a kind of
 something. Zelda already composes in several places:
 
-- **Behaviour in state objects:** an enemy's AI isn't in `Enemy` itself, but in the state
-  object it currently holds (`EntityWalkState`, `EntityIdleState`). Changing the behaviour
-  means swapping the object, not the class.
-- **Behaviour wired from outside:** a floor switch is a plain `GameObject`. What happens
-  when the player steps on it isn't in a `SwitchObject` subclass, but in a handler the room
-  attaches to its `OnCollide` event (see the next section).
+- **Behaviour in state objects:** an enemy's AI lives in the state object it currently
+  holds (`EntityWalkState`, `EntityIdleState`). To behave differently, the enemy swaps that
+  object; its class stays the same.
+- **Behaviour wired from outside:** a floor switch is a plain `GameObject`. The room
+  attaches a handler to its `OnCollide` event, and that handler decides what happens when
+  the player steps on it (see the next section). There is no `SwitchObject` subclass.
 - **Data instead of subclasses:** enemy types (their size, speed, health and animations)
-  come from a data file, not from one class per enemy type (see
+  come from a data file, so there is no class per enemy type (see
   [Data-Driven Design](#data-driven-design)).
 
 > "Favor object composition over class inheritance." — Gang of Four, _Design Patterns_
@@ -294,8 +294,9 @@ _tweens.Tween(GameSettings.RoomShiftDuration)
 ```
 
 The dungeon only has to call `_tweens.Update(gameTime)` while shifting. When the tween
-ends, `FinishShift` makes the new room the current room and resets the camera. No progress
-variable, no "is it done yet?" check: the timing lives in the tween system.
+ends, `FinishShift` makes the new room the current room and resets the camera. The dungeon
+doesn't keep a progress variable or check whether the scroll is done; the tween system
+keeps the timing.
 
 ## Stenciling
 
@@ -341,8 +342,9 @@ Enemies and game objects are defined in XML, not in C#:
 Adding a new enemy type means one `<Enemy>` block plus a spritesheet row: no new class.
 The C# code only knows animation _names_ like `walk-down`, never frame numbers. Objects work
 the same way: a switch's states (`unpressed`, `pressed`) and their frames come from
-`object_definitions.xml`, and each doorway's tiles from `door_layouts.xml`. The rule is
-**content in data, behaviour in C#**. That's composition through data. [Plants vs. Zombies](../09-plants-vs-zombies/) builds a
+`object_definitions.xml`, and each doorway's tiles from `door_layouts.xml`. Content lives in
+data and behaviour in C#, which is composition too: an enemy is put together from a
+definition instead of a subclass. [Plants vs. Zombies](../09-plants-vs-zombies/) builds a
 whole game this way, with the Type Object pattern.
 
 ## Exercises

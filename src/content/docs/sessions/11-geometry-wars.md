@@ -25,7 +25,8 @@ the entity recipes plus the systems they need, and the `GeometryWars.Tests` proj
 the code and suggests an order to read it in. Each section below names the steps that
 introduce it.
 
-The goal isn't to understand every system in the codebase, but the overall architecture.
+You don't need to understand every system in the codebase. Today is about the overall
+architecture.
 
 ## Prepare
 
@@ -83,10 +84,10 @@ a fixed order every frame: `OnAdded` and `OnStart` once, then `PreUpdate`, `Upda
 the world. `OnRemoved` is housekeeping (unsubscribing, for example); it is not the same as
 a gameplay event such as an enemy being destroyed.
 
-**Local events.** The components of one entity talk through small events, not a global
-event bus. `Health` announces `Damaged` and `Depleted`; other components on the same
+**Local events.** The components of one entity talk through small events of their own,
+without a global event bus. `Health` announces `Damaged` and `Depleted`; other components on the same
 entity react: `PlayHitParticlesOnDamage` shows sparks, `DestroyWhenHealthDepleted` removes
-the entity. Health doesn't know either of them exists. That's
+the entity. Health doesn't know either of them exists. This is
 [Observer](../08-the-legend-of-zelda/#events--the-observer-pattern) inside one entity. The
 core flow (update, collide, draw) stays as direct calls, so it's still easy to follow.
 
@@ -120,10 +121,10 @@ player.
 The **particles** (`GeometryWars3`) are the extreme case. Thousands of short-lived sparks
 aren't entities with components at all: one `ParticleManager` system owns all of them and
 updates them in bulk. The spring **grid** (`GeometryWars4`) goes the same way: its points
-live in flat arrays and are updated in tight loops, for speed. Not every part of a game
-needs the same style: components where clarity matters, flat data where volume does. That's
-a step towards data-oriented design, which [Vampire Survivors](../12-vampire-survivors/)
-takes all the way.
+live in flat arrays and are updated in tight loops, for speed. A game can mix the two
+styles: components where clarity matters, and flat data where there are thousands of
+something. Flat data is the start of data-oriented design, which
+[Vampire Survivors](../12-vampire-survivors/) uses for its whole swarm.
 
 ### Where does new code go?
 
@@ -222,7 +223,8 @@ public void Destroying_the_enemy_awards_its_points()
 }
 ```
 
-One entity, two components, no world, no graphics. The same goes for time: `ScoreTracker`
+The test needs one entity and two components, and no world or graphics. Time works the
+same way: `ScoreTracker`
 gets the frame time through the `FrameInfo` passed into its constructor, so
 `ScoreTrackerTests` decides how much time passes, and checks that the multiplier expires
 without waiting for it.
@@ -236,12 +238,12 @@ dependency injection, the test simply passes something else in.
 
 _Step `GeometryWars1`_
 
-**The problem.** 20 bullets per second, 30 particles per hit, 50 debris pieces per enemy:
-thousands of short-lived allocations per second. In C#, every `new` object will
+Geometry Wars fires 20 bullets per second, and makes 30 particles per hit and 50 debris
+pieces per enemy: thousands of short-lived allocations per second. In C#, every `new` object will
 eventually be collected by the garbage collector, and GC pauses are unpredictable. A
 stutter every few seconds is the telltale sign of allocation in a hot loop.
 
-**The solution.** Allocate everything up front and reuse inactive objects:
+An **object pool** allocates everything up front and reuses inactive objects:
 
 ```csharp
 public class ParticlePool
@@ -279,8 +281,8 @@ In the codebase: `ObjectPool.cs`, `BulletSpawner.cs`.
 
 _Step `GeometryWars0` onwards_
 
-**Share what's shared, store what's unique.** 500 enemies on screen, all using the same
-sprite and stats.
+With 500 enemies on screen, all of the same kind, the sprite and the stats are the same
+for every one of them. A **flyweight** stores that shared part once:
 
 - **Intrinsic state** is shared and immutable: the texture and the stats template.
 - **Extrinsic state** is per instance: position, velocity, current HP.

@@ -1,17 +1,15 @@
 ---
 title: Project
-description: The course project — a 2D game built with MonoGame.
+description: The course project, a 2D game built with MonoGame in groups of 1 to 3.
 ---
 
-For the GAR course project, you will be implementing a 2D game using the MonoGame Framework.
+For the GAR course project, you make a 2D game with MonoGame.
 
 **Group size:** 1–3 students
 
-The goal of the project is to create a simple 2D game that uses best practices for
-organizing and architecting a game project. That is, the project must include gameplay
-systems and design elements solved through patterns and principles taught in the course.
-You have free choice in which type of game you create, as long as you keep the above in
-mind.
+The game should be simple, and well organized. It must include gameplay systems and
+design problems that you solve with the patterns and principles from the course. Apart from
+that, you are free to make any kind of game.
 
 The project is done in your own time, alongside the sessions. Each session ends with
 questions that bring the day's patterns into your project.

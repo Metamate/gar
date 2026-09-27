@@ -117,8 +117,8 @@ It works, but try adding what the real game has:
   because a zombie isn't a plant. Peas and suns need their own lists in `World`, because
   they're different classes too.
 
-Inheritance says what something _is_. But in this game, what matters is what each thing
-_can do_, and those abilities combine freely.
+Inheritance describes what something _is_. In this game, what each thing _can do_ matters
+more, and the abilities combine freely.
 
 ## The Component Pattern
 
@@ -129,7 +129,7 @@ _Step `Pvz2`_
 
 An **entity** is just a container: a position, a row, and a list of **components**. Each
 component is one ability: `Health`, `Shooter`, `SunProducer`, `Walker`, `Eater`,
-`Armour`, `SpriteRenderer`. An entity's behaviour is the sum of its components.
+`Armour`, `SpriteRenderer`. An entity does what its components do.
 
 ```csharp title="Entity.cs"
 public class Entity(World world)
@@ -244,9 +244,9 @@ only so that components can ask it questions ("the first zombie ahead in row 2")
 _Step `Pvz3`_
 
 The recipes are still C#. Every plant type also has data that doesn't belong in any one
-plant: its cost, how long its seed packet takes to recharge, its sprite. Where does a
-peashooter's _cost_ go? Not in a component: the peashooter on the lawn doesn't have a cost,
-its _kind_ does.
+plant: its cost, how long its seed packet takes to recharge, its sprite. A peashooter's
+_cost_ doesn't fit in a component, because the peashooter on the lawn has no cost. Only its
+_kind_ has one.
 
 > Allow the flexible creation of new "classes" by creating a single class, each instance of
 > which represents a different type of object. _(Game Programming Patterns)_
@@ -334,8 +334,8 @@ house, or when every zombie is gone.
 }
 ```
 
-The falling sun is a sun with one more component, `Faller`. Once you have components,
-many new things are one component away.
+The falling sun is a sun with one more component, `Faller`. With components in place, many
+new features take a single new component.
 
 ## Exercises
 
