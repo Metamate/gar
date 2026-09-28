@@ -91,11 +91,14 @@ player never sees a half-drawn frame. See
 
 - **Variable timestep:** update once per rendered frame and scale all movement by the
   elapsed time (`deltaTime`). Simple, but the simulation behaves slightly differently at
-  different frame rates.
+  different frame rates. A long frame (the window is dragged, the computer stalls) gives a
+  large `deltaTime`, and a fast object can jump straight through a thin wall in one step.
 - **Fixed timestep:** update the simulation in fixed-size steps (e.g. 60 per second),
   running zero, one or several steps per rendered frame. This makes the simulation
-  deterministic and stable, at the cost of some complexity. MonoGame uses a fixed timestep
-  by default (`IsFixedTimeStep = true`).
+  deterministic and stable, at the cost of some complexity. If one step takes longer than
+  the time it simulates, the game falls further behind every frame; engines limit how many
+  steps they catch up, and MonoGame then runs the game in slow motion. MonoGame uses a
+  fixed timestep by default (`IsFixedTimeStep = true`).
 
 ### Try it
 
@@ -155,7 +158,12 @@ in code. See
 
 - MonoGame's 2D coordinate system has its origin in the **top-left** corner, with Y
   pointing **down**.
-- All 2D drawing goes through a `SpriteBatch`, between `Begin()` and `End()`.
+- All 2D drawing goes through a `SpriteBatch`, between `Begin()` and `End()`. `Draw` doesn't
+  draw straight away: the sprite batch collects the calls, and `End()` sends them to the
+  graphics card in as few batches as it can. A batch ends whenever the texture changes, which
+  is why [Snake](../03-snake/#texture-atlases) puts its images in one texture. `Begin()` takes
+  the settings for everything up to `End()`: the transform matrix, the texture filtering and
+  the blending.
 - Pong doesn't need image assets, but we still need a texture to draw rectangles. A 1×1
   white texture stretched to any `Rectangle` does the job:
 
@@ -215,6 +223,13 @@ move their data and behaviour into `Paddle` and `Ball` classes, each with its ow
 and `Draw` methods. `Game1` then just calls them. This is the
 [Update Method](https://gameprogrammingpatterns.com/update-method.html) pattern: each
 object knows how to simulate one frame of its own behaviour.
+
+It has costs too. Objects are updated one after another, so the order matters: an object
+updated early sees the others as they were last frame, and one updated late sees them
+already moved. Objects that interact, like the ball and the paddles, need a reference to
+each other, or a place like `Game1` that checks them together. Every object is updated every
+frame even when it has nothing to do. And adding or removing objects while looping over them
+needs care ([Angry Birds](../07-angry-birds/#destroying-safely) shows how).
 
 ## Collision Detection (AABB)
 

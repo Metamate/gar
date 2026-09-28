@@ -465,7 +465,7 @@ Start from `Sokoban4`.
 1. **A new level:** design your own level in `level8.txt`. To play it, you also have to raise
    `LevelCount` in `Game1`: how could the game find its levels without that line? Is your
    level solvable? How do you know?
-2. **Your first tests:** add tests to `LevelTests.cs` for two cases that aren't tested yet:
+2. **Two more tests:** add tests to `LevelTests.cs` for two cases that aren't tested yet:
    pushing a box off a goal makes the level unsolved again, and the player can walk onto a
    goal. Run them. Then break `Level.Move` on purpose and watch them fail.
 3. **Test first:** add ice (`~`): boxes can't be pushed onto it, but the player can walk on

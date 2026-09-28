@@ -177,7 +177,12 @@ The room is data too. A tilemap definition lists which tile of the atlas goes in
 </Tilemap>
 ```
 
-GMDCore's `Tilemap.FromFile` reads it and draws the room. Here the tilemap is only a
+GMDCore's `Tilemap.FromFile` reads it into a flat array of tile numbers, one per cell, row
+after row: the cell in column `x` and row `y` is at index `y * Columns + x`. To draw the room,
+the tilemap goes through the array and draws each tile's region at a position worked out from
+its index. Sprites each keep their own position; tiles have theirs from the grid, and all of
+them come from one texture, so the whole room goes to the graphics card in one batch. A big
+level would only draw the cells on screen. Here the tilemap is only a
 picture: the walls are simply the cells outside the room's `Rectangle`. In
 [Sokoban](../04-sokoban/), the grid becomes the game's state itself.
 
@@ -295,6 +300,12 @@ and a new bat appears.
 - **AABB:** built into MonoGame as `Rectangle.Intersects()` and `Rectangle.Contains()`
   (see [Pong](../01-pong/)).
 
+Which shape to use is a trade between speed and precision. Circles fit round and rotating
+things, and rectangles fit boxes and tiles; both are cheap. Polygons follow a sprite's outline
+closely, but cost more to check and to write. Use the simplest shape that looks right to the
+player. A grid lookup, as in [Super Mario Bros](../06-super-mario-bros/#performance), is
+cheaper still, but only works for things that stay in their cell.
+
 MonoGame has no circle type, so GMDCore has a `Circle` struct with `Intersects(Circle)`.
 Both the snake's head and the bat expose their `Bounds` as a `Circle`.
 
@@ -327,8 +338,8 @@ Start from `Snake9`.
 
 1. **Data, not code:** the atlas image also holds a beetle the game doesn't use yet: two
    frames, at (40, 20) and (60, 0). Describe it in `atlas-definition.xml` (two regions and a
-   `beetle-animation`), and make the enemy a beetle instead of a bat. Then change the room
-   layout in `tilemap-definition.xml`. How much C# did you need to change? And for a beetle
+   `beetle-animation`), and make the enemy a beetle instead of a bat. How much C# did you
+   need to change? And for a beetle
    _next to_ the bat: what in `Game1` would have to change, and what does that say about
    where the bat's rules live?
 2. **Speed up:** make the tick shorter each time the snake eats, down to a minimum. Where

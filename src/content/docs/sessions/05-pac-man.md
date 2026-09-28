@@ -431,8 +431,9 @@ Pac-Man is dying, the ghosts' states are simply paused.
 Start from `Pacman4`.
 
 1. **A new mode:** when Pac-Man eats a ghost, the game freezes for half a second in the
-   original, and shows the points. Add a short `PausedState` for the eaten ghost before
-   `EatenState`. Which classes did you change? Compare with adding it to `Pacman1`'s enum.
+   original, and shows the points. Build the frozen mode you counted the `switch`es for,
+   as a `FrozenState` that comes before `EatenState`. Which classes did you change, compared
+   with the seven places in `Pacman1`'s enum?
 2. **A new personality:** add a fifth ghost with its own `ITargetStrategy`, e.g. one that
    targets the tile Pac-Man was at five seconds ago. Write a test for it first, next to
    the others in `TargetingTests.cs`. Its two frames are already in `sprites.png` (row 1,
