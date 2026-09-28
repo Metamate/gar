@@ -62,7 +62,7 @@ content.IncludeCopy<WildcardRule>("*.xml");
 ```
 
 The benefit is that the data can change while the code stays the same. A new animation
-frame, a faster bat or a different room is an edit to an XML file. An artist or designer can
+frame, a faster mouse or a different room is an edit to an XML file. An artist or designer can
 make it without touching the game's code, and the code stays smaller and more general.
 
 ## Texture Atlases
@@ -83,7 +83,7 @@ a named rectangle within the atlas:
     <Texture>images/atlas</Texture>
     <Regions>
         <Region name="snake-1" x="0" y="0" width="20" height="20" />
-        <Region name="bat-1" x="20" y="0" width="20" height="20" />
+        <Region name="mouse-1" x="20" y="0" width="20" height="20" />
     </Regions>
 </TextureAtlas>
 ```
@@ -130,34 +130,34 @@ classDiagram
     Animation o-- TextureRegion
 ```
 
-**Try it** (`Snake1`): draw the bat with its second frame by changing only
-`atlas-definition.xml`. Then misspell `bat-1` in the XML: what happens, and when?
+**Try it** (`Snake1`): draw the mouse with its second frame by changing only
+`atlas-definition.xml`. Then misspell `mouse-1` in the XML: what happens, and when?
 
 ## Sprites & Animation
 
 _Steps `Snake2` and `Snake3`_
 
 A `Sprite` wraps a texture region together with everything needed to draw it: color mask,
-rotation, scale, origin, sprite effects and layer depth. `Snake2` scales the bat and spins
+rotation, scale, origin, sprite effects and layer depth. `Snake2` scales the mouse and spins
 it around its centre (`CenterOrigin()`).
 
 An **animation** is a list of regions and a frame delay, also defined in the atlas XML:
 
 ```xml
-<Animation name="bat-animation" delay="200">
-    <Frame region="bat-1" />
-    <Frame region="bat-2" />
-    <Frame region="bat-1" />
-    <Frame region="bat-3" />
+<Animation name="mouse-animation" delay="200">
+    <Frame region="mouse-1" />
+    <Frame region="mouse-2" />
+    <Frame region="mouse-1" />
+    <Frame region="mouse-3" />
 </Animation>
 ```
 
 An `AnimatedSprite` is a `Sprite` that accumulates elapsed time in `Update()` and advances
 to the next frame when the delay has passed (`Snake3`).
 
-**Try it** (`Snake2` and `Snake3`): make the bat bigger and spin it the other way, then
-remove `CenterOrigin()` and explain what changes. In the XML only, make the bat flap twice
-as fast and give its animation one more frame.
+**Try it** (`Snake2` and `Snake3`): make the mouse bigger and spin it the other way, then
+remove `CenterOrigin()` and explain what changes. In the XML only, make the mouse's tail
+wiggle twice as fast and give its animation one more frame.
 
 ## The Room
 
@@ -291,8 +291,8 @@ and in `Snake7`.
 
 _Step `Snake8`_
 
-A bat flies around the room. When the snake's head touches it, the snake eats it, grows,
-and a new bat appears.
+A mouse runs around the room. When the snake's head touches it, the snake eats it, grows,
+and a new mouse appears.
 
 - **Distance-based / circles:** two circles overlap if the distance between their centres
   is less than the sum of their radii. Compare _squared_ values
@@ -307,13 +307,13 @@ player. A grid lookup, as in [Super Mario Bros](../06-super-mario-bros/#performa
 cheaper still, but only works for things that stay in their cell.
 
 MonoGame has no circle type, so GMDCore has a `Circle` struct with `Intersects(Circle)`.
-Both the snake's head and the bat expose their `Bounds` as a `Circle`.
+Both the snake's head and the mouse expose their `Bounds` as a `Circle`.
 
 **Collision response** is what happens _after_ a hit:
 
-- **Triggering:** something happens. The snake eats the bat and grows: on its next move,
+- **Triggering:** something happens. The snake eats the mouse and grows: on its next move,
   it keeps its tail.
-- **Bouncing:** reflect the velocity off the surface. The bat uses `Vector2.Reflect` with
+- **Bouncing:** reflect the velocity off the surface. The mouse uses `Vector2.Reflect` with
   the wall's normal.
 
 ## Game Over
@@ -338,9 +338,9 @@ Start from `Snake9`.
 
 1. **Data, not code:** the atlas image also holds a beetle the game doesn't use yet: two
    frames, at (40, 20) and (60, 0). Describe it in `atlas-definition.xml` (two regions and a
-   `beetle-animation`), and make the enemy a beetle instead of a bat. How much C# did you
-   need to change? And for a beetle _next to_ the bat: what in `Game1` would have to change,
-   and what does that say about where the bat's rules live?
+   `beetle-animation`), and make the snake chase a beetle instead of a mouse. How much C# did you
+   need to change? And for a beetle _next to_ the mouse: what in `Game1` would have to change,
+   and what does that say about where the mouse's rules live?
 2. **Speed up:** make the tick shorter each time the snake eats, down to a minimum. Where
    does that rule belong?
 3. **New input:** add gamepad support for the D-pad. A press needs last frame's state, so

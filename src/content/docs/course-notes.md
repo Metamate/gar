@@ -182,6 +182,10 @@ Notes for building it:
   `Tile` values (graphic ID plus `IsSolid`) with collision helpers and a `Position`.
   Game-specific layers (Mario's toppers, Pokemon's tall grass) are separate
   tilemaps drawn on top.
+- **Art:** each game keeps the original's setting, palette and objects, but its characters
+  are our own designs (a builder and moles in Mario, a mouse in Snake, our own hero in
+  Zelda, our own monsters in Pokemon). Games made of simple shapes (Pong, Pac-Man, Geometry
+  Wars) can look like the original: there is no character to copy.
 - **Naming:** a game's folder is its full name, as in its site page's URL
   (`06-super-mario-bros`), and so is its solution (`SuperMarioBros.slnx`). Step projects
   use a short form of the game's name (`Mario0`, `Birds0`, `Pvz0`), never a genre.

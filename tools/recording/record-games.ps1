@@ -1,4 +1,4 @@
-param([string[]]$Games = @('snake', 'sokoban', 'pacman', 'mario', 'birds', 'pvz', 'pokemon', 'gw', 'vs'))
+param([string[]]$Games = @('snake', 'sokoban', 'pacman', 'mario', 'zelda', 'birds', 'pvz', 'pokemon', 'gw', 'vs'))
 # Records the animated game images for the session pages and the decks' Today's Goal slides.
 # Build the finished steps in gar-games first (Debug). Each recipe plays the game with a
 # timed script of keys or mouse moves and captures frames; makegif.py turns them into a GIF.
@@ -15,7 +15,7 @@ function Record($name, $exe, $start, $duration, $events) {
 
 if ($Games -contains 'snake') {
   # The snake moves five cells a second, too fast for a fixed script: snake_bot.py reads the
-  # screen and steers towards the bat. It can still die now and then, so pick a stretch of
+  # screen and steers towards the mouse. It can still die now and then, so pick a stretch of
   # frames without a restart (the snake is back to three segments after one).
   python (Join-Path $here 'snake_bot.py') (Exe '03-snake' 'Snake9') (Join-Path $out 'frames-snake') 14 100
   python (Join-Path $here 'makegif.py') (Join-Path $out 'snake.gif') 640 130 none 6 (Join-Path $out 'frames-snake\f*.png')
@@ -44,6 +44,14 @@ if ($Games -contains 'mario') {
   Record 'mario' (Exe '06-super-mario-bros' 'Mario8') 1.0 29 $ev
   $frames = python (Join-Path $here 'longest_play.py') (Join-Path $out 'frames-mario')
   python (Join-Path $here 'makegif.py') (Join-Path $out 'super-mario-bros.gif') 640 100 none $frames
+}
+if ($Games -contains 'zelda') {
+  # Walk around the first room, swinging the sword after each move.
+  $ev = @('0.3 tap enter'); $t = 1.0
+  foreach ($m in @('right', 'down', 'right', 'up', 'left', 'up', 'right', 'down')) {
+    $ev += ('{0:0.00} down {1}' -f $t, $m); $ev += ('{0:0.00} up {1}' -f ($t + 0.7), $m); $ev += ('{0:0.00} tap space' -f ($t + 0.8)); $t += 1.1 }
+  Record 'zelda' (Exe '07-the-legend-of-zelda' 'Zelda7') 1.0 8 $ev
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'the-legend-of-zelda.gif') 640 100 none (Join-Path $out 'frames-zelda\f*.png')
 }
 if ($Games -contains 'birds') {
   # Grab the bird on the slingshot at (220, 520), pull back slowly, and let go.

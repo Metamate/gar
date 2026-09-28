@@ -1,9 +1,9 @@
-"""Plays Snake9 for a recording: reads the screen, finds the snake and the bat, and steers.
+"""Plays Snake9 for a recording: reads the screen, finds the snake and the mouse, and steers.
 
 The room is cells 1-14 across and 2-7 down on an 80-pixel grid. Every snake segment has the
-colour (0, 184, 0) at its cell centre, and the bat is the only purple on screen. The head is the
+colour (0, 184, 0) at its cell centre, and the mouse is the only grey on screen. The head is the
 cell that turned green since the last move. At each move the bot picks the safe direction that
-brings it closest to the bat, and never one that leads into a pocket smaller than the snake.
+brings it closest to the mouse, and never one that leads into a pocket smaller than the snake.
 
 python snake_bot.py <Snake9.exe> <frames folder> [seconds] [frame interval ms]
 """
@@ -15,7 +15,7 @@ EXE, OUT = sys.argv[1], sys.argv[2]
 SECONDS = float(sys.argv[3]) if len(sys.argv) > 3 else 12
 INTERVAL = (int(sys.argv[4]) if len(sys.argv) > 4 else 100) / 1000
 CELL, ROOM = 80, (1, 2, 14, 7)                      # first column, first row, last column, last row
-SNAKE, BAT = (0, 184, 0), (152, 120, 248)
+SNAKE, MOUSE = (0, 184, 0), (150, 150, 162)
 KEYS = {(0, -1): 0x26, (0, 1): 0x28, (-1, 0): 0x25, (1, 0): 0x27}   # up, down, left, right
 
 user32 = ctypes.windll.user32
@@ -54,12 +54,12 @@ def read(img):
     snake = {(x, y) for y in range(ROOM[1], ROOM[3] + 1) for x in range(ROOM[0], ROOM[2] + 1)
              if img.getpixel((x * CELL + CELL // 2, y * CELL + CELL // 2)) == SNAKE}
     small = img.resize((img.width // 4, img.height // 4))
-    purple = [(x * 4, y * 4) for y in range(small.height) for x in range(small.width)
-              if small.getpixel((x, y)) == BAT]
-    bat = None
-    if purple:
-        bat = (sum(p[0] for p in purple) / len(purple) / CELL, sum(p[1] for p in purple) / len(purple) / CELL)
-    return snake, bat
+    grey = [(x * 4, y * 4) for y in range(small.height) for x in range(small.width)
+            if small.getpixel((x, y)) == MOUSE]
+    mouse = None
+    if grey:
+        mouse = (sum(p[0] for p in grey) / len(grey) / CELL, sum(p[1] for p in grey) / len(grey) / CELL)
+    return snake, mouse
 
 
 def inside(c):
@@ -79,7 +79,7 @@ def room_left(start, blocked):
     return len(seen)
 
 
-def choose(head, heading, body, bat):
+def choose(head, heading, body, mouse):
     options = []
     for d in KEYS:
         if d == (-heading[0], -heading[1]):
@@ -88,7 +88,7 @@ def choose(head, heading, body, bat):
         if not inside(n) or n in body:
             continue
         space = room_left(n, body)
-        dist = abs(n[0] + 0.5 - bat[0]) + abs(n[1] + 0.5 - bat[1]) if bat else 0
+        dist = abs(n[0] + 0.5 - mouse[0]) + abs(n[1] + 0.5 - mouse[1]) if mouse else 0
         options.append((space < len(body) + 2, dist, d != heading, d))
     return min(options)[3] if options else heading
 
@@ -113,7 +113,7 @@ while time.time() - start < SECONDS:
         img.save(os.path.join(OUT, f'f{frame:03d}.png'))
         frame += 1
         next_shot += INTERVAL
-    snake, bat = read(img)
+    snake, mouse = read(img)
     new = snake - prev
     if snake and new and snake != prev:
         if len(new) == 1:
@@ -123,7 +123,7 @@ while time.time() - start < SECONDS:
             head = cell
         else:                                        # a new game: the snake starts heading right
             head, heading = max(snake), (1, 0)
-        turn = choose(head, heading, snake, bat)
+        turn = choose(head, heading, snake, mouse)
         if turn != heading:
             tap(KEYS[turn])
     prev = snake
