@@ -136,6 +136,10 @@ _Step `Platformer2`_
 - **Ground check:** probe one pixel below the hitbox for solid tiles.
 - **Coyote time:** allow a jump for a moment after walking off a ledge. It feels fairer.
 
+**Try it:** on paper, with 16-pixel tiles: a hitbox spans x 30 to 42 and moves 8 pixels right,
+and a wall starts at x 48. Where is the hitbox after the move, and after the snap? What happens
+to its velocity?
+
 **Try it** (`Platformer2`): press F1, and set `HitboxInset` to 0. Can you still fall into a
 one-tile pit? Then set `CoyoteTime` to 0.5: how does jumping off a ledge feel?
 

@@ -42,7 +42,7 @@ same rules for every session.
 | 03 Snake | ~210 | +30 | 5 short tasks after the demos |
 | 04 Sokoban | ~175 | −5 | 4 short tasks |
 | 05 Pac-Man | ~165 | −15 | 4 short tasks |
-| 06 Super Mario Bros | ~220 | +40 | 6 short tasks |
+| 06 Super Mario Bros | ~225 | +45 | 7 short tasks |
 | 07 Angry Birds | ~165 | −15 | 4 short tasks |
 | 08 The Legend of Zelda | ~180 | 0 | 1 short task |
 | 09 Plants vs. Zombies | ~165 | −15 | 4 short tasks |
