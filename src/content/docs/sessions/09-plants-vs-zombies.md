@@ -19,7 +19,7 @@ Plant sunflowers to make sun, and spend the sun on plants that stop the zombies.
 
 The game has many kinds of plants and zombies, and they mix and match abilities: one plant
 shoots, another makes sun, another just blocks; a zombie may wear a cone or a bucket. In
-[Zelda](../08-the-legend-of-zelda/#composition-vs-inheritance) we asked whether something
+[Zelda](../07-the-legend-of-zelda/#composition-vs-inheritance) we asked whether something
 should be a subclass or a part. Here we take that all the way, with the **Component**
 pattern. Along the way:
 
@@ -321,7 +321,7 @@ and a Sunflower that makes 50 sun. Did you compile anything?
 
 ### Prototype vs. Type Object
 
-In [Angry Birds](../07-angry-birds/#prototype), prefabs also gave us many kinds of things
+In [Angry Birds](../08-angry-birds/#prototype), prefabs also gave us many kinds of things
 without a class for each. Both patterns solve that problem, differently:
 
 | | Prototype (Angry Birds) | Type Object (here) |

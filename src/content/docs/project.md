@@ -72,7 +72,7 @@ systems you expect to need (e.g. scenes, tilemap, enemies with AI, UI, save data
 Halfway through, take stock before the game grows further. Update your class diagram,
 list the patterns you use or plan to use (and where), and write an **event map**: the
 meaningful moments in your game, who fires them and who reacts (see
-[Zelda](../sessions/08-the-legend-of-zelda/)). Then go through these questions with your
+[Zelda](../sessions/07-the-legend-of-zelda/)). Then go through these questions with your
 group:
 
 - Is `Game1` (or any other class) doing too much?

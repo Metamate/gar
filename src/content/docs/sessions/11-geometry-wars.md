@@ -95,7 +95,7 @@ a gameplay event such as an enemy being destroyed.
 without a global event bus. `Health` announces `Damaged` and `Depleted`; other components on the same
 entity react: `PlayHitParticlesOnDamage` shows sparks, `DestroyWhenHealthDepleted` removes
 the entity. Health doesn't know either of them exists. This is
-[Observer](../08-the-legend-of-zelda/#events--the-observer-pattern) inside one entity. The
+[Observer](../07-the-legend-of-zelda/#events--the-observer-pattern) inside one entity. The
 core flow (update, collide, draw) stays as direct calls, so it's still easy to follow.
 
 In the codebase: `GMDCore/ECS/Entity.cs`, `GMDCore/ECS/Components/Component.cs`,
@@ -244,6 +244,9 @@ Compare the other two ways to reach a service. With `Audio.Instance` or
 Service Locator's service by changing global state, and a Singleton not at all. With
 dependency injection, the test simply passes something else in.
 
+**Try it** (`GeometryWars.Tests`): add a test that an enemy worth 100 points awards 100, and
+run `dotnet test`. How would the test look if `AwardScoreOnDestroyed` used `Locator.Score`?
+
 ## Object Pool
 
 _Step `GeometryWars1`_
@@ -321,6 +324,10 @@ public struct EnemyInstance
 500 enemies hold 500 references to one texture, not 500 copies of it.
 
 In the codebase: `GameAssets.cs`, `GameplayDefinitions.cs`.
+
+**Try it** (`GeometryWars6`): in `GameplayDefinitions`, give the seekers three times their
+`Acceleration`. How many seekers change, and how many objects did you edit? Where is the
+seeker's texture loaded, and how many times?
 
 ## Shaders (Showcase)
 

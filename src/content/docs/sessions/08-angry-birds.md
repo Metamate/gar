@@ -1,11 +1,11 @@
 ---
-title: 07 Angry Birds
+title: 08 Angry Birds
 description: Using a physics library behind your own interface (Adapter and Facade), syncing two worlds, contact events and safe destruction, and building levels from prototypes.
 sidebar:
-  order: 7
+  order: 8
 ---
 
-![The finished Angry Birds game](../../../assets/session07/angry-birds.gif)
+![The finished Angry Birds game](../../../assets/session08/angry-birds.gif)
 
 ## Today's Goal
 
@@ -28,7 +28,7 @@ your game doesn't have to know about it. Along the way:
 - The **Prototype** pattern: building levels from prefabs
 
 **Source code:**
-[gar-games/07-angry-birds](https://github.com/Metamate/gar-games/tree/main/07-angry-birds).
+[gar-games/08-angry-birds](https://github.com/Metamate/gar-games/tree/main/08-angry-birds).
 Its README lists the steps (`Birds0` to `Birds4`, one project per concept), maps the code,
 and says how to run it. Each section below names the steps that introduce it; compare
 neighbouring steps to see exactly what changed.
@@ -276,8 +276,9 @@ and steps the world in fixed steps of 1/60 second: the accumulator from
 _Step `Birds2`_
 
 Blocks should break, and pigs should pop. Box2D can report **hit events**: two shapes
-touched at more than a certain speed. They're collected during the step, and read after it.
-`PhysicsWorld` turns them into a C# event, in our own terms:
+touched at more than a certain speed. They're collected during the step, and read after it:
+an [event queue](../07-the-legend-of-zelda/#event-queue), as in Zelda. `PhysicsWorld` turns
+them into a C# event, in our own terms:
 
 ```csharp title="PhysicsWorld.cs"
 public event Action<PhysicsBody, PhysicsBody, float> Hit;
@@ -298,12 +299,9 @@ private void RaiseHitEvents()
 }
 ```
 
-The game listens, and damages both entities: the faster the hit, the more damage. Glass
-breaks easily, stone hardly at all.
-
-(A C# `event` lets other code subscribe to something that happens, without the publisher
-knowing who listens. In [Zelda](../08-the-legend-of-zelda/), this becomes the Observer
-pattern.)
+The game subscribes, and damages both entities: the faster the hit, the more damage. Glass
+breaks easily, stone hardly at all. Box2D's own event types stay inside the facade; the game
+only ever sees `PhysicsBody`.
 
 **Try it** (`Birds2`): make every hit do twice the damage. Which method did you change, and
 what breaks sooner?
@@ -330,7 +328,8 @@ Destroying them here would cause two problems:
   one may be about the body you just destroyed. In many physics libraries (including older
   versions of Box2D), destroying a body during a callback crashes the game.
 - **You may be in the middle of a loop.** Removing an entity from a list while something is
-  looping over that list throws an exception, or skips an item.
+  looping over that list throws an exception, or skips an item: the re-entrancy
+  [pitfall](../07-the-legend-of-zelda/#pitfalls) from Zelda.
 
 So the handler only **marks** entities as destroyed, and they're removed later, when the
 step and all its hits are done:

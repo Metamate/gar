@@ -87,7 +87,7 @@ Files: `StateStack.cs`, `BattleState.cs`, `BattleMenuState.cs`, `FadeState.cs`
 
 _Step `Pokemon0` onwards_
 
-Pokemon leans heavily on the tween system from [Zelda](../08-the-legend-of-zelda/#screen-scrolling--tweening):
+Pokemon leans heavily on the tween system from [Zelda](../07-the-legend-of-zelda/#screen-scrolling--tweening):
 walking between tiles, fades, the HP bar. A battle attack is a chain of tweens: pause →
 lunge → hit sound → blink → HP bar drops. Each step's `.Finish()` starts the next, and a
 callback can push or pop a state, with no `if`/`else` chain.
@@ -100,7 +100,7 @@ Two details make this safe:
 - **New tweens wait a frame:** a callback that starts a tween doesn't add it to the list
   that is being updated; the manager adds new tweens at the start of the next update.
   Changing a list while looping over it is a classic bug (see the re-entrancy pitfall in
-  [Zelda](../08-the-legend-of-zelda/#pitfalls)).
+  [Zelda](../07-the-legend-of-zelda/#pitfalls)).
 
 ## GUIs
 
@@ -146,7 +146,7 @@ scrolling is a good reason to reach for Gum.
 The HP bar should _show_ a monster's health, but the monster shouldn't know the HP bar
 exists. Keep game data and rules (the _model_) separate from the UI (the _view_), and let
 the view observe the model through events (see
-[Observer](../08-the-legend-of-zelda/#events--the-observer-pattern)). Architectural
+[Observer](../07-the-legend-of-zelda/#events--the-observer-pattern)). Architectural
 patterns such as [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter)
 and [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) formalize
 this idea.

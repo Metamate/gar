@@ -42,12 +42,12 @@ same rules for every session.
 | 03 Snake | ~210 | +30 | 5 short tasks after the demos |
 | 04 Sokoban | ~175 | −5 | 4 short tasks |
 | 05 Pac-Man | ~165 | −15 | 4 short tasks |
-| 06 Super Mario Bros | ~225 | +45 | 7 short tasks |
-| 07 Angry Birds | ~165 | −15 | 4 short tasks |
-| 08 The Legend of Zelda | ~180 | 0 | 1 short task |
+| 06 Super Mario Bros | ~210 | +30 | 6 short tasks; physics first, as in the steps |
+| 07 The Legend of Zelda | ~190 | +10 | 2 short tasks; composition closes the session |
+| 08 Angry Birds | ~170 | −10 | 5 short tasks, and the physics samples |
 | 09 Plants vs. Zombies | ~165 | −15 | 4 short tasks |
-| 10 Pokemon | ~140 | −40 | already alternates (trace-it tasks) |
-| 11 Geometry Wars | ~135 | −45 | 2 short tasks |
+| 10 Pokemon | ~150 | −30 | already alternates (trace-it tasks), and the UI samples |
+| 11 Geometry Wars | ~145 | −35 | 4 short tasks |
 | 12 Vampire Survivors | ~170 | −10 | 4 short tasks; the course recap also takes time |
 
 - **Pong and Flappy Bird:** students start the build steps in class and continue at home;
@@ -69,8 +69,8 @@ same rules for every session.
 | 4 | Sokoban (new) | Command pattern (undo/redo) | levels as text files, rules separated from rendering (tested with xUnit) |
 | 5 | Pac-Man (new) | State pattern | Strategy (per-ghost targeting), State vs. Strategy, targeting tests |
 | 6 | Super Mario Bros | Physics & tile collision | camera, debug drawing, level makers (Strategy again) |
-| 7 | Angry Birds (new) | Integrating a third-party library (Adapter/Facade) | physics world vs. game world, contact events & safe destruction, Prototype (prefabs) |
-| 8 | The Legend of Zelda | Composition vs. inheritance | Observer & events, hitboxes, tweening |
+| 7 | The Legend of Zelda | Composition vs. inheritance | Observer & events, hitboxes, tweening |
+| 8 | Angry Birds (new) | Integrating a third-party library (Adapter/Facade) | physics world vs. game world, contact events & safe destruction, Prototype (prefabs) |
 | 9 | Plants vs. Zombies (new) | Component pattern | Type Object, game types as data, picking (screen → grid) |
 | 10 | Pokemon | Scenes & UI | state stack, separating UI from game data, Service Locator, save/load |
 | 11 | Geometry Wars | Components vs. systems | dependency injection vs. Service Locator, Object Pool, Flyweight |
@@ -80,14 +80,18 @@ Threads that run through the plan (the recap page lists them for students):
 
 - **Game families:** free movement (1–2), grids (3–5), tile worlds and physics (6–10),
   free movement at scale (11–12). Each game reuses most of the previous one's code.
-- **Build vs. buy:** hand-written platformer physics (6), then a physics library (7).
-- **Data:** assets as data (3) → levels as data (4) → game types as data (9) → save/load (10).
-- **Entities:** composition vs. inheritance (8) → components (9) → components vs. systems
+- **Build vs. buy:** hand-written platformer physics (6), then a physics library (8).
+- **Data:** assets as data (3) → levels as data (4) → enemies as data (7) → prefabs (8) →
+  game types as data (9) → save/load (10).
+- **Entities:** composition vs. inheritance (7) → components (9) → components vs. systems
   (11) → data-oriented design (12, same genre as 11 built a second way).
 - **Dependencies:** Singleton (2) → Service Locator (10) → dependency injection (11).
-- **Coordinate spaces:** virtual resolution (2) → camera (6) → physics units (7) → picking (9).
-- **Pattern pairs:** State vs. Strategy (5), Prototype (7) vs. Type Object (9), Object Pool
+- **Coordinate spaces:** virtual resolution (2) → camera (6) → physics units (8) → picking (9).
+- **Pattern pairs:** State vs. Strategy (5), Prototype (8) vs. Type Object (9), Object Pool
   vs. Flyweight (11).
+- **Order of 07 and 08:** Zelda comes before Angry Birds (changed in September 2026). Zelda teaches events, and Angry Birds' contact events use them; Mario's
+  core leads straight into Zelda's; and Angry Birds' Prototype sits next to Plants vs.
+  Zombies' Type Object.
 - **Recurring:** a Mermaid class diagram on every session page, "Apply It to Your Project"
   in every session, and a design or refactoring exercise in most sessions from Sokoban on
   (the UML, analysis and refactoring competences the project sessions used to cover). No references to other
@@ -140,8 +144,8 @@ Notes for building it:
   show which assets it uses. Where an asset changes between steps, keep both versions and
   swap them in code (Pong: `sans` → `font` in `Pong3`).
 - **GMDCore lineage:** GMDCore is one library that grows through the course, in session
-  order: Flappy → Snake (Sokoban and Pac-Man unchanged) → Platformer (Angry Birds
-  unchanged) → Zelda (Plants vs. Zombies unchanged) → Pokemon → Geometry Wars (Vampire
+  order: Flappy → Snake (Sokoban and Pac-Man unchanged) → Platformer → Zelda (Angry Birds
+  and Plants vs. Zombies unchanged) → Pokemon → Geometry Wars (Vampire
   Survivors unchanged). Game-specific code (the Box2D adapter, the components in Plants vs.
   Zombies) stays in the game, so later cores don't inherit it. Each game's `GMDCore` keeps
   the previous session's core and adds to it or deliberately changes it; nothing is dropped,

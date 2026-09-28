@@ -39,7 +39,7 @@ if ($Games -contains 'birds') {
   $ev = @('0.6 mdown 220 520')
   for ($k = 1; $k -le 10; $k++) { $ev += ('{0:0.00} mmove {1} {2}' -f (0.6 + 0.07 * $k), (220 - 5 * $k), (520 + [math]::Round(2.8 * $k))) }
   $ev += '2.0 mup'
-  Record 'birds' (Exe '07-angry-birds' 'Birds4') 0.3 6 $ev
+  Record 'birds' (Exe '08-angry-birds' 'Birds4') 0.3 6 $ev
   python (Join-Path $here 'makegif.py') (Join-Path $out 'angry-birds.gif') 640 100 none 10 (Join-Path $out 'frames-birds\f00[5-9].png') (Join-Path $out 'frames-birds\f0[1-5][0-9].png')
 }
 if ($Games -contains 'pvz') {

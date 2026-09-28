@@ -92,8 +92,8 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 
 ### 5. Observer Pattern, Events & UI
 
-_Covered in: [07 Angry Birds](../sessions/07-angry-birds/),
-[08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/),
+_Covered in: [07 The Legend of Zelda](../sessions/07-the-legend-of-zelda/),
+[08 Angry Birds](../sessions/08-angry-birds/),
 [10 Pokemon](../sessions/10-pokemon/)_
 
 1. Explain the Observer pattern. How is it implemented in C# with `event` and `delegate`
@@ -123,8 +123,8 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-flappy-bird/),
 [04 Sokoban](../sessions/04-sokoban/),
 [06 Super Mario Bros](../sessions/06-super-mario-bros/),
-[07 Angry Birds](../sessions/07-angry-birds/),
-[08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/),
+[07 The Legend of Zelda](../sessions/07-the-legend-of-zelda/),
+[08 Angry Birds](../sessions/08-angry-birds/),
 [12 Vampire Survivors](../sessions/12-vampire-survivors/)_
 
 1. Explain how a tile-based level is represented in memory, and how rendering a tilemap
@@ -140,8 +140,8 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 ### 8. Data-Driven Design & Serialization
 
 _Covered in: [03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-sokoban/),
-[07 Angry Birds](../sessions/07-angry-birds/),
-[08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/), [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
+[07 The Legend of Zelda](../sessions/07-the-legend-of-zelda/),
+[08 Angry Birds](../sessions/08-angry-birds/), [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
 [10 Pokemon](../sessions/10-pokemon/)_
 
 1. What does it mean for a game to be data-driven? Compare hardcoded gameplay values with
@@ -158,7 +158,7 @@ _Covered in: [03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-soko
 
 ### 9. Components & Systems
 
-_Covered in: [08 The Legend of Zelda](../sessions/08-the-legend-of-zelda/),
+_Covered in: [07 The Legend of Zelda](../sessions/07-the-legend-of-zelda/),
 [09 Plants vs. Zombies](../sessions/09-plants-vs-zombies/),
 [11 Geometry Wars](../sessions/11-geometry-wars/)_
 

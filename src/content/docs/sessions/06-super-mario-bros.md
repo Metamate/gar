@@ -334,9 +334,6 @@ Landing on a snail from above stomps it. Touching it any other way ends the game
 
 `Platformer8` adds music and sound effects: the finished game.
 
-**Try it** (`Platformer7`): make snails notice you from twice as far, and chase faster.
-Which state classes did you change?
-
 ## Exercises
 
 Start from `Platformer8`.
