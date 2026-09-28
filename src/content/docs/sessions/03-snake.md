@@ -339,9 +339,8 @@ Start from `Snake9`.
 1. **Data, not code:** the atlas image also holds a beetle the game doesn't use yet: two
    frames, at (40, 20) and (60, 0). Describe it in `atlas-definition.xml` (two regions and a
    `beetle-animation`), and make the enemy a beetle instead of a bat. How much C# did you
-   need to change? And for a beetle
-   _next to_ the bat: what in `Game1` would have to change, and what does that say about
-   where the bat's rules live?
+   need to change? And for a beetle _next to_ the bat: what in `Game1` would have to change,
+   and what does that say about where the bat's rules live?
 2. **Speed up:** make the tick shorter each time the snake eats, down to a minimum. Where
    does that rule belong?
 3. **New input:** add gamepad support for the D-pad. A press needs last frame's state, so
