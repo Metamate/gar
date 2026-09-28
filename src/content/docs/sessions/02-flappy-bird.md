@@ -25,9 +25,11 @@ interfaces, state machines and the Singleton pattern.
 
 **Source code:**
 [gar-games/02-flappy-bird](https://github.com/Metamate/gar-games/tree/main/02-flappy-bird). Its README
-lists the steps (`Flappy0` to `Flappy12`, one project per exercise below), maps the code,
-and says how to run it. Compare your solution with the matching step, and neighbouring steps
-to see exactly what changed.
+lists the steps (`Flappy0` to `Flappy12`), maps the code, and says how to run it. You build
+most of them in the exercises below; three stretches are shown in class: images and parallax
+(`Flappy1` and `Flappy2`), procedural generation (`Flappy6` and `Flappy7`), and states that pass
+data and count down (`Flappy10` and `Flappy11`). Compare your solution with the matching step,
+and neighbouring steps to see exactly what changed.
 
 ## Prepare
 
@@ -95,6 +97,14 @@ with `%` at its "looping point".
 The bird never actually moves sideways. The world scrolls past it, and the player sees
 a bird flying.
 
+_Steps `Flappy0` → `Flappy2`_
+
+`Flappy1` draws the background and the ground; `Flappy2` scrolls them, the background at 30
+pixels per second and the ground at 60, looping at 413 and 512.
+
+**Try it** (`Flappy2`): make the ground scroll at 120 and the background at 15. Then swap the
+two speeds. What happens to the sense of depth?
+
 ## Where Do Assets Live?
 
 How does the `Bird` class get its texture? There are several options, each with a
@@ -110,9 +120,16 @@ what that costs.
 
 ## Procedural Generation
 
-Instead of designing levels by hand, we generate them with code: pipe pairs spawn on a
-timer at a random height, based on the previous pair's height and clamped to the screen.
-Pairs that scroll off-screen are flagged and removed.
+_Steps `Flappy5` → `Flappy7`_
+
+Instead of designing levels by hand, we generate them with code. `Flappy6` spawns a pipe every
+2 seconds at a random height, scrolling at the ground's speed. `Flappy7` wraps two pipes in a
+`PipePair` with a 90-pixel gap, and lets the gap drift: each pair's height is the previous
+pair's, plus a small random step, clamped to the screen. Pairs that scroll off-screen are
+flagged and removed.
+
+**Try it** (`Flappy7`): make the gap 60 pixels and spawn a pair every 1.5 seconds. Is it still
+fair? Which numbers in `SpawnPipePair` make the drift gentler?
 
 ## Input: InputManager
 
@@ -178,6 +195,19 @@ the state machine. `Enter()` and `Exit()` give each state a place to set up and 
 (for example, `PlayState.Enter()` resets the bird, pipes and score so every retry starts
 clean).
 
+### Passing data, and a countdown
+
+_Steps `Flappy9` → `Flappy11`_
+
+`Flappy10` scores a point for each pair the bird passes, and adds a `ScoreState`. The score
+state needs the score, which belongs to the play state: it reads it through the state machine
+(`game.GameState.PlayState.Score`). `Flappy11` adds a `CountdownState` between the title or
+score and play: 3, 2, 1, then play.
+
+**Try it** (`Flappy11`): make the countdown start at 5 and tick every 0.3 seconds. Then show a
+best score on the score screen. Where does the best score live, so that it survives the next
+game?
+
 This is a _game-level_ state machine. In [Pac-Man](../05-pac-man/) we apply the same idea
 to objects in the game (the State pattern), and in [Pokemon](../10-pokemon/) we stack
 states on top of each other.
@@ -228,28 +258,22 @@ with the Service Locator pattern.
    Flappy.
 2. **A game on the library:** derive `Game1` from `Core`, with a 512×288 virtual resolution
    in a 1280×720 window.
-3. **Drawing images and parallax scrolling:** copy the `images` folder from
-   `gar-games/02-flappy-bird/Content/Assets` into your `Content/Assets` (later, copy `fonts` and
-   `audio` the same way; the starter's builder already handles all of them). Draw the
-   background and the ground, and scroll them at different speeds: 30 and 60 pixels per
-   second, looping at 413 and 512.
-4. **The bird and the Art class:** add a `Bird` class and a static `Art` class for asset references.
-5. **Gravity and an input manager:** add gravity (980 pixels per second, per second). Add
+3. **The bird and the Art class:** bring your game up to `Flappy2`: copy the `images` folder
+   from `gar-games/02-flappy-bird/Content/Assets` into your `Content/Assets` (later, copy
+   `fonts` and `audio` the same way; the starter's builder already handles all of them), and
+   the drawing and scrolling from `Flappy2`'s `Game1`. Then add a `Bird` class and a static
+   `Art` class for asset references.
+4. **Gravity and an input manager:** add gravity (980 pixels per second, per second). Add
    `KeyboardInfo`, `MouseInfo` and `InputManager` to GMDCore, and flap on
    `WasKeyJustPressed(Keys.Space)` or `WasLeftButtonJustPressed`: a flap sets the
    vertical velocity to 300 upwards.
-6. **Spawning on a timer:** spawn a pipe every 2 seconds at a random height, scrolling at
-   the ground's speed.
-7. **A drifting gap:** wrap pipes in a `PipePair` with a 90-pixel gap. Vary the gap height smoothly and
-   remove pairs that leave the screen.
-8. **Hitboxes:** stop the game when the bird hits a pipe, the ground or the ceiling. Can
-   you make collisions more forgiving?
-9. **A state machine:** add `IState`, a `StateMachine`, a `TitleState` and a `PlayState`.
-10. **Passing data between states:** score when passing a pipe pair, and add a `ScoreState`. How does the score
-    state get the score?
-11. **A countdown state:** add a `CountdownState` between title/score and play.
-12. **Audio as a Singleton:** add background music (`Song` + `MediaPlayer.Play`) and flap, hurt and score
-    sounds, organized in an `Audio` class made a Singleton (`Audio.Instance.PlayFlap()`).
+5. **Hitboxes:** bring your game up to `Flappy7` (the `Pipe` and `PipePair` classes and the
+   spawning in `Game1`), then stop the game when the bird hits a pipe, the ground or the
+   ceiling. Can you make collisions more forgiving?
+6. **A state machine:** add `IState`, a `StateMachine`, a `TitleState` and a `PlayState`.
+7. **Audio as a Singleton:** bring your game up to `Flappy11` (the score and countdown
+   states), then add background music (`Song` + `MediaPlayer.Play`) and flap, hurt and score
+   sounds, organized in an `Audio` class made a Singleton (`Audio.Instance.PlayFlap()`).
 
 **Going further (optional):** a cave flyer. Hold the button to rise and let go to fall, through a cave whose ceiling and floor are generated as you go. What changes, and what stays: the states, the scrolling, the spawning?
 

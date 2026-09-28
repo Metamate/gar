@@ -1,6 +1,6 @@
 ---
 title: 06 Super Mario Bros
-description: A 2D platformer. Platformer physics and tile collision, debug drawing, a camera, level makers, and the State pattern for the player.
+description: A 2D platformer. Platformer physics and tile collision, debug drawing, a camera, level makers, and player states that share their physics.
 sidebar:
   order: 6
 ---
@@ -23,7 +23,7 @@ world, and seeing what the collision code actually does. Along the way:
 - Debug drawing
 - A camera for levels wider than the screen
 - Level makers: the Strategy pattern again
-- The State pattern again, now for the player
+- Player states that share their physics, and change with the world
 
 **Source code:**
 [gar-games/06-super-mario-bros](https://github.com/Metamate/gar-games/tree/main/06-super-mario-bros).
@@ -182,76 +182,25 @@ class (`GameController.Jump` instead of `Keys.Space`).
 
 **Discuss:** this is _not_ the Command pattern from [Sokoban](../04-sokoban/). Why not?
 
-## Character State
+## Player States
 
 _Steps `Mario2` → `Mario3`_
 
-In [Pac-Man](../05-pac-man/), each ghost's mode was a state object. The player of a
-platformer needs the same pattern, and it shows well why the simpler options break down.
-Consider this (from _Game Programming Patterns_):
+In `Mario2`, the player's state is an enum, and its behaviour lives in `switch` statements:
+the stage [Pac-Man](../05-pac-man/#ghosts-with-an-enum)'s ghosts went through before the State
+pattern. `Mario3` makes the same move: each case becomes a class (`PlayerIdleState`,
+`PlayerWalkState`, `PlayerJumpState`, `PlayerFallState`, `PlayerDuckState`), and `Player` forwards
+`Update` and `Draw` to its current state. Two things are new compared with the ghosts:
 
-```cpp
-void Heroine::handleInput(Input input)
-{
-    if (input == PRESS_B)
-    {
-        if (!isJumping_ && !isDucking_) { /* Jump... */ }
-    }
-    else if (input == PRESS_DOWN)
-    {
-        if (!isJumping_) { isDucking_ = true; setGraphics(IMAGE_DUCK); }
-        else { isJumping_ = false; setGraphics(IMAGE_DIVE); }
-    }
-    else if (input == RELEASE_DOWN)
-    {
-        if (isDucking_) { /* Stand... */ }
-    }
-}
-```
-
-With one boolean per condition, you can end up in **illegal states**. Can you spot the bug?
-(We prevent air-jumping while jumping, but not while diving, so we need yet another flag.)
-
-An **enum** makes illegal combinations impossible: the player is in exactly one state. In
-`Mario2`, the player's state is an enum, and its behaviour lives in `switch`
-statements:
-
-```csharp
-switch (State)
-{
-    case PlayerState.Idle:
-        if (Velocity.X != 0) ChangeState(PlayerState.Walking);
-        if (GameController.Down) ChangeState(PlayerState.Ducking);
-        if (GameController.Jump) ChangeState(PlayerState.Jumping);
-        if (!IsOnGround()) ChangeState(PlayerState.Falling);
-        break;
-
-    case PlayerState.Jumping:
-        if (Velocity.Y > 0) ChangeState(PlayerState.Falling);
-        break;
-
-    // ...
-}
-```
-
-It works, but every method switches over every state (`ChangeState` has its own switch,
-and `HandleHorizontalMovement` a special case for ducking), and there is no good place for
-data that only one state needs, such as a charge time while ducking.
-
-**Try it** (`Mario3`): make the player jump higher and walk faster. Which class holds
-each value?
-
-### The State pattern
-
-> Allow an object to alter its behaviour when its internal state changes.
-
-- Each state is a class with its own behaviour and its own data.
-- The entity delegates to its current state object.
-- Adding a state doesn't touch existing states.
-
-In `Mario3`, each case becomes a class: `PlayerIdleState`, `PlayerWalkState`,
-`PlayerJumpState`, `PlayerFallState` and `PlayerDuckState`. The shared physics moves to
-`PlayerStateBase`, and `Player` just forwards `Update` and `Draw` to its current state.
+- **Shared behaviour in a base state.** Every player state falls, collides with tiles and
+  moves sideways. That physics is written once, in `PlayerStateBase`, and each state adds only
+  what is different: the jump state sets the upward velocity, the duck state ignores sideways
+  input. The ghosts' states shared almost nothing.
+- **The world triggers transitions, not only input and timers.** A ghost changes mode on a
+  timer or when Pac-Man eats a pellet. The player also changes state because of the level:
+  walking off a ledge starts a fall, a jump turns into a fall at the top of its arc, and
+  landing ends a fall. Coyote time is a transition too: for a few frames after leaving the
+  ground, the fall state still lets a jump through.
 
 ```mermaid
 stateDiagram-v2
@@ -270,6 +219,9 @@ stateDiagram-v2
     Falling --> Walking : landed, moving
     Falling --> Jumping : jump during coyote time
 ```
+
+**Try it** (`Mario3`): make the player jump higher and walk faster. Which class holds
+each value?
 
 ## Camera
 
@@ -354,7 +306,18 @@ Start from `Mario8`.
    (`IsOnGround` in `PlayerStateBase`), and show the player's current state and velocity
    on screen. Use it to find where coyote time starts and ends.
 
-**Going further (optional):** auto-tiling. Instead of the level maker choosing each tile's graphic, look at a solid tile's neighbours (which of up, down, left and right are solid) and pick the matching edge or corner graphic. Where does that belong: in the level maker, or in the tilemap?
+**Going further (optional):**
+
+- **Auto-tiling:** each topper set in `tile_tops.png` has a middle piece (tile 0), a left end
+  (1), a right end (2) and a single piece (3), but the level makers always use the middle.
+  Look at each topper's neighbours and pick the matching piece, so the grass rounds off at
+  every ledge. Where does that belong: in the level maker, or in the tilemap?
+- **A scene graph:** in the moving-platform exercise, the player rides along. Engines solve
+  this with a hierarchy of transforms: a child's position is relative to its parent's, so
+  while the player stands on the platform, it becomes the platform's child. Sketch a
+  `Transform` with a parent. What does the player's position in the world become when the
+  platform moves? _Game Programming Patterns_ uses exactly this example in
+  [Dirty Flag](https://gameprogrammingpatterns.com/dirty-flag.html).
 
 ## Apply It to Your Project
 
@@ -367,10 +330,12 @@ Start from `Mario8`.
 ## Check Yourself
 
 <details>
-<summary>Why is a switch on an enum still a problematic way to model character state?</summary>
+<summary>What do the player’s states share, and where does that code live?</summary>
 
-Every method has to switch over every state, so adding a state means touching many places,
-and state-specific data has nowhere natural to live.
+Gravity, tile collision and moving sideways: every state needs them, so they live once in
+`PlayerStateBase`. Each state overrides only what is different about it. Without the base
+class, every state would carry its own copy of the physics, and a fix to one would miss
+the others.
 
 </details>
 

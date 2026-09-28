@@ -447,6 +447,13 @@ Start from `Pacman4`.
 5. **Tunnel (stretch):** in the original, ghosts slow down in the tunnel. Which class should
    know that the ghost is in the tunnel, and which should know how fast to go there?
 
+**Going further (optional):** real pathfinding. The ghosts choose greedily: at each
+intersection, the open tile closest to the target in a straight line, which can lead a ghost
+the long way round a wall. Give one ghost a strategy that finds the shortest path, with a
+breadth-first search over the maze's tiles, and compare it with the greedy ghosts. Red Blob
+Games' [introduction to A*](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
+explains breadth-first search and A* step by step.
+
 ## Apply It to Your Project
 
 - Which objects in your game have modes? Are they flags, an enum, or state objects?

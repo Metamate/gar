@@ -33,9 +33,10 @@ By the end of the session, we will have a game with:
 
 **Source code:**
 [gar-games/01-pong](https://github.com/Metamate/gar-games/tree/main/01-pong). Its README
-lists the steps (`Pong0` to `Pong11`, one project per exercise below), maps the code, and
-says how to run it. Compare your solution with the matching step, and neighbouring steps to
-see exactly what changed.
+lists the steps (`Pong0` to `Pong11`), maps the code, and says how to run it. You build
+`Pong0` to `Pong7` yourself, in the exercises below; `Pong8` to `Pong11` are shown in class, in
+[Game State](#game-state) and [Sound Effects](#sound-effects). Compare your solution with the
+matching step, and neighbouring steps to see exactly what changed.
 
 ## Prepare
 
@@ -100,9 +101,7 @@ player never sees a half-drawn frame. See
   steps they catch up, and MonoGame then runs the game in slow motion. MonoGame uses a
   fixed timestep by default (`IsFixedTimeStep = true`).
 
-### Try it
-
-Lower the tick rate and compare the two lanes. Both simulations run at the same rate. The
+**Try it** (on this page): lower the tick rate and compare the two lanes. Both simulations run at the same rate. The
 bottom lane blends the last two ticks using `accumulator / dt`, so its motion looks smooth
 even when the simulation updates only a few times per second.
 
@@ -251,17 +250,30 @@ yourself once.)
 
 ## Game State
 
-Pong has distinct phases: _start_, _serve_, _play_ and _done_. Today we track them with a
-simple `string` field and `if`-checks in `Update` and `Draw`. That is fine for four states,
-but every new state means another `if` in each method. In
-[Flappy Bird](../02-flappy-bird/) we replace it with a state machine.
+_Steps `Pong7` → `Pong10`_
+
+Pong has distinct phases: _start_, _serve_, _play_ and _done_. `Pong8` keeps the score and
+shows it in a bigger font, `Pong9` adds a _serve_ mode (the player who was scored on serves
+next), and `Pong10` a _done_ mode when a player reaches 10 points. The modes are a simple
+`string` field and `if`-checks in `Update` and `Draw`. That is fine for four states, but every
+new state means another `if` in each method. In [Flappy Bird](../02-flappy-bird/) we replace
+it with a state machine.
+
+**Try it** (`Pong10`): make a game end at 3 points. Then add a _paused_ mode that `P` toggles
+during play. Which methods did you have to change?
 
 ## Sound Effects
 
+_Step `Pong11`_
+
 `SoundEffect` is for short clips (hits, jumps, clicks). They are loaded fully into memory
-and several can play at once. Longer music uses `Song` (next session).
+and several can play at once. Longer music uses `Song`, as in [Flappy Bird](../02-flappy-bird/).
+`Pong11` plays a sound for a paddle hit, a wall hit and a point.
 
 Make your own 8-bit sounds with [bfxr.net](https://www.bfxr.net/).
+
+**Try it** (`Pong11`): `Play` also takes a volume, a pitch and a pan. Raise the paddle sound's
+pitch as the ball speeds up.
 
 ## Exercises
 
@@ -292,11 +304,11 @@ Build Pong step by step:
 7. **Collisions and the bounce:** bounce off paddles and walls with AABB. Where the ball
    hits the paddle sets the new angle: straight back from the middle, steeply from the
    ends. Speed up the ball by 10% on each paddle hit.
-8. **Scoring:** keep and display the score in a bigger font (`"font-big"`).
-9. **A serve mode:** the player who was scored on serves next.
-10. **A winner:** add a _done_ mode when a player reaches 10 points.
-11. **Sound effects:** add distinct sounds for paddle hit, wall hit and score. Three are
-    in `Content/Assets/sounds`, or make your own with bfxr.
+
+**Going further (optional):** carry on from your own game with what `Pong8` to `Pong11`
+show: scoring in a bigger font (`"font-big"`), a serve mode, a winner at 10 points, and
+sound effects for paddle hits, wall hits and points (in `Content/Assets/sounds`, or made
+with bfxr).
 
 ## Apply It to Your Project
 

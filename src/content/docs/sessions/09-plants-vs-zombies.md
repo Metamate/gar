@@ -28,8 +28,8 @@ pattern. Along the way:
 
 **Source code:**
 [gar-games/09-plants-vs-zombies](https://github.com/Metamate/gar-games/tree/main/09-plants-vs-zombies).
-Its README lists the steps (`Pvz0` to `Pvz4`, one project per concept), maps the code, and
-says how to run it. Each section below names the steps that introduce it; compare
+Its README lists the steps (`Pvz0` to `Pvz4`, one project per concept, plus the `Pvz.Tests`
+project), maps the code, and says how to run it. Each section below names the steps that introduce it; compare
 neighbouring steps to see exactly what changed.
 
 ## Prepare
@@ -254,6 +254,35 @@ only so that components can ask it questions ("the first zombie ahead in row 2")
   pea (`Projectile`) or in the zombie. Rules that span many entities get harder to place;
   in [Geometry Wars](../11-geometry-wars/#components-vs-systems), we'll move some of them
   into **systems**.
+
+### Testing a component
+
+_Project `Pvz.Tests`_
+
+A component that does one job can be tested on its own. A test builds an entity with only
+the parts it needs, and no lawn, textures or running game, as the rules in
+[Sokoban](../04-sokoban/#unit-tests) were tested without a window:
+
+```csharp title="ComponentTests.cs"
+[Fact]
+public void Armour_takes_the_damage_first_and_passes_on_the_rest()
+{
+    var conehead = new Entity(null);
+    Armour cone = conehead.Add(new Armour(5, null));
+    Health health = conehead.Add(new Health(10));
+
+    health.Damage(8);
+
+    Assert.False(cone.IsIntact);
+    Assert.Equal(7, health.Current);
+}
+```
+
+The world is `null` because neither component uses it. With a class per zombie, the same
+test would need a `ConeheadZombie`, and everything its base classes need.
+
+**Try it** (`Pvz.Tests`): add a test for a buckethead, with armour 20 and health 10. Is it
+still standing after two hits of 12? Run `dotnet test`.
 
 ## Type Object
 

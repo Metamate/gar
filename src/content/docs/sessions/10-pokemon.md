@@ -83,6 +83,10 @@ Files: `StateStack.cs`, `BattleState.cs`, `BattleMenuState.cs`, `FadeState.cs`
   _replaced_ the current state instead?
 - Design a `PauseState`. Where do you push and pop it?
 
+**Try it** (`Pokemon4`): in `PlayState.Update`, push a `DialogueState` with a message of your
+own when `M` is pressed (`Core.Input.Keyboard.WasKeyJustPressed(Keys.M)`). When you dismiss
+it, where does the game carry on, and what did `PlayState` need to know?
+
 ## Tweens Everywhere
 
 _Step `Pokemon0` onwards_
@@ -101,6 +105,9 @@ Two details make this safe:
   that is being updated; the manager adds new tweens at the start of the next update.
   Changing a list while looping over it is a classic bug (see the re-entrancy pitfall in
   [Zelda](../07-the-legend-of-zelda/#pitfalls)).
+
+**Try it** (`Pokemon4`): in `GameSettings`, make the fades twice as slow and the walk between
+tiles twice as fast. Did any state change?
 
 ## GUIs
 
@@ -179,17 +186,11 @@ which state comes next: they push and pop.
 
 ### RPG mechanics
 
-- `PokemonSpecies` defines a species: name, base stats, growth rates, sprites.
-- `Mon` is one actual monster with its own level, stats and HP.
-- Stats follow from the level: each stat is the species' base value plus half its growth
-  value (1 to 5) per level. There is no randomness, so a level 5 Cindrel always has the
-  same stats, and a battle can be worked out on paper.
-- Damage: `(Attack × BasePower / 10) − Defense`, minimum 1.
-- Beating a monster gives 5 EXP per level of the loser, and the next level takes 10 EXP per
-  current level, so two wins against a monster of your own level make a level.
-  `LevelUp()` returns the stat increases so the UI can show them.
-- Walking onto the spring in the field heals the monster in front of the party.
-- `Party` holds your team; `Party.Current` is the one in battle.
+- `PokemonSpecies` defines a species (name, base stats, growth rates, sprites); `Mon` is one
+  actual monster with its own level, stats and HP; `Party` holds your team.
+- Stats, damage and experience are small formulas in `Mon`, with no randomness, so a battle
+  can be worked out on paper. `LevelUp()` returns the stat increases, so the UI can show
+  them without knowing the formulas.
 
 `PokemonSpecies` vs. `Mon` is the [Type Object](../09-plants-vs-zombies/) pattern again:
 the species are defined in `pokemon_definitions.json`, as the plants were in Plants vs.
@@ -244,9 +245,11 @@ public void A_saved_party_loads_back_the_same()
 
 _Steps `Pokemon0` and `Pokemon4`_
 
-From `Pokemon0`, the locator hands out the tween manager and the game's assets. In
-`Pokemon4`, audio is added as one more service: every class that plays a sound asks the
-locator for an `IAudio`, and `Game1` registers the real `SoundManager`.
+In [Flappy Bird](../02-flappy-bird/#singleton-pattern), the audio was a Singleton: every
+caller named the one concrete `Audio` class. Here, from `Pokemon0`, a locator hands out the
+tween manager and the game's assets. In `Pokemon4`, audio is added as one more service:
+every class that plays a sound asks the locator for an `IAudio`, and `Game1` registers the
+real `SoundManager`. The callers never name it.
 
 Many classes need shared services such as audio, tweens and assets. There are three common
 ways for them to get one:
@@ -276,6 +279,10 @@ Locator.Audio.PlayHit();
 - **Null object:** before a real service is registered, `NullAudio` (which does nothing)
   stands in, so callers never need null checks.
 - Dependencies are still hidden: you can't see from a constructor what a class uses.
+
+**Try it** (`Pokemon4`): in `Game1`, provide a `NullAudio` instead of the `SoundManager`. The
+game runs silently: which other classes did you change? Then write a `LoggingAudio` that
+prints each sound's name instead of playing it.
 
 MonoGame has a built-in locator, `Game.Services`
 (`Services.AddService<IAudio>(audio)`, `Services.GetService<IAudio>()`). We roll our own

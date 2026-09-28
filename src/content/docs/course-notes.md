@@ -37,26 +37,31 @@ same rules for every session.
 
 | Session | Estimate | vs. 180 | Notes |
 | --- | --- | --- | --- |
-| 00 Course Intro + 01 Pong | ~40 + ~230 | +90 | the intro deck first, then 12 build steps (~145) |
-| 02 Flappy Bird | ~255 | +75 | 14 build steps (~170) |
+| 00 Course Intro + 01 Pong | ~40 + ~200 | +60 | the intro deck first, then 8 build steps; steps 8–11 are two demos |
+| 02 Flappy Bird | ~210 | +30 | 8 build steps; three stretches are demos with a try-it |
 | 03 Snake | ~205 | +25 | 5 short tasks after the demos |
 | 04 Sokoban | ~170 | −10 | 4 short tasks |
 | 05 Pac-Man | ~165 | −15 | 4 short tasks |
-| 06 Super Mario Bros | ~210 | +30 | 6 short tasks; physics first, as in the steps |
-| 07 The Legend of Zelda | ~185 | +5 | 2 short tasks; composition closes the session |
+| 06 Super Mario Bros | ~205 | +25 | 6 short tasks; physics first; player states only say what's new after Pac-Man |
+| 07 The Legend of Zelda | ~190 | +10 | 3 short tasks; events are the main topic, composition closes the session |
 | 08 Angry Birds | ~170 | −10 | 5 short tasks, and the physics samples |
-| 09 Plants vs. Zombies | ~160 | −20 | 4 short tasks |
-| 10 Pokemon | ~150 | −30 | already alternates (trace-it tasks), and the UI samples |
-| 11 Geometry Wars | ~145 | −35 | 4 short tasks |
+| 09 Plants vs. Zombies | ~170 | −10 | 5 short tasks, one a test with `Pvz.Tests` |
+| 10 Pokemon | ~165 | −15 | trace-it tasks, and 4 short tasks (samples, stack, tweens, locator) |
+| 11 Geometry Wars | ~145 | −35 | 4 short tasks; the spare time goes to the project |
 | 12 Vampire Survivors | ~165 | −15 | 4 short tasks; the course recap also takes time |
 
-- **Pong and Flappy Bird:** students start the build steps in class and continue at home;
-  few will finish in class. Nothing is marked as homework in advance. With the midterm evaluation in mind, cover the concept slides in
-  class even when the building runs behind: they are what the next session builds on.
-- **Rhythm:** every session alternates listening and doing. Sessions 03–09, 11 and 12
-  have a short task (5–7 minutes, in pairs) after each demo, on the step just shown; the
-  longest stretch of listening is about 30 minutes. The final
-  exercises continue at home when a session runs long.
+- **Pong and Flappy Bird:** students build the core steps in class and continue at home;
+  the steps that repeat an idea (Pong's modes and sound, Flappy's images, spawning and
+  extra states) are shown as demos with a try-it, and the next build exercise starts from
+  the step the demo ended on. Nothing is marked as homework in advance. With the midterm
+  evaluation in mind, cover the concept slides in class even when the building runs
+  behind: they are what the next session builds on.
+- **Rhythm:** every session alternates listening and doing. Every session from Pong on has
+  a short task (5–7 minutes, in pairs) after its demos, on the step just shown; the
+  longest stretch of listening is about 30 minutes. The final exercises continue at home
+  when a session runs long.
+- **Exercise answers:** the [exercise answers](../exercise-answers/) page (a draft, like this
+  one) says what a good answer to each exercise contains.
 - **Spare time** in the later sessions goes to the exercises and to project work in class,
   which the syllabus includes, rather than to more material.
 - Re-estimate after running a session: `timing.py` in the working notes did the counting.
@@ -75,7 +80,7 @@ same rules for every session.
 | 4 | Sokoban (new) | Command pattern (undo/redo) | levels as text files, rules separated from rendering (tested with xUnit) |
 | 5 | Pac-Man (new) | State pattern | Strategy (per-ghost targeting), State vs. Strategy, targeting tests |
 | 6 | Super Mario Bros | Physics & tile collision | camera, debug drawing, level makers (Strategy again) |
-| 7 | The Legend of Zelda | Composition vs. inheritance | Observer & events, hitboxes, tweening |
+| 7 | The Legend of Zelda | Events & the Observer pattern | hitboxes, tweening, composition vs. inheritance (the question Plants vs. Zombies answers) |
 | 8 | Angry Birds (new) | Integrating a third-party library (Adapter/Facade) | physics world vs. game world, contact events & safe destruction, Prototype (prefabs) |
 | 9 | Plants vs. Zombies (new) | Component pattern | Type Object, game types as data, picking (screen → grid) |
 | 10 | Pokemon | Scenes & UI | state stack, separating UI from game data, Service Locator, save/load |
@@ -122,10 +127,11 @@ Notes for building it:
 - **Testing thread:** unit testing is introduced from scratch in Sokoban (students meet
   testing in another course the same semester, but not concretely). After that, tests only
   appear where they show off the session's topic, never as a test project in every game:
-  Pac-Man (each ghost strategy tested on its own), Pokemon (a save/load round-trip test,
+  Pac-Man (each ghost strategy tested on its own), Plants vs. Zombies (`Pvz.Tests`:
+  components tested on their own, just before the self-review), Pokemon (a save/load round-trip test,
   part of the unsolved save/load exercise), Geometry Wars (`GeometryWars.Tests`: fakes
   passed in through DI) and Vampire Survivors (the spatial grid checked against brute
-  force). Mario, Angry Birds, Zelda and Plants vs. Zombies have none. In the project, tests
+  force). Mario, Zelda and Angry Birds have none. In the project, tests
   are recommended at the self-review, not required (the syllabus doesn't mention testing).
 - **Sokoban vs. Snake:** Sokoban is the textbook Command/undo game. Snake's continuous
   movement makes undo pointless (replay works instead).

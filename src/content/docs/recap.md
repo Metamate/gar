@@ -59,7 +59,8 @@ answer.
   ([10](../sessions/10-pokemon/)) → dependency injection ([11](../sessions/11-geometry-wars/)).
   Exam [3](../exam/#3-singleton--service-locator).
 - **Testing:** rules apart from drawing, and unit tests ([04](../sessions/04-sokoban/)) →
-  ghost strategies tested one by one ([05](../sessions/05-pac-man/)) → a save/load
+  ghost strategies tested one by one ([05](../sessions/05-pac-man/)) → components tested on
+  their own ([09](../sessions/09-plants-vs-zombies/)) → a save/load
   round trip ([10](../sessions/10-pokemon/)) → fakes passed in through dependency injection
   ([11](../sessions/11-geometry-wars/)) → the fast spatial grid checked against the slow,
   obvious search ([12](../sessions/12-vampire-survivors/)).

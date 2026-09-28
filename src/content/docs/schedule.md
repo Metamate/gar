@@ -15,7 +15,7 @@ in your own time.
 | 04 | [Sokoban](../sessions/04-sokoban/) | Command pattern | undo & redo, levels as text files, unit tests |
 | 05 | [Pac-Man](../sessions/05-pac-man/) | State pattern | Strategy, State vs. Strategy, testing each ghost |
 | 06 | [Super Mario Bros](../sessions/06-super-mario-bros/) | Physics & tile collision | camera, debug drawing, level makers |
-| 07 | [The Legend of Zelda](../sessions/07-the-legend-of-zelda/) | Composition vs. inheritance | Observer & events, hitboxes, tweening |
+| 07 | [The Legend of Zelda](../sessions/07-the-legend-of-zelda/) | Events & the Observer pattern | hitboxes, tweening, composition vs. inheritance |
 | 08 | [Angry Birds](../sessions/08-angry-birds/) | Integrating a third-party library | Adapter & Facade, physics world vs. game world, contact events, Prototype |
 | 09 | [Plants vs. Zombies](../sessions/09-plants-vs-zombies/) | Component pattern | Type Object, game types as data, picking |
 | 10 | [Pokemon](../sessions/10-pokemon/) | Scenes & UI | state stack, separating UI from game data, Service Locator, save/load |

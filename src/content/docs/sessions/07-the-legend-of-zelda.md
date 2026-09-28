@@ -1,6 +1,6 @@
 ---
 title: 07 The Legend of Zelda
-description: A top-down dungeon crawler. Composition vs. inheritance, the Observer pattern and C# events, hitboxes, and a tweening system.
+description: A top-down dungeon crawler. The Observer pattern and C# events, hitboxes, a tweening system, and composition vs. inheritance.
 sidebar:
   order: 7
 ---
@@ -17,13 +17,14 @@ Make a **top-down dungeon crawler**.
 </figure>
 
 We go through the fundamental steps of a primitive _The Legend of Zelda_ clone. The main
-topic is **composition vs. inheritance**: the game has many kinds of things (a player,
-several enemies, switches, doorways), and how we build them decides how easy it is to add
-the next one. Along the way:
+topic is **events and the Observer pattern**: the player dies, a switch is pressed, a room
+is left, and other parts of the game need to react, without the thing that happened
+knowing who they are. Along the way:
 
-- The Observer pattern (delegates and events)
 - Hitboxes and hurtboxes
 - A tweening system for screen scrolling
+- Composition vs. inheritance: the game has many kinds of things, and how we build them
+  decides how easy the next one is to add
 
 **Source code:** [gar-games/07-the-legend-of-zelda](https://github.com/Metamate/gar-games/tree/main/07-the-legend-of-zelda).
 Its README lists the steps (`Zelda0` to `Zelda7`, one project per concept), maps the code,
@@ -254,6 +255,10 @@ The dungeon only has to call `_tweens.Update(gameTime)` while shifting. When the
 ends, `FinishShift` makes the new room the current room and resets the camera. The dungeon
 doesn't keep a progress variable or check whether the scroll is done; the tween system
 keeps the timing.
+
+**Try it** (`Zelda7`): make the room shift take twice as long. Then give it an ease-out: in
+`Dungeon`, pass `1 - (1 - t) * (1 - t)` to `Vector2.Lerp` instead of `t`. How does the
+scroll feel now?
 
 ## Stenciling
 
