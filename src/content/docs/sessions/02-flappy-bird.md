@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-![The finished Flappy Bird game](../../../assets/session02/flappy.gif)
+![The finished Flappy Bird game](../../../assets/session02/flappy-bird.gif)
 
 ## Today's Goal
 

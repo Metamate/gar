@@ -5,7 +5,7 @@ sidebar:
   order: 10
 ---
 
-![The finished monster-battling RPG](../../../assets/session10/critters.gif)
+![The finished monster-battling RPG](../../../assets/session10/pokemon.gif)
 
 ## Today's Goal
 

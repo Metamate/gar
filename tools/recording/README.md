@@ -8,7 +8,7 @@ are recorded from the finished games in gar-games.
 - `makegif.py` turns the frames into a GIF, with an optional crop and a pause on the last
   frame. `makegif-small.py` makes a lighter one for busy scenes (fewer frames and colours).
 - `record-games.ps1` has the recipes for Snake, Sokoban, Pac-Man, Angry Birds, Plants vs.
-  Zombies, Geometry Wars and Vampire Survivors. Build the games first, then run, for example:
+  Zombies, Pokemon, Geometry Wars and Vampire Survivors. Build the games first, then run, for example:
 
   ```
   pwsh tools/recording/record-games.ps1 -Games birds,pvz
@@ -20,4 +20,4 @@ are recorded from the finished games in gar-games.
 
 Snake is played by `snake_bot.py`, which reads the screen each frame and steers towards the
 bat, because the snake moves too fast for a fixed script. Pong, Flappy Bird, Super Mario
-Bros, Zelda and Pokemon were recorded by hand. The site converts the GIFs to animated WebP, which is usually much smaller.
+Bros and Zelda were recorded by hand. The site converts the GIFs to animated WebP, which is usually much smaller.

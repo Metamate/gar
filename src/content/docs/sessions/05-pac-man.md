@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-![The finished Pac-Man game](../../../assets/session05/pacman.gif)
+![The finished Pac-Man game](../../../assets/session05/pac-man.gif)
 
 ## Today's Goal
 

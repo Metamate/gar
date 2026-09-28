@@ -1,4 +1,4 @@
-param([string[]]$Games = @('snake', 'sokoban', 'pacman', 'birds', 'pvz', 'gw', 'vs'))
+param([string[]]$Games = @('snake', 'sokoban', 'pacman', 'birds', 'pvz', 'pokemon', 'gw', 'vs'))
 # Records the animated game images for the session pages and the decks' Today's Goal slides.
 # Build the finished steps in gar-games first (Debug). Each recipe plays the game with a
 # timed script of keys or mouse moves and captures frames; makegif.py turns them into a GIF.
@@ -32,7 +32,7 @@ if ($Games -contains 'sokoban') {
 if ($Games -contains 'pacman') {
   # Pac-Man is caught after about six seconds: keep the frames before that.
   Record 'pacman' (Exe '05-pac-man' 'Pacman4') 2.0 8 @('0.2 tap left', '1.5 tap left', '3.0 tap up', '4.2 tap up', '5.2 tap right', '6.2 tap up', '7.0 tap left')
-  python (Join-Path $here 'makegif.py') (Join-Path $out 'pacman.gif') 448 100 none 8 (Join-Path $out 'frames-pacman\f0[0-5][0-9].png') (Join-Path $out 'frames-pacman\f060.png')
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'pac-man.gif') 448 100 none 8 (Join-Path $out 'frames-pacman\f0[0-5][0-9].png') (Join-Path $out 'frames-pacman\f060.png')
 }
 if ($Games -contains 'birds') {
   # Grab the bird on the slingshot at (220, 520), pull back slowly, and let go.
@@ -46,6 +46,12 @@ if ($Games -contains 'pvz') {
   # Plant a sunflower and a peashooter, then capture once several zombies are on the lawn.
   Record 'pvz' (Exe '09-plants-vs-zombies' 'Pvz4') 44 7 @('0.5 click 182 70', '0.9 click 310 425', '1.4 click 274 70', '1.8 click 410 425', '2.2 mmove 700 700')
   python (Join-Path $here 'makegif.py') (Join-Path $out 'plants-vs-zombies.gif') 640 100 none (Join-Path $out 'frames-pvz\f*.png')
+}
+if ($Games -contains 'pokemon') {
+  # The title screen, which shows a new monster every three seconds: three of them. Start
+  # where a monster stands in the middle (the first frame is also the decks' still picture).
+  Record 'pokemon' (Exe '10-pokemon' 'Pokemon4') 2.0 9 @()
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'pokemon.gif') 640 100 none (Join-Path $out 'frames-pokemon\f00[3-9].png') (Join-Path $out 'frames-pokemon\f0[1-8][0-9].png') (Join-Path $out 'frames-pokemon\f00[0-2].png')
 }
 if ($Games -contains 'gw') {
   # Move with WASD and fire with the arrow keys, turning every second. Busy: a smaller GIF.

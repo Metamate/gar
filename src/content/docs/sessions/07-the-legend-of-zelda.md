@@ -5,7 +5,7 @@ sidebar:
   order: 7
 ---
 
-![The finished dungeon crawler](../../../assets/session07/zelda.gif)
+![The finished dungeon crawler](../../../assets/session07/the-legend-of-zelda.gif)
 
 ## Today's Goal
 

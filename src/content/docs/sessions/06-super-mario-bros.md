@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-![The finished platformer](../../../assets/session06/platformer.gif)
+![The finished platformer](../../../assets/session06/super-mario-bros.gif)
 
 ## Today's Goal
 
