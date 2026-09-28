@@ -33,8 +33,6 @@ it; compare neighbouring steps to see exactly what changed.
 ## Prepare
 
 - [19: User Interface Fundamentals](https://docs.monogame.net/articles/tutorials/building_2d_games/19_user_interface_fundamentals)
-- [20: Implementing UI with Gum](https://docs.monogame.net/articles/tutorials/building_2d_games/20_implementing_ui_with_gum)
-- [21: Customizing Gum UI](https://docs.monogame.net/articles/tutorials/building_2d_games/21_customizing_gum_ui)
 - [Pushdown Automata](https://gameprogrammingpatterns.com/state.html#pushdown-automata)
 - [Service Locator](https://gameprogrammingpatterns.com/service-locator.html)
 - [Components & Services in MonoGame](https://gavsdevblog.wordpress.com/2016/09/04/monogame-components-and-services)
@@ -116,9 +114,32 @@ A GUI is built from reusable widgets:
 - **Selection/Menu:** a list of labelled options with actions; handles navigation and the
   cursor. Adding an option is one line.
 
-For inspiration, see [Interface in Game](https://interfaceingame.com/games/). For larger
-UIs, a library such as [Gum](https://docs.monogame.net/articles/tutorials/building_2d_games/20_implementing_ui_with_gum)
-saves a lot of work.
+For inspiration, see [Interface in Game](https://interfaceingame.com/games/).
+
+### UI samples
+
+_Project `UiSamples`_
+
+Next to the steps, `UiSamples` puts the widgets on one screen, each on its own: a menu whose
+options do something you can see, a panel, a progress bar that tweens to its new value, and
+a textbox that pages through a message. While the textbox is open, it has the input to
+itself and the menu waits: only one widget at a time listens to the keys, the one with the
+_focus_. The samples use the game's own widgets, so what you change there changes in the
+game too. Run them with `dotnet run --project UiSamples`.
+
+**Try it** (`UiSamples`): add a fifth option that fills the bar again, and make the bar turn
+red when it drops below a quarter. Which class did each change need?
+
+### When to use a UI library
+
+Our widgets are small enough to read in one sitting, and building them shows what a UI
+needs: drawing, layout, input and focus. A library such as
+[Gum](https://docs.monogame.net/articles/tutorials/building_2d_games/20_implementing_ui_with_gum)
+does all of that for you, and more: layouts that adapt to the screen, scrolling lists, text
+input, and a visual editor ([customizing it](https://docs.monogame.net/articles/tutorials/building_2d_games/21_customizing_gum_ui)).
+The cost is a dependency, and a way of working you have to learn. For your project, a few
+menus and bars are quick to build yourself; a settings screen or an inventory with
+scrolling is a good reason to reach for Gum.
 
 ### Separating UI from game data
 
