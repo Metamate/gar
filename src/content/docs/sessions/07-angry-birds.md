@@ -55,9 +55,29 @@ package:
 ```
 
 Box2D simulates a **world** of **bodies**. Each body has one or more **shapes** (boxes,
-circles, polygons), with a density, friction and bounciness. Static bodies (the ground)
-never move; dynamic bodies are moved by gravity and collisions. You **step** the world
-forward in time, and read where the bodies ended up.
+circles, polygons), with a density, friction and bounciness. There are three types of body:
+
+- **Static** bodies never move: the ground, walls.
+- **Kinematic** bodies move at the velocity you give them, push dynamic bodies, and are never
+  pushed back: a moving platform.
+- **Dynamic** bodies are moved by gravity and collisions: everything else.
+
+You **step** the world forward in time, and read where the bodies ended up.
+
+### Physics samples
+
+_Project `PhysicsSamples`_
+
+Next to the steps, `PhysicsSamples` shows one idea per scene: the three body types, bounce
+(restitution), friction, density, and sleeping, where bodies at rest stop being simulated
+until something touches them. Keys 1 to 5 choose a scene, a click drops a box, Space drops a
+ball, and R starts the scene again. The samples go through the game's own facade, and draw
+with its debug view: static bodies orange, kinematic magenta, dynamic green, and blue when
+asleep. Run them with `dotnet run --project PhysicsSamples`.
+
+**Try it** (`PhysicsSamples`): make the platform in the first scene move up and down instead
+of sideways. In the friction scene, find the lowest friction at which the box stays on the
+slope. Is it what you expected for a slope of about 26 degrees?
 
 `Birds0` uses Box2D directly, in `Game1`:
 
@@ -115,7 +135,7 @@ classDiagram
         +Draw(spriteBatch)
     }
     class PhysicsWorld {
-        +CreateBox(center, size, rotation, material, owner) PhysicsBody
+        +CreateBox(center, size, rotation, material, owner, type) PhysicsBody
         +CreateCircle(center, radius, material, owner) PhysicsBody
         +Update(deltaSeconds)
         +Destroy(body)
@@ -200,7 +220,9 @@ This gives us:
   come to depend on the rest of Box2D.
 
 The cost is that every Box2D feature the game needs later (joints, raycasts, sensors) has
-to be added to the facade first. That is on purpose, but it is extra work. Wrap a library when it's foreign to your code, when you might swap it, or when you use a small
+to be added to the facade first. That is on purpose, but it is extra work. Kinematic bodies
+are an example: the game didn't need them, the physics samples did, so `CreateBox` got a
+`BodyType` instead of an `isStatic` flag. Wrap a library when it's foreign to your code, when you might swap it, or when you use a small
 part of it. A library that already fits your code, like MonoGame itself, doesn't need it.
 
 `Units` is `internal`, and so are the IDs. In a bigger project, the `Physics` folder would
