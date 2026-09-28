@@ -1,6 +1,6 @@
 ---
 title: 04 Sokoban
-description: The Command pattern with undo and redo, levels as data, and game rules separated from drawing so they can be unit tested.
+description: The Command pattern for undo, redo and rebindable keys, levels as data, and game rules separated from drawing so they can be unit tested.
 sidebar:
   order: 4
 ---
@@ -19,8 +19,8 @@ only one box at a time.
 
 Snake's grid was a picture with a snake on top. In Sokoban, the grid holds the whole game:
 the walls, the boxes and the player are all the state there is. The main topic is the **Command**
-pattern, which turns every move into an object, and gives us **undo and redo**. Along
-the way:
+pattern, which turns every move into an object: that gives us **undo and redo**, and keys
+the player can rebind. Along the way:
 
 - Levels as data: plain text files
 - Rules separated from drawing
@@ -449,6 +449,42 @@ There are two ways to undo:
 
 Sokoban's state is small, so snapshots would work too. In a game with a large world, only
 the commands' changes are worth storing.
+
+### Commands and input
+
+_Game Programming Patterns_ opens its Command chapter with input, not undo: each button
+holds a command, and **rebinding** a button means giving it a different one. Our
+`GameController` already names actions instead of keys, but the mapping is code: to let a
+player choose their keys, it has to become data, which the game can change while it runs,
+read from a settings file, or fill from an options screen:
+
+```csharp title="Game1.cs"
+private readonly Dictionary<Keys, Point> _moveKeys = new()
+{
+    [Keys.Up] = Direction.Up,     [Keys.W] = Direction.Up,
+    [Keys.Down] = Direction.Down, [Keys.S] = Direction.Down,
+    [Keys.Left] = Direction.Left, [Keys.A] = Direction.Left,
+    [Keys.Right] = Direction.Right, [Keys.D] = Direction.Right,
+};
+
+private void HandleInput()
+{
+    foreach ((Keys key, Point direction) in _moveKeys)
+    {
+        if (Core.Input.Keyboard.WasKeyJustPressed(key))
+            Move(direction);    // a new MoveCommand for this move
+    }
+    // ...
+}
+```
+
+A key picks which command to make, and each press still makes a new `MoveCommand`: the
+history keeps every one, so each move needs its own object to be undone. The book makes the
+same point: when commands can be undone, the input handler hands out a new command each time.
+
+**Try it** (`Sokoban4`): replace the four move lines in `HandleInput` with the dictionary. Then
+add a key that swaps the up and down bindings while you play. What did you change, and what
+didn't need to know?
 
 ## The Whole Game
 

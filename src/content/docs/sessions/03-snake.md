@@ -352,11 +352,6 @@ Start from `Snake9`.
 5. **Refactor (stretch):** the tick timer lives in `Snake`. Move it into a reusable
    `FixedTimer` class in GMDCore that calls back on every tick, and use it for the snake.
 
-**Going further (optional):** keys the player chooses. Actions already hide the keys, so
-rebinding is one step further: keep the key for each action in a dictionary, load it from a
-settings file, and add a screen that waits for a key press to change an action's key. Which
-class changes, and which classes never notice?
-
 ## Apply It to Your Project
 
 - Which of your game's assets and settings are hardcoded, and could live in data files?

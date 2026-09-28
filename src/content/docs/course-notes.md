@@ -40,7 +40,7 @@ same rules for every session.
 | 00 Course Intro + 01 Pong | ~40 + ~200 | +60 | the intro deck first, then 8 build steps; steps 8–11 are two demos |
 | 02 Flappy Bird | ~210 | +30 | 8 build steps; three stretches are demos with a try-it |
 | 03 Snake | ~205 | +25 | 5 short tasks after the demos |
-| 04 Sokoban | ~170 | −10 | 4 short tasks |
+| 04 Sokoban | ~180 | 0 | 5 short tasks; Command for undo and for input |
 | 05 Pac-Man | ~165 | −15 | 4 short tasks |
 | 06 Super Mario Bros | ~205 | +25 | 6 short tasks; physics first; player states only say what's new after Pac-Man |
 | 07 The Legend of Zelda | ~190 | +10 | 3 short tasks; events are the main topic, composition closes the session |
