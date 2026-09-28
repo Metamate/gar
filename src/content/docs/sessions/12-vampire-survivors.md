@@ -5,7 +5,7 @@ sidebar:
   order: 12
 ---
 
-![The finished Vampire Survivors game](../../../assets/session12/vampire-survivors.png)
+![The finished Vampire Survivors game](../../../assets/session12/vampire-survivors.gif)
 
 ## Today's Goal
 

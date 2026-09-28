@@ -5,7 +5,7 @@ sidebar:
   order: 11
 ---
 
-![The finished Geometry Wars game](../../../assets/session11/geometry-wars.png)
+![The finished Geometry Wars game](../../../assets/session11/geometry-wars.gif)
 
 ## Today's Goal
 

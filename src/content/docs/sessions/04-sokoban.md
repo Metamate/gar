@@ -5,7 +5,7 @@ sidebar:
   order: 4
 ---
 
-![The finished Sokoban game](../../../assets/session04/sokoban.png)
+![The finished Sokoban game](../../../assets/session04/sokoban.gif)
 
 ## Today's Goal
 

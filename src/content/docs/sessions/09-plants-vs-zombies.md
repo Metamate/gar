@@ -5,7 +5,7 @@ sidebar:
   order: 9
 ---
 
-![The finished Plants vs. Zombies game](../../../assets/session09/plants-vs-zombies.png)
+![The finished Plants vs. Zombies game](../../../assets/session09/plants-vs-zombies.gif)
 
 ## Today's Goal
 

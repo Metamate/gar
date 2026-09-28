@@ -5,7 +5,7 @@ sidebar:
   order: 7
 ---
 
-![The finished Angry Birds game](../../../assets/session07/angry-birds.png)
+![The finished Angry Birds game](../../../assets/session07/angry-birds.gif)
 
 ## Today's Goal
 
