@@ -1,4 +1,4 @@
-param([string[]]$Games = @('sokoban', 'pacman', 'birds', 'pvz', 'gw', 'vs'))
+param([string[]]$Games = @('snake', 'sokoban', 'pacman', 'birds', 'pvz', 'gw', 'vs'))
 # Records the animated game images for the session pages and the decks' Today's Goal slides.
 # Build the finished steps in gar-games first (Debug). Each recipe plays the game with a
 # timed script of keys or mouse moves and captures frames; makegif.py turns them into a GIF.
@@ -13,6 +13,13 @@ function Record($name, $exe, $start, $duration, $events) {
   & (Join-Path $here 'record.ps1') -Exe $exe -Start $start -Duration $duration -IntervalMs 100 -OutDir (Join-Path $out "frames-$name") -Events $events
 }
 
+if ($Games -contains 'snake') {
+  # The snake moves five cells a second, too fast for a fixed script: snake_bot.py reads the
+  # screen and steers towards the bat. It can still die now and then, so pick a stretch of
+  # frames without a restart (the snake is back to three segments after one).
+  python (Join-Path $here 'snake_bot.py') (Exe '03-snake' 'Snake9') (Join-Path $out 'frames-snake') 14 100
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'snake.gif') 640 130 none 6 (Join-Path $out 'frames-snake\f*.png')
+}
 if ($Games -contains 'sokoban') {
   # Solve level 1, go to level 2, push, undo, redo, and solve it.
   $ev = @('0.6 tap right', '1.0 tap right', '1.6 tap enter', '2.4 tap up', '2.9 tap z', '3.4 tap y')

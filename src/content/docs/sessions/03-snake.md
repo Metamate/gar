@@ -5,7 +5,7 @@ sidebar:
   order: 3
 ---
 
-![The finished Snake game](../../../assets/session03/snake.png)
+![The finished Snake game](../../../assets/session03/snake.gif)
 
 ## Today's Goal
 
