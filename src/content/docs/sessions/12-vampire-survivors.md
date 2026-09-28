@@ -68,6 +68,9 @@ It plays fine at first. Press Space a few times to add a thousand enemies each t
 the game slows to a crawl. Before changing anything, we find out **why**: guessing is how
 you end up optimizing the wrong thing.
 
+**Try it:** with 2,000 enemies, how many pairs does `Separate` check each step? And with
+10,000?
+
 ## Profiling
 
 _Step `Survivors1`_
@@ -111,6 +114,9 @@ because `Nearest` and `Within` use LINQ (`Where`, `OrderBy`, `ToList`), which cr
 objects each call. Allocations cost time now and garbage collections later, which show up as
 stutters. The same profiling works on your own game, and bigger tools exist too (the
 Performance Profiler in Visual Studio, `dotnet-counters` and `dotnet-trace`).
+
+**Try it** (`Survivors1`, in Release): press F3, then Space until a frame takes more than
+16.7 ms. How many enemies is that, and which section takes the time?
 
 ## Spatial Partitioning
 
@@ -195,6 +201,9 @@ public void The_grid_finds_the_same_points_as_checking_every_point(float radius)
 A `[Theory]` runs once for each `[InlineData]`: radii smaller than a cell, about one cell,
 and many cells. Points on cell borders, at negative coordinates and far outside the grid
 have tests of their own; those are where grids go wrong.
+
+**Try it** (`Survivors2`, in Release): go to 10,000 enemies and compare `Separate` with
+`Survivors1`. Then run `dotnet test` in the folder.
 
 ## Data-Oriented Design
 
@@ -303,6 +312,9 @@ component objects, each updated through its own methods. That's flexible and rea
 fine for hundreds of entities. For tens of thousands of the same kind of thing, the
 [particles](../11-geometry-wars/#components-vs-systems) there and the swarm here are handled
 as data, by one system, in bulk. Many engines mix the two in the same way.
+
+**Try it** (`Survivors3`, in Release): at 10,000 and 20,000 enemies, compare the profiler
+with `Survivors2`. Which sections changed the most?
 
 ## The Whole Game
 

@@ -77,6 +77,9 @@ first, then the seed packets, and only then the lawn.
 The cell under the mouse is highlighted, with a faint copy of the chosen plant, so the
 player sees what a click will do.
 
+**Try it** (`Pvz0`): show the cell under the mouse in the window title. What does
+`CellAt` give you off the lawn?
+
 ## Plants and Zombies, With Inheritance
 
 _Step `Pvz1`_
@@ -126,6 +129,9 @@ It works, but try adding what the real game has:
 
 Inheritance describes what something _is_. In this game, what each thing _can do_ matters
 more, and the abilities combine freely.
+
+**Try it** (`Pvz1`): make a Repeater, a Peashooter that shoots two peas, as a subclass. How
+far do you get before `Peashooter` has to change?
 
 ## The Component Pattern
 
@@ -206,6 +212,9 @@ public Entity Conehead(World world) => Zombie(world).With(new Armour(18, atlas.G
 The Repeater and the Conehead are new in `Pvz2`, and neither needed a class. A plant that
 shoots and makes sun is `.With(new Shooter(...)).With(new SunProducer(...))`. Health is
 written once, and used by plants and zombies alike.
+
+**Try it** (`Pvz2`): add a recipe for a plant that shoots and makes sun, and give it a
+packet in `Game1`. How much new code did it take?
 
 ### How components work together
 
@@ -306,6 +315,9 @@ public class PlantType
   It took one new component (`Explode`), one new property on `PlantType`, and the data.
   Components and Type Object work together: components are the building blocks, the types
   are the data that combines them.
+
+**Try it** (`Pvz3`): in `plants.json`, make a Wall-nut that costs 25 with twice the health,
+and a Sunflower that makes 50 sun. Did you compile anything?
 
 ### Prototype vs. Type Object
 

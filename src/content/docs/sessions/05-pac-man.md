@@ -112,6 +112,9 @@ protected override Point ChooseDirection(Point tile)
 turns up when he gets there. That's [input buffering](../03-snake/#input-buffering), as in
 Snake, but here it's what makes the controls feel good.
 
+**Try it** (`Pacman0`): open a new tunnel in `maze.txt`, or move Pac-Man's start. Then
+press a direction just before a corner, and watch when he turns.
+
 ## Ghosts, With an Enum
 
 _Step `Pacman1`_
@@ -189,6 +192,9 @@ It works, but the class as a whole has problems:
 
 This is the same problem as Pong's string-based game state, and it gets worse with every
 mode.
+
+**Try it** (`Pacman1`): add `Frozen` to `GhostMode`, for a ghost that stands still for a
+second after being eaten. Don't finish it: count the `switch`es you would have to change.
 
 ## The State Pattern
 
@@ -290,6 +296,9 @@ Things to notice:
 Compare the diff between `Pacman1` and `Pacman2`: `World` didn't change at all. Only the
 inside of `Ghost` did.
 
+**Try it** (`Pacman2`): make frightened ghosts last 3 seconds instead of 6. How many files did
+it take? Where would a `FrozenState` go?
+
 ## The Strategy Pattern
 
 _Step `Pacman3`_
@@ -346,6 +355,9 @@ public override Point ChooseDirection(Ghost ghost, IReadOnlyList<Point> options)
 with a new personality is one new class and one line in `World`. You'll meet the pattern
 again in [Super Mario Bros](../06-super-mario-bros/#strategy-pattern-level-makers), where
 interchangeable level makers build different kinds of levels.
+
+**Try it** (`Pacman3`): give Clyde Blinky's strategy in `World`, and play. How does the
+chase change?
 
 ## State vs. Strategy
 

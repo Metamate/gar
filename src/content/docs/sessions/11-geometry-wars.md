@@ -133,6 +133,9 @@ styles: components where clarity matters, and flat data where there are thousand
 something. Flat data is the start of data-oriented design, which
 [Vampire Survivors](../12-vampire-survivors/) uses for its whole swarm.
 
+**Try it** (`GeometryWars6`): remove the `SeekTarget` component in
+`EntityFactory.CreateSeeker`. What does a seeker do now, and what still works?
+
 ### Where does new code go?
 
 The architecture above gives every kind of code a home:
@@ -283,6 +286,9 @@ Pooled objects must be fully **reset** when reused, or old state leaks into the 
 "instance".
 
 In the codebase: `ObjectPool.cs`, `BulletSpawner.cs`.
+
+**Try it** (`GeometryWars6`): press F3 and keep firing for ten seconds. Does memory grow?
+What would you expect without the pool?
 
 ## Flyweight
 

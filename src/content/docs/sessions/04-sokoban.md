@@ -78,6 +78,9 @@ works, but the text is the only state. To move the player, we would have to edit
 characters in strings, and every question ("is there a wall here?", "is the level
 solved?") would be a question about characters.
 
+**Try it** (`Sokoban0`): add a second box, a second goal and a wall in the middle of
+`level1.txt`. What must be true for a level to be playable?
+
 ## Rules Apart From Drawing
 
 _Step `Sokoban1`_
@@ -168,6 +171,9 @@ drawing, so it lives in `LevelView`, not in `Level`. The `GameController` is the
 
 With the two apart, each can change on its own. New art only touches `LevelView`, and a
 new rule only touches `Level`. The rules can also be tested, as the next section shows.
+
+**Try it** (`Sokoban1`): make the walls look like floor, and make a level count as solved
+when all boxes but one are on goals. Which class did each change need?
 
 ## Unit Tests
 
@@ -282,6 +288,10 @@ Failed!  - Failed:     1, Passed:    11, Skipped:     0, Total:    12
 The test names the rule that broke, what it expected, what it got, and the line. You
 didn't have to play the game to find it.
 
+**Try it:** run `dotnet test` in the `04-sokoban` folder. Copy one test in
+`LevelTests.cs` and make it check walking left, then make it fail on purpose and read the
+message.
+
 ### What to Test
 
 Test the **rules**: the code that decides what happens. In Sokoban, that's moving,
@@ -355,6 +365,9 @@ A move that is an object can be kept. `Sokoban2` only keeps a list, to count the
 The `GameController` from [Snake](../03-snake/#input-as-actions) maps keys to _actions_
 ("the player wants to go up"). A command is what the game _does_ with an action ("move the
 player up in this level"), and that is the object we keep.
+
+**Try it** (`Sokoban2`): give `MoveCommand` a `Direction` property and show the last
+move's direction in the window title. To undo a move, what else would it need to remember?
 
 ## Undo and Redo
 

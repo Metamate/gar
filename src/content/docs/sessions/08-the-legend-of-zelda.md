@@ -151,6 +151,9 @@ That trades a single overview for locality: reading a state or a room method sho
 what that interaction does. Compare it with the dedicated collision system in
 [Geometry Wars](../11-geometry-wars/), which has far more things colliding.
 
+**Try it** (`Zelda7`): make the sword reach twice as far in `GameSettings`, and play. Does it
+still feel fair?
+
 ## Events & the Observer Pattern
 
 _Steps `Zelda3` → `Zelda4`_

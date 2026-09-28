@@ -116,6 +116,9 @@ classDiagram
 Each ground column also gets a **topper** (a grass or snow edge on the top tile) from a
 separate topperset, and each level a random background.
 
+**Try it** (`Platformer1`): make pits twice as common in `PitLevelMaker`, then press 4 to
+see it.
+
 ## Platformer Physics
 
 _Step `Platformer2`_
@@ -129,6 +132,9 @@ _Step `Platformer2`_
   the velocity on that axis.
 - **Ground check:** probe one pixel below the hitbox for solid tiles.
 - **Coyote time:** allow a jump for a moment after walking off a ledge. It feels fairer.
+
+**Try it** (`Platformer2`): press F1, and set `HitboxInset` to 0. Can you still fall into a
+one-tile pit? Then set `CoyoteTime` to 0.5: how does jumping off a ledge feel?
 
 ### Performance
 
@@ -225,6 +231,9 @@ It works, but every method switches over every state (`ChangeState` has its own 
 and `HandleHorizontalMovement` a special case for ducking), and there is no good place for
 data that only one state needs, such as a charge time while ducking.
 
+**Try it** (`Platformer3`): make the player jump higher and walk faster. Which class holds
+each value?
+
 ### The State pattern
 
 > Allow an object to alter its behaviour when its internal state changes.
@@ -264,6 +273,9 @@ transform that shifts the world so the target (the player) is centred. It is pas
 `SpriteBatch.Begin()` together with the screen scale matrix. Here we only follow the
 x-axis, and clamp the camera to the level's edges. The background scrolls at half the
 camera's speed, for a parallax effect.
+
+**Try it** (`Platformer4`): make the background scroll at a quarter of the camera's speed
+(in `GameLevel`). What do 0 and 1 look like?
 
 ## Game States
 
@@ -314,6 +326,9 @@ Enemy AI can be built from states too:
 Landing on a snail from above stomps it. Touching it any other way ends the game.
 
 `Platformer8` adds music and sound effects: the finished game.
+
+**Try it** (`Platformer7`): make snails notice you from twice as far, and chase faster.
+Which state classes did you change?
 
 ## Exercises
 

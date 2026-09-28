@@ -97,6 +97,9 @@ Box2D is made for scale: 1 unit should be about 1 metre, and objects should be r
 to 10 units in size. In pixels, a 50-pixel block would be a 50-metre block, and it would
 fall as slowly as a building. That's why the conversion is needed at all.
 
+**Try it** (`Birds0`): change `PixelsPerMeter` from 50 to 10. How many lines use it, and
+how do the blocks fall now?
+
 ## Adapter & Facade
 
 _Step `Birds1`_
@@ -203,6 +206,9 @@ part of it. A library that already fits your code, like MonoGame itself, doesn't
 `Units` is `internal`, and so are the IDs. In a bigger project, the `Physics` folder would
 be its own class library project, and `internal` would then really hide Box2D from the game.
 
+**Try it** (`Birds1`): make the same change, to 10 pixels per metre. How many files did you
+touch this time?
+
 ### Who owns the position?
 
 A block now exists twice: as an `Entity` in our game, and as a body in the physics world.
@@ -267,6 +273,9 @@ breaks easily, stone hardly at all.
 (A C# `event` lets other code subscribe to something that happens, without the publisher
 knowing who listens. In [Zelda](../08-the-legend-of-zelda/), this becomes the Observer
 pattern.)
+
+**Try it** (`Birds2`): make every hit do twice the damage. Which method did you change, and
+what breaks sooner?
 
 ### Destroying safely
 
@@ -396,6 +405,9 @@ Prototype and Type Object (in [Plants vs. Zombies](../09-plants-vs-zombies/)) so
 similar problem: many kinds of things, without a class for each. Prototype copies a
 configured object; Type Object shares one object that describes a kind. We'll compare
 them there.
+
+**Try it** (`Birds3`): put a `big-pig` on top of the hut in `level1.txt`, and a
+`glass-box` next to it. How much code did it take?
 
 ## The Whole Game
 
