@@ -60,8 +60,9 @@ same rules for every session.
   a short task (5–7 minutes, in pairs) after its demos, on the step just shown; the
   longest stretch of listening is about 30 minutes. The final exercises continue at home
   when a session runs long.
-- **Exercise answers:** the [exercise answers](../exercise-answers/) page (a draft, like this
-  one) says what a good answer to each exercise contains.
+- **Exercise answers:** what a good answer to each exercise contains is kept outside the
+  public repositories (`projects/gar-private/exercise-answers.md` on the teacher's machine),
+  so the exercises stay unsolved for students.
 - **Spare time** in the later sessions goes to the exercises and to project work in class,
   which the syllabus includes, rather than to more material.
 - Re-estimate after running a session: `timing.py` in the working notes did the counting.
