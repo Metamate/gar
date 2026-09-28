@@ -42,7 +42,7 @@ same rules for every session.
 | 03 Snake | ~210 | +30 | 5 short tasks after the demos |
 | 04 Sokoban | ~175 | −5 | 4 short tasks |
 | 05 Pac-Man | ~165 | −15 | 4 short tasks |
-| 06 Super Mario Bros | ~215 | +35 | 5 short tasks |
+| 06 Super Mario Bros | ~220 | +40 | 6 short tasks |
 | 07 Angry Birds | ~165 | −15 | 4 short tasks |
 | 08 The Legend of Zelda | ~180 | 0 | 1 short task |
 | 09 Plants vs. Zombies | ~165 | −15 | 4 short tasks |
@@ -55,7 +55,7 @@ same rules for every session.
   class even when the building runs behind: they are what the next session builds on.
 - **Rhythm:** every session alternates listening and doing. Sessions 03–09, 11 and 12
   have a short task (5–7 minutes, in pairs) after each demo, on the step just shown; the
-  longest stretch of listening is about 30 minutes (36 at the start of Mario). The final
+  longest stretch of listening is about 30 minutes. The final
   exercises continue at home when a session runs long.
 - **Spare time** in the later sessions goes to the exercises and to project work in class,
   which the syllabus includes, rather than to more material.

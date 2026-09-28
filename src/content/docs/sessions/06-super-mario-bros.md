@@ -82,6 +82,9 @@ public readonly struct Tile(int graphicId = -1, bool isSolid = false)
 Because the graphics are separate from the level's structure, the same level can be drawn
 with any of the 60 tilesets in `tiles.png` (press `R`).
 
+**Try it** (`Platformer0`): in `GenerateLevel`, leave a gap two tiles wide in the ground, and
+raise the ground by two tiles in the middle. Press R: what changes, and what doesn't?
+
 ### Strategy pattern: level makers
 
 _Step `Platformer1`_
