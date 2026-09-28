@@ -297,7 +297,7 @@ sends you back to the title screen.
 _Step `Mario6`_
 
 An **entity** is any "thing" in the game that isn't part of the tilemap: the player,
-snails, bushes, mystery boxes, gems. Entities don't align to the grid, they move, and they
+Goombas, bushes, mystery boxes (the "?" blocks), coins. Entities don't align to the grid, they move, and they
 can have their own states.
 
 ```csharp
@@ -317,9 +317,9 @@ public interface IEntity
 
 The level updates all entities through the Update Method pattern, and each entity decides
 how to respond to collisions. Solid entities (mystery boxes) block the player just like
-tiles. Hitting a box from below pops out a gem, and collecting gems raises the score.
+tiles. Hitting a box from below pops out a coin, and collecting coins raises the score.
 
-## Basic AI: Snail States
+## Basic AI: Goomba States
 
 _Step `Mario7`_
 
@@ -330,7 +330,7 @@ Enemy AI can be built from states too:
 - **Walk:** walks, turns around at edges or when blocked
 - **Chase:** moves towards the player when close
 
-Landing on a snail from above stomps it. Touching it any other way ends the game.
+Landing on a Goomba from above stomps it. Touching it any other way ends the game.
 
 `Mario8` adds music and sound effects: the finished game.
 
@@ -339,7 +339,7 @@ Landing on a snail from above stomps it. Touching it any other way ends the game
 Start from `Mario8`.
 
 1. **A chunk level maker:** design a handful of short level chunks by hand (a pit with a
-   platform over it, a staircase, a snail on a ledge), each a small grid of tiles in a data
+   platform over it, a staircase, a Goomba on a ledge), each a small grid of tiles in a data
    file in `Content/Assets`. The builder copies `.xml` files as they are; for another
    format, such as `.txt`, add an `IncludeCopy` rule in `Builder.cs`. Write a level maker
    that strings random chunks together, and make each level a few chunks longer than the

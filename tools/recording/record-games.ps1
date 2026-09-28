@@ -1,4 +1,4 @@
-param([string[]]$Games = @('snake', 'sokoban', 'pacman', 'birds', 'pvz', 'pokemon', 'gw', 'vs'))
+param([string[]]$Games = @('snake', 'sokoban', 'pacman', 'mario', 'birds', 'pvz', 'pokemon', 'gw', 'vs'))
 # Records the animated game images for the session pages and the decks' Today's Goal slides.
 # Build the finished steps in gar-games first (Debug). Each recipe plays the game with a
 # timed script of keys or mouse moves and captures frames; makegif.py turns them into a GIF.
@@ -33,6 +33,17 @@ if ($Games -contains 'pacman') {
   # Pac-Man is caught after about six seconds: keep the frames before that.
   Record 'pacman' (Exe '05-pac-man' 'Pacman4') 2.0 8 @('0.2 tap left', '1.5 tap left', '3.0 tap up', '4.2 tap up', '5.2 tap right', '6.2 tap up', '7.0 tap left')
   python (Join-Path $here 'makegif.py') (Join-Path $out 'pac-man.gif') 448 100 none 8 (Join-Path $out 'frames-pacman\f0[0-5][0-9].png') (Join-Path $out 'frames-pacman\f060.png')
+}
+if ($Games -contains 'mario') {
+  # Run right and jump every 0.7 s for half a minute, starting again after a death; the GIF
+  # is the longest stretch without one.
+  $ev = @('0.3 tap enter', '1.0 down right')
+  for ($t = 1.4; $t -lt 30; $t += 0.7) { $ev += ('{0:0.00} tap space' -f $t) }
+  for ($t = 4; $t -lt 30; $t += 3) { $ev += ('{0:0.00} tap enter' -f $t) }
+  $ev += '30.5 up right'
+  Record 'mario' (Exe '06-super-mario-bros' 'Mario8') 1.0 29 $ev
+  $frames = python (Join-Path $here 'longest_play.py') (Join-Path $out 'frames-mario')
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'super-mario-bros.gif') 640 100 none $frames
 }
 if ($Games -contains 'birds') {
   # Grab the bird on the slingshot at (220, 520), pull back slowly, and let go.
