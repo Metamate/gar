@@ -39,22 +39,26 @@ same rules for every session.
 | --- | --- | --- | --- |
 | 01 Pong | ~270 | +90 | course intro (~40) and 12 build steps (~145) |
 | 02 Flappy Bird | ~255 | +75 | 14 build steps (~170) |
-| 03 Snake | ~180 | 0 | |
-| 04 Sokoban | ~150 | −30 | |
-| 05 Pac-Man | ~140 | −40 | |
-| 06 Super Mario Bros | ~165 | −15 | |
-| 07 Angry Birds | ~140 | −40 | |
-| 08 The Legend of Zelda | ~175 | −5 | |
-| 09 Plants vs. Zombies | ~140 | −40 | |
-| 10 Pokemon | ~140 | −40 | |
-| 11 Geometry Wars | ~125 | −55 | |
-| 12 Vampire Survivors | ~145 | −35 | the course recap also takes time |
+| 03 Snake | ~210 | +30 | 5 short tasks after the demos |
+| 04 Sokoban | ~175 | −5 | 4 short tasks |
+| 05 Pac-Man | ~165 | −15 | 4 short tasks |
+| 06 Super Mario Bros | ~215 | +35 | 5 short tasks |
+| 07 Angry Birds | ~165 | −15 | 4 short tasks |
+| 08 The Legend of Zelda | ~180 | 0 | 1 short task |
+| 09 Plants vs. Zombies | ~165 | −15 | 4 short tasks |
+| 10 Pokemon | ~140 | −40 | already alternates (trace-it tasks) |
+| 11 Geometry Wars | ~135 | −45 | 2 short tasks |
+| 12 Vampire Survivors | ~170 | −10 | 4 short tasks; the course recap also takes time |
 
 - **Pong and Flappy Bird:** students start the build steps in class and continue at home;
   few will finish in class. Nothing is marked as homework in advance. With the midterm evaluation in mind, cover the concept slides in
   class even when the building runs behind: they are what the next session builds on.
-- **The other sessions** have 15–55 minutes to spare. Use it for the exercises and for
-  project work in class, which the syllabus includes, rather than for more material.
+- **Rhythm:** every session alternates listening and doing. Sessions 03–09, 11 and 12
+  have a short task (5–7 minutes, in pairs) after each demo, on the step just shown; the
+  longest stretch of listening is about 30 minutes (36 at the start of Mario). The final
+  exercises continue at home when a session runs long.
+- **Spare time** in the later sessions goes to the exercises and to project work in class,
+  which the syllabus includes, rather than to more material.
 - Re-estimate after running a session: `timing.py` in the working notes did the counting.
 
 | # | Game | Main topic | Supporting |
