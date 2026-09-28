@@ -136,7 +136,7 @@ _Step `Mario2`_
 - **Ground check:** probe one pixel below the hitbox for solid tiles.
 - **Coyote time:** allow a jump for a moment after walking off a ledge. It feels fairer.
 
-**Try it:** on paper, with 16-pixel tiles: a hitbox spans x 30 to 42 and moves 8 pixels right,
+**Try it** (on paper): with 16-pixel tiles, a hitbox spans x 30 to 42 and moves 8 pixels right,
 and a wall starts at x 48. Where is the hitbox after the move, and after the snap? What happens
 to its velocity?
 

@@ -27,10 +27,9 @@ particles and a warping grid. Its entities are built from components, as in
 - Particles as a system
 
 **Source code:** [gar-games/11-geometry-wars](https://github.com/Metamate/gar-games/tree/main/11-geometry-wars).
-Its README lists the steps (`GeometryWars0` to `GeometryWars6`, each adding components to
-the entity recipes plus the systems they need, and the `GeometryWars.Tests` project), maps
-the code and suggests an order to read it in. Each section below names the steps that
-introduce it.
+Its README lists the steps (`GeometryWars0` to `GeometryWars6`, one project per concept,
+plus the `GeometryWars.Tests` project), maps the code and suggests an order to read it in.
+Each section below names the steps that introduce it.
 
 You don't need to understand every system in the codebase. Today is about the overall
 architecture.
@@ -193,7 +192,7 @@ Three ways to reach a shared service, each seen in this course:
 | Dependencies visible? | no | no | yes, in the constructor |
 | Easy to replace? | no | yes, at runtime | yes, when constructing |
 
-### Testing With Fakes
+### Testing with fakes
 
 _Project `GeometryWars.Tests`_
 

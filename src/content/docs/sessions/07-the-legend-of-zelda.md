@@ -296,7 +296,7 @@ Enemies and game objects are defined in XML, not in C#:
 </Enemy>
 ```
 
-Adding a new enemy type means one `<Enemy>` block plus a spritesheet row: no new class.
+Adding a new enemy type means one `<Enemy>` block plus a sprite sheet row: no new class.
 The C# code only knows animation _names_ like `walk-down`, never frame numbers. Objects work
 the same way: a switch's states (`unpressed`, `pressed`) and their frames come from
 `object_definitions.xml`, and each doorway's tiles from `door_layouts.xml`. Content lives in

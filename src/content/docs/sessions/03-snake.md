@@ -69,7 +69,7 @@ make it without touching the game's code, and the code stays smaller and more ge
 
 _Steps `Snake0` → `Snake1`_
 
-Loading `mario1.png`, `mario2.png`, `ground1.png`… as separate textures means the GPU must
+Loading `snake1.png`, `snake2.png`, `mouse1.png`… as separate textures means the GPU must
 switch texture between draws, which breaks batching. A **texture atlas** (sprite sheet)
 packs many images into one texture.
 

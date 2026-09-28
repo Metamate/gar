@@ -68,7 +68,7 @@ It plays fine at first. Press Space a few times to add a thousand enemies each t
 the game slows to a crawl. Before changing anything, we find out **why**: guessing is how
 you end up optimizing the wrong thing.
 
-**Try it:** with 2,000 enemies, how many pairs does `Separate` check each step? And with
+**Try it** (on paper): with 2,000 enemies, how many pairs does `Separate` check each step? And with
 10,000?
 
 ## Profiling

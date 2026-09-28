@@ -42,7 +42,7 @@ it; compare neighbouring steps to see exactly what changed.
 Take about 10 minutes with the finished game, `Pokemon4`:
 
 - Clone, build and play the game. Go through a few encounters to level up your monster.
-- How is the codebase split between the core library and the Pokémon-specific project?
+- How is the codebase split between the core library and the Pokemon-specific project?
 
 The rule of thumb for that split: a class that mentions monsters, grass, battles or
 levelling belongs to the game. A class you could use unchanged in another game (the state

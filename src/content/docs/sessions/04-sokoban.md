@@ -189,14 +189,14 @@ passes or fails, and hundreds of them run in about a second. Whenever you change
 you run the tests again, and they tell you at once if something that used to work is now
 broken.
 
-### A Test Needs Code That Can Be Tested
+### A test needs code that can be tested
 
 Try to test a rule written inside `Game1.Update`. To call it, you would need a window, a
 graphics device, the content, and a real key press. That's why the split in `Sokoban1`
 matters: `Level` needs none of those. A test can create a level from a string and move the
 player with a method call.
 
-### The Test Project
+### The test project
 
 Tests live in their own project, `Sokoban.Tests`, next to the game. It's a class library
 that references the game project, plus three packages:
@@ -218,7 +218,7 @@ that references the game project, plus three packages:
 reports the results. The game itself knows nothing about the tests; they are never part of
 the game you ship.
 
-### Anatomy of a Test
+### Anatomy of a test
 
 ```csharp title="LevelTests.cs"
 public class LevelTests
@@ -258,7 +258,7 @@ The corridor level is written right in the test, in the same text format as the 
 files. Each test builds exactly the small level it needs, so it's clear what is being
 tested.
 
-### Running the Tests
+### Running the tests
 
 In the `04-sokoban` folder, run `dotnet test`:
 
@@ -288,11 +288,11 @@ Failed!  - Failed:     1, Passed:    11, Skipped:     0, Total:    12
 The test names the rule that broke, what it expected, what it got, and the line. You
 didn't have to play the game to find it.
 
-**Try it:** run `dotnet test` in the `04-sokoban` folder. Copy one test in
+**Try it** (`Sokoban.Tests`): run `dotnet test` in the `04-sokoban` folder. Copy one test in
 `LevelTests.cs` and make it check walking left, then make it fail on purpose and read the
 message.
 
-### What to Test
+### What to test
 
 Test the **rules**: the code that decides what happens. In Sokoban, that's moving,
 pushing, being blocked, solving a level, and (later) undo and redo. Don't unit-test
