@@ -37,7 +37,7 @@ same rules for every session.
 
 | Session | Estimate | vs. 180 | Notes |
 | --- | --- | --- | --- |
-| 01 Pong | ~255 | +75 | course intro (~30) and 12 build steps (~145) |
+| 00 Course Intro + 01 Pong | ~40 + ~230 | +90 | the intro deck first, then 12 build steps (~145) |
 | 02 Flappy Bird | ~255 | +75 | 14 build steps (~170) |
 | 03 Snake | ~205 | +25 | 5 short tasks after the demos |
 | 04 Sokoban | ~170 | −10 | 4 short tasks |
@@ -63,6 +63,9 @@ same rules for every session.
 - **Slides keep to the topic:** no milestones, due dates, "last week" or other course
   admin. The project page, the schedule and the teacher carry those. "Apply It to Your
   Project" stays: it applies the day's topic, not the project's schedule.
+- **Course intro:** `00 Course Intro` opens the first session, before Pong: the teacher,
+  the course, the games, how a session runs, the project and the exam in brief, and where
+  things are. Only what holds all year; it ends with a live tour of the site.
 
 | # | Game | Main topic | Supporting |
 | --- | --- | --- | --- |
