@@ -37,18 +37,18 @@ same rules for every session.
 
 | Session | Estimate | vs. 180 | Notes |
 | --- | --- | --- | --- |
-| 01 Pong | ~270 | +90 | course intro (~40) and 12 build steps (~145) |
+| 01 Pong | ~255 | +75 | course intro (~30) and 12 build steps (~145) |
 | 02 Flappy Bird | ~255 | +75 | 14 build steps (~170) |
-| 03 Snake | ~210 | +30 | 5 short tasks after the demos |
-| 04 Sokoban | ~175 | −5 | 4 short tasks |
+| 03 Snake | ~205 | +25 | 5 short tasks after the demos |
+| 04 Sokoban | ~170 | −10 | 4 short tasks |
 | 05 Pac-Man | ~165 | −15 | 4 short tasks |
 | 06 Super Mario Bros | ~210 | +30 | 6 short tasks; physics first, as in the steps |
-| 07 The Legend of Zelda | ~190 | +10 | 2 short tasks; composition closes the session |
+| 07 The Legend of Zelda | ~185 | +5 | 2 short tasks; composition closes the session |
 | 08 Angry Birds | ~170 | −10 | 5 short tasks, and the physics samples |
-| 09 Plants vs. Zombies | ~165 | −15 | 4 short tasks |
+| 09 Plants vs. Zombies | ~160 | −20 | 4 short tasks |
 | 10 Pokemon | ~150 | −30 | already alternates (trace-it tasks), and the UI samples |
 | 11 Geometry Wars | ~145 | −35 | 4 short tasks |
-| 12 Vampire Survivors | ~170 | −10 | 4 short tasks; the course recap also takes time |
+| 12 Vampire Survivors | ~165 | −15 | 4 short tasks; the course recap also takes time |
 
 - **Pong and Flappy Bird:** students start the build steps in class and continue at home;
   few will finish in class. Nothing is marked as homework in advance. With the midterm evaluation in mind, cover the concept slides in
@@ -60,6 +60,9 @@ same rules for every session.
 - **Spare time** in the later sessions goes to the exercises and to project work in class,
   which the syllabus includes, rather than to more material.
 - Re-estimate after running a session: `timing.py` in the working notes did the counting.
+- **Slides keep to the topic:** no milestones, due dates, "last week" or other course
+  admin. The project page, the schedule and the teacher carry those. "Apply It to Your
+  Project" stays: it applies the day's topic, not the project's schedule.
 
 | # | Game | Main topic | Supporting |
 | --- | --- | --- | --- |
