@@ -25,7 +25,7 @@ the next one. Along the way:
 - Hitboxes and hurtboxes
 - A tweening system for screen scrolling
 
-**Source code:** [gar-games/07-zelda](https://github.com/Metamate/gar-games/tree/main/07-zelda).
+**Source code:** [gar-games/07-the-legend-of-zelda](https://github.com/Metamate/gar-games/tree/main/07-the-legend-of-zelda).
 Its README lists the steps (`Zelda0` to `Zelda7`, one project per concept), maps the code,
 and says how to run it. Each section below names the steps that introduce it; compare
 neighbouring steps to see exactly what changed.

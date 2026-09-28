@@ -24,7 +24,7 @@ New concepts: class libraries, textures, parallax scrolling, procedural generati
 interfaces, state machines and the Singleton pattern.
 
 **Source code:**
-[gar-games/02-flappy](https://github.com/Metamate/gar-games/tree/main/02-flappy). Its README
+[gar-games/02-flappy-bird](https://github.com/Metamate/gar-games/tree/main/02-flappy-bird). Its README
 lists the steps (`Flappy0` to `Flappy12`, one project per exercise below), maps the code,
 and says how to run it. Compare your solution with the matching step, and neighbouring steps
 to see exactly what changed.
@@ -229,7 +229,7 @@ with the Service Locator pattern.
 2. **A game on the library:** derive `Game1` from `Core`, with a 512×288 virtual resolution
    in a 1280×720 window.
 3. **Drawing images and parallax scrolling:** copy the `images` folder from
-   `gar-games/02-flappy/Content/Assets` into your `Content/Assets` (later, copy `fonts` and
+   `gar-games/02-flappy-bird/Content/Assets` into your `Content/Assets` (later, copy `fonts` and
    `audio` the same way; the starter's builder already handles all of them). Draw the
    background and the ground, and scroll them at different speeds: 30 and 60 pixels per
    second, looping at 413 and 512.

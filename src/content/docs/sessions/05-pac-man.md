@@ -27,7 +27,7 @@ which turns each mode into an object. Along the way:
 - Unit tests for each ghost's targeting, one strategy at a time
 
 **Source code:**
-[gar-games/05-pacman](https://github.com/Metamate/gar-games/tree/main/05-pacman). Its README
+[gar-games/05-pac-man](https://github.com/Metamate/gar-games/tree/main/05-pac-man). Its README
 lists the steps (`Pacman0` to `Pacman4`, one project per concept, plus the `Pacman.Tests`
 project), maps the code, and says how to run it. Each section below names the steps that
 introduce it; compare neighbouring steps to see exactly what changed.

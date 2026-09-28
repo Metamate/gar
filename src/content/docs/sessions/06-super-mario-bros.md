@@ -26,8 +26,8 @@ world, and seeing what the collision code actually does. Along the way:
 - The State pattern again, now for the player
 
 **Source code:**
-[gar-games/06-platformer](https://github.com/Metamate/gar-games/tree/main/06-platformer).
-Its README lists the steps (`Platformer0` to `Platformer8`, one project per concept), maps
+[gar-games/06-super-mario-bros](https://github.com/Metamate/gar-games/tree/main/06-super-mario-bros).
+Its README lists the steps (`Mario0` to `Mario8`, one project per concept), maps
 the code, and says how to run it. Each section below names the steps that introduce it;
 compare neighbouring steps to see exactly what changed.
 
@@ -42,7 +42,7 @@ compare neighbouring steps to see exactly what changed.
 
 ## Levels From Code
 
-_Step `Platformer0`_
+_Step `Mario0`_
 
 In Snake, the tilemap was loaded from an XML file. Levels can also be **generated** in code:
 
@@ -82,12 +82,12 @@ public readonly struct Tile(int graphicId = -1, bool isSolid = false)
 Because the graphics are separate from the level's structure, the same level can be drawn
 with any of the 60 tilesets in `tiles.png` (press `R`).
 
-**Try it** (`Platformer0`): in `GenerateLevel`, leave a gap two tiles wide in the ground, and
+**Try it** (`Mario0`): in `GenerateLevel`, leave a gap two tiles wide in the ground, and
 raise the ground by two tiles in the middle. Press R: what changes, and what doesn't?
 
 ### Strategy pattern: level makers
 
-_Step `Platformer1`_
+_Step `Mario1`_
 
 Different kinds of levels are produced by interchangeable **level makers** sharing one
 base: `SimpleLevelMaker`, `FlatLevelMaker`, `PillarLevelMaker`, `PitLevelMaker`,
@@ -119,12 +119,12 @@ classDiagram
 Each ground column also gets a **topper** (a grass or snow edge on the top tile) from a
 separate topperset, and each level a random background.
 
-**Try it** (`Platformer1`): make pits twice as common in `PitLevelMaker`, then press 4 to
+**Try it** (`Mario1`): make pits twice as common in `PitLevelMaker`, then press 4 to
 see it.
 
 ## Platformer Physics
 
-_Step `Platformer2`_
+_Step `Mario2`_
 
 - **Gravity and jumping:** gravity adds to the vertical velocity every frame; a jump sets it
   to a negative impulse.
@@ -140,7 +140,7 @@ _Step `Platformer2`_
 and a wall starts at x 48. Where is the hitbox after the move, and after the snap? What happens
 to its velocity?
 
-**Try it** (`Platformer2`): press F1, and set `HitboxInset` to 0. Can you still fall into a
+**Try it** (`Mario2`): press F1, and set `HitboxInset` to 0. Can you still fall into a
 one-tile pit? Then set `CoyoteTime` to 0.5: how does jumping off a ledge feel?
 
 ### Performance
@@ -155,7 +155,7 @@ way. Testing all pairs of entities is **O(n²)**; in
 
 Collision bugs are hard to see: the hitbox is invisible, and a player that stops a few
 pixels early looks just like one that works. **Debug drawing** makes them visible. Press
-`F1` to outline the solid tiles in red and the player's hitbox in green (from `Platformer6`,
+`F1` to outline the solid tiles in red and the player's hitbox in green (from `Mario6`,
 the entities in yellow too). You can see the hitbox inset, and exactly where the player
 collides.
 
@@ -184,7 +184,7 @@ class (`GameController.Jump` instead of `Keys.Space`).
 
 ## Character State
 
-_Steps `Platformer2` → `Platformer3`_
+_Steps `Mario2` → `Mario3`_
 
 In [Pac-Man](../05-pac-man/), each ghost's mode was a state object. The player of a
 platformer needs the same pattern, and it shows well why the simpler options break down.
@@ -213,7 +213,7 @@ With one boolean per condition, you can end up in **illegal states**. Can you sp
 (We prevent air-jumping while jumping, but not while diving, so we need yet another flag.)
 
 An **enum** makes illegal combinations impossible: the player is in exactly one state. In
-`Platformer2`, the player's state is an enum, and its behaviour lives in `switch`
+`Mario2`, the player's state is an enum, and its behaviour lives in `switch`
 statements:
 
 ```csharp
@@ -238,7 +238,7 @@ It works, but every method switches over every state (`ChangeState` has its own 
 and `HandleHorizontalMovement` a special case for ducking), and there is no good place for
 data that only one state needs, such as a charge time while ducking.
 
-**Try it** (`Platformer3`): make the player jump higher and walk faster. Which class holds
+**Try it** (`Mario3`): make the player jump higher and walk faster. Which class holds
 each value?
 
 ### The State pattern
@@ -249,7 +249,7 @@ each value?
 - The entity delegates to its current state object.
 - Adding a state doesn't touch existing states.
 
-In `Platformer3`, each case becomes a class: `PlayerIdleState`, `PlayerWalkState`,
+In `Mario3`, each case becomes a class: `PlayerIdleState`, `PlayerWalkState`,
 `PlayerJumpState`, `PlayerFallState` and `PlayerDuckState`. The shared physics moves to
 `PlayerStateBase`, and `Player` just forwards `Update` and `Draw` to its current state.
 
@@ -273,7 +273,7 @@ stateDiagram-v2
 
 ## Camera
 
-_Step `Platformer4`_
+_Step `Mario4`_
 
 Our previous games fit on one screen. A level wider than the screen needs a **camera**: a
 transform that shifts the world so the target (the player) is centred. It is passed to
@@ -281,12 +281,12 @@ transform that shifts the world so the target (the player) is centred. It is pas
 x-axis, and clamp the camera to the level's edges. The background scrolls at half the
 camera's speed, for a parallax effect.
 
-**Try it** (`Platformer4`): make the background scroll at a quarter of the camera's speed
+**Try it** (`Mario4`): make the background scroll at a quarter of the camera's speed
 (in `GameLevel`). What do 0 and 1 look like?
 
 ## Game States
 
-_Step `Platformer5`_
+_Step `Mario5`_
 
 The game itself also uses the State pattern, like Flappy Bird: a `StartState` with the
 title screen, and a `PlayState` that creates the level and the player. Falling into a pit
@@ -294,7 +294,7 @@ sends you back to the title screen.
 
 ## Entities
 
-_Step `Platformer6`_
+_Step `Mario6`_
 
 An **entity** is any "thing" in the game that isn't part of the tilemap: the player,
 snails, bushes, mystery boxes, gems. Entities don't align to the grid, they move, and they
@@ -321,7 +321,7 @@ tiles. Hitting a box from below pops out a gem, and collecting gems raises the s
 
 ## Basic AI: Snail States
 
-_Step `Platformer7`_
+_Step `Mario7`_
 
 Enemy AI can be built from states too:
 
@@ -332,11 +332,11 @@ Enemy AI can be built from states too:
 
 Landing on a snail from above stomps it. Touching it any other way ends the game.
 
-`Platformer8` adds music and sound effects: the finished game.
+`Mario8` adds music and sound effects: the finished game.
 
 ## Exercises
 
-Start from `Platformer8`.
+Start from `Mario8`.
 
 1. **A chunk level maker:** design a handful of short level chunks by hand (a pit with a
    platform over it, a staircase, a snail on a ledge), each a small grid of tiles in a data

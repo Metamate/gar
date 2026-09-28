@@ -150,7 +150,7 @@ Notes for building it:
   show which assets it uses. Where an asset changes between steps, keep both versions and
   swap them in code (Pong: `sans` → `font` in `Pong3`).
 - **GMDCore lineage:** GMDCore is one library that grows through the course, in session
-  order: Flappy → Snake (Sokoban and Pac-Man unchanged) → Platformer → Zelda (Angry Birds
+  order: Flappy Bird → Snake (Sokoban and Pac-Man unchanged) → Mario → Zelda (Angry Birds
   and Plants vs. Zombies unchanged) → Pokemon → Geometry Wars (Vampire
   Survivors unchanged). Game-specific code (the Box2D adapter, the components in Plants vs.
   Zombies) stays in the game, so later cores don't inherit it. Each game's `GMDCore` keeps
@@ -178,11 +178,13 @@ Notes for building it:
 - **Keep exercises unsolved:** Pokemon save/load (exercise 4) and the Geometry Wars pooling
   measurement (exercise 5) stay out of the repos, so the finished games don't give away the
   answers. Shaders in Geometry Wars are a showcase only.
-- **Tilemap:** Snake introduces a tilemap of plain tile IDs; the Platformer upgrades it to
+- **Tilemap:** Snake introduces a tilemap of plain tile IDs; Mario upgrades it to
   `Tile` values (graphic ID plus `IsSolid`) with collision helpers and a `Position`.
-  Game-specific layers (the Platformer's toppers, Pokemon's tall grass) are separate
+  Game-specific layers (Mario's toppers, Pokemon's tall grass) are separate
   tilemaps drawn on top.
-- **Repo naming pass (later):** make the game folder and project names consistent. `06-platformer` / `Platformer0` is the only generic name (the others name the game), and some use shortened names (`Birds`, `Pvz`, `Survivors`) while others use the full name (`GeometryWars`, `Pokemon`). Renaming touches the site, the decks, the READMEs and CI.
+- **Naming:** a game's folder is its full name, as in its site page's URL
+  (`06-super-mario-bros`), and so is its solution (`SuperMarioBros.slnx`). Step projects
+  use a short form of the game's name (`Mario0`, `Birds0`, `Pvz0`), never a genre.
 
 ## Where Content Goes
 
