@@ -1,6 +1,6 @@
 ---
 title: 02 Flappy Bird
-description: Organizing the game as it grows. A reusable core library, textures, procedural generation and state machines.
+description: Structuring the code as the game grows. A reusable core library, textures, procedural generation and state machines.
 sidebar:
   order: 2
 ---
@@ -16,12 +16,13 @@ Make a **Flappy Bird** clone.
 <figcaption>The original: <em>Flappy Bird</em> (dotGears, 2013). Screenshot © dotGears.</figcaption>
 </figure>
 
-Pong worked, but everything lived in `Game1` and game state was a string. The main topic
-is **organizing a growing game**. We create **GARCore**, a class library of reusable code that grows
-throughout the course, and we replace the string with a **state machine**.
+Pong worked, but everything lived in `Game1`, and the game's mode was a string. This
+session is about structuring the code before the game gets any bigger. We start
+**GARCore**, a class library for the code every game needs, which grows through the rest of
+the course. And we replace the string with a **state machine**.
 
-New concepts: class libraries, textures, parallax scrolling, procedural generation,
-interfaces, state machines and the Singleton pattern.
+Other new things in this session are textures, parallax scrolling, procedural generation,
+interfaces and the Singleton pattern.
 
 **Source code:**
 [gar-games/02-flappy-bird](https://github.com/Metamate/gar-games/tree/main/02-flappy-bird). Its README
@@ -29,7 +30,7 @@ lists the steps (`Flappy0` to `Flappy12`), maps the code, and says how to run it
 most of them in the exercises below; three stretches are shown in class: images and parallax
 (`Flappy1` and `Flappy2`), procedural generation (`Flappy6` and `Flappy7`), and states that pass
 data and count down (`Flappy10` and `Flappy11`). Compare your solution with the matching step,
-and neighbouring steps to see exactly what changed.
+and neighbouring steps to see what changed.
 
 ## Prepare
 

@@ -16,19 +16,18 @@ Make a **Snake** game.
 <figcaption>The original: Snake, a game idea that goes back to <em>Blockade</em> (Gremlin, 1976), and became famous on mobile phones. Image: Ustone07, <a href="https://commons.wikimedia.org/wiki/File:Snake_can_be_completed.gif">CC BY-SA 3.0</a>, via Wikimedia Commons.</figcaption>
 </figure>
 
-This time we don't start from scratch. We start from a working codebase, and the main
-topic is **assets as data**: which images, animations and rooms the game uses is described
-in data files, not hardcoded. Along the way:
+This time we don't start from scratch. You get a working codebase, and we look at how it
+keeps its assets as data. The images, the animations and the room are described in XML
+files, and the code reads them instead of hardcoding them.
 
-- Texture atlases, sprites & animation
-- Movement on a fixed tick
-- Input as actions, and input buffering
+The session also covers texture atlases, sprites and animation, movement on a fixed tick,
+and input as actions, with input buffering.
 
 **Source code:**
 [gar-games/03-snake](https://github.com/Metamate/gar-games/tree/main/03-snake). Its README
 lists the steps (`Snake0` to `Snake9`, one project per concept), maps the code, and says how
 to run it. Each section below names the steps that introduce it; compare neighbouring steps
-to see exactly what changed.
+to see what changed.
 
 ## Prepare
 

@@ -16,22 +16,22 @@ Make **Angry Birds**: pull back the slingshot, let go, and knock down the pigs' 
 <figcaption>The original: <em>Angry Birds</em> (Rovio, 2009). Image: Sony Pictures, <a href="https://commons.wikimedia.org/wiki/File:Angry_Birds_gameplay.png">CC BY 3.0</a>, via Wikimedia Commons.</figcaption>
 </figure>
 
-In [Super Mario Bros](../06-super-mario-bros/) we wrote our own physics: gravity, velocity,
-and collisions with tiles. For stacks of blocks that tip over, bounce and break, that isn't
-enough. Real games use a **physics library** for that, and here we use **Box2D**. The main
-topic is **a library behind your own interface**: bringing someone else's library into your
-architecture, so that the rest of your game doesn't have to know about it. Along the way:
+In [Super Mario Bros](../06-super-mario-bros/) we wrote our own physics, with gravity,
+velocity and collisions with tiles. That isn't enough for stacks of blocks that tip over,
+bounce and break. Real games use a **physics library** for this, and we use **Box2D**. The
+question for this session is how to bring someone else's library into the game without the
+rest of the code having to know about it. We look at:
 
 - The **Adapter** and **Facade** patterns
-- Two worlds: the physics world (metres, y up) and the game world (pixels, y down)
+- Two worlds, the physics world (metres, y up) and the game world (pixels, y down)
 - Contact events, and destroying bodies safely
-- The **Prototype** pattern: building levels from prefabs
+- The **Prototype** pattern, for building levels from prefabs
 
 **Source code:**
 [gar-games/08-angry-birds](https://github.com/Metamate/gar-games/tree/main/08-angry-birds).
 Its README lists the steps (`Birds0` to `Birds4`, one project per concept), maps the code,
 and says how to run it. Each section below names the steps that introduce it; compare
-neighbouring steps to see exactly what changed.
+neighbouring steps to see what changed.
 
 ## Prepare
 

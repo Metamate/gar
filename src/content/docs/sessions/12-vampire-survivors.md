@@ -17,22 +17,22 @@ five minutes against an ever-growing swarm.
 <figcaption>The original: <em>Vampire Survivors</em> (poncle, 2022). Screenshot © poncle.</figcaption>
 </figure>
 
-The swarm is what makes this game hard. [Geometry Wars](../11-geometry-wars/) had hundreds of enemies
-and bullets (its thousands of particles were already handled apart, by one system). Here we
-want thousands of enemies, and the code we've written so far can't keep up. The main topic is
-**performance at scale**, in the order you should do it:
+The swarm is what makes this game hard. [Geometry Wars](../11-geometry-wars/) had hundreds
+of enemies and bullets (its thousands of particles were handled separately, by one system).
+Here we want thousands of enemies, and the code we've written so far can't keep up. This
+session is about performance, and about doing the work in the right order.
 
-- **Profiling**: measure where the time goes, before changing anything
-- **Spatial partitioning**: don't compare every enemy with every other enemy
-- **Data-oriented design**: lay out the data for the loops that use it
+1. **Profiling**. Measure where the time goes, before changing anything.
+2. **Spatial partitioning**. Stop comparing every enemy with every other enemy.
+3. **Data-oriented design**. Lay out the data for the loops that use it.
 
-The last lesson of the session is the [course recap](#course-recap).
+The session ends with the [course recap](#course-recap).
 
 **Source code:**
 [gar-games/12-vampire-survivors](https://github.com/Metamate/gar-games/tree/main/12-vampire-survivors).
 Its README lists the steps (`Survivors0` to `Survivors4`, one project per concept, plus the
 `Survivors.Tests` project), maps the code, and says how to run it. Each section below names
-the steps that introduce it; compare neighbouring steps to see exactly what changed.
+the steps that introduce it; compare neighbouring steps to see what changed.
 
 ## Prepare
 

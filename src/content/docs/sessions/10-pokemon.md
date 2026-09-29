@@ -16,19 +16,18 @@ Make a **turn-based RPG**.
 <figcaption>The original: the first <em>Pokémon</em> games (Game Freak, 1996). Screenshot © Nintendo / Game Freak.</figcaption>
 </figure>
 
-We go through the fundamental steps of a primitive Pokémon clone. The main topic is
-**scenes and UI, as screens that stack**: an RPG is a stack of screens on top of each other (the overworld, a
-battle, a menu, a dialogue box), built from reusable UI widgets. Along the way:
+We build the basics of a Pokémon clone. An RPG has many screens, and they sit on top of each
+other. A menu opens over the overworld, a battle starts, a dialogue box pops up in the
+battle. This session is about scenes and UI. We keep the screens on a stack, and build them
+from reusable UI widgets.
 
-- Separating UI from game data
-- Turn-based battles
-- The Service Locator pattern
-- Saving and loading
+We also separate the UI from the game data, write turn-based battles, meet the Service
+Locator pattern, and add saving and loading.
 
 **Source code:** [gar-games/10-pokemon](https://github.com/Metamate/gar-games/tree/main/10-pokemon).
 Its README lists the steps (`Pokemon0` to `Pokemon4`, one project per concept), maps the
 code and suggests an order to read it in. Each section below names the steps that introduce
-it; compare neighbouring steps to see exactly what changed.
+it; compare neighbouring steps to see what changed.
 
 ## Prepare
 

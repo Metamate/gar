@@ -16,11 +16,11 @@ Make a **top-down shooter**.
 <figcaption>The original: <em>Geometry Wars: Retro Evolved</em> (Bizarre Creations, 2005). Screenshot © Bizarre Creations / Microsoft.</figcaption>
 </figure>
 
-Geometry Wars puts thousands of entities on screen: the player, enemies, bullets,
-particles and a warping grid. Its entities are built from components, as in
-[Plants vs. Zombies](../09-plants-vs-zombies/), but at this size a new question matters. The main topic is **where
-behaviour lives in a big game**: which behaviour belongs in a component, and which in a
-system? Along the way:
+Geometry Wars puts thousands of entities on screen, from the player and the enemies to
+bullets, particles and a warping grid. They are built from components, as in
+[Plants vs. Zombies](../09-plants-vs-zombies/). At this size a new question comes up. Which
+behaviour belongs in a component, and which belongs in a system that runs over many
+entities? We also look at:
 
 - Dependency injection, compared with the Service Locator, and testing with fakes
 - Object Pool
@@ -31,9 +31,6 @@ system? Along the way:
 Its README lists the steps (`GeometryWars0` to `GeometryWars6`, one project per concept,
 plus the `GeometryWars.Tests` project), maps the code and suggests an order to read it in.
 Each section below names the steps that introduce it.
-
-You don't need to understand every system in the codebase. Today is about the overall
-architecture.
 
 ## Prepare
 

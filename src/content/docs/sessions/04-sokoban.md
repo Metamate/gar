@@ -17,20 +17,20 @@ only one box at a time.
 <figcaption>The original: <em>Sokoban</em> (Thinking Rabbit, 1982), on the PC-8801. Screenshot © Thinking Rabbit.</figcaption>
 </figure>
 
-Snake's grid was a picture with a snake on top. In Sokoban, the grid holds the whole game:
-the walls, the boxes and the player are all the state there is. The main topic is **actions you
-can undo, replay and rebind**, with the **Command** pattern, which turns every move into an
-object. Along the way:
+Snake's grid was a picture with a snake on top. In Sokoban the grid is the whole game. The
+walls, the boxes and the player are all the state there is, which makes it a good game for
+learning the **Command** pattern. Every move becomes an object, so it can be undone,
+replayed, or bound to a different key.
 
-- Levels as data: plain text files
-- Rules separated from drawing
-- Unit tests: checking the rules automatically, without starting the game
+Before we get to commands, we load the levels from plain text files and keep the rules apart
+from the drawing. That lets us write our first unit tests, which check the rules without
+starting the game.
 
 **Source code:**
 [gar-games/04-sokoban](https://github.com/Metamate/gar-games/tree/main/04-sokoban). Its
 README lists the steps (`Sokoban0` to `Sokoban4`, one project per concept, plus the
 `Sokoban.Tests` project), maps the code, and says how to run it. Each section below names
-the steps that introduce it; compare neighbouring steps to see exactly what changed.
+the steps that introduce it; compare neighbouring steps to see what changed.
 
 ## Prepare
 

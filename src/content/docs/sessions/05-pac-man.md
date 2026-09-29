@@ -19,19 +19,18 @@ the ghosts run from you for a few seconds.
 
 The ghosts are what make Pac-Man interesting to build. Each ghost switches between modes
 (waiting in the house, scattering, chasing, frightened, eaten), and each mode changes how it
-moves and what happens when it touches Pac-Man. The main topic is **behaviour that
-changes with the situation**, with the **State** pattern, which turns each mode into an
-object. Along the way:
+moves and what happens when it touches Pac-Man. We write each mode as its own class, with
+the **State** pattern.
 
-- The **Strategy** pattern: each ghost chases in its own way
-- State vs. Strategy: why two patterns with the same shape are used differently
-- Unit tests for each ghost's targeting, one strategy at a time
+Each ghost also chases Pac-Man in its own way, and for that we use the **Strategy** pattern.
+The two patterns have the same shape, so we look at why they are still used differently.
+Each ghost's targeting gets its own unit tests.
 
 **Source code:**
 [gar-games/05-pac-man](https://github.com/Metamate/gar-games/tree/main/05-pac-man). Its README
 lists the steps (`Pacman0` to `Pacman4`, one project per concept, plus the `Pacman.Tests`
 project), maps the code, and says how to run it. Each section below names the steps that
-introduce it; compare neighbouring steps to see exactly what changed.
+introduce it; compare neighbouring steps to see what changed.
 
 ## Prepare
 

@@ -16,20 +16,20 @@ Make a **2D platformer**.
 <figcaption>The original: <em>Super Mario Bros.</em> (Nintendo, 1985). Screenshot © Nintendo.</figcaption>
 </figure>
 
-We go through the fundamental steps of a basic Super Mario Bros. clone. The main topic is
-**the game world**: a tilemap for the level, entities that move through it, and a camera
-that shows part of it. Along the way:
+We build the basics of a Super Mario Bros. clone, and the topic is the game world. The level
+is a tilemap, the player and the creatures are entities that move through it, and a camera
+shows the part of the level you can see.
 
-- Platformer physics and tile collision: how the player gets around the world
-- Level makers: the Strategy pattern again
-- Debug drawing
-- Player states that share their physics, and change with the world
+To get the player around the world, we need platformer physics and collision with tiles.
+The levels come from level makers, which is the Strategy pattern again. We add debug
+drawing to see the collision boxes. The player gets states, as the ghosts did in Pac-Man,
+but these share their physics and react to the world.
 
 **Source code:**
 [gar-games/06-super-mario-bros](https://github.com/Metamate/gar-games/tree/main/06-super-mario-bros).
 Its README lists the steps (`Mario0` to `Mario8`, one project per concept), maps
 the code, and says how to run it. Each section below names the steps that introduce it;
-compare neighbouring steps to see exactly what changed.
+compare neighbouring steps to see what changed.
 
 ## Prepare
 

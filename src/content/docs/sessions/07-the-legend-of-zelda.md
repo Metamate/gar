@@ -16,20 +16,19 @@ Make a **top-down dungeon crawler**.
 <figcaption>The original: <em>The Legend of Zelda</em> (Nintendo, 1986). Screenshot © Nintendo.</figcaption>
 </figure>
 
-We go through the fundamental steps of a primitive _The Legend of Zelda_ clone. The main
-topic is **reacting to events without knowing who reacts**: the player dies, a switch is
-pressed, a room is left, and other parts of the game need to react, without the thing that
-happened knowing who they are. That is the **Observer** pattern, with C# events. Along the way:
+We build the basics of a _Legend of Zelda_ clone. In a game like this, things happen all the
+time. The player dies, a switch is pressed, a room is left. Other parts of the game have to
+react, and the part where it happened shouldn't need to know who they are. That is what
+events are for. We use the **Observer** pattern, which C# has built in as events.
 
-- Hitboxes and hurtboxes
-- A tweening system for screen scrolling
-- Composition vs. inheritance: the game has many kinds of things, and how we build them
-  decides how easy the next one is to add
+The session also covers hitboxes and hurtboxes, and a tweening system for scrolling between
+rooms. It ends with composition vs. inheritance. The game has many kinds of things, and
+how we build them decides how easy the next one is to add.
 
 **Source code:** [gar-games/07-the-legend-of-zelda](https://github.com/Metamate/gar-games/tree/main/07-the-legend-of-zelda).
 Its README lists the steps (`Zelda0` to `Zelda7`, one project per concept), maps the code,
 and says how to run it. Each section below names the steps that introduce it; compare
-neighbouring steps to see exactly what changed.
+neighbouring steps to see what changed.
 
 ## Prepare
 

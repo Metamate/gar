@@ -17,20 +17,21 @@ Plant sunflowers to make sun, and spend the sun on plants that stop the zombies.
 <figcaption>The original: <em>Plants vs. Zombies</em> (PopCap Games, 2009). Screenshot © PopCap Games.</figcaption>
 </figure>
 
-The game has many kinds of plants and zombies, and they mix and match abilities: one plant
-shoots, another makes sun, another just blocks; a zombie may wear a cone or a bucket. In
+The game has many kinds of plants and zombies, and they mix and match abilities. One plant
+shoots, another makes sun, another just blocks, and a zombie may wear a cone or a bucket. In
 [Zelda](../07-the-legend-of-zelda/#composition-vs-inheritance) we asked whether something
-should be a subclass or a part. Here we take that all the way: the main topic is
-**game objects built from parts**, with the **Component** pattern. Along the way:
+should be a subclass or a part. Here we build every game object from parts, with the
+**Component** pattern.
 
-- **Type Object**: plant and zombie types as data, not as classes
-- Picking: from a mouse click to a seed packet or a cell on the lawn
+The plant and zombie types are data rather than classes, with the **Type Object** pattern.
+And since the game is played with the mouse, we start with picking, which turns a click into
+a seed packet or a cell on the lawn.
 
 **Source code:**
 [gar-games/09-plants-vs-zombies](https://github.com/Metamate/gar-games/tree/main/09-plants-vs-zombies).
 Its README lists the steps (`Pvz0` to `Pvz4`, one project per concept, plus the `Pvz.Tests`
 project), maps the code, and says how to run it. Each section below names the steps that introduce it; compare
-neighbouring steps to see exactly what changed.
+neighbouring steps to see what changed.
 
 ## Prepare
 
