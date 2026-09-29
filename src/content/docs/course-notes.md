@@ -73,20 +73,20 @@ same rules for every session.
   the course, the games, how a session runs, the project and the exam in brief, and where
   things are. Only what holds all year; it ends with a live tour of the site.
 
-| # | Game | Main topic (the problem) | Patterns | Supporting |
+| # | Game | Main topic | Patterns | Supporting |
 | --- | --- | --- | --- | --- |
 | 1 | Pong | The game loop | Game Loop, Update Method | delta time, input, drawing, AABB collision |
-| 2 | Flappy Bird | Organizing a growing game | State (game states), Singleton | a core library (GARCore), textures & parallax, procedural generation, keyboard & mouse input |
+| 2 | Flappy Bird | Structuring the code | State (game states), Singleton | a core library (GARCore), textures & parallax, procedural generation, keyboard & mouse input |
 | 3 | Snake | Assets as data | — | texture atlases, sprites & animation, fixed-tick movement, input as actions & buffering |
-| 4 | Sokoban (new) | Actions you can undo, replay and rebind | Command | levels as text files, rules apart from drawing, unit tests |
-| 5 | Pac-Man (new) | Behaviour that changes with the situation | State, Strategy | State vs. Strategy, testing each ghost |
-| 6 | Super Mario Bros | The game world: tiles, entities and a camera | Strategy (level makers), State (the player) | platformer physics & tile collision, debug drawing |
-| 7 | The Legend of Zelda | Reacting to events without knowing who reacts | Observer | C# events and lambdas, an event queue, hitboxes, tweening, composition vs. inheritance |
-| 8 | Angry Birds (new) | A library behind your own interface | Adapter, Facade, Prototype | physics world vs. game world, contact events, destroying safely |
-| 9 | Plants vs. Zombies (new) | Game objects built from parts | Component, Type Object | game types as data, picking, testing a component |
-| 10 | Pokemon | Scenes and UI: screens that stack | State (a stack), Service Locator | UI widgets, separating UI from game data, save/load |
-| 11 | Geometry Wars | Where behaviour lives in a big game | Object Pool, Flyweight | components vs. systems, dependency injection & testing with fakes |
-| 12 | Vampire Survivors (new) | Performance at scale | Spatial Partition, Data Locality | profiling, data-oriented design, course recap |
+| 4 | Sokoban (new) | Command and undo | Command | levels as text files, rules apart from drawing, unit tests |
+| 5 | Pac-Man (new) | The State pattern | State, Strategy | State vs. Strategy, testing each ghost |
+| 6 | Super Mario Bros | The game world | Strategy (level makers), State (the player) | platformer physics & tile collision, debug drawing |
+| 7 | The Legend of Zelda | Events | Observer | C# events and lambdas, an event queue, hitboxes, tweening, composition vs. inheritance |
+| 8 | Angry Birds (new) | Using a physics library | Adapter, Facade, Prototype | physics world vs. game world, contact events, destroying safely |
+| 9 | Plants vs. Zombies (new) | Components | Component, Type Object | game types as data, picking, testing a component |
+| 10 | Pokemon | Scenes and UI | State (a stack), Service Locator | UI widgets, separating UI from game data, save/load |
+| 11 | Geometry Wars | Components and systems | Object Pool, Flyweight | components vs. systems, dependency injection & testing with fakes |
+| 12 | Vampire Survivors (new) | Performance | Spatial Partition, Data Locality | profiling, data-oriented design, course recap |
 
 Threads that run through the plan (the recap page lists them for students):
 
