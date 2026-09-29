@@ -95,8 +95,8 @@ base: `SimpleLevelMaker`, `FlatLevelMaker`, `PillarLevelMaker`, `PitLevelMaker`,
 without knowing which algorithm it uses. This is the **Strategy pattern** from
 [Pac-Man](../05-pac-man/): a family of interchangeable algorithms behind a common interface.
 
-The grass or snow on top of the ground (the _toppers_) belongs to this game rather than
-to tilemaps in general, so it isn't part of `Tile`. Instead, a `GameLevel` has two tilemaps
+The grass or snow on top of the ground (the _toppers_) is a detail of this game, so it
+isn't part of `Tile`. Instead, a `GameLevel` has two tilemaps
 of the same size: `Tilemap` for the ground and `Toppers`, drawn on top with its own
 tileset. Layering tilemaps like this is how most tile editors (e.g. Tiled) work, and
 [Pokemon](../10-pokemon/) uses it for its tall grass.
@@ -196,7 +196,7 @@ pattern. `Mario3` makes the same move, and each case becomes a class (`PlayerIdl
   moves sideways. That physics is written once, in `PlayerStateBase`, and each state adds only
   what is different. The jump state sets the upward velocity, and the duck state ignores
   sideways input. The ghosts' states shared almost nothing.
-- **The world triggers transitions, not only input and timers.** A ghost changes mode on a
+- **The world triggers transitions too.** A ghost changes mode on a
   timer or when Pac-Man eats a pellet. The player also changes state because of the level:
   walking off a ledge starts a fall, a jump turns into a fall at the top of its arc, and
   landing ends a fall. Coyote time is a transition too. For a few frames after leaving the

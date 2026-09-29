@@ -23,7 +23,7 @@ shoots, another makes sun, another just blocks, and a zombie may wear a cone or 
 should be a subclass or a part. Here we build every game object from parts, with the
 **Component** pattern.
 
-The plant and zombie types are data rather than classes, with the **Type Object** pattern.
+The plant and zombie types come from data files, with the **Type Object** pattern.
 And since the game is played with the mouse, we start with picking, which turns a click into
 a seed packet or a cell on the lawn.
 
@@ -238,7 +238,8 @@ Components are small and separate, but an entity's parts still need each other:
   asks whether there's a zombie ahead in its row; `Eater` asks which plant is in front of
   it.
 
-A component only depends on the components it uses, not on what kind of entity it's in.
+A component only depends on the components it uses. It doesn't care what kind of entity
+it's in.
 `Walker` works on any entity; if the entity has no `Eater`, it just keeps walking.
 
 The world got simpler too. It doesn't know what a peashooter or a sun is. One loop updates
@@ -409,7 +410,7 @@ x = 246) and a cold pea (20 × 20 at x = 312). Describing them is part of each e
 
 - Draw your game's class hierarchy. Where do subclasses exist only to combine abilities?
 - Which abilities could become components, reusable on different kinds of entities?
-- Which data belongs to a _kind_ of thing rather than to one thing? Could it come from a
+- Which data belongs to a _kind_ of thing? Could it come from a
   data file?
 - How does your game find out what the player clicked on?
 

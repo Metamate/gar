@@ -213,8 +213,8 @@ File.WriteAllText(SavePath, json);
 SaveData loaded = JsonSerializer.Deserialize<SaveData>(File.ReadAllText(SavePath));
 ```
 
-Save _data_, not objects. Store what you need to rebuild the game state (species name,
-level, current HP), not textures or references to other game objects.
+Save plain _data_. Store what you need to rebuild the game state (species name, level,
+current HP), and leave out textures and references to other game objects.
 
 The game already reads its data this way. The JSON is deserialized into small `record`
 types with the same shape as the file, and the game builds its real objects from those.
@@ -327,7 +327,7 @@ battle, a dialogue box), or draw several states on top of each other.
 <details>
 <summary>How does a Service Locator differ from a Singleton?</summary>
 
-Callers depend on an interface rather than a concrete class, and the implementation can be
+Callers depend on an interface, and the implementation can be
 swapped at runtime (e.g. a null or logging service). It is still global access, so
 dependencies stay hidden.
 

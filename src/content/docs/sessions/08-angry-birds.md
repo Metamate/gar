@@ -420,13 +420,12 @@ pig          960 448 0
 Things to notice:
 
 - **`MemberwiseClone` makes a shallow copy.** Every field is copied, but a field that refers
-  to an object copies the reference, not the object. The copy shares the prototype's
+  to an object only copies the reference, so both point to the same object. The copy shares the prototype's
   sprite, which is fine, because nobody changes a sprite. It must never share a _body_,
   because two blocks with one body would move as one. `Clone` clears the body, and
   `Spawn` creates a new one.
-- **Prototypes are instances, not classes.** A "big pig" isn't a subclass of `Pig`, but a
-  `Pig` configured with a bigger radius and more health. A new kind of block is one line
-  in `Prefabs`, not a new class.
+- **Prototypes are instances.** A "big pig" is a `Pig` configured with a bigger radius and
+  more health. A new kind of block is one line in `Prefabs`.
 - **Anything can be a prototype.** You could clone a block that's already damaged, or a
   pig with a helmet you configured in code. The copy starts out the same as the original.
 - **The bird is a prefab too.** When you shoot, the game spawns `"bird"`. A different kind

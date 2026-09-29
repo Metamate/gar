@@ -119,8 +119,7 @@ A rule of thumb from the codebase:
 
 For example, `BeginRespawnOnLethalCollision` is a component. It only decides when _its_
 player has taken a lethal hit. `PlaySession` handles the consequences for the whole arena
-(clearing enemies, resetting spawning), because those are rules of the run, not of the
-player.
+(clearing enemies, resetting spawning), because those are rules of the whole run.
 
 The **particles** (`GeometryWars3`) are the extreme case. Thousands of short-lived sparks
 aren't entities with components at all. One `ParticleManager` system owns all of them and
@@ -140,8 +139,8 @@ The architecture above gives every kind of code a home:
 1. The application and its screens: `Game1` and the game states.
 2. The rules of one run: `PlaySession` and the systems.
 3. How an entity is put together: `EntityFactory`.
-4. Behaviour of one entity: a component, named for what it does (`Health`), not for who has
-   it (`PlayerHealth`).
+4. Behaviour of one entity: a component, named for what it does (`Health`, and
+   not `PlayerHealth`).
 5. Behaviour across entities: a system.
 
 :::note[ECS]
@@ -318,7 +317,7 @@ public struct EnemyInstance
 }
 ```
 
-500 enemies hold 500 references to one texture, not 500 copies of it.
+500 enemies hold 500 references to one texture, which is loaded once.
 
 In the codebase: `GameAssets.cs`, `GameplayDefinitions.cs`.
 

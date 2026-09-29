@@ -352,8 +352,7 @@ to one of two problems:
 - **A bloated base class:** the shared behaviour moves up into `Entity`, until every entity
   carries every feature, used or not.
 
-**Composition** is the alternative. An object _has_ behaviours instead of _being_ a kind of
-something. Zelda already composes in three places we have seen:
+**Composition** is the alternative. An object is given the behaviours it _has_. Zelda already composes in three places we have seen:
 
 - **Behaviour in state objects:** an enemy's AI lives in the state object it currently
   holds (`EntityWalkState`, `EntityIdleState`). To behave differently, the enemy swaps that
@@ -361,7 +360,7 @@ something. Zelda already composes in three places we have seen:
 - **Behaviour wired from outside:** a floor switch is a plain `GameObject`. The room
   attaches a handler to its `OnCollide` event, and that handler decides what happens when
   the player steps on it. There is no `SwitchObject` subclass.
-- **Data instead of subclasses:** enemy types (their size, speed, health and animations)
+- **Enemy types as data:** enemy types (their size, speed, health and animations)
   come from a data file, so there is no class per enemy type.
 
 > "Favor object composition over class inheritance." — Gang of Four, _Design Patterns_

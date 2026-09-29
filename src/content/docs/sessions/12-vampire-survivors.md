@@ -155,7 +155,7 @@ public void Query(Vector2 center, float radius, List<int> results)
 ```
 
 Now each enemy only checks the few enemies in the cells around it, and so do the weapons'
-questions. The work now grows with the number of enemies, instead of with its square:
+questions. The work now grows in step with the number of enemies:
 
 | Enemies | Every pair | Grid |
 | --- | --- | --- |
@@ -224,8 +224,7 @@ with its own header, and each enemy's `Kind` is another object somewhere else. A
 the positions jumps around memory, following references. That's the problem
 [Data Locality](https://gameprogrammingpatterns.com/data-locality.html) describes.
 
-**Data-oriented design** starts from the data and what the loops do with it, rather than
-from the objects in the game. Most loops here touch one or two fields of every enemy. `Move`
+**Data-oriented design** starts from the data and what the loops do with it. Most loops here touch one or two fields of every enemy. `Move`
 reads positions and speeds, and `Separate` reads positions and radii. So we put each field
 in its own array, making a **struct of arrays** instead of an array of objects.
 
@@ -252,7 +251,7 @@ because the hot loops read them for every enemy, every step.
 ### Measure again
 
 We first converted only the enemies to arrays, and kept the grid. It made almost no
-difference, 3.9 ms instead of 4.1 ms with 10,000 enemies. The time wasn't in reading
+difference. With 10,000 enemies, the time went from 4.1 ms to 3.9 ms. The time wasn't in reading
 enemies; it was in the grid, which looks up cells in a dictionary and walks lists of tuples
 for every query. The data layout that matters is the data **in the hot loop**, and only
 measuring tells you which loop that is.
@@ -425,8 +424,8 @@ converting the enemies to arrays, only measuring showed that the time was in the
 <details>
 <summary>How does a uniform grid make separation cheaper?</summary>
 
-Each enemy is only compared with the enemies in its own and neighbouring cells, instead of
-with every other enemy. The work grows with the number of enemies, not with its square.
+Each enemy is only compared with the enemies in its own and neighbouring cells. The work
+then grows in step with the number of enemies.
 
 </details>
 

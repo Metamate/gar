@@ -452,7 +452,7 @@ the commands' changes are worth storing.
 
 ### Commands and input
 
-_Game Programming Patterns_ opens its Command chapter with input rather than undo. Each button
+_Game Programming Patterns_ opens its Command chapter with input. Each button
 holds a command, and **rebinding** a button means giving it a different one. Our
 `GameController` already names actions instead of keys, but the mapping is code. To let a
 player choose their keys, it has to become data, which the game can change while it runs,

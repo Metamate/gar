@@ -18,7 +18,7 @@ Make a **Snake** game.
 
 This time we don't start from scratch. You get a working codebase, and we look at how it
 keeps its assets as data. The images, the animations and the room are described in XML
-files, and the code reads them instead of hardcoding them.
+files, and the code reads them from there.
 
 The session also covers texture atlases, sprites and animation, movement on a fixed tick,
 and input as actions, with input buffering.
@@ -275,8 +275,8 @@ public void Turn(Point direction)
 }
 ```
 
-A new turn is checked against the _last buffered_ direction, not the current one, so no
-combination of quick key presses can reverse the snake. The buffer is kept short (two
+A new turn is checked against the _last buffered_ direction, so no combination of quick
+key presses can reverse the snake. The buffer is kept short (two
 turns), so the snake never acts on presses the player has long forgotten.
 
 Many games buffer input like this, so that a jump pressed just before landing, or a combo
@@ -356,7 +356,7 @@ Start from `Snake9`.
 - Which of your game's assets and settings are hardcoded, and could live in data files?
 - What are the _actions_ in your game? List them separately from the keys and buttons
   that trigger them.
-- Does anything in your game happen on a fixed tick rather than every frame?
+- Does anything in your game happen on a fixed tick?
 
 ## Check Yourself
 

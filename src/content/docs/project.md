@@ -99,7 +99,7 @@ Write your answers as a GitHub issue in their repository.
 
 ## Release
 
-- Make a **Release** build, not a Debug build.
+- Make a **Release** build.
 - Publish your **game project** (not the whole solution, or the library and the content
   builder are published too), **self-contained** so players don't need to install .NET, into
   one folder:

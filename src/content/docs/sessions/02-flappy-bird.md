@@ -291,7 +291,7 @@ with the Service Locator pattern.
 <details>
 <summary>What problem does a state machine solve compared to a string or enum field?</summary>
 
-Each state's behaviour is in one place instead of spread across `if`-chains. You can add a
+Each state's behaviour is in one place. You can add a
 state without editing the others, and `Enter`/`Exit` give reliable places for setup and
 cleanup.
 

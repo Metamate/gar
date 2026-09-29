@@ -166,7 +166,7 @@ _Covered in: [07 The Legend of Zelda](../sessions/07-the-legend-of-zelda/),
    solve, and what does it cost?
 2. How do components of the same entity work together, and how do they find out about other
    entities?
-3. When should behaviour live in a system rather than in a component? Give an example.
+3. When should behaviour live in a system, and when in a component? Give an example of each.
 4. Show a class in your project that does several unrelated things. How could it be split
    into components, and what would you gain?
 
