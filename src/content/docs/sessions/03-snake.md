@@ -177,7 +177,7 @@ The room is data too. A tilemap definition lists which tile of the atlas goes in
 </Tilemap>
 ```
 
-GMDCore's `Tilemap.FromFile` reads it into a flat array of tile numbers, one per cell, row
+GARCore's `Tilemap.FromFile` reads it into a flat array of tile numbers, one per cell, row
 after row: the cell in column `x` and row `y` is at index `y * Columns + x`. To draw the room,
 the tilemap goes through the array and draws each tile's region at a position worked out from
 its index. Sprites each keep their own position; tiles have theirs from the grid, and all of
@@ -306,7 +306,7 @@ closely, but cost more to check and to write. Use the simplest shape that looks 
 player. A grid lookup, as in [Super Mario Bros](../06-super-mario-bros/#performance), is
 cheaper still, but only works for things that stay in their cell.
 
-MonoGame has no circle type, so GMDCore has a `Circle` struct with `Intersects(Circle)`.
+MonoGame has no circle type, so GARCore has a `Circle` struct with `Intersects(Circle)`.
 Both the snake's head and the mouse expose their `Bounds` as a `Circle`.
 
 **Collision response** is what happens _after_ a hit:
@@ -344,13 +344,13 @@ Start from `Snake9`.
 2. **Speed up:** make the tick shorter each time the snake eats, down to a minimum. Where
    does that rule belong?
 3. **New input:** add gamepad support for the D-pad. A press needs last frame's state, so
-   first add a `GamePadInfo` to GMDCore's `InputManager`, modelled on `KeyboardInfo` (`Core`
+   first add a `GamePadInfo` to GARCore's `InputManager`, modelled on `KeyboardInfo` (`Core`
    already updates the `InputManager` every frame). Then map the D-pad in `GameController`.
    Which files in the game itself did you change?
 4. **Pause:** add a pause action. While paused, the snake doesn't move and turns aren't
    buffered.
 5. **Refactor (stretch):** the tick timer lives in `Snake`. Move it into a reusable
-   `FixedTimer` class in GMDCore that calls back on every tick, and use it for the snake.
+   `FixedTimer` class in GARCore that calls back on every tick, and use it for the snake.
 
 ## Apply It to Your Project
 

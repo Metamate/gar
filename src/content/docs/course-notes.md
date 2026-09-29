@@ -122,7 +122,7 @@ Notes for building it:
   in Mario), tweening from Pokemon to Zelda, data definitions from Pokemon to Plants vs.
   Zombies, and data-oriented design, spatial partitioning and profiling from Geometry Wars
   to Vampire Survivors.
-- **GMDCore lineage** follows the session order (see Materials).
+- **GARCore lineage** follows the session order (see Materials).
 - **Exam pool:** Prototype and Adapter/Facade are sub-questions of 8 and 7 (done); question 9 is split into 9 (components &
   systems) and 10 (memory & performance), so students draw from 1–10 (done).
 - **Testing thread:** unit testing is introduced from scratch in Sokoban (students meet
@@ -147,7 +147,7 @@ Notes for building it:
   `gmd2-*` repositories (started from a single commit; no imported history). Every game is
   split into step projects (`Snake0`,
   `Snake1`, …; one per exercise for Pong and Flappy, one per concept for the rest), with
-  the finished game as the last step. Steps share one final `GMDCore`, and the README has
+  the finished game as the last step. Steps share one final `GARCore`, and the README has
   a table of steps. The site page and the deck name the step for each topic.
 - **Content pipeline:** every game uses the MonoGame 3.8.5 content builder (C# build rules in
   `Content/Builder/Builder.cs`, no `.mgcb`) and target .NET 10. `Content/Content.csproj`
@@ -156,13 +156,13 @@ Notes for building it:
   every game, all steps share one `Content/Assets` folder; a step's `Content.Load` calls
   show which assets it uses. Where an asset changes between steps, keep both versions and
   swap them in code (Pong: `sans` → `font` in `Pong3`).
-- **GMDCore lineage:** GMDCore is one library that grows through the course, in session
+- **GARCore lineage:** GARCore is one library that grows through the course, in session
   order: Flappy Bird → Snake (Sokoban and Pac-Man unchanged) → Mario → Zelda (Angry Birds
   and Plants vs. Zombies unchanged) → Pokemon → Geometry Wars (Vampire
   Survivors unchanged). Game-specific code (the Box2D adapter, the components in Plants vs.
-  Zombies) stays in the game, so later cores don't inherit it. Each game's `GMDCore` keeps
+  Zombies) stays in the game, so later cores don't inherit it. Each game's `GARCore` keeps
   the previous session's core and adds to it or deliberately changes it; nothing is dropped,
-  even if the game doesn't use it. Each README has a "New in GMDCore" section, and
+  even if the game doesn't use it. Each README has a "New in GARCore" section, and
   `python tools/check.py` in gar-games lists the differences between games (and fails if a
   file was removed, or if the build files differ between games). The GitHub build runs it.
   Each game folder stays self-contained, like a single-game repo and like gar-starter, so
@@ -206,7 +206,7 @@ file should need editing.
 | --- | --- | --- | --- |
 | For | The class, live, with the teacher talking | A student alone, before and after class, and for the exam | Someone with the repo open |
 | Answers | What are we doing now? | Why does this work, and when would I use it? | How do I run this, and where is X? |
-| Holds | The session's flow, the goal demo, diagrams, a few key excerpts, discussion questions, exercise prompts | Concepts and patterns with trade-offs, readings, exercises, Apply it, Check yourself, links to key files | The steps, what's new in GMDCore, a code map, tests and tools, content, controls, running, credits |
+| Holds | The session's flow, the goal demo, diagrams, a few key excerpts, discussion questions, exercise prompts | Concepts and patterns with trade-offs, readings, exercises, Apply it, Check yourself, links to key files | The steps, what's new in GARCore, a code map, tests and tools, content, controls, running, credits |
 | Leaves out | Explanations that only work when read | Run instructions, file-by-file tours, the step list | Explaining patterns or design reasoning |
 
 - The step list lives in the README; a session page names the steps each section is about.
@@ -228,7 +228,7 @@ file should need editing.
 - Use consistent, simple UML diagrams (Mermaid is supported on the site).
 - The graphics are redone in one simple classic style (our own art, generated sounds,
   Press Start 2P). The games can still become less 1:1 compared to CS50.
-- End each game session with "what moved into GMDCore this week, and why?"
+- End each game session with "what moved into GARCore this week, and why?"
 
 ## Topic Backlog
 

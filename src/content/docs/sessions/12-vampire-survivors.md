@@ -369,7 +369,7 @@ classDiagram
   ([Pokemon](../10-pokemon/#state-stack)), on top of the paused game, with three upgrades
   to choose from.
 - The enemy **kinds** are type objects, and the logic runs at a **fixed timestep**
-  (GMDCore's `Core`, from Geometry Wars).
+  (GARCore's `Core`, from Geometry Wars).
 - Survive five minutes to win. The profiler is still there (F3).
 
 ## When to Optimize

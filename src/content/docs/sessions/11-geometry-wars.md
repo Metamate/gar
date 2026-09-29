@@ -97,7 +97,7 @@ the entity. Health doesn't know either of them exists. This is
 [Observer](../07-the-legend-of-zelda/#events--the-observer-pattern) inside one entity. The
 core flow (update, collide, draw) stays as direct calls, so it's still easy to follow.
 
-In the codebase: `GMDCore/ECS/Entity.cs`, `GMDCore/ECS/Components/Component.cs`,
+In the codebase: `GARCore/ECS/Entity.cs`, `GARCore/ECS/Components/Component.cs`,
 `Systems/EntityFactory.cs`.
 
 ## Components vs. Systems

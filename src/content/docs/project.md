@@ -55,8 +55,8 @@ systems you expect to need (e.g. scenes, tilemap, enemies with AI, UI, save data
 
 - Create the repository from the [gar-starter](https://github.com/Metamate/gar-starter)
   template (**Use this template** on GitHub): an empty game set up with the content
-  builder, with an empty GMDCore library. Its README shows how to rename the game, and how
-  to swap in the course's GMDCore from gar-games.
+  builder, with an empty GARCore library. Its README shows how to rename the game, and how
+  to swap in the course's GARCore from gar-games.
 - Check that build output stays out of git: the template's `.gitignore` already ignores
   `bin/`, `obj/`, `.vs/`, ….
 - Add your group members as collaborators, and upload the repository link to itslearning.

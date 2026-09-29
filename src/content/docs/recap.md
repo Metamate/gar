@@ -81,6 +81,6 @@ answer.
   Flyweight ([11](../sessions/11-geometry-wars/)) → profiling, spatial partitioning and
   data-oriented design ([12](../sessions/12-vampire-survivors/)). Exam
   [10](../exam/#10-memory--performance).
-- **GMDCore:** every game adds to the same core library. Each game's README (in
-  [gar-games](https://github.com/Metamate/gar-games)) lists what is new in `GMDCore` since the
+- **GARCore:** every game adds to the same core library. Each game's README (in
+  [gar-games](https://github.com/Metamate/gar-games)) lists what is new in `GARCore` since the
   previous game.

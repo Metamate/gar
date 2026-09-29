@@ -262,7 +262,7 @@ physics world reports something about a body, the game can find the entity it be
 
 `F1` draws what the physics world sees: every body's shape, in green while it's awake and
 in blue when it's asleep (Box2D stops simulating bodies that have come to rest). It uses
-GMDCore's `DebugDraw.Enabled` from [Super Mario Bros](../06-super-mario-bros/). When a
+GARCore's `DebugDraw.Enabled` from [Super Mario Bros](../06-super-mario-bros/). When a
 sprite and its body don't line up, this is where you see it.
 
 ### A fixed time step

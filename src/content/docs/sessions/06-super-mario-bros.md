@@ -78,7 +78,7 @@ public readonly struct Tile(int graphicId = -1, bool isSolid = false)
 }
 ```
 
-`Tile` and `Tilemap` live in GMDCore, so they only hold what any tile-based game needs.
+`Tile` and `Tilemap` live in GARCore, so they only hold what any tile-based game needs.
 Because the graphics are separate from the level's structure, the same level can be drawn
 with any of the 60 tilesets in `tiles.png` (press `R`).
 
@@ -159,7 +159,7 @@ pixels early looks just like one that works. **Debug drawing** makes them visibl
 the entities in yellow too). You can see the hitbox inset, and exactly where the player
 collides.
 
-GMDCore gets a small `DebugDraw` class. Its drawing calls do nothing unless
+GARCore gets a small `DebugDraw` class. Its drawing calls do nothing unless
 `DebugDraw.Enabled` is true, so they can stay in the code:
 
 ```csharp title="GameLevel.cs"

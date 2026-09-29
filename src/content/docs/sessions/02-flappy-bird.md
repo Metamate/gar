@@ -17,7 +17,7 @@ Make a **Flappy Bird** clone.
 </figure>
 
 Pong worked, but everything lived in `Game1` and game state was a string. Today we start
-organizing the code. We create **GMDCore**, a class library of reusable code that grows
+organizing the code. We create **GARCore**, a class library of reusable code that grows
 throughout the course, and we replace the string with a **state machine**.
 
 New concepts: class libraries, textures, parallax scrolling, procedural generation,
@@ -55,14 +55,14 @@ touch many other parts.
 Decoupling isn't free. Abstractions cost time to write and understand, and sometimes cost
 performance. Good architecture is about choosing _where_ flexibility is worth that cost.
 
-## Class Libraries: GMDCore
+## Class Libraries: GARCore
 
 Code that isn't specific to one game (screen scaling, input helpers, and later sprites,
-tilemaps, state machines…) goes into an ordinary .NET class library, `GMDCore`, that
+tilemaps, state machines…) goes into an ordinary .NET class library, `GARCore`, that
 references MonoGame. Each game references the library, and its `Game1` derives from
 `Core` instead of `Game`.
 
-The reference only goes one way. Flappy uses GMDCore, but nothing in GMDCore may use a
+The reference only goes one way. Flappy uses GARCore, but nothing in GARCore may use a
 class from Flappy. If `Core` needed Flappy's `Bird`, no other game could use the library.
 
 ```mermaid
@@ -78,7 +78,7 @@ classDiagram
     class Game1
     Game <|-- Core
     Core <|-- Game1
-    note for Core "GMDCore library"
+    note for Core "GARCore library"
     note for Game1 "Flappy project"
 ```
 
@@ -133,7 +133,7 @@ fair? Which numbers in `SpawnPipePair` make the drift gentler?
 
 ## Input: InputManager
 
-The "was just pressed" check from Pong moves into GMDCore as a `KeyboardInfo` class
+The "was just pressed" check from Pong moves into GARCore as a `KeyboardInfo` class
 (`IsKeyDown`, `IsKeyUp`, `WasKeyJustPressed`, `WasKeyJustReleased`). A `MouseInfo` class does
 the same for the mouse (`IsLeftButtonDown`, `WasLeftButtonJustPressed`, `Position`). Both are
 wrapped by an `InputManager` that `Core` updates every frame, so any code can ask
@@ -250,10 +250,10 @@ with the Service Locator pattern.
 
 1. **A class library:** create your own repository from the
    [gar-starter](https://github.com/Metamate/gar-starter) template, and rename `MyGame` to
-   `Flappy` (its README shows how). It comes with an empty class library, `GMDCore`. Find
+   `Flappy` (its README shows how). It comes with an empty class library, `GARCore`. Find
    the two places that connect it to the game: the `ProjectReference` in `Flappy.csproj`
    and the line in the `.slnx`. Which way does the reference point? Then write a `Core`
-   class in `GMDCore`, deriving from `Game`: move the screen scaling from Pong into it, with
+   class in `GARCore`, deriving from `Game`: move the screen scaling from Pong into it, with
    a constructor taking title, window size and virtual size. Nothing in it may mention
    Flappy.
 2. **A game on the library:** derive `Game1` from `Core`, with a 512×288 virtual resolution
@@ -264,7 +264,7 @@ with the Service Locator pattern.
    the drawing and scrolling from `Flappy2`'s `Game1`. Then add a `Bird` class and a static
    `Art` class for asset references.
 4. **Gravity and an input manager:** add gravity (980 pixels per second, per second). Add
-   `KeyboardInfo`, `MouseInfo` and `InputManager` to GMDCore, and flap on
+   `KeyboardInfo`, `MouseInfo` and `InputManager` to GARCore, and flap on
    `WasKeyJustPressed(Keys.Space)` or `WasLeftButtonJustPressed`: a flap sets the
    vertical velocity to 300 upwards.
 5. **Hitboxes:** bring your game up to `Flappy7` (the `Pipe` and `PipePair` classes and the
@@ -280,7 +280,7 @@ with the Service Locator pattern.
 ## Apply It to Your Project
 
 - Which code in your game could be reused by another game? That belongs in a class library,
-  like GMDCore.
+  like GARCore.
 - Which states does your game have (title, play, pause, game over)? Draw them as a state
   diagram, with what triggers each transition.
 - Is anything in your game global? Does it need to be?

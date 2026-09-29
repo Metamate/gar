@@ -46,7 +46,7 @@ Take about 10 minutes with the finished game, `Pokemon4`:
 
 The rule of thumb for that split: a class that mentions monsters, grass, battles or
 levelling belongs to the game. A class you could use unchanged in another game (the state
-stack, the tweens, a panel, a progress bar) belongs to GMDCore.
+stack, the tweens, a panel, a progress bar) belongs to GARCore.
 
 ## State Stack
 

@@ -236,7 +236,7 @@ When the player walks through a door, the camera and the player move at the same
 next room is placed one screen away, and the camera travelling towards it creates the
 scroll. We could keep a progress value, advance it every frame and lerp by hand, but games
 tween _all the time_: fades, flashes, menus sliding in, damage numbers floating up. So
-GMDCore gets a small, reusable **tween system**, a `TweenManager`:
+GARCore gets a small, reusable **tween system**, a `TweenManager`:
 
 - **Tween:** change one or more values from A to B over a set time.
 - **After:** wait N seconds, then run a method.
