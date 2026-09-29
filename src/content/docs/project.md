@@ -82,7 +82,7 @@ group:
 - Which values are hardcoded that should be data?
 - Which rules could be tested without starting the game? A few unit tests for your core
   rules, set up like `Sokoban.Tests` in [Sokoban](../sessions/04-sokoban/#unit-tests), are
-  recommended: they make the refactoring below safer.
+  recommended, since they make the refactoring below safer.
 
 Pick at least one issue and fix it. In your commit message, describe the design problem
 and how the change solves it. This makes good material to talk about at the exam.
@@ -135,5 +135,5 @@ Prepare by going through each exam question with your project open:
 - Practice explaining your architecture in about 5 minutes, using your class diagram.
 - Choose the pattern you will present in detail in question 0, plus a backup in case you
   draw the question that covers it.
-- Be ready to modify code live: a small change such as adding a state, an event or a
+- Be ready to make a small change to the code live, such as adding a state, an event or a
   command.
