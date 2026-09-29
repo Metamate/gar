@@ -95,8 +95,8 @@ base: `SimpleLevelMaker`, `FlatLevelMaker`, `PillarLevelMaker`, `PitLevelMaker`,
 without knowing which algorithm it uses. This is the **Strategy pattern** from
 [Pac-Man](../05-pac-man/): a family of interchangeable algorithms behind a common interface.
 
-The grass or snow on top of the ground (the _toppers_) is a detail of this game, not of
-tilemaps in general, so it isn't part of `Tile`. Instead, a `GameLevel` has two tilemaps
+The grass or snow on top of the ground (the _toppers_) belongs to this game rather than
+to tilemaps in general, so it isn't part of `Tile`. Instead, a `GameLevel` has two tilemaps
 of the same size: `Tilemap` for the ground and `Toppers`, drawn on top with its own
 tileset. Layering tilemaps like this is how most tile editors (e.g. Tiled) work, and
 [Pokemon](../10-pokemon/) uses it for its tall grass.
@@ -153,10 +153,10 @@ way. Testing all pairs of entities is **O(n²)**; in
 
 ### Debug drawing
 
-Collision bugs are hard to see: the hitbox is invisible, and a player that stops a few
+Collision bugs are hard to see. The hitbox is invisible, and a player that stops a few
 pixels early looks just like one that works. **Debug drawing** makes them visible. Press
 `F1` to outline the solid tiles in red and the player's hitbox in green (from `Mario6`,
-the entities in yellow too). You can see the hitbox inset, and exactly where the player
+the entities in yellow too). You can see the hitbox inset, and where the player
 collides.
 
 GARCore gets a small `DebugDraw` class. Its drawing calls do nothing unless
@@ -188,18 +188,18 @@ _Steps `Mario2` → `Mario3`_
 
 In `Mario2`, the player's state is an enum, and its behaviour lives in `switch` statements:
 the stage [Pac-Man](../05-pac-man/#ghosts-with-an-enum)'s ghosts went through before the State
-pattern. `Mario3` makes the same move: each case becomes a class (`PlayerIdleState`,
+pattern. `Mario3` makes the same move, and each case becomes a class (`PlayerIdleState`,
 `PlayerWalkState`, `PlayerJumpState`, `PlayerFallState`, `PlayerDuckState`), and `Player` forwards
 `Update` and `Draw` to its current state. Two things are new compared with the ghosts:
 
 - **Shared behaviour in a base state.** Every player state falls, collides with tiles and
   moves sideways. That physics is written once, in `PlayerStateBase`, and each state adds only
-  what is different: the jump state sets the upward velocity, the duck state ignores sideways
-  input. The ghosts' states shared almost nothing.
+  what is different. The jump state sets the upward velocity, and the duck state ignores
+  sideways input. The ghosts' states shared almost nothing.
 - **The world triggers transitions, not only input and timers.** A ghost changes mode on a
   timer or when Pac-Man eats a pellet. The player also changes state because of the level:
   walking off a ledge starts a fall, a jump turns into a fall at the top of its arc, and
-  landing ends a fall. Coyote time is a transition too: for a few frames after leaving the
+  landing ends a fall. Coyote time is a transition too. For a few frames after leaving the
   ground, the fall state still lets a jump through.
 
 ```mermaid
@@ -240,8 +240,8 @@ camera's speed, for a parallax effect.
 
 _Step `Mario5`_
 
-The game itself also uses the State pattern, like Flappy Bird: a `StartState` with the
-title screen, and a `PlayState` that creates the level and the player. Falling into a pit
+The game itself has states too, as in Flappy Bird. A `StartState` shows the title screen,
+and a `PlayState` creates the level and the player. Falling into a pit
 sends you back to the title screen.
 
 ## Entities
@@ -284,7 +284,7 @@ Enemy AI can be built from states too:
 
 Landing on a mole from above stomps it. Touching it any other way ends the game.
 
-`Mario8` adds music and sound effects: the finished game.
+`Mario8` adds music and sound effects, and is the finished game.
 
 ## Exercises
 
@@ -313,10 +313,10 @@ Start from `Mario8`.
   Look at each topper's neighbours and pick the matching piece, so the grass rounds off at
   every ledge. Where does that belong: in the level maker, or in the tilemap?
 - **A scene graph:** in the moving-platform exercise, the player rides along. Engines solve
-  this with a hierarchy of transforms: a child's position is relative to its parent's, so
+  this with a hierarchy of transforms. A child's position is relative to its parent's, so
   while the player stands on the platform, it becomes the platform's child. Sketch a
   `Transform` with a parent. What does the player's position in the world become when the
-  platform moves? _Game Programming Patterns_ uses exactly this example in
+  platform moves? _Game Programming Patterns_ uses the same example in
   [Dirty Flag](https://gameprogrammingpatterns.com/dirty-flag.html).
 
 ## Apply It to Your Project
@@ -332,7 +332,7 @@ Start from `Mario8`.
 <details>
 <summary>What do the player’s states share, and where does that code live?</summary>
 
-Gravity, tile collision and moving sideways: every state needs them, so they live once in
+Every state needs gravity, tile collision and moving sideways, so they live once in
 `PlayerStateBase`. Each state overrides only what is different about it. Without the base
 class, every state would carry its own copy of the physics, and a fix to one would miss
 the others.

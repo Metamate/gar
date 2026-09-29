@@ -152,7 +152,7 @@ public class Builder : ContentBuilder
 
 Each game project imports `Content/BuildContent.targets`, which runs the builder before
 compiling. To add an asset, put it in `Content/Assets`; if no rule matches it, add one. All
-Pong steps share that folder: step 3 swaps the plain `sans` font for the retro `font`
+Pong steps share that folder, and step 3 swaps the plain `sans` font for the retro `font`
 in code. See
 [Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html).
 
@@ -161,7 +161,7 @@ in code. See
 - MonoGame's 2D coordinate system has its origin in the **top-left** corner, with Y
   pointing **down**.
 - All 2D drawing goes through a `SpriteBatch`, between `Begin()` and `End()`. `Draw` doesn't
-  draw straight away: the sprite batch collects the calls, and `End()` sends them to the
+  draw straight away. The sprite batch collects the calls, and `End()` sends them to the
   graphics card in as few batches as it can. A batch ends whenever the texture changes, which
   is why [Snake](../03-snake/#texture-atlases) puts its images in one texture. `Begin()` takes
   the settings for everything up to `End()`: the transform matrix, the texture filtering and
@@ -213,7 +213,7 @@ _previousKeyboard = keyboard;
 float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 ```
 
-Multiplying movement by `deltaTime` makes speed independent of frame rate: a paddle moving
+Multiplying movement by `deltaTime` makes speed independent of frame rate. A paddle moving
 at 200 units per second moves 200 units per second, whether the game runs at 30 or 144 FPS.
 _Velocity_ (a direction and a speed, e.g. a `Vector2`) lets the ball keep moving without
 input.
@@ -226,7 +226,7 @@ and `Draw` methods. `Game1` then just calls them. This is the
 [Update Method](https://gameprogrammingpatterns.com/update-method.html) pattern: each
 object knows how to simulate one frame of its own behaviour.
 
-It has costs too. Objects are updated one after another, so the order matters: an object
+It has costs too. Objects are updated one after another, so the order matters. An object
 updated early sees the others as they were last frame, and one updated late sees them
 already moved. Objects that interact, like the ball and the paddles, need a reference to
 each other, or a place like `Game1` that checks them together. Every object is updated every
@@ -303,7 +303,7 @@ Build Pong step by step:
    remembers the game's mode (`"start"` or `"play"`), and the start mode shows "Press
    Enter to launch the ball". Keep the paddles on screen (`Math.Clamp`).
 6. **The Update Method:** refactor into `Paddle` and `Ball` classes using the Update Method
-   pattern. The game must behave exactly as before.
+   pattern. The game must behave as it did before.
 7. **Collisions and the bounce:** bounce off paddles and walls with AABB. Where the ball
    hits the paddle sets the new angle: straight back from the middle, steeply from the
    ends. Speed up the ball by 10% on each paddle hit.

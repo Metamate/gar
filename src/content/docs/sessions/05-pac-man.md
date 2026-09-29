@@ -55,7 +55,7 @@ The maze is a text file, like [Sokoban's levels](../04-sokoban/#levels-as-data):
 
 `#` is a wall, `.` a dot and `o` a power pellet. `-` is the door of the ghost house and `H`
 its inside; `P` marks where Pac-Man starts, and `b`, `p`, `i` and `c` the four ghosts. A row
-that is open at both ends is a tunnel: leaving on one side enters on the other.
+that is open at both ends is a tunnel, and leaving on one side enters on the other.
 
 As in Sokoban, the rules are separate from the drawing. `Maze`, `PacMan` and `World` hold the
 game; `MazeView` and `PacManView` draw it. The walls aren't even images: `MazeView` draws a
@@ -144,12 +144,12 @@ stateDiagram-v2
 ```
 
 Scatter and chase take turns on a fixed **schedule** (`ModeSchedule`): 7 seconds of scatter,
-20 of chase, and so on. That's why the ghosts sometimes seem to give up the hunt: without the
+20 of chase, and so on. This is why the ghosts sometimes seem to give up the hunt. Without the
 scatter phases, the game would be too hard.
 
 However a ghost moves, it decides at each tile centre the same way. It never turns back, and
 of the directions left, it takes the one whose next tile is closest to a **target tile**
-(in a straight line). The mode decides the target: its corner in scatter, Pac-Man in chase,
+(in a straight line). The mode decides the target. It is the ghost's corner in scatter, Pac-Man in chase, and
 the house when eaten. Frightened ghosts have no target, and pick at random.
 
 The simplest way to build the modes is an enum, and that's what `Pacman1` does:
@@ -194,7 +194,7 @@ This is the same problem as Pong's string-based game state, and it gets worse wi
 mode.
 
 **Try it** (`Pacman1`): add `Frozen` to `GhostMode`, for a ghost that stands still for a
-second after being eaten. Don't finish it: count the `switch`es you would have to change.
+second after being eaten. Don't finish it, just count the `switch`es you would have to change.
 
 ## The State Pattern
 
@@ -205,7 +205,7 @@ _Step `Pacman2`_
 > _(Design Patterns, Gamma et al.)_
 
 In [Flappy Bird](../02-flappy-bird/#state-machines) we made each state of the _game_ an
-object. The State pattern does the same for an _object_ in the game: each of a ghost's modes
+object. The State pattern does the same for an _object_ in the game. Each of a ghost's modes
 becomes a class, and the ghost forwards everything that depends on the mode to its current
 state.
 
@@ -303,7 +303,7 @@ it take? Where would a `FrozenState` go?
 
 _Step `Pacman3`_
 
-Until now, all four ghosts chase the same way: straight at Pac-Man. They end up in a line
+Until now, all four ghosts chase the same way, straight at Pac-Man. They end up in a line
 behind him, which is easy to escape. In the original game, each ghost has its own
 personality, and that's all in how it picks its target while chasing:
 
@@ -361,7 +361,7 @@ chase change?
 
 ## State vs. Strategy
 
-Draw the class diagrams of the two patterns, and they look the same: an object holds a
+Draw the class diagrams of the two patterns, and they look the same. An object holds a
 reference to an interface, and forwards work to it. The difference is in **why** and
 **when** the object behind the interface changes.
 
@@ -373,15 +373,15 @@ reference to an interface, and forwards work to it. The difference is in **why**
 | Knows the others? | Yes: a state creates the next state | No: strategies don't know each other |
 | The question it answers | "What am I doing right now?" | "How do I do this?" |
 
-The two work together here: the **state** decides _whether_ the ghost is chasing, and the
+The two work together here. The **state** decides _whether_ the ghost is chasing, and the
 **strategy** decides _how_ it chases.
 
 ## Testing the Ghosts
 
 _Project `Pacman.Tests`_
 
-A targeting strategy is a small class with one method: put Pac-Man somewhere, and check
-which tile the ghost aims for. Each strategy can be tested on its own, as in
+A targeting strategy is a small class with one method. To test it, put Pac-Man somewhere
+and check which tile the ghost aims for. Each strategy can be tested on its own, as in
 [Sokoban](../04-sokoban/#unit-tests):
 
 ```csharp title="TargetingTests.cs"
@@ -396,10 +396,10 @@ public void Inky_doubles_the_line_from_Blinky_to_two_tiles_ahead_of_Pac_Man()
 }
 ```
 
-Inky's rule is the hardest to get right by playing: you can't see his target. The test
+Inky's rule is the hardest to get right by playing, because you can't see his target. The test
 checks it with numbers you can work out on paper.
 
-The states are tested the same way: put a ghost in a state, make something happen, and check
+The states are tested the same way. Put a ghost in a state, make something happen, and check
 the state it ends up in (`GhostStateTests`). The tests use a small maze of their own
 (`TestMaze`) and a seeded `Random`, so frightened ghosts wander the same way every run.
 
@@ -422,8 +422,8 @@ stateDiagram-v2
     GameOver --> Ready : Enter
 ```
 
-So there are two levels of state machine in one game: the game's states (ready, play, dying,
-game over) and each ghost's states. The ghosts only get updated in `PlayState`, so while
+There are now two levels of state machine in one game, the game's states (ready, play,
+dying, game over) and each ghost's states. The ghosts only get updated in `PlayState`, so while
 Pac-Man is dying, the ghosts' states are simply paused.
 
 ## Exercises
@@ -447,8 +447,8 @@ Start from `Pacman4`.
 5. **Tunnel (stretch):** in the original, ghosts slow down in the tunnel. Which class should
    know that the ghost is in the tunnel, and which should know how fast to go there?
 
-**Going further (optional):** real pathfinding. The ghosts choose greedily: at each
-intersection, the open tile closest to the target in a straight line, which can lead a ghost
+**Going further (optional):** real pathfinding. The ghosts choose greedily. At each
+intersection they take the open tile closest to the target in a straight line, which can lead a ghost
 the long way round a wall. Give one ghost a strategy that finds the shortest path, with a
 breadth-first search over the maze's tiles, and compare it with the greedy ghosts. Red Blob
 Games' [introduction to A*](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
@@ -475,7 +475,7 @@ changing every `switch`.
 <details>
 <summary>In the State pattern, who decides when to change state?</summary>
 
-Usually the states themselves: a state knows which events end it, and which state comes
+Usually the states themselves. A state knows which events end it, and which state comes
 next. The object that holds the state only forwards to it, and doesn't need to know which
 states exist.
 

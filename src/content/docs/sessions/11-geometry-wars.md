@@ -71,7 +71,7 @@ flowchart LR
 _Step `GeometryWars0` onwards_
 
 Every entity is a bag of components, composed in one place, `EntityFactory`. There is no
-class per enemy type: an enemy is an entity with the components it needs. Each component
+class per enemy type. An enemy is an entity with the components it needs. Each component
 represents one clear capability, such as `Health`, `FaceVelocity`, `ApplyMovementInput` or
 `TakeDamageOnBulletCollision`.
 
@@ -102,9 +102,9 @@ In the codebase: `GARCore/ECS/Entity.cs`, `GARCore/ECS/Components/Component.cs`,
 
 _Steps `GeometryWars0` → `GeometryWars4`_
 
-Not all behaviour fits in a component. A component is about **its owner**: its own state,
-and what happens to it. But some rules span **many entities** or the **whole run**: which
-pairs of entities collide, when the next enemies spawn, what happens to the arena when the
+Not all behaviour fits in a component. A component is about **its owner**, its own state
+and what happens to it. But some rules span **many entities** or the **whole run**, such as
+which pairs of entities collide, when the next enemies spawn, what happens to the arena when the
 player dies. Putting those in a component means one entity reaching into all the others.
 They belong in **systems**.
 
@@ -117,16 +117,16 @@ A rule of thumb from the codebase:
 | | needs a central order, or processes entities in bulk |
 | `Health`, `Weapon`, `FaceVelocity`, `SeekTarget` | `CollisionSystem`, `EnemyDirector`, `BulletSpawner`, `PlaySession` |
 
-For example, `BeginRespawnOnLethalCollision` is a component: it only decides when _its_
+For example, `BeginRespawnOnLethalCollision` is a component. It only decides when _its_
 player has taken a lethal hit. `PlaySession` handles the consequences for the whole arena
 (clearing enemies, resetting spawning), because those are rules of the run, not of the
 player.
 
 The **particles** (`GeometryWars3`) are the extreme case. Thousands of short-lived sparks
-aren't entities with components at all: one `ParticleManager` system owns all of them and
-updates them in bulk. The spring **grid** (`GeometryWars4`) goes the same way: its points
-live in flat arrays and are updated in tight loops, for speed. A game can mix the two
-styles: components where clarity matters, and flat data where there are thousands of
+aren't entities with components at all. One `ParticleManager` system owns all of them and
+updates them in bulk. The spring **grid** (`GeometryWars4`) goes the same way, with its
+points in flat arrays updated in tight loops, for speed. A game can mix the two styles,
+using components where clarity matters and flat data where there are thousands of
 something. Flat data is the start of data-oriented design, which
 [Vampire Survivors](../12-vampire-survivors/) uses for its whole swarm.
 
@@ -145,18 +145,18 @@ The architecture above gives every kind of code a home:
 5. Behaviour across entities: a system.
 
 :::note[ECS]
-Taken to the end, this becomes an **Entity Component System**: entities are only IDs,
-components are pure data, and all behaviour lives in systems. Geometry Wars is a hybrid:
-components may contain behaviour, as long as it is local to one entity.
+Taken to the end, this becomes an **Entity Component System**. Entities are only IDs,
+components are pure data, and all behaviour lives in systems. Geometry Wars is a hybrid, in
+which components may contain behaviour, as long as it is local to one entity.
 :::
 
 ## Dependency Injection
 
 _Step `GeometryWars0` onwards_
 
-Components need shared services: the input, the assets, the audio, the frame time.
+Components need shared services, like the input, the assets, the audio and the frame time.
 [Pokemon](../10-pokemon/#service-locator) found them through a Service Locator. Geometry
-Wars **passes them in**: `Game1` creates the services once, bundles them in a
+Wars **passes them in** instead. `Game1` creates the services once, bundles them in a
 `PlayContext`, and hands it to the code that builds and runs gameplay.
 
 ```csharp title="PlayContext.cs"
@@ -176,7 +176,7 @@ public sealed class PlayContext
 }
 ```
 
-- **Explicit:** a constructor shows exactly what a class depends on.
+- **Explicit:** a constructor shows what a class depends on.
 - **Testable:** a test can pass in its own services, including fakes (see below).
 - **The cost:** everything that needs a service must be given it, so the context is passed
   through several layers.
@@ -197,7 +197,7 @@ _Project `GeometryWars.Tests`_
 In [Sokoban](../04-sokoban/#unit-tests), `Level` needed nothing, so testing it was easy. Most
 code needs something. `AwardScoreOnDestroyed` needs a score tracker, and the real one saves
 a high-score file and belongs to a whole play session. But the component doesn't create it
-or look it up: it gets an `IScoreTracker` in its constructor. So a test can hand it a
+or look it up. It gets an `IScoreTracker` in its constructor, so a test can hand it a
 **fake**, a small class that only records what it was asked to do:
 
 ```csharp title="FakeScoreTracker.cs"
@@ -249,7 +249,7 @@ run `dotnet test`. How would the test look if `AwardScoreOnDestroyed` used `Loca
 _Step `GeometryWars1`_
 
 Geometry Wars fires 20 bullets per second, and makes 30 particles per hit and 50 debris
-pieces per enemy: thousands of short-lived allocations per second. In C#, every `new` object will
+pieces per enemy. That is thousands of short-lived allocations per second. In C#, every `new` object will
 eventually be collected by the garbage collector, and GC pauses are unpredictable. A
 stutter every few seconds is the telltale sign of allocation in a hot loop.
 
@@ -394,7 +394,7 @@ entities.
 <details>
 <summary>What does dependency injection give you that a Service Locator doesn't?</summary>
 
-The dependencies are explicit: a constructor shows what a class needs, and a test can pass
+The dependencies are explicit. A constructor shows what a class needs, and a test can pass
 in a replacement. The cost is that services must be passed through every layer that needs
 them.
 

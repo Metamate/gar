@@ -57,15 +57,15 @@ solid walls and corners around the edge, and a floor of random floor tiles (`Zel
 come the player (`Zelda1`), enemies (`Zelda2`), and doorways and objects such as the switch
 that opens the doors (`Zelda4`).
 
-In a top-down game, the player's sprite is taller than the part that collides: the sprite is
+In a top-down game, the player's sprite is taller than the part that collides. The sprite is
 drawn a few pixels above its collision box, so the character looks like it stands _on_ the
 floor.
 
 The rooms' tiles and the XML files refer to tiles by their number in the sprite sheet
 (`frames="9,10,11,10"`). Nobody can read those numbers off an image, so the repo has a small
 tool, `LabelTiles`, that writes each tile's number onto a copy of a sheet. Small throwaway
-tools like this, which the game never uses, are common in game projects: they make working
-with data practical.
+tools like this, which the game never uses, are common in game projects, because they make
+working with data practical.
 
 ## Hitboxes & Hurtboxes
 
@@ -77,7 +77,7 @@ _Step `Zelda3`_
 Keeping them separate means the sword's reach and the enemy's body don't have to match
 the sprite. The player's hurtbox is only the lower half of its sprite, its feet, which suits
 the top-down look. The sword's hitbox is a rectangle in front of the player, built when the
-swing starts. The swing is a state: it checks the hitbox against the enemies every frame,
+swing starts. The swing is a state. It checks the hitbox against the enemies every frame,
 and ends when its one-shot animation has played once.
 
 **Where does collision live?** There is no central collision system. Each kind of
@@ -90,8 +90,8 @@ collision is checked where the knowledge it needs already is:
 | Sword and enemy | The sword-swing state | It belongs to the swing and its timing |
 | Entity and wall | The walk state | Stopping at walls is part of moving |
 
-That trades a single overview for locality: reading a state or a room method shows exactly
-what that interaction does. Compare it with the dedicated collision system in
+That trades a single overview for locality. Reading a state or a room method shows what
+that interaction does. Compare it with the dedicated collision system in
 [Geometry Wars](../11-geometry-wars/), which has far more things colliding.
 
 **Try it** (`Zelda7`): make the sword reach twice as far in `GameSettings`, and play. Does it
@@ -126,7 +126,7 @@ room.OnPlayerDied += () => OnPlayerDied?.Invoke();
 Games are full of moments where something happens and other things need to react. The
 thing that happened shouldn't need to know what those other things are.
 
-**Observer** flips the dependency around: the _subject_ (publisher) just announces that
+**Observer** flips the dependency around. The _subject_ (publisher) just announces that
 something happened, and any number of _observers_ (subscribers) react.
 
 ```mermaid
@@ -162,7 +162,7 @@ obj.OnCollide?.Invoke();                         // call all of them
 
 ### Events
 
-An `event` is a delegate with guardrails: outside code can only `+=` and `-=`. Only the
+An `event` is a delegate with guardrails, and outside code can only `+=` and `-=`. Only the
 owning class can invoke it or replace its subscribers.
 
 ```csharp
@@ -215,11 +215,11 @@ Which classes did you change, and which didn't need to know?
 Events are handled immediately, inside the publisher's call. An **event queue** stores
 them instead, and handles them later, at a safe point, such as once per frame. That
 decouples the sender from the receiver _in time_ as well, and avoids the re-entrancy
-pitfall above: nothing is handled while the publisher is still busy. You've built a small
+pitfall above, since nothing is handled while the publisher is still busy. You've built a small
 one already: [Snake](../03-snake/#input-buffering) queues the player's turns and handles one
 per tick.
 
-The classic example is audio: many parts of the game ask for sounds, and the audio system
+The classic example is audio. Many parts of the game ask for sounds, and the audio system
 plays them in one place, once per frame, merging duplicates. That is one of the exercises
 below. In [Angry Birds](../08-angry-birds/#contact-events), you'll meet a queue that a library
 keeps for you.
@@ -262,7 +262,7 @@ ends, `FinishShift` makes the new room the current room and resets the camera. T
 doesn't keep a progress variable or check whether the scroll is done; the tween system
 keeps the timing.
 
-**Try it** (`Zelda7`): make the room shift take twice as long. Then give it an ease-out: in
+**Try it** (`Zelda7`): make the room shift take twice as long. Then give it an ease-out. In
 `Dungeon`, pass `1 - (1 - t) * (1 - t)` to `Vector2.Lerp` instead of `t`. How does the
 scroll feel now?
 
@@ -275,7 +275,7 @@ fixes this with the **stencil buffer**: an extra per-pixel mask, next to the col
 pixel. The dungeon draws in three passes:
 
 1. The rooms and everything in them, as usual.
-2. A rectangle over each door arch, with colour writes switched off: it draws nothing you
+2. A rectangle over each door arch, with colour writes switched off. It draws nothing you
    can see, but writes 1 into the stencil buffer there.
 3. The player again, only where the stencil is still 0.
 
@@ -298,7 +298,7 @@ spriteBatch.End();
 
 _Steps `Zelda1`, `Zelda2` and `Zelda4`_
 
-Enemies and game objects are defined in XML, not in C#:
+Enemies and game objects are defined in XML:
 
 ```xml
 <Enemy type="skeleton" width="16" height="16" walkSpeed="20" health="1">
@@ -307,9 +307,9 @@ Enemies and game objects are defined in XML, not in C#:
 </Enemy>
 ```
 
-Adding a new enemy type means one `<Enemy>` block plus a sprite sheet row: no new class.
+Adding a new enemy type means one `<Enemy>` block plus a sprite sheet row, and no new class.
 The C# code only knows animation _names_ like `walk-down`, never frame numbers. Objects work
-the same way: a switch's states (`unpressed`, `pressed`) and their frames come from
+the same way. A switch's states (`unpressed`, `pressed`) and their frames come from
 `object_definitions.xml`, and each doorway's tiles from `door_layouts.xml`. Content lives in
 data and behaviour in C#. [Angry Birds](../08-angry-birds/) builds its levels from data in
 the same way, and [Plants vs. Zombies](../09-plants-vs-zombies/) a whole game, with the Type
@@ -320,7 +320,7 @@ Object pattern.
 _Steps `Zelda1` → `Zelda4`_
 
 The player and the enemies share an abstract `Entity` base class. It provides what every
-creature needs: a position and a collision box, a sprite offset for the top-down look,
+creature needs, which is a position and a collision box, a sprite offset for the top-down look,
 animations, health, invulnerability after a hit, and a current state. `Player` and `Enemy`
 inherit it and add their own parts.
 
@@ -352,7 +352,7 @@ to one of two problems:
 - **A bloated base class:** the shared behaviour moves up into `Entity`, until every entity
   carries every feature, used or not.
 
-**Composition** is the alternative: an object _has_ behaviours instead of _being_ a kind of
+**Composition** is the alternative. An object _has_ behaviours instead of _being_ a kind of
 something. Zelda already composes in three places we have seen:
 
 - **Behaviour in state objects:** an enemy's AI lives in the state object it currently
@@ -389,7 +389,7 @@ must have no reference to the class reacting to it.
   Where in the frame do the sounds play, and what do you give up?
 
 **Composition:** sketch the class hierarchy you would need for enemies that can walk, fly,
-shoot or explode, in any combination. Then sketch the same with composition: which parts
+shoot or explode, in any combination. Then sketch the same with composition. Which parts
 would an enemy _have_? Implement one of them (e.g. a shooting behaviour that any enemy can
 be given).
 
@@ -398,7 +398,7 @@ be given).
 - Some enemies drop a key when they die. Use an event for it, as above. The key is drawn
   in `hearts.png` (its last frame, `frame_6`).
 - Some doorways are locked. Add `locked` layouts to `door_layouts.xml`, so the look stays in
-  data: a closed door's four tiles, plus a padlock on top. The padlock is drawn over four
+  data, as a closed door's four tiles with a padlock on top. The padlock is drawn over four
   tiles of the tilesheet: 243 (top left), 244 (top right), 245 (bottom left) and 246
   (bottom right).
 - Walking into a locked door with a key uses up the key and opens the door for good. Show
@@ -409,7 +409,7 @@ be given).
 ## Apply It to Your Project
 
 - What are the meaningful moments in your game that other systems might care about? Map
-  out at least two: what fires the event, and what should react?
+  out at least two. What fires the event, and what should react?
 - Is there anywhere a class knows too much about another class? Could an event fix that?
 - Where does your game use inheritance? For each subclass, is it _what something is_ or
   _what it can do_?
@@ -420,7 +420,7 @@ be given).
 <summary>When does inheritance fit, and when is composition better?</summary>
 
 Inheritance fits when there is one clear "is a" axis and the shared behaviour is needed by
-every subclass. Composition fits when behaviours combine freely: instead of one subclass
+every subclass. Composition fits when behaviours combine freely. Instead of one subclass
 per combination, an object has the parts it needs, and they can even change at runtime.
 
 </details>

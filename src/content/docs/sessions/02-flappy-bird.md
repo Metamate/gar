@@ -27,7 +27,7 @@ interfaces and the Singleton pattern.
 **Source code:**
 [gar-games/02-flappy-bird](https://github.com/Metamate/gar-games/tree/main/02-flappy-bird). Its README
 lists the steps (`Flappy0` to `Flappy12`), maps the code, and says how to run it. You build
-most of them in the exercises below; three stretches are shown in class: images and parallax
+most of them in the exercises below. Three stretches are shown in class, namely images and parallax
 (`Flappy1` and `Flappy2`), procedural generation (`Flappy6` and `Flappy7`), and states that pass
 data and count down (`Flappy10` and `Flappy11`). Compare your solution with the matching step,
 and neighbouring steps to see what changed.
@@ -46,7 +46,7 @@ and neighbouring steps to see what changed.
 ## Game Architecture
 
 Good software architecture makes **change** cheap. Much of that comes from
-**decoupling**: when you change one part of the code, you shouldn't have to understand or
+**decoupling**. When you change one part of the code, you shouldn't have to understand or
 touch many other parts.
 
 - **Coupling:** how much one module depends on another. Aim for low.
@@ -83,7 +83,7 @@ classDiagram
     note for Game1 "Flappy project"
 ```
 
-From now on we ask the same question in every session: does this code belong to the
+From now on we ask the same question in every session. Does this code belong to the
 game, or to the core?
 
 ## Images & Parallax Scrolling
@@ -125,8 +125,8 @@ _Steps `Flappy5` → `Flappy7`_
 
 Instead of designing levels by hand, we generate them with code. `Flappy6` spawns a pipe every
 2 seconds at a random height, scrolling at the ground's speed. `Flappy7` wraps two pipes in a
-`PipePair` with a 90-pixel gap, and lets the gap drift: each pair's height is the previous
-pair's, plus a small random step, clamped to the screen. Pairs that scroll off-screen are
+`PipePair` with a 90-pixel gap, and lets the gap drift. Each pair's height is the previous
+pair's plus a small random step, clamped to the screen. Pairs that scroll off-screen are
 flagged and removed.
 
 **Try it** (`Flappy7`): make the gap 60 pixels and spawn a pair every 1.5 seconds. Is it still
@@ -201,7 +201,7 @@ clean).
 _Steps `Flappy9` → `Flappy11`_
 
 `Flappy10` scores a point for each pair the bird passes, and adds a `ScoreState`. The score
-state needs the score, which belongs to the play state: it reads it through the state machine
+state needs the score, which belongs to the play state, so it reads it through the state machine
 (`game.GameState.PlayState.Score`). `Flappy11` adds a `CountdownState` between the title or
 score and play: 3, 2, 1, then play.
 
@@ -300,8 +300,8 @@ cleanup.
 <details>
 <summary>What happens if you forget to call Exit() when switching state?</summary>
 
-Anything the old state set up is never cleaned up: music keeps playing, event
-subscriptions stay alive, timers keep running.
+Anything the old state set up is never cleaned up. Music keeps playing, event
+subscriptions stay alive and timers keep running.
 
 </details>
 
@@ -309,7 +309,7 @@ subscriptions stay alive, timers keep running.
 <summary>Why is Singleton considered an anti-pattern by many game programmers?</summary>
 
 It is global state. It hides dependencies, couples code together and makes testing and
-reasoning harder, and games rarely need the "exactly one instance" guarantee.
+reasoning harder, and games rarely need the guarantee of a single instance.
 
 </details>
 

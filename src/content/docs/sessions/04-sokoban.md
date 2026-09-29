@@ -36,7 +36,7 @@ the steps that introduce it; compare neighbouring steps to see what changed.
 
 - [Command](https://gameprogrammingpatterns.com/command.html) (the whole chapter, including
   undo and redo)
-- No reading on testing: this session introduces it from the start.
+- No reading on testing. This session introduces it from the start.
 
 ## Levels as Data
 
@@ -73,7 +73,7 @@ content.IncludeCopy<WildcardRule>("*.txt");
 using Stream stream = TitleContainer.OpenStream(Path.Combine(Content.RootDirectory, "levels/level1.txt"));
 ```
 
-`Sokoban0` draws the level straight from the text: for each character, pick a tile. It
+`Sokoban0` draws the level straight from the text, picking a tile for each character. It
 works, but the text is the only state. To move the player, we would have to edit
 characters in strings, and every question ("is there a wall here?", "is the level
 solved?") would be a question about characters.
@@ -179,12 +179,12 @@ when all boxes but one are on goals. Which class did each change need?
 
 _Project `Sokoban.Tests`_
 
-So far, the only way to check the rules is to play: start the game, walk into a box, and
-look. That is slow, it is easy to skip a case (a box against another box?), and every
+So far, the only way to check the rules is to play. You start the game, walk into a box,
+and look. That is slow, it is easy to skip a case (a box against another box?), and every
 change to the code means playing it all again.
 
 A **unit test** is a small piece of code that checks one thing about your code
-automatically: it sets up a situation, does one thing, and checks the result. A test
+automatically. It sets up a situation, does one thing, and checks the result. A test
 passes or fails, and hundreds of them run in about a second. Whenever you change the code,
 you run the tests again, and they tell you at once if something that used to work is now
 broken.
@@ -192,8 +192,8 @@ broken.
 ### A test needs code that can be tested
 
 Try to test a rule written inside `Game1.Update`. To call it, you would need a window, a
-graphics device, the content, and a real key press. That's why the split in `Sokoban1`
-matters: `Level` needs none of those. A test can create a level from a string and move the
+graphics device, the content, and a real key press. The split in `Sokoban1` matters
+because `Level` needs none of those. A test can create a level from a string and move the
 player with a method call.
 
 ### The test project
@@ -249,13 +249,13 @@ public class LevelTests
 - **`[Fact]`** marks a method as a test. xUnit runs every method marked with it.
 - **The name** says what the test checks, in plain words. When a test fails, its name is
   the first thing you see.
-- **Arrange, act, assert:** most tests have these three parts. Keep them short: one
-  situation, one action.
+- **Arrange, act, assert:** most tests have these three parts. Keep them short, with one
+  situation and one action.
 - **`Assert.Equal(expected, actual)`** fails the test when the two values differ. There
   are others, like `Assert.True` and `Assert.False`.
 
 The corridor level is written right in the test, in the same text format as the level
-files. Each test builds exactly the small level it needs, so it's clear what is being
+files. Each test builds the small level it needs, so it's clear what is being
 tested.
 
 ### Running the tests
@@ -294,9 +294,9 @@ message.
 
 ### What to test
 
-Test the **rules**: the code that decides what happens. In Sokoban, that's moving,
+Test the **rules**, the code that decides what happens. In Sokoban, that's moving,
 pushing, being blocked, solving a level, and (later) undo and redo. Don't unit-test
-drawing: whether a level _looks_ right is easier to check by looking at it.
+drawing. Whether a level _looks_ right is easier to check by looking at it.
 
 `Sokoban.Tests` tests the finished game, `Sokoban4`. The tests for `Level` would work on
 `Sokoban1` just as well, since the rules haven't changed since then. When undo arrives in
@@ -373,9 +373,9 @@ move's direction in the window title. To undo a move, what else would it need to
 
 _Step `Sokoban3`_
 
-To be undone, a command must remember enough to reverse exactly what it did. Moving the
-player back is not enough: if the move pushed a box, the box must be pulled back too. So
-`MoveCommand` remembers the `MoveResult`:
+To be undone, a command must remember enough to reverse what it did. Moving the player
+back is not enough, because if the move pushed a box, the box must be pulled back too.
+`MoveCommand` therefore remembers the `MoveResult`:
 
 ```csharp title="MoveCommand.cs"
 public class MoveCommand(Level level, Point direction) : ICommand
@@ -437,13 +437,13 @@ public void Redo()
 ```
 
 `Z` undoes and `Y` redoes. The move counter is now simply the number of commands on the
-undo stack. `UndoTests.cs` in `Sokoban.Tests` checks that undo and redo restore the
-level exactly.
+undo stack. `UndoTests.cs` in `Sokoban.Tests` checks that undo and redo bring back
+the level as it was.
 
 There are two ways to undo:
 
 - **Reverse the command** (as here): each command knows its own opposite. It's cheap, but
-  every command must get its undo exactly right.
+  every command must get its undo right.
 - **Save snapshots**: store a copy of the state before each command, and restore it. It's
   simple and always correct, but costs memory for large states.
 
@@ -452,9 +452,9 @@ the commands' changes are worth storing.
 
 ### Commands and input
 
-_Game Programming Patterns_ opens its Command chapter with input, not undo: each button
+_Game Programming Patterns_ opens its Command chapter with input rather than undo. Each button
 holds a command, and **rebinding** a button means giving it a different one. Our
-`GameController` already names actions instead of keys, but the mapping is code: to let a
+`GameController` already names actions instead of keys, but the mapping is code. To let a
 player choose their keys, it has to become data, which the game can change while it runs,
 read from a settings file, or fill from an options screen:
 
@@ -480,7 +480,7 @@ private void HandleInput()
 
 A key picks which command to make, and each press still makes a new `MoveCommand`: the
 history keeps every one, so each move needs its own object to be undone. The book makes the
-same point: when commands can be undone, the input handler hands out a new command each time.
+same point. When commands can be undone, the input handler hands out a new command each time.
 
 **Try it** (`Sokoban4`): replace the four move lines in `HandleInput` with the dictionary. Then
 add a key that swaps the up and down bindings while you play. What did you change, and what
@@ -512,7 +512,7 @@ Start from `Sokoban4`.
 5. **Restart as a command:** make `R` a command too, so a restart can be undone. What must
    it remember?
 6. **Snapshot undo (stretch):** replace `CommandHistory` with a history of `Level`
-   snapshots. Compare the two: code, memory, and how easy each is to get wrong.
+   snapshots. Compare the two for code, memory, and how easy each is to get wrong.
 
 ## Apply It to Your Project
 

@@ -41,8 +41,8 @@ to see what changed.
 
 Snake uses the same [content builder](../01-pong/#content-pipeline) as Pong and Flappy Bird,
 with all steps sharing one assets folder, `Content/Assets`. Next to the images, it contains
-XML files that _describe_ the assets: which part of the image is the snake, how its
-animation runs, and which tile goes where in the room. The builder copies those files as
+XML files that _describe_ the assets. They say which part of the image is the snake, how
+its animation runs, and which tile goes where in the room. The builder copies those files as
 they are, because our own code reads them:
 
 ```csharp title="Builder.cs"
@@ -177,12 +177,12 @@ The room is data too. A tilemap definition lists which tile of the atlas goes in
 ```
 
 GARCore's `Tilemap.FromFile` reads it into a flat array of tile numbers, one per cell, row
-after row: the cell in column `x` and row `y` is at index `y * Columns + x`. To draw the room,
+after row. The cell in column `x` and row `y` is at index `y * Columns + x`. To draw the room,
 the tilemap goes through the array and draws each tile's region at a position worked out from
 its index. Sprites each keep their own position; tiles have theirs from the grid, and all of
 them come from one texture, so the whole room goes to the graphics card in one batch. A big
 level would only draw the cells on screen. Here the tilemap is only a
-picture: the walls are simply the cells outside the room's `Rectangle`. In
+picture, and the walls are simply the cells outside the room's `Rectangle`. In
 [Sokoban](../04-sokoban/), the grid becomes the game's state itself.
 
 **Try it** (`Snake4`): rearrange the room in `tilemap-definition.xml`. Then put a 20 in it:
@@ -192,7 +192,7 @@ what happens, and when?
 
 _Step `Snake5`_
 
-A snake doesn't glide: it jumps one cell at a time, several times per second, however fast
+A snake doesn't glide. It jumps one cell at a time, several times per second, however fast
 the game runs. The `Snake` class keeps its body as a list of **cells** (head first), and
 moves on a fixed **tick**:
 
@@ -212,11 +212,11 @@ public void Update(GameTime gameTime)
 ```
 
 This is the fixed timestep from [Pong](../01-pong/#fixed-vs-variable-timestep) in
-practice: an **accumulator** collects real time, and the simulation advances in fixed-size
+practice. An **accumulator** collects real time, and the simulation advances in fixed-size
 steps. Subtracting (instead of resetting `_elapsed` to zero) keeps the leftover time, so the
 ticks stay evenly spaced.
 
-Moving is cheap on a grid: add a new head in the current direction and remove the tail.
+Moving is cheap on a grid. Add a new head in the current direction and remove the tail.
 
 ## Input as Actions
 
@@ -279,8 +279,8 @@ A new turn is checked against the _last buffered_ direction, not the current one
 combination of quick key presses can reverse the snake. The buffer is kept short (two
 turns), so the snake never acts on presses the player has long forgotten.
 
-Many games buffer input like this: a jump pressed just before landing, or a combo pressed
-slightly early, still counts.
+Many games buffer input like this, so that a jump pressed just before landing, or a combo
+pressed slightly early, still counts.
 
 **Try it** (`Snake7`): make the snake twice as fast, and add I, J, K and L as a third set
 of keys. Which file did each change need? Then press two turns within one tick, in `Snake6`
@@ -310,7 +310,7 @@ Both the snake's head and the mouse expose their `Bounds` as a `Circle`.
 
 **Collision response** is what happens _after_ a hit:
 
-- **Triggering:** something happens. The snake eats the mouse and grows: on its next move,
+- **Triggering:** something happens. The snake eats the mouse and grows. On its next move,
   it keeps its tail.
 - **Bouncing:** reflect the velocity off the surface. The mouse uses `Vector2.Reflect` with
   the wall's normal.
@@ -335,8 +335,8 @@ if (!_room.Contains(_snake.Head) || _snake.IsBitingItself)
 
 Start from `Snake9`.
 
-1. **Data, not code:** the atlas image also holds a beetle the game doesn't use yet: two
-   frames, at (40, 20) and (60, 0). Describe it in `atlas-definition.xml` (two regions and a
+1. **A beetle from data:** the atlas image also holds a beetle the game doesn't use yet,
+   with two frames at (40, 20) and (60, 0). Describe it in `atlas-definition.xml` (two regions and a
    `beetle-animation`), and make the snake chase a beetle instead of a mouse. How much C# did you
    need to change? And for a beetle _next to_ the mouse: what in `Game1` would have to change,
    and what does that say about where the mouse's rules live?

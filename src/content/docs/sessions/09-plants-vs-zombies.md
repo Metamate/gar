@@ -85,7 +85,7 @@ player sees what a click will do.
 
 _Step `Pvz1`_
 
-`Pvz1` is a working game, built the way you might start: a class per kind of thing.
+`Pvz1` is a working game, built the way you might start, with a class per kind of thing.
 
 ```mermaid
 classDiagram
@@ -141,8 +141,8 @@ _Step `Pvz2`_
 > Allow a single entity to span multiple domains without coupling the domains to each
 > other. _(Game Programming Patterns)_
 
-An **entity** is just a container: a position, a row, and a list of **components**. Each
-component is one ability: `Health`, `Shooter`, `SunProducer`, `Walker`, `Eater`,
+An **entity** is just a container, holding a position, a row, and a list of
+**components**. Each component is one ability, such as `Health`, `Shooter`, `SunProducer`, `Walker`, `Eater`,
 `Armour`, `SpriteRenderer`. An entity does what its components do.
 
 ```csharp title="Entity.cs"
@@ -192,7 +192,7 @@ classDiagram
     Component <|-- Collectible
 ```
 
-There are no classes for plants or zombies any more. Each kind of thing is a **recipe**: a
+There are no classes for plants or zombies any more. Each kind of thing is a **recipe**, a
 list of components.
 
 ```csharp title="Recipes.cs"
@@ -241,7 +241,7 @@ Components are small and separate, but an entity's parts still need each other:
 A component only depends on the components it uses, not on what kind of entity it's in.
 `Walker` works on any entity; if the entity has no `Eater`, it just keeps walking.
 
-The world got simpler too. It doesn't know what a peashooter or a sun is: one loop updates
+The world got simpler too. It doesn't know what a peashooter or a sun is. One loop updates
 every entity, and one loop draws them. It keeps plants, zombies and everything else apart
 only so that components can ask it questions ("the first zombie ahead in row 2").
 
@@ -343,8 +343,8 @@ public class PlantType
   compiling anything.
 - **New abilities with a little code.** The Cherry Bomb explodes, which no component did.
   It took one new component (`Explode`), one new property on `PlantType`, and the data.
-  Components and Type Object work together: components are the building blocks, the types
-  are the data that combines them.
+  Components and Type Object work together. Components are the building blocks, and the
+  types are the data that combines them.
 
 **Try it** (`Pvz3`): in `plants.json`, make a Wall-nut that costs 25 with twice the health,
 and a Sunflower that makes 50 sun. Did you compile anything?

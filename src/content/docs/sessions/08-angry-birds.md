@@ -57,10 +57,10 @@ package:
 Box2D simulates a **world** of **bodies**. Each body has one or more **shapes** (boxes,
 circles, polygons), with a density, friction and bounciness. There are three types of body:
 
-- **Static** bodies never move: the ground, walls.
+- **Static** bodies never move, like the ground and walls.
 - **Kinematic** bodies move at the velocity you give them, push dynamic bodies, and are never
-  pushed back: a moving platform.
-- **Dynamic** bodies are moved by gravity and collisions: everything else.
+  pushed back. A moving platform is one.
+- **Dynamic** bodies are moved by gravity and collisions. That is everything else.
 
 You **step** the world forward in time, and read where the bodies ended up.
 
@@ -68,7 +68,7 @@ You **step** the world forward in time, and read where the bodies ended up.
 
 _Project `PhysicsSamples`_
 
-Next to the steps, `PhysicsSamples` shows one idea per scene: the three body types, bounce
+Next to the steps, `PhysicsSamples` shows one idea per scene. There are the three body types, bounce
 (restitution), friction, density, sleeping (bodies at rest stop being simulated until
 something touches them), and **joints**, which hold two bodies together:
 
@@ -78,7 +78,7 @@ something touches them), and **joints**, which hold two bodies together:
 
 Keys 1 to 6 choose a scene, a click drops a box, Space drops a
 ball, and R starts the scene again. The samples go through the game's own facade, and draw
-with its debug view: static bodies orange, kinematic magenta, dynamic green, blue when
+with its debug view, with static bodies orange, kinematic magenta, dynamic green, blue when
 asleep, and joints yellow. Run them with `dotnet run --project PhysicsSamples`.
 
 **Try it** (`PhysicsSamples`): make the platform in the first scene move up and down instead
@@ -107,12 +107,12 @@ private void AddBox(float x, float y, float width, float height, string sprite)
 
 It works, but `Game1` now has to know a lot about Box2D:
 
-- **A foreign API.** Box2D is written in C, and the port keeps its style: functions like
+- **A foreign API.** Box2D is written in C, and the port keeps its style, with functions like
   `b2CreateBody` instead of methods, structs passed with `in`, and IDs (`B2BodyId`)
   instead of objects.
 - **Another world's units.** Box2D works in **metres**, with **y pointing up**. Our game
   works in **pixels**, with y pointing down. So every position that crosses between the
-  two is divided or multiplied by `PixelsPerMeter`, and its y is flipped: when creating a
+  two is divided or multiplied by `PixelsPerMeter`, and its y is flipped. That happens when creating a
   body, when launching the bird, and every frame when drawing. Box2D also turns
   counter-clockwise, and SpriteBatch clockwise. Forget one conversion, and a body appears
   in the wrong place, or falls up.
@@ -122,7 +122,7 @@ It works, but `Game1` now has to know a lot about Box2D:
 
 Box2D is made for scale: 1 unit should be about 1 metre, and objects should be roughly 0.1
 to 10 units in size. In pixels, a 50-pixel block would be a 50-metre block, and it would
-fall as slowly as a building. That's why the conversion is needed at all.
+fall as slowly as a building, which is why the conversion is needed at all.
 
 **Try it** (`Birds0`): change `PixelsPerMeter` from 50 to 10. How many lines use it, and
 how do the blocks fall now?
@@ -171,11 +171,11 @@ classDiagram
 Two patterns are at work here:
 
 - An **Adapter** converts the interface of a class into the interface its users expect.
-  `PhysicsBody` wraps a `B2BodyId`, and gives the game what it wants: a position in pixels,
+  `PhysicsBody` wraps a `B2BodyId`, and gives the game what it wants, which is a position in pixels,
   a rotation that turns the same way as SpriteBatch, a velocity it can set.
 - A **Facade** puts one simple interface in front of a complicated subsystem. Box2D has
-  hundreds of functions; the game needs a handful. `PhysicsWorld` offers exactly those:
-  create a box, create a circle, step, destroy.
+  hundreds of functions; the game needs a handful. `PhysicsWorld` offers only those, to
+  create a box, create a circle, step, and destroy.
 
 ```csharp title="PhysicsBody.cs"
 public sealed class PhysicsBody
@@ -229,7 +229,7 @@ This gives us:
 
 The cost is that every Box2D feature the game needs later (joints, raycasts, sensors) has
 to be added to the facade first. That is on purpose, but it is extra work. Kinematic bodies
-and joints are examples: the game didn't need them, the physics samples did, so `CreateBox`
+and joints are examples. The game didn't need them, but the physics samples did, so `CreateBox`
 got a `BodyType` instead of an `isStatic` flag, and `PhysicsWorld` got `Weld`, `Hinge` and
 `Rope`, in pixels like everything else. Wrap a library when it's foreign to your code, when you might swap it, or when you use a small
 part of it. A library that already fits your code, like MonoGame itself, doesn't need it.
@@ -242,9 +242,9 @@ touch this time?
 
 ### Who owns the position?
 
-A block now exists twice: as an `Entity` in our game, and as a body in the physics world.
+A block now exists twice, as an `Entity` in our game and as a body in the physics world.
 Two copies of the same position would drift apart, so one of them must own it. Here, the
-**physics world owns it**: an entity has no position of its own, and reads its body's
+**physics world owns it**. An entity has no position of its own, and reads its body's
 position every time it's drawn.
 
 ```csharp title="Entity.cs"
@@ -260,7 +260,7 @@ physics world reports something about a body, the game can find the entity it be
 
 ### Debug drawing
 
-`F1` draws what the physics world sees: every body's shape, in green while it's awake and
+`F1` draws what the physics world sees, meaning every body's shape, in green while it's awake and
 in blue when it's asleep (Box2D stops simulating bodies that have come to rest). It uses
 GARCore's `DebugDraw.Enabled` from [Super Mario Bros](../06-super-mario-bros/). When a
 sprite and its body don't line up, this is where you see it.
@@ -268,14 +268,14 @@ sprite and its body don't line up, this is where you see it.
 ### A fixed time step
 
 Box2D wants the same time step every time. `PhysicsWorld.Update` collects the frame time
-and steps the world in fixed steps of 1/60 second: the accumulator from
-[Snake](../03-snake/#fixed-tick-movement), again.
+and steps the world in fixed steps of 1/60 second. It is the accumulator from
+[Snake](../03-snake/#fixed-tick-movement) again.
 
 ## Contact Events
 
 _Step `Birds2`_
 
-Blocks should break, and pigs should pop. Box2D can report **hit events**: two shapes
+Blocks should break, and pigs should pop. Box2D can report **hit events**, for two shapes that
 touched at more than a certain speed. They're collected during the step, and read after it:
 an [event queue](../07-the-legend-of-zelda/#event-queue), as in Zelda, but kept inside the
 library. After each step, `PhysicsWorld` drains it and turns every hit into a C# event, in
@@ -300,7 +300,7 @@ private void RaiseHitEvents()
 }
 ```
 
-The game subscribes, and damages both entities: the faster the hit, the more damage. Glass
+The game subscribes, and damages both entities. The faster the hit, the more damage. Glass
 breaks easily, stone hardly at all. Box2D's own event types stay inside the facade; the game
 only ever sees `PhysicsBody`.
 
@@ -309,7 +309,7 @@ what breaks sooner?
 
 ### Destroying safely
 
-When an entity's health runs out, it must go: its body leaves the physics world, and the
+When an entity's health runs out, it must go. Its body leaves the physics world, and the
 entity leaves the game's list. The obvious place to do that is the hit handler, but the
 handler only damages the entities:
 
@@ -329,10 +329,10 @@ Destroying them here would cause two problems:
   one may be about the body you just destroyed. In many physics libraries (including older
   versions of Box2D), destroying a body during a callback crashes the game.
 - **You may be in the middle of a loop.** Removing an entity from a list while something is
-  looping over that list throws an exception, or skips an item: the re-entrancy
+  looping over that list throws an exception, or skips an item. This is the re-entrancy
   [pitfall](../07-the-legend-of-zelda/#pitfalls) from Zelda.
 
-So the handler only **marks** entities as destroyed, and they're removed later, when the
+The handler therefore only **marks** entities as destroyed, and they're removed later, when the
 step and all its hits are done:
 
 ```csharp title="Game1.cs"
@@ -369,7 +369,7 @@ sprite repeated:
 _entities.Add(new Block(_physics, new Vector2(880, 590), new Vector2(20, 100), 0, Materials.Wood, 8, 500, _atlas.GetRegion("wood-post")));
 ```
 
-A level designer thinks in _kinds_ of things: a wood post, a glass box, a big pig. And they
+A level designer thinks in _kinds_ of things, like a wood post, a glass box or a big pig. And they
 shouldn't need to write C# to build a level.
 
 > The Prototype pattern: specify the kinds of objects to create using a prototypical
@@ -421,19 +421,19 @@ Things to notice:
 
 - **`MemberwiseClone` makes a shallow copy.** Every field is copied, but a field that refers
   to an object copies the reference, not the object. The copy shares the prototype's
-  sprite, which is fine, because nobody changes a sprite. It must never share a _body_:
-  two blocks with one body would move as one. That's why `Clone` clears the body, and
+  sprite, which is fine, because nobody changes a sprite. It must never share a _body_,
+  because two blocks with one body would move as one. `Clone` clears the body, and
   `Spawn` creates a new one.
 - **Prototypes are instances, not classes.** A "big pig" isn't a subclass of `Pig`, but a
   `Pig` configured with a bigger radius and more health. A new kind of block is one line
   in `Prefabs`, not a new class.
 - **Anything can be a prototype.** You could clone a block that's already damaged, or a
-  pig with a helmet you configured in code. The copy starts out exactly like the original.
+  pig with a helmet you configured in code. The copy starts out the same as the original.
 - **The bird is a prefab too.** When you shoot, the game spawns `"bird"`. A different kind
   of bird would be another prototype.
 
 Prototype and Type Object (in [Plants vs. Zombies](../09-plants-vs-zombies/)) solve a
-similar problem: many kinds of things, without a class for each. Prototype copies a
+similar problem, many kinds of things without a class for each. Prototype copies a
 configured object; Type Object shares one object that describes a kind. We'll compare
 them there.
 
@@ -457,7 +457,7 @@ stateDiagram-v2
     LevelEnd --> Aim : Enter
 ```
 
-`FlyState` waits until the physics world has **settled**: every body has gone to sleep.
+`FlyState` waits until the physics world has **settled**, with every body asleep.
 The facade answers that question in one line (`IsSettled`), using Box2D's count of awake
 bodies.
 
@@ -530,7 +530,7 @@ looping over the list you remove from. Mark it, and remove it after the step.
 <details>
 <summary>What does a shallow copy share with the original, and why does that matter here?</summary>
 
-Every field that refers to an object: the copy points to the same object. Sharing an
+For every field that refers to an object, the copy points to the same object. Sharing an
 unchanging sprite is fine, but sharing a physics body would make two entities one. So the
 clone gets its own body.
 

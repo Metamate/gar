@@ -43,17 +43,17 @@ Take about 10 minutes with the finished game, `Pokemon4`:
 - Clone, build and play the game. Go through a few encounters to level up your monster.
 - How is the codebase split between the core library and the Pokemon-specific project?
 
-The rule of thumb for that split: a class that mentions monsters, grass, battles or
-levelling belongs to the game. A class you could use unchanged in another game (the state
+The rule of thumb for that split is simple. A class that mentions monsters, grass,
+battles or levelling belongs to the game. A class you could use unchanged in another game (the state
 stack, the tweens, a panel, a progress bar) belongs to GARCore.
 
 ## State Stack
 
 _Steps `Pokemon1` → `Pokemon2`_
 
-A finite state machine has exactly one current state. A **state stack** (a _pushdown
-automaton_) lets us **push** a state on top of others and **pop** it to return to exactly
-where we were.
+A finite state machine has one current state at a time. A **state stack** (a _pushdown
+automaton_) lets us **push** a state on top of others and **pop** it to return to where we
+were.
 
 - Only the **top** state receives `Update` (this could be changed if we wanted).
 - **All** states draw, bottom to top, so states underneath stay visible.
@@ -91,7 +91,7 @@ it, where does the game carry on, and what did `PlayState` need to know?
 _Step `Pokemon0` onwards_
 
 Pokemon leans heavily on the tween system from [Zelda](../07-the-legend-of-zelda/#screen-scrolling--tweening):
-walking between tiles, fades, the HP bar. A battle attack is a chain of tweens: pause →
+walking between tiles, fades, the HP bar. A battle attack is a chain of tweens, pause →
 lunge → hit sound → blink → HP bar drops. Each step's `.Finish()` starts the next, and a
 callback can push or pop a state, with no `if`/`else` chain.
 
@@ -126,10 +126,10 @@ For inspiration, see [Interface in Game](https://interfaceingame.com/games/).
 
 _Project `UiSamples`_
 
-Next to the steps, `UiSamples` puts the widgets on one screen, each on its own: a menu whose
+Next to the steps, `UiSamples` puts the widgets on one screen, each on its own. There is a menu whose
 options do something you can see, a panel, a progress bar that tweens to its new value, and
 a textbox that pages through a message. While the textbox is open, it has the input to
-itself and the menu waits: only one widget at a time listens to the keys, the one with the
+itself and the menu waits. Only one widget at a time listens to the keys, the one with the
 _focus_. The samples use the game's own widgets, so what you change there changes in the
 game too. Run them with `dotnet run --project UiSamples`.
 
@@ -139,9 +139,9 @@ red when it drops below a quarter. Which class did each change need?
 ### When to use a UI library
 
 Our widgets are small enough to read in one sitting, and building them shows what a UI
-needs: drawing, layout, input and focus. A library such as
+needs, which is drawing, layout, input and focus. A library such as
 [Gum](https://docs.monogame.net/articles/tutorials/building_2d_games/20_implementing_ui_with_gum)
-does all of that for you, and more: layouts that adapt to the screen, scrolling lists, text
+does all of that for you, and adds layouts that adapt to the screen, scrolling lists, text
 input, and a visual editor ([customizing it](https://docs.monogame.net/articles/tutorials/building_2d_games/21_customizing_gum_ui)).
 The cost is a dependency, and a way of working you have to learn. For your project, a few
 menus and bars are quick to build yourself; a settings screen or an inventory with
@@ -163,7 +163,7 @@ _Steps `Pokemon0`, `Pokemon2` and `Pokemon3`_
 
 - **Tile-based movement:** entities have a tile position (`MapX`/`MapY`, used for logic)
   and a pixel position (`X`/`Y`, tweened between tiles for smooth movement). The logic moves
-  first: a step sets the new tile at once, and the sprite catches up over half a second.
+  first. A step sets the new tile at once, and the sprite catches up over half a second.
   When it arrives, the walk state checks for an encounter, then keeps walking if a
   direction is still held.
 - **Random encounters:** each step in tall grass rolls for a battle. The transition (stop
@@ -181,7 +181,7 @@ Each phase of a battle is its own state, with one job:
 | `BattleMessageState` | A message on top, until the player confirms |
 
 Each class stays small because it has one reason to change, and none of them needs to know
-which state comes next: they push and pop.
+which state comes next. They only push and pop.
 
 ### RPG mechanics
 
@@ -216,14 +216,14 @@ SaveData loaded = JsonSerializer.Deserialize<SaveData>(File.ReadAllText(SavePath
 Save _data_, not objects. Store what you need to rebuild the game state (species name,
 level, current HP), not textures or references to other game objects.
 
-The game already reads its data this way: the JSON is deserialized into small `record`
-types that mirror the file's shape exactly, and the game builds its real objects from
-those. Records suit this: they are plain data, and their constructors match the JSON's
+The game already reads its data this way. The JSON is deserialized into small `record`
+types with the same shape as the file, and the game builds its real objects from those.
+Records suit this well, since they are plain data, and their constructors match the JSON's
 fields.
 
-Saving is also easy to get subtly wrong: a field you forgot to save only shows up the next
-time someone loads the game. A **round-trip test** catches it: save some data, load it back,
-and check that you got the same values. It's a unit test like the ones in
+Saving is also easy to get subtly wrong. A field you forgot to save only shows up the next
+time someone loads the game. A **round-trip test** catches it by saving some data, loading
+it back, and checking that you got the same values. It's a unit test like the ones in
 [Sokoban](../04-sokoban/#unit-tests), and it needs no window or battle, only the save data:
 
 ```csharp
@@ -244,7 +244,7 @@ public void A_saved_party_loads_back_the_same()
 
 _Steps `Pokemon0` and `Pokemon4`_
 
-In [Flappy Bird](../02-flappy-bird/#singleton-pattern), the audio was a Singleton: every
+In [Flappy Bird](../02-flappy-bird/#singleton-pattern), the audio was a Singleton, and every
 caller named the one concrete `Audio` class. Here, from `Pokemon0`, a locator hands out the
 tween manager and the game's assets. In `Pokemon4`, audio is added as one more service:
 every class that plays a sound asks the locator for an `IAudio`, and `Game1` registers the
@@ -277,10 +277,10 @@ Locator.Audio.PlayHit();
   swapped (e.g. a logging or muted audio service).
 - **Null object:** before a real service is registered, `NullAudio` (which does nothing)
   stands in, so callers never need null checks.
-- Dependencies are still hidden: you can't see from a constructor what a class uses.
+- Dependencies are still hidden. You can't see from a constructor what a class uses.
 
 **Try it** (`Pokemon4`): in `Game1`, provide a `NullAudio` instead of the `SoundManager`. The
-game runs silently: which other classes did you change? Then write a `LoggingAudio` that
+game runs silently. Which other classes did you change? Then write a `LoggingAudio` that
 prints each sound's name instead of playing it.
 
 MonoGame has a built-in locator, `Game.Services`
@@ -319,7 +319,7 @@ Start from `Pokemon4`.
 <details>
 <summary>When is a state stack better than a state machine that replaces states?</summary>
 
-When you need to return to a previous state exactly as you left it (a pause menu, a
+When you need to return to a previous state as you left it (a pause menu, a
 battle, a dialogue box), or draw several states on top of each other.
 
 </details>

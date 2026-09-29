@@ -61,11 +61,11 @@ public void Separate()
 }
 ```
 
-The weapons ask the swarm questions too: which enemy is nearest? Which enemies are inside
+The weapons ask the swarm questions too. Which enemy is nearest? Which enemies are inside
 the aura? Each question looks at every enemy.
 
 It plays fine at first. Press Space a few times to add a thousand enemies each time, and
-the game slows to a crawl. Before changing anything, we find out **why**: guessing is how
+the game slows to a crawl. Before changing anything, we find out **why**, because guessing is how
 you end up optimizing the wrong thing.
 
 **Try it** (on paper): with 2,000 enemies, how many pairs does `Separate` check each step? And with
@@ -102,14 +102,14 @@ Moving, the weapons and drawing are tiny in comparison. At 60 frames per second 
 | 5,000 | 12.5 million | 27 |
 | 10,000 | 50 million | 107 |
 
-Twice the enemies means four times the work: the cost grows with the **square** of the number
-of enemies, O(n²). No amount of tuning the inside of the loop fixes that.
+Twice the enemies means four times the work. The cost grows with the **square** of the
+number of enemies, O(n²). No amount of tuning the inside of the loop fixes that.
 
 (These numbers, and the ones below, are from one laptop, with a Release build. Yours will
 differ, but they should grow the same way. Measure with `dotnet run -c Release`: a Debug build is slower,
 and slower in different places.)
 
-The profiler also shows **allocations**: `Survivors0` allocates a little every frame,
+The profiler also shows **allocations**. `Survivors0` allocates a little every frame,
 because `Nearest` and `Within` use LINQ (`Where`, `OrderBy`, `ToList`), which creates new
 objects each call. Allocations cost time now and garbage collections later, which show up as
 stutters. The same profiling works on your own game, and bigger tools exist too (the
@@ -127,8 +127,8 @@ others.
 **Spatial partitioning** organizes objects by where they are, so that finding the ones near
 a point only looks near that point.
 
-The simplest version is a **uniform grid**: cut the world into square cells, and keep a list
-of the enemies in each cell. It's rebuilt after the enemies move, every step.
+The simplest version is a **uniform grid**. Cut the world into square cells, and keep a
+list of the enemies in each cell. It's rebuilt after the enemies move, every step.
 
 ```csharp title="SpatialGrid.cs"
 public void Add(int item, Vector2 position)
@@ -155,7 +155,7 @@ public void Query(Vector2 center, float radius, List<int> results)
 ```
 
 Now each enemy only checks the few enemies in the cells around it, and so do the weapons'
-questions. The work grows with the number of enemies, not with its square:
+questions. The work now grows with the number of enemies, instead of with its square:
 
 | Enemies | Every pair | Grid |
 | --- | --- | --- |
@@ -164,7 +164,7 @@ questions. The work grows with the number of enemies, not with its square:
 | 10,000 | 107 ms | 4.1 ms |
 | 20,000 | — | 14.5 ms |
 
-Notice the first row: with a thousand enemies, the grid is no faster. Building it costs
+Notice the first row. With a thousand enemies, the grid is no faster. Building it costs
 something, and for small numbers checking every pair is cheap. Spatial partitioning pays off
 when there are many objects, and it's more code to get right.
 
@@ -178,8 +178,8 @@ The grid fills the **same lists** every call (`_found`, `_nearby`) instead of ne
 
 ### Testing the grid
 
-An optimization has to give exactly the same answers as the slow, obvious code it replaces.
-That's easy to test: put thousands of random points in the grid, and compare every query
+An optimization has to give the same answers as the slow, obvious code it replaces.
+That's easy to test. Put thousands of random points in the grid, and compare every query
 with checking every point ([Sokoban](../04-sokoban/#unit-tests) introduced unit tests):
 
 ```csharp title="FlatGridTests.cs"
@@ -209,7 +209,7 @@ have tests of their own; those are where grids go wrong.
 
 _Step `Survivors3`_
 
-The grid fixed the algorithm. The next step is the **data**: how it's laid out in memory,
+The grid fixed the algorithm. The next step is the **data**, how it's laid out in memory
 and how the loops read it.
 
 ### Why memory layout matters
@@ -217,17 +217,17 @@ and how the loops read it.
 A CPU is much faster than its memory. To hide that, it reads memory in blocks (**cache
 lines**, usually 64 bytes) and keeps recently used blocks close by, in its **cache**.
 Reading data that's next to data you just read is almost free. Reading data somewhere else
-in memory means waiting for it: a **cache miss**.
+in memory means waiting for it, which is called a **cache miss**.
 
 A `List<Enemy>` is a list of references. Each `Enemy` object lives somewhere on the heap,
 with its own header, and each enemy's `Kind` is another object somewhere else. A loop over
 the positions jumps around memory, following references. That's the problem
 [Data Locality](https://gameprogrammingpatterns.com/data-locality.html) describes.
 
-**Data-oriented design** starts from the data and what the loops do with it, not from the
-objects in the game. Most loops here touch one or two fields of every enemy: `Move` reads
-positions and speeds, `Separate` positions and radii. So put each field in its own array: a
-**struct of arrays** instead of an array of objects.
+**Data-oriented design** starts from the data and what the loops do with it, rather than
+from the objects in the game. Most loops here touch one or two fields of every enemy. `Move`
+reads positions and speeds, and `Separate` reads positions and radii. So we put each field
+in its own array, making a **struct of arrays** instead of an array of objects.
 
 ```csharp title="Enemies.cs"
 // There's no Enemy object: an enemy is an index, and each of its fields is in its own
@@ -252,12 +252,12 @@ because the hot loops read them for every enemy, every step.
 ### Measure again
 
 We first converted only the enemies to arrays, and kept the grid. It made almost no
-difference: with 10,000 enemies, 3.9 ms instead of 4.1 ms. The time wasn't in reading
+difference, 3.9 ms instead of 4.1 ms with 10,000 enemies. The time wasn't in reading
 enemies; it was in the grid, which looks up cells in a dictionary and walks lists of tuples
 for every query. The data layout that matters is the data **in the hot loop**, and only
 measuring tells you which loop that is.
 
-So `Survivors3` also makes the grid data-oriented. `FlatGrid` covers a fixed area around the
+`Survivors3` therefore makes the grid data-oriented too. `FlatGrid` covers a fixed area around the
 player, and is rebuilt every step with a **counting sort** into plain arrays:
 
 ```csharp title="FlatGrid.cs"
@@ -279,7 +279,7 @@ for (int i = 0; i < count; i++)
 ```
 
 Now the enemies in a cell are next to each other in memory, positions included. `Separate`
-doesn't query at all: it walks the cells, and checks each enemy against the rest of its
+doesn't query at all. It walks the cells, and checks each enemy against the rest of its
 cell and the neighbouring cells, reading positions from one array, in order. Nothing is
 allocated, and there's no dictionary.
 
@@ -303,9 +303,9 @@ times faster than where we started.
 - **Harder to change.** A new enemy field means a new array, and every place that copies or
   removes enemies must handle it.
 
-That's why only the swarm (and the gems, of which there are thousands too) is written this
-way. The player, the weapons and the bolts are still ordinary objects: there are few of
-them, and they aren't where the time goes.
+For this reason only the swarm (and the gems, of which there are thousands too) is written
+this way. The player, the weapons and the bolts are still ordinary objects, since there are
+few of them, and they aren't where the time goes.
 
 Compare [Geometry Wars](../11-geometry-wars/#components-at-scale): entities made of
 component objects, each updated through its own methods. That's flexible and readable, and
@@ -365,7 +365,7 @@ classDiagram
 
 
 - Enemies drop **gems**, also stored as arrays. Gems near the player fly to them.
-- Enough experience and you **level up**: a `LevelUpState` is pushed on the **state stack**
+- Enough experience and you **level up**. A `LevelUpState` is pushed on the **state stack**
   ([Pokemon](../10-pokemon/#state-stack)), on top of the paused game, with three upgrades
   to choose from.
 - The enemy **kinds** are type objects, and the logic runs at a **fixed timestep**
@@ -455,5 +455,5 @@ Related exam questions: [7](../../exam/#7-tilemaps-collision-detection--procedur
 
 The last lesson of the course walks through the [course recap](../../recap/): the patterns
 from all twelve games, the threads that run through them (input, data, entities, testing,
-performance), and the exam questions they prepare you for. Bring your project: for each
+performance), and the exam questions they prepare you for. Bring your project, and for each
 thread, find where it shows up in your own game.
