@@ -277,8 +277,9 @@ _Step `Birds2`_
 
 Blocks should break, and pigs should pop. Box2D can report **hit events**: two shapes
 touched at more than a certain speed. They're collected during the step, and read after it:
-an [event queue](../07-the-legend-of-zelda/#event-queue), as in Zelda. `PhysicsWorld` turns
-them into a C# event, in our own terms:
+an [event queue](../07-the-legend-of-zelda/#event-queue), as in Zelda, but kept inside the
+library. After each step, `PhysicsWorld` drains it and turns every hit into a C# event, in
+our own terms:
 
 ```csharp title="PhysicsWorld.cs"
 public event Action<PhysicsBody, PhysicsBody, float> Hit;

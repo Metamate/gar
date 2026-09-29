@@ -214,9 +214,16 @@ Which classes did you change, and which didn't need to know?
 ### Event Queue
 
 Events are handled immediately, inside the publisher's call. An **event queue** stores
-messages and processes them later (e.g. once per frame). This decouples the sender from
-the receiver _in time_ as well. The classic example is audio: many systems ask for sounds,
-and the audio system plays them in one place, merging duplicates.
+them instead, and handles them later, at a safe point, such as once per frame. That
+decouples the sender from the receiver _in time_ as well, and avoids the re-entrancy
+pitfall above: nothing is handled while the publisher is still busy. You've built a small
+one already: [Snake](../03-snake/#input-buffering) queues the player's turns and handles one
+per tick.
+
+The classic example is audio: many parts of the game ask for sounds, and the audio system
+plays them in one place, once per frame, merging duplicates. That is one of the exercises
+below. In [Angry Birds](../08-angry-birds/#contact-events), you'll meet a queue that a library
+keeps for you.
 
 ## Screen Scrolling & Tweening
 
@@ -377,7 +384,10 @@ must have no reference to the class reacting to it.
 - Enemy death is handled differently from player death. What happens now when an enemy
   dies? What could happen if there were an event for it?
 - `SoundManager.PlaySound(...)` is called directly from several unrelated classes. Find
-  all the call sites. Why is this a problem, and how would events fix it?
+  all the call sites. Why is this a problem, and how would events fix it? Then make it an
+  [event queue](#event-queue): `PlaySound` only records the sound's name, and once per frame
+  every requested sound plays once, so ten hits in the same frame don't play ten sounds.
+  Where in the frame do the sounds play, and what do you give up?
 
 **Composition:** sketch the class hierarchy you would need for enemies that can walk, fly,
 shoot or explode, in any combination. Then sketch the same with composition: which parts
