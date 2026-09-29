@@ -100,10 +100,19 @@ Write your answers as a GitHub issue in their repository.
 ## Release
 
 - Make a **Release** build, not a Debug build.
-- Publish **self-contained** so players don't need to install .NET:
-  `dotnet publish -c Release -r win-x64 --self-contained`.
-- Test the build on a machine (or a clean folder) that has never run your game.
-- Upload a Windows build to [itch.io](https://itch.io). See MonoGame's
+- Publish your **game project** (not the whole solution, or the library and the content
+  builder are published too), **self-contained** so players don't need to install .NET, into
+  one folder:
+
+  ```sh
+  dotnet publish MyGame -c Release -r win-x64 --self-contained -o publish
+  ```
+
+  with your game project's name instead of `MyGame`. The `publish` folder is the whole game:
+  the `.exe`, the libraries next to it and the `Content` folder. The `.exe` alone won't start.
+- Test the build on a machine that has never run your game, or at least copy the `publish`
+  folder somewhere else and start it from there.
+- Zip the `publish` folder and upload it to [itch.io](https://itch.io) as a Windows build. See MonoGame's
   [packaging](https://docs.monogame.net/articles/tutorials/building_2d_games/25_packaging_game)
   and [publishing](https://docs.monogame.net/articles/tutorials/building_2d_games/26_publish_to_itch)
   guides.
