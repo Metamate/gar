@@ -2,7 +2,7 @@
  * Course palette.
  *
  *   orange-vivid           #e73c00   (interaction)
- *   orange-primary         #d45d35   (header bar)
+ *   orange-primary         #d45d35   (the header bar uses it one step darker, #c6512a, for contrast)
  *   orange-dark-secondary  #693b2e
  *   orange-light-secondary #e5c1b3
  *
@@ -35,9 +35,9 @@
 	--sl-color-accent-low: hsl(17, 60%, 90%);
 	/*
 	 * The primary orange is 3.9:1 on white and misses WCAG AA, so links use the
-	 * same hue darkened to 4.7:1.
+	 * same hue darkened: 4.8:1 on white, 4.5:1 on the grey-7 panels.
 	 */
-	--sl-color-accent: hsl(15, 70%, 46%);
+	--sl-color-accent: hsl(15, 70%, 45%);
 	--sl-color-accent-high: hsl(15, 70%, 30%);
 
 	--sl-color-white: hsl(20, 10%, 10%);
@@ -57,7 +57,12 @@
  * used for body text; that is what the muted accent above is for.
  */
 :root {
-	--gar-orange: #d45d35;
+	/*
+	 * The primary orange, one step darker: white on #d45d35 is 3.9:1, which only
+	 * passes for the large site title; the header's small text (search, theme
+	 * select) needs 4.5:1, which #c6512a gives.
+	 */
+	--gar-orange: #c6512a;
 	--gar-orange-vivid: #e73c00;
 	/* Surface the native theme-select dropdown paints itself on. */
 	--gar-option-bg: hsl(20, 14%, 16%);
@@ -79,12 +84,16 @@ header.header {
 	border-bottom-color: rgb(0 0 0 / 0.2);
 	color: #fff;
 
-	/* Re-point the tokens the bar's contents read, for white on orange. */
+	/*
+	 * Re-point the tokens the bar's contents read, for white on orange. The text
+	 * greys are solid white: a faded white would drop below 4.5:1 on any orange
+	 * that still looks like the palette's. Only borders (grey-5) stay faded.
+	 */
 	--sl-color-text-accent: #fff;
 	--sl-color-white: #fff;
 	--sl-color-gray-1: #fff;
-	--sl-color-gray-2: rgb(255 255 255 / 0.9);
-	--sl-color-gray-3: rgb(255 255 255 / 0.85);
+	--sl-color-gray-2: #fff;
+	--sl-color-gray-3: #fff;
 	--sl-color-gray-5: rgb(255 255 255 / 0.35);
 }
 
@@ -129,4 +138,50 @@ header.header option {
 	margin-top: 0.4rem;
 	font-size: var(--sl-text-sm);
 	color: var(--sl-color-gray-3);
+}
+
+/*
+ * Animated images get a pause button in their corner (src/scripts/pause-animations.js).
+ * A paused image is a canvas holding the current frame, laid exactly over it.
+ */
+.sl-markdown-content .anim-wrap {
+	position: relative;
+	display: inline-block;
+	max-width: 100%;
+	line-height: 0;
+}
+.sl-markdown-content .anim-wrap img {
+	display: block;
+}
+/* Starlight spaces every element that follows another; not these overlays. */
+.sl-markdown-content .anim-wrap > :is(canvas, button) {
+	margin: 0;
+}
+.sl-markdown-content .anim-wrap canvas {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+}
+.sl-markdown-content figure.original .anim-wrap canvas {
+	image-rendering: pixelated;
+}
+.sl-markdown-content .anim-toggle {
+	position: absolute;
+	right: 0.5rem;
+	bottom: 0.5rem;
+	min-width: 2.25rem;
+	min-height: 2.25rem;
+	padding: 0 0.5rem;
+	border: 1px solid rgb(255 255 255 / 0.6);
+	border-radius: 0.25rem;
+	background: rgb(0 0 0 / 0.65);
+	color: #fff;
+	font-size: 0.85rem;
+	line-height: 1;
+	cursor: pointer;
+}
+.sl-markdown-content .anim-toggle:hover {
+	background: rgb(0 0 0 / 0.85);
 }

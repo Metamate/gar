@@ -1,7 +1,11 @@
 // @ts-check
+import { readFileSync } from "node:fs"
 import { defineConfig } from "astro/config"
 import starlight from "@astrojs/starlight"
 import mermaid from "astro-mermaid"
+
+// Inlined into every page, so it works under any base path.
+const pauseAnimations = readFileSync(new URL("./src/scripts/pause-animations.js", import.meta.url), "utf-8")
 
 // On GitHub Actions, derive the Pages URL from the repository so project sites
 // (https://<owner>.github.io/<repo>/) get the right base path automatically.
@@ -30,6 +34,7 @@ export default defineConfig({
         alt: "GAR",
       },
       favicon: "/favicon.ico",
+      head: [{ tag: "script", content: pauseAnimations }],
       sidebar: [
         { label: "Home", slug: "" },
         {
