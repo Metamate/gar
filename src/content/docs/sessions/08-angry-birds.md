@@ -19,8 +19,8 @@ Make **Angry Birds**: pull back the slingshot, let go, and knock down the pigs' 
 In [Super Mario Bros](../06-super-mario-bros/) we wrote our own physics: gravity, velocity,
 and collisions with tiles. For stacks of blocks that tip over, bounce and break, that isn't
 enough. Real games use a **physics library** for that, and here we use **Box2D**. The main
-topic is how you bring someone else's library into your architecture, so that the rest of
-your game doesn't have to know about it. Along the way:
+topic is **a library behind your own interface**: bringing someone else's library into your
+architecture, so that the rest of your game doesn't have to know about it. Along the way:
 
 - The **Adapter** and **Facade** patterns
 - Two worlds: the physics world (metres, y up) and the game world (pixels, y down)

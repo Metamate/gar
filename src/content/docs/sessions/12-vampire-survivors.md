@@ -20,7 +20,7 @@ five minutes against an ever-growing swarm.
 The swarm is what makes this game hard. [Geometry Wars](../11-geometry-wars/) had hundreds of enemies
 and bullets (its thousands of particles were already handled apart, by one system). Here we
 want thousands of enemies, and the code we've written so far can't keep up. The main topic is
-**performance**, in the order you should do it:
+**performance at scale**, in the order you should do it:
 
 - **Profiling**: measure where the time goes, before changing anything
 - **Spatial partitioning**: don't compare every enemy with every other enemy

@@ -1,6 +1,6 @@
 ---
 title: 06 Super Mario Bros
-description: A 2D platformer. Platformer physics and tile collision, debug drawing, a camera, level makers, and player states that share their physics.
+description: A 2D platformer. The game world (a tilemap, entities and a camera), platformer physics and tile collision, level makers, debug drawing, and player states that share their physics.
 sidebar:
   order: 6
 ---
@@ -17,12 +17,12 @@ Make a **2D platformer**.
 </figure>
 
 We go through the fundamental steps of a basic Super Mario Bros. clone. The main topic is
-**platformer physics and tile collision**: making a character run, jump and land on a tile
-world, and seeing what the collision code actually does. Along the way:
+**the game world**: a tilemap for the level, entities that move through it, and a camera
+that shows part of it. Along the way:
 
-- Debug drawing
-- A camera for levels wider than the screen
+- Platformer physics and tile collision: how the player gets around the world
 - Level makers: the Strategy pattern again
+- Debug drawing
 - Player states that share their physics, and change with the world
 
 **Source code:**

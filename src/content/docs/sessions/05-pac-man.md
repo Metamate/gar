@@ -19,8 +19,9 @@ the ghosts run from you for a few seconds.
 
 The ghosts are what make Pac-Man interesting to build. Each ghost switches between modes
 (waiting in the house, scattering, chasing, frightened, eaten), and each mode changes how it
-moves and what happens when it touches Pac-Man. The main topic is the **State** pattern,
-which turns each mode into an object. Along the way:
+moves and what happens when it touches Pac-Man. The main topic is **behaviour that
+changes with the situation**, with the **State** pattern, which turns each mode into an
+object. Along the way:
 
 - The **Strategy** pattern: each ghost chases in its own way
 - State vs. Strategy: why two patterns with the same shape are used differently

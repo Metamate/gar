@@ -17,9 +17,9 @@ Make a **top-down dungeon crawler**.
 </figure>
 
 We go through the fundamental steps of a primitive _The Legend of Zelda_ clone. The main
-topic is **events and the Observer pattern**: the player dies, a switch is pressed, a room
-is left, and other parts of the game need to react, without the thing that happened
-knowing who they are. Along the way:
+topic is **reacting to events without knowing who reacts**: the player dies, a switch is
+pressed, a room is left, and other parts of the game need to react, without the thing that
+happened knowing who they are. That is the **Observer** pattern, with C# events. Along the way:
 
 - Hitboxes and hurtboxes
 - A tweening system for screen scrolling

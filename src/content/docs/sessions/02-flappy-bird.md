@@ -16,8 +16,8 @@ Make a **Flappy Bird** clone.
 <figcaption>The original: <em>Flappy Bird</em> (dotGears, 2013). Screenshot © dotGears.</figcaption>
 </figure>
 
-Pong worked, but everything lived in `Game1` and game state was a string. Today we start
-organizing the code. We create **GARCore**, a class library of reusable code that grows
+Pong worked, but everything lived in `Game1` and game state was a string. The main topic
+is **organizing a growing game**. We create **GARCore**, a class library of reusable code that grows
 throughout the course, and we replace the string with a **state machine**.
 
 New concepts: class libraries, textures, parallax scrolling, procedural generation,

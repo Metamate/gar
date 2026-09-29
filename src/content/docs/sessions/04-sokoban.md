@@ -18,9 +18,9 @@ only one box at a time.
 </figure>
 
 Snake's grid was a picture with a snake on top. In Sokoban, the grid holds the whole game:
-the walls, the boxes and the player are all the state there is. The main topic is the **Command**
-pattern, which turns every move into an object: that gives us **undo and redo**, and keys
-the player can rebind. Along the way:
+the walls, the boxes and the player are all the state there is. The main topic is **actions you
+can undo, replay and rebind**, with the **Command** pattern, which turns every move into an
+object. Along the way:
 
 - Levels as data: plain text files
 - Rules separated from drawing

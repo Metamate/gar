@@ -18,8 +18,9 @@ Make a **top-down shooter**.
 
 Geometry Wars puts thousands of entities on screen: the player, enemies, bullets,
 particles and a warping grid. Its entities are built from components, as in
-[Plants vs. Zombies](../09-plants-vs-zombies/), but at this size a new question matters:
-**which behaviour belongs in a component, and which in a system?** Along the way:
+[Plants vs. Zombies](../09-plants-vs-zombies/), but at this size a new question matters. The main topic is **where
+behaviour lives in a big game**: which behaviour belongs in a component, and which in a
+system? Along the way:
 
 - Dependency injection, compared with the Service Locator, and testing with fakes
 - Object Pool

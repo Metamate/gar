@@ -20,8 +20,8 @@ Plant sunflowers to make sun, and spend the sun on plants that stop the zombies.
 The game has many kinds of plants and zombies, and they mix and match abilities: one plant
 shoots, another makes sun, another just blocks; a zombie may wear a cone or a bucket. In
 [Zelda](../07-the-legend-of-zelda/#composition-vs-inheritance) we asked whether something
-should be a subclass or a part. Here we take that all the way, with the **Component**
-pattern. Along the way:
+should be a subclass or a part. Here we take that all the way: the main topic is
+**game objects built from parts**, with the **Component** pattern. Along the way:
 
 - **Type Object**: plant and zombie types as data, not as classes
 - Picking: from a mouse click to a seed packet or a cell on the lawn

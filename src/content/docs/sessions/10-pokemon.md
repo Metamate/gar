@@ -17,7 +17,7 @@ Make a **turn-based RPG**.
 </figure>
 
 We go through the fundamental steps of a primitive Pokémon clone. The main topic is
-**scenes and UI**: an RPG is a stack of screens on top of each other (the overworld, a
+**scenes and UI, as screens that stack**: an RPG is a stack of screens on top of each other (the overworld, a
 battle, a menu, a dialogue box), built from reusable UI widgets. Along the way:
 
 - Separating UI from game data
