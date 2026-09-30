@@ -71,7 +71,7 @@ public readonly struct Tile(int graphicId = -1, bool isSolid = false)
 
 `Tile` and `Tilemap` live in GARCore, so they only hold what any tile-based game needs.
 Because the graphics are separate from the level's structure, the same level can be drawn
-with any of the 60 tilesets in `tiles.png` (press `R`).
+with any of the four tilesets in `tiles.png` (press `R`).
 
 **Try it** (`Mario0`): in `GenerateLevel`, leave a gap two tiles wide in the ground, and
 raise the ground by two tiles in the middle. Press R: what changes, and what doesn't?
@@ -119,16 +119,16 @@ _Step `Mario2`_
 
 - **Gravity and jumping:** gravity adds to the vertical velocity every frame; a jump sets it
   to a negative impulse.
-- **Hitbox inset:** the player is as wide as a tile, which makes pits impossible to fall
-  into. We shrink the hitbox by 2 px on each side.
+- **Hitbox inset:** the player is a little wider than a tile, which makes pits impossible
+  to fall into. We shrink the hitbox by 2 px on each side.
 - **Tile collision:** move one axis at a time. After moving, check the tiles at the hitbox
   corners in the direction of movement, then **snap** the player to the tile edge and zero
   the velocity on that axis.
 - **Ground check:** probe one pixel below the hitbox for solid tiles.
 - **Coyote time:** allow a jump for a moment after walking off a ledge. It feels fairer.
 
-**Try it** (on paper): with 16-pixel tiles, a hitbox spans x 30 to 42 and moves 8 pixels right,
-and a wall starts at x 48. Where is the hitbox after the move, and after the snap? What happens
+**Try it** (on paper): with 18-pixel tiles, a hitbox spans x 34 to 50 and moves 8 pixels right,
+and a wall starts at x 54. Where is the hitbox after the move, and after the snap? What happens
 to its velocity?
 
 **Try it** (`Mario2`): press F1, and set `HitboxInset` to 0. Can you still fall into a
@@ -240,7 +240,7 @@ sends you back to the title screen.
 _Step `Mario6`_
 
 An **entity** is any "thing" in the game that isn't part of the tilemap: the player,
-moles, bushes, mystery boxes (the "?" blocks), coins. Entities don't align to the grid, they move, and they
+slimes, bushes, mystery boxes (the "?" blocks), coins. Entities don't align to the grid, they move, and they
 can have their own states.
 
 ```csharp
@@ -262,7 +262,7 @@ The level updates all entities through the Update Method pattern, and each entit
 how to respond to collisions. Solid entities (mystery boxes) block the player just like
 tiles. Hitting a box from below pops out a coin, and collecting coins raises the score.
 
-## Basic AI: Mole States
+## Basic AI: Slime States
 
 _Step `Mario7`_
 
@@ -273,7 +273,7 @@ Enemy AI can be built from states too:
 - **Walk:** walks, turns around at edges or when blocked
 - **Chase:** moves towards the player when close
 
-Landing on a mole from above stomps it. Touching it any other way ends the game.
+Landing on a slime from above stomps it. Touching it any other way ends the game.
 
 `Mario8` adds music and sound effects, and is the finished game.
 
@@ -282,7 +282,7 @@ Landing on a mole from above stomps it. Touching it any other way ends the game.
 Start from `Mario8`.
 
 1. **A chunk level maker:** design a handful of short level chunks by hand (a pit with a
-   platform over it, a staircase, a mole on a ledge), each a small grid of tiles in a data
+   platform over it, a staircase, a slime on a ledge), each a small grid of tiles in a data
    file in `Content/Assets`. The builder copies `.xml` files as they are; for another
    format, such as `.txt`, add an `IncludeCopy` rule in `Builder.cs`. Write a level maker
    that strings random chunks together, and make each level a few chunks longer than the
@@ -290,7 +290,7 @@ Start from `Mario8`.
 2. **Moving platforms:** a platform that glides back and forth and carries the player
    standing on it. Where does "carried along" belong: in the platform, in the player, or
    in the collision code?
-3. **Powerups:** add a star (invincibility with a timer) and a mushroom (the player grows).
+3. **Powerups:** add a diamond (invincibility with a timer) and a mushroom (the player grows).
    Both are drawn in `images/extras.png`. How do you add these without piling flags onto
    the `Player` class?
 4. **Debug drawing:** also draw the probe below the player that checks for ground
