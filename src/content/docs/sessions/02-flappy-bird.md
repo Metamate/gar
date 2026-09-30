@@ -252,7 +252,7 @@ with the Service Locator pattern.
    a constructor taking title, window size and virtual size. Nothing in it may mention
    Flappy.
 2. **A game on the library:** derive `Game1` from `Core`, with a 512×288 virtual resolution
-   in a 1280×720 window.
+   in a 1024×576 window (2×, so every pixel is the same size).
 3. **The bird and the Art class:** bring your game up to `Flappy2`: copy the `images` folder
    from `gar-games/02-flappy-bird/Content/Assets` into your `Content/Assets` (later, copy
    `fonts` and `audio` the same way; the starter's builder already handles all of them), and
