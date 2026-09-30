@@ -21,3 +21,20 @@ in your own time.
 | 10 | [Pokemon](../sessions/10-pokemon/) | Scenes and UI | State (a stack), Service Locator | UI widgets, separating UI from game data, save/load |
 | 11 | [Geometry Wars](../sessions/11-geometry-wars/) | Components and systems | Object Pool, Flyweight | components vs. systems, dependency injection & testing with fakes |
 | 12 | [Vampire Survivors](../sessions/12-vampire-survivors/) | Performance | Spatial Partition, Data Locality | profiling, data-oriented design, [course recap](../recap/) |
+
+## The Session Pages
+
+Every session page has the same parts. **Prepare** lists chapters and tutorials to read
+beforehand. The main part builds the game, with exercises in between. Pong and Flappy
+Bird start from an empty project; from Snake on, you start from a working codebase, explore
+it and extend it. **Apply It to Your Project** takes the session's patterns into your own
+[course project](../project/), and **Check Yourself** has short questions, linked to the
+[exam](../exam/) questions they prepare you for.
+
+## GARCore
+
+Reusable code moves from the individual games into **GARCore**, a shared class library that
+starts in [Flappy Bird](../sessions/02-flappy-bird/) and grows into a small game framework,
+with screen scaling, input, sprites, animation, tilemaps, state machines and more. Deciding
+what belongs in the core and what belongs in the game is an architectural decision in
+itself, and it comes up again in every session.

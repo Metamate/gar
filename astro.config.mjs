@@ -48,10 +48,12 @@ export default defineConfig({
           ],
         },
         {
-          label: "Code",
+          label: "Resources",
           items: [
             { label: "Course games", link: "https://github.com/Metamate/gar-games" },
             { label: "Project template", link: "https://github.com/Metamate/gar-starter" },
+            { label: "Game Programming Patterns", link: "https://gameprogrammingpatterns.com/" },
+            { label: "MonoGame docs", link: "https://docs.monogame.net/" },
           ],
         },
         {
