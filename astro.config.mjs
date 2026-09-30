@@ -41,7 +41,7 @@ export default defineConfig({
           label: "Course",
           items: [
             { label: "Syllabus", slug: "syllabus" },
-            { label: "Schedule", slug: "schedule" },
+            { label: "Overview", slug: "overview" },
             { label: "Project", slug: "project" },
             { label: "Exam", slug: "exam" },
             { label: "Course Recap", slug: "recap" },

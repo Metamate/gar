@@ -21,7 +21,7 @@ question pool (questions 0–10). Projects must document at least three patterns
 
 Decided in September 2026. The 2026 midterm evaluation said the pace was too fast, so
 every session is now a game session with **one main topic** and 2–3 supporting ones (see
-the [schedule](../schedule/)). The course project is done in the students' own time: the
+the [overview](../overview/)). The course project is done in the students' own time: the
 [project page](../project/) holds the kick-off, milestone, self-review, release and exam
 guidance. The official [syllabus](../syllabus/) stays as it is. The last lesson of session
 12 walks through the [course recap](../recap/).
@@ -67,7 +67,7 @@ same rules for every session.
   which the syllabus includes, rather than to more material.
 - Re-estimate after running a session: `timing.py` in the working notes did the counting.
 - **Slides keep to the topic:** no milestones, due dates, "last week" or other course
-  admin. The project page, the schedule and the teacher carry those. "Apply It to Your
+  admin. The project page, the overview and the teacher carry those. "Apply It to Your
   Project" stays: it applies the day's topic, not the project's schedule.
 - **Course intro:** `00 Course Intro` opens the first session, before Pong: the teacher,
   the course, the games, how a session runs, the project and the exam in brief, and where

@@ -25,7 +25,7 @@ Course site built with [Astro](https://docs.astro.build) and [Starlight](https:/
     └── content/docs/
         ├── index.mdx              # Home page
         ├── syllabus.md            # Official course description
-        ├── schedule.md            # Overview of the 12 sessions
+        ├── overview.md            # The 12 sessions, their games and main topics
         ├── project.md             # Course project brief and milestones
         ├── exam.md                # Exam format and question pool
         ├── course-notes.md        # Instructor notes and TODOs (draft: dev only, not published)
@@ -40,7 +40,7 @@ Course site built with [Astro](https://docs.astro.build) and [Starlight](https:/
 - Rename a page to `.mdx` to use components like `<Aside>`, `<Tabs>`, `<Steps>`, or your own
   components from `src/components/`. `sessions/01-pong.mdx` shows examples.
 - Add `draft: true` to the frontmatter to keep a page out of the production build.
-- Link between pages with **relative** links, such as `../schedule/`, so links still work when
+- Link between pages with **relative** links, such as `../overview/`, so links still work when
   the site is served from a subpath on GitHub Pages.
 
 ## Deploying to GitHub Pages

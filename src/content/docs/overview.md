@@ -1,6 +1,6 @@
 ---
-title: Schedule
-description: Overview of the 12 course sessions.
+title: Overview
+description: The 12 course sessions, their games and main topics.
 ---
 
 The course spans 12 sessions, each building a classic game. Every session has one main
