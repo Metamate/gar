@@ -193,6 +193,14 @@ Notes for building it:
   are our own designs (a builder and moles in Mario, a mouse in Snake, our own hero in
   Zelda, our own monsters in Pokemon). Games made of simple shapes (Pong, Pac-Man, Geometry
   Wars) can look like the original: there is no character to copy.
+- **Pixel art:** inside a game, every sprite, tile and background uses the same art-pixel
+  size, with the same outline and shading style; between games the size may differ. Pixel
+  art is drawn with `SamplerState.PointClamp` (or `PointWrap`), never stretched by a
+  fraction (Plants vs. Zombies breathes by rising one art pixel), and cameras move in whole
+  pixels. Each game's default window is a whole-number multiple of its virtual resolution
+  (Flappy Bird 1024 × 576, Zelda and Pokemon 1152 × 648). Geometry Wars' glow is the one
+  smooth exception. The recordings follow the same rule: `makegif.py` scales with nearest
+  neighbour, to a width where one art pixel is a whole number of GIF pixels.
 - **Naming:** a game's folder is its full name, as in its site page's URL
   (`06-super-mario-bros`), and so is its solution (`SuperMarioBros.slnx`). Step projects
   use a short form of the game's name (`Mario0`, `Birds0`, `Pvz0`), never a genre.
