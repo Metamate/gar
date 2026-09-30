@@ -189,28 +189,31 @@ Notes for building it:
   `Tile` values (graphic ID plus `IsSolid`) with collision helpers and a `Position`.
   Game-specific layers (Mario's toppers, Pokemon's tall grass) are separate
   tilemaps drawn on top.
-- **Art:** each game keeps the original's setting, palette and objects, but its characters
-  are our own designs (a builder and moles in Mario, an apple in Snake, our own hero in
-  Zelda, our own monsters in Pokemon). Games made of simple shapes (Pong, Pac-Man, Geometry
-  Wars) can look like the original: there is no character to copy.
+- **Art:** each game has a look of its own that fits the original, with no shared style
+  between games. It keeps the original's setting and objects, but its characters are our
+  own designs (a builder and moles in Mario, our own hero in Zelda, our own monsters in
+  Pokemon). Snake is lit dots on a dark screen, as on the phones it became famous on.
+  Games made of simple shapes (Pong, Pac-Man, Geometry Wars) can look like the original:
+  there is no character to copy.
 - **Pixel art:** inside a game, every sprite, tile and background uses the same art-pixel
-  size, with the same outline and shading style; between games the size may differ. Pixel
+  size and the same style; between games both may differ. Pixel
   art is drawn with `SamplerState.PointClamp` (or `PointWrap`), never stretched by a
   fraction (Plants vs. Zombies breathes by rising one art pixel), and cameras move in whole
   pixels. Each game's default window is a whole-number multiple of its virtual resolution
-  (Flappy Bird 1024 × 576, Zelda and Pokemon 1152 × 648). Geometry Wars' glow is the one
+  (Flappy Bird 1024 × 576, Snake 1280 × 704, Zelda and Pokemon 1152 × 648). Geometry Wars' glow is the one
   smooth exception. The recordings follow the same rule: `makegif.py` scales with nearest
   neighbour, to a width where one art pixel is a whole number of GIF pixels.
-- **Sprites:** characters and objects have a one-art-pixel dark outline, a flat fill, one
-  highlight at the top left and one shade. Backgrounds have no outline and less contrast,
-  so what the player acts on stands out.
+- **Sprites:** in the outlined games, characters and objects have a one-art-pixel dark
+  outline, a flat fill, one highlight at the top left and one shade. Backgrounds have no
+  outline and less contrast, so what the player acts on stands out.
 - **Text:** one font, `retro.ttf`, crisp at multiples of 8 pixels. A `.spritefont`'s size is
   in points, a third larger than pixels, so the sizes are 6, 12, 18, 24 … points for 8, 16,
   24, 32 … pixels. Text is always drawn at scale 1, on whole pixels: a game that needs two
   sizes has two fonts (Pong's `font` and `font-big`), and never scales one. In games at
   1280 × 720 the HUD is 16 pixels and titles 32; in the low-resolution games, text is 8 and
   titles 16. Over a busy background, text gets a dark shadow. Messages are sentences with
-  single spaces. (Pokemon draws its own bitmap fonts, from `fonts/*_atlas.png`.)
+  single spaces. (Snake draws its score with digits from its atlas, and Pokemon draws its
+  own bitmap fonts, from `fonts/*_atlas.png`.)
 - **Screens and keys:** a game with game states opens on a title screen: its name, and
   "Press Enter" below it. Enter starts, continues and restarts (end screens say "Press Enter
   to …"), Esc quits, R restarts the level where there are levels, P pauses where there is a

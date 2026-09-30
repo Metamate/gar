@@ -41,7 +41,7 @@ and input as actions, with input buffering.
 Snake uses the same [content builder](../01-pong/#content-pipeline) as Pong and Flappy Bird,
 with all steps sharing one assets folder, `Content/Assets`. Next to the images, it contains
 XML files that _describe_ the assets. They say which part of the image is the snake, how
-its animation runs, and which tile goes where in the room. The builder copies those files as
+its animations run, and which tile goes where in the room. The builder copies those files as
 they are, because our own code reads them:
 
 ```csharp title="Builder.cs"
@@ -67,7 +67,7 @@ make it without touching the game's code, and the code stays smaller and more ge
 
 _Steps `Snake0` → `Snake1`_
 
-Loading `snake1.png`, `snake2.png`, `apple1.png`… as separate textures means the GPU must
+Loading `body.png`, `head1.png`, `food1.png`… as separate textures means the GPU must
 switch texture between draws, which breaks batching. A **texture atlas** (sprite sheet)
 packs many images into one texture.
 
@@ -80,15 +80,15 @@ a named rectangle within the atlas:
 <TextureAtlas>
     <Texture>images/atlas</Texture>
     <Regions>
-        <Region name="snake-1" x="0" y="0" width="20" height="20" />
-        <Region name="apple-1" x="20" y="0" width="20" height="20" />
+        <Region name="head-1" x="8" y="0" width="7" height="7" />
+        <Region name="food-1" x="24" y="0" width="7" height="7" />
     </Regions>
 </TextureAtlas>
 ```
 
 ```csharp
 TextureAtlas atlas = TextureAtlas.FromFile(Content, "images/atlas-definition.xml");
-TextureRegion snake = atlas.GetRegion("snake-1");
+TextureRegion head = atlas.GetRegion("head-1");
 ```
 
 ```mermaid
@@ -128,49 +128,57 @@ classDiagram
     Animation o-- TextureRegion
 ```
 
-**Try it** (`Snake1`): draw the apple with its second frame by changing only
-`atlas-definition.xml`. Then misspell `apple-1` in the XML: what happens, and when?
+**Try it** (`Snake1`): draw the food with its second frame by changing only
+`atlas-definition.xml`. Then misspell `food-1` in the XML: what happens, and when?
 
 ## Sprites & Animation
 
 _Steps `Snake2` and `Snake3`_
 
 A `Sprite` wraps a texture region together with everything needed to draw it: color mask,
-rotation, scale, origin, sprite effects and layer depth. `Snake2` scales the apple and spins
-it around its centre (`CenterOrigin()`).
+rotation, scale, origin, sprite effects and layer depth. `Snake2` scales the snake's head
+four times and spins it around its centre (`CenterOrigin()`).
 
 An **animation** is a list of regions and a frame delay, also defined in the atlas XML:
 
 ```xml
-<Animation name="apple-animation" delay="200">
-    <Frame region="apple-1" />
-    <Frame region="apple-2" />
-    <Frame region="apple-1" />
-    <Frame region="apple-3" />
+<Animation name="head-animation" delay="250">
+    <Frame region="head-1" />
+    <Frame region="head-1" />
+    <Frame region="head-1" />
+    <Frame region="head-1" />
+    <Frame region="head-1" />
+    <Frame region="head-2" />
 </Animation>
 ```
+
+A frame can repeat. Here the head keeps its eyes open for five frames and closes them for
+one, so it blinks.
 
 An `AnimatedSprite` is a `Sprite` that accumulates elapsed time in `Update()` and advances
 to the next frame when the delay has passed (`Snake3`).
 
-**Try it** (`Snake2` and `Snake3`): make the apple bigger and spin it the other way, then
-remove `CenterOrigin()` and explain what changes. In the XML only, make the apple's leaf
-sway twice as fast and give its animation one more frame.
+**Try it** (`Snake2` and `Snake3`): make the head bigger and spin it the other way, then
+remove `CenterOrigin()` and explain what changes. In the XML only, make the food pulse twice
+as fast and the head blink twice as often.
 
 ## The Room
 
 _Step `Snake4`_
 
-The room is data too. A tilemap definition lists which tile of the atlas goes in each cell:
+The room is data too. A tilemap definition lists which tile of the atlas goes in each cell.
+The tileset is nine tiles, three by three: the frame's corners and sides around an empty
+floor tile in the middle.
 
 ```xml
 <Tilemap>
-    <Tileset region="0 40 80 80" tileWidth="20" tileHeight="20">images/atlas</Tileset>
+    <Tileset region="0 16 24 24" tileWidth="8" tileHeight="8">images/atlas</Tileset>
     <Tiles>
-        00 01 02 01 02 01 02 01 02 01 02 01 02 01 02 03
-        04 05 05 06 05 05 06 05 05 06 05 05 06 05 05 07
-        08 09 09 09 09 09 09 09 09 09 09 09 09 09 09 11
+        00 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02
+        03 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 05
+        03 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 05
         ...
+        06 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 08
     </Tiles>
 </Tilemap>
 ```
@@ -184,7 +192,7 @@ level would only draw the cells on screen. Here the tilemap is only a
 picture, and the walls are simply the cells outside the room's `Rectangle`. In
 [Sokoban](../04-sokoban/), the grid becomes the game's state itself.
 
-**Try it** (`Snake4`): rearrange the room in `tilemap-definition.xml`. Then put a 20 in it:
+**Try it** (`Snake4`): rearrange the room in `tilemap-definition.xml`. Then put a 9 in it:
 what happens, and when?
 
 ## Fixed-Tick Movement
@@ -216,6 +224,15 @@ steps. Subtracting (instead of resetting `_elapsed` to zero) keeps the leftover 
 ticks stay evenly spaced.
 
 Moving is cheap on a grid. Add a new head in the current direction and remove the tail.
+
+The head has a sprite of its own, and its `Rotation` turns it to face the direction the
+snake moves in. It turns around its centre, so it is drawn at its cell's corner plus its
+origin:
+
+```csharp title="Snake.cs"
+_head.Rotation = MathF.Atan2(_direction.Y, _direction.X);
+_head.Draw(spriteBatch, CellPosition(Head) + _head.Origin);
+```
 
 ## Input as Actions
 
@@ -289,8 +306,10 @@ and in `Snake7`.
 
 _Step `Snake8`_
 
-An apple sits on one cell of the room. When the snake's head reaches it, the snake eats it,
-grows, and a new apple appears on a free cell.
+Food sits on one cell of the room. When the snake's head reaches it, the snake eats it,
+grows, and new food appears on a free cell. Each bite adds a point to the score under the
+room. Its digits are regions of the atlas too (`digit-0` to `digit-9`): a font that is only
+data.
 
 - **Distance-based / circles:** two circles overlap if the distance between their centres
   is less than the sum of their radii. Compare _squared_ values
@@ -305,13 +324,13 @@ player. A grid lookup, as in [Super Mario Bros](../06-super-mario-bros/#performa
 cheaper still, but only works for things that stay in their cell.
 
 MonoGame has no circle type, so GARCore has a `Circle` struct with `Intersects(Circle)`.
-Both the snake's head and the apple expose their `Bounds` as a `Circle`. The apple stays in
+Both the snake's head and the food expose their `Bounds` as a `Circle`. The food stays in
 its cell, so comparing cells would work here too; circles also work for things that move
 freely, which the later games need.
 
 **Collision response** is what happens _after_ a hit:
 
-- **Triggering:** something happens. The snake eats the apple and grows. On its next move,
+- **Triggering:** something happens. The snake eats the food and grows. On its next move,
   it keeps its tail.
 - **Bouncing:** reflect the velocity off the surface, as the ball does in [Pong](../01-pong/).
   `Vector2.Reflect` does it for any angle, given the surface's normal.
@@ -328,7 +347,8 @@ and the snake's own body are deadly. Both are grid checks, without any shapes:
 if (!_room.Contains(_snake.Head) || _snake.IsBitingItself)
 {
     _snake.Reset(_room.Center);
-    _apple.MoveToFreeCell(_snake);
+    _score = 0;
+    _food.MoveToFreeCell(_snake);
 }
 ```
 
@@ -336,11 +356,11 @@ if (!_room.Contains(_snake.Head) || _snake.IsBitingItself)
 
 Start from `Snake9`.
 
-1. **A beetle from data:** the atlas image also holds a beetle the game doesn't use yet,
-   with two frames at (40, 20) and (60, 0). Describe it in `atlas-definition.xml` (two regions and a
-   `beetle-animation`), and make the snake eat a beetle instead of an apple. How much C# did you
-   need to change? And for a beetle _next to_ the apple: what in `Game1` would have to change,
-   and what does that say about where the apple's rules live?
+1. **A bug from data:** the atlas image also holds a bug the game doesn't use yet, with two
+   7 × 7 frames at (40, 0) and (48, 0). Describe it in `atlas-definition.xml` (two regions and a
+   `bug-animation`), and make the snake eat a bug instead of the food. How much C# did you
+   need to change? And for a bug _next to_ the food: what in `Game1` would have to change,
+   and what does that say about where the food's rules live?
 2. **Speed up:** make the tick shorter each time the snake eats, down to a minimum. Where
    does that rule belong?
 3. **New input:** add gamepad support for the D-pad. A press needs last frame's state, so
