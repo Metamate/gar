@@ -95,7 +95,7 @@ a bird flying.
 _Steps `Flappy0` → `Flappy2`_
 
 `Flappy1` draws the background and the ground; `Flappy2` scrolls them, the background at 30
-pixels per second and the ground at 60, looping at 413 and 512.
+pixels per second and the ground at 60, looping at 412 and 512.
 
 **Try it** (`Flappy2`): make the ground scroll at 120 and the background at 15. Then swap the
 two speeds. What happens to the sense of depth?
