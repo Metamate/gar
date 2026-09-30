@@ -185,3 +185,18 @@ header.header option {
 .sl-markdown-content .anim-toggle:hover {
 	background: rgb(0 0 0 / 0.85);
 }
+
+/* The buttons under the home page's intro: one row, same height, wrapping on narrow screens. */
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+.home-actions > * {
+  margin: 0;
+}
+/* Starlight sizes the icons inline; at text size, every button is the same height. */
+.home-actions .sl-link-button svg {
+  font-size: 1.1em;
+}
