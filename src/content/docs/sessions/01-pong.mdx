@@ -288,7 +288,8 @@ Build Pong step by step:
    with point filtering. Scale by the smaller of the two ratios (window width / 432,
    window height / 243) so nothing is stretched, and centre the result with
    `GraphicsDevice.Viewport`: black bars fill the rest. Recalculate when
-   `Window.ClientSizeChanged` fires.
+   `Window.ClientSizeChanged` fires. Open the window at 1296×729, three times the virtual
+   size: at a whole-number scale, every pixel comes out the same size.
 3. **Rectangles from a pixel:** draw two paddles and a ball, stretched from one white
    pixel. Switch to the retro font (`"font"`, also in `Content/Assets`) and the
    background colour `(40, 45, 52)`.

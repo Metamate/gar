@@ -40,7 +40,7 @@ if ($Games -contains 'sokoban') {
 if ($Games -contains 'pacman') {
   # Pac-Man is caught after a few seconds (frame 36 in the last recording): keep the frames
   # before that. Check where it happens, since it can shift from one recording to the next.
-  Record 'pacman' (Exe '05-pac-man' 'Pacman4') 2.0 8 @('0.2 tap left', '1.5 tap left', '3.0 tap up', '4.2 tap up', '5.2 tap right', '6.2 tap up', '7.0 tap left')
+  Record 'pacman' (Exe '05-pac-man' 'Pacman4') 2.0 8 @('0.1 tap enter', '0.2 tap left', '1.5 tap left', '3.0 tap up', '4.2 tap up', '5.2 tap right', '6.2 tap up', '7.0 tap left')
   python (Join-Path $here 'makegif.py') (Join-Path $out 'pac-man.gif') 560 100 none 8 (Join-Path $out 'frames-pacman\f0[0-2][0-9].png') (Join-Path $out 'frames-pacman\f03[0-5].png')
 }
 if ($Games -contains 'mario') {
@@ -63,8 +63,8 @@ if ($Games -contains 'zelda') {
   python (Join-Path $here 'makegif.py') (Join-Path $out 'the-legend-of-zelda.gif') 768 100 none (Join-Path $out 'frames-zelda\f*.png')
 }
 if ($Games -contains 'birds') {
-  # Grab the bird on the slingshot at (220, 520), pull back slowly, and let go.
-  $ev = @('0.6 mdown 220 520')
+  # Past the title, grab the bird on the slingshot at (220, 520), pull back slowly, and let go.
+  $ev = @('0.1 tap enter', '0.6 mdown 220 520')
   for ($k = 1; $k -le 10; $k++) { $ev += ('{0:0.00} mmove {1} {2}' -f (0.6 + 0.07 * $k), (220 - 5 * $k), (520 + [math]::Round(2.8 * $k))) }
   $ev += '2.0 mup'
   Record 'birds' (Exe '08-angry-birds' 'Birds4') 0.3 6 $ev
@@ -72,7 +72,7 @@ if ($Games -contains 'birds') {
 }
 if ($Games -contains 'pvz') {
   # Plant a sunflower and a peashooter, then capture once several zombies are on the lawn.
-  Record 'pvz' (Exe '09-plants-vs-zombies' 'Pvz4') 44 7 @('0.5 click 182 70', '0.9 click 310 425', '1.4 click 274 70', '1.8 click 410 425', '2.2 mmove 700 700')
+  Record 'pvz' (Exe '09-plants-vs-zombies' 'Pvz4') 44 7 @('0.1 tap enter', '0.5 click 182 70', '0.9 click 310 425', '1.4 click 274 70', '1.8 click 410 425', '2.2 mmove 700 700')
   python (Join-Path $here 'makegif.py') (Join-Path $out 'plants-vs-zombies.gif') 640 100 none (Join-Path $out 'frames-pvz\f*.png')
 }
 if ($Games -contains 'pokemon') {
@@ -98,7 +98,7 @@ if ($Games -contains 'gw') {
 if ($Games -contains 'vs') {
   # Walk in a square, pick upgrade 1 whenever a level-up menu opens, capture after half a minute.
   # A level-up menu can still land in the capture: check the frames and drop those.
-  $ev = @(); $t = 0.5
+  $ev = @('0.1 tap enter'); $t = 0.5
   for ($k = 0; $k -lt 50; $k++) { $key = @('d', 's', 'a', 'w')[$k % 4]; $ev += ('{0:0.00} down {1}' -f $t, $key); $ev += ('{0:0.00} up {1}' -f ($t + 0.9), $key); $t += 1.0 }
   for ($u = 1.0; $u -lt 44; $u += 1.7) { $ev += ('{0:0.00} tap d1' -f $u) }
   Record 'vs' (Exe '12-vampire-survivors' 'Survivors4') 38 7 $ev

@@ -201,6 +201,22 @@ Notes for building it:
   (Flappy Bird 1024 × 576, Zelda and Pokemon 1152 × 648). Geometry Wars' glow is the one
   smooth exception. The recordings follow the same rule: `makegif.py` scales with nearest
   neighbour, to a width where one art pixel is a whole number of GIF pixels.
+- **Sprites:** characters and objects have a one-art-pixel dark outline, a flat fill, one
+  highlight at the top left and one shade. Backgrounds have no outline and less contrast,
+  so what the player acts on stands out.
+- **Text:** one font, `retro.ttf`, crisp at multiples of 8 pixels. A `.spritefont`'s size is
+  in points, a third larger than pixels, so the sizes are 6, 12, 18, 24 … points for 8, 16,
+  24, 32 … pixels. Text is always drawn at scale 1, on whole pixels: a game that needs two
+  sizes has two fonts (Pong's `font` and `font-big`), and never scales one. In games at
+  1280 × 720 the HUD is 16 pixels and titles 32; in the low-resolution games, text is 8 and
+  titles 16. Over a busy background, text gets a dark shadow. Messages are sentences with
+  single spaces. (Pokemon draws its own bitmap fonts, from `fonts/*_atlas.png`.)
+- **Screens and keys:** a game with game states opens on a title screen: its name, and
+  "Press Enter" below it. Enter starts, continues and restarts (end screens say "Press Enter
+  to …"), Esc quits, R restarts the level where there are levels, P pauses where there is a
+  pause, F1 toggles debug drawing, F3 the profiler. Snake and Sokoban have no game states,
+  and no title screen: a state machine only for a title would add architecture that isn't
+  the session's topic.
 - **Naming:** a game's folder is its full name, as in its site page's URL
   (`06-super-mario-bros`), and so is its solution (`SuperMarioBros.slnx`). Step projects
   use a short form of the game's name (`Mario0`, `Birds0`, `Pvz0`), never a genre.

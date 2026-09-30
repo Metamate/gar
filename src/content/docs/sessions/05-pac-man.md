@@ -418,8 +418,8 @@ stateDiagram-v2
     GameOver --> Ready : Enter
 ```
 
-There are now two levels of state machine in one game, the game's states (ready, play,
-dying, game over) and each ghost's states. The ghosts only get updated in `PlayState`, so while
+There are now two levels of state machine in one game, the game's states (title, ready,
+play, dying, game over) and each ghost's states. The ghosts only get updated in `PlayState`, so while
 Pac-Man is dying, the ghosts' states are simply paused.
 
 ## Exercises
