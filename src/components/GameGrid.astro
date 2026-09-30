@@ -1,0 +1,107 @@
+---
+// The twelve games on the home page: a still from each finished game, linked to its session.
+import { Image } from "astro:assets"
+import s01 from "../assets/home/01.png"
+import s02 from "../assets/home/02.png"
+import s03 from "../assets/home/03.png"
+import s04 from "../assets/home/04.png"
+import s05 from "../assets/home/05.png"
+import s06 from "../assets/home/06.png"
+import s07 from "../assets/home/07.png"
+import s08 from "../assets/home/08.png"
+import s09 from "../assets/home/09.png"
+import s10 from "../assets/home/10.png"
+import s11 from "../assets/home/11.png"
+import s12 from "../assets/home/12.png"
+
+const games = [
+  { slug: "01-pong", name: "Pong", topic: "The game loop", still: s01 },
+  { slug: "02-flappy-bird", name: "Flappy Bird", topic: "Structuring the code", still: s02 },
+  { slug: "03-snake", name: "Snake", topic: "Assets as data", still: s03 },
+  { slug: "04-sokoban", name: "Sokoban", topic: "Command and undo", still: s04 },
+  { slug: "05-pac-man", name: "Pac-Man", topic: "The State pattern", still: s05 },
+  { slug: "06-super-mario-bros", name: "Super Mario Bros", topic: "The game world", still: s06 },
+  { slug: "07-the-legend-of-zelda", name: "The Legend of Zelda", topic: "Events", still: s07 },
+  { slug: "08-angry-birds", name: "Angry Birds", topic: "Using a physics library", still: s08 },
+  { slug: "09-plants-vs-zombies", name: "Plants vs. Zombies", topic: "Components", still: s09 },
+  { slug: "10-pokemon", name: "Pokemon", topic: "Scenes and UI", still: s10 },
+  { slug: "11-geometry-wars", name: "Geometry Wars", topic: "Components and systems", still: s11 },
+  { slug: "12-vampire-survivors", name: "Vampire Survivors", topic: "Performance", still: s12 },
+]
+---
+
+<ol class="game-grid not-content">
+  {
+    games.map((g, i) => (
+      <li>
+        <a href={`sessions/${g.slug}/`}>
+          <Image src={g.still} alt="" width={320} loading={i < 4 ? "eager" : "lazy"} />
+          <span class="num">{String(i + 1).padStart(2, "0")}</span>
+          <span class="name">{g.name}</span>
+          <span class="topic">{g.topic}</span>
+        </a>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .game-grid {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(10rem, 100%), 1fr));
+    gap: 1rem;
+  }
+  .game-grid li {
+    margin: 0;
+  }
+  .game-grid a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto 1fr;
+    column-gap: 0.5rem;
+    line-height: 1.3;
+    height: 100%;
+    text-decoration: none;
+    color: var(--sl-color-white);
+    background: var(--sl-color-gray-6);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  .game-grid a:hover,
+  .game-grid a:focus-visible {
+    border-color: var(--sl-color-accent);
+  }
+  .game-grid img {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    image-rendering: pixelated;
+    display: block;
+  }
+  .num,
+  .name {
+    grid-row: 2;
+    padding-top: 0.6rem;
+    font-weight: 600;
+  }
+  .num {
+    padding-left: 0.75rem;
+    color: var(--sl-color-accent-high);
+    font-variant-numeric: tabular-nums;
+  }
+  .name {
+    padding-right: 0.75rem;
+  }
+  .topic {
+    grid-column: 1 / -1;
+    padding: 0.1rem 0.75rem 0.7rem;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-2);
+  }
+</style>

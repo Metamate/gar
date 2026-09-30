@@ -1,46 +1,43 @@
 ---
-title: Welcome
+title: Game Architecture
 description: Software design and architecture in the context of game development.
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkButton } from '@astrojs/starlight/components';
+import GameGrid from '../../components/GameGrid.astro';
 
-Welcome to the course website for **GAR** (Game Architecture), a course about **software
-design and architecture in the context of game development**. We build twelve
-classic games in MonoGame, one per session, starting with a naive but working Pong and
-ending with a Vampire Survivors-style game that handles thousands of enemies. Along the
-way, each game introduces the patterns and design principles that keep a growing game
-manageable.
+**GAR** is a course about software design and architecture in game development. We build
+twelve classic games in C# and MonoGame, one per session. The first is a naive Pong written
+in a single class, and the last is a Vampire Survivors-style game with thousands of enemies.
+Each game brings a design problem that the one before didn't have, and the patterns that
+solve it.
 
-Use the sidebar to navigate through the course. The [overview](overview/) lists all
-sessions with their games and main topics, the [exam](exam/) page lists every exam question together with
-the sessions that cover it, and the [course recap](recap/) shows where every pattern
-appears.
+<LinkButton href="sessions/01-pong/" icon="right-arrow">Start with Pong</LinkButton>
+<LinkButton href="overview/" variant="secondary">Overview</LinkButton>
+<LinkButton href="https://github.com/Metamate/gar-games" variant="secondary" icon="github" iconPlacement="start">Course games</LinkButton>
 
-## Session Structure
+## The Games
 
-Each game session follows the same structure:
+<GameGrid />
+
+## How a Session Works
 
 <CardGrid>
 	<Card title="1. Prepare" icon="open-book">
-		Read the linked chapters and tutorials before class. They cover the basics, so class
-		time can go to building.
+		Chapters and tutorials to read beforehand, covering the basics the session builds on.
 	</Card>
 	<Card title="2. Build & Explore" icon="laptop">
-		The first games are built step by step from scratch. From Snake onwards, we start from
-		a working codebase and explore and extend it.
+		The first games are built step by step from an empty project. From Snake onwards, you
+		start from a working codebase, explore it and extend it.
 	</Card>
 	<Card title="3. Apply to Your Project" icon="puzzle">
-		Each session ends with questions that bring the day's patterns into your own course
-		project.
+		Questions that take the session's patterns into your own [course project](project/).
 	</Card>
 	<Card title="4. Check Yourself" icon="approve-check">
-		Short questions to test your understanding, linked to the exam questions they prepare
-		you for.
+		Short questions to test your understanding, linked to the [exam](exam/) questions they
+		prepare you for.
 	</Card>
 </CardGrid>
-
-Come prepared and take part. Most of what you learn here, you learn while building.
 
 ## GARCore
 
@@ -52,5 +49,8 @@ session.
 
 ## Resources
 
-- [Game Programming Patterns](https://gameprogrammingpatterns.com/): the course uses many chapters from this (free, online) book.
-- [MonoGame Documentation](https://docs.monogame.net/): documentation, API reference, guides and the _Building 2D Games_ tutorial used for preparation.
+- [Game Programming Patterns](https://gameprogrammingpatterns.com/), a free online book. Many sessions use its chapters.
+- [MonoGame Documentation](https://docs.monogame.net/), with the API reference, guides and the _Building 2D Games_ tutorial.
+- [gar-games](https://github.com/Metamate/gar-games), the code for every game, built up in steps.
+- [gar-starter](https://github.com/Metamate/gar-starter), the template for your project.
+- The [course recap](recap/) shows where every pattern appears, and which exam question it belongs to.
