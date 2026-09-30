@@ -298,7 +298,7 @@ _Steps `Zelda1`, `Zelda2` and `Zelda4`_
 Enemies and game objects are defined in XML:
 
 ```xml
-<Enemy type="skeleton" width="16" height="16" walkSpeed="20" health="1">
+<Enemy type="rat" width="16" height="16" walkSpeed="20" health="1">
   <Animation name="walk-down" frames="9,10,11,10" interval="0.2" />
   <Animation name="idle-down" frames="10" interval="0.2" />
 </Enemy>
