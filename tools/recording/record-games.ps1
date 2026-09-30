@@ -82,14 +82,18 @@ if ($Games -contains 'pokemon') {
   python (Join-Path $here 'makegif.py') (Join-Path $out 'pokemon.gif') 768 100 none (Join-Path $out 'frames-pokemon\f00[3-9].png') (Join-Path $out 'frames-pokemon\f0[1-8][0-9].png') (Join-Path $out 'frames-pokemon\f00[0-2].png')
 }
 if ($Games -contains 'gw') {
-  # Move with WASD and fire with the arrow keys, turning every second. Busy: a smaller GIF.
+  # Move with WASD and fire with the arrow keys, turning every second. The glow is lost in a
+  # GIF's palette, so the site gets a lossy WebP (public/animations/geometry-wars.webp); the
+  # deck gets a GIF with a full palette.
   $ev = @('0.3 tap enter'); $t = 0.5
   for ($k = 0; $k -lt 16; $k++) {
     $a = @('right', 'down', 'left', 'up')[$k % 4]; $m = @('w', 'd', 's', 'a')[$k % 4]
     $ev += ('{0:0.00} down {1}' -f $t, $a); $ev += ('{0:0.00} up {1}' -f ($t + 0.95), $a)
     $ev += ('{0:0.00} down {1}' -f $t, $m); $ev += ('{0:0.00} up {1}' -f ($t + 0.6), $m); $t += 1.0 }
   Record 'gw' (Exe '11-geometry-wars' 'GeometryWars6') 8 6 $ev
-  python (Join-Path $here 'makegif-small.py') (Join-Path $out 'geometry-wars.gif') 480 200 2 64 smooth (Join-Path $out 'frames-gw\f01[0-9].png') (Join-Path $out 'frames-gw\f0[2-5][0-9].png')
+  $gw = @((Join-Path $out 'frames-gw\f01[0-9].png'), (Join-Path $out 'frames-gw\f0[2-5][0-9].png'))
+  python (Join-Path $here 'makewebp.py') (Join-Path $out 'geometry-wars.webp') 960 100 75 @gw
+  python (Join-Path $here 'makegif-small.py') (Join-Path $out 'geometry-wars.gif') 640 100 1 256 smooth @gw
 }
 if ($Games -contains 'vs') {
   # Walk in a square, pick upgrade 1 whenever a level-up menu opens, capture after half a minute.

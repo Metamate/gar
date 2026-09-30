@@ -24,6 +24,11 @@ both games move too fast for a fixed script. Pong was recorded by hand. For Supe
 `longest_play.py` picks the longest stretch without a death from a half-minute run.
 
 `makegif.py` scales with nearest neighbour, which keeps pixel art sharp: each recipe's width
-turns one art pixel into a whole number of GIF pixels. Only Geometry Wars, whose glow is
-meant to be smooth, is scaled smoothly. The site converts the GIFs to animated WebP, which is
-usually much smaller.
+turns one art pixel into a whole number of GIF pixels. The site converts the GIFs to animated
+WebP losslessly (see `image` in `astro.config.mjs`); lossy WebP blurs pixel art and adds block
+artefacts. After changing that setting, delete `node_modules/.astro/assets`, or the build
+reuses the old images.
+
+Geometry Wars is the exception: its glow doesn't survive a GIF palette. `makewebp.py` makes a
+full-colour, lossy WebP for the site, which serves it as it is from
+`public/animations/geometry-wars.webp`; the deck gets a 256-colour GIF.

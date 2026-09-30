@@ -1,5 +1,6 @@
 """A lighter GIF for busy scenes: makegif-small.py out.gif width ms step colors [smooth] pattern...
-Scaled with nearest neighbour for pixel art, or smoothly with 'smooth' (Geometry Wars' glow)."""
+Scaled with nearest neighbour for pixel art, or smoothly with 'smooth' (Geometry Wars' glow),
+whose palette is picked by maximum coverage: small bright enemies keep their colour."""
 import glob, os, sys
 from PIL import Image
 
@@ -13,6 +14,7 @@ frames = []
 for f in files:
     im = Image.open(f).convert('RGB')
     frames.append(im.resize((width, round(im.height * width / im.width)), Image.LANCZOS if smooth else Image.NEAREST))
-pal = [fr.quantize(colors=colors, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE) for fr in frames]
+method = Image.Quantize.MAXCOVERAGE if smooth else Image.Quantize.MEDIANCUT
+pal = [fr.quantize(colors=colors, method=method, dither=Image.Dither.NONE) for fr in frames]
 pal[0].save(out, save_all=True, append_images=pal[1:], duration=ms, loop=0, optimize=True, disposal=1)
 print(out, len(frames), 'frames', os.path.getsize(out) // 1024, 'KB')

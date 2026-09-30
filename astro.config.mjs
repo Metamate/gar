@@ -16,6 +16,14 @@ const isUserSite = repo?.toLowerCase() === `${owner?.toLowerCase()}.github.io`
 export default defineConfig({
   site: owner ? `https://${owner}.github.io` : undefined,
   base: repo && !isUserSite ? `/${repo}` : undefined,
+  // The game images are pixel art: converted to WebP losslessly (lossy compression blurs the
+  // pixels and adds block artefacts) and resized with nearest neighbour.
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+      config: { webp: { lossless: true }, kernel: "nearest" },
+    },
+  },
   integrations: [
     // Must come before starlight so it claims ```mermaid blocks before
     // Expressive Code turns them into highlighted code.
