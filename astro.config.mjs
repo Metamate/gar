@@ -48,6 +48,13 @@ export default defineConfig({
           ],
         },
         {
+          label: "Code",
+          items: [
+            { label: "Course games", link: "https://github.com/Metamate/gar-games" },
+            { label: "Project template", link: "https://github.com/Metamate/gar-starter" },
+          ],
+        },
+        {
           label: "Sessions",
           items: [{ autogenerate: { directory: "sessions" } }],
         },
