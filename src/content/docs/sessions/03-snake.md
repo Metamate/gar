@@ -60,14 +60,14 @@ content.IncludeCopy<WildcardRule>("*.xml");
 ```
 
 The benefit is that the data can change while the code stays the same. A new animation
-frame, a faster mouse or a different room is an edit to an XML file. An artist or designer can
+frame, a new sprite or a different room is an edit to an XML file. An artist or designer can
 make it without touching the game's code, and the code stays smaller and more general.
 
 ## Texture Atlases
 
 _Steps `Snake0` → `Snake1`_
 
-Loading `snake1.png`, `snake2.png`, `mouse1.png`… as separate textures means the GPU must
+Loading `snake1.png`, `snake2.png`, `apple1.png`… as separate textures means the GPU must
 switch texture between draws, which breaks batching. A **texture atlas** (sprite sheet)
 packs many images into one texture.
 
@@ -81,7 +81,7 @@ a named rectangle within the atlas:
     <Texture>images/atlas</Texture>
     <Regions>
         <Region name="snake-1" x="0" y="0" width="20" height="20" />
-        <Region name="mouse-1" x="20" y="0" width="20" height="20" />
+        <Region name="apple-1" x="20" y="0" width="20" height="20" />
     </Regions>
 </TextureAtlas>
 ```
@@ -128,34 +128,34 @@ classDiagram
     Animation o-- TextureRegion
 ```
 
-**Try it** (`Snake1`): draw the mouse with its second frame by changing only
-`atlas-definition.xml`. Then misspell `mouse-1` in the XML: what happens, and when?
+**Try it** (`Snake1`): draw the apple with its second frame by changing only
+`atlas-definition.xml`. Then misspell `apple-1` in the XML: what happens, and when?
 
 ## Sprites & Animation
 
 _Steps `Snake2` and `Snake3`_
 
 A `Sprite` wraps a texture region together with everything needed to draw it: color mask,
-rotation, scale, origin, sprite effects and layer depth. `Snake2` scales the mouse and spins
+rotation, scale, origin, sprite effects and layer depth. `Snake2` scales the apple and spins
 it around its centre (`CenterOrigin()`).
 
 An **animation** is a list of regions and a frame delay, also defined in the atlas XML:
 
 ```xml
-<Animation name="mouse-animation" delay="200">
-    <Frame region="mouse-1" />
-    <Frame region="mouse-2" />
-    <Frame region="mouse-1" />
-    <Frame region="mouse-3" />
+<Animation name="apple-animation" delay="200">
+    <Frame region="apple-1" />
+    <Frame region="apple-2" />
+    <Frame region="apple-1" />
+    <Frame region="apple-3" />
 </Animation>
 ```
 
 An `AnimatedSprite` is a `Sprite` that accumulates elapsed time in `Update()` and advances
 to the next frame when the delay has passed (`Snake3`).
 
-**Try it** (`Snake2` and `Snake3`): make the mouse bigger and spin it the other way, then
-remove `CenterOrigin()` and explain what changes. In the XML only, make the mouse's tail
-wiggle twice as fast and give its animation one more frame.
+**Try it** (`Snake2` and `Snake3`): make the apple bigger and spin it the other way, then
+remove `CenterOrigin()` and explain what changes. In the XML only, make the apple's leaf
+sway twice as fast and give its animation one more frame.
 
 ## The Room
 
@@ -289,8 +289,8 @@ and in `Snake7`.
 
 _Step `Snake8`_
 
-A mouse runs around the room. When the snake's head touches it, the snake eats it, grows,
-and a new mouse appears.
+An apple sits on one cell of the room. When the snake's head reaches it, the snake eats it,
+grows, and a new apple appears on a free cell.
 
 - **Distance-based / circles:** two circles overlap if the distance between their centres
   is less than the sum of their radii. Compare _squared_ values
@@ -305,14 +305,16 @@ player. A grid lookup, as in [Super Mario Bros](../06-super-mario-bros/#performa
 cheaper still, but only works for things that stay in their cell.
 
 MonoGame has no circle type, so GARCore has a `Circle` struct with `Intersects(Circle)`.
-Both the snake's head and the mouse expose their `Bounds` as a `Circle`.
+Both the snake's head and the apple expose their `Bounds` as a `Circle`. The apple stays in
+its cell, so comparing cells would work here too; circles also work for things that move
+freely, which the later games need.
 
 **Collision response** is what happens _after_ a hit:
 
-- **Triggering:** something happens. The snake eats the mouse and grows. On its next move,
+- **Triggering:** something happens. The snake eats the apple and grows. On its next move,
   it keeps its tail.
-- **Bouncing:** reflect the velocity off the surface. The mouse uses `Vector2.Reflect` with
-  the wall's normal.
+- **Bouncing:** reflect the velocity off the surface, as the ball does in [Pong](../01-pong/).
+  `Vector2.Reflect` does it for any angle, given the surface's normal.
 
 ## Game Over
 
@@ -326,7 +328,7 @@ and the snake's own body are deadly. Both are grid checks, without any shapes:
 if (!_room.Contains(_snake.Head) || _snake.IsBitingItself)
 {
     _snake.Reset(_room.Center);
-    RespawnBat();
+    _apple.MoveToFreeCell(_snake);
 }
 ```
 
@@ -336,9 +338,9 @@ Start from `Snake9`.
 
 1. **A beetle from data:** the atlas image also holds a beetle the game doesn't use yet,
    with two frames at (40, 20) and (60, 0). Describe it in `atlas-definition.xml` (two regions and a
-   `beetle-animation`), and make the snake chase a beetle instead of a mouse. How much C# did you
-   need to change? And for a beetle _next to_ the mouse: what in `Game1` would have to change,
-   and what does that say about where the mouse's rules live?
+   `beetle-animation`), and make the snake eat a beetle instead of an apple. How much C# did you
+   need to change? And for a beetle _next to_ the apple: what in `Game1` would have to change,
+   and what does that say about where the apple's rules live?
 2. **Speed up:** make the tick shorter each time the snake eats, down to a minimum. Where
    does that rule belong?
 3. **New input:** add gamepad support for the D-pad. A press needs last frame's state, so

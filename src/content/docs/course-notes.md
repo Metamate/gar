@@ -190,7 +190,7 @@ Notes for building it:
   Game-specific layers (Mario's toppers, Pokemon's tall grass) are separate
   tilemaps drawn on top.
 - **Art:** each game keeps the original's setting, palette and objects, but its characters
-  are our own designs (a builder and moles in Mario, a mouse in Snake, our own hero in
+  are our own designs (a builder and moles in Mario, an apple in Snake, our own hero in
   Zelda, our own monsters in Pokemon). Games made of simple shapes (Pong, Pac-Man, Geometry
   Wars) can look like the original: there is no character to copy.
 - **Pixel art:** inside a game, every sprite, tile and background uses the same art-pixel
