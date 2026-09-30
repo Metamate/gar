@@ -24,10 +24,7 @@ from reusable UI widgets.
 We also separate the UI from the game data, write turn-based battles, meet the Service
 Locator pattern, and add saving and loading.
 
-**Source code:** [gar-games/10-pokemon](https://github.com/Metamate/gar-games/tree/main/10-pokemon).
-Its README lists the steps (`Pokemon0` to `Pokemon4`, one project per concept), maps the
-code and suggests an order to read it in. Each section below names the steps that introduce
-it; compare neighbouring steps to see what changed.
+**Source code:** [gar-games/10-pokemon](https://github.com/Metamate/gar-games/tree/main/10-pokemon)
 
 ## Prepare
 

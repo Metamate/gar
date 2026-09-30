@@ -27,11 +27,7 @@ rest of the code having to know about it. We look at:
 - Contact events, and destroying bodies safely
 - The **Prototype** pattern, for building levels from prefabs
 
-**Source code:**
-[gar-games/08-angry-birds](https://github.com/Metamate/gar-games/tree/main/08-angry-birds).
-Its README lists the steps (`Birds0` to `Birds4`, one project per concept), maps the code,
-and says how to run it. Each section below names the steps that introduce it; compare
-neighbouring steps to see what changed.
+**Source code:** [gar-games/08-angry-birds](https://github.com/Metamate/gar-games/tree/main/08-angry-birds)
 
 ## Prepare
 

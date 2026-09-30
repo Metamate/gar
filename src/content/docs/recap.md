@@ -5,9 +5,7 @@ description: Every pattern and topic in the course, the games that use it, and t
 
 This page collects the patterns and topics from all twelve games. For each one it shows
 where it is introduced, where it comes back, and which [exam question](../exam/) it belongs
-to. We go through it
-in the last lesson of [session 12](../sessions/12-vampire-survivors/), and it is a good
-starting point for exam preparation (see [the project at the exam](../project/#the-project-at-the-exam)).
+to. It is a good starting point for exam preparation (see [the project at the exam](../project/#the-project-at-the-exam)).
 
 ## Patterns
 

@@ -24,13 +24,7 @@ the course. And we replace the string with a **state machine**.
 Other new things in this session are textures, parallax scrolling, procedural generation,
 interfaces and the Singleton pattern.
 
-**Source code:**
-[gar-games/02-flappy-bird](https://github.com/Metamate/gar-games/tree/main/02-flappy-bird). Its README
-lists the steps (`Flappy0` to `Flappy12`), maps the code, and says how to run it. You build
-most of them in the exercises below. Three stretches are shown in class, namely images and parallax
-(`Flappy1` and `Flappy2`), procedural generation (`Flappy6` and `Flappy7`), and states that pass
-data and count down (`Flappy10` and `Flappy11`). Compare your solution with the matching step,
-and neighbouring steps to see what changed.
+**Source code:** [gar-games/02-flappy-bird](https://github.com/Metamate/gar-games/tree/main/02-flappy-bird)
 
 ## Prepare
 

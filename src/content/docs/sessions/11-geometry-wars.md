@@ -27,10 +27,7 @@ entities? We also look at:
 - Flyweight
 - Particles as a system
 
-**Source code:** [gar-games/11-geometry-wars](https://github.com/Metamate/gar-games/tree/main/11-geometry-wars).
-Its README lists the steps (`GeometryWars0` to `GeometryWars6`, one project per concept,
-plus the `GeometryWars.Tests` project), maps the code and suggests an order to read it in.
-Each section below names the steps that introduce it.
+**Source code:** [gar-games/11-geometry-wars](https://github.com/Metamate/gar-games/tree/main/11-geometry-wars)
 
 ## Prepare
 
@@ -329,8 +326,8 @@ seeker's texture loaded, and how many times?
 
 _Step `GeometryWars5`_
 
-Geometry Wars' neon glow and warping grid are shader work. We look at it as a demo; it
-isn't required for your project.
+Geometry Wars' neon glow and warping grid are shader work. Shaders are not
+required for your project.
 
 - **Vertex shaders** run once per vertex; **pixel shaders** run once per pixel. The GPU
   runs thousands of them in parallel.
@@ -347,7 +344,7 @@ isn't required for your project.
 | How code gets shared services | Dependency injection |
 | When entities are allocated | Object Pool |
 | What entities share | Flyweight |
-| How entities look | Shaders (demo) |
+| How entities look | Shaders |
 
 ## Exercises
 

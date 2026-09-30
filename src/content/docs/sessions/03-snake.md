@@ -23,11 +23,7 @@ files, and the code reads them from there.
 The session also covers texture atlases, sprites and animation, movement on a fixed tick,
 and input as actions, with input buffering.
 
-**Source code:**
-[gar-games/03-snake](https://github.com/Metamate/gar-games/tree/main/03-snake). Its README
-lists the steps (`Snake0` to `Snake9`, one project per concept), maps the code, and says how
-to run it. Each section below names the steps that introduce it; compare neighbouring steps
-to see what changed.
+**Source code:** [gar-games/03-snake](https://github.com/Metamate/gar-games/tree/main/03-snake)
 
 ## Prepare
 

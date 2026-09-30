@@ -25,10 +25,7 @@ The session also covers hitboxes and hurtboxes, and a tweening system for scroll
 rooms. It ends with composition vs. inheritance. The game has many kinds of things, and
 how we build them decides how easy the next one is to add.
 
-**Source code:** [gar-games/07-the-legend-of-zelda](https://github.com/Metamate/gar-games/tree/main/07-the-legend-of-zelda).
-Its README lists the steps (`Zelda0` to `Zelda7`, one project per concept), maps the code,
-and says how to run it. Each section below names the steps that introduce it; compare
-neighbouring steps to see what changed.
+**Source code:** [gar-games/07-the-legend-of-zelda](https://github.com/Metamate/gar-games/tree/main/07-the-legend-of-zelda)
 
 ## Prepare
 

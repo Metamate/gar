@@ -26,13 +26,7 @@ session is about performance, and about doing the work in the right order.
 2. **Spatial partitioning**. Stop comparing every enemy with every other enemy.
 3. **Data-oriented design**. Lay out the data for the loops that use it.
 
-The session ends with the [course recap](#course-recap).
-
-**Source code:**
-[gar-games/12-vampire-survivors](https://github.com/Metamate/gar-games/tree/main/12-vampire-survivors).
-Its README lists the steps (`Survivors0` to `Survivors4`, one project per concept, plus the
-`Survivors.Tests` project), maps the code, and says how to run it. Each section below names
-the steps that introduce it; compare neighbouring steps to see what changed.
+**Source code:** [gar-games/12-vampire-survivors](https://github.com/Metamate/gar-games/tree/main/12-vampire-survivors)
 
 ## Prepare
 
@@ -452,7 +446,7 @@ Related exam questions: [7](../../exam/#7-tilemaps-collision-detection--procedur
 
 ## Course Recap
 
-The last lesson of the course walks through the [course recap](../../recap/): the patterns
-from all twelve games, the threads that run through them (input, data, entities, testing,
-performance), and the exam questions they prepare you for. Bring your project, and for each
-thread, find where it shows up in your own game.
+The [course recap](../../recap/) brings together the patterns from all twelve games, the
+threads that run through them (input, data, entities, testing, performance), and the exam
+questions they prepare you for. Go through it with your project open, and for each thread,
+find where it shows up in your own game.

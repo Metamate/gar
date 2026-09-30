@@ -26,11 +26,7 @@ Each ghost also chases Pac-Man in its own way, and for that we use the **Strateg
 The two patterns have the same shape, so we look at why they are still used differently.
 Each ghost's targeting gets its own unit tests.
 
-**Source code:**
-[gar-games/05-pac-man](https://github.com/Metamate/gar-games/tree/main/05-pac-man). Its README
-lists the steps (`Pacman0` to `Pacman4`, one project per concept, plus the `Pacman.Tests`
-project), maps the code, and says how to run it. Each section below names the steps that
-introduce it; compare neighbouring steps to see what changed.
+**Source code:** [gar-games/05-pac-man](https://github.com/Metamate/gar-games/tree/main/05-pac-man)
 
 ## Prepare
 

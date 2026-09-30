@@ -27,11 +27,7 @@ The plant and zombie types come from data files, with the **Type Object** patter
 And since the game is played with the mouse, we start with picking, which turns a click into
 a seed packet or a cell on the lawn.
 
-**Source code:**
-[gar-games/09-plants-vs-zombies](https://github.com/Metamate/gar-games/tree/main/09-plants-vs-zombies).
-Its README lists the steps (`Pvz0` to `Pvz4`, one project per concept, plus the `Pvz.Tests`
-project), maps the code, and says how to run it. Each section below names the steps that introduce it; compare
-neighbouring steps to see what changed.
+**Source code:** [gar-games/09-plants-vs-zombies](https://github.com/Metamate/gar-games/tree/main/09-plants-vs-zombies)
 
 ## Prepare
 

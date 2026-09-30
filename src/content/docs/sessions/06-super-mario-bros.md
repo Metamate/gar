@@ -25,11 +25,7 @@ The levels come from level makers, which is the Strategy pattern again. We add d
 drawing to see the collision boxes. The player gets states, as the ghosts did in Pac-Man,
 but these share their physics and react to the world.
 
-**Source code:**
-[gar-games/06-super-mario-bros](https://github.com/Metamate/gar-games/tree/main/06-super-mario-bros).
-Its README lists the steps (`Mario0` to `Mario8`, one project per concept), maps
-the code, and says how to run it. Each section below names the steps that introduce it;
-compare neighbouring steps to see what changed.
+**Source code:** [gar-games/06-super-mario-bros](https://github.com/Metamate/gar-games/tree/main/06-super-mario-bros)
 
 ## Prepare
 
