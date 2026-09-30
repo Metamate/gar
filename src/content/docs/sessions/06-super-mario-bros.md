@@ -29,11 +29,6 @@ but these share their physics and react to the world.
 
 ## Prepare
 
-- [14: Sound Effects and Music](https://docs.monogame.net/articles/tutorials/building_2d_games/14_soundeffects_and_music)
-- [15: Audio Controller](https://docs.monogame.net/articles/tutorials/building_2d_games/15_audio_controller)
-- [16: Working with SpriteFonts](https://docs.monogame.net/articles/tutorials/building_2d_games/16_working_with_spritefonts)
-- [17: Scenes](https://docs.monogame.net/articles/tutorials/building_2d_games/17_scenes)
-- [18: Texture Sampling](https://docs.monogame.net/articles/tutorials/building_2d_games/18_texture_sampling)
 - [State](https://gameprogrammingpatterns.com/state.html)
 
 ## Levels From Code

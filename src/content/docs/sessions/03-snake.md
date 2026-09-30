@@ -32,6 +32,9 @@ and input as actions, with input buffering.
 - [09: The AnimatedSprite Class](https://docs.monogame.net/articles/tutorials/building_2d_games/09_the_animatedsprite_class)
 - [11: Input Management](https://docs.monogame.net/articles/tutorials/building_2d_games/11_input_management)
 - [12: Collision Detection](https://docs.monogame.net/articles/tutorials/building_2d_games/12_collision_detection)
+- [13: Working With Tilemaps](https://docs.monogame.net/articles/tutorials/building_2d_games/13_working_with_tilemaps)
+- [22: Snake Game Mechanics](https://docs.monogame.net/articles/tutorials/building_2d_games/22_snake_game_mechanics), grid movement on a fixed tick
+- [23: Completing the Game](https://docs.monogame.net/articles/tutorials/building_2d_games/23_completing_the_game), which adds input buffering
 
 ## Assets as Data
 
