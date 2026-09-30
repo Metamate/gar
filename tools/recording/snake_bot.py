@@ -1,7 +1,7 @@
 """Plays Snake9 for a recording: reads the screen, finds the snake and the mouse, and steers.
 
-The room is cells 1-14 across and 2-7 down on an 80-pixel grid. Every snake segment has the
-colour (0, 184, 0) at its cell centre, and the mouse is the only grey on screen. The head is the
+The room is cells 1-14 across and 2-7 down on an 80-pixel grid. Every snake segment has one of
+its two scale colours at its cell centre (one per animation frame), and the mouse is the only grey on screen. The head is the
 cell that turned green since the last move. At each move the bot picks the safe direction that
 brings it closest to the mouse, and never one that leads into a pocket smaller than the snake.
 
@@ -9,39 +9,16 @@ python snake_bot.py <Snake9.exe> <frames folder> [seconds] [frame interval ms]
 """
 import ctypes, os, subprocess, sys, time
 from ctypes import wintypes
-from PIL import ImageGrab
+from winshot import grab, window_of
 
 EXE, OUT = sys.argv[1], sys.argv[2]
 SECONDS = float(sys.argv[3]) if len(sys.argv) > 3 else 12
 INTERVAL = (int(sys.argv[4]) if len(sys.argv) > 4 else 100) / 1000
 CELL, ROOM = 80, (1, 2, 14, 7)                      # first column, first row, last column, last row
-SNAKE, MOUSE = (0, 184, 0), (150, 150, 162)
+SNAKE, MOUSE = {(24, 164, 124), (12, 116, 88)}, (150, 150, 162)
 KEYS = {(0, -1): 0x26, (0, 1): 0x28, (-1, 0): 0x25, (1, 0): 0x27}   # up, down, left, right
 
 user32 = ctypes.windll.user32
-user32.SetProcessDPIAware()
-
-
-def window_of(pid):
-    found = []
-
-    @ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
-    def each(hwnd, _):
-        owner = wintypes.DWORD()
-        user32.GetWindowThreadProcessId(hwnd, ctypes.byref(owner))
-        if owner.value == pid and user32.IsWindowVisible(hwnd):
-            found.append(hwnd)
-        return True
-    user32.EnumWindows(each, 0)
-    return found[0] if found else None
-
-
-def client_box(hwnd):
-    rect = wintypes.RECT()
-    user32.GetClientRect(hwnd, ctypes.byref(rect))
-    pt = wintypes.POINT(0, 0)
-    user32.ClientToScreen(hwnd, ctypes.byref(pt))
-    return (pt.x, pt.y, pt.x + rect.right, pt.y + rect.bottom)
 
 
 def tap(vk):
@@ -52,7 +29,7 @@ def tap(vk):
 
 def read(img):
     snake = {(x, y) for y in range(ROOM[1], ROOM[3] + 1) for x in range(ROOM[0], ROOM[2] + 1)
-             if img.getpixel((x * CELL + CELL // 2, y * CELL + CELL // 2)) == SNAKE}
+             if img.getpixel((x * CELL + CELL // 2, y * CELL + CELL // 2)) in SNAKE}
     small = img.resize((img.width // 4, img.height // 4))
     grey = [(x * 4, y * 4) for y in range(small.height) for x in range(small.width)
             if small.getpixel((x, y)) == MOUSE]
@@ -96,9 +73,10 @@ def choose(head, heading, body, mouse):
 proc = subprocess.Popen([EXE], cwd=os.path.dirname(EXE))
 time.sleep(2.5)
 hwnd = window_of(proc.pid)
+user32.keybd_event(0x12, 0, 0, 0)                   # Windows only hands over the focus after a key press
+user32.keybd_event(0x12, 0, 2, 0)
 user32.SetForegroundWindow(hwnd)
 time.sleep(0.3)
-box = client_box(hwnd)
 os.makedirs(OUT, exist_ok=True)
 for f in os.listdir(OUT):
     if f.endswith('.png'):
@@ -107,7 +85,7 @@ for f in os.listdir(OUT):
 prev, head, heading, frame, next_shot = set(), None, (1, 0), 0, time.time()
 start = time.time()
 while time.time() - start < SECONDS:
-    img = ImageGrab.grab(bbox=box, all_screens=True).convert('RGB')
+    img = grab(hwnd)
     now = time.time()
     if now >= next_shot:
         img.save(os.path.join(OUT, f'f{frame:03d}.png'))

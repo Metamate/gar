@@ -7,7 +7,7 @@ are recorded from the finished games in gar-games.
   captures its window at a steady rate (Windows, PowerShell 7).
 - `makegif.py` turns the frames into a GIF, with an optional crop and a pause on the last
   frame. `makegif-small.py` makes a lighter one for busy scenes (fewer frames and colours).
-- `record-games.ps1` has the recipes for Snake, Sokoban, Pac-Man, Super Mario Bros, Zelda, Angry
+- `record-games.ps1` has the recipes for Flappy Bird, Snake, Sokoban, Pac-Man, Super Mario Bros, Zelda, Angry
   Birds, Plants vs. Zombies, Pokemon, Geometry Wars and Vampire Survivors. Build the games first, then run, for example:
 
   ```
@@ -18,7 +18,12 @@ are recorded from the finished games in gar-games.
   one: a death or a menu can end up in the capture. Then copy the GIF over the one in
   `src/assets/sessionNN/`, and replace the picture on the deck's Today's Goal slide.
 
-Snake is played by `snake_bot.py`, which reads the screen each frame and steers towards the
-mouse, because the snake moves too fast for a fixed script. Pong and Flappy Bird were recorded
-by hand. For Super Mario Bros, `longest_play.py` picks the longest stretch without a
-death from a half-minute run. The site converts the GIFs to animated WebP, which is usually much smaller.
+Snake and Flappy Bird are played by bots, `snake_bot.py` and `flappy_bot.py`, which read the
+game's window each frame (`winshot.py`, the game's own pixels only) and steer or flap, because
+both games move too fast for a fixed script. Pong was recorded by hand. For Super Mario Bros,
+`longest_play.py` picks the longest stretch without a death from a half-minute run.
+
+`makegif.py` scales with nearest neighbour, which keeps pixel art sharp: each recipe's width
+turns one art pixel into a whole number of GIF pixels. Only Geometry Wars, whose glow is
+meant to be smooth, is scaled smoothly. The site converts the GIFs to animated WebP, which is
+usually much smaller.

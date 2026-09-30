@@ -1,5 +1,7 @@
 """Builds a GIF from captured frames, optionally cropped:
-python makegif2.py out.gif width ms "x0,y0,x1,y1|none" [hold_last_frames] pattern..."""
+python makegif.py out.gif width ms "x0,y0,x1,y1|none" [hold_last_frames] pattern...
+The frames are scaled with nearest neighbour, which keeps pixel art sharp. Pick a width
+where one art pixel becomes a whole number of GIF pixels (half the window width, usually)."""
 import glob, sys
 from PIL import Image
 
@@ -16,7 +18,7 @@ for f in files:
     if box:
         im = im.crop(box)
     h = round(im.height * width / im.width)
-    frames.append(im.resize((width, h), Image.LANCZOS))
+    frames.append(im.resize((width, h), Image.NEAREST))
 frames += [frames[-1]] * hold                      # linger on the last frame before looping
 pal = [fr.quantize(colors=128, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE) for fr in frames]
 pal[0].save(out, save_all=True, append_images=pal[1:], duration=ms, loop=0, optimize=True, disposal=1)
