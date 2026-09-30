@@ -25,3 +25,6 @@ in-progress/slides-ppt/
 
 # Frames and GIFs from tools/recording
 tools/recording/out/
+
+# Python caches
+__pycache__/
