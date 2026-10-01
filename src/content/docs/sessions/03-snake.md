@@ -174,11 +174,11 @@ floor tile in the middle.
 <Tilemap>
     <Tileset region="0 16 24 24" tileWidth="8" tileHeight="8">images/atlas</Tileset>
     <Tiles>
-        00 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 02
-        03 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 05
-        03 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 05
+        00 01 01 01 01 01 … 01 01 01 01 02
+        03 04 04 04 04 04 … 04 04 04 04 05
+        03 04 04 04 04 04 … 04 04 04 04 05
         ...
-        06 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 08
+        06 07 07 07 07 07 … 07 07 07 07 08
     </Tiles>
 </Tilemap>
 ```
@@ -204,7 +204,7 @@ the game runs. The `Snake` class keeps its body as a list of **cells** (head fir
 moves on a fixed **tick**:
 
 ```csharp title="Snake.cs"
-private static readonly TimeSpan TickDuration = TimeSpan.FromMilliseconds(200);
+private static readonly TimeSpan TickDuration = TimeSpan.FromMilliseconds(100);
 
 public void Update(GameTime gameTime)
 {

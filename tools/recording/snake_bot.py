@@ -1,6 +1,6 @@
 """Plays Snake9 for a recording: reads the screen, finds the snake and the food, and steers.
 
-The room is cells 1-18 across and 1-9 down on a 64-pixel grid (8-dot cells at 8x). Everything is
+The room is cells 1-38 across and 1-20 down on a 32-pixel grid (8-dot cells at 4x). Everything is
 the same green: a cell whose centre is lit holds the snake or the food, and only the snake's
 blocks also light the dot near their corner. The head is the cell that lit up since the last move. At each move the bot picks the safe direction that
 brings it closest to the food, and never one that leads into a pocket smaller than the snake.
@@ -14,7 +14,7 @@ from winshot import grab, window_of
 EXE, OUT = sys.argv[1], sys.argv[2]
 SECONDS = float(sys.argv[3]) if len(sys.argv) > 3 else 12
 INTERVAL = (int(sys.argv[4]) if len(sys.argv) > 4 else 100) / 1000
-CELL, DOT, ROOM = 64, 8, (1, 1, 18, 9)             # first column, first row, last column, last row
+CELL, DOT, ROOM = 32, 4, (1, 1, 38, 20)             # first column, first row, last column, last row
 LIT = (120, 230, 90)
 KEYS = {(0, -1): 0x26, (0, 1): 0x28, (-1, 0): 0x25, (1, 0): 0x27}   # up, down, left, right
 
@@ -81,6 +81,10 @@ user32.keybd_event(0x12, 0, 0, 0)                   # Windows only hands over th
 user32.keybd_event(0x12, 0, 2, 0)
 user32.SetForegroundWindow(hwnd)
 time.sleep(0.3)
+user32.keybd_event(0x0D, 0x1C, 0, 0)                # Enter, past the title screen
+time.sleep(0.05)
+user32.keybd_event(0x0D, 0x1C, 2, 0)
+time.sleep(0.2)
 os.makedirs(OUT, exist_ok=True)
 for f in os.listdir(OUT):
     if f.endswith('.png'):
