@@ -55,7 +55,7 @@ that is open at both ends is a tunnel, and leaving on one side enters on the oth
 
 As in Sokoban, the rules are separate from the drawing. `Maze`, `PacMan` and `World` hold the
 game; `MazeView` and `PacManView` draw it. The walls aren't even images: `MazeView` draws a
-blue line along every side of a wall tile that faces an open tile.
+line along every side of a wall tile that faces an open tile.
 
 ### Moving through the maze
 

@@ -187,7 +187,8 @@ Notes for building it:
   Sokoban (Sokoban Pack), Super Mario Bros (Pixel Platformer), The Legend of Zelda (Tiny
   Dungeon), Angry Birds (Physics Assets), Pokemon (Monochrome RPG) and Vampire Survivors
   (1-Bit Pack). The other six have our own art: Pong, Flappy Bird, Snake (lit dots on a
-  dark screen, as on the phones it became famous on), Pac-Man, Plants vs. Zombies and
+  dark screen, as on the phones it became famous on), Pac-Man (a beetle chased by four one-eyed wisps, in
+  the original ghosts' colours, which the lesson names them by), Plants vs. Zombies and
   Geometry Wars. Where a pack lacks something a game needs (a ducking frame, a sword
   swing, a slingshot, hearts), it is made from the pack's own pieces and colours. Pokemon's
   monsters are our designs, in the pack's four shades, and its trainer's side and back views
