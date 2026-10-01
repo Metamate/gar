@@ -54,6 +54,13 @@ answer.
   ([11](../sessions/11-geometry-wars/)) → data-oriented design
   ([12](../sessions/12-vampire-survivors/)). Exam [9](../exam/#9-components--systems),
   [10](../exam/#10-memory--performance).
+- **Architecture:** coupling and cohesion ([02](../sessions/02-flappy-bird/#game-architecture))
+  → rules apart from drawing ([04](../sessions/04-sokoban/)) → events
+  ([07](../sessions/07-the-legend-of-zelda/)) → a library behind our own interface
+  ([08](../sessions/08-angry-birds/)) → what components cost
+  ([09](../sessions/09-plants-vs-zombies/)) → where new code goes
+  ([11](../sessions/11-geometry-wars/)) → what speed costs
+  ([12](../sessions/12-vampire-survivors/)). Exam [0](../exam/#0-present-your-game-project).
 - **Dependencies:** Singleton ([02](../sessions/02-flappy-bird/)) → Service Locator
   ([10](../sessions/10-pokemon/)) → dependency injection ([11](../sessions/11-geometry-wars/)).
   Exam [3](../exam/#3-singleton--service-locator).

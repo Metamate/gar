@@ -48,6 +48,13 @@ touch many other parts.
 - **Cohesion:** how closely related the responsibilities inside one module are. Aim for
   high.
 
+Cheap change is the quality we come back to most. A few others turn up through the course:
+
+- **Easy to understand:** someone new to the code can find where things happen.
+- **Testable:** the rules of the game can run without a window or a keyboard.
+- **Driven by data:** levels, enemy types and other things that change often live in files.
+- **Fast enough:** the game holds its frame rate with as many things on screen as it needs.
+
 Decoupling isn't free. Abstractions cost time to write and understand, and sometimes cost
 performance. Good architecture is about choosing _where_ flexibility is worth that cost.
 
