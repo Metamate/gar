@@ -282,12 +282,19 @@ so the mask follows the camera while the rooms scroll.
 
 ```csharp title="Dungeon.cs"
 // Pass 2: mark the arches in the stencil buffer, without drawing any colour
-spriteBatch.Begin(transformMatrix: worldTransform, blendState: StencilOnlyBlend, depthStencilState: WriteStencilState);
+spriteBatch.Begin(
+    transformMatrix:   worldTransform,
+    samplerState:      SamplerState.PointClamp,
+    blendState:        StencilOnlyBlend,
+    depthStencilState: WriteStencilState);
 DrawArchMasks(spriteBatch, pixel);
 spriteBatch.End();
 
 // Pass 3: the player, only where the stencil is 0
-spriteBatch.Begin(transformMatrix: worldTransform, depthStencilState: ReadStencilState);
+spriteBatch.Begin(
+    transformMatrix:   worldTransform,
+    samplerState:      SamplerState.PointClamp,
+    depthStencilState: ReadStencilState);
 _player.Draw(spriteBatch);
 spriteBatch.End();
 ```

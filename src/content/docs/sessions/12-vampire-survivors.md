@@ -256,7 +256,11 @@ player, and is rebuilt every step with a **counting sort** into plain arrays:
 ```csharp title="FlatGrid.cs"
 // 1. Count the items in each cell.
 for (int i = 0; i < count; i++)
-    _cellStart[CellIndex(positions[i]) + 1]++;
+{
+    int cell = CellIndex(positions[i]);
+    _cellOf[i] = cell;
+    _cellStart[cell + 1]++;
+}
 
 // 2. Each cell starts where the one before it ends.
 for (int c = 0; c < columns * rows; c++)

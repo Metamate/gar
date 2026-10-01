@@ -202,23 +202,31 @@ public sealed class FakeScoreTracker : IScoreTracker
 {
     public List<int> PointsAdded { get; } = [];
     public int MultiplierIncreases { get; private set; }
+    public int LivesRemoved { get; private set; }
 
     public bool IsGameOver => false;
     public void AddPoints(int basePoints) => PointsAdded.Add(basePoints);
     public void IncreaseMultiplier() => MultiplierIncreases++;
-    public void RemoveLife() { }
+    public void RemoveLife() => LivesRemoved++;
 }
 ```
 
 ```csharp title="AwardScoreOnDestroyedTests.cs"
+// Builds an entity the way EntityFactory does: add the components, then start it.
+private static (Entity Enemy, Destroyable Destroyable) CreateEnemy(FakeScoreTracker score, bool increaseMultiplier = true)
+{
+    var enemy = new Entity();
+    var destroyable = enemy.AddComponent(new Destroyable());
+    enemy.AddComponent(new AwardScoreOnDestroyed(score, 50, increaseMultiplier));
+    enemy.Start();
+    return (enemy, destroyable);
+}
+
 [Fact]
 public void Destroying_the_enemy_awards_its_points()
 {
     var score = new FakeScoreTracker();
-    var enemy = new Entity();
-    var destroyable = enemy.AddComponent(new Destroyable());
-    enemy.AddComponent(new AwardScoreOnDestroyed(score, 50));
-    enemy.Start();
+    var (_, destroyable) = CreateEnemy(score);
 
     destroyable.Destroy();
 

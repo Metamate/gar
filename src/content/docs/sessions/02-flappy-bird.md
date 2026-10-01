@@ -177,8 +177,8 @@ public class StateMachine(Game1 game)
 {
     private IState _currentState;
 
-    public TitleState TitleState { get; } = new TitleState(game);
-    public PlayState PlayState { get; } = new PlayState(game);
+    public TitleState TitleState { get; private set; } = new TitleState(game);
+    public PlayState PlayState { get; private set; } = new PlayState(game);
 
     public void ChangeState(IState newState)
     {
@@ -187,9 +187,15 @@ public class StateMachine(Game1 game)
         _currentState.Enter();
     }
 
-    public void Update(GameTime gameTime) => _currentState?.Update(gameTime);
+    public void Update(GameTime gameTime)
+    {
+        _currentState?.Update(gameTime);
+    }
 
-    public void Draw(SpriteBatch spriteBatch) => _currentState?.Draw(spriteBatch);
+    public void Draw(SpriteBatch spriteBatch)
+    {
+        _currentState?.Draw(spriteBatch);
+    }
 }
 ```
 

@@ -333,7 +333,7 @@ The handler therefore only **marks** entities as destroyed, and they're removed 
 step and all its hits are done:
 
 ```csharp title="Game1.cs"
-_physics.Update(deltaSeconds);
+_physics.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
 RemoveDestroyed();
 
 private void RemoveDestroyed()
@@ -390,8 +390,14 @@ public void Spawn(PhysicsWorld world, Vector2 position, float rotation) => Body 
 `Prefabs` keeps one prototype per kind of thing, by name:
 
 ```csharp title="Prefabs.cs"
-Add("wood-post", new Block(Materials.Wood, post, 8, 500, atlas.GetRegion("wood-post")));
-Add("glass-box", new Block(Materials.Glass, box, 4, 500, atlas.GetRegion("glass-box")));
+foreach (var (name, material, health) in new[] { ("wood", Materials.Wood, 8f), ("stone", Materials.Stone, 16f), ("glass", Materials.Glass, 4f) })
+{
+    Add($"{name}-plank", new Block(material, plank, health, 500, atlas.GetRegion($"{name}-plank")));
+    Add($"{name}-post", new Block(material, post, health, 500, atlas.GetRegion($"{name}-post")));
+    Add($"{name}-box", new Block(material, box, health, 500, atlas.GetRegion($"{name}-box")));
+}
+
+Add("pig", new Pig(22, 3, 5000, atlas.GetRegion("pig")));
 Add("big-pig", new Pig(30, 6, 5000, atlas.GetRegion("big-pig")));
 
 public Entity Spawn(string name, PhysicsWorld world, Vector2 position, float rotation = 0)
