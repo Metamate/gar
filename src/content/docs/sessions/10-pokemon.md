@@ -162,7 +162,9 @@ _Steps `Pokemon0`, `Pokemon2` and `Pokemon3`_
   and a pixel position (`X`/`Y`, tweened between tiles for smooth movement). The logic moves
   first. A step sets the new tile at once, and the sprite catches up over half a second.
   When it arrives, the walk state checks for an encounter, then keeps walking if a
-  direction is still held.
+  direction is still held. The town is a map of characters in `Level.cs`, one per tile;
+  trees, fences, signs and houses become solid tiles, and a step onto one is refused like a
+  step off the map.
 - **Random encounters:** each step in tall grass rolls for a battle. The transition (stop
   field music, start battle music, fade, push `BattleState`, fade in) is all push/pop.
 - **Battle flow:** `BattleMenuState` (Fight/Run) → `TakeTurnState` (faster monster

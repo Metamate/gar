@@ -76,10 +76,11 @@ if ($Games -contains 'pvz') {
   python (Join-Path $here 'makegif.py') (Join-Path $out 'plants-vs-zombies.gif') 640 100 none (Join-Path $out 'frames-pvz\f*.png')
 }
 if ($Games -contains 'pokemon') {
-  # The title screen, which shows a new monster every three seconds: three of them. Start
-  # where a monster stands in the middle (the first frame is also the decks' still picture).
-  Record 'pokemon' (Exe '10-pokemon' 'Pokemon4') 2.0 9 @()
-  python (Join-Path $here 'makegif.py') (Join-Path $out 'pokemon.gif') 640 100 none (Join-Path $out 'frames-pokemon\f00[3-9].png') (Join-Path $out 'frames-pokemon\f0[1-8][0-9].png') (Join-Path $out 'frames-pokemon\f00[0-2].png')
+  # Past the title and the welcome message, walk through the town and into the tall grass.
+  # A battle may start there: look through the frames, and keep the stretch that reads best.
+  $ev = @('0.3 tap enter', '3.0 tap enter', '3.5 tap enter', '4.2 down left', '5.6 up left', '5.7 down up', '6.7 up up', '6.9 down right', '9.4 up right', '9.5 down down', '11.5 up down', '11.6 down right', '13.6 up right')
+  Record 'pokemon' (Exe '10-pokemon' 'Pokemon4') 4.0 10 $ev
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'pokemon.gif') 640 100 none (Join-Path $out 'frames-pokemon*.png')
 }
 if ($Games -contains 'gw') {
   # Move with WASD and fire with the arrow keys, turning every second. The glow is lost in a
