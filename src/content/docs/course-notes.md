@@ -188,9 +188,10 @@ Notes for building it:
   dark screen, as on the phones it became famous on), Pac-Man (a beetle chased by four one-eyed wisps, in
   the original ghosts' colours, which the lesson names them by), Plants vs. Zombies and
   Geometry Wars. Where a pack lacks something a game needs (a ducking frame, a sword
-  swing, a slingshot, hearts), it is made from the pack's own pieces and colours. Pokemon's
+  swing, a slingshot, hearts, a floor switch), it is made from the pack's own pieces and colours. Pokemon's
   monsters are our designs, in the pack's four shades, and its trainer's side and back views
-  are made from the pack's front-facing one.
+  are made from the pack's front-facing one. Zelda's hero gets his side and back views the
+  same way.
 - **Pixel art:** inside a game, every sprite, tile and background uses the same art-pixel
   size and the same style; between games both may differ. Pixel art is drawn with
   `SamplerState.PointClamp` (or `PointWrap`), never stretched by a fraction (Plants vs.
