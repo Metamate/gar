@@ -1,6 +1,6 @@
 ---
 title: 05 Pac-Man
-description: The State pattern through the ghosts' modes, the Strategy pattern through their targeting, how the two differ, pathfinding with A*, and testing each ghost.
+description: The State pattern through the ghosts' modes, the Strategy pattern through their targeting, how the two differ, a second strategy for the ghosts' routes, and testing each ghost.
 sidebar:
   order: 5
 ---
@@ -24,8 +24,8 @@ the **State** pattern.
 
 Each ghost also chases Pac-Man in its own way, and for that we use the **Strategy** pattern.
 The two patterns have the same shape, so we look at why they are still used differently.
-Then the ghosts learn to find the shortest path through the maze, with **A\***. Each
-ghost's targeting gets its own unit tests, and so does the pathfinder.
+Strategy comes back a second time, for how a ghost finds its way to the target. Each
+ghost's targeting gets its own unit tests.
 
 **Source code:** [gar-games/05-pac-man](https://github.com/Metamate/gar-games/tree/main/05-pac-man)
 
@@ -36,8 +36,8 @@ ghost's targeting gets its own unit tests, and so does the pathfinder.
 - [Strategy](https://refactoring.guru/design-patterns/strategy)
 - Optional: [The Pac-Man Dossier](https://pacman.holenet.info/), chapter 3 ("Maze Logic
   101") and 4 ("Meet the Ghosts"): how the original ghosts really work
-- [Introduction to A\*](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
-  (Red Blob Games), up to and including "The A\* algorithm"
+- Optional: [Introduction to A\*](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
+  (Red Blob Games): how the search behind the `Pacman4` step works
 
 ## The Maze
 
@@ -377,7 +377,7 @@ reference to an interface, and forwards work to it. The difference is in **why**
 The two work together here. The **state** decides _whether_ the ghost is chasing, and the
 **strategy** decides _how_ it chases.
 
-## Finding a Path
+## A Second Strategy: Routing
 
 _Step `Pacman4`_
 
@@ -397,91 +397,6 @@ reach `T`, two rows up:
 The tile to the left is closer to `T`, so the ghost goes left. That way is seven steps long.
 Going right is five.
 
-To find the shortest way, the ghost has to **search** the maze.
-
-### Breadth-first search
-
-Start at the ghost's tile, and write 0 on it. Write 1 on every open tile next to it, 2 on
-every open tile next to those, and so on, never writing on a tile twice. When the target gets
-a number, that number is the length of the shortest path. Each tile also remembers which tile
-it was reached from, and following those back from the target gives the path.
-
-```text
-#############
-#5.T4345....#
-#4###2#4###.#
-#321G12345..#
-#############
-```
-
-Breadth-first search always finds the shortest path. Its weakness shows in the picture. It
-spreads in every direction, so the tiles to the left and along the bottom corridor got
-numbers too, and none of them is on the path.
-
-### A*
-
-A* (say "A star") does the same search, but picks which tile to continue from. For every
-tile it adds two numbers:
-
-- the steps taken from the start to that tile, which it knows, and
-- an **estimate** of the steps left to the target.
-
-It always continues from the tile where that sum is lowest, so tiles that lead towards the
-target come first. The tiles wait in a **priority queue**, which hands out the one with the
-lowest number.
-
-```csharp title="Pathfinder.cs"
-var open = new PriorityQueue<Point, int>();     // tiles to look at, the most promising first
-var steps = new Dictionary<Point, int>();       // the fewest steps found from start to each tile
-var cameFrom = new Dictionary<Point, Point>();  // the tile each tile was reached from
-
-open.Enqueue(start, 0);
-steps[start] = 0;
-
-while (open.Count > 0)
-{
-    Point tile = open.Dequeue();
-    if (tile == goal)
-        return Walk(cameFrom, start, goal);
-
-    foreach (Point direction in directions)
-    {
-        Point next = maze.Wrap(tile + direction);
-        if (maze.BlocksGhost(next, canUseDoor))
-            continue;
-
-        int stepsToNext = steps[tile] + 1;
-        if (steps.TryGetValue(next, out int known) && known <= stepsToNext)
-            continue;
-
-        steps[next] = stepsToNext;
-        cameFrom[next] = tile;
-        open.Enqueue(next, stepsToNext + Estimate(maze, next, goal));
-    }
-}
-```
-
-The estimate is called the **heuristic**. On a grid, the usual one is the distance with no
-walls in the way, counted in steps across plus steps up or down:
-
-```csharp title="Pathfinder.cs"
-public static int Estimate(Maze maze, Point from, Point goal)
-{
-    int across = Math.Abs(from.X - goal.X);
-    return Math.Min(across, maze.Width - across) + Math.Abs(from.Y - goal.Y);
-}
-```
-
-A* finds the shortest path as long as the estimate is never higher than the real distance.
-Walls only make the real path longer, so counting steps without walls is safe. The tunnel is
-the one place where it would go wrong. Two tiles at opposite ends of the tunnel row are far
-apart on the grid and one step apart in the game, so `Estimate` also counts the way round
-through the tunnel and takes the lower number.
-
-With an estimate of 0 for every tile, A* is breadth-first search again.
-
-### Routing as a strategy
-
 Finding the way is a second thing that could be done in more than one way, so it gets the
 same treatment as targeting. `ITargetStrategy` says _where_ a ghost wants to go, and
 `IRouteStrategy` says _which way it turns_ to get there:
@@ -496,28 +411,12 @@ public interface IRouteStrategy
 | Strategy | How it chooses |
 | --- | --- |
 | `NearestTile` | The arcade rule. The open tile closest to the target, in a straight line |
-| `ShortestPath` | The first step of the path A* finds |
+| `ShortestPath` | The first step of the shortest path through the maze |
 
-```csharp title="ShortestPath.cs"
-public Point ChooseDirection(Ghost ghost, Point target, IReadOnlyList<Point> options)
-{
-    List<Point> path = Pathfinder.FindPath(ghost.Maze, ghost.Tile, target, ghost.State.CanUseDoor, options);
-
-    // No path: the target is inside a wall or outside the maze. Get as close as possible.
-    if (path.Count == 0)
-        return _nearest.ChooseDirection(ghost, target, options);
-
-    foreach (Point direction in options)
-    {
-        if (ghost.Maze.Wrap(ghost.Tile + direction) == path[0])
-            return direction;
-    }
-    return options[0];
-}
-```
-
-The ghost searches again at every tile centre, since the target may have moved. A ghost
-still never turns back, so the path has to begin with one of the open directions (`options`).
+`ShortestPath` asks `Pathfinder.FindPath` for the path. It searches the maze with **A\***
+(say "A star"), the usual algorithm for finding a way on a grid. How the search works is in
+`Pathfinder.cs` and in the optional reading. For the ghost, it is one method that takes a
+start and a target and gives back the tiles between them.
 
 All four ghosts keep `NearestTile` while they scatter and chase. Their wrong turns are part
 of the game, and they give the player room to escape. The eaten ghost is different. Its eyes
@@ -565,10 +464,8 @@ The states are tested the same way. Put a ghost in a state, make something happe
 the state it ends up in (`GhostStateTests`). The tests use a small maze of their own
 (`TestMaze`) and a seeded `Random`, so frightened ghosts wander the same way every run.
 
-A path is easy to test, because you can count the steps on paper. `PathfinderTests` checks
-that a path goes around walls, that the house can only be reached through the door, and that
-the tunnel is used when it is shorter. One test puts the two routing strategies on the same
-tile with the same target, and checks that they turn different ways:
+`PathfinderTests` puts the two routing strategies on the same tile with the same target, and
+checks that they turn different ways:
 
 ```csharp title="PathfinderTests.cs"
 // Left looks closer in a straight line, but the way up is to the right.
@@ -620,18 +517,12 @@ Start from `Pacman5`.
 5. **Tunnel (stretch):** in the original, ghosts slow down in the tunnel. Which class should
    know that the ghost is in the tunnel, and which should know how fast to go there?
 
-6. **Breadth-first (stretch):** write `Pathfinder.FindPathBreadthFirst`, with a `Queue<Point>`
-   where A\* has its priority queue. Add a test that checks both give paths of the same
-   length. Then count how many tiles each one takes out of its queue for the same path.
-
 ## Apply It to Your Project
 
 - Which objects in your game have modes? Are they flags, an enum, or state objects?
 - Where do you have a `switch` (or an `if` chain) over a mode in more than one method?
 - Is there a behaviour that differs per object, but never changes for one object? That's a
   strategy.
-- Does anything in your game have to find its way around obstacles? What are the tiles, or
-  the points, it would search over?
 
 ## Check Yourself
 
@@ -666,16 +557,6 @@ after. Here, `FrightenedState.Enter` turns the ghost around.
 
 A state changes during the object's life, often chosen by the states themselves. A strategy
 is chosen from outside, usually once, and strategies don't know about each other.
-
-</details>
-
-<details>
-<summary>What does A* add to breadth-first search?</summary>
-
-An estimate of the distance left to the target. A\* continues from the tile where the steps
-taken plus the estimate is lowest, so it looks at fewer tiles that lead away from the target.
-It still finds the shortest path, as long as the estimate is never higher than the real
-distance.
 
 </details>
 
