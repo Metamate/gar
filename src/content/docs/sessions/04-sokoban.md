@@ -486,8 +486,8 @@ didn't need to know?
 
 _Step `Sokoban4`_
 
-`Sokoban4` adds seven levels (`level1.txt` … `level7.txt`), `R` to restart a level, a move
-counter, and a message when the level is solved. Loading a level parses a new `Level` and
+`Sokoban4` adds a title screen, seven levels (`level1.txt` … `level7.txt`), `R` to restart a
+level, a move counter, and a message when the level is solved. Loading a level parses a new `Level` and
 clears the history. Nothing in the rules or the commands changed.
 
 ## Exercises

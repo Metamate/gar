@@ -215,12 +215,17 @@ Notes for building it:
   titles 16. Over a busy background, text gets a dark shadow. Messages are sentences with
   single spaces. (Snake draws its score with digits from its atlas, and Pokemon draws its
   own bitmap fonts, from `fonts/*_atlas.png`.)
-- **Screens and keys:** a game with game states opens on a title screen: its name, and
-  "Press Enter" below it. Enter starts, continues and restarts (end screens say "Press Enter
-  to …"), Esc quits, R restarts the level where there are levels, P pauses where there is a
-  pause, F1 toggles debug drawing, F3 the profiler. Snake and Sokoban have no game states,
-  and no title screen: a state machine only for a title would add architecture that isn't
-  the session's topic.
+- **Screens and keys:** every game opens on the same title screen: the game drawn behind a
+  dark band across the middle, and on the band the game's name, its controls in one dimmer
+  line ("Arrows: move   Space: jump"), and "Press Enter". GARCore's `TitleScreen` draws it,
+  so the layout is in one place (Pong has no core, and carries a copy). The text is white,
+  or the game's own light colour where the game has a fixed palette (Snake, Pokemon). The
+  controls are shown there and nowhere else: no key hints in the HUD. In a game with game
+  states, the title is a state that draws a play state without updating it; in Pong, Snake
+  and Sokoban it is a flag in `Game1`, since a state machine only for a title would add
+  architecture that isn't the session's topic. Enter starts, continues and restarts (end
+  screens say "Press Enter to …"), Esc quits, R restarts the level where there are levels,
+  P pauses where there is a pause, F1 toggles debug drawing, F3 the profiler.
 - **Naming:** a game's folder is its full name, as in its site page's URL
   (`06-super-mario-bros`), and so is its solution (`SuperMarioBros.slnx`). Step projects
   use a short form of the game's name (`Mario0`, `Birds0`, `Pvz0`), never a genre.
