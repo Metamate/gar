@@ -218,8 +218,12 @@ Notes for building it:
   own bitmap fonts, from `fonts/*_atlas.png`.)
 - **Screens and keys:** every game opens on the same title screen: the game drawn behind a
   dark band across the middle, and on the band the game's name, its controls in one dimmer
-  line ("Arrows: move   Space: jump"), and "Press Enter". GARCore's `TitleScreen` draws it,
-  so the layout is in one place (Pong has no core, and carries a copy). The text is white,
+  line ("Arrows: move   Space: jump"), and "Press Enter". GARCore's `TitleScreen` draws it
+  from Snake on, in plain code: three `MeasureString` calls, a rectangle and three
+  `DrawString` calls. Pong and Flappy Bird come before that and draw the same layout
+  themselves (in `Game1` and in `Art`), with only what their sessions teach; Pokemon has
+  its own for its bitmap fonts. Nothing in a game may use a concept before the session that
+  teaches it, even in a helper: no delegates before Zelda. The text is white,
   or the game's own light colour where the game has a fixed palette (Snake, Pokemon). The
   controls are shown there and nowhere else: no key hints in the HUD. In a game with game
   states, the title is a state that draws a play state without updating it; in Pong, Snake
