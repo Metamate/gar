@@ -76,7 +76,9 @@ Keeping them separate means the sword's reach and the enemy's body don't have to
 the sprite. The player's hurtbox is only the lower half of its sprite, its feet, which suits
 the top-down look. The sword's hitbox is a rectangle in front of the player, built when the
 swing starts. The swing is a state. It checks the hitbox against the enemies every frame,
-and ends when its one-shot animation has played once.
+and ends when its one-shot animation has played once. Press `F1` to see both during a
+swing, the hitbox in red and the hurtbox in green, drawn with the `DebugDraw` from
+[Super Mario Bros](../06-super-mario-bros/#debug-drawing).
 
 **Where does collision live?** There is no central collision system. Each kind of
 collision is checked where the knowledge it needs already is:
@@ -92,8 +94,8 @@ That trades a single overview for locality. Reading a state or a room method sho
 that interaction does. Compare it with the dedicated collision system in
 [Geometry Wars](../11-geometry-wars/), which has far more things colliding.
 
-**Try it** (`Zelda7`): make the sword reach twice as far in `GameSettings`, and play. Does it
-still feel fair?
+**Try it** (`Zelda7`): make the sword reach twice as far in `GameSettings`, press `F1` and
+play. Does it still feel fair?
 
 ## Events & the Observer Pattern
 
