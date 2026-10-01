@@ -200,8 +200,7 @@ Notes for building it:
   platforms need the height; a one-pixel bar is left on each side), 640 × 360 at 2× (Flappy
   Bird), and 1280 × 720 at 1× (the rest; Pac-Man's maze stands in the middle of it). Two
   games have smooth art: Angry Birds (Kenney's Physics Assets, drawn with linear sampling
-  because its pieces rotate) and Geometry Wars' glow. Geometry Wars plays in a 1920 × 1080
-  arena, which gives room to dodge, and draws it scaled down into the window. The recordings follow the same rule: `makegif.py` scales with
+  because its pieces rotate) and Geometry Wars' glow. The recordings follow the same rule: `makegif.py` scales with
   nearest neighbour, to a width where one art pixel is a whole number of GIF pixels.
 - **Text:** one font, `retro.ttf`, crisp at multiples of 8 pixels. A `.spritefont`'s size is
   in points, a third larger than pixels, so the sizes are 6, 12, 18, 24 … points for 8, 16,
