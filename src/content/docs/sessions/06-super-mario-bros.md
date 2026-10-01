@@ -1,22 +1,23 @@
 ---
 title: 06 Super Mario Bros
-description: A 2D platformer. The game world (a tilemap, entities and a camera), platformer physics and tile collision, level makers, debug drawing, and player states that share their physics.
+description: The game world (a tilemap, entities and a camera), platformer physics and tile collision, level makers, debug drawing, and player states that share their physics.
 sidebar:
   order: 6
 ---
 
-![The finished platformer](../../../assets/session06/super-mario-bros.gif)
+![The finished platform game](../../../assets/session06/super-mario-bros.gif)
 
 ## Today's Goal
 
-Make a **2D platformer**.
+Make a **platform game**, like Super Mario Bros: run and jump through a level that scrolls
+sideways, collect coins, and stomp on the creatures in your way.
 
 <figure class="original">
 <img src="../../originals/super-mario-bros.png" alt="World 1-1 of Super Mario Bros." class="pixelated" />
 <figcaption>The original: <em>Super Mario Bros.</em> (Nintendo, 1985). Screenshot © Nintendo.</figcaption>
 </figure>
 
-We build the basics of a Super Mario Bros. clone, and the topic is the game world. The level
+We build the basics of a platform game, and the topic is the game world. The level
 is a tilemap, the player and the creatures are entities that move through it, and a camera
 shows the part of the level you can see.
 

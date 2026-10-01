@@ -5,11 +5,12 @@ sidebar:
   order: 3
 ---
 
-![The finished Snake game](../../../assets/session03/snake.gif)
+![The finished grow-and-avoid game](../../../assets/session03/snake.gif)
 
 ## Today's Goal
 
-Make a **Snake** game.
+Make a **grow-and-avoid game**, like Snake: eat to grow longer, and steer clear of the walls
+and your own tail.
 
 <figure class="original">
 <img src="../../originals/snake.gif" alt="A game of Snake, played to the end" class="pixelated" />

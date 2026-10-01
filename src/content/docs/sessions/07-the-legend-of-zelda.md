@@ -1,22 +1,23 @@
 ---
 title: 07 The Legend of Zelda
-description: A top-down dungeon crawler. The Observer pattern and C# events, hitboxes, a tweening system, and composition vs. inheritance.
+description: The Observer pattern and C# events, hitboxes, a tweening system, and composition vs. inheritance.
 sidebar:
   order: 7
 ---
 
-![The finished dungeon crawler](../../../assets/session07/the-legend-of-zelda.gif)
+![The finished dungeon adventure game](../../../assets/session07/the-legend-of-zelda.gif)
 
 ## Today's Goal
 
-Make a **top-down dungeon crawler**.
+Make a **dungeon adventure game**, like The Legend of Zelda: fight through rooms of monsters
+with a sword, and open the doors to the next room.
 
 <figure class="original">
 <img src="../../originals/the-legend-of-zelda.png" alt="The first cave of The Legend of Zelda" />
 <figcaption>The original: <em>The Legend of Zelda</em> (Nintendo, 1986). Screenshot © Nintendo.</figcaption>
 </figure>
 
-We build the basics of a _Legend of Zelda_ clone. In a game like this, things happen all the
+We build the basics of a dungeon adventure game. In a game like this, things happen all the
 time. The player dies, a switch is pressed, a room is left. Other parts of the game have to
 react, and the part where it happened shouldn't need to know who they are. That is what
 events are for. We use the **Observer** pattern, which C# has built in as events.

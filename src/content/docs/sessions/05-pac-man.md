@@ -5,12 +5,12 @@ sidebar:
   order: 5
 ---
 
-![The finished Pac-Man game](../../../assets/session05/pac-man.gif)
+![The finished maze chase game](../../../assets/session05/pac-man.gif)
 
 ## Today's Goal
 
-Make **Pac-Man**: eat every dot in the maze while four ghosts hunt you. After a power pellet,
-the ghosts run from you for a few seconds.
+Make a **maze chase game**, like Pac-Man: eat every dot in the maze while four ghosts hunt
+you. After a power pellet, the ghosts run from you for a few seconds.
 
 <figure class="original">
 <img src="../../originals/pac-man.png" alt="The maze of the arcade Pac-Man" class="pixelated" />

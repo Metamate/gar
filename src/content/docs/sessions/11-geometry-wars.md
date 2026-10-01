@@ -1,6 +1,6 @@
 ---
 title: 11 Geometry Wars
-description: A top-down shooter with thousands of entities. Components vs. systems, dependency injection and testing with fakes, object pooling and flyweights.
+description: Components vs. systems with thousands of entities, dependency injection and testing with fakes, object pooling and flyweights.
 sidebar:
   order: 11
 ---
@@ -9,7 +9,8 @@ sidebar:
 
 ## Today's Goal
 
-Make a **top-down shooter**.
+Make a **twin-stick shooting game**, like Geometry Wars: move with one hand, aim with the
+other, and survive the waves of enemies in the arena.
 
 <figure class="original">
 <img src="../../originals/geometry-wars.png" alt="Geometry Wars: Retro Evolved" />

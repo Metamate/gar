@@ -5,12 +5,12 @@ sidebar:
   order: 4
 ---
 
-![The finished Sokoban game](../../../assets/session04/sokoban.gif)
+![The finished box-pushing puzzle game](../../../assets/session04/sokoban.gif)
 
 ## Today's Goal
 
-Make a **Sokoban** game: push every box onto a goal. You can only push, never pull, and
-only one box at a time.
+Make a **box-pushing puzzle game**, like Sokoban: push every box onto a goal. You can only
+push, never pull, and only one box at a time.
 
 <figure class="original">
 <img src="../../originals/sokoban.png" alt="The first level of the original Sokoban" class="pixelated" />

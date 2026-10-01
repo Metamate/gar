@@ -5,12 +5,12 @@ sidebar:
   order: 12
 ---
 
-![The finished Vampire Survivors game](../../../assets/session12/vampire-survivors.gif)
+![The finished auto-shooting game](../../../assets/session12/vampire-survivors.gif)
 
 ## Today's Goal
 
-Make **Vampire Survivors**: walk around while your weapons fire by themselves, and survive
-five minutes against an ever-growing swarm.
+Make an **auto-shooting game**, like Vampire Survivors: walk around while your weapons fire
+by themselves, and survive five minutes against an ever-growing swarm.
 
 <figure class="original">
 <img src="../../originals/vampire-survivors.png" alt="A swarm around the player in Vampire Survivors" class="pixelated" />

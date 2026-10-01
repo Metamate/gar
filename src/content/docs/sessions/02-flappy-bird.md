@@ -5,11 +5,12 @@ sidebar:
   order: 2
 ---
 
-![The finished Flappy Bird game](../../../assets/session02/flappy-bird.gif)
+![The finished endless flying game](../../../assets/session02/flappy-bird.gif)
 
 ## Today's Goal
 
-Make a **Flappy Bird** clone.
+Make an **endless flying game**, like Flappy Bird: flap to stay in the air, and fly through
+the gaps between the pipes.
 
 <figure class="original">
 <img src="../../originals/flappy-bird.png" alt="Flappy Bird on a phone" class="pixelated" />

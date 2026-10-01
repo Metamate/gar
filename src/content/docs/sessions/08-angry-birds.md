@@ -5,11 +5,12 @@ sidebar:
   order: 8
 ---
 
-![The finished Angry Birds game](../../../assets/session08/angry-birds.gif)
+![The finished physics puzzle game](../../../assets/session08/angry-birds.gif)
 
 ## Today's Goal
 
-Make **Angry Birds**: pull back the slingshot, let go, and knock down the pigs' huts.
+Make a **physics puzzle game**, like Angry Birds: pull back the slingshot, let go, and knock
+down the pigs' huts.
 
 <figure class="original">
 <img src="../../originals/angry-birds.png" alt="A bird flying towards the pigs' tower in Angry Birds" />

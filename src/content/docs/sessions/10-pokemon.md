@@ -1,22 +1,23 @@
 ---
 title: 10 Pokemon
-description: A turn-based RPG. Scenes and UI with a state stack and GUI widgets, separating UI from game data, the Service Locator pattern, and saving and loading.
+description: Scenes and UI with a state stack and GUI widgets, separating UI from game data, the Service Locator pattern, and saving and loading.
 sidebar:
   order: 10
 ---
 
-![The finished monster-battling RPG](../../../assets/session10/pokemon.gif)
+![The finished turn-based role-playing game](../../../assets/session10/pokemon.gif)
 
 ## Today's Goal
 
-Make a **turn-based RPG**.
+Make a **turn-based role-playing game**, like Pokemon: walk through the tall grass, meet
+wild monsters, and battle them turn by turn.
 
 <figure class="original">
 <img src="../../originals/pokemon.png" alt="A battle in one of the first Pokémon games" />
 <figcaption>The original: the first <em>Pokémon</em> games (Game Freak, 1996). Screenshot © Nintendo / Game Freak.</figcaption>
 </figure>
 
-We build the basics of a Pokémon clone. An RPG has many screens, and they sit on top of each
+We build the basics of a turn-based role-playing game. An RPG has many screens, and they sit on top of each
 other. A menu opens over the overworld, a battle starts, a dialogue box pops up in the
 battle. This session is about scenes and UI. We keep the screens on a stack, and build them
 from reusable UI widgets.

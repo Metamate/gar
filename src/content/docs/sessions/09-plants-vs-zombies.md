@@ -5,12 +5,13 @@ sidebar:
   order: 9
 ---
 
-![The finished Plants vs. Zombies game](../../../assets/session09/plants-vs-zombies.gif)
+![The finished tower defence game](../../../assets/session09/plants-vs-zombies.gif)
 
 ## Today's Goal
 
-Make **Plants vs. Zombies**: zombies walk across a lawn towards your house, one row each.
-Plant sunflowers to make sun, and spend the sun on plants that stop the zombies.
+Make a **tower defence game**, like Plants vs. Zombies: zombies walk across a lawn towards
+your house, one row each. Plant sunflowers to make sun, and spend the sun on plants that stop
+the zombies.
 
 <figure class="original">
 <img src="../../originals/plants-vs-zombies.png" alt="A lawn defended by plants in Plants vs. Zombies" class="pixelated" />
