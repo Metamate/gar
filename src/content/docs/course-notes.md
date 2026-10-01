@@ -195,11 +195,13 @@ Notes for building it:
   size and the same style; between games both may differ. Pixel art is drawn with
   `SamplerState.PointClamp` (or `PointWrap`), never stretched by a fraction (Plants vs.
   Zombies breathes by rising one art pixel), and cameras move in whole pixels. Every game
-  opens in a 1280 × 720 window, a whole-number multiple of its virtual resolution: 320 × 180
-  at 4× (Pong, Snake, Mario, Zelda, Pokemon), 640 × 360 at 2× (Flappy Bird), and 1280 × 720
-  at 1× (the rest; Pac-Man's portrait maze stands in the middle of it). Two games have smooth
-  art: Angry Birds (Kenney's Physics Assets, drawn with linear sampling because its pieces
-  rotate) and Geometry Wars' glow. The recordings follow the same rule: `makegif.py` scales with
+  opens in a 1280 × 720 window, and its view follows its art. Pixel art is scaled by a whole
+  number: 320 × 180 at 4× (Pong, Snake, Zelda, Pokemon), 426 × 240 at 3× (Mario, whose
+  platforms need the height; a one-pixel bar is left on each side), 640 × 360 at 2× (Flappy
+  Bird), and 1280 × 720 at 1× (the rest; Pac-Man's maze stands in the middle of it). Two
+  games have smooth art: Angry Birds (Kenney's Physics Assets, drawn with linear sampling
+  because its pieces rotate) and Geometry Wars' glow. Geometry Wars plays in a 1920 × 1080
+  arena, which gives room to dodge, and draws it scaled down into the window. The recordings follow the same rule: `makegif.py` scales with
   nearest neighbour, to a width where one art pixel is a whole number of GIF pixels.
 - **Text:** one font, `retro.ttf`, crisp at multiples of 8 pixels. A `.spritefont`'s size is
   in points, a third larger than pixels, so the sizes are 6, 12, 18, 24 … points for 8, 16,
