@@ -17,8 +17,9 @@ Course site built with [Astro](https://docs.astro.build) and [Starlight](https:/
 .
 ├── .github/workflows/deploy.yml   # GitHub Pages deploy on push to main
 ├── astro.config.mjs               # Site title, logo and sidebar
-├── public/favicon.ico
+├── public/                        # Files served as they are: the favicon, the originals' screenshots, animations
 ├── slides/                        # Edited slide decks (.pptx), named by session number
+├── tools/recording/               # Scripts that record the animated game images
 └── src/
     ├── assets/                    # Images referenced from pages (logo, session figures)
     ├── components/                # Interactive components used in MDX pages
@@ -28,7 +29,7 @@ Course site built with [Astro](https://docs.astro.build) and [Starlight](https:/
         ├── overview.md            # The 12 sessions, their games and main topics
         ├── project.md             # Course project brief and milestones
         ├── exam.md                # Exam format and question pool
-        ├── course-notes.md        # Instructor notes and TODOs (draft: dev only, not published)
+        ├── course-notes.md        # Instructor notes and conventions (draft: dev only, not published)
         └── sessions/              # One page per session (sidebar order via `sidebar.order`)
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: Course Development Notes
-description: Instructor-only notes, TODOs and ideas. Not published.
+description: Instructor-only notes, conventions and ideas. Not published.
 draft: true
 ---
 
@@ -15,7 +15,8 @@ Decided: the course is English only, and the [Exam](../exam/) page is the author
 question pool (questions 0–10). Projects must document at least three patterns.
 
 - **CS50 GD50:** decided in September 2026 not to credit it. The course is its own: our
-  own art, sounds, names, rules and exercises, with Press Start 2P (SIL OFL) as the font.
+  own names, rules, exercises and sounds, with Press Start 2P (SIL OFL) as the font. The art
+  is our own or Kenney's (CC0); see Art below.
 
 ## Session Plan
 
@@ -65,7 +66,6 @@ same rules for every session.
   so the exercises stay unsolved for students.
 - **Spare time** in the later sessions goes to the exercises and to project work in class,
   which the syllabus includes, rather than to more material.
-- Re-estimate after running a session: `timing.py` in the working notes did the counting.
 - **Slides keep to the topic:** no milestones, due dates, "last week" or other course
   admin. The project page, the overview and the teacher carry those. "Apply It to Your
   Project" stays: it applies the day's topic, not the project's schedule.
@@ -101,7 +101,7 @@ Threads that run through the plan (the recap page lists them for students):
 - **Coordinate spaces:** virtual resolution (2) → camera (6) → physics units (8) → picking (9).
 - **Pattern pairs:** State vs. Strategy (5), Prototype (8) vs. Type Object (9), Object Pool
   vs. Flyweight (11).
-- **Order of 07 and 08:** Zelda comes before Angry Birds (changed in September 2026). Zelda teaches events, and Angry Birds' contact events use them; Mario's
+- **Order of 07 and 08:** Zelda comes before Angry Birds. Zelda teaches events, and Angry Birds' contact events use them; Mario's
   core leads straight into Zelda's; and Angry Birds' Prototype sits next to Plants vs.
   Zombies' Type Object.
 - **Recurring:** a Mermaid class diagram on every session page, "Apply It to Your Project"
@@ -115,16 +115,10 @@ Notes for building it:
   v3.1, MIT, targets .NET 10) works with MonoGame 3.8.5 (checked with a falling box and its
   contact event). Chosen over Aether.Physics2D for v3's stable stacking, events read after
   the step, and a foreign C-style API that makes the Adapter lesson concrete. Keep the Angry
-  Birds steps focused on the adapter, syncing and events, not physics tuning. Write a small
-  debug renderer for it (or make it an exercise).
-- **Changes to existing sessions:** all done. Command moved from Snake to Sokoban, mouse
-  input into Flappy's `InputManager`, debug drawing to Mario, State to Pac-Man (reinforced
-  in Mario), tweening from Pokemon to Zelda, data definitions from Pokemon to Plants vs.
-  Zombies, and data-oriented design, spatial partitioning and profiling from Geometry Wars
-  to Vampire Survivors.
+  Birds steps focused on the adapter, syncing and events, not physics tuning.
 - **GARCore lineage** follows the session order (see Materials).
-- **Exam pool:** Prototype and Adapter/Facade are sub-questions of 8 and 7 (done); question 9 is split into 9 (components &
-  systems) and 10 (memory & performance), so students draw from 1–10 (done).
+- **Exam pool:** Prototype and Adapter/Facade are sub-questions of 8 and 7; question 9 is split into 9 (components &
+  systems) and 10 (memory & performance), so students draw from 1–10.
 - **Testing thread:** unit testing is introduced from scratch in Sokoban (students meet
   testing in another course the same semester, but not concretely). After that, tests only
   appear where they show off the session's topic, never as a test project in every game:
@@ -143,8 +137,7 @@ Notes for building it:
   A deck moves there from `in-progress/slides-ppt/` (the untouched originals, not in git)
   the first time it is edited.
 - **Code:** one repository, [gar-games](https://github.com/Metamate/gar-games), with one
-  folder per game, numbered by session (`01-pong`, `03-snake`, …). It replaced the separate
-  `gmd2-*` repositories (started from a single commit; no imported history). Every game is
+  folder per game, numbered by session (`01-pong`, `03-snake`, …). Every game is
   split into step projects (`Snake0`,
   `Snake1`, …; one per exercise for Pong and Flappy, one per concept for the rest), with
   the finished game as the last step. Steps share one final `GARCore`, and the README has
@@ -178,7 +171,7 @@ Notes for building it:
   `BuildContent.targets` identical to the course's games. Revisit when MonoGame ships its new
   Empty template (MonoGame/MonoGame.EmptyGame.CSharp).
 
-## Slide & Code TODOs
+## Slide & Code Conventions
 
 - **06 Mario:** the `GameController` is deliberately _not_ the Command pattern; keep the
   discussion slide.
@@ -258,15 +251,13 @@ file should need editing.
 - A dense bullet slide is a sign its text belongs on the site, or in the speaker notes as
   talking points. Exercise slides give a one-line goal; the instructions are on the site.
 - Decks end with a few of the site's "Check yourself" questions, asked live.
-- All twelve decks follow this since September 2026. Every slide has speaker notes written for
+- All twelve decks follow this. Every slide has speaker notes written for
   presenting: what to say, what to ask (with the expected answer), and how to run each demo;
   the Check yourself slides carry the site's answers.
 
 ## General Notes
 
 - Use consistent, simple UML diagrams (Mermaid is supported on the site).
-- The graphics are redone in one simple classic style (our own art, generated sounds,
-  Press Start 2P). The games can still become less 1:1 compared to CS50.
 - End each game session with "what moved into GARCore this week, and why?"
 
 ## Topic Backlog

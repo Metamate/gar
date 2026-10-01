@@ -22,8 +22,8 @@ if ($Games -contains 'flappy') {
   python (Join-Path $here 'makegif.py') (Join-Path $out 'flappy-bird.gif') 640 100 none $frames
 }
 if ($Games -contains 'snake') {
-  # The snake moves five cells a second, too fast for a fixed script: snake_bot.py reads the
-  # screen and steers towards the mouse. It can still die now and then, so pick a stretch of
+  # The snake moves ten cells a second, too fast for a fixed script: snake_bot.py reads the
+  # screen and steers towards the food. It can still die now and then, so pick a stretch of
   # frames without a restart (the snake is back to three segments after one).
   python (Join-Path $here 'snake_bot.py') (Exe '03-snake' 'Snake9') (Join-Path $out 'frames-snake') 14 100
   python (Join-Path $here 'makegif.py') (Join-Path $out 'snake.gif') 640 130 none 6 (Join-Path $out 'frames-snake\f*.png')
@@ -38,7 +38,7 @@ if ($Games -contains 'sokoban') {
   python (Join-Path $here 'makegif.py') (Join-Path $out 'sokoban.gif') 800 100 '240,120,1040,570' 12 (Join-Path $out 'frames-sokoban\f*.png')
 }
 if ($Games -contains 'pacman') {
-  # Pac-Man is caught after a few seconds (frame 36 in the last recording): keep the frames
+  # Pac-Man is caught after a few seconds: keep the frames
   # before that. Check where it happens, since it can shift from one recording to the next.
   Record 'pacman' (Exe '05-pac-man' 'Pacman4') 2.0 8 @('0.1 tap enter', '0.2 tap left', '1.5 tap left', '3.0 tap up', '4.2 tap up', '5.2 tap right', '6.2 tap up', '7.0 tap left')
   python (Join-Path $here 'makegif.py') (Join-Path $out 'pac-man.gif') 640 100 none 8 (Join-Path $out 'frames-pacman\f0[0-2][0-9].png') (Join-Path $out 'frames-pacman\f03[0-5].png')
