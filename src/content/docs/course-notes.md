@@ -190,22 +190,23 @@ Notes for building it:
   Game-specific layers (Mario's toppers, Pokemon's tall grass) are separate
   tilemaps drawn on top.
 - **Art:** each game has a look of its own that fits the original, with no shared style
-  between games. It keeps the original's setting and objects, but its characters are our
-  own designs (a builder and moles in Mario, our own hero in Zelda, our own monsters in
-  Pokemon). Snake is lit dots on a dark screen, as on the phones it became famous on.
-  Games made of simple shapes (Pong, Pac-Man, Geometry Wars) can look like the original:
-  there is no character to copy.
+  between games. Six use an asset pack by Kenney (CC0), credited in the game's README:
+  Sokoban (Sokoban Pack), Super Mario Bros (Pixel Platformer), The Legend of Zelda (Tiny
+  Dungeon), Angry Birds (Physics Assets), Pokemon (Monochrome RPG) and Vampire Survivors
+  (1-Bit Pack). The other six have our own art: Pong, Flappy Bird, Snake (lit dots on a
+  dark screen, as on the phones it became famous on), Pac-Man, Plants vs. Zombies and
+  Geometry Wars. Where a pack lacks something a game needs (a ducking frame, a sword
+  swing, a slingshot, hearts), it is made from the pack's own pieces and colours. Pokemon's
+  monsters are our designs, in the pack's four shades.
 - **Pixel art:** inside a game, every sprite, tile and background uses the same art-pixel
-  size and the same style; between games both may differ. Pixel
-  art is drawn with `SamplerState.PointClamp` (or `PointWrap`), never stretched by a
-  fraction (Plants vs. Zombies breathes by rising one art pixel), and cameras move in whole
-  pixels. Each game's default window is a whole-number multiple of its virtual resolution
-  (Flappy Bird 1024 × 576, Snake 1280 × 704, Zelda and Pokemon 1152 × 648). Geometry Wars' glow is the one
-  smooth exception. The recordings follow the same rule: `makegif.py` scales with nearest
-  neighbour, to a width where one art pixel is a whole number of GIF pixels.
-- **Sprites:** in the outlined games, characters and objects have a one-art-pixel dark
-  outline, a flat fill, one highlight at the top left and one shade. Backgrounds have no
-  outline and less contrast, so what the player acts on stands out.
+  size and the same style; between games both may differ. Pixel art is drawn with
+  `SamplerState.PointClamp` (or `PointWrap`), never stretched by a fraction (Plants vs.
+  Zombies breathes by rising one art pixel), and cameras move in whole pixels. Each game's
+  default window is a whole-number multiple of its virtual resolution (Flappy Bird
+  1024 × 576, Snake 1280 × 704, Mario, Zelda and Pokemon 1152 × 648). Two games have smooth
+  art: Angry Birds (Kenney's Physics Assets, drawn with linear sampling because its pieces
+  rotate) and Geometry Wars' glow. The recordings follow the same rule: `makegif.py` scales with
+  nearest neighbour, to a width where one art pixel is a whole number of GIF pixels.
 - **Text:** one font, `retro.ttf`, crisp at multiples of 8 pixels. A `.spritefont`'s size is
   in points, a third larger than pixels, so the sizes are 6, 12, 18, 24 … points for 8, 16,
   24, 32 … pixels. Text is always drawn at scale 1, on whole pixels: a game that needs two
