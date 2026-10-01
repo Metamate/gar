@@ -43,10 +43,10 @@ _Step `Pacman0`_
 The maze is a text file, like [Sokoban's levels](../04-sokoban/#levels-as-data):
 
 ```text title="maze.txt (the top)"
-############################
-#............##............#
-#.####.#####.##.#####.####.#
-#o####.#####.##.#####.####o#
+####################################
+#..................................#
+#.###.#######.########.#######.###.#
+#.###.........########.........###.#
 ```
 
 `#` is a wall, `.` a dot and `o` a power pellet. `-` is the door of the ghost house and `H`
