@@ -43,7 +43,7 @@ if ($Games -contains 'pacman') { Bot 'pacman_bot.py' 'pacman' 40 }
 if ($Games -contains 'mario') { Bot 'mario_bot.py' 'mario' 70 }
 
 # Fights, steps on the switch, and walks on to the next room.
-#   makegif.py out/the-legend-of-zelda.gif 640 100 none out/frames-zelda/f{000..125}.png
+#   makegif.py out/the-legend-of-zelda.gif 640 100 none out/frames-zelda/f{060..192}.png
 if ($Games -contains 'zelda') { Bot 'zelda_bot.py' 'zelda' 50 }
 
 # Three aimed shots at the first hut.
