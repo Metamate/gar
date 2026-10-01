@@ -50,8 +50,9 @@ if ($Games -contains 'zelda') { Bot 'zelda_bot.py' 'zelda' 50 }
 #   makegif.py out/angry-birds.gif 640 100 none 8 out/frames-birds/f{002..140}.png
 if ($Games -contains 'birds') { python (Join-Path $here 'birds_bot.py') (Join-Path $out 'frames-birds') }
 
-# Eighty seconds of play: the last fourteen have the most on the lawn.
-#   makegif.py out/plants-vs-zombies.gif 640 100 none out/frames-pvz/f{660..799}.png
+# Eighty seconds of play: the last have the most on the field. An art pixel is 5 pixels here, so the
+# GIF is 768 wide (3 to the art pixel).
+#   makegif.py out/plants-vs-zombies.gif 768 100 none out/frames-pvz/f{640..779}.png
 if ($Games -contains 'pvz') { Bot 'pvz_bot.py' 'pvz' 80 }
 
 # From the town into the grass, and the first battle.

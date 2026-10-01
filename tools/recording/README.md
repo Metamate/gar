@@ -31,7 +31,7 @@ of them read the picture to decide what to do:
 | `mario_bot.py` | Reads the ground's height, and jumps at pits, steps, slimes and boxes |
 | `zelda_bot.py` | Lines up with the nearest monster, swings, then takes the switch and the door |
 | `birds_bot.py` | Works out the pull for each shot from the slingshot's numbers |
-| `pvz_bot.py` | Plants sunflowers, picks up sun, and puts a peashooter in each zombie's row |
+| `pvz_bot.py` | Places chests, picks up the gold, and puts an archer in each goblin's row |
 | `pokemon_bot.py` | A timed walk into the tall grass, with Enter pressed all along |
 | `gw_bot.py` | Moves away from what comes close, and aims at the nearest enemy |
 | `survivors_bot.py` | Walks where the swarm is thinnest, and takes the first upgrade |

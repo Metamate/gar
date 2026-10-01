@@ -181,14 +181,15 @@ Notes for building it:
   Game-specific layers (Mario's toppers, Pokemon's tall grass) are separate
   tilemaps drawn on top.
 - **Art:** each game has a look of its own that fits the original, with no shared style
-  between games. Six use an asset pack by Kenney (CC0), credited in the game's README:
+  between games. Seven use asset packs by Kenney (CC0), credited in the game's README:
   Sokoban (Sokoban Pack), Super Mario Bros (Pixel Platformer), The Legend of Zelda (Tiny
-  Dungeon), Angry Birds (Physics Assets), Pokemon (Monochrome RPG) and Vampire Survivors
-  (1-Bit Pack). The other six have our own art: Pong, Flappy Bird, Snake (lit dots on a
+  Dungeon), Angry Birds (Physics Assets), Plants vs. Zombies (Tiny Town and Tiny Dungeon, as a castle
+  defended against goblins), Pokemon (Monochrome RPG) and Vampire Survivors
+  (1-Bit Pack). The other five have our own art: Pong, Flappy Bird, Snake (lit dots on a
   dark screen, as on the phones it became famous on), Pac-Man (a beetle chased by four one-eyed wisps, in
-  the original ghosts' colours, which the lesson names them by), Plants vs. Zombies and
+  the original ghosts' colours, which the lesson names them by) and
   Geometry Wars. Where a pack lacks something a game needs (a ducking frame, a sword
-  swing, a slingshot, hearts, a floor switch), it is made from the pack's own pieces and colours. Pokemon's
+  swing, a slingshot, hearts, a floor switch, a goblin), it is made from the pack's own pieces and colours. Pokemon's
   monsters are our designs, in the pack's four shades, and its trainer's side and back views
   are made from the pack's front-facing one. Zelda's hero gets his side and back views the
   same way.

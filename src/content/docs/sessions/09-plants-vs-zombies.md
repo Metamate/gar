@@ -9,24 +9,25 @@ sidebar:
 
 ## Today's Goal
 
-Make a **tower defence game**, like Plants vs. Zombies: zombies walk across a lawn towards
-your house, one row each. Plant sunflowers to make sun, and spend the sun on plants that stop
-the zombies.
+Make a **tower defence game**, like Plants vs. Zombies: goblins march across a field towards
+your castle, one row each. Set out chests that pay gold, and spend the gold on defenders
+that stop the goblins.
 
 <figure class="original">
 <img src="../../originals/plants-vs-zombies.png" alt="A lawn defended by plants in Plants vs. Zombies" class="pixelated" />
 <figcaption>The original: <em>Plants vs. Zombies</em> (PopCap Games, 2009). Screenshot © PopCap Games.</figcaption>
 </figure>
 
-The game has many kinds of plants and zombies, and they mix and match abilities. One plant
-shoots, another makes sun, another just blocks, and a zombie may wear a cone or a bucket. In
+The original has many kinds of plants and zombies, and they mix and match abilities. Ours
+moves that idea to a castle. One defender shoots, another earns gold, another just blocks,
+and a goblin may carry a wooden or an iron shield. In
 [Zelda](../07-the-legend-of-zelda/#composition-vs-inheritance) we asked whether something
 should be a subclass or a part. Here we build every game object from parts, with the
 **Component** pattern.
 
-The plant and zombie types come from data files, with the **Type Object** pattern.
+The defender and goblin types come from data files, with the **Type Object** pattern.
 And since the game is played with the mouse, we start with picking, which turns a click into
-a seed packet or a cell on the lawn.
+a card or a cell on the field.
 
 **Source code:** [gar-games/09-plants-vs-zombies](https://github.com/Metamate/gar-games/tree/main/09-plants-vs-zombies)
 
@@ -58,7 +59,7 @@ private Vector2 MousePosition()
 Then, from a point to a thing. For a grid, that's a division, as in the tilemaps of
 [Mario](../06-super-mario-bros/):
 
-```csharp title="Lawn.cs"
+```csharp title="Field.cs"
 public static Point? CellAt(Vector2 position)
 {
     if (!Bounds.Contains(position))
@@ -67,18 +68,18 @@ public static Point? CellAt(Vector2 position)
 }
 ```
 
-For a few things that aren't on a grid, like the seed packets or a sun, check each one:
+For a few things that aren't on a grid, like the cards or a coin, check each one:
 is the point inside its rectangle, or within its radius? When things overlap, the order of
-the checks decides what the click hits. Here, a sun floating over the lawn is checked
-first, then the seed packets, and only then the lawn.
+the checks decides what the click hits. Here, a coin floating over the field is checked
+first, then the cards, and only then the field.
 
-The cell under the mouse is highlighted, with a faint copy of the chosen plant, so the
+The cell under the mouse is highlighted, with a faint copy of the chosen defender, so the
 player sees what a click will do.
 
 **Try it** (`Pvz0`): show the cell under the mouse in the window title. What does
-`CellAt` give you off the lawn?
+`CellAt` give you off the field?
 
-## Plants and Zombies, With Inheritance
+## Defenders and Goblins, With Inheritance
 
 _Step `Pvz1`_
 
@@ -86,7 +87,7 @@ _Step `Pvz1`_
 
 ```mermaid
 classDiagram
-    class Plant {
+    class Defender {
         <<abstract>>
         +Point Cell
         +float Health
@@ -94,42 +95,42 @@ classDiagram
         +Update(deltaSeconds, world)
         +Draw(spriteBatch)
     }
-    class Zombie {
+    class Goblin {
         +float Health
         +TakeDamage(damage)
         +Update(deltaSeconds, world)
         +Draw(spriteBatch)
     }
-    Plant <|-- Sunflower
-    Plant <|-- Peashooter
-    Plant <|-- WallNut
+    Defender <|-- Chest
+    Defender <|-- Archer
+    Defender <|-- Knight
     class World {
-        -Plant[,] plants
-        -List~Zombie~ zombies
-        -List~Pea~ peas
-        -List~Sun~ suns
+        -Defender[,] defenders
+        -List~Goblin~ goblins
+        -List~Arrow~ arrows
+        -List~Coin~ coins
     }
 ```
 
-It works, but try adding what the real game has:
+It works, but try adding more kinds:
 
-- **A Repeater** shoots two peas instead of one. A subclass of `Peashooter` that overrides
-  something? Then `Peashooter` needs a way to be overridden that it didn't need before.
-- **A Conehead** is a zombie with a cone that takes the first hits. A subclass of `Zombie`,
-  fine. But a plant with armour (a pumpkin shell around it) needs the same thing, and a
-  plant isn't a zombie.
-- **A plant that shoots and makes sun.** Should it inherit from `Peashooter` or from
-  `Sunflower`? C# allows one base class. Whichever you choose, the other ability gets
+- **A Wizard** shoots two arrows instead of one. A subclass of `Archer` that overrides
+  something? Then `Archer` needs a way to be overridden that it didn't need before.
+- **A Shieldbearer** is a goblin with a shield that takes the first hits. A subclass of `Goblin`,
+  fine. But a defender with a shield of its own needs the same thing, and a
+  defender isn't a goblin.
+- **A defender that shoots and makes gold.** Should it inherit from `Archer` or from
+  `Chest`? C# allows one base class. Whichever you choose, the other ability gets
   copied.
-- **Health is already copied.** `Zombie` has its own `Health`, `TakeDamage` and drawing,
-  because a zombie isn't a plant. Peas and suns need their own lists in `World`, because
+- **Health is already copied.** `Goblin` has its own `Health`, `TakeDamage` and drawing,
+  because a goblin isn't a defender. Arrows and coins need their own lists in `World`, because
   they're different classes too.
 
 Inheritance describes what something _is_. In this game, what each thing _can do_ matters
 more, and the abilities combine freely.
 
-**Try it** (`Pvz1`): make a Repeater, a Peashooter that shoots two peas, as a subclass. How
-far do you get before `Peashooter` has to change?
+**Try it** (`Pvz1`): make a Wizard, an Archer that shoots two arrows, as a subclass. How
+far do you get before `Archer` has to change?
 
 ## The Component Pattern
 
@@ -139,7 +140,7 @@ _Step `Pvz2`_
 > other. _(Game Programming Patterns)_
 
 An **entity** is just a container, holding a position, a row, and a list of
-**components**. Each component is one ability, such as `Health`, `Shooter`, `SunProducer`, `Walker`, `Eater`,
+**components**. Each component is one ability, such as `Health`, `Shooter`, `GoldProducer`, `Walker`, `Attacker`,
 `Armour`, `SpriteRenderer`. An entity does what its components do.
 
 ```csharp title="Entity.cs"
@@ -182,75 +183,75 @@ classDiagram
     Component <|-- Health
     Component <|-- Armour
     Component <|-- Shooter
-    Component <|-- SunProducer
+    Component <|-- GoldProducer
     Component <|-- Walker
-    Component <|-- Eater
+    Component <|-- Attacker
     Component <|-- Projectile
     Component <|-- Collectible
 ```
 
-There are no classes for plants or zombies any more. Each kind of thing is a **recipe**, a
+There are no classes for defenders or goblins any more. Each kind of thing is a **recipe**, a
 list of components.
 
 ```csharp title="Recipes.cs"
-public Entity Sunflower(World world) => Plant(world, "sunflower", 6).With(new SunProducer(12, 25));
-public Entity Peashooter(World world) => Plant(world, "peashooter", 6).With(new Shooter(1.4f, 1, 1));
-public Entity Repeater(World world) => Plant(world, "repeater", 6).With(new Shooter(1.4f, 2, 1));
+public Entity Chest(World world) => Defender(world, "chest", 6).With(new GoldProducer(9, 25));
+public Entity Archer(World world) => Defender(world, "archer", 6).With(new Shooter(1.4f, 1, 1));
+public Entity Wizard(World world) => Defender(world, "wizard", 6).With(new Shooter(1.4f, 2, 1));
 
-public Entity Zombie(World world)
+public Entity Goblin(World world)
     => new Entity(world)
-        .With(new SpriteRenderer(atlas.GetRegion("zombie")))
+        .With(new SpriteRenderer(atlas.GetRegion("goblin")))
         .With(new Health(10))
-        .With(new Walker(16))
-        .With(new Eater(1));
+        .With(new Walker(28))
+        .With(new Attacker(1));
 
-public Entity Conehead(World world) => Zombie(world).With(new Armour(18, atlas.GetRegion("cone")));
+public Entity Shieldbearer(World world) => Goblin(world).With(new Armour(18, atlas.GetRegion("wooden-shield")));
 ```
 
-The Repeater and the Conehead are new in `Pvz2`, and neither needed a class. A plant that
-shoots and makes sun is `.With(new Shooter(...)).With(new SunProducer(...))`. Health is
-written once, and used by plants and zombies alike.
+The Wizard and the Shieldbearer are new in `Pvz2`, and neither needed a class. A defender that
+shoots and makes gold is `.With(new Shooter(...)).With(new GoldProducer(...))`. Health is
+written once, and used by defenders and goblins alike.
 
-**Try it** (`Pvz2`): add a recipe for a plant that shoots and makes sun, and give it a
-packet in `Game1`. How much new code did it take?
+**Try it** (`Pvz2`): add a recipe for a defender that shoots and makes gold, and give it a
+card in `Game1`. How much new code did it take?
 
 ### How components work together
 
 Components are small and separate, but an entity's parts still need each other:
 
 - **Through the owner.** A component can ask its entity for another component. `Walker`
-  stops while the `Eater` is eating; `Health` lets the `Armour` take the damage first; the
+  stops while the `Attacker` is attacking; `Health` lets the `Armour` take the damage first; the
   `SpriteRenderer` flashes red when `Health` was just hit.
 
   ```csharp title="Walker.cs"
   public override void Update(float deltaSeconds)
   {
-      if (Owner.Get<Eater>()?.IsEating == true)
+      if (Owner.Get<Attacker>()?.IsAttacking == true)
           return;
       Owner.Position -= new Vector2(speed * deltaSeconds, 0);
   }
   ```
 
 - **Through the world.** A component can ask the world about other entities. `Shooter`
-  asks whether there's a zombie ahead in its row; `Eater` asks which plant is in front of
+  asks whether there's a goblin ahead in its row; `Attacker` asks which defender is in front of
   it.
 
 A component only depends on the components it uses. It doesn't care what kind of entity
 it's in.
-`Walker` works on any entity; if the entity has no `Eater`, it just keeps walking.
+`Walker` works on any entity; if the entity has no `Attacker`, it just keeps walking.
 
-The world got simpler too. It doesn't know what a peashooter or a sun is. One loop updates
-every entity, and one loop draws them. It keeps plants, zombies and everything else apart
-only so that components can ask it questions ("the first zombie ahead in row 2").
+The world got simpler too. It doesn't know what an archer or a coin is. One loop updates
+every entity, and one loop draws them. It keeps defenders, goblins and everything else apart
+only so that components can ask it questions ("the first goblin ahead in row 2").
 
 ### What components cost
 
-- **Finding each other takes code.** `Owner.Get<Eater>()` looks through a list, and returns
+- **Finding each other takes code.** `Owner.Get<Attacker>()` looks through a list, and returns
   `null` if there's no eater. With inheritance, the compiler would have known.
 - **Order matters.** Components update and draw in the order they were added. The
-  `Armour` is drawn after the `SpriteRenderer`, so the cone sits on top of the head.
-- **Where does a rule go?** "A pea damages the first zombie it reaches" could be in the
-  pea (`Projectile`) or in the zombie. Rules that span many entities get harder to place;
+  `Armour` is drawn after the `SpriteRenderer`, so the shield is drawn over the goblin.
+- **Where does a rule go?** "An arrow damages the first goblin it reaches" could be in the
+  arrow (`Projectile`) or in the goblin. Rules that span many entities get harder to place;
   in [Geometry Wars](../11-geometry-wars/#components-vs-systems), we'll move some of them
   into **systems**.
 
@@ -259,93 +260,93 @@ only so that components can ask it questions ("the first zombie ahead in row 2")
 _Project `Pvz.Tests`_
 
 A component that does one job can be tested on its own. A test builds an entity with only
-the parts it needs, and no lawn, textures or running game, as the rules in
+the parts it needs, and no field, textures or running game, as the rules in
 [Sokoban](../04-sokoban/#unit-tests) were tested without a window:
 
 ```csharp title="ComponentTests.cs"
 [Fact]
 public void Armour_takes_the_damage_first_and_passes_on_the_rest()
 {
-    var conehead = new Entity(null);
-    Armour cone = conehead.Add(new Armour(5, null));
-    Health health = conehead.Add(new Health(10));
+    var shieldbearer = new Entity(null);
+    Armour shield = shieldbearer.Add(new Armour(5, null));
+    Health health = shieldbearer.Add(new Health(10));
 
     health.Damage(8);
 
-    Assert.False(cone.IsIntact);
+    Assert.False(shield.IsIntact);
     Assert.Equal(7, health.Current);
 }
 ```
 
-The world is `null` because neither component uses it. With a class per zombie, the same
-test would need a `ConeheadZombie`, and everything its base classes need.
+The world is `null` because neither component uses it. With a class per goblin, the same
+test would need a `ShieldbearerGoblin`, and everything its base classes need.
 
-**Try it** (`Pvz.Tests`): add a test for a buckethead, with armour 20 and health 10. Is it
+**Try it** (`Pvz.Tests`): add a test for an Ironclad, with armour 20 and health 10. Is it
 still standing after two hits of 12? Run `dotnet test`.
 
 ## Type Object
 
 _Step `Pvz3`_
 
-The recipes are still C#. Every plant type also has data that doesn't belong in any one
-plant: its cost, how long its seed packet takes to recharge, its sprite. A peashooter's
-_cost_ doesn't fit in a component, because the peashooter on the lawn has no cost. Only its
+The recipes are still C#. Every defender type also has data that doesn't belong in any one
+defender: its cost, how long its card takes to recharge, its sprite. An archer's
+_cost_ doesn't fit in a component, because the archer on the field has no cost. Only its
 _kind_ has one.
 
 > Allow the flexible creation of new "classes" by creating a single class, each instance of
 > which represents a different type of object. _(Game Programming Patterns)_
 
-A `PlantType` object represents one **kind** of plant. There's one `PlantType` for all
-sunflowers, loaded from `plants.json`:
+A `DefenderType` object represents one **kind** of defender. There's one `DefenderType` for all
+chests, loaded from `defenders.json`:
 
-```json title="plants.json"
-{ "name": "Sunflower", "sprite": "sunflower", "cost": 50, "recharge": 7.5, "health": 6,
-  "sunProducer": { "interval": 12, "amount": 25 } },
-{ "name": "Repeater", "sprite": "repeater", "cost": 200, "recharge": 7.5, "health": 6,
+```json title="defenders.json"
+{ "name": "Chest", "sprite": "chest", "cost": 50, "recharge": 7.5, "health": 6,
+  "goldProducer": { "interval": 9, "amount": 25 } },
+{ "name": "Wizard", "sprite": "wizard", "cost": 200, "recharge": 7.5, "health": 6,
   "shooter": { "interval": 1.4, "shots": 2, "damage": 1 } }
 ```
 
 And the type builds its own instances, adding a component for each kind of data it has:
 
 ```csharp title="Types.cs"
-public class PlantType
+public class DefenderType
 {
     public string Name { get; init; }
     public int Cost { get; init; }
     public float Recharge { get; init; }
     public ShooterData Shooter { get; init; }
-    public SunProducerData SunProducer { get; init; }
+    public GoldProducerData GoldProducer { get; init; }
     // ...
 
     public Entity Create(World world)
     {
-        var plant = new Entity(world)
+        var defender = new Entity(world)
             .With(new SpriteRenderer(world.Atlas.GetRegion(Sprite)))
             .With(new Health(Health));
 
         if (Shooter != null)
-            plant.Add(new Shooter(Shooter.Interval, Shooter.Shots, Shooter.Damage));
-        if (SunProducer != null)
-            plant.Add(new SunProducer(SunProducer.Interval, SunProducer.Amount));
-        return plant;
+            defender.Add(new Shooter(Shooter.Interval, Shooter.Shots, Shooter.Damage));
+        if (GoldProducer != null)
+            defender.Add(new GoldProducer(GoldProducer.Interval, GoldProducer.Amount));
+        return defender;
     }
 }
 ```
 
-- **Types and instances.** The `PlantType` holds what all sunflowers share; each entity on
-  the lawn holds what's its own (its position, its health so far). A seed packet shows a
-  type; clicking the lawn creates an instance.
-- **New kinds without code.** A new plant made from existing components is a new block in
-  `plants.json`. A Buckethead is a zombie type with `"armour": { "sprite": "bucket",
+- **Types and instances.** The `DefenderType` holds what all chests share; each entity on
+  the field holds what's its own (its position, its health so far). A card shows a
+  type; clicking the field creates an instance.
+- **New kinds without code.** A new defender made from existing components is a new block in
+  `defenders.json`. An Ironclad is a goblin type with `"armour": { "sprite": "iron-shield",
   "health": 55 }`. A designer can balance the game (costs, health, timings) without
   compiling anything.
-- **New abilities with a little code.** The Cherry Bomb explodes, which no component did.
-  It took one new component (`Explode`), one new property on `PlantType`, and the data.
+- **New abilities with a little code.** The Bomb explodes, which no component did.
+  It took one new component (`Explode`), one new property on `DefenderType`, and the data.
   Components and Type Object work together. Components are the building blocks, and the
   types are the data that combines them.
 
-**Try it** (`Pvz3`): in `plants.json`, make a Wall-nut that costs 25 with twice the health,
-and a Sunflower that makes 50 sun. Did you compile anything?
+**Try it** (`Pvz3`): in `defenders.json`, make a Knight that costs 25 with twice the health,
+and a Chest that makes 50 gold. Did you compile anything?
 
 ### Prototype vs. Type Object
 
@@ -364,42 +365,43 @@ without a class for each. Both patterns solve that problem, differently:
 
 _Step `Pvz4`_
 
-`Pvz4` reads a level from `level1.json`: the starting sun, how often sun falls from the
-sky, and which zombie comes when. Seed packets recharge after planting, and game states
-([Flappy Bird](../02-flappy-bird/#state-machines)) end the game when a zombie reaches the
-house, or when every zombie is gone.
+`Pvz4` reads a level from `level1.json`: the starting gold, how often gold falls from the
+sky, and which goblin comes when. Cards recharge after use, and game states
+([Flappy Bird](../02-flappy-bird/#state-machines)) end the game when a goblin reaches the
+castle, or when every goblin is gone.
 
 ```json title="level1.json"
 {
-  "startingSun": 150,
-  "skySunInterval": 9,
+  "startingGold": 150,
+  "skyGoldInterval": 7,
   "spawns": [
-    { "time": 20, "zombie": "Zombie" },
-    { "time": 34, "zombie": "Zombie" },
+    { "time": 6, "goblin": "Goblin" },
+    { "time": 14, "goblin": "Goblin" },
     ...
   ]
 }
 ```
 
-The falling sun is a sun with one more component, `Faller`. With components in place, many
+The falling coin is a coin with one more component, `Faller`. With components in place, many
 new features take a single new component.
 
 ## Exercises
 
-Start from `Pvz4`. The art for the exercises is already in `images/sprites.png`, in its
-bottom row (y = 248), but not in `atlas-definition.xml`: a Tall-nut (80 × 90 at x = 0),
-a Snow Pea (80 × 90 at x = 82), a Pumpkin (80 × 90 at x = 164), a shovel (64 × 64 at
-x = 246) and a cold pea (20 × 20 at x = 312). Describing them is part of each exercise.
+Start from `Pvz4`. The art for the exercises is already in `images/sprites.png`, but not in
+`atlas-definition.xml`: a Guard (80 × 80 at x = 375, y = 85), a Frost Wizard (80 × 80 at
+x = 460, y = 85), an ice arrow (75 × 25 at x = 545, y = 85) and a pitchfork (80 × 80 at
+x = 0, y = 240). Describing them is part of each exercise.
 
-1. **New types:** add a Tall-nut (twice the Wall-nut's health) and a Flag Zombie (faster,
-   with a bucket) to the data, and send a few Flag Zombies in `level1.json`. Did you need
+1. **New types:** add a Guard (twice the Knight's health) and a Runner (a faster goblin,
+   with an iron shield) to the data, and send a few Runners in `level1.json`. Did you need
    any code?
-2. **Snow Pea:** peas that slow the zombie they hit. Which new component do you need, where
-   does it go (the pea? the zombie?), and how does the data say which peas are cold?
-3. **Pumpkin:** armour for plants. Can you reuse `Armour`? What needs to change?
-4. **A shovel:** a tool in the seed bar that removes the plant you click. Where does
-   picking a plant fit in?
-5. **Refactor (stretch):** `PlantType.Create` has an `if` for every component. Could the
+2. **Frost Wizard:** arrows that slow the goblin they hit. Which new component do you need,
+   where does it go (the arrow? the goblin?), and how does the data say which arrows are cold?
+3. **A shield for defenders:** armour for the people on your side too. Can you reuse
+   `Armour`? What needs to change?
+4. **A pitchfork:** a tool in the card bar that sends the defender you click back into the
+   castle. Where does picking a defender fit in?
+5. **Refactor (stretch):** `DefenderType.Create` has an `if` for every component. Could the
    JSON list components by name, and a registry turn names into components? What do you
    gain, and what do you lose (e.g. the compiler checking the data's shape)?
 
@@ -416,16 +418,16 @@ x = 246) and a cold pea (20 × 20 at x = 312). Describing them is part of each e
 <details>
 <summary>Why does inheritance break down for Plants vs. Zombies?</summary>
 
-The abilities (shooting, making sun, armour, walking, eating) combine freely, but a class
+The abilities (shooting, making gold, armour, walking, attacking) combine freely, but a class
 has one base class. Combinations mean choosing one parent and copying the other ability,
-and abilities shared by plants and zombies (health) get copied too.
+and abilities shared by defenders and goblins (health) get copied too.
 
 </details>
 
 <details>
 <summary>How do components in the same entity work together without knowing each other's classes in advance?</summary>
 
-They ask their owner for a sibling (`Owner.Get<Eater>()`), and handle it being missing.
+They ask their owner for a sibling (`Owner.Get<Attacker>()`), and handle it being missing.
 For other entities, they ask the world.
 
 </details>

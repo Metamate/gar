@@ -192,7 +192,7 @@ which state comes next. They only push and pop.
   them without knowing the formulas.
 
 `PokemonSpecies` vs. `Mon` is the [Type Object](../09-plants-vs-zombies/) pattern again:
-the species are defined in `pokemon_definitions.json`, as the plants were in Plants vs.
+the species are defined in `pokemon_definitions.json`, as the defenders were in Plants vs.
 Zombies.
 
 ## Save & Load
