@@ -127,7 +127,7 @@ _Steps `Flappy5` → `Flappy7`_
 
 Instead of designing levels by hand, we generate them with code. `Flappy6` spawns a pipe every
 2 seconds at a random height, scrolling at the ground's speed. `Flappy7` wraps two pipes in a
-`PipePair` with a 90-pixel gap, and lets the gap drift. Each pair's height is the previous
+`PipePair` with a 100-pixel gap, and lets the gap drift. Each pair's height is the previous
 pair's plus a small random step, clamped to the screen. Pairs that scroll off-screen are
 flagged and removed.
 
