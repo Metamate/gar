@@ -20,9 +20,6 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# Original slide decks (backed up elsewhere). Edited decks live in /slides.
-in-progress/slides-ppt/
-
 # Frames and GIFs from tools/recording
 tools/recording/out/
 

@@ -133,9 +133,7 @@ Notes for building it:
 
 ## Materials
 
-- **Slides:** edited decks live in `slides/` (version controlled), named by session number.
-  A deck moves there from `in-progress/slides-ppt/` (the untouched originals, not in git)
-  the first time it is edited.
+- **Slides:** the decks live in `slides/` (version controlled), named by session number.
 - **Code:** one repository, [gar-games](https://github.com/Metamate/gar-games), with one
   folder per game, numbered by session (`01-pong`, `03-snake`, …). Every game is
   split into step projects (`Snake0`,
