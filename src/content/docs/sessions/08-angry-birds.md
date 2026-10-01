@@ -474,9 +474,9 @@ Start from `Birds4`.
    play it). Add a new prefab too, e.g. a long stone plank. How much code did you change?
 2. **A new bird:** a heavy bird that's twice the size. Make it a prefab, and give each
    level a list of birds instead of a count (e.g. `birds red red heavy`).
-3. **Explosive:** a TNT box that, when destroyed, pushes everything nearby away. What does
+3. **Explosive:** a crate that, when destroyed, pushes everything nearby away. What does
    the facade need to offer (e.g. `ApplyImpulse`)? Add it without letting Box2D types out.
-   A TNT crate is drawn in `sprites.png` (50 × 50 at x = 120, y = 204), ready for a
+   An explosive crate is drawn in `sprites.png` (50 × 50 at x = 120, y = 204), ready for a
    region.
 4. **Unit test the conversion:** `Units` is small, but easy to get wrong. Add a
    `Birds.Tests` project, set up like `Sokoban.Tests` in

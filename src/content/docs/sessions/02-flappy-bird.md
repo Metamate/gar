@@ -131,7 +131,7 @@ Instead of designing levels by hand, we generate them with code. `Flappy6` spawn
 pair's plus a small random step, clamped to the screen. Pairs that scroll off-screen are
 flagged and removed.
 
-**Try it** (`Flappy7`): make the gap 60 pixels and spawn a pair every 1.5 seconds. Is it still
+**Try it** (`Flappy7`): make the gap 80 pixels and spawn a pair every 1.5 seconds. Is it still
 fair? Which numbers in `SpawnPipePair` make the drift gentler?
 
 ## Input: InputManager

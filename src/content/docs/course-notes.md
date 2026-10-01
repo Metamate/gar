@@ -42,7 +42,7 @@ same rules for every session.
 | 02 Flappy Bird | ~210 | +30 | 8 build steps; three stretches are demos with a try-it |
 | 03 Snake | ~205 | +25 | 5 short tasks after the demos |
 | 04 Sokoban | ~180 | 0 | 5 short tasks; Command for undo and for input |
-| 05 Pac-Man | ~165 | −15 | 4 short tasks |
+| 05 Pac-Man | ~180 | 0 | 5 short tasks; routing is Strategy a second time |
 | 06 Super Mario Bros | ~205 | +25 | 6 short tasks; physics first; player states only say what's new after Pac-Man |
 | 07 The Legend of Zelda | ~190 | +10 | 3 short tasks; events are the main topic, composition closes the session |
 | 08 Angry Birds | ~170 | −10 | 5 short tasks, and the physics samples |
@@ -65,7 +65,7 @@ same rules for every session.
   public repositories (`projects/gar-private/exercise-answers.md` on the teacher's machine),
   so the exercises stay unsolved for students.
 - **Spare time** in the later sessions goes to the exercises and to project work in class,
-  which the syllabus includes, rather than to more material.
+  which the syllabus includes. No material is added to fill it.
 - **Slides keep to the topic:** no milestones, due dates, "last week" or other course
   admin. The project page, the overview and the teacher carry those. "Apply It to Your
   Project" stays: it applies the day's topic, not the project's schedule.
@@ -79,7 +79,7 @@ same rules for every session.
 | 2 | Flappy Bird | Structuring the code | State (game states), Singleton | a core library (GARCore), textures & parallax, procedural generation, keyboard & mouse input |
 | 3 | Snake | Assets as data | — | texture atlases, sprites & animation, fixed-tick movement, input as actions & buffering |
 | 4 | Sokoban (new) | Command and undo | Command | levels as text files, rules apart from drawing, unit tests |
-| 5 | Pac-Man (new) | The State pattern | State, Strategy | State vs. Strategy, testing each ghost |
+| 5 | Pac-Man (new) | The State pattern | State, Strategy | State vs. Strategy, a second strategy for routes, testing each ghost |
 | 6 | Super Mario Bros | The game world | Strategy (level makers), State (the player) | platformer physics & tile collision, debug drawing |
 | 7 | The Legend of Zelda | Events | Observer | C# events and lambdas, an event queue, hitboxes, tweening, composition vs. inheritance |
 | 8 | Angry Birds (new) | Using a physics library | Adapter, Facade, Prototype | physics world vs. game world, contact events, destroying safely |
@@ -98,7 +98,7 @@ Threads that run through the plan (the recap page lists them for students):
 - **Entities:** composition vs. inheritance (7) → components (9) → components vs. systems
   (11) → data-oriented design (12, same genre as 11 built a second way).
 - **Dependencies:** Singleton (2) → Service Locator (10) → dependency injection (11).
-- **Coordinate spaces:** virtual resolution (2) → camera (6) → physics units (8) → picking (9).
+- **Coordinate spaces:** virtual resolution (1) → window to game coordinates (2) → camera (6) → physics units (8) → picking (9).
 - **Pattern pairs:** State vs. Strategy (5), Prototype (8) vs. Type Object (9), Object Pool
   vs. Flyweight (11).
 - **Order of 07 and 08:** Zelda comes before Angry Birds. Zelda teaches events, and Angry Birds' contact events use them; Mario's
@@ -217,7 +217,8 @@ Notes for building it:
   line ("Arrows: move   Space: jump"), and "Press Enter". GARCore's `TitleScreen` draws it
   from Snake on, in plain code: three `MeasureString` calls, a rectangle and three
   `DrawString` calls. Pong and Flappy Bird come before that and draw the same layout
-  themselves (in `Game1` and in `Art`), with only what their sessions teach; Pokemon has
+  themselves at fixed positions (in `Game1` and in `TitleState`), a band and three centred
+  lines, so the title takes no more code than its session can carry; Pokemon has
   its own for its bitmap fonts. Nothing in a game may use a concept before the session that
   teaches it, even in a helper: no delegates before Zelda. The text is white,
   or the game's own light colour where the game has a fixed palette (Snake, Pokemon). The
@@ -275,11 +276,11 @@ code over adding new sessions.
 | Decorator | Mario powerups |
 | Event bus / message bus | Zelda, alongside Event Queue |
 | MVVM / MVP | Pokemon UI (currently only mentioned) |
-| SOLID principles | Weave into sessions rather than a standalone lecture |
+| SOLID principles | Woven into sessions; no standalone lecture |
 | Proxy, Iterator, Builder | Probably out of scope |
 | Game math (sin/cos, atan2, lerp, radians, normalization) | Short primer in Pong/Flappy |
 | [Refactoring](https://refactoring.guru) | 04 Sokoban, then an exercise in every session |
-| Pathfinding (A\*), steering behaviours | Zelda or Geometry Wars (seek & flee is in the GW code) |
+| Pathfinding (A\*), steering behaviours | A\* is in Pac-Man's code behind `IRouteStrategy`, as optional reading: the session teaches the strategy and leaves the algorithm out. Steering: Geometry Wars (seek & flee is in its code) |
 | ECS in practice (e.g. MonoGame.Extended) | Geometry Wars, briefly |
 
 ## Ideas for Games

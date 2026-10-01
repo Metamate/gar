@@ -11,6 +11,7 @@ to. It is a good starting point for exam preparation (see [the project at the ex
 
 | Pattern | Introduced in | Also in | Exam |
 | --- | --- | --- | --- |
+| Game Loop | [01 Pong](../sessions/01-pong/) | every game | [1](../exam/#1-game-loop--update-method) |
 | Update Method | [01 Pong](../sessions/01-pong/) | every game | [1](../exam/#1-game-loop--update-method) |
 | State (game states) | [02 Flappy Bird](../sessions/02-flappy-bird/) | most games from here | [2](../exam/#2-state-pattern--state-stack) |
 | Singleton | [02 Flappy Bird](../sessions/02-flappy-bird/) | | [3](../exam/#3-singleton--service-locator) |
@@ -76,7 +77,8 @@ answer.
   ([08](../sessions/08-angry-birds/)) → spatial partitioning
   ([12](../sessions/12-vampire-survivors/)). Exam
   [7](../exam/#7-tilemaps-collision-detection--procedural-generation).
-- **Coordinate spaces:** virtual resolution ([02](../sessions/02-flappy-bird/)) → world vs.
+- **Coordinate spaces:** virtual resolution ([01](../sessions/01-pong/)) → window to game
+  coordinates ([02](../sessions/02-flappy-bird/)) → world vs.
   camera ([06](../sessions/06-super-mario-bros/)) → physics units vs. pixels
   ([08](../sessions/08-angry-birds/)) → screen to grid ([09](../sessions/09-plants-vs-zombies/)).
 - **Rendering:** drawing & the content pipeline ([01](../sessions/01-pong/)) → textures

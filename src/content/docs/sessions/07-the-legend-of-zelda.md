@@ -379,36 +379,33 @@ we take this all the way with the **Component pattern**.
 
 Start from `Zelda7`.
 
-**Make Zelda (more) event-driven.** Pick one and refactor it. The class firing the event
-must have no reference to the class reacting to it.
-
-- `OnPlayerDied` is detected in one place, but causes a game over screen to appear
-  somewhere completely different. Trace the full chain through the code.
-- Enemy death is handled differently from player death. What happens now when an enemy
-  dies? What could happen if there were an event for it?
-- `SoundManager.PlaySound(...)` is called directly from several unrelated classes. Find
-  all the call sites. Why is this a problem, and how would events fix it? Then make it an
-  [event queue](#event-queue): `PlaySound` only records the sound's name, and once per frame
-  every requested sound plays once, so ten hits in the same frame don't play ten sounds.
-  Where in the frame do the sounds play, and what do you give up?
-
-**Composition:** sketch the class hierarchy you would need for enemies that can walk, fly,
-shoot or explode, in any combination. Then sketch the same with composition. Which parts
-would an enemy _have_? Implement one of them (e.g. a shooting behaviour that any enemy can
-be given).
-
-**Keys and locked doors:**
-
-- Some enemies drop a key when they die. Use an event for it, as above. The key is drawn
-  in `hearts.png` (its last frame, `frame_6`).
-- Some doorways are locked. Add `locked` layouts to `door_layouts.xml`, so the look stays in
-  data, as a closed door's four tiles with a padlock on top. The padlock is drawn over four
-  tiles of the tilesheet: 243 (top left), 244 (top right), 245 (bottom left) and 246
-  (bottom right).
-- Walking into a locked door with a key uses up the key and opens the door for good. Show
-  the keys the player carries next to the hearts.
-
-**Going further (optional):** a dungeon map. Keep track of the rooms the player has visited, and show them as a small map on a key press, with the current room highlighted. Which state shows it, and what does it need to know?
+1. **More event-driven:** pick one of these and refactor it. The class firing the event
+   must have no reference to the class reacting to it.
+   - `OnPlayerDied` is detected in one place, but causes a game over screen to appear
+     somewhere completely different. Trace the full chain through the code.
+   - Enemy death is handled differently from player death. What happens now when an enemy
+     dies? What could happen if there were an event for it?
+   - `SoundManager.PlaySound(...)` is called directly from several unrelated classes. Find
+     all the call sites. Why is this a problem, and how would events fix it? Then make it an
+     [event queue](#event-queue): `PlaySound` only records the sound's name, and once per
+     frame every requested sound plays once, so ten hits in the same frame don't play ten
+     sounds. Where in the frame do the sounds play, and what do you give up?
+2. **Composition:** sketch the class hierarchy you would need for enemies that can walk, fly,
+   shoot or explode, in any combination. Then sketch the same with composition. Which parts
+   would an enemy _have_? Implement one of them (e.g. a shooting behaviour that any enemy
+   can be given).
+3. **Keys and locked doors:**
+   - Some enemies drop a key when they die. Use an event for it, as above. The key is drawn
+     in `hearts.png` (its last frame, `frame_6`).
+   - Some doorways are locked. Add `locked` layouts to `door_layouts.xml`, so the look stays
+     in data, as a closed door's four tiles with a padlock on top. The padlock is drawn over
+     four tiles of the tilesheet: 243 (top left), 244 (top right), 245 (bottom left) and 246
+     (bottom right).
+   - Walking into a locked door with a key uses up the key and opens the door for good. Show
+     the keys the player carries next to the hearts.
+4. **A dungeon map (stretch):** keep track of the rooms the player has visited, and show
+   them as a small map on a key press, with the current room highlighted. Which state shows
+   it, and what does it need to know?
 
 ## Apply It to Your Project
 

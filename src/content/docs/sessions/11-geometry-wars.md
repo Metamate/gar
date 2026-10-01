@@ -244,7 +244,7 @@ without waiting for it.
 Compare the other two ways to reach a service. With `Audio.Instance` or
 `Locator.Audio`, the dependency is hidden inside the class. A test can only replace a
 Service Locator's service by changing global state, and a Singleton not at all. With
-dependency injection, the test simply passes something else in.
+dependency injection, the test passes something else in.
 
 **Try it** (`GeometryWars.Tests`): add a test that an enemy worth 100 points awards 100, and
 run `dotnet test`. How would the test look if `AwardScoreOnDestroyed` used `Locator.Score`?
@@ -388,7 +388,7 @@ Start from `GeometryWars6`.
 ## Check Yourself
 
 <details>
-<summary>When should behaviour live in a system rather than a component?</summary>
+<summary>When should behaviour live in a system, and when in a component?</summary>
 
 When it spans many entities, owns rules of the whole game or session, or needs a central
 order. A component should be about its owner; otherwise it ends up reaching into other
@@ -409,7 +409,7 @@ them.
 <summary>What is a fake, and why does dependency injection make it easy to use one?</summary>
 
 A small stand-in for a real dependency, written for a test, that records what it was asked
-to do. When a class gets its dependencies through its constructor, the test simply passes
+to do. When a class gets its dependencies through its constructor, the test passes
 the fake in. When the class finds them itself (a Singleton or a Service Locator), the fake
 has to replace global state, or can't be used at all.
 

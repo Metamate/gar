@@ -396,7 +396,7 @@ Start from `Survivors4` (or `Survivors3` for the measuring exercises), in Releas
    times), what does the profiler say now? Try
    to make it faster, and keep the tests green.
 4. **A new enemy kind:** a fast, weak one that appears in groups. What changes in
-   `EnemyKind`, `Enemies` and the spawner? A rat is drawn in `sprites.png` (38 × 24 at
+   `EnemyKind`, `Enemies` and the spawner? A rat is drawn in `sprites.png` (48 × 48 at
    x = 0, y = 62), ready for a region.
 5. **Stretch:** separation could run on several cores (`Parallel.For` over rows of cells).
    What goes wrong when two threads push the same enemy? How could you avoid it?

@@ -432,7 +432,7 @@ public void Redo()
 }
 ```
 
-`Z` undoes and `Y` redoes. The move counter is now simply the number of commands on the
+`Z` undoes and `Y` redoes. The move counter is now the number of commands on the
 undo stack. `UndoTests.cs` in `Sokoban.Tests` checks that undo and redo bring back
 the level as it was.
 

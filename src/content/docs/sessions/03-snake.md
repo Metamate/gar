@@ -190,7 +190,7 @@ the tilemap goes through the array and draws each tile's region at a position wo
 its index. Sprites each keep their own position; tiles have theirs from the grid, and all of
 them come from one texture, so the whole room goes to the graphics card in one batch. A big
 level would only draw the cells on screen. Here the tilemap is only a
-picture, and the walls are simply the cells outside the room's `Rectangle`. In
+picture, and the walls are the cells outside the room's `Rectangle`. In
 [Sokoban](../04-sokoban/), the grid becomes the game's state itself.
 
 **Try it** (`Snake4`): rearrange the room in `tilemap-definition.xml`. Then put a 9 in it:
