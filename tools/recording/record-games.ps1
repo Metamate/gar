@@ -40,7 +40,7 @@ if ($Games -contains 'sokoban') {
 if ($Games -contains 'pacman') {
   # Pac-Man is caught after a few seconds: keep the frames
   # before that. Check where it happens, since it can shift from one recording to the next.
-  Record 'pacman' (Exe '05-pac-man' 'Pacman4') 2.0 8 @('0.1 tap enter', '0.2 tap left', '1.5 tap left', '3.0 tap up', '4.2 tap up', '5.2 tap right', '6.2 tap up', '7.0 tap left')
+  Record 'pacman' (Exe '05-pac-man' 'Pacman5') 2.0 8 @('0.1 tap enter', '0.2 tap left', '1.5 tap left', '3.0 tap up', '4.2 tap up', '5.2 tap right', '6.2 tap up', '7.0 tap left')
   python (Join-Path $here 'makegif.py') (Join-Path $out 'pac-man.gif') 640 100 none 8 (Join-Path $out 'frames-pacman\f0[0-2][0-9].png') (Join-Path $out 'frames-pacman\f03[0-5].png')
 }
 if ($Games -contains 'mario') {
