@@ -12,7 +12,7 @@ GAMES = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__))
 
 # virtual key, scan code, extended
 KEYS = {'enter': (0x0D, 0x1C, 0), 'space': (0x20, 0x39, 0), 'left': (0x25, 0x4B, 1), 'up': (0x26, 0x48, 1),
-        'right': (0x27, 0x4D, 1), 'down': (0x28, 0x50, 1), 'esc': (0x1B, 0x01, 0)}
+        'right': (0x27, 0x4D, 1), 'down': (0x28, 0x50, 1), 'esc': (0x1B, 0x01, 0), 'f1': (0x70, 0x3B, 0), 'f3': (0x72, 0x3D, 0)}
 for i, ch in enumerate('1234567890'):
     KEYS[ch] = (0x30 + (i + 1) % 10, 0x02 + i, 0)
 
