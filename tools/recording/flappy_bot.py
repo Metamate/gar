@@ -1,6 +1,6 @@
 """Plays Flappy12 for a recording: reads the screen, finds the bird and the next gap, and flaps.
 
-The window is 1024 x 576, twice the 512 x 288 virtual resolution. The bird is the only
+The window is 1280 x 720, twice the 640 x 360 virtual resolution. The bird is the only
 yellow (248, 184, 0) on screen and the pipes the only green (0, 184, 0). The next gap is the
 longest run of rows without a pipe in the nearest pipe ahead of the bird. A flap lifts the
 bird about 92 window pixels (300^2 / (2 * 980) game pixels, doubled), and the gap is 180, so
@@ -20,7 +20,7 @@ SECONDS = float(sys.argv[3]) if len(sys.argv) > 3 else 20
 INTERVAL = (int(sys.argv[4]) if len(sys.argv) > 4 else 100) / 1000
 BIRD, PIPE = (248, 184, 0), (0, 184, 0)
 PIPE_COLOURS = {(0, 184, 0), (0, 0, 0), (0, 120, 0), (184, 248, 24)}
-GROUND = 544                                        # where the ground starts, in window pixels
+GROUND = 688                                        # where the ground starts, in window pixels
 BIRD_WIDTH = 96
 SPACE, ALT = (0x20, 0x39), (0x12, 0x38)            # virtual-key code, scan code (SDL reads the scan code)
 

@@ -201,18 +201,19 @@ Notes for building it:
 - **Pixel art:** inside a game, every sprite, tile and background uses the same art-pixel
   size and the same style; between games both may differ. Pixel art is drawn with
   `SamplerState.PointClamp` (or `PointWrap`), never stretched by a fraction (Plants vs.
-  Zombies breathes by rising one art pixel), and cameras move in whole pixels. Each game's
-  default window is a whole-number multiple of its virtual resolution (Flappy Bird
-  1024 × 576, Snake 1280 × 704, Mario, Zelda and Pokemon 1152 × 648). Two games have smooth
+  Zombies breathes by rising one art pixel), and cameras move in whole pixels. Every game
+  opens in a 1280 × 720 window, a whole-number multiple of its virtual resolution: 320 × 180
+  at 4× (Pong, Snake, Mario, Zelda, Pokemon), 640 × 360 at 2× (Flappy Bird), and 1280 × 720
+  at 1× (the rest; Pac-Man's portrait maze stands in the middle of it). Two games have smooth
   art: Angry Birds (Kenney's Physics Assets, drawn with linear sampling because its pieces
   rotate) and Geometry Wars' glow. The recordings follow the same rule: `makegif.py` scales with
   nearest neighbour, to a width where one art pixel is a whole number of GIF pixels.
 - **Text:** one font, `retro.ttf`, crisp at multiples of 8 pixels. A `.spritefont`'s size is
   in points, a third larger than pixels, so the sizes are 6, 12, 18, 24 … points for 8, 16,
   24, 32 … pixels. Text is always drawn at scale 1, on whole pixels: a game that needs two
-  sizes has two fonts (Pong's `font` and `font-big`), and never scales one. In games at
-  1280 × 720 the HUD is 16 pixels and titles 32; in the low-resolution games, text is 8 and
-  titles 16. Over a busy background, text gets a dark shadow. Messages are sentences with
+  sizes has two fonts (Pong's `font` and `font-big`), and never scales one. On screen, HUD text is
+  16 or 32 pixels, and the title screen's name is 64 pixels with 32-pixel lines under it, in
+  every game: at 1× that is the 48- and 24-point fonts, at 4× the 12- and 6-point ones. Over a busy background, text gets a dark shadow. Messages are sentences with
   single spaces. (Snake draws its score with digits from its atlas, and Pokemon draws its
   own bitmap fonts, from `fonts/*_atlas.png`.)
 - **Screens and keys:** every game opens on the same title screen: the game drawn behind a

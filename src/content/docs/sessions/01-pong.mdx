@@ -287,11 +287,11 @@ Build Pong step by step:
 1. **Text on screen:** draw "Hello, MonoGame!" centred on a black 1280×720 window. The
    font is already in `Content/Assets`: load it with `Content.Load<SpriteFont>("sans")`,
    and centre the text with `MeasureString`.
-2. **Virtual resolution:** draw the game at 432×243, scaled to fit a resizable window,
-   with point filtering. Scale by the smaller of the two ratios (window width / 432,
-   window height / 243) so nothing is stretched, and centre the result with
+2. **Virtual resolution:** draw the game at 320×180, scaled to fit a resizable window,
+   with point filtering. Scale by the smaller of the two ratios (window width / 320,
+   window height / 180) so nothing is stretched, and centre the result with
    `GraphicsDevice.Viewport`: black bars fill the rest. Recalculate when
-   `Window.ClientSizeChanged` fires. Open the window at 1296×729, three times the virtual
+   `Window.ClientSizeChanged` fires. Open the window at 1280×720, four times the virtual
    size: at a whole-number scale, every pixel comes out the same size.
 3. **Rectangles from a pixel:** draw two paddles and a ball, stretched from one white
    pixel. Switch to the retro font (`"font"`, also in `Content/Assets`) and the

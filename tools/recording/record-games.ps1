@@ -19,7 +19,7 @@ if ($Games -contains 'flappy') {
   # longest_play.py picks the longest flight, of which the GIF keeps 15 seconds.
   python (Join-Path $here 'flappy_bot.py') (Exe '02-flappy-bird' 'Flappy12') (Join-Path $out 'frames-flappy') 45 100
   $frames = python (Join-Path $here 'longest_play.py') (Join-Path $out 'frames-flappy') | Select-Object -First 150
-  python (Join-Path $here 'makegif.py') (Join-Path $out 'flappy-bird.gif') 512 100 none $frames
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'flappy-bird.gif') 640 100 none $frames
 }
 if ($Games -contains 'snake') {
   # The snake moves five cells a second, too fast for a fixed script: snake_bot.py reads the
@@ -41,7 +41,7 @@ if ($Games -contains 'pacman') {
   # Pac-Man is caught after a few seconds (frame 36 in the last recording): keep the frames
   # before that. Check where it happens, since it can shift from one recording to the next.
   Record 'pacman' (Exe '05-pac-man' 'Pacman4') 2.0 8 @('0.1 tap enter', '0.2 tap left', '1.5 tap left', '3.0 tap up', '4.2 tap up', '5.2 tap right', '6.2 tap up', '7.0 tap left')
-  python (Join-Path $here 'makegif.py') (Join-Path $out 'pac-man.gif') 560 100 none 8 (Join-Path $out 'frames-pacman\f0[0-2][0-9].png') (Join-Path $out 'frames-pacman\f03[0-5].png')
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'pac-man.gif') 640 100 none 8 (Join-Path $out 'frames-pacman\f0[0-2][0-9].png') (Join-Path $out 'frames-pacman\f03[0-5].png')
 }
 if ($Games -contains 'mario') {
   # Run right and jump every 0.7 s for half a minute, starting again after a death; the GIF
@@ -52,7 +52,7 @@ if ($Games -contains 'mario') {
   $ev += '30.5 up right'
   Record 'mario' (Exe '06-super-mario-bros' 'Mario8') 1.0 29 $ev
   $frames = python (Join-Path $here 'longest_play.py') (Join-Path $out 'frames-mario')
-  python (Join-Path $here 'makegif.py') (Join-Path $out 'super-mario-bros.gif') 512 100 none $frames
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'super-mario-bros.gif') 640 100 none $frames
 }
 if ($Games -contains 'zelda') {
   # Walk around the first room, swinging the sword after each move.
@@ -60,7 +60,7 @@ if ($Games -contains 'zelda') {
   foreach ($m in @('right', 'down', 'right', 'up', 'left', 'up', 'right', 'down')) {
     $ev += ('{0:0.00} down {1}' -f $t, $m); $ev += ('{0:0.00} up {1}' -f ($t + 0.7), $m); $ev += ('{0:0.00} tap space' -f ($t + 0.8)); $t += 1.1 }
   Record 'zelda' (Exe '07-the-legend-of-zelda' 'Zelda7') 1.0 8 $ev
-  python (Join-Path $here 'makegif.py') (Join-Path $out 'the-legend-of-zelda.gif') 768 100 none (Join-Path $out 'frames-zelda\f*.png')
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'the-legend-of-zelda.gif') 640 100 none (Join-Path $out 'frames-zelda\f*.png')
 }
 if ($Games -contains 'birds') {
   # Past the title, grab the bird on the slingshot at (220, 520), pull back slowly, and let go.
@@ -79,7 +79,7 @@ if ($Games -contains 'pokemon') {
   # The title screen, which shows a new monster every three seconds: three of them. Start
   # where a monster stands in the middle (the first frame is also the decks' still picture).
   Record 'pokemon' (Exe '10-pokemon' 'Pokemon4') 2.0 9 @()
-  python (Join-Path $here 'makegif.py') (Join-Path $out 'pokemon.gif') 768 100 none (Join-Path $out 'frames-pokemon\f00[3-9].png') (Join-Path $out 'frames-pokemon\f0[1-8][0-9].png') (Join-Path $out 'frames-pokemon\f00[0-2].png')
+  python (Join-Path $here 'makegif.py') (Join-Path $out 'pokemon.gif') 640 100 none (Join-Path $out 'frames-pokemon\f00[3-9].png') (Join-Path $out 'frames-pokemon\f0[1-8][0-9].png') (Join-Path $out 'frames-pokemon\f00[0-2].png')
 }
 if ($Games -contains 'gw') {
   # Move with WASD and fire with the arrow keys, turning every second. The glow is lost in a
