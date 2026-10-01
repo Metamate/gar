@@ -5,7 +5,6 @@ sidebar:
   order: 1
 ---
 
-import GameLoopDemo from '../../../components/GameLoopDemo.astro';
 import pong from '../../../assets/session01/pong.gif';
 
 <img src={pong.src} alt="The finished Pong game" />
@@ -104,12 +103,6 @@ player never sees a half-drawn frame. See
   the time it simulates, the game falls further behind every frame; engines limit how many
   steps they catch up, and MonoGame then runs the game in slow motion. MonoGame uses a
   fixed timestep by default (`IsFixedTimeStep = true`).
-
-**Try it** (on this page): lower the tick rate and compare the two lanes. Both simulations run at the same rate. The
-bottom lane blends the last two ticks using `accumulator / dt`, so its motion looks smooth
-even when the simulation updates only a few times per second.
-
-<GameLoopDemo />
 
 ## Content Pipeline
 
