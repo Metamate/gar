@@ -194,7 +194,9 @@ public void The_grid_finds_the_same_points_as_checking_every_point(float radius)
 
 A `[Theory]` runs once for each `[InlineData]`: radii smaller than a cell, about one cell,
 and many cells. Points on cell borders, at negative coordinates and far outside the grid
-have tests of their own; those are where grids go wrong.
+have tests of their own; those are where grids go wrong. The tests run on the finished
+game, so the grid they check is `FlatGrid`, which the next section builds. It answers the
+same questions as `SpatialGrid`.
 
 **Try it** (`Survivors2`, in Release): go to 10,000 enemies and compare `Separate` with
 `Survivors1`. Then run `dotnet test` in the folder.
@@ -218,9 +220,10 @@ with its own header, and each enemy's `Kind` is another object somewhere else. A
 the positions jumps around memory, following references. That's the problem
 [Data Locality](https://gameprogrammingpatterns.com/data-locality.html) describes.
 
-**Data-oriented design** starts from the data and what the loops do with it. Most loops here touch one or two fields of every enemy. `Move`
-reads positions and speeds, and `Separate` reads positions and radii. So we put each field
-in its own array, making a **struct of arrays** instead of an array of objects.
+**Data-oriented design** starts from the data and what the loops do with it. Most loops here
+touch one or two fields of every enemy. `Move` reads positions and speeds, and `Separate`
+reads positions and radii. So we put each field in its own array, making a **struct of
+arrays** instead of an array of objects.
 
 ```csharp title="Enemies.cs"
 // There's no Enemy object: an enemy is an index, and each of its fields is in its own
@@ -287,7 +290,7 @@ allocated, and there's no dictionary.
 | 10,000 | 107 ms | 4.1 ms | 1.3 ms |
 | 20,000 | — | 14.5 ms | 4.9 ms |
 
-At 10,000 enemies, that is three to five times faster than the object grid, and about 80
+At 10,000 enemies, that is about three times faster than the object grid, and about 80
 times faster than where we started.
 
 ### What it costs
@@ -328,24 +331,6 @@ classDiagram
         +Gems Gems
         +Update(deltaSeconds)
     }
-    class Swarm {
-        +Move(deltaSeconds, target)
-        +Separate()
-        +Nearest(point, range) int
-        +Within(point, radius) List~int~
-    }
-    class Enemies {
-        +Vector2[] Position
-        +float[] Health
-        +float[] Speed
-        +float[] Radius
-        +byte[] Kind
-        +RemoveAt(index)
-    }
-    class FlatGrid {
-        +Build(center, positions, count)
-        +Query(center, radius, results)
-    }
     Run --> Player
     Run --> Swarm
     Run --> Gems
@@ -359,7 +344,6 @@ classDiagram
     PlayState --> Run
     LevelUpState ..> Run : upgrades
 ```
-
 
 - Enemies drop **gems**, also stored as arrays. Gems near the player fly to them.
 - Enough experience and you **level up**. A `LevelUpState` is pushed on the **state stack**
@@ -398,7 +382,7 @@ Start from `Survivors4` (or `Survivors3` for the measuring exercises), in Releas
 4. **A new enemy kind:** a fast, weak one that appears in groups. What changes in
    `EnemyKind`, `Enemies` and the spawner? A rat is drawn in `sprites.png` (48 × 48 at
    x = 0, y = 62), ready for a region.
-5. **Stretch:** separation could run on several cores (`Parallel.For` over rows of cells).
+5. **Several cores (stretch):** separation could run on several cores (`Parallel.For` over rows of cells).
    What goes wrong when two threads push the same enemy? How could you avoid it?
 
 ## Apply It to Your Project

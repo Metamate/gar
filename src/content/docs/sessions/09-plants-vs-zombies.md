@@ -43,7 +43,7 @@ _Step `Pvz0`_
 **Picking** is finding out what the player clicked on. It takes two steps.
 
 First, from the window to the game. The mouse position is in window pixels, but the game
-draws at its virtual resolution (1280 x 720), scaled and centred in the window
+draws at its virtual resolution (1280 × 720), scaled and centred in the window
 ([Flappy Bird](../02-flappy-bird/)). So the mouse position goes through the screen scale
 matrix backwards:
 
@@ -237,8 +237,7 @@ Components are small and separate, but an entity's parts still need each other:
   it.
 
 A component only depends on the components it uses. It doesn't care what kind of entity
-it's in.
-`Walker` works on any entity; if the entity has no `Attacker`, it just keeps walking.
+it's in. `Walker` works on any entity; if the entity has no `Attacker`, it just keeps walking.
 
 The world got simpler too. It doesn't know what an archer or a coin is. One loop updates
 every entity, and one loop draws them. It keeps defenders, goblins and everything else apart
@@ -247,7 +246,7 @@ only so that components can ask it questions ("the first goblin ahead in row 2")
 ### What components cost
 
 - **Finding each other takes code.** `Owner.Get<Attacker>()` looks through a list, and returns
-  `null` if there's no eater. With inheritance, the compiler would have known.
+  `null` if there's no attacker. With inheritance, the compiler would have known.
 - **Order matters.** Components update and draw in the order they were added. The
   `Armour` is drawn after the `SpriteRenderer`, so the shield is drawn over the goblin.
 - **Where does a rule go?** "An arrow damages the first goblin it reaches" could be in the
