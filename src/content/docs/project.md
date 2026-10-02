@@ -7,7 +7,7 @@ For the GAR course project, you make a 2D game with MonoGame.
 
 **Group size:** 1–3 students
 
-The game should be simple, and well organized. It must include gameplay systems and
+The game should be simple and well organized. It must include gameplay systems and
 design problems that you solve with the patterns and principles from the course. Apart from
 that, you are free to make any kind of game.
 
@@ -58,7 +58,7 @@ systems you expect to need (e.g. scenes, tilemap, enemies with AI, UI, save data
   builder, with an empty GARCore library. Its README shows how to rename the game, and how
   to swap in the course's GARCore from gar-games.
 - Check that build output stays out of git: the template's `.gitignore` already ignores
-  `bin/`, `obj/`, `.vs/`, ….
+  `bin/`, `obj/` and `.vs/`.
 - Add your group members as collaborators, and upload the repository link to itslearning.
 
 **Sketch the architecture** before writing much code (a simple class diagram is enough):

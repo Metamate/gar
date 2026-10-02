@@ -58,6 +58,8 @@ _Covered in: [02 Flappy Bird](../sessions/02-flappy-bird/),
    to call them?
 4. What is a state stack, and how does it differ from a simple finite state machine? Give
    an example where pushing/popping states is more appropriate than replacing them.
+5. State and Strategy have the same structure. What is the difference between them? Give an
+   example of each.
 
 ### 3. Singleton & Service Locator
 
@@ -121,7 +123,7 @@ _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-fl
 ### 7. Tilemaps, Collision Detection & Procedural Generation
 
 _Covered in: [01 Pong](../sessions/01-pong/), [02 Flappy Bird](../sessions/02-flappy-bird/),
-[04 Sokoban](../sessions/04-sokoban/),
+[03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-sokoban/),
 [06 Super Mario Bros](../sessions/06-super-mario-bros/),
 [07 The Legend of Zelda](../sessions/07-the-legend-of-zelda/),
 [08 Angry Birds](../sessions/08-angry-birds/),
@@ -153,8 +155,8 @@ _Covered in: [03 Snake](../sessions/03-snake/), [04 Sokoban](../sessions/04-soko
 4. Identify a part of your project that is currently hardcoded but would benefit from
    being data-driven. What would the data file look like, and what code would need to
    change?
-5. Explain the Prototype pattern. How can prototypes (prefabs) and data files be used to
-   build levels, and what must you watch out for when copying objects?
+5. Explain the Type Object and Prototype patterns. How does each make new objects from
+   data, and what must you watch out for when copying objects?
 
 ### 9. Components & Systems
 

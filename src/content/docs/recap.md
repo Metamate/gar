@@ -17,7 +17,7 @@ to. It is a good starting point for exam preparation (see [the project at the ex
 | Singleton | [02 Flappy Bird](../sessions/02-flappy-bird/) | | [3](../exam/#3-singleton--service-locator) |
 | Command | [04 Sokoban](../sessions/04-sokoban/) | | [4](../exam/#4-command-pattern--input-handling) |
 | State (entities) | [05 Pac-Man](../sessions/05-pac-man/) | [06 Super Mario Bros](../sessions/06-super-mario-bros/), [07 The Legend of Zelda](../sessions/07-the-legend-of-zelda/) | [2](../exam/#2-state-pattern--state-stack) |
-| Strategy | [05 Pac-Man](../sessions/05-pac-man/) | [06 Super Mario Bros](../sessions/06-super-mario-bros/) | |
+| Strategy | [05 Pac-Man](../sessions/05-pac-man/) | [06 Super Mario Bros](../sessions/06-super-mario-bros/) | [2](../exam/#2-state-pattern--state-stack) |
 | Observer | [07 The Legend of Zelda](../sessions/07-the-legend-of-zelda/) | [08 Angry Birds](../sessions/08-angry-birds/), [10 Pokemon](../sessions/10-pokemon/), [11 Geometry Wars](../sessions/11-geometry-wars/) | [5](../exam/#5-observer-pattern-events--ui) |
 | Adapter & Facade | [08 Angry Birds](../sessions/08-angry-birds/) | | [7](../exam/#7-tilemaps-collision-detection--procedural-generation) |
 | Prototype | [08 Angry Birds](../sessions/08-angry-birds/) | | [8](../exam/#8-data-driven-design--serialization) |
@@ -71,7 +71,8 @@ answer.
   round trip ([10](../sessions/10-pokemon/)) → fakes passed in through dependency injection
   ([11](../sessions/11-geometry-wars/)) → the fast spatial grid checked against the slow,
   obvious search ([12](../sessions/12-vampire-survivors/)).
-- **Collision:** AABB ([01](../sessions/01-pong/)) → grid lookups ([04](../sessions/04-sokoban/))
+- **Collision:** AABB ([01](../sessions/01-pong/)) → circles, and what happens after a hit
+  ([03](../sessions/03-snake/)) → grid lookups ([04](../sessions/04-sokoban/))
   → tile collision ([06](../sessions/06-super-mario-bros/)) → hitboxes
   ([07](../sessions/07-the-legend-of-zelda/)) → a physics library
   ([08](../sessions/08-angry-birds/)) → spatial partitioning

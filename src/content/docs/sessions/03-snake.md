@@ -349,6 +349,15 @@ freely, which the later games need.
 - **Bouncing:** reflect the velocity off the surface, as the ball does in [Pong](../01-pong/).
   `Vector2.Reflect` does it for any angle, given the surface's normal.
 
+### Many objects
+
+Snake checks one head against one piece of food. With many moving objects, every pair has
+to be checked: n objects make n × (n − 1) / 2 pairs, so 100 objects are 4,950 checks every
+frame. Engines split the work in two. A **broad phase** finds the pairs that are near each
+other with something cheap and rough, and a **narrow phase** runs the exact check on those
+pairs only. [Vampire Survivors](../12-vampire-survivors/#spatial-partitioning) builds a
+broad phase from a grid.
+
 ## Game Over
 
 _Step `Snake9`_
@@ -430,4 +439,5 @@ two quick turns that together reverse it into its own neck.
 Related exam questions: [1](../../exam/#1-game-loop--update-method),
 [4](../../exam/#4-command-pattern--input-handling),
 [6](../../exam/#6-sprites-texture-atlases-animation--rendering),
+[7](../../exam/#7-tilemaps-collision-detection--procedural-generation),
 [8](../../exam/#8-data-driven-design--serialization).
