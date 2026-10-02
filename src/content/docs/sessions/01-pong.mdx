@@ -169,6 +169,18 @@ _spriteBatch.Draw(_pixel, new Rectangle(x, y, width, height), Color.White);
 ```
 
 - Text is drawn with a `SpriteFont` asset and `SpriteBatch.DrawString()`.
+  `MeasureString` gives the size the text will have, which is what you need to centre it:
+
+```csharp
+Vector2 size = _font.MeasureString("Hello, MonoGame!");
+
+_spriteBatch.Begin();
+_spriteBatch.DrawString(_font, "Hello, MonoGame!", new Vector2(640 - size.X / 2, 360 - size.Y / 2), Color.White);
+_spriteBatch.End();
+```
+
+- The window's size is set on the `GraphicsDeviceManager` in the constructor, with
+  `PreferredBackBufferWidth` and `PreferredBackBufferHeight`.
 - **Texture filtering:** use `SamplerState.PointClamp` for crisp pixel art when scaling up.
 
 See [What is a sprite?](https://docs.monogame.net/articles/getting_to_know/whatis/graphics/WhatIs_Sprite.html).
@@ -258,6 +270,16 @@ public static bool AABB(Rectangle a, Rectangle b)
 (MonoGame provides the same check as `Rectangle.Intersects()`, but it's worth writing
 yourself once.)
 
+Detecting the hit is half of it. The ball also has to respond. Flip its horizontal velocity,
+and move it back to the paddle's edge, or it is still inside the paddle on the next frame
+and bounces again. In `Pong7`, where the ball hits the paddle sets its new angle. The middle
+sends it straight back and the ends send it off steeply, so the player can aim:
+
+```csharp
+float offset = ballCentreY - paddleCentreY;
+float newVelocityY = offset / (paddle.Height / 2f) * 110;
+```
+
 ## Game State
 
 _Steps `Pong7` → `Pong10`_
@@ -300,8 +322,8 @@ Build Pong step by step:
    the matrix field and `UpdateScreenScaleMatrix`, call it from `Initialize` and when
    `Window.ClientSizeChanged` fires, and pass the matrix and `SamplerState.PointClamp` to
    `Begin`. Centre the text in 320×180.
-3. **Rectangles from a pixel:** draw two paddles and a ball, stretched from one white
-   pixel. Switch to the retro font (`"font"`, also in `Content/Assets`) and the
+3. **Rectangles from a pixel:** draw two paddles (5×20) and a ball (4×4), stretched from one
+   white pixel. Switch to the retro font (`"font"`, also in `Content/Assets`) and the
    background colour `(40, 45, 52)`.
 4. **Input and delta time:** W/S and Up/Down move the paddles, at the same speed whatever
    the frame rate.
