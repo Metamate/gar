@@ -1,4 +1,4 @@
-"""Captures one window's client area with PrintWindow, like record.ps1: only the game's own
+"""Captures one window's client area with PrintWindow: only the game's own
 pixels, never whatever else is on the screen."""
 import ctypes
 from ctypes import wintypes

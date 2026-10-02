@@ -36,7 +36,6 @@ of them read the picture to decide what to do:
 | `gw_bot.py` | Moves away from what comes close, and aims at the nearest enemy |
 | `survivors_bot.py` | Walks where the swarm is thinnest, and takes the first upgrade |
 
-`record.ps1` is the older tool, which plays a timed script of keys and mouse moves.
 `longest_play.py` picks the longest stretch without a death (Flappy Bird, Mario).
 
 `makegif.py` scales with nearest neighbour, which keeps pixel art sharp: each recipe's width

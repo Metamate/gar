@@ -11,18 +11,17 @@ production build. Keep instructor notes here, not on the public pages.
 
 ## Open Decisions
 
-Decided: the course is English only, and the [Exam](../exam/) page is the authoritative
-question pool (questions 0–10). Projects must document at least three patterns.
+The course is English only, and the [Exam](../exam/) page is the authoritative question
+pool (questions 0–10). Projects must document at least three patterns.
 
-- **CS50 GD50:** decided in September 2026 not to credit it. The course is its own: our
-  own names, rules, exercises and sounds, with Press Start 2P (SIL OFL) as the font. The art
-  is our own or Kenney's (CC0); see Art below.
+- **No CS50 GD50 credit:** the course is its own: our own names, rules, exercises and
+  sounds, with Press Start 2P (SIL OFL) as the font. The art is our own or Kenney's (CC0);
+  see Art below.
 
 ## Session Plan
 
-Decided in September 2026. The 2026 midterm evaluation said the pace was too fast, so
-every session is now a game session with **one main topic** and 2–3 supporting ones (see
-the [overview](../overview/)). The course project is done in the students' own time: the
+Every session is a game session with **one main topic** and 2–3 supporting ones (see the
+[overview](../overview/)); the 2026 midterm evaluation said the pace was too fast. The course project is done in the students' own time: the
 [project page](../project/) holds the kick-off, milestone, self-review, release and exam
 guidance. The official [syllabus](../syllabus/) stays as it is. The last lesson of session
 12 walks through the [course recap](../recap/).
@@ -78,15 +77,15 @@ same rules for every session.
 | 1 | Pong | The game loop | Game Loop, Update Method | delta time, input, drawing, AABB collision |
 | 2 | Flappy Bird | Structuring the code | State (game states), Singleton | a core library (GARCore), textures & parallax, procedural generation, keyboard & mouse input |
 | 3 | Snake | Assets as data | — | texture atlases, sprites & animation, fixed-tick movement, input as actions & buffering |
-| 4 | Sokoban (new) | Command and undo | Command | levels as text files, rules apart from drawing, unit tests |
-| 5 | Pac-Man (new) | The State pattern | State, Strategy | State vs. Strategy, a second strategy for routes, testing each ghost |
+| 4 | Sokoban | Command and undo | Command | levels as text files, rules apart from drawing, unit tests |
+| 5 | Pac-Man | The State pattern | State, Strategy | State vs. Strategy, a second strategy for routes, testing each ghost |
 | 6 | Super Mario Bros | The game world | Strategy (level makers), State (the player) | platformer physics & tile collision, debug drawing |
 | 7 | The Legend of Zelda | Events | Observer | C# events and lambdas, an event queue, hitboxes, tweening, composition vs. inheritance |
-| 8 | Angry Birds (new) | Using a physics library | Adapter, Facade, Prototype | physics world vs. game world, contact events, destroying safely |
-| 9 | Plants vs. Zombies (new) | Components | Component, Type Object | game types as data, picking, testing a component |
+| 8 | Angry Birds | Using a physics library | Adapter, Facade, Prototype | physics world vs. game world, contact events, destroying safely |
+| 9 | Plants vs. Zombies | Components | Component, Type Object | game types as data, picking, testing a component |
 | 10 | Pokemon | Scenes and UI | State (a stack), Service Locator | UI widgets, separating UI from game data, save/load |
 | 11 | Geometry Wars | Components and systems | Object Pool, Flyweight | components vs. systems, dependency injection & testing with fakes |
-| 12 | Vampire Survivors (new) | Performance | Spatial Partition, Data Locality | profiling, data-oriented design, course recap |
+| 12 | Vampire Survivors | Performance | Spatial Partition, Data Locality | profiling, data-oriented design, course recap |
 
 Threads that run through the plan (the recap page lists them for students):
 
@@ -106,7 +105,7 @@ Threads that run through the plan (the recap page lists them for students):
   Zombies' Type Object.
 - **Recurring:** a Mermaid class diagram on every session page, "Apply It to Your Project"
   in every session, and a design or refactoring exercise in most sessions from Sokoban on
-  (the UML, analysis and refactoring competences the project sessions used to cover). No references to other
+  (they carry the syllabus's UML, analysis and refactoring competences). No references to other
   engines: the students haven't met Unity yet.
 
 Notes for building it:
@@ -117,8 +116,9 @@ Notes for building it:
   the step, and a foreign C-style API that makes the Adapter lesson concrete. Keep the Angry
   Birds steps focused on the adapter, syncing and events, not physics tuning.
 - **GARCore lineage** follows the session order (see Materials).
-- **Exam pool:** Prototype and Adapter/Facade are sub-questions of 8 and 7; question 9 is split into 9 (components &
-  systems) and 10 (memory & performance), so students draw from 1–10.
+- **Exam pool:** Strategy is a sub-question of 2, Adapter/Facade of 7, Type Object and
+  Prototype of 8. Components & systems are question 9 and memory & performance question 10,
+  so students draw from 1–10.
 - **Testing thread:** unit testing is introduced from scratch in Sokoban (students meet
   testing in another course the same semester, but not concretely). After that, tests only
   appear where they show off the session's topic, never as a test project in every game:
