@@ -144,7 +144,7 @@ wrapped by an `InputManager` that `Core` updates every frame, so any code can as
 
 The mouse position is in **window** coordinates. Because the game is drawn at a
 virtual resolution and scaled to the window, a click at the window's centre is not at
-(256, 144) in the game unless you convert it. We don't need positions for Flappy Bird, but
+(320, 180) in the game unless you convert it. We don't need positions for Flappy Bird, but
 several later games have to convert between coordinate spaces like this.
 
 ## State Machines

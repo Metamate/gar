@@ -61,28 +61,6 @@ circles, polygons), with a density, friction and bounciness. There are three typ
 
 You **step** the world forward in time, and read where the bodies ended up.
 
-### Physics samples
-
-_Project `PhysicsSamples`_
-
-Next to the steps, `PhysicsSamples` shows one idea per scene. There are the three body types, bounce
-(restitution), friction, density, sleeping (bodies at rest stop being simulated until
-something touches them), and **joints**, which hold two bodies together:
-
-- A **hinge** lets them turn around a point: a pendulum, a door, the links of a chain.
-- A **rope** keeps them within a length, but can go slack: a tether ball.
-- A **weld** makes two bodies act as one: a hammer made of a handle and a head.
-
-Keys 1 to 6 choose a scene, a click drops a box, Space drops a
-ball, and R starts the scene again. The samples go through the game's own facade, and draw
-with its debug view, with static bodies orange, kinematic magenta, dynamic green, blue when
-asleep, and joints yellow. Run them with `dotnet run --project PhysicsSamples`.
-
-**Try it** (`PhysicsSamples`): make the platform in the first scene move up and down instead
-of sideways. In the friction scene, find the lowest friction at which the box stays on the
-slope. Is it what you expected for a slope of about 26 degrees? In the joints scene, hang the
-tether ball from the end of the chain instead of its own hook.
-
 `Birds0` uses Box2D directly, in `Game1`:
 
 ```csharp title="Game1.cs (Birds0)"
@@ -267,6 +245,25 @@ sprite and its body don't line up, this is where you see it.
 Box2D wants the same time step every time. `PhysicsWorld.Update` collects the frame time
 and steps the world in fixed steps of 1/60 second. It is the accumulator from
 [Snake](../03-snake/#fixed-tick-movement) again.
+
+### Physics samples
+
+_Project `PhysicsSamples`_
+
+Next to the steps, `PhysicsSamples` shows one idea per scene. There are the three body types, bounce
+(restitution), friction, density, sleeping (bodies at rest stop being simulated until
+something touches them), and **joints**, which hold two bodies together (a hinge, a rope and
+a weld; the game uses none of them).
+
+Keys 1 to 6 choose a scene, a click drops a box, Space drops a
+ball, and R starts the scene again. The samples go through the game's own facade, and draw
+with its debug view, with static bodies orange, kinematic magenta, dynamic green, blue when
+asleep, and joints yellow. Run them with `dotnet run --project PhysicsSamples`.
+
+**Try it** (`PhysicsSamples`): make the platform in the first scene move up and down instead
+of sideways. In the friction scene, find the lowest friction at which the box stays on the
+slope. Is it what you expected for a slope of about 26 degrees? In the joints scene, hang the
+tether ball from the end of the chain instead of its own hook.
 
 ## Contact Events
 

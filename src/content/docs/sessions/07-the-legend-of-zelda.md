@@ -60,10 +60,8 @@ drawn a few pixels above its collision box, so the character looks like it stand
 floor.
 
 The rooms' tiles and the XML files refer to tiles by their number in the sprite sheet
-(`frames="9,10,11,10"`). Nobody can read those numbers off an image, so the repo has a small
-tool, `LabelTiles`, that writes each tile's number onto a copy of a sheet. Small throwaway
-tools like this, which the game never uses, are common in game projects, because they make
-working with data practical.
+(`frames="9,10,11,10"`). The repo's `LabelTiles` tool writes each tile's number onto a copy of
+a sheet, so you can look them up.
 
 ## Hitboxes & Hurtboxes
 
@@ -131,16 +129,19 @@ something happened, and any number of _observers_ (subscribers) react.
 
 ```mermaid
 classDiagram
-    class Player {
-        +Action~int~ HealthChanged
-        +Action Died
+    class Room {
+        +event OnPlayerDied
     }
-    class HealthUI
-    class SoundManager
+    class Dungeon {
+        +event OnPlayerDied
+    }
     class PlayState
-    Player <.. HealthUI : subscribes
-    Player <.. SoundManager : subscribes
-    Player <.. PlayState : subscribes
+    class GameObject {
+        +event OnCollide
+    }
+    Room <.. Dungeon : subscribes
+    Dungeon <.. PlayState : subscribes
+    GameObject <.. Room : subscribes
 ```
 
 In C#, we don't need to implement the pattern ourselves. Delegates and events are built
@@ -165,36 +166,37 @@ obj.OnCollide?.Invoke();                         // call all of them
 An `event` is a delegate with guardrails, and outside code can only `+=` and `-=`. Only the
 owning class can invoke it or replace its subscribers.
 
-```csharp
-public class Player
-{
-    public event Action Died;
+```csharp title="GameObject.cs"
+public event Action OnCollide;
 
-    private void TakeDamage(int amount)
-    {
-        _health -= amount;
-        if (_health <= 0)
-            Died?.Invoke();
-    }
-}
+public void Collide() => OnCollide?.Invoke();
 ```
+
+`?.Invoke()` calls every subscriber, and does nothing when there are none. The floor switch is
+a `GameObject`. It announces that something stepped on it, and has no idea what a switch is
+for.
 
 ### Lambdas and closures
 
 A lambda is an inline, anonymous function: `(int n) => n % 2 == 0`. When a lambda uses
-variables from its surrounding scope, it _captures_ them (a closure):
+variables from its surrounding scope, it _captures_ them (a closure). The room gives the
+switch its meaning with one:
 
-```csharp
+```csharp title="Room.cs"
 switchObj.OnCollide += () =>
 {
     if (switchObj.State == "unpressed")
     {
         switchObj.State = "pressed";
-        foreach (var door in Doorways)
-            door.IsOpen = true;
+        foreach (var d in Doorways)
+            d.IsOpen = true;
+        SoundManager.PlaySound("door");
     }
 };
 ```
+
+The lambda uses `switchObj` and the room's `Doorways`, long after the method that created it
+has returned.
 
 **Try it** (`Zelda7`): in `PlayState`, add a second subscriber to `_dungeon.OnPlayerDied`
 that plays a sound: `_dungeon.OnPlayerDied += () => SoundManager.PlaySound("hit-player");`.
@@ -281,25 +283,6 @@ pixel. The dungeon draws in three passes:
 
 The player seems to walk _under_ the arch. All three passes use the same camera transform,
 so the mask follows the camera while the rooms scroll.
-
-```csharp title="Dungeon.cs"
-// Pass 2: mark the arches in the stencil buffer, without drawing any colour
-spriteBatch.Begin(
-    transformMatrix:   worldTransform,
-    samplerState:      SamplerState.PointClamp,
-    blendState:        StencilOnlyBlend,
-    depthStencilState: WriteStencilState);
-DrawArchMasks(spriteBatch, pixel);
-spriteBatch.End();
-
-// Pass 3: the player, only where the stencil is 0
-spriteBatch.Begin(
-    transformMatrix:   worldTransform,
-    samplerState:      SamplerState.PointClamp,
-    depthStencilState: ReadStencilState);
-_player.Draw(spriteBatch);
-spriteBatch.End();
-```
 
 ## Data-Driven Design
 
@@ -431,9 +414,9 @@ per combination, an object has the parts it needs, and they can even change at r
 <details>
 <summary>Why does Observer suit UI code particularly well?</summary>
 
-The UI depends on the game data, but the game shouldn't depend on the UI. With events, the
-health bar subscribes to `HealthChanged` and gameplay code never needs to know a health
-bar exists. The UI also only updates when something actually changes.
+The UI depends on the game data, but the game shouldn't depend on the UI. With events, a
+health bar subscribes to an event on the player, and gameplay code never needs to know a
+health bar exists. The UI also only updates when something actually changes.
 
 </details>
 

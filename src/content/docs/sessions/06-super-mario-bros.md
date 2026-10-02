@@ -93,23 +93,7 @@ of the same size: `Tilemap` for the ground and `Toppers`, drawn on top with its 
 tileset. Layering tilemaps like this is how most tile editors (e.g. Tiled) work, and
 [Pokemon](../10-pokemon/) uses it for its tall grass.
 
-```mermaid
-classDiagram
-    class LevelMakerBase {
-        <<abstract>>
-        +Generate(columns, rows) GameLevel
-        #CreateGroundColumn(x, height)
-    }
-    LevelMakerBase <|-- SimpleLevelMaker
-    LevelMakerBase <|-- FlatLevelMaker
-    LevelMakerBase <|-- PillarLevelMaker
-    LevelMakerBase <|-- PitLevelMaker
-    LevelMakerBase <|-- ComplexLevelMaker
-    LevelMakerBase ..> GameLevel : creates
-```
-
-Each ground column also gets a **topper** (a grass or snow edge on the top tile) from a
-separate topperset, and each level a random background.
+Each level also gets a random background.
 
 **Try it** (`Mario1`): make pits twice as common in `PitLevelMaker`, then press 4 to
 see it.
@@ -122,11 +106,39 @@ _Step `Mario2`_
   to a negative impulse.
 - **Hitbox inset:** the player is a little wider than a tile, which makes pits impossible
   to fall into. We shrink the hitbox by 2 px on each side.
-- **Tile collision:** move one axis at a time. After moving, check the tiles at the hitbox
-  corners in the direction of movement, then **snap** the player to the tile edge and zero
-  the velocity on that axis.
 - **Ground check:** probe one pixel below the hitbox for solid tiles.
 - **Coyote time:** allow a jump for a moment after walking off a ledge. It feels fairer.
+
+### Tile collision
+
+The player moves first and is corrected afterwards. After a move, the hitbox may overlap a
+solid tile. Then the player is **snapped** back to that tile's edge, and the velocity on that
+axis is set to zero:
+
+```text
+tiles are 18 wide, and a wall starts at x = 72
+
+    [ hitbox ]        ######      before: the hitbox spans 50 to 66
+          [ hitbox ]  ######      moved 10 right: 60 to 76, four pixels into the wall
+        [ hitbox ]######          snapped: 56 to 72, touching the wall
+```
+
+Only the tiles at the hitbox's leading edge are checked, which is two lookups in the tilemap.
+The two axes are done one after the other:
+
+```csharp title="PlayerStateBase.cs"
+// Resolve X (Move then Snap)
+Player.Position = new Vector2(Player.Position.X + Player.Velocity.X * dt, Player.Position.Y);
+ResolveXCollisions();
+
+// Resolve Y (Move then Snap)
+Player.Position = new Vector2(Player.Position.X, Player.Position.Y + Player.Velocity.Y * dt);
+ResolveYCollisions();
+```
+
+Moving both axes at once would leave a question with no good answer. A hitbox that ends up
+inside a corner could have come from the side or from above. With one axis at a time, the snap
+always knows which way the player was moving, so it knows which edge to snap to.
 
 **Try it** (on paper): with 18-pixel tiles, a hitbox spans x 34 to 50 and moves 8 pixels right,
 and a wall starts at x 54. Where is the hitbox after the move, and after the snap? What happens
@@ -220,10 +232,24 @@ each value?
 _Step `Mario4`_
 
 Our previous games fit on one screen. A level wider than the screen needs a **camera**: a
-transform that shifts the world so the target (the player) is centred. It is passed to
-`SpriteBatch.Begin()` together with the screen scale matrix. Here we only follow the
-x-axis, and clamp the camera to the level's edges. The background scrolls at half the
-camera's speed, for a parallax effect.
+transform that shifts the world so the target (the player) is centred:
+
+```csharp title="Camera.cs"
+Transform = Matrix.CreateTranslation(new Vector3(-Position, 0)) * // Shifts the world based on target position
+            Matrix.CreateTranslation(new Vector3(center, 0)); // Centers the target in the viewport
+```
+
+```csharp title="GameLevel.cs"
+spriteBatch.Begin(transformMatrix: Camera.Transform * screenScale, samplerState: SamplerState.PointClamp);
+```
+
+There are now two coordinate spaces. The player, the tiles and the entities keep their
+positions in the **world**, and nothing in the game's logic knows where the camera is. Only
+drawing goes through the camera, which turns world positions into **screen** positions. The
+score is drawn in a second `Begin`, without the camera, so it stays where it is.
+
+Here we only follow the x-axis, and clamp the camera to the level's edges. The background
+scrolls at half the camera's speed, for a parallax effect.
 
 **Try it** (`Mario4`): make the background scroll at a quarter of the camera's speed
 (in `GameLevel`). What do 0 and 1 look like?
@@ -263,6 +289,12 @@ The level updates all entities through the Update Method pattern, and each entit
 how to respond to collisions. Solid entities (mystery boxes) block the player just like
 tiles. Hitting a box from below pops out a coin, and collecting coins raises the score.
 
+The world now has two parts, and each suits what it holds. The tilemap is a grid that never
+changes, so "is this spot solid?" is one lookup. Entities are few, they move, and they come
+and go, so they are a list that is checked one by one. A box that pops out a coin adds an
+entity while the level is looping over its entities. The level collects such additions and
+removals, and applies them after the loop.
+
 ## Basic AI: Slime States
 
 _Step `Mario7`_
@@ -298,13 +330,11 @@ Start from `Mario8`.
    (`IsOnGround` in `PlayerStateBase`), and show the player's current state and velocity
    on screen. Use it to find where coyote time starts and ends.
 
-**Going further (optional):**
-
-- **Auto-tiling:** each topper set in `tile_tops.png` has a middle piece (tile 0), a left end
+5. **Auto-tiling (stretch):** each topper set in `tile_tops.png` has a middle piece (tile 0), a left end
   (1), a right end (2) and a single piece (3), but the level makers always use the middle.
   Look at each topper's neighbours and pick the matching piece, so the grass rounds off at
   every ledge. Where does that belong: in the level maker, or in the tilemap?
-- **A scene graph:** in the moving-platform exercise, the player rides along. Engines solve
+6. **A scene graph (stretch):** in the moving-platform exercise, the player rides along. Engines solve
   this with a hierarchy of transforms. A child's position is relative to its parent's, so
   while the player stands on the platform, it becomes the platform's child. Sketch a
   `Transform` with a parent. What does the player's position in the world become when the

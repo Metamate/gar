@@ -258,37 +258,41 @@ pieces per enemy. That is thousands of short-lived allocations per second. In C#
 eventually be collected by the garbage collector, and GC pauses are unpredictable. A
 stutter every few seconds is the telltale sign of allocation in a hot loop.
 
-An **object pool** allocates everything up front and reuses inactive objects:
+An **object pool** keeps objects that are no longer in use, and hands them out again:
 
-```csharp
-public class ParticlePool
+```csharp title="ObjectPool.cs"
+public sealed class ObjectPool<T> where T : class
 {
-    private readonly Particle[] _items = new Particle[5000];
+    private readonly Stack<T> _pool = new();
+    private readonly Func<T> _factory;
 
-    public ParticlePool()
+    public ObjectPool(Func<T> factory, int initialCapacity = 0)
     {
-        for (int i = 0; i < _items.Length; i++)
-            _items[i] = new Particle();
+        _factory = factory;
+        for (int i = 0; i < initialCapacity; i++)
+            _pool.Push(factory());
     }
 
-    public Particle Spawn(Vector2 position)
-    {
-        foreach (var particle in _items)
-        {
-            if (!particle.Active)
-            {
-                particle.Reset(position);
-                particle.Active = true;
-                return particle;
-            }
-        }
-        return null; // Pool exhausted: size it generously
-    }
+    public T Get() => _pool.Count > 0 ? _pool.Pop() : _factory();
+
+    public void Return(T item) => _pool.Push(item);
 }
 ```
 
+A bullet that leaves the screen goes back into the pool, and the next shot takes it out again.
+Only when the pool is empty is a new bullet made, so after the first seconds the game stops
+allocating bullets.
+
 Pooled objects must be fully **reset** when reused, or old state leaks into the new
-"instance".
+"instance". `BulletSpawner` does that for every bullet it takes out:
+
+```csharp title="BulletSpawner.cs"
+var bullet = _pool.Get();
+bullet.IsExpired = false;
+bullet.Transform.Position = position;
+bullet.Transform.Orientation = velocity.ToAngle();
+rigidbody.Velocity = velocity;
+```
 
 In the codebase: `ObjectPool.cs`, `BulletSpawner.cs`.
 
@@ -305,25 +309,36 @@ for every one of them. A **flyweight** stores that shared part once:
 - **Intrinsic state** is shared and immutable: the texture and the stats template.
 - **Extrinsic state** is per instance: position, velocity, current HP.
 
-```csharp
-// Intrinsic (shared): one instance, referenced by every enemy of this type
-public class EnemyType
-{
-    public Texture2D Texture;
-    public float MaxSpeed, SpawnHP;
-    public int ScoreValue;
-}
+```csharp title="GameplayDefinitions.cs"
+public sealed record EnemyShellDefinition(
+    string Name,
+    SpriteId SpriteId,
+    int PointValue,
+    float RigidbodyDamping,
+    int SpawnDelayFrames,
+    int DeathParticleCount);
 
-// Extrinsic (per instance)
-public struct EnemyInstance
-{
-    public EnemyType Type;
-    public Vector2 Position, Velocity;
-    public int CurrentHP;
-}
+public sealed record SeekerEnemyDefinition(
+    EnemyShellDefinition Shell,
+    float Acceleration);
 ```
 
-500 enemies hold 500 references to one texture, which is loaded once.
+```csharp title="EntityFactory.cs"
+private static readonly SeekerEnemyDefinition SeekerDefinition = GameplayDefinitions.Seeker;
+
+var enemy = CreateEnemyBase(SeekerDefinition.Shell, position);
+enemy.AddComponent(new SeekTarget(getTargetPosition, SeekerDefinition.Acceleration));
+```
+
+There is one `SeekerEnemyDefinition` in the whole game, and it is a `record` that can't be
+changed. Every seeker is built from it. What each seeker owns is in its components: its
+position, its velocity, whether it is still alive. The texture works the same way. It is
+loaded once in `GameAssets`, and 500 seekers hold 500 references to it.
+
+This is close to the [Type Object](../09-plants-vs-zombies/#type-object) from Plants vs.
+Zombies, and the two often turn up together. They answer different questions. Type Object is
+about design: a kind of thing is described by an object, so new kinds are data. Flyweight is
+about memory: what many objects have in common is stored once.
 
 In the codebase: `GameAssets.cs`, `GameplayDefinitions.cs`.
 

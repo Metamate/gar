@@ -53,7 +53,7 @@ A finite state machine has one current state at a time. A **state stack** (a _pu
 automaton_) lets us **push** a state on top of others and **pop** it to return to where we
 were.
 
-- Only the **top** state receives `Update` (this could be changed if we wanted).
+- Only the **top** state receives `Update`.
 - **All** states draw, bottom to top, so states underneath stay visible.
 
 This lets us layer screens:
@@ -267,7 +267,9 @@ public static class Locator
 }
 
 // At startup
-Locator.Provide(new GameAudio(content));
+var audio = new SoundManager();
+audio.LoadContent(Content);
+Locator.Provide(audio);
 
 // Anywhere
 Locator.Audio.PlayHit();
@@ -306,7 +308,7 @@ Start from `Pokemon4`.
    like `Sokoban.Tests`, with a round-trip test for your save data.
 5. **Pause:** add a `PauseState` using the state stack.
 
-**Going further (optional):** catching. Add a Catch option to the battle menu that can add a weakened wild monster to your party (more likely the lower its HP), and a field menu to choose who goes first. Which states do you add, and which existing ones change?
+6. **Catching (stretch):** add a Catch option to the battle menu that can add a weakened wild monster to your party (more likely the lower its HP), and a field menu to choose who goes first. Which states do you add, and which existing ones change?
 
 ## Apply It to Your Project
 
