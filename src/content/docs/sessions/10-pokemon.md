@@ -17,10 +17,9 @@ wild monsters, and battle them turn by turn.
 <figcaption>The original: the first <em>Pokémon</em> games (Game Freak, 1996). Screenshot © Nintendo / Game Freak.</figcaption>
 </figure>
 
-We build the basics of a turn-based role-playing game. An RPG has many screens, and they sit on top of each
-other. A menu opens over the overworld, a battle starts, a dialogue box pops up in the
-battle. This session is about scenes and UI. We keep the screens on a stack, and build them
-from reusable UI widgets.
+An RPG has many screens, and they sit on top of each other. A menu opens over the
+overworld, a battle starts, a dialogue box pops up in the battle. This session is about
+scenes and UI. We keep the screens on a stack, and build them from reusable UI widgets.
 
 We also separate the UI from the game data, write turn-based battles, meet the Service
 Locator pattern, and add saving and loading.
@@ -42,9 +41,9 @@ Take about 10 minutes with the finished game, `Pokemon4`:
 - Clone, build and play the game. Go through a few encounters to level up your monster.
 - How is the codebase split between the core library and the Pokemon-specific project?
 
-The rule of thumb for that split is simple. A class that mentions monsters, grass,
-battles or levelling belongs to the game. A class you could use unchanged in another game (the state
-stack, the tweens, a panel, a progress bar) belongs to GARCore.
+As a rule of thumb, a class that mentions monsters, grass, battles or levelling belongs to
+the game. A class you could use unchanged in another game (the state stack, the tweens, a
+panel, a progress bar) belongs to GARCore.
 
 ## State Stack
 
@@ -90,7 +89,7 @@ it, where does the game carry on, and what did `PlayState` need to know?
 _Step `Pokemon0` onwards_
 
 Pokemon leans heavily on the tween system from [Zelda](../07-the-legend-of-zelda/#screen-scrolling--tweening):
-walking between tiles, fades, the HP bar. A battle attack is a chain of tweens, pause →
+walking between tiles, fades, the HP bar. A battle attack is a chain of tweens: pause →
 lunge → hit sound → blink → HP bar drops. Each step's `.Finish()` starts the next, and a
 callback can push or pop a state, with no `if`/`else` chain.
 
@@ -138,7 +137,7 @@ red when it drops below a quarter. Which class did each change need?
 ### When to use a UI library
 
 Our widgets are small enough to read in one sitting, and building them shows what a UI
-needs, which is drawing, layout, input and focus. A library such as
+needs: drawing, layout, input and focus. A library such as
 [Gum](https://docs.monogame.net/articles/tutorials/building_2d_games/20_implementing_ui_with_gum)
 does all of that for you, and adds layouts that adapt to the screen, scrolling lists, text
 input, and a visual editor ([customizing it](https://docs.monogame.net/articles/tutorials/building_2d_games/21_customizing_gum_ui)).
@@ -276,8 +275,8 @@ Locator.Provide(audio);
 Locator.Audio.PlayHit();
 ```
 
-- Callers depend on `IAudio`, not on a concrete class, so the implementation can be
-  swapped (e.g. a logging or muted audio service).
+- Callers depend only on `IAudio`, so the implementation can be swapped (e.g. a logging
+  or muted audio service).
 - **Null object:** before a real service is registered, `NullAudio` (which does nothing)
   stands in, so callers never need null checks.
 - Dependencies are still hidden. You can't see from a constructor what a class uses.
@@ -308,8 +307,9 @@ Start from `Pokemon4`.
    press), and load it on startup if it exists. Then add a `Pokemon.Tests` project, set up
    like `Sokoban.Tests`, with a round-trip test for your save data.
 5. **Pause:** add a `PauseState` using the state stack.
-
-6. **Catching (stretch):** add a Catch option to the battle menu that can add a weakened wild monster to your party (more likely the lower its HP), and a field menu to choose who goes first. Which states do you add, and which existing ones change?
+6. **Catching (stretch):** add a Catch option to the battle menu that can add a weakened wild
+   monster to your party (more likely the lower its HP), and a field menu to choose who goes
+   first. Which states do you add, and which existing ones change?
 
 ## Apply It to Your Project
 

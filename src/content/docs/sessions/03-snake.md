@@ -190,9 +190,9 @@ floor tile in the middle.
 GARCore's `Tilemap.FromFile` reads it into a flat array of tile numbers, one per cell, row
 after row. The cell in column `x` and row `y` is at index `y * Columns + x`. To draw the room,
 the tilemap goes through the array and draws each tile's region at a position worked out from
-its index. Sprites each keep their own position; tiles have theirs from the grid, and all of
-them come from one texture, so the whole room goes to the graphics card in one batch. A big
-level would only draw the cells on screen.
+its index. A sprite keeps its own position, but a tile gets its position from the grid.
+Every tile comes from the same texture, so the whole room goes to the graphics card in one
+batch. A big level would only draw the cells on screen.
 
 Here the tilemap is only a picture, and the walls are the cells outside the room's
 `Rectangle`. In [Sokoban](../04-sokoban/), the grid becomes the game's state itself.
@@ -313,8 +313,8 @@ _Step `Snake8`_
 
 Food sits on one cell of the room. When the snake's head reaches it, the snake eats it,
 grows, and new food appears on a free cell. Each bite adds a point to the score under the
-room. Its digits are regions of the atlas too (`digit-0` to `digit-9`): a font that is only
-data.
+room. Its digits are regions of the atlas too (`digit-0` to `digit-9`), so even the score's
+font is data.
 
 ### Collision detection
 

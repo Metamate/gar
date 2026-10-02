@@ -146,11 +146,11 @@ classDiagram
 Two patterns are at work here:
 
 - An **Adapter** converts the interface of a class into the interface its users expect.
-  `PhysicsBody` wraps a `B2BodyId`, and gives the game what it wants, which is a position in pixels,
-  a rotation that turns the same way as SpriteBatch, a velocity it can set.
+  `PhysicsBody` wraps a `B2BodyId`, and gives the game what it wants: a position in pixels,
+  a rotation that turns the same way as SpriteBatch, and a velocity it can set.
 - A **Facade** puts one simple interface in front of a complicated subsystem. Box2D has
-  hundreds of functions; the game needs a handful. `PhysicsWorld` offers only those, to
-  create a box, create a circle, step, and destroy.
+  hundreds of functions; the game needs a handful. `PhysicsWorld` offers only those:
+  creating a box or a circle, stepping the world, and destroying a body.
 
 ```csharp title="PhysicsBody.cs"
 public sealed class PhysicsBody
@@ -193,14 +193,10 @@ public Block(PhysicsWorld world, Vector2 center, Vector2 size, float rotation, P
 }
 ```
 
-This gives us:
-
-- **One place to change.** A new version of Box2D, or another physics library, means
-  changing the `Physics` folder only.
-- **Our language.** The adapter speaks pixels, clockwise rotations and our own types.
-  Nothing outside it has to think in metres.
-- **A smaller surface.** The facade only offers what the game needs, so the game can't
-  come to depend on the rest of Box2D.
+A new version of Box2D, or another physics library, now means changing the `Physics` folder
+only. Nothing outside that folder has to think in metres, because the adapter speaks pixels,
+clockwise rotations and our own types. And since the facade only offers what the game needs,
+the game can't come to depend on the rest of Box2D.
 
 The cost is that every Box2D feature the game needs later (joints, raycasts, sensors) has
 to be added to the facade first. That is on purpose, but it is extra work. Kinematic bodies
@@ -238,8 +234,8 @@ physics world reports something about a body, the game can find the entity it be
 
 ### Debug drawing
 
-`F1` draws what the physics world sees, meaning every body's shape, in green while it's awake and
-in blue when it's asleep (Box2D stops simulating bodies that have come to rest). It uses
+`F1` draws what the physics world sees: every body's shape, green while it's awake and
+blue when it's asleep (Box2D stops simulating bodies that have come to rest). It uses
 GARCore's `DebugDraw.Enabled` from [Super Mario Bros](../06-super-mario-bros/). When a
 sprite and its body don't line up, this is where you see it.
 
@@ -253,10 +249,10 @@ and steps the world in fixed steps of 1/60 second. It is the accumulator from
 
 _Project `PhysicsSamples`_
 
-Next to the steps, `PhysicsSamples` shows one idea per scene. There are the three body types, bounce
-(restitution), friction, density, sleeping (bodies at rest stop being simulated until
-something touches them), and **joints**, which hold two bodies together (a hinge, a rope and
-a weld; the game uses none of them).
+Next to the steps, `PhysicsSamples` shows one idea per scene. The scenes cover the three
+body types, bounce (restitution), friction, density, sleeping (bodies at rest stop being
+simulated until something touches them), and **joints**, which hold two bodies together (a
+hinge, a rope and a weld; the game uses none of them).
 
 Keys 1 to 6 choose a scene, a click drops a box, Space drops a
 ball, and R starts the scene again. The samples go through the game's own facade, and draw
@@ -273,9 +269,9 @@ tether ball from the end of the chain instead of its own hook.
 _Step `Birds2`_
 
 Blocks should break, and pigs should pop. Box2D can report **hit events**, for two shapes that
-touched at more than a certain speed. They're collected during the step, and read after it:
-an [event queue](../07-the-legend-of-zelda/#event-queue), as in Zelda, but kept inside the
-library. After each step, `PhysicsWorld` drains it and turns every hit into a C# event, in
+touched at more than a certain speed. They're collected during the step, and read after it.
+That is an [event queue](../07-the-legend-of-zelda/#event-queue), as in Zelda, kept inside
+the library. After each step, `PhysicsWorld` drains it and turns every hit into a C# event, in
 our own terms:
 
 ```csharp title="PhysicsWorld.cs"
@@ -420,7 +416,7 @@ glass-box    960 495 0
 pig          960 448 0
 ```
 
-Things to notice:
+A few details of how this works:
 
 - **`MemberwiseClone` makes a shallow copy.** Every field is copied, but a field that refers
   to an object only copies the reference, so both point to the same object. The copy shares the prototype's
@@ -435,7 +431,7 @@ Things to notice:
   of bird would be another prototype.
 
 Prototype and Type Object (in [Plants vs. Zombies](../09-plants-vs-zombies/)) solve a
-similar problem, many kinds of things without a class for each. Prototype copies a
+similar problem: how to have many kinds of things without a class for each. Prototype copies a
 configured object; Type Object shares one object that describes a kind. We'll compare
 them there.
 

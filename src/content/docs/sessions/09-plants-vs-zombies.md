@@ -259,8 +259,8 @@ only so that components can ask it questions ("the first goblin ahead in row 2")
 _Project `Pvz.Tests`_
 
 A component that does one job can be tested on its own. A test builds an entity with only
-the parts it needs, and no field, textures or running game, as the rules in
-[Sokoban](../04-sokoban/#unit-tests) were tested without a window:
+the parts it needs. It doesn't need the field, the textures or a running game, just as the
+rules in [Sokoban](../04-sokoban/#unit-tests) were tested without a window:
 
 ```csharp title="ComponentTests.cs"
 [Fact]
@@ -350,7 +350,7 @@ and a Chest that makes 50 gold. Did you compile anything?
 ### Prototype vs. Type Object
 
 In [Angry Birds](../08-angry-birds/#prototype), prefabs also gave us many kinds of things
-without a class for each. Both patterns solve that problem, differently:
+without a class for each. The two patterns solve that problem in different ways:
 
 | | Prototype (Angry Birds) | Type Object (here) |
 | --- | --- | --- |

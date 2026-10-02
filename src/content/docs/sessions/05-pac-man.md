@@ -57,7 +57,7 @@ its inside; `P` marks where Pac-Man starts, and `b`, `p`, `i` and `c` the four g
 that is open at both ends is a tunnel, and leaving on one side enters on the other.
 
 As in Sokoban, the rules are separate from the drawing. `Maze`, `PacMan` and `World` hold the
-game; `MazeView` and `PacManView` draw it. The walls aren't even images: `MazeView` draws a
+game; `MazeView` and `PacManView` draw it. The walls aren't even images. `MazeView` draws a
 line along every side of a wall tile that faces an open tile.
 
 ### Moving through the maze
@@ -566,7 +566,7 @@ is chosen from outside, usually once, and strategies don't know about each other
 <details>
 <summary>Why do the chasing ghosts keep the arcade rule, when the shortest path is better?</summary>
 
-Better pathfinding makes a harder game, which isn't the same as a better one. The ghosts'
+Better pathfinding would make the game harder without making it more fun. The ghosts'
 wrong turns give the player room to escape, and with the shortest path all four would end up
 in the same corridors. Because routing is a strategy, the choice is one argument in `World`.
 

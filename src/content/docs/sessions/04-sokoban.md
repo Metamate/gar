@@ -162,7 +162,7 @@ public bool IsSolved => _boxes.All(_goals.Contains);
 ```
 
 `LevelView` draws a level, but never changes it. Which way the player faces is only about
-drawing, so it lives in `LevelView`, not in `Level`. The `GameController` is the one from
+drawing, so it lives in `LevelView`. The `GameController` is the one from
 [Snake](../03-snake/#input-as-actions).
 
 With the two apart, each can change on its own. New art only touches `LevelView`, and a
@@ -474,9 +474,9 @@ private void HandleInput()
 }
 ```
 
-A key picks which command to make, and each press still makes a new `MoveCommand`: the
-history keeps every one, so each move needs its own object to be undone. The book makes the
-same point. When commands can be undone, the input handler hands out a new command each time.
+A key picks which command to make, but each press still makes a new `MoveCommand`. The
+history keeps every one of them, because each move needs its own object to be undone. The
+book says the same about undo: the input handler hands out a new command each time.
 
 **Try it** (`Sokoban4`): replace the four move lines in `HandleInput` with the dictionary. Then
 add a key that swaps the up and down bindings while you play. What did you change, and what

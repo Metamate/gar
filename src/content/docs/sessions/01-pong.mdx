@@ -15,7 +15,7 @@ Make a **table tennis game**, like Pong: two paddles, one ball, and the first to
 wins.
 
 **"Make it work."** We end up with a working, very basic game. The implementation is
-deliberately _naive_: it ignores good architecture and design practices, but it keeps things
+deliberately _naive_. It ignores good architecture and design practices, which keeps things
 simple and gets us to a working prototype quickly. The rest of the course is about making
 games like this one _better_ as they grow.
 
@@ -55,8 +55,8 @@ session, we will have a game with:
 ## MonoGame & Tooling
 
 MonoGame is a _framework_. It gives us libraries for graphics, input, audio, content loading
-and math, but it has no editor, scene graph or entity system, as a game engine has. We write those parts ourselves, and that makes it a good fit for a course about game
-architecture.
+and math, but it has no editor, scene graph or entity system, as a game engine has. We
+write those parts ourselves, which makes it a good fit for a course about game architecture.
 
 Tooling used in the course:
 
@@ -76,9 +76,8 @@ the `Game` class runs the loop and calls your `Update` and `Draw` overrides.
 
 _Figure 1-1: Lifecycle of a MonoGame game_
 
-No hidden object system calls `Update` on your behalf. `Game1`
-gets one `Update` and one `Draw` call per frame, and everything else in your game only runs
-if you call it from there. For more detail, see
+Nothing calls `Update` on your objects for you. `Game1` gets one `Update` and one `Draw`
+call per frame, and everything else in your game only runs if you call it from there. For more detail, see
 [What is the Game Loop](https://docs.monogame.net/articles/getting_to_know/whatis/game_loop/index.html).
 
 `Update` changes the state of the world, and `Draw` only reads that state and renders it.
@@ -183,7 +182,7 @@ a transform matrix passed to `SpriteBatch.Begin()`. The game logic never needs t
 big the window is.
 
 `Pong2` scales by the smaller of the two ratios (window width / 320, window height / 180),
-so nothing is stretched, and centres the result with `GraphicsDevice.Viewport`: black bars
+so nothing is stretched, and centres the result with `GraphicsDevice.Viewport`. Black bars
 fill the rest. It recalculates when `Window.ClientSizeChanged` fires. The window opens at
 1280×720, four times the virtual size. At a whole-number scale, every pixel comes out the
 same size.

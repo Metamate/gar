@@ -105,8 +105,8 @@ _Steps `GeometryWars0` → `GeometryWars4`_
 
 Not all behaviour fits in a component. A component is about **its owner**, its own state
 and what happens to it. But some rules span **many entities** or the **whole run**, such as
-which pairs of entities collide, when the next enemies spawn, what happens to the arena when the
-player dies. Putting those in a component means one entity reaching into all the others.
+which pairs of entities collide, when the next enemies spawn, and what happens to the arena
+when the player dies. Putting those in a component means one entity reaching into all the others.
 They belong in **systems**.
 
 A rule of thumb from the codebase:

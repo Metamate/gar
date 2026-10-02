@@ -88,8 +88,9 @@ collision is checked where the knowledge it needs already is:
 | Sword and enemy | The sword-swing state | It belongs to the swing and its timing |
 | Entity and wall | The walk state | Stopping at walls is part of moving |
 
-That trades a single overview for locality. Reading a state or a room method shows what
-that interaction does. Compare it with the dedicated collision system in
+No single place lists every collision, which is the price. In return, reading a state or a
+room method shows everything that interaction does. Compare it with the dedicated collision
+system in
 [Geometry Wars](../11-geometry-wars/), which has far more things colliding.
 
 **Try it** (`Zelda7`): make the sword reach twice as far in `GameSettings`, press `F1` and
@@ -310,7 +311,7 @@ Object pattern.
 _Steps `Zelda1` → `Zelda4`_
 
 The player and the enemies share an abstract `Entity` base class. It provides what every
-creature needs, which is a position and a collision box, a sprite offset for the top-down look,
+creature needs: a position and a collision box, a sprite offset for the top-down look,
 animations, health, invulnerability after a hit, and a current state. `Player` and `Enemy`
 inherit it and add their own parts.
 

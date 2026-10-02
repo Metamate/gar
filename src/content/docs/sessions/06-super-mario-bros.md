@@ -17,9 +17,9 @@ sideways, collect coins, and stomp on the creatures in your way.
 <figcaption>The original: <em>Super Mario Bros.</em> (Nintendo, 1985). Screenshot © Nintendo.</figcaption>
 </figure>
 
-We build the basics of a platform game, and the topic is the game world. The level
-is a tilemap, the player and the creatures are entities that move through it, and a camera
-shows the part of the level you can see.
+This session's topic is the game world. The level is a tilemap, the player and the
+creatures are entities that move through it, and a camera shows the part of the level you
+can see.
 
 To get the player around the world, we need platformer physics and collision with tiles.
 The levels come from level makers, which is the Strategy pattern again. We add debug
@@ -192,11 +192,11 @@ class (`GameController.Jump` instead of `Keys.Space`).
 
 _Steps `Mario2` → `Mario3`_
 
-In `Mario2`, the player's state is an enum, and its behaviour lives in `switch` statements:
-the stage [Pac-Man](../05-pac-man/#ghosts-with-an-enum)'s ghosts went through before the State
-pattern. `Mario3` makes the same move, and each case becomes a class (`PlayerIdleState`,
-`PlayerWalkState`, `PlayerJumpState`, `PlayerFallState`, `PlayerDuckState`), and `Player` forwards
-`Update` and `Draw` to its current state. Two things are new compared with the ghosts:
+In `Mario2`, the player's state is an enum, and its behaviour lives in `switch` statements,
+like [Pac-Man](../05-pac-man/#ghosts-with-an-enum)'s ghosts before the State pattern. `Mario3`
+makes the same move. Each case becomes a class (`PlayerIdleState`, `PlayerWalkState`,
+`PlayerJumpState`, `PlayerFallState`, `PlayerDuckState`), and `Player` forwards `Update` and
+`Draw` to its current state. Two things are new compared with the ghosts:
 
 - **Shared behaviour in a base state.** Every player state falls, collides with tiles and
   moves sideways. That physics is written once, in `PlayerStateBase`, and each state adds only
@@ -331,17 +331,16 @@ Start from `Mario8`.
 4. **Debug drawing:** also draw the probe below the player that checks for ground
    (`IsOnGround` in `PlayerStateBase`), and show the player's current state and velocity
    on screen. Use it to find where coyote time starts and ends.
-
-5. **Auto-tiling (stretch):** each topper set in `tile_tops.png` has a middle piece (tile 0), a left end
-  (1), a right end (2) and a single piece (3), but the level makers always use the middle.
-  Look at each topper's neighbours and pick the matching piece, so the grass rounds off at
-  every ledge. Where does that belong: in the level maker, or in the tilemap?
-6. **A scene graph (stretch):** in the moving-platform exercise, the player rides along. Engines solve
-  this with a hierarchy of transforms. A child's position is relative to its parent's, so
-  while the player stands on the platform, it becomes the platform's child. Sketch a
-  `Transform` with a parent. What does the player's position in the world become when the
-  platform moves? _Game Programming Patterns_ uses the same example in
-  [Dirty Flag](https://gameprogrammingpatterns.com/dirty-flag.html).
+5. **Auto-tiling (stretch):** each topper set in `tile_tops.png` has a middle piece (tile 0),
+   a left end (1), a right end (2) and a single piece (3), but the level makers always use
+   the middle. Look at each topper's neighbours and pick the matching piece, so the grass
+   rounds off at every ledge. Where does that belong: in the level maker, or in the tilemap?
+6. **A scene graph (stretch):** in the moving-platform exercise, the player rides along.
+   Engines solve this with a hierarchy of transforms. A child's position is relative to its
+   parent's, so while the player stands on the platform, it becomes the platform's child.
+   Sketch a `Transform` with a parent. What does the player's position in the world become
+   when the platform moves? _Game Programming Patterns_ uses the same example in
+   [Dirty Flag](https://gameprogrammingpatterns.com/dirty-flag.html).
 
 ## Apply It to Your Project
 
