@@ -386,7 +386,7 @@ Start from `Zelda7`.
      in data, as a closed door's four tiles with a padlock on top. The padlock is drawn over
      four tiles of the tilesheet: 243 (top left), 244 (top right), 245 (bottom left) and 246
      (bottom right).
-   - Walking into a locked door with a key uses up the key and opens the door for good. Show
+   - Walking into a locked door with a key uses up the key and opens the door. Show
      the keys the player carries next to the hearts.
 4. **A dungeon map (stretch):** keep track of the rooms the player has visited, and show
    them as a small map on a key press, with the current room highlighted. Which state shows

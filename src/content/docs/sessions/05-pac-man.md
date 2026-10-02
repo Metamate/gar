@@ -503,11 +503,14 @@ Start from `Pacman5`.
 1. **A new mode:** when Pac-Man eats a ghost, the game freezes for half a second in the
    original, and shows the points. Build the frozen mode you counted the `switch`es for,
    as a `FrozenState` that comes before `EatenState`. Which classes did you change, compared
-   with the seven places in `Pacman1`'s enum?
+   with the seven places in `Pacman1`'s enum? One test in `GhostStateTests.cs` now fails. Is
+   the test wrong, or the code?
 2. **A new personality:** add a fifth ghost with its own `ITargetStrategy`, e.g. one that
-   targets the tile Pac-Man was at five seconds ago. Write a test for it first, next to
-   the others in `TargetingTests.cs`. Its two frames are already in `sprites.png` (row 1,
-   at x = 256 and 288); add the regions and an animation in `atlas-definition.xml`.
+   aims at the tile opposite Pac-Man, mirrored through the middle of the maze. Write a test
+   for it first, next to the others in `TargetingTests.cs`. The ghost needs a start: a
+   letter of its own in `maze.txt`, in the test maze and in `Maze.Parse`. Its two frames are
+   already in `sprites.png` (row 1, at x = 256 and 288); add the regions and an animation
+   in `atlas-definition.xml`.
 3. **Frightened in the house:** in the original, ghosts waiting in the house also turn blue
    after a power pellet (but stay in the house). Change `InHouseState` to do that. What does
    the state need to remember?
