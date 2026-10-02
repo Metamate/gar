@@ -365,12 +365,12 @@ we take this all the way with the **Component pattern**.
 
 Start from `Zelda7`.
 
-1. **More event-driven:** pick one of these and refactor it. The class firing the event
-   must have no reference to the class reacting to it.
-   - `OnPlayerDied` is detected in one place, but causes a game over screen to appear
-     somewhere completely different. Trace the full chain through the code.
-   - Enemy death is handled differently from player death. What happens now when an enemy
-     dies? What could happen if there were an event for it?
+1. **More event-driven:** start with the first, then do one of the other two. The class
+   firing an event must have no reference to the class reacting to it.
+   - Trace `OnPlayerDied` through the code, from where the player's death is noticed to
+     where the game over screen appears. Which classes does it pass through?
+   - Enemy death has no event. Find what happens now when an enemy dies. Then add an event
+     for it, and let something react, such as a sound or a score.
    - `SoundManager.PlaySound(...)` is called directly from several unrelated classes. Find
      all the call sites. Why is this a problem, and how would events fix it? Then make it an
      [event queue](#event-queue): `PlaySound` only records the sound's name, and once per
@@ -383,7 +383,8 @@ Start from `Zelda7`.
 3. **Keys and locked doors:**
    - Some enemies drop a key when they die. Use an event for it, as above. The key is drawn
      in `hearts.png` (its last frame, `frame_6`).
-   - Some doorways are locked. Add `locked` layouts to `door_layouts.xml`, so the look stays
+   - Some doorways are locked. The switch opens the other doors of the room, but a locked
+     one stays shut until the player brings a key. Add `locked` layouts to `door_layouts.xml`, so the look stays
      in data, as a closed door's four tiles with a padlock on top. The padlock is drawn over
      four tiles of the tilesheet: 243 (top left), 244 (top right), 245 (bottom left) and 246
      (bottom right).

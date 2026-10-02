@@ -132,8 +132,9 @@ classDiagram
     Animation o-- TextureRegion
 ```
 
-**Try it** (`Snake1`): draw the food with its second frame by changing only
-`atlas-definition.xml`. Then misspell `food-1` in the XML: what happens, and when?
+**Try it** (`Snake1`): the food has a second frame in the image, at x = 32. Make the game
+draw that one by changing only the `food-1` region in `atlas-definition.xml`. Then misspell
+`food-1` in the XML: what happens, and when?
 
 ## Sprites & Animation
 
@@ -197,8 +198,8 @@ batch. A big level would only draw the cells on screen.
 Here the tilemap is only a picture, and the walls are the cells outside the room's
 `Rectangle`. In [Sokoban](../04-sokoban/), the grid becomes the game's state itself.
 
-**Try it** (`Snake4`): rearrange the room in `tilemap-definition.xml`. Then put a 9 in it:
-what happens, and when?
+**Try it** (`Snake4`): rearrange the room in `tilemap-definition.xml`. Then put a 9 in it,
+a tile the tileset doesn't have (its tiles are 0 to 8): what happens, and when?
 
 ## Fixed-Tick Movement
 
@@ -305,7 +306,7 @@ pressed slightly early, still counts.
 
 **Try it** (`Snake7`): make the snake twice as fast, and add I, J, K and L as a third set
 of keys. Which file did each change need? Then press two turns within one tick, in `Snake6`
-and in `Snake7`.
+and in `Snake7`. What does the snake do in each?
 
 ## Eating & Growing
 
@@ -379,9 +380,10 @@ if (!_room.Contains(_snake.Head) || _snake.IsBitingItself)
 
 Start from `Snake9`.
 
-1. **A bug from data:** the atlas image also holds a bug the game doesn't use yet, with two
-   7 × 7 frames at (40, 0) and (48, 0). Describe it in `atlas-definition.xml` (two regions and a
-   `bug-animation`), and make the snake eat a bug instead of the food. How much C# did you
+1. **A bug from data:** the atlas image also holds a bug (an insect, as another thing to
+   eat) that the game doesn't use yet, with two 7 × 7 frames at (40, 0) and (48, 0). Describe
+   it in `atlas-definition.xml` (two regions and a `bug-animation`), and make the snake eat
+   a bug instead of the food. How much C# did you
    need to change? And for a bug _next to_ the food: what in `Game1` would have to change,
    and what does that say about where the food's rules live?
 2. **Speed up:** make the tick shorter each time the snake eats, down to a minimum. Where

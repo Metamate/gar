@@ -254,7 +254,7 @@ Here we only follow the x-axis, and clamp the camera to the level's edges. The b
 scrolls at half the camera's speed, for a parallax effect.
 
 **Try it** (`Mario4`): make the background scroll at a quarter of the camera's speed
-(in `GameLevel`). What do 0 and 1 look like?
+(in `GameLevel`). What do the factors 0 and 1 look like?
 
 ## Game States
 
@@ -325,7 +325,8 @@ Start from `Mario8`.
 2. **Moving platforms:** a platform that glides back and forth and carries the player
    standing on it. Where does "carried along" belong: in the platform, in the player, or
    in the collision code?
-3. **Powerups:** add a diamond (invincibility with a timer) and a mushroom (the player grows).
+3. **Powerups:** add a diamond (for a few seconds, slimes can't hurt the player) and a
+   mushroom (the player grows).
    Both are drawn in `images/extras.png`. How do you add these without piling flags onto
    the `Player` class?
 4. **Debug drawing:** also draw the probe below the player that checks for ground

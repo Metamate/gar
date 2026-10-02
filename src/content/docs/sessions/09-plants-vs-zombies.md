@@ -280,8 +280,8 @@ public void Armour_takes_the_damage_first_and_passes_on_the_rest()
 The world is `null` because neither component uses it. With a class per goblin, the same
 test would need a `ShieldbearerGoblin`, and everything its base classes need.
 
-**Try it** (`Pvz.Tests`): add a test for an Ironclad, with armour 20 and health 10. Is it
-still standing after two hits of 12? Run `dotnet test`.
+**Try it** (`Pvz.Tests`): add a test for a goblin with armour 20 and health 10. Is it still
+standing after two hits of 12? Run `dotnet test`.
 
 ## Type Object
 
@@ -394,12 +394,13 @@ x = 0, y = 240). Describing them is part of each exercise.
 1. **New types:** add a Guard (twice the Knight's health) and a Runner (a faster goblin,
    with an iron shield) to the data, and send a few Runners in `level1.json`. Did you need
    any code?
-2. **Frost Wizard:** arrows that slow the goblin they hit. Which new component do you need,
+2. **Frost Wizard:** a defender whose arrows slow the goblin they hit. Which new component do you need,
    where does it go (the arrow? the goblin?), and how does the data say which arrows are cold?
 3. **A shield for defenders:** armour for the people on your side too. Can you reuse
    `Armour`? What needs to change?
 4. **A pitchfork:** a tool in the card bar that sends the defender you click back into the
-   castle. Where does picking a defender fit in?
+   castle, which takes it off the field and frees its cell. Where does picking a defender
+   fit in?
 5. **Refactor (stretch):** `DefenderType.Create` has an `if` for every component. Could the
    JSON list components by name, and a registry turn names into components? What do you
    gain, and what do you lose (e.g. the compiler checking the data's shape)?

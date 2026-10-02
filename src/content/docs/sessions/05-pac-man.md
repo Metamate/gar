@@ -501,8 +501,9 @@ Pac-Man is dying, the ghosts' states are paused.
 Start from `Pacman5`.
 
 1. **A new mode:** when Pac-Man eats a ghost, the game freezes for half a second in the
-   original, and shows the points. Build the frozen mode you counted the `switch`es for,
-   as a `FrozenState` that comes before `EatenState`. Which classes did you change, compared
+   original, and shows the points. Here it is enough that the eaten ghost stands still for
+   half a second before its eyes head home. Build the frozen mode you counted the `switch`es
+   for, as a `FrozenState` that comes before `EatenState`. Which classes did you change, compared
    with the seven places in `Pacman1`'s enum? One test in `GhostStateTests.cs` now fails. Is
    the test wrong, or the code?
 2. **A new personality:** add a fifth ghost with its own `ITargetStrategy`, e.g. one that
@@ -514,7 +515,8 @@ Start from `Pacman5`.
 3. **Frightened in the house:** in the original, ghosts waiting in the house also turn blue
    after a power pellet (but stay in the house). Change `InHouseState` to do that. What does
    the state need to remember?
-4. **Fruit:** after 70 dots, a fruit appears below the house for ten seconds. Where does
+4. **Fruit:** after 70 dots, a fruit appears below the house for ten seconds, and is worth
+   points if Pac-Man reaches it in time. Where does
    that rule belong: in `World`, in `Maze`, or in a class of its own? A cherry is in
    `sprites.png` (row 0, at x = 96), ready for a region.
 5. **Tunnel (stretch):** in the original, ghosts slow down in the tunnel. Which class should
