@@ -189,9 +189,10 @@ after row. The cell in column `x` and row `y` is at index `y * Columns + x`. To 
 the tilemap goes through the array and draws each tile's region at a position worked out from
 its index. Sprites each keep their own position; tiles have theirs from the grid, and all of
 them come from one texture, so the whole room goes to the graphics card in one batch. A big
-level would only draw the cells on screen. Here the tilemap is only a
-picture, and the walls are the cells outside the room's `Rectangle`. In
-[Sokoban](../04-sokoban/), the grid becomes the game's state itself.
+level would only draw the cells on screen.
+
+Here the tilemap is only a picture, and the walls are the cells outside the room's
+`Rectangle`. In [Sokoban](../04-sokoban/), the grid becomes the game's state itself.
 
 **Try it** (`Snake4`): rearrange the room in `tilemap-definition.xml`. Then put a 9 in it:
 what happens, and when?
@@ -312,7 +313,12 @@ grows, and new food appears on a free cell. Each bite adds a point to the score 
 room. Its digits are regions of the atlas too (`digit-0` to `digit-9`): a font that is only
 data.
 
-- **Distance-based / circles:** two circles overlap if the distance between their centres
+### Collision detection
+
+To know when the head reaches the food, the game has to check whether two things touch.
+That is **collision detection**, and it starts with choosing a shape for each thing:
+
+- **Circles:** two circles overlap if the distance between their centres
   is less than the sum of their radii. Compare _squared_ values
   (`Vector2.DistanceSquared`) to avoid a square root.
 - **AABB:** built into MonoGame as `Rectangle.Intersects()` and `Rectangle.Contains()`
@@ -329,8 +335,12 @@ Both the snake's head and the food expose their `Bounds` as a `Circle`. The food
 its cell, so comparing cells would work here too; circles also work for things that move
 freely, which the later games need.
 
+### Collision response
+
 **Collision response** is what happens _after_ a hit:
 
+- **Blocking:** the two are kept from overlapping, as a wall stops the player in
+  [Super Mario Bros](../06-super-mario-bros/#tile-collision).
 - **Triggering:** something happens. The snake eats the food and grows. On its next move,
   it keeps its tail.
 - **Bouncing:** reflect the velocity off the surface, as the ball does in [Pong](../01-pong/).

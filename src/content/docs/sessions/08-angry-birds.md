@@ -206,8 +206,11 @@ The cost is that every Box2D feature the game needs later (joints, raycasts, sen
 to be added to the facade first. That is on purpose, but it is extra work. Kinematic bodies
 and joints are examples. The game didn't need them, but the physics samples did, so `CreateBox`
 got a `BodyType` instead of an `isStatic` flag, and `PhysicsWorld` got `Weld`, `Hinge` and
-`Rope`, in pixels like everything else. Wrap a library when it's foreign to your code, when you might swap it, or when you use a small
-part of it. A library that already fits your code, like MonoGame itself, doesn't need it.
+`Rope`, in pixels like everything else.
+
+Wrap a library when it's foreign to your code, when you might swap it, or when you use a
+small part of it. A library that already fits your code, like MonoGame itself, doesn't need
+it.
 
 `Units` is `internal`, and so are the IDs. In a bigger project, the `Physics` folder would
 be its own class library project, and `internal` would then really hide Box2D from the game.
