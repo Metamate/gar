@@ -38,8 +38,8 @@ same rules for every session.
 
 | Session | Estimate | vs. 180 | Notes |
 | --- | --- | --- | --- |
-| 00 Course Intro + 01 Pong | ~40 + ~200 | +60 | the intro deck first, then 8 build steps; steps 8–11 are two demos |
-| 02 Flappy Bird | ~210 | +30 | 8 build steps; three stretches are demos with a try-it |
+| 00 Course Intro + 01 Pong | ~40 + ~200 | +60 | the intro deck first, then 7 build steps; virtual resolution and steps 8–11 are demos |
+| 02 Flappy Bird | ~195 | +15 | 6 build steps; four stretches are demos with a try-it |
 | 03 Snake | ~205 | +25 | 5 short tasks after the demos |
 | 04 Sokoban | ~180 | 0 | 5 short tasks; Command for undo and for input |
 | 05 Pac-Man | ~180 | 0 | 5 short tasks; routing is Strategy a second time |
@@ -52,7 +52,7 @@ same rules for every session.
 | 12 Vampire Survivors | ~165 | −15 | 4 short tasks; the course recap also takes time |
 
 - **Pong and Flappy Bird:** students build the core steps in class and continue at home;
-  the steps that repeat an idea (Pong's modes and sound, Flappy's images, spawning and
+  the steps that are plumbing or repeat an idea (Pong's screen scaling, modes and sound, Flappy's images, gravity and input, spawning and
   extra states) are shown as demos with a try-it, and the next build exercise starts from
   the step the demo ended on. Nothing is marked as homework in advance. With the midterm
   evaluation in mind, cover the concept slides in class even when the building runs

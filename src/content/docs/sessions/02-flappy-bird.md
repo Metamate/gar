@@ -123,6 +123,30 @@ trade-off:
 We use option 4 today. It is _global state_, and the Singleton section below discusses
 what that costs.
 
+## Input: InputManager
+
+The "was just pressed" check from Pong moves into GARCore as a `KeyboardInfo` class
+(`IsKeyDown`, `IsKeyUp`, `WasKeyJustPressed`, `WasKeyJustReleased`). A `MouseInfo` class does
+the same for the mouse (`IsLeftButtonDown`, `WasLeftButtonJustPressed`, `Position`). Both are
+wrapped by an `InputManager` that `Core` updates every frame, so any code can ask
+`Core.Input.Keyboard` or `Core.Input.Mouse`.
+
+_Steps `Flappy3` → `Flappy5`_
+
+`Flappy4` adds gravity: the bird's vertical velocity grows by 980 pixels per second every
+second, and its position follows the velocity, both scaled by delta time. `Flappy5` adds the
+input classes, and the bird flaps on Space _or_ a left click. A flap sets the vertical
+velocity to 300 upwards.
+
+The mouse position is in **window** coordinates. Because the game is drawn at a
+virtual resolution and scaled to the window, a click at the window's centre is not at
+(320, 180) in the game unless you convert it. We don't need positions for Flappy Bird, but
+several later games have to convert between coordinate spaces like this.
+
+**Try it** (`Flappy5`): in `Bird`, set the gravity to 1500 and the jump force to 450. Make the
+Up key flap too. Then swap `WasKeyJustPressed` for `IsKeyDown`. What does holding Space do
+now?
+
 ## Procedural Generation
 
 _Steps `Flappy5` → `Flappy7`_
@@ -135,19 +159,6 @@ flagged and removed.
 
 **Try it** (`Flappy7`): make the gap 80 pixels and spawn a pair every 1.5 seconds. Is it still
 fair? Which numbers in `SpawnPipePair` make the drift gentler?
-
-## Input: InputManager
-
-The "was just pressed" check from Pong moves into GARCore as a `KeyboardInfo` class
-(`IsKeyDown`, `IsKeyUp`, `WasKeyJustPressed`, `WasKeyJustReleased`). A `MouseInfo` class does
-the same for the mouse (`IsLeftButtonDown`, `WasLeftButtonJustPressed`, `Position`). Both are
-wrapped by an `InputManager` that `Core` updates every frame, so any code can ask
-`Core.Input.Keyboard` or `Core.Input.Mouse`. The bird flaps on Space _or_ a left click.
-
-The mouse position is in **window** coordinates. Because the game is drawn at a
-virtual resolution and scaled to the window, a click at the window's centre is not at
-(320, 180) in the game unless you convert it. We don't need positions for Flappy Bird, but
-several later games have to convert between coordinate spaces like this.
 
 ## State Machines
 
@@ -274,15 +285,11 @@ with the Service Locator pattern.
    `fonts` and `audio` the same way; the starter's builder already handles all of them), and
    the drawing and scrolling from `Flappy2`'s `Game1`. Then add a `Bird` class and a static
    `Art` class for asset references.
-4. **Gravity and an input manager:** add gravity (980 pixels per second, per second). Add
-   `KeyboardInfo`, `MouseInfo` and `InputManager` to GARCore, and flap on
-   `WasKeyJustPressed(Keys.Space)` or `WasLeftButtonJustPressed`: a flap sets the
-   vertical velocity to 300 upwards.
-5. **Hitboxes:** bring your game up to `Flappy7` (the `Pipe` and `PipePair` classes and the
-   spawning in `Game1`), then stop the game when the bird hits a pipe, the ground or the
+4. **Hitboxes:** bring your game up to `Flappy7` (gravity in `Bird`, the input classes in
+   GARCore, the `Pipe` and `PipePair` classes and the spawning in `Game1`), then stop the game when the bird hits a pipe, the ground or the
    ceiling. Can you make collisions more forgiving?
-6. **A state machine:** add `IState`, a `StateMachine`, a `TitleState` and a `PlayState`.
-7. **Audio as a Singleton:** bring your game up to `Flappy11` (the score and countdown
+5. **A state machine:** add `IState`, a `StateMachine`, a `TitleState` and a `PlayState`.
+6. **Audio as a Singleton:** bring your game up to `Flappy11` (the score and countdown
    states), then add background music (`Song` + `MediaPlayer.Play`) and flap, hurt and score
    sounds, organized in an `Audio` class made a Singleton (`Audio.Instance.PlayFlap()`).
 

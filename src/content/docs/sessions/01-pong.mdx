@@ -170,12 +170,27 @@ _spriteBatch.Draw(_pixel, new Rectangle(x, y, width, height), Color.White);
 ```
 
 - Text is drawn with a `SpriteFont` asset and `SpriteBatch.DrawString()`.
-- **Virtual resolution:** we render the game at a fixed internal resolution and scale it
-  to the window with a transform matrix passed to `SpriteBatch.Begin()`. The game logic
-  never needs to know how big the window is.
 - **Texture filtering:** use `SamplerState.PointClamp` for crisp pixel art when scaling up.
 
 See [What is a sprite?](https://docs.monogame.net/articles/getting_to_know/whatis/graphics/WhatIs_Sprite.html).
+
+### Virtual resolution
+
+_Step `Pong2`_
+
+We render the game at a fixed internal resolution, 320×180, and scale it to the window with
+a transform matrix passed to `SpriteBatch.Begin()`. The game logic never needs to know how
+big the window is.
+
+`Pong2` scales by the smaller of the two ratios (window width / 320, window height / 180),
+so nothing is stretched, and centres the result with `GraphicsDevice.Viewport`: black bars
+fill the rest. It recalculates when `Window.ClientSizeChanged` fires. The window opens at
+1280×720, four times the virtual size. At a whole-number scale, every pixel comes out the
+same size.
+
+**Try it** (`Pong2`): drag the window wide, then tall. Where do the bars go? Swap
+`PointClamp` for `LinearClamp`. Then set the virtual size to 640×360. What happens to the
+text?
 
 ## Input
 
@@ -282,12 +297,10 @@ Build Pong step by step:
 1. **Text on screen:** draw "Hello, MonoGame!" centred on a black 1280×720 window. The
    font is already in `Content/Assets`: load it with `Content.Load<SpriteFont>("sans")`,
    and centre the text with `MeasureString`.
-2. **Virtual resolution:** draw the game at 320×180, scaled to fit a resizable window,
-   with point filtering. Scale by the smaller of the two ratios (window width / 320,
-   window height / 180) so nothing is stretched, and centre the result with
-   `GraphicsDevice.Viewport`: black bars fill the rest. Recalculate when
-   `Window.ClientSizeChanged` fires. Open the window at 1280×720, four times the virtual
-   size: at a whole-number scale, every pixel comes out the same size.
+2. **Virtual resolution:** bring your game up to `Pong2`. Copy the virtual size constants,
+   the matrix field and `UpdateScreenScaleMatrix`, call it from `Initialize` and when
+   `Window.ClientSizeChanged` fires, and pass the matrix and `SamplerState.PointClamp` to
+   `Begin`. Centre the text in 320×180.
 3. **Rectangles from a pixel:** draw two paddles and a ball, stretched from one white
    pixel. Switch to the retro font (`"font"`, also in `Content/Assets`) and the
    background colour `(40, 45, 52)`.
