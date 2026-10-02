@@ -32,7 +32,8 @@ Locator pattern, and add saving and loading.
 - [19: User Interface Fundamentals](https://docs.monogame.net/articles/tutorials/building_2d_games/19_user_interface_fundamentals)
 - [Pushdown Automata](https://gameprogrammingpatterns.com/state.html#pushdown-automata)
 - [Service Locator](https://gameprogrammingpatterns.com/service-locator.html)
-- [Components & Services in MonoGame](https://gavsdevblog.wordpress.com/2016/09/04/monogame-components-and-services)
+- Optional: [Components & Services in MonoGame](https://gavsdevblog.wordpress.com/2016/09/04/monogame-components-and-services),
+  on MonoGame's built-in locator, `Game.Services`
 
 ## Explore the Codebase
 

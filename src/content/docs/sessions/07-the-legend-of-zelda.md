@@ -33,7 +33,7 @@ how we build them decides how easy the next one is to add.
 - [Observer](https://gameprogrammingpatterns.com/observer.html)
 - [Event Queue](https://gameprogrammingpatterns.com/event-queue.html) (skim)
 - [C# Delegates](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/delegates/)
-- [C# Action Delegate](https://learn.microsoft.com/en-us/dotnet/api/system.action)
+- Optional: [C# Action Delegate](https://learn.microsoft.com/en-us/dotnet/api/system.action), the reference
 
 ## Explore the Codebase
 

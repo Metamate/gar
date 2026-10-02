@@ -29,14 +29,16 @@ interfaces and the Singleton pattern.
 
 ## Prepare
 
-- [04: Creating a Class Library](https://docs.monogame.net/articles/tutorials/building_2d_games/04_creating_a_class_library),
+- [Architecture, Performance, and Games](https://gameprogrammingpatterns.com/architecture-performance-and-games.html)
+- [Singleton](https://gameprogrammingpatterns.com/singleton.html)
+- [06: Working with Textures](https://docs.monogame.net/articles/tutorials/building_2d_games/06_working_with_textures)
+- Optional: [04: Creating a Class Library](https://docs.monogame.net/articles/tutorials/building_2d_games/04_creating_a_class_library),
   for background. It creates the library with the MonoGame templates; ours comes ready
   in the gar-starter template ([exercise 1](#exercises)).
-- [Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html)
-- [06: Working with Textures](https://docs.monogame.net/articles/tutorials/building_2d_games/06_working_with_textures)
-- [Architecture, Performance, and Games](https://gameprogrammingpatterns.com/architecture-performance-and-games.html)
-- [Interfaces (C#)](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces)
-- [Singleton](https://gameprogrammingpatterns.com/singleton.html)
+- Optional: [Content Builder Project](https://docs.monogame.net/articles/getting_started/content_pipeline/content_builder_project.html),
+  the reference for `Builder.cs`
+- Optional: [Interfaces (C#)](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces),
+  if you want to refresh them before the state machine
 
 ## Game Architecture
 

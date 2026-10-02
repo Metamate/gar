@@ -30,7 +30,9 @@ but these share their physics and react to the world.
 
 ## Prepare
 
-- [State](https://gameprogrammingpatterns.com/state.html)
+- [State](https://gameprogrammingpatterns.com/state.html), the rest of the chapter. You read
+  the first half for [Pac-Man](../05-pac-man/); "Hierarchical State Machines" is close to what
+  the player's states do here.
 
 ## Levels From Code
 

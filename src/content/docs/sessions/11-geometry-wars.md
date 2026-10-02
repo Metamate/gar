@@ -32,10 +32,13 @@ entities? We also look at:
 
 ## Prepare
 
-- [Component](https://gameprogrammingpatterns.com/component.html) (review from Plants vs. Zombies)
-- [Dependency injection in .NET](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection) (the idea; we do it by hand)
 - [Object Pool](https://gameprogrammingpatterns.com/object-pool.html)
 - [Flyweight](https://gameprogrammingpatterns.com/flyweight.html)
+- Optional: [Component](https://gameprogrammingpatterns.com/component.html), if you want to
+  review it from Plants vs. Zombies
+- Optional: [Dependency injection in .NET](https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection).
+  It describes .NET's container; we pass dependencies in by hand, so only the idea carries
+  over.
 
 ## Explore the Codebase
 
