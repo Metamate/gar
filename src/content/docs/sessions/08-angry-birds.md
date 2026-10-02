@@ -470,8 +470,9 @@ Start from `Birds4`.
    play it). Add a new prefab too, e.g. a long stone plank. How much code did you change?
 2. **A new bird:** add a heavy bird, twice the size of the normal one, as a prefab called
    `heavy` next to `bird` in `Prefabs`. Then let each level choose its birds. A level file
-   starts with `birds 3`, which gives the player three of the same bird. Change that line
-   to a list of prefab names, such as `birds bird bird heavy`, and shoot them in that order.
+   starts with `birds 3`, which gives the player three shots, all with the same bird.
+   Change that line to a list of prefab names, one per shot, such as `birds bird bird heavy`.
+   The player shoots them in that order.
 3. **Explosive:** a crate that, when destroyed, pushes everything nearby away. What does
    the facade need to offer (e.g. `ApplyImpulse`)? Add it without letting Box2D types out.
    An explosive crate is drawn in `sprites.png` (50 × 50 at x = 120, y = 204), ready for a
