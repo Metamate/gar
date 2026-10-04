@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 410" width="720" height="410" role="img"><title>The screen has its origin in the top-left corner, with y pointing down</title><defs><marker id="arrow-d45d35" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d45d35"/></marker><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker></defs><rect width="720" height="410" rx="10" fill="#22262b"/>
+<rect x="150" y="70" width="480" height="270" fill="#14171a" stroke="#565d65" stroke-width="1.5"/>
+<line x1="150" y1="70" x2="676" y2="70" stroke="#d45d35" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<line x1="150" y1="70" x2="150" y2="370" stroke="#d45d35" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<text x="684" y="76" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="20" fill="#d45d35" text-anchor="start" font-weight="bold" font-style="italic">x</text>
+<text x="150" y="398" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="20" fill="#d45d35" text-anchor="middle" font-weight="bold" font-style="italic">y</text>
+<circle cx="150" cy="70" r="5" fill="#d45d35"/>
+<text x="138" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="end" font-weight="normal">(0, 0)</text>
+<text x="630" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#9aa3ab" text-anchor="middle" font-weight="normal">(320, 0)</text>
+<text x="138" y="345" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#9aa3ab" text-anchor="end" font-weight="normal">(0, 180)</text>
+<text x="630" y="364" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#9aa3ab" text-anchor="middle" font-weight="normal">(320, 180)</text>
+<rect x="210" y="190" width="14" height="60" fill="#dee2e6"/>
+<line x1="150" y1="190" x2="210" y2="190" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+<line x1="210" y1="70" x2="210" y2="190" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5 5"/>
+<circle cx="210" cy="190" r="4" fill="#2aa6a6"/>
+<text x="236" y="196" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="start" font-weight="normal">the paddle is at (40, 80):</text>
+<text x="236" y="218" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#9aa3ab" text-anchor="start" font-weight="normal">its top-left corner</text>
+<text x="180" y="92" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="14" fill="#9aa3ab" text-anchor="middle" font-weight="normal">40</text>
+<text x="172" y="182" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="14" fill="#9aa3ab" text-anchor="middle" font-weight="normal">80</text>
+<rect x="450" y="130" width="12" height="12" fill="#dee2e6"/>
+<line x1="472" y1="146" x2="508" y2="194" stroke="#2aa6a6" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<text x="518" y="188" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="start" font-weight="normal">moving down:</text>
+<text x="518" y="210" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#9aa3ab" text-anchor="start" font-weight="normal">y grows</text>
+</svg>

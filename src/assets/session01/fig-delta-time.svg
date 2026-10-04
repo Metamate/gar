@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 344" width="720" height="344" role="img"><title>Multiplying by delta time gives the same distance per second at any frame rate</title><rect width="720" height="344" rx="10" fill="#22262b"/>
+<text x="210" y="34" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#9aa3ab" text-anchor="start" font-weight="normal">one second of movement, at 200 pixels per second</text>
+<line x1="630" y1="48" x2="630" y2="190" stroke="#565d65" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 5"/>
+<text x="630" y="208" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="14" fill="#9aa3ab" text-anchor="middle" font-weight="normal">200 px</text>
+<text x="30" y="74" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="start" font-weight="bold">30 FPS</text>
+<text x="30" y="94" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">speed × deltaTime</text>
+<line x1="210" y1="78" x2="700" y2="78" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M210 78 Q262.5 48 315 78" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="315" cy="78" r="3" fill="#2aa6a6"/>
+<path d="M315 78 Q367.5 48 420 78" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="420" cy="78" r="3" fill="#2aa6a6"/>
+<path d="M420 78 Q472.5 48 525 78" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="525" cy="78" r="3" fill="#2aa6a6"/>
+<path d="M525 78 Q577.5 48 630 78" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="630" cy="78" r="3" fill="#2aa6a6"/>
+<rect x="205" y="69" width="10" height="18" fill="#dee2e6"/>
+<text x="30" y="154" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="start" font-weight="bold">120 FPS</text>
+<text x="30" y="174" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">speed × deltaTime</text>
+<line x1="210" y1="158" x2="700" y2="158" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M210 158 Q223.125 146.188 236.25 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="236.25" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M236.25 158 Q249.375 146.188 262.5 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="262.5" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M262.5 158 Q275.625 146.188 288.75 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="288.75" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M288.75 158 Q301.875 146.188 315 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="315" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M315 158 Q328.125 146.188 341.25 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="341.25" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M341.25 158 Q354.375 146.188 367.5 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="367.5" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M367.5 158 Q380.625 146.188 393.75 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="393.75" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M393.75 158 Q406.875 146.188 420 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="420" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M420 158 Q433.125 146.188 446.25 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="446.25" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M446.25 158 Q459.375 146.188 472.5 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="472.5" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M472.5 158 Q485.625 146.188 498.75 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="498.75" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M498.75 158 Q511.875 146.188 525 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="525" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M525 158 Q538.125 146.188 551.25 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="551.25" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M551.25 158 Q564.375 146.188 577.5 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="577.5" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M577.5 158 Q590.625 146.188 603.75 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="603.75" cy="158" r="3" fill="#2aa6a6"/>
+<path d="M603.75 158 Q616.875 146.188 630 158" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="630" cy="158" r="3" fill="#2aa6a6"/>
+<rect x="205" y="149" width="10" height="18" fill="#dee2e6"/>
+<text x="30" y="254" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="start" font-weight="bold">120 FPS</text>
+<text x="30" y="274" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">a fixed step per frame</text>
+<line x1="210" y1="258" x2="700" y2="258" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M210 258 Q262.5 228 315 258" stroke="#d45d35" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="315" cy="258" r="3" fill="#d45d35"/>
+<path d="M315 258 Q367.5 228 420 258" stroke="#d45d35" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="420" cy="258" r="3" fill="#d45d35"/>
+<path d="M420 258 Q472.5 228 525 258" stroke="#d45d35" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="525" cy="258" r="3" fill="#d45d35"/>
+<path d="M525 258 Q577.5 228 630 258" stroke="#d45d35" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="630" cy="258" r="3" fill="#d45d35"/>
+<rect x="205" y="249" width="10" height="18" fill="#dee2e6"/>
+<text x="210" y="300" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="start" font-weight="normal">four times the frames, four times the distance:</text>
+<text x="210" y="320" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="start" font-weight="normal">the game runs faster on a faster computer</text>
+</svg>

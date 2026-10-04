@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="720" height="340" role="img"><title>A variable timestep updates once per frame; a fixed timestep updates in equal steps</title><rect width="720" height="340" rx="10" fill="#22262b"/>
+<text x="220" y="34" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#9aa3ab" text-anchor="start" font-weight="normal">rendered frames, two of them long (the window was dragged)</text>
+<rect x="222" y="62" width="48" height="26" fill="#2e3338" rx="4"/>
+<text x="246" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">frame</text>
+<rect x="274" y="62" width="48" height="26" fill="#2e3338" rx="4"/>
+<text x="298" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">frame</text>
+<rect x="326" y="62" width="124" height="26" fill="#3a3024" rx="4" stroke="#d45d35" stroke-width="1.5"/>
+<text x="388" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">frame</text>
+<rect x="454" y="62" width="48" height="26" fill="#2e3338" rx="4"/>
+<text x="478" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">frame</text>
+<rect x="506" y="62" width="50" height="26" fill="#2e3338" rx="4"/>
+<text x="531" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">frame</text>
+<rect x="560" y="62" width="124" height="26" fill="#3a3024" rx="4" stroke="#d45d35" stroke-width="1.5"/>
+<text x="622" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">frame</text>
+<text x="30" y="148" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="start" font-weight="bold">Variable</text>
+<text x="30" y="168" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">one update per frame</text>
+<line x1="220" y1="150" x2="686" y2="150" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="272" y1="92" x2="272" y2="262" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 5"/>
+<line x1="324" y1="92" x2="324" y2="262" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 5"/>
+<line x1="452" y1="92" x2="452" y2="262" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 5"/>
+<line x1="504" y1="92" x2="504" y2="262" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 5"/>
+<line x1="558" y1="92" x2="558" y2="262" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 5"/>
+<path d="M220 150 Q246 128 272 150" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="272" cy="150" r="3.5" fill="#2aa6a6"/>
+<path d="M272 150 Q298 128 324 150" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="324" cy="150" r="3.5" fill="#2aa6a6"/>
+<path d="M324 150 Q388 106 452 150" stroke="#d45d35" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="452" cy="150" r="3.5" fill="#d45d35"/>
+<path d="M452 150 Q478 128 504 150" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="504" cy="150" r="3.5" fill="#2aa6a6"/>
+<path d="M504 150 Q531 128 558 150" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="558" cy="150" r="3.5" fill="#2aa6a6"/>
+<path d="M558 150 Q622 106 686 150" stroke="#d45d35" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="686" cy="150" r="3.5" fill="#d45d35"/>
+<circle cx="220" cy="150" r="3.5" fill="#2aa6a6"/>
+<rect x="262.48" y="167" width="381.04" height="19.5" fill="#22262b"/>
+<text x="453" y="180" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#d45d35" text-anchor="middle" font-weight="normal">one big step: a fast ball can pass through a thin wall</text>
+<text x="30" y="248" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="start" font-weight="bold">Fixed</text>
+<text x="30" y="268" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">equal steps</text>
+<line x1="220" y1="250" x2="686" y2="250" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M220 250 Q237.923 232 255.846 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="255.846" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M255.846 250 Q273.769 232 291.692 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="291.692" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M291.692 250 Q309.615 232 327.538 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="327.538" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M327.538 250 Q345.462 232 363.385 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="363.385" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M363.385 250 Q381.308 232 399.231 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="399.231" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M399.231 250 Q417.154 232 435.077 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="435.077" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M435.077 250 Q453 232 470.923 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="470.923" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M470.923 250 Q488.846 232 506.769 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="506.769" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M506.769 250 Q524.692 232 542.615 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="542.615" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M542.615 250 Q560.538 232 578.462 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="578.462" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M578.462 250 Q596.385 232 614.308 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="614.308" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M614.308 250 Q632.231 232 650.154 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="650.154" cy="250" r="3.5" fill="#2aa6a6"/>
+<path d="M650.154 250 Q668.077 232 686 250" stroke="#2aa6a6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="686" cy="250" r="3.5" fill="#2aa6a6"/>
+<circle cx="220" cy="250" r="3.5" fill="#2aa6a6"/>
+<rect x="299.66" y="267" width="306.68" height="19.5" fill="#22262b"/>
+<text x="453" y="280" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#2aa6a6" text-anchor="middle" font-weight="normal">a long frame runs several steps to catch up</text>
+<text x="30" y="322" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">Every fixed step is the same size, so the simulation behaves the same on every computer.</text>
+</svg>

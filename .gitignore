@@ -25,3 +25,7 @@ tools/recording/out/
 
 # Python caches
 __pycache__/
+
+# Figures rendered for the decks (the SVGs in src/assets are the source of truth)
+tools/figures/out/
+tools/figures/__pycache__/

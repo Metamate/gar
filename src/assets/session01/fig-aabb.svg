@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img"><title>Two rectangles overlap only if they overlap on both axes</title><rect width="720" height="360" rx="10" fill="#22262b"/>
+<text x="170" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A hit</text>
+<rect x="70" y="90" width="110" height="90" fill="none" stroke="#2aa6a6" stroke-width="2.5"/>
+<text x="80" y="112" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#2aa6a6" text-anchor="start" font-weight="bold" font-style="italic">a</text>
+<rect x="140" y="140" width="110" height="90" fill="none" stroke="#d45d35" stroke-width="2.5"/>
+<text x="232" y="220" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="start" font-weight="bold" font-style="italic">b</text>
+<rect x="140" y="140" width="40" height="40" fill="#dee2e6" opacity="0.25"/>
+<line x1="50" y1="292" x2="310" y2="292" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="42" y1="60" x2="42" y2="270" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="70" y1="287" x2="180" y2="287" stroke="#2aa6a6" stroke-width="4" stroke-linecap="round"/>
+<line x1="140" y1="297" x2="250" y2="297" stroke="#d45d35" stroke-width="4" stroke-linecap="round"/>
+<line x1="37" y1="90" x2="37" y2="180" stroke="#2aa6a6" stroke-width="4" stroke-linecap="round"/>
+<line x1="47" y1="140" x2="47" y2="230" stroke="#d45d35" stroke-width="4" stroke-linecap="round"/>
+<text x="180" y="322" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">x: overlap</text>
+<text x="58" y="262" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="start" font-weight="normal">y: overlap</text>
+<text x="180" y="346" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#7fd46b" text-anchor="middle" font-weight="bold">overlap on both axes: a collision</text>
+<text x="520" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A miss</text>
+<rect x="420" y="90" width="110" height="90" fill="none" stroke="#2aa6a6" stroke-width="2.5"/>
+<text x="430" y="112" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#2aa6a6" text-anchor="start" font-weight="bold" font-style="italic">a</text>
+<rect x="490" y="186" width="110" height="90" fill="none" stroke="#d45d35" stroke-width="2.5"/>
+<text x="582" y="266" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="start" font-weight="bold" font-style="italic">b</text>
+<line x1="400" y1="292" x2="660" y2="292" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="392" y1="60" x2="392" y2="270" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="420" y1="287" x2="530" y2="287" stroke="#2aa6a6" stroke-width="4" stroke-linecap="round"/>
+<line x1="490" y1="297" x2="600" y2="297" stroke="#d45d35" stroke-width="4" stroke-linecap="round"/>
+<line x1="387" y1="90" x2="387" y2="180" stroke="#2aa6a6" stroke-width="4" stroke-linecap="round"/>
+<line x1="397" y1="186" x2="397" y2="276" stroke="#d45d35" stroke-width="4" stroke-linecap="round"/>
+<text x="530" y="322" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">x: overlap</text>
+<text x="408" y="262" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">y: apart</text>
+<text x="530" y="346" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#9aa3ab" text-anchor="middle" font-weight="bold">overlap on x only: no collision</text>
+<line x1="360" y1="20" x2="360" y2="340" stroke="#565d65" stroke-width="1" stroke-linecap="round"/>
+</svg>

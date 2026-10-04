@@ -102,6 +102,8 @@ player never sees a half-drawn frame. See
   steps they catch up, and MonoGame then runs the game in slow motion. MonoGame uses a
   fixed timestep by default (`IsFixedTimeStep = true`).
 
+![A row of rendered frames, two of them long. With a variable timestep the two long frames give two big steps. With a fixed timestep every step is the same size, and a long frame runs several of them.](../../../assets/session01/fig-timestep.svg)
+
 ## Content Pipeline
 
 Raw assets (fonts, images, sounds) aren't loaded directly. When the game builds, the
@@ -152,6 +154,9 @@ in code. See
 
 - MonoGame's 2D coordinate system has its origin in the **top-left** corner, with Y
   pointing **down**.
+
+![The screen with its origin in the top-left corner, x pointing right and y pointing down. A paddle is placed by its top-left corner, and a ball moving down has a growing y.](../../../assets/session01/fig-coordinates.svg)
+
 - All 2D drawing goes through a `SpriteBatch`, between `Begin()` and `End()`. `Draw` doesn't
   draw straight away. The sprite batch collects the calls, and `End()` sends them to the
   graphics card in as few batches as it can. A batch ends whenever the texture changes, which
@@ -199,6 +204,8 @@ fill the rest. It recalculates when `Window.ClientSizeChanged` fires. The window
 1280×720, four times the virtual size. At a whole-number scale, every pixel comes out the
 same size.
 
+![The 320 by 180 game scaled into a wide window, with bars at the sides, and into a tall window, with bars above and below.](../../../assets/session01/fig-virtual-resolution.svg)
+
 **Try it** (`Pong2`): drag the window wide, then tall. Where do the bars go? Swap
 `PointClamp` for `LinearClamp`, and look at the edges of the text. Then set the virtual size
 to 640×360. How big is the text now?
@@ -237,6 +244,8 @@ at 200 units per second moves 200 units per second, whether the game runs at 30 
 _Velocity_ (a direction and a speed, e.g. a `Vector2`) lets the ball keep moving without
 input.
 
+![One second of movement at 30 and at 120 frames per second. Scaled by delta time, both cover 200 pixels. With a fixed step per frame, 120 frames per second goes four times as far.](../../../assets/session01/fig-delta-time.svg)
+
 ## Encapsulation & the Update Method Pattern
 
 Our first version puts everything in `Game1`. As soon as we have a paddle and a ball, we
@@ -270,6 +279,8 @@ public static bool AABB(Rectangle a, Rectangle b)
 (MonoGame provides the same check as `Rectangle.Intersects()`, but it's worth writing
 yourself once.)
 
+![Two pairs of rectangles with their shadows on the x and y axes. The first pair overlaps on both axes and collides. The second overlaps on x only and misses.](../../../assets/session01/fig-aabb.svg)
+
 Detecting the hit is half of it. The ball also has to respond. Flip its horizontal velocity,
 and move it back to the paddle's edge, or it is still inside the paddle on the next frame
 and bounces again. In `Pong7`, where the ball hits the paddle sets its new angle. The middle
@@ -279,6 +290,8 @@ sends it straight back and the ends send it off steeply, so the player can aim:
 float offset = ballCentreY - paddleCentreY;
 float newVelocityY = offset / (paddle.Height / 2f) * 110;
 ```
+
+![A paddle with the ball hitting it in five places. From the middle the ball goes straight back, and the nearer the end it hits, the steeper it leaves.](../../../assets/session01/fig-bounce.svg)
 
 ## Game State
 
@@ -290,6 +303,16 @@ next), and `Pong10` a _done_ mode when a player reaches 10 points. The modes are
 `string` field and `if`-checks in `Update` and `Draw`. That is fine for four states, but every
 new state means another `if` in each method. In [Flappy Bird](../02-flappy-bird/) we replace
 it with a state machine.
+
+```mermaid
+stateDiagram-v2
+    [*] --> start
+    start --> serve : Enter
+    serve --> play : Enter
+    play --> serve : a point
+    play --> done : 10 points
+    done --> serve : Enter
+```
 
 **Try it** (`Pong10`): make a game end at 3 points. Then add a _paused_ mode that `P` toggles
 during play. Which methods did you have to change?
