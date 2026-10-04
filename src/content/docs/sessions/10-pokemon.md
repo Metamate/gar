@@ -195,7 +195,7 @@ Zombies.
 
 ## Save & Load
 
-_The species definitions from `Pokemon0`; saving is [exercise 4](#exercises)_
+_The species definitions from `Pokemon0`; saving is [exercise 3](#exercises)_
 
 **Serialization** is converting an object into a format that can be stored or sent (JSON
 text, bytes), and **deserialization** turns it back into an object. Loading the species

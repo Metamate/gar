@@ -169,7 +169,7 @@ Notes for building it:
   manifests or publish settings; publish options go on the `dotnet publish` command line.
 - **Starting a new project:** MonoGame's `dotnet new` templates (3.8.5.1) still create MGCB
   projects, so students start from our own template repo,
-  [gar-starter](https://github.com/Metamate/gar-starter) (Flappy exercise 2, the
+  [gar-starter](https://github.com/Metamate/gar-starter) (Flappy exercise 1, the
   project page): one empty `MyGame` project plus the `Content` builder, with general rules for
   images, fonts, sounds, music and JSON/XML. Keep its `Content.csproj` and
   `BuildContent.targets` identical to the course's games. Revisit when MonoGame ships its new
@@ -179,7 +179,7 @@ Notes for building it:
 
 - **06 Mario:** the `GameController` is deliberately _not_ the Command pattern; keep the
   discussion slide.
-- **Keep exercises unsolved:** Pokemon save/load (exercise 4) and the Geometry Wars pooling
+- **Keep exercises unsolved:** Pokemon save/load (exercise 3) and the Geometry Wars pooling
   measurement (exercise 5) stay out of the repos, so the finished games don't give away the
   answers. Shaders in Geometry Wars are a showcase only.
 - **Tilemap:** Snake introduces a tilemap of plain tile IDs; Mario upgrades it to

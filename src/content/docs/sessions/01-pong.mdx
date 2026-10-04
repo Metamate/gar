@@ -353,8 +353,8 @@ Build Pong step by step:
    white pixel. Switch to the retro font (`"font"`, also in `Content/Assets`) and the
    background colour `(40, 45, 52)`.
 4. **Input and delta time:** W/S and Up/Down move the paddles, at the same speed whatever
-   the frame rate. Check it: set `TargetElapsedTime = TimeSpan.FromSeconds(1 / 30.0)` in the
-   constructor. Does a paddle still cross the screen in the same time? And without the
+   the frame rate. To check it, set `TargetElapsedTime = TimeSpan.FromSeconds(1 / 30.0)` in
+   the constructor. Does a paddle still cross the screen in the same time? And without the
    multiplication by delta time?
 5. **A moving ball:** launch the ball in a random direction on Enter. A `string` field
    remembers the game's mode (`"start"` or `"play"`), and the start mode shows "Press
