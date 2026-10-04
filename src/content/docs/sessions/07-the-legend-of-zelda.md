@@ -345,8 +345,8 @@ classDiagram
 ```
 
 **Inheritance works well while there is one axis of variation.** It gets harder with an
-enemy that shoots _and_ flies _and_ explodes, or a pot that the player can carry _and_
-throw. Deep hierarchies (`Entity → Movable → Enemy → ShootingEnemy → HomingShootingEnemy…`) lead
+enemy that shoots _and_ flies _and_ explodes, or a crate that can be pushed _and_
+broken. Deep hierarchies (`Entity → Movable → Enemy → ShootingEnemy → HomingShootingEnemy…`) lead
 to one of two problems:
 
 - **Duplicated code:** two branches of the tree need the same behaviour, so it is copied.

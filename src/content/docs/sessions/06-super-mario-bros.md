@@ -322,8 +322,8 @@ Start from `Mario8`.
    platform over it, a staircase, a slime on a ledge), each a small grid of tiles in a data
    file in `Content/Assets`. The builder copies `.xml` files as they are; for another
    format, such as `.txt`, add an `IncludeCopy` rule in `Builder.cs`. Write a level maker
-   that strings random chunks together, and make each level a few chunks longer than the
-   last when the player reaches its right edge.
+   that strings random chunks together. Which chunks may follow which, so that every level
+   can be finished?
 2. **Moving platforms:** a platform that glides back and forth and carries the player
    standing on it. Where does "carried along" belong: in the platform, in the player, or
    in the collision code?
