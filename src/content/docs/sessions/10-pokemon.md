@@ -299,7 +299,7 @@ Start from `Pokemon4`.
    follow one turn from choosing Fight to the result on screen. Which states are on the
    stack at each point? Where is the damage calculated, and what happens when the battle
    ends?
-2. **A new species:** add a glass cannon with high attack and low defence to
+2. **A new species:** add a monster that hits hard but has little defence to
    `pokemon_definitions.json`. Its battle sprites are ready in `images/pokemon/`
    (`shardling-front` and `shardling-back`). Run the game and fight it. Did you need any
    code?
@@ -319,6 +319,10 @@ Start from `Pokemon4`.
 7. **Catching (stretch):** add a Catch option to the battle menu that can add a weakened wild
    monster to your party (more likely the lower its HP), and a field menu to choose who goes
    first. Which states do you add, and which existing ones change?
+8. **Types (stretch):** add a `type` field (Fire, Water or Grass) to the JSON and to
+   `PokemonSpecies`, and make an attack take the defender's type into account (super
+   effective, or not very effective). The field is data. Where does the table of which type
+   beats which belong: in the JSON too, or in code?
 
 ## Apply It to Your Project
 
