@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img"><title>What every seeker has in common is stored once; each seeker keeps only what is its own</title><rect width="720" height="320" rx="10" fill="#22262b"/>
+<rect x="40" y="70" width="220" height="170" fill="#14171a" rx="8" stroke="#d45d35" stroke-width="1.5"/>
+<text x="150" y="56" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="middle" font-weight="bold">shared, and never changed</text>
+<text x="56" y="100" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="start" font-weight="normal">SeekerEnemyDefinition</text>
+<text x="56" y="126" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">points  2</text>
+<text x="56" y="144.75" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">acceleration  1</text>
+<text x="56" y="163.5" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">spawn delay  60</text>
+<rect x="56" y="190" width="34" height="34" fill="#2e3338" rx="4" stroke="#59d6e8" stroke-width="1.5"/>
+<path d="M63 207 L73 197 L83 207 L73 217 Z" stroke="#59d6e8" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="100" y="212" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">one texture</text>
+<text x="150" y="264" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">intrinsic state</text>
+<line x1="264" y1="150" x2="436" y2="99" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<rect x="440" y="84" width="84" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="482" y="104" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">(880, 252)</text>
+<line x1="264" y1="150" x2="556" y2="111" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<rect x="560" y="96" width="84" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="602" y="116" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">(220, 288)</text>
+<line x1="264" y1="150" x2="406" y2="165" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<rect x="410" y="150" width="84" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="452" y="170" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">(820, 450)</text>
+<line x1="264" y1="150" x2="526" y2="175" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<rect x="530" y="160" width="84" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="572" y="180" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">(160, 480)</text>
+<line x1="264" y1="150" x2="592" y2="221" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<rect x="596" y="206" width="84" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="638" y="226" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">(292, 118)</text>
+<line x1="264" y1="150" x2="446" y2="231" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<rect x="450" y="216" width="84" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="492" y="236" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">(0, 148)</text>
+<text x="545" y="56" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="middle" font-weight="bold">per seeker: position, velocity</text>
+<text x="545" y="264" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">extrinsic state</text>
+<text x="360" y="300" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">500 seekers hold 500 references to one definition and one texture.</text>
+</svg>

@@ -4,6 +4,7 @@ Every figure is drawn on the same dark panel with the same few colours, so the f
 like one set on the site (in both themes) and on the decks' dark slides. A figure is a Python
 function that returns a Fig; build.py writes it as an SVG for the site and a PNG for the decks.
 """
+import os
 from xml.sax.saxutils import escape
 
 BG = '#22262b'        # the panel behind every figure (the decks' slide colour)
@@ -15,6 +16,8 @@ FAINT = '#565d65'
 ACCENT = '#d45d35'    # the site's and the decks' orange: what the figure is about
 TEAL = '#2aa6a6'      # a second thing to compare with
 GREEN = '#7fd46b'
+# Where the games' art is read from when a figure shows it: gar-games, cloned next to this repo.
+GAMES = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'gar-games')) + '/'
 SANS = "'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif"
 MONO = "Consolas, 'Cascadia Mono', Menlo, monospace"
 
@@ -98,6 +101,26 @@ class Fig:
         if sub:
             self.text(x + w / 2, cy + size * 1.25, sub, size - 3, MUTED, 'middle')
         return self
+
+    def image(self, path, x, y, w, h, crop=None, opacity=None):
+        """Embeds a picture (or a crop of it: left, top, right, bottom), drawn with hard pixels."""
+        import base64, io
+        from PIL import Image
+        im = Image.open(path).convert('RGBA')
+        if crop:
+            im = im.crop(crop)
+        buf = io.BytesIO()
+        im.save(buf, 'PNG')
+        data = base64.b64encode(buf.getvalue()).decode()
+        a = (f'<image x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" preserveAspectRatio="none" '
+             f'style="image-rendering:pixelated" href="data:image/png;base64,{data}"')
+        if opacity is not None: a += f' opacity="{opacity:g}"'
+        return self.add(a + '/>')
+
+    def chip(self, x, y, w, s, fill=PANEL, color=TEXT, size=13, h=26, stroke=None, mono=False):
+        """A small rounded label."""
+        self.rect(x, y, w, h, fill, stroke, 1.5, h / 2)
+        return self.text(x + w / 2, y + h / 2 + size * 0.35, s, size, color, 'middle', mono=mono)
 
     # ---- output
     def svg(self):

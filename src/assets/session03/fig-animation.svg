@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="720" height="270" role="img"><title>An animation is a list of regions and a delay; a frame can repeat</title><defs><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker></defs><rect width="720" height="270" rx="10" fill="#22262b"/>
+<text x="60" y="34" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="15" fill="#dee2e6" text-anchor="start" font-weight="normal">head-animation, delay 250 ms</text>
+<text x="360" y="34" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">eyes open for five frames, shut for one: a blink</text>
+<rect x="60" y="96" width="70" height="70" fill="#14171a" rx="4" stroke="#565d65" stroke-width="1.5"/>
+<image x="67" y="103" width="56" height="56" preserveAspectRatio="none" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAIklEQVR4nGOseBb1nwEHYEIX6JBaxohTEtkkDEm8xlLHTgCU7QrF7dF1bgAAAABJRU5ErkJggg=="/>
+<text x="95" y="188" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">head-1</text>
+<line x1="134" y1="131" x2="156" y2="131" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="160" y="96" width="70" height="70" fill="#14171a" rx="4" stroke="#565d65" stroke-width="1.5"/>
+<image x="167" y="103" width="56" height="56" preserveAspectRatio="none" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAIklEQVR4nGOseBb1nwEHYEIX6JBaxohTEtkkDEm8xlLHTgCU7QrF7dF1bgAAAABJRU5ErkJggg=="/>
+<text x="195" y="188" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">head-1</text>
+<line x1="234" y1="131" x2="256" y2="131" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="260" y="96" width="70" height="70" fill="#14171a" rx="4" stroke="#565d65" stroke-width="1.5"/>
+<image x="267" y="103" width="56" height="56" preserveAspectRatio="none" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAIklEQVR4nGOseBb1nwEHYEIX6JBaxohTEtkkDEm8xlLHTgCU7QrF7dF1bgAAAABJRU5ErkJggg=="/>
+<text x="295" y="188" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">head-1</text>
+<line x1="334" y1="131" x2="356" y2="131" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="360" y="96" width="70" height="70" fill="#14171a" rx="4" stroke="#565d65" stroke-width="1.5"/>
+<image x="367" y="103" width="56" height="56" preserveAspectRatio="none" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAIklEQVR4nGOseBb1nwEHYEIX6JBaxohTEtkkDEm8xlLHTgCU7QrF7dF1bgAAAABJRU5ErkJggg=="/>
+<text x="395" y="188" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">head-1</text>
+<line x1="434" y1="131" x2="456" y2="131" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="460" y="96" width="70" height="70" fill="#14171a" rx="4" stroke="#565d65" stroke-width="1.5"/>
+<image x="467" y="103" width="56" height="56" preserveAspectRatio="none" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAIklEQVR4nGOseBb1nwEHYEIX6JBaxohTEtkkDEm8xlLHTgCU7QrF7dF1bgAAAABJRU5ErkJggg=="/>
+<text x="495" y="188" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">head-1</text>
+<line x1="534" y1="131" x2="556" y2="131" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="560" y="96" width="70" height="70" fill="#14171a" rx="4" stroke="#d45d35" stroke-width="2"/>
+<image x="567" y="103" width="56" height="56" preserveAspectRatio="none" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAFUlEQVR4nGOseBb1nwEHYMIlMSglASZFAsUAwI1QAAAAAElFTkSuQmCC"/>
+<text x="595" y="188" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#d45d35" text-anchor="middle" font-weight="normal">head-2</text>
+<path d="M595 90 C 560 50, 130 50, 95 90" stroke="#9aa3ab" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="282.92" y="53" width="124.16" height="19.5" fill="#22262b"/>
+<text x="345" y="66" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">and around again</text>
+<line x1="60" y1="226" x2="630" y2="226" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="60" y1="220" x2="60" y2="232" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<text x="60" y="250" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">0 ms</text>
+<line x1="155" y1="220" x2="155" y2="232" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<text x="155" y="250" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">250 ms</text>
+<line x1="250" y1="220" x2="250" y2="232" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<text x="250" y="250" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">500 ms</text>
+<line x1="345" y1="220" x2="345" y2="232" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<text x="345" y="250" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">750 ms</text>
+<line x1="440" y1="220" x2="440" y2="232" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<text x="440" y="250" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">1000 ms</text>
+<line x1="535" y1="220" x2="535" y2="232" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<text x="535" y="250" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">1250 ms</text>
+<line x1="630" y1="220" x2="630" y2="232" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<text x="630" y="250" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">1500 ms</text>
+</svg>

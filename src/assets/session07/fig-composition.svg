@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img"><title>With inheritance every combination needs a class; with composition an enemy has the parts it needs</title><rect width="720" height="360" rx="10" fill="#22262b"/>
+<text x="180" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">Inheritance: what it is</text>
+<line x1="180" y1="84" x2="90" y2="116" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="180" y1="84" x2="270" y2="116" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="90" y1="144" x2="86" y2="182" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="90" y1="144" x2="86" y2="226" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="270" y1="144" x2="270" y2="182" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="270" y1="210" x2="270" y2="248" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="153" y="56" width="54" height="28" fill="#2e3338" rx="5" stroke="#565d65" stroke-width="1.5"/>
+<text x="180" y="75" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Enemy</text>
+<rect x="59.4" y="116" width="61.2" height="28" fill="#2e3338" rx="5" stroke="#565d65" stroke-width="1.5"/>
+<text x="90" y="135" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Walker</text>
+<rect x="243" y="116" width="54" height="28" fill="#2e3338" rx="5" stroke="#565d65" stroke-width="1.5"/>
+<text x="270" y="135" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Flyer</text>
+<rect x="26.6" y="182" width="118.8" height="28" fill="#2e3338" rx="5" stroke="#565d65" stroke-width="1.5"/>
+<text x="86" y="201" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">ShootingWalker</text>
+<rect x="23" y="226" width="126" height="28" fill="#2e3338" rx="5" stroke="#565d65" stroke-width="1.5"/>
+<text x="86" y="245" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">ExplodingWalker</text>
+<rect x="214.2" y="182" width="111.6" height="28" fill="#2e3338" rx="5" stroke="#565d65" stroke-width="1.5"/>
+<text x="270" y="201" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">ShootingFlyer</text>
+<rect x="178.2" y="248" width="183.6" height="28" fill="#2e3338" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="270" y="267" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#d45d35" text-anchor="middle" font-weight="normal">ShootingExplodingFlyer?</text>
+<text x="180" y="310" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">shooting is written twice, and</text>
+<text x="180" y="330" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">every new mix is a new class</text>
+<line x1="360" y1="24" x2="360" y2="340" stroke="#565d65" stroke-width="1" stroke-linecap="round"/>
+<text x="540" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">Composition: what it has</text>
+<rect x="390" y="78" width="300" height="56" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="404" y="111" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="start" font-weight="bold">a bat</text>
+<rect x="516" y="93" width="52" height="26" fill="#2e3338" rx="13" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="542" y="110.375" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">fly</text>
+<rect x="574" y="93" width="52" height="26" fill="#2e3338" rx="13" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="600" y="110.375" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">shoot</text>
+<rect x="390" y="152" width="300" height="56" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="404" y="185" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="start" font-weight="bold">a bomb beetle</text>
+<rect x="516" y="167" width="52" height="26" fill="#2e3338" rx="13" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="542" y="184.375" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">walk</text>
+<rect x="574" y="167" width="52" height="26" fill="#2e3338" rx="13" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="600" y="184.375" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">explode</text>
+<rect x="390" y="226" width="300" height="56" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="404" y="259" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="start" font-weight="bold">a boss</text>
+<rect x="516" y="241" width="52" height="26" fill="#2e3338" rx="13" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="542" y="258.375" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">fly</text>
+<rect x="574" y="241" width="52" height="26" fill="#2e3338" rx="13" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="600" y="258.375" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">shoot</text>
+<rect x="632" y="241" width="52" height="26" fill="#2e3338" rx="13" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="658" y="258.375" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">explode</text>
+<text x="540" y="310" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">four parts, written once each,</text>
+<text x="540" y="330" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">in any combination</text>
+</svg>

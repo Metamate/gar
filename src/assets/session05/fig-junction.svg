@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img"><title>At a tile centre a ghost takes the open direction whose next tile is closest to its target</title><rect width="720" height="360" rx="10" fill="#22262b"/>
+<rect x="31" y="41" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="71" y="41" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="111" y="41" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="151" y="41" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="191" y="41" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="231" y="41" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="271" y="41" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="311" y="41" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="351" y="41" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="31" y="81" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<circle cx="90" cy="100" r="1.6" fill="#565d65"/>
+<circle cx="130" cy="100" r="1.6" fill="#565d65"/>
+<circle cx="170" cy="100" r="1.6" fill="#565d65"/>
+<circle cx="210" cy="100" r="1.6" fill="#565d65"/>
+<circle cx="250" cy="100" r="1.6" fill="#565d65"/>
+<circle cx="290" cy="100" r="1.6" fill="#565d65"/>
+<circle cx="330" cy="100" r="1.6" fill="#565d65"/>
+<rect x="351" y="81" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="31" y="121" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<circle cx="90" cy="140" r="1.6" fill="#565d65"/>
+<rect x="111" y="121" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="151" y="121" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<circle cx="210" cy="140" r="1.6" fill="#565d65"/>
+<rect x="231" y="121" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="271" y="121" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<circle cx="330" cy="140" r="1.6" fill="#565d65"/>
+<rect x="351" y="121" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="31" y="161" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<circle cx="90" cy="180" r="1.6" fill="#565d65"/>
+<circle cx="130" cy="180" r="1.6" fill="#565d65"/>
+<circle cx="170" cy="180" r="1.6" fill="#565d65"/>
+<circle cx="210" cy="180" r="1.6" fill="#565d65"/>
+<circle cx="250" cy="180" r="1.6" fill="#565d65"/>
+<circle cx="290" cy="180" r="1.6" fill="#565d65"/>
+<circle cx="330" cy="180" r="1.6" fill="#565d65"/>
+<rect x="351" y="161" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="31" y="201" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<circle cx="90" cy="220" r="1.6" fill="#565d65"/>
+<rect x="111" y="201" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="151" y="201" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<circle cx="210" cy="220" r="1.6" fill="#565d65"/>
+<rect x="231" y="201" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="271" y="201" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<circle cx="330" cy="220" r="1.6" fill="#565d65"/>
+<rect x="351" y="201" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="31" y="241" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<circle cx="90" cy="260" r="1.6" fill="#565d65"/>
+<circle cx="130" cy="260" r="1.6" fill="#565d65"/>
+<circle cx="170" cy="260" r="1.6" fill="#565d65"/>
+<circle cx="210" cy="260" r="1.6" fill="#565d65"/>
+<circle cx="250" cy="260" r="1.6" fill="#565d65"/>
+<circle cx="290" cy="260" r="1.6" fill="#565d65"/>
+<circle cx="330" cy="260" r="1.6" fill="#565d65"/>
+<rect x="351" y="241" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="31" y="281" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="71" y="281" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="111" y="281" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="151" y="281" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="191" y="281" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="231" y="281" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="271" y="281" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="311" y="281" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="351" y="281" width="38" height="38" fill="none" rx="3" stroke="#2f6f8f" stroke-width="1.5"/>
+<rect x="314" y="84" width="32" height="32" fill="none" rx="4" stroke="#d45d35" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="330" y="76" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#d45d35" text-anchor="middle" font-weight="normal">target</text>
+<line x1="210" y1="140" x2="330" y2="100" stroke="#565d65" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+<circle cx="210" cy="140" r="5" fill="#9aa3ab"/>
+<line x1="250" y1="180" x2="330" y2="100" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<circle cx="250" cy="180" r="5" fill="#d45d35"/>
+<line x1="210" y1="220" x2="330" y2="100" stroke="#565d65" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+<circle cx="210" cy="220" r="5" fill="#9aa3ab"/>
+<line x1="162" y1="172" x2="178" y2="188" stroke="#9aa3ab" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="162" y1="188" x2="178" y2="172" stroke="#9aa3ab" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M197 193 L197 180 A13 13 0 0 1 223 180 L223 193 L216.5 187.15 L210 193 L203.5 187.15 Z" stroke="#e5484d" stroke-width="0" fill="#e5484d" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="205.45" cy="178.7" r="2.86" fill="#ffffff"/>
+<circle cx="214.55" cy="178.7" r="2.86" fill="#ffffff"/>
+<text x="90" y="206" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="11.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">no turning back</text>
+<text x="430" y="70" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="start" font-weight="bold">The ghost is at a tile centre.</text>
+<text x="430" y="104" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">It never turns back, so three</text>
+<text x="430" y="122.2" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">directions are open.</text>
+<text x="430" y="164" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">For each, it measures the straight</text>
+<text x="430" y="182.2" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">line from the next tile to the target.</text>
+<text x="430" y="228" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#d45d35" text-anchor="start" font-weight="bold">right is closest, so it goes right</text>
+<text x="430" y="266" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">The state decides the target.</text>
+<text x="430" y="284.2" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">This rule only gets the ghost there.</text>
+</svg>

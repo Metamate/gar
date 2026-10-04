@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img"><title>The physics world works in metres with y up; the game works in pixels with y down</title><defs><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker><marker id="arrow-d45d35" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d45d35"/></marker><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker></defs><rect width="720" height="360" rx="10" fill="#22262b"/>
+<text x="160" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#2aa6a6" text-anchor="middle" font-weight="bold">Box2D</text>
+<text x="160" y="58" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the physics world</text>
+<rect x="50" y="80" width="220" height="170" fill="#14171a" rx="4"/>
+<line x1="50" y1="80" x2="292" y2="80" stroke="#2aa6a6" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<line x1="50" y1="250" x2="50" y2="54" stroke="#2aa6a6" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<text x="298" y="85" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#2aa6a6" text-anchor="start" font-weight="bold" font-style="italic">x</text>
+<text x="36" y="64" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#2aa6a6" text-anchor="middle" font-weight="bold" font-style="italic">y</text>
+<circle cx="50" cy="80" r="4" fill="#2aa6a6"/>
+<rect x="150" y="176" width="54" height="54" fill="#c98f4e" stroke="#7a5328" stroke-width="1.5"/>
+<text x="177" y="166" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">(2.5, −2.5)</text>
+<text x="177" y="208" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#3a2a14" text-anchor="middle" font-weight="normal">1 m</text>
+<text x="160" y="300" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">tuned for objects of 0.1 to 10 metres</text>
+<text x="520" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="middle" font-weight="bold">The game</text>
+<text x="520" y="58" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">what is drawn</text>
+<rect x="410" y="80" width="220" height="170" fill="#14171a" rx="4"/>
+<line x1="410" y1="80" x2="652" y2="80" stroke="#d45d35" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<line x1="410" y1="80" x2="410" y2="272" stroke="#d45d35" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<text x="658" y="85" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#d45d35" text-anchor="start" font-weight="bold" font-style="italic">x</text>
+<text x="396" y="270" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#d45d35" text-anchor="middle" font-weight="bold" font-style="italic">y</text>
+<circle cx="410" cy="80" r="4" fill="#d45d35"/>
+<rect x="510" y="176" width="54" height="54" fill="#c98f4e" stroke="#7a5328" stroke-width="1.5"/>
+<text x="537" y="166" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">(125, 125)</text>
+<text x="537" y="208" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#3a2a14" text-anchor="middle" font-weight="normal">50 px</text>
+<text x="520" y="300" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">in pixels, this block would be 50 metres wide</text>
+<line x1="326" y1="150" x2="386" y2="150" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)" marker-start="url(#arrow-9aa3ab)"/>
+<text x="356" y="134" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">× 50</text>
+<text x="356" y="176" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">flip y</text>
+<text x="360" y="336" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Units.cs is the only place that converts between the two.</text>
+</svg>

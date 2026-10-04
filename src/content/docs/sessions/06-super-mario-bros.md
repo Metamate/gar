@@ -95,6 +95,8 @@ of the same size: `Tilemap` for the ground and `Toppers`, drawn on top with its 
 tileset. Layering tilemaps like this is how most tile editors (e.g. Tiled) work, and
 [Pokemon](../10-pokemon/) uses it for its tall grass.
 
+![A level is two tilemaps and a list of entities, drawn on top of each other.](../../../assets/session06/fig-layers.svg)
+
 Each level also gets a random background.
 
 **Try it** (`Mario1`): make pits twice as common in `PitLevelMaker`, then press 4 to
@@ -111,19 +113,17 @@ _Step `Mario2`_
 - **Ground check:** probe one pixel below the hitbox for solid tiles.
 - **Coyote time:** allow a jump for a moment after walking off a ledge. It feels fairer.
 
+![A hitbox a little narrower than a tile lets the player fall into a one-tile pit.](../../../assets/session06/fig-hitbox-inset.svg)
+
+![Coyote time allows a jump for a moment after the player has left the ground.](../../../assets/session06/fig-coyote.svg)
+
 ### Tile collision
 
 The player moves first and is corrected afterwards. After a move, the hitbox may overlap a
 solid tile. Then the player is **snapped** back to that tile's edge, and the velocity on that
 axis is set to zero:
 
-```text
-tiles are 18 wide, and a wall starts at x = 72
-
-    [ hitbox ]        ######      before: the hitbox spans 50 to 66
-          [ hitbox ]  ######      moved 10 right: 60 to 76, four pixels into the wall
-        [ hitbox ]######          snapped: 56 to 72, touching the wall
-```
+![The player moves first, then is snapped back to the edge of the tile it overlaps.](../../../assets/session06/fig-tile-snap.svg)
 
 Only the tiles at the hitbox's leading edge are checked, which is two lookups in the tilemap.
 The two axes are done one after the other:
@@ -249,6 +249,8 @@ There are now two coordinate spaces. The player, the tiles and the entities keep
 positions in the **world**, and nothing in the game's logic knows where the camera is. Only
 drawing goes through the camera, which turns world positions into **screen** positions. The
 score is drawn in a second `Begin`, without the camera, so it stays where it is.
+
+![The world is wider than the screen; the camera decides which part is drawn.](../../../assets/session06/fig-camera.svg)
 
 Here we only follow the x-axis, and clamp the camera to the level's edges. The background
 scrolls at half the camera's speed, for a parallax effect.

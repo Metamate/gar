@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img"><title>Two stacks: undo moves a command to the undone stack, and a new command empties it</title><defs><marker id="arrow-565d65" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#565d65"/></marker></defs><rect width="720" height="360" rx="10" fill="#22262b"/>
+<text x="100" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="bold">three moves</text>
+<rect x="30" y="86" width="62" height="200" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="61" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">done</text>
+<rect x="37" y="244" width="48" height="36" fill="#2e3338" rx="5"/>
+<text x="61" y="268" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A</text>
+<rect x="37" y="200" width="48" height="36" fill="#2e3338" rx="5"/>
+<text x="61" y="224" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">B</text>
+<rect x="37" y="156" width="48" height="36" fill="#2e3338" rx="5" stroke="#2aa6a6" stroke-width="2"/>
+<text x="61" y="180" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">C</text>
+<rect x="108" y="86" width="62" height="200" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="139" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">undone</text>
+<line x1="180" y1="186" x2="196" y2="186" stroke="#565d65" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-565d65)"/>
+<text x="274" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="bold">undo (Z)</text>
+<text x="274" y="58" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">C.Undo()</text>
+<rect x="204" y="86" width="62" height="200" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="235" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">done</text>
+<rect x="211" y="244" width="48" height="36" fill="#2e3338" rx="5"/>
+<text x="235" y="268" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A</text>
+<rect x="211" y="200" width="48" height="36" fill="#2e3338" rx="5" stroke="#2aa6a6" stroke-width="2"/>
+<text x="235" y="224" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">B</text>
+<rect x="282" y="86" width="62" height="200" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="313" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">undone</text>
+<rect x="289" y="244" width="48" height="36" fill="#2e3338" rx="5" stroke="#d45d35" stroke-width="2"/>
+<text x="313" y="268" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">C</text>
+<line x1="354" y1="186" x2="370" y2="186" stroke="#565d65" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-565d65)"/>
+<text x="448" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="bold">redo (Y)</text>
+<text x="448" y="58" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">C.Execute()</text>
+<rect x="378" y="86" width="62" height="200" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="409" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">done</text>
+<rect x="385" y="244" width="48" height="36" fill="#2e3338" rx="5"/>
+<text x="409" y="268" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A</text>
+<rect x="385" y="200" width="48" height="36" fill="#2e3338" rx="5"/>
+<text x="409" y="224" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">B</text>
+<rect x="385" y="156" width="48" height="36" fill="#2e3338" rx="5" stroke="#2aa6a6" stroke-width="2"/>
+<text x="409" y="180" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">C</text>
+<rect x="456" y="86" width="62" height="200" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="487" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">undone</text>
+<line x1="528" y1="186" x2="544" y2="186" stroke="#565d65" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-565d65)"/>
+<text x="622" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="bold">undo, then a new move D</text>
+<text x="622" y="58" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#d45d35" text-anchor="middle" font-weight="normal">the undone C is dropped</text>
+<rect x="552" y="86" width="62" height="200" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="583" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">done</text>
+<rect x="559" y="244" width="48" height="36" fill="#2e3338" rx="5"/>
+<text x="583" y="268" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A</text>
+<rect x="559" y="200" width="48" height="36" fill="#2e3338" rx="5"/>
+<text x="583" y="224" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">B</text>
+<rect x="559" y="156" width="48" height="36" fill="#2e3338" rx="5" stroke="#2aa6a6" stroke-width="2"/>
+<text x="583" y="180" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">D</text>
+<rect x="630" y="86" width="62" height="200" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="661" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">undone</text>
+<text x="360" y="342" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Each letter is a MoveCommand that remembers what it did, so it can reverse it.</text>
+</svg>

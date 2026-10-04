@@ -61,6 +61,8 @@ circles, polygons), with a density, friction and bounciness. There are three typ
 
 You **step** the world forward in time, and read where the bodies ended up.
 
+![Static bodies never move, kinematic bodies move as they are told, dynamic bodies are moved by physics.](../../../assets/session08/fig-body-types.svg)
+
 `Birds0` uses Box2D directly, in `Game1`:
 
 ```csharp title="Game1.cs (Birds0)"
@@ -98,6 +100,8 @@ It works, but `Game1` now has to know a lot about Box2D:
 Box2D is made for scale: 1 unit should be about 1 metre, and objects should be roughly 0.1
 to 10 units in size. In pixels, a 50-pixel block would be a 50-metre block, and it would
 fall as slowly as a building, which is why the conversion is needed at all.
+
+![The physics world works in metres with y up; the game works in pixels with y down.](../../../assets/session08/fig-two-worlds.svg)
 
 **Try it** (`Birds0`): change `PixelsPerMeter` from 50 to 10. How many lines use it, and
 how do the blocks fall now?
@@ -351,6 +355,8 @@ The loop runs backwards, so removing an item doesn't skip the next one. This pat
 now, remove at a safe point) comes back whenever objects are destroyed while the game is
 busy with them.
 
+![Hits only mark entities as destroyed; they are removed after the physics step.](../../../assets/session08/fig-destroy-safely.svg)
+
 ## Prototype
 
 _Step `Birds3`_
@@ -429,6 +435,8 @@ A few details of how this works:
   pig with a helmet you configured in code. The copy starts out the same as the original.
 - **The bird is a prefab too.** When you shoot, the game spawns `"bird"`. A different kind
   of bird would be another prototype.
+
+![A clone shares what the prototype refers to, so it shares the sprite but must get a body of its own.](../../../assets/session08/fig-shallow-copy.svg)
 
 Prototype and Type Object (in [Plants vs. Zombies](../09-plants-vs-zombies/)) solve a
 similar problem: how to have many kinds of things without a class for each. Prototype copies a

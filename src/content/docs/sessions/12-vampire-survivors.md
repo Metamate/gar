@@ -58,6 +58,8 @@ public void Separate()
 The weapons ask the swarm questions too. Which enemy is nearest? Which enemies are inside
 the aura? Each question looks at every enemy.
 
+![Checking every pair: twice the enemies is four times the checks.](../../../assets/session12/fig-pairs.svg)
+
 It plays fine at first. Press Space a few times to add a thousand enemies each time, and
 the game slows to a crawl. Before changing anything, we find out **why**, because guessing is how
 you end up optimizing the wrong thing.
@@ -123,6 +125,8 @@ a point only looks near that point.
 
 The simplest version is a **uniform grid**. Cut the world into square cells, and keep a
 list of the enemies in each cell. It's rebuilt after the enemies move, every step.
+
+![With a grid, an enemy is only checked against the enemies in its own cell and the cells around it.](../../../assets/session12/fig-grid.svg)
 
 ```csharp title="SpatialGrid.cs"
 public void Add(int item, Vector2 position)
@@ -225,6 +229,8 @@ touch one or two fields of every enemy. `Move` reads positions and speeds, and `
 reads positions and radii. So we put each field in its own array, making a **struct of
 arrays** instead of an array of objects.
 
+![A list of objects is scattered over the heap; a struct of arrays keeps each field packed together.](../../../assets/session12/fig-memory-layout.svg)
+
 ```csharp title="Enemies.cs"
 // There's no Enemy object: an enemy is an index, and each of its fields is in its own
 // array, packed from 0 to Count - 1.
@@ -282,6 +288,8 @@ Now the enemies in a cell are next to each other in memory, positions included. 
 doesn't query at all. It walks the cells, and checks each enemy against the rest of its
 cell and the neighbouring cells, reading positions from one array, in order. Nothing is
 allocated, and there's no dictionary.
+
+![The flat grid is built with a counting sort: count each cell, find where it starts, then copy.](../../../assets/session12/fig-counting-sort.svg)
 
 | Enemies | Every pair | Grid | Arrays + flat grid |
 | --- | --- | --- | --- |

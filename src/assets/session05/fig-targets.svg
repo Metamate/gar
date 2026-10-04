@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" width="720" height="400" role="img"><title>Each ghost aims at a different tile while chasing</title><defs><marker id="arrow-e5484d" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#e5484d"/></marker><marker id="arrow-f4a6c8" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#f4a6c8"/></marker><marker id="arrow-4cc9d8" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4cc9d8"/></marker><marker id="arrow-f0a04b" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#f0a04b"/></marker></defs><rect width="720" height="400" rx="10" fill="#22262b"/>
+<text x="30" y="38" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#e5484d" text-anchor="start" font-weight="bold">Blinky</text>
+<text x="92" y="38" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">ChasePacMan</text>
+<rect x="30" y="64" width="312" height="110" fill="#14171a" rx="4"/>
+<circle cx="43" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="43" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="43" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="43" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="69" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="69" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="69" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="69" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="95" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="95" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="95" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="95" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="121" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="121" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="121" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="121" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="147" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="147" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="147" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="147" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="173" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="173" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="173" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="173" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="199" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="199" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="199" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="199" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="225" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="225" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="225" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="225" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="251" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="251" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="251" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="251" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="277" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="277" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="277" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="277" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="303" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="303" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="303" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="303" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="329" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="329" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="329" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="329" cy="158" r="1.4" fill="#565d65"/>
+<g transform="rotate(0 199 132)"><path d="M199 132 L207.2 126.3 A10 10 0 1 0 207.2 137.7 Z" fill="#f2d24b"/></g>
+<path d="M59 142 L59 132 A10 10 0 0 1 79 132 L79 142 L74 137.5 L69 142 L64 137.5 Z" stroke="#e5484d" stroke-width="0" fill="#e5484d" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="65.5" cy="131" r="2.2" fill="#ffffff"/>
+<circle cx="72.5" cy="131" r="2.2" fill="#ffffff"/>
+<rect x="188" y="121" width="22" height="22" fill="none" rx="3" stroke="#e5484d" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="83" y1="132" x2="183" y2="132" stroke="#e5484d" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-e5484d)"/>
+<text x="30" y="193" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">Pac-Man's own tile</text>
+<text x="378" y="38" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#f4a6c8" text-anchor="start" font-weight="bold">Pinky</text>
+<text x="440" y="38" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">AmbushAhead</text>
+<rect x="378" y="64" width="312" height="110" fill="#14171a" rx="4"/>
+<circle cx="391" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="391" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="391" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="391" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="417" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="417" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="417" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="417" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="443" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="443" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="443" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="443" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="469" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="469" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="469" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="469" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="495" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="495" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="495" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="495" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="521" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="521" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="521" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="521" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="547" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="547" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="547" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="547" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="573" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="573" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="573" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="573" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="599" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="599" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="599" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="599" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="625" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="625" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="625" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="625" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="651" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="651" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="651" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="651" cy="158" r="1.4" fill="#565d65"/>
+<circle cx="677" cy="80" r="1.4" fill="#565d65"/>
+<circle cx="677" cy="106" r="1.4" fill="#565d65"/>
+<circle cx="677" cy="132" r="1.4" fill="#565d65"/>
+<circle cx="677" cy="158" r="1.4" fill="#565d65"/>
+<g transform="rotate(0 495 132)"><path d="M495 132 L503.2 126.3 A10 10 0 1 0 503.2 137.7 Z" fill="#f2d24b"/></g>
+<path d="M407 90 L407 80 A10 10 0 0 1 427 80 L427 90 L422 85.5 L417 90 L412 85.5 Z" stroke="#f4a6c8" stroke-width="0" fill="#f4a6c8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="413.5" cy="79" r="2.2" fill="#ffffff"/>
+<circle cx="420.5" cy="79" r="2.2" fill="#ffffff"/>
+<rect x="588" y="121" width="22" height="22" fill="none" rx="3" stroke="#f4a6c8" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="509" y1="132" x2="585" y2="132" stroke="#f4a6c8" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-f4a6c8)" stroke-dasharray="4 3"/>
+<text x="378" y="193" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">four tiles ahead of him, to cut him off</text>
+<text x="30" y="230" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#4cc9d8" text-anchor="start" font-weight="bold">Inky</text>
+<text x="92" y="230" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">FlankWithBlinky</text>
+<rect x="30" y="256" width="312" height="110" fill="#14171a" rx="4"/>
+<circle cx="43" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="43" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="43" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="43" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="69" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="69" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="69" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="69" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="95" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="95" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="95" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="95" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="121" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="121" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="121" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="121" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="147" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="147" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="147" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="147" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="173" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="173" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="173" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="173" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="199" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="199" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="199" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="199" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="225" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="225" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="225" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="225" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="251" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="251" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="251" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="251" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="277" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="277" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="277" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="277" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="303" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="303" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="303" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="303" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="329" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="329" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="329" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="329" cy="350" r="1.4" fill="#565d65"/>
+<g transform="rotate(0 147 324)"><path d="M147 324 L155.2 318.3 A10 10 0 1 0 155.2 329.7 Z" fill="#f2d24b"/></g>
+<path d="M87 358 L87 350 A8 8 0 0 1 103 350 L103 358 L99 354.4 L95 358 L91 354.4 Z" stroke="#e5484d" stroke-width="0" fill="#e5484d" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="92.2" cy="349.2" r="1.76" fill="#ffffff"/>
+<circle cx="97.8" cy="349.2" r="1.76" fill="#ffffff"/>
+<circle cx="199" cy="324" r="3.5" fill="#4cc9d8"/>
+<rect x="292" y="287" width="22" height="22" fill="none" rx="3" stroke="#4cc9d8" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="95" y1="350" x2="199" y2="324" stroke="#4cc9d8" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+<line x1="199" y1="324" x2="291" y2="301" stroke="#4cc9d8" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-4cc9d8)"/>
+<path d="M319 360 L319 350 A10 10 0 0 1 339 350 L339 360 L334 355.5 L329 360 L324 355.5 Z" stroke="#4cc9d8" stroke-width="0" fill="#4cc9d8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="325.5" cy="349" r="2.2" fill="#ffffff"/>
+<circle cx="332.5" cy="349" r="2.2" fill="#ffffff"/>
+<text x="30" y="385" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">the line from Blinky to two tiles ahead, doubled</text>
+<text x="378" y="230" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#f0a04b" text-anchor="start" font-weight="bold">Clyde</text>
+<text x="440" y="230" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">ChaseUntilClose</text>
+<rect x="378" y="256" width="312" height="110" fill="#14171a" rx="4"/>
+<circle cx="391" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="391" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="391" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="391" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="417" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="417" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="417" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="417" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="443" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="443" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="443" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="443" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="469" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="469" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="469" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="469" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="495" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="495" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="495" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="495" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="521" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="521" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="521" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="521" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="547" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="547" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="547" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="547" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="573" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="573" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="573" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="573" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="599" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="599" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="599" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="599" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="625" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="625" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="625" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="625" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="651" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="651" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="651" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="651" cy="350" r="1.4" fill="#565d65"/>
+<circle cx="677" cy="272" r="1.4" fill="#565d65"/>
+<circle cx="677" cy="298" r="1.4" fill="#565d65"/>
+<circle cx="677" cy="324" r="1.4" fill="#565d65"/>
+<circle cx="677" cy="350" r="1.4" fill="#565d65"/>
+<g transform="rotate(0 573 298)"><path d="M573 298 L581.2 292.3 A10 10 0 1 0 581.2 303.7 Z" fill="#f2d24b"/></g>
+<circle cx="573" cy="298" r="44" fill="none" stroke="#f0a04b" stroke-width="1.5"/>
+<text x="623" y="268" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#f0a04b" text-anchor="start" font-weight="normal">8 tiles</text>
+<path d="M433 360 L433 350 A10 10 0 0 1 453 350 L453 360 L448 355.5 L443 360 L438 355.5 Z" stroke="#f0a04b" stroke-width="0" fill="#f0a04b" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="439.5" cy="349" r="2.2" fill="#ffffff"/>
+<circle cx="446.5" cy="349" r="2.2" fill="#ffffff"/>
+<line x1="455" y1="344" x2="521" y2="320" stroke="#f0a04b" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-f0a04b)"/>
+<text x="378" y="385" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">chases, but heads for his corner within 8 tiles</text>
+</svg>

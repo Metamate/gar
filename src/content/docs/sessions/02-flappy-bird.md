@@ -50,6 +50,8 @@ touch many other parts.
 - **Cohesion:** how closely related the responsibilities inside one module are. Aim for
   high.
 
+![Tightly coupled code depends on everything; decoupled code depends on little.](../../../assets/session02/fig-coupling.svg)
+
 Cheap change is the quality we come back to most. A few others turn up through the course:
 
 - **Easy to understand:** someone new to the code can find where things happen.
@@ -102,6 +104,8 @@ with `%` at its "looping point".
 The bird never actually moves sideways. The world scrolls past it, and the player sees
 a bird flying.
 
+![Layers that scroll at different speeds look like they are at different distances.](../../../assets/session02/fig-parallax.svg)
+
 _Steps `Flappy0` → `Flappy2`_
 
 `Flappy1` draws the background and the ground; `Flappy2` scrolls them, the background at 30
@@ -138,6 +142,8 @@ second, and its position follows the velocity, both scaled by delta time. `Flapp
 input classes, and the bird flaps on Space _or_ a left click. A flap sets the vertical
 velocity to 300 upwards.
 
+![Gravity adds to the velocity every frame, and a flap sets it upwards.](../../../assets/session02/fig-gravity.svg)
+
 The mouse position is in **window** coordinates. Because the game is drawn at a
 virtual resolution and scaled to the window, a click at the window's centre is not at
 (320, 180) in the game unless you convert it. We don't need positions for Flappy Bird, but
@@ -156,6 +162,8 @@ Instead of designing levels by hand, we generate them with code. `Flappy6` spawn
 `PipePair` with a 100-pixel gap, and lets the gap drift. Each pair's height is the previous
 pair's plus a small random step, clamped to the screen. Pairs that scroll off-screen are
 flagged and removed.
+
+![Each pair of pipes has its gap a small random step from the one before.](../../../assets/session02/fig-pipes.svg)
 
 **Try it** (`Flappy7`): make the gap 80 pixels and spawn a pair every 1.5 seconds. Is it still
 fair? Which numbers in `SpawnPipePair` make the drift gentler?
@@ -216,6 +224,8 @@ Each state contains only its own behaviour, and `Game1` passes `Update` and `Dra
 the state machine. `Enter()` and `Exit()` give each state a place to set up and clean up
 (for example, `PlayState.Enter()` resets the bird, pipes and score so every retry starts
 clean).
+
+![Changing state calls Exit on the old state and Enter on the new one.](../../../assets/session02/fig-lifecycle.svg)
 
 ### Passing data, and a countdown
 

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img"><title>An event is handled inside the call that raises it; an event queue handles it later, at a safe point</title><defs><marker id="arrow-565d65" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#565d65"/></marker></defs><rect width="720" height="330" rx="10" fill="#22262b"/>
+<text x="30" y="100" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="start" font-weight="bold">Event</text>
+<text x="30" y="120" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">handled at once</text>
+<rect x="170" y="74" width="500" height="44" fill="#14171a" rx="6"/>
+<text x="178" y="66" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="start" font-weight="normal">one frame</text>
+<rect x="180" y="82" width="410" height="28" fill="#2e3338" rx="4" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="190" y="101" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="start" font-weight="normal">the room loops over its enemies</text>
+<rect x="420" y="78" width="40" height="36" fill="#4a2c22" rx="4" stroke="#d45d35" stroke-width="1.5"/>
+<rect x="475" y="78" width="40" height="36" fill="#4a2c22" rx="4" stroke="#d45d35" stroke-width="1.5"/>
+<rect x="530" y="78" width="40" height="36" fill="#4a2c22" rx="4" stroke="#d45d35" stroke-width="1.5"/>
+<text x="495" y="136" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#d45d35" text-anchor="middle" font-weight="normal">each handler runs inside the loop</text>
+<text x="30" y="226" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="start" font-weight="bold">Event queue</text>
+<text x="30" y="246" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">handled later</text>
+<rect x="170" y="200" width="500" height="44" fill="#14171a" rx="6"/>
+<text x="178" y="192" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="start" font-weight="normal">one frame</text>
+<rect x="180" y="208" width="300" height="28" fill="#2e3338" rx="4" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="190" y="227" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="start" font-weight="normal">the room loops over its enemies</text>
+<circle cx="402" cy="222" r="5" fill="#d45d35"/>
+<path d="M402 214 C 422 176, 550 176, 562 202" stroke="#565d65" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" marker-end="url(#arrow-565d65)"/>
+<circle cx="428" cy="222" r="5" fill="#d45d35"/>
+<path d="M428 214 C 448 176, 550 176, 576 202" stroke="#565d65" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" marker-end="url(#arrow-565d65)"/>
+<circle cx="454" cy="222" r="5" fill="#d45d35"/>
+<path d="M454 214 C 474 176, 550 176, 590 202" stroke="#565d65" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" marker-end="url(#arrow-565d65)"/>
+<rect x="542" y="204" width="110" height="36" fill="#4a2c22" rx="4" stroke="#d45d35" stroke-width="1.5"/>
+<text x="597" y="227" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">handle them all</text>
+<text x="360" y="292" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">A handler that removes an enemy while the room is looping over them breaks the loop.</text>
+<text x="360" y="312" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Queued, the same handler runs when nothing else is in the middle of anything.</text>
+</svg>

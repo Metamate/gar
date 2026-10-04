@@ -161,6 +161,8 @@ public MoveResult Move(Point direction)
 public bool IsSolved => _boxes.All(_goals.Contains);
 ```
 
+![A move is a walk, a push or blocked, depending on the next cell and the one behind it.](../../../assets/session04/fig-push-rule.svg)
+
 `LevelView` draws a level, but never changes it. Which way the player faces is only about
 drawing, so it lives in `LevelView`. The `GameController` is the one from
 [Snake](../03-snake/#input-as-actions).
@@ -400,6 +402,8 @@ public void UndoMove(Point direction, MoveResult result)
 }
 ```
 
+![After a walk and after a push the player stands in the same place, so the command must remember which it was.](../../../assets/session04/fig-remember.svg)
+
 A `CommandHistory` executes commands and keeps two stacks: what was done, and what was
 undone.
 
@@ -431,6 +435,8 @@ public void Redo()
     }
 }
 ```
+
+![Two stacks: undo moves a command to the undone stack, and a new command empties it.](../../../assets/session04/fig-undo-stacks.svg)
 
 `Z` undoes and `Y` redoes. The move counter is now the number of commands on the
 undo stack. `UndoTests.cs` in `Sokoban.Tests` checks that undo and redo bring back

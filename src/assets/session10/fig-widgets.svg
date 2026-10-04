@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" role="img"><title>The battle screen is built from four small widgets</title><rect width="720" height="380" rx="10" fill="#22262b"/>
+<rect x="40" y="40" width="420" height="236" fill="#b5b0dd"/>
+<circle cx="340" cy="100" r="30" fill="#666389"/>
+<circle cx="150" cy="190" r="36" fill="#666389"/>
+<rect x="70" y="70" width="150" height="12" fill="#44415d"/>
+<rect x="72" y="72" width="110" height="8" fill="#8e8bb7"/>
+<rect x="280" y="190" width="150" height="12" fill="#44415d"/>
+<rect x="282" y="192" width="146" height="8" fill="#8e8bb7"/>
+<rect x="40" y="216" width="280" height="60" fill="#44415d" stroke="#b5b0dd" stroke-width="3"/>
+<rect x="54" y="236" width="180" height="6" fill="#b5b0dd"/>
+<rect x="54" y="250" width="120" height="6" fill="#b5b0dd"/>
+<rect x="320" y="216" width="140" height="60" fill="#44415d" stroke="#b5b0dd" stroke-width="3"/>
+<text x="360" y="240" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="14" fill="#b5b0dd" text-anchor="start" font-weight="normal">Fight</text>
+<text x="360" y="264" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="14" fill="#b5b0dd" text-anchor="start" font-weight="normal">Run</text>
+<path d="M340 230 L350 236 L340 242 Z" stroke="#b5b0dd" stroke-width="0" fill="#b5b0dd" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="500" y="70" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="15" fill="#d45d35" text-anchor="start" font-weight="bold">ProgressBar</text>
+<text x="500" y="90" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">fills by current / max: HP, EXP</text>
+<line x1="220" y1="76" x2="490" y2="65" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="4 3"/>
+<circle cx="220" cy="76" r="3" fill="#d45d35"/>
+<text x="500" y="136" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="15" fill="#d45d35" text-anchor="start" font-weight="bold">Panel</text>
+<text x="500" y="156" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">the box behind every widget</text>
+<line x1="316" y1="220" x2="490" y2="131" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="4 3"/>
+<circle cx="316" cy="220" r="3" fill="#d45d35"/>
+<text x="500" y="202" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="15" fill="#d45d35" text-anchor="start" font-weight="bold">Textbox</text>
+<text x="500" y="222" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">wraps text, pages on Confirm</text>
+<line x1="240" y1="246" x2="490" y2="197" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="4 3"/>
+<circle cx="240" cy="246" r="3" fill="#d45d35"/>
+<text x="500" y="268" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="15" fill="#d45d35" text-anchor="start" font-weight="bold">Selection / Menu</text>
+<text x="500" y="288" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">options with actions, a cursor</text>
+<line x1="460" y1="254" x2="490" y2="263" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="4 3"/>
+<circle cx="460" cy="254" r="3" fill="#d45d35"/>
+<text x="40" y="316" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">Each widget lives in one class, and the same four make every screen in the game.</text>
+<text x="40" y="340" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">The bar shows a monster's health. The monster does not know the bar exists.</text>
+</svg>

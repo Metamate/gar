@@ -146,10 +146,14 @@ Scatter and chase take turns on a fixed **schedule** (`ModeSchedule`): 7 seconds
 20 of chase, and so on. This is why the ghosts sometimes seem to give up the hunt. Without the
 scatter phases, the game would be too hard.
 
+![Scatter and chase take turns on a fixed schedule, and frightened pauses it.](../../../assets/session05/fig-schedule.svg)
+
 However a ghost moves, it decides at each tile centre the same way. It never turns back, and
 of the directions left, it takes the one whose next tile is closest to a **target tile**
 (in a straight line). The mode decides the target. It is the ghost's corner in scatter, Pac-Man in chase, and
 the house when eaten. Frightened ghosts have no target, and pick at random.
+
+![At a tile centre a ghost takes the open direction whose next tile is closest to its target.](../../../assets/session05/fig-junction.svg)
 
 The simplest way to build the modes is an enum, and that's what `Pacman1` does:
 
@@ -316,6 +320,8 @@ personality, and that's all in how it picks its target while chasing:
 Together, they trap Pac-Man: Blinky follows him, Pinky cuts him off, and Inky closes in
 from the other side of Blinky.
 
+![Each ghost aims at a different tile while chasing.](../../../assets/session05/fig-targets.svg)
+
 > Define a family of algorithms, encapsulate each one, and make them interchangeable.
 > _(Design Patterns, Gamma et al.)_
 
@@ -386,13 +392,7 @@ whose next tile is closest to the target in a straight line. That rule is cheap,
 what the arcade game does, but it knows nothing about walls. Here the ghost `G` wants to
 reach `T`, two rows up:
 
-```text
-#############
-#..T........#
-#.###.#.###.#
-#...G.......#
-#############
-```
+![The arcade rule takes the turn that looks closest; the shortest path takes the turn that is.](../../../assets/session05/fig-routing.svg)
 
 The tile to the left is closer to `T`, so the ghost goes left. That way is seven steps long.
 Going right is five.

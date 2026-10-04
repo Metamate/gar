@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" width="720" height="250" role="img"><title>Bloom: draw the scene, keep the bright pixels, blur them, and add them back</title><defs><filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker></defs><rect width="720" height="250" rx="10" fill="#22262b"/>
+<rect x="30" y="50" width="144" height="110" fill="#14171a" rx="4"/>
+<rect x="44" y="64" width="24" height="14" fill="#3a4048"/>
+<rect x="130" y="130" width="30" height="12" fill="#3a4048"/>
+<path d="M70 120 L90 80 L110 120 Z" fill="none" stroke="#59d6e8" stroke-width="3"/><circle cx="136" cy="96" r="14" fill="none" stroke="#f08a4b" stroke-width="3"/>
+<text x="102" y="184" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="middle" font-weight="bold">the scene</text>
+<line x1="180" y1="105" x2="196" y2="105" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="202" y="50" width="144" height="110" fill="#14171a" rx="4"/>
+<path d="M242 120 L262 80 L282 120 Z" fill="none" stroke="#59d6e8" stroke-width="3"/><circle cx="308" cy="96" r="14" fill="none" stroke="#f08a4b" stroke-width="3"/>
+<text x="274" y="184" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="middle" font-weight="bold">bright pixels only</text>
+<line x1="352" y1="105" x2="368" y2="105" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="374" y="50" width="144" height="110" fill="#14171a" rx="4"/>
+<g filter="url(#blur)" opacity="0.95"><path d="M414 120 L434 80 L454 120 Z" fill="none" stroke="#59d6e8" stroke-width="3"/><circle cx="480" cy="96" r="14" fill="none" stroke="#f08a4b" stroke-width="3"/><path d="M414 120 L434 80 L454 120 Z" fill="none" stroke="#59d6e8" stroke-width="3"/><circle cx="480" cy="96" r="14" fill="none" stroke="#f08a4b" stroke-width="3"/></g>
+<text x="446" y="184" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="middle" font-weight="bold">blurred</text>
+<line x1="524" y1="105" x2="540" y2="105" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="546" y="50" width="144" height="110" fill="#14171a" rx="4"/>
+<rect x="560" y="64" width="24" height="14" fill="#3a4048"/>
+<rect x="646" y="130" width="30" height="12" fill="#3a4048"/>
+<g filter="url(#blur)" opacity="0.9"><path d="M586 120 L606 80 L626 120 Z" fill="none" stroke="#59d6e8" stroke-width="3"/><circle cx="652" cy="96" r="14" fill="none" stroke="#f08a4b" stroke-width="3"/><path d="M586 120 L606 80 L626 120 Z" fill="none" stroke="#59d6e8" stroke-width="3"/><circle cx="652" cy="96" r="14" fill="none" stroke="#f08a4b" stroke-width="3"/></g>
+<path d="M586 120 L606 80 L626 120 Z" fill="none" stroke="#59d6e8" stroke-width="3"/><circle cx="652" cy="96" r="14" fill="none" stroke="#f08a4b" stroke-width="3"/>
+<text x="618" y="184" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="middle" font-weight="bold">added back</text>
+<text x="360" y="222" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Each stage is drawn into a render target, with a pixel shader doing the work.</text>
+</svg>

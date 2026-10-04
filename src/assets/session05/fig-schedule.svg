@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220" role="img"><title>Scatter and chase take turns on a fixed schedule, and frightened pauses it</title><rect width="720" height="220" rx="10" fill="#22262b"/>
+<rect x="41" y="70" width="54.7089" height="40" fill="#24424a" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="68.3544" y="95" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">7</text>
+<rect x="97.7089" y="70" width="160.025" height="40" fill="#4a2c22" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="177.722" y="95" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">chase 20 s</text>
+<rect x="259.734" y="70" width="54.7089" height="40" fill="#24424a" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="287.089" y="95" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">7</text>
+<rect x="316.443" y="70" width="160.025" height="40" fill="#4a2c22" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="396.456" y="95" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">chase 20 s</text>
+<rect x="478.468" y="70" width="38.5063" height="40" fill="#24424a" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="497.722" y="95" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">5</text>
+<rect x="518.975" y="70" width="160.025" height="40" fill="#4a2c22" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="598.987" y="95" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">chase 20 s</text>
+<text x="40" y="50" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="15" fill="#dee2e6" text-anchor="start" font-weight="normal">ModeSchedule</text>
+<text x="170" y="50" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">every ghost that is scattering or chasing follows it</text>
+<text x="40" y="148" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="start" font-weight="bold">scatter:</text>
+<text x="106" y="148" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">each ghost heads for its own corner, and the player gets room to breathe</text>
+<text x="40" y="174" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="start" font-weight="bold">chase:</text>
+<text x="106" y="174" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">each ghost aims at its target</text>
+<text x="40" y="200" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">While any ghost is frightened, the clock stands still.</text>
+</svg>

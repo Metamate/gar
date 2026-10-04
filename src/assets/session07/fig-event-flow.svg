@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img"><title>An event travels up from the room to the play state; each class only knows the one below it</title><defs><marker id="arrow-d45d35" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d45d35"/></marker><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker></defs><rect width="720" height="330" rx="10" fill="#22262b"/>
+<rect x="60" y="120" width="150" height="64" fill="#2e3338" rx="8" stroke="#565d65" stroke-width="2"/>
+<text x="135" y="157.95" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="middle" font-weight="bold">Room</text>
+<text x="135" y="210" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">notices the player died</text>
+<rect x="290" y="120" width="150" height="64" fill="#2e3338" rx="8" stroke="#565d65" stroke-width="2"/>
+<text x="365" y="157.95" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="middle" font-weight="bold">Dungeon</text>
+<text x="365" y="210" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">passes it on</text>
+<rect x="520" y="120" width="150" height="64" fill="#2e3338" rx="8" stroke="#565d65" stroke-width="2"/>
+<text x="595" y="157.95" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="middle" font-weight="bold">PlayState</text>
+<text x="595" y="210" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">changes to game over</text>
+<line x1="216" y1="140" x2="284" y2="140" stroke="#d45d35" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<text x="250" y="108" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#d45d35" text-anchor="middle" font-weight="normal">OnPlayerDied</text>
+<line x1="284" y1="166" x2="216" y2="166" stroke="#2aa6a6" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)" stroke-dasharray="5 4"/>
+<line x1="446" y1="140" x2="514" y2="140" stroke="#d45d35" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<text x="480" y="108" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#d45d35" text-anchor="middle" font-weight="normal">OnPlayerDied</text>
+<line x1="514" y1="166" x2="446" y2="166" stroke="#2aa6a6" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)" stroke-dasharray="5 4"/>
+<text x="60" y="50" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="start" font-weight="bold">the event goes this way</text>
+<line x1="250" y1="45" x2="300" y2="45" stroke="#d45d35" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<text x="60" y="78" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="start" font-weight="bold">the subscription, and the knowledge, go the other way</text>
+<line x1="476" y1="73" x2="426" y2="73" stroke="#2aa6a6" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)" stroke-dasharray="5 4"/>
+<text x="360" y="262" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Room announces that something happened. It has no reference to Dungeon or PlayState,</text>
+<text x="360" y="282" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">and a second subscriber (a sound, a score) can be added without touching it.</text>
+</svg>

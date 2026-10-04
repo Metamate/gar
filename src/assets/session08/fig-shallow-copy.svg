@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img"><title>A clone shares what the prototype refers to, so it shares the sprite but must get a body of its own</title><defs><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker><marker id="arrow-7fd46b" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7fd46b"/></marker></defs><rect width="720" height="330" rx="10" fill="#22262b"/>
+<rect x="40" y="60" width="190" height="60" fill="#2e3338" rx="8" stroke="#565d65" stroke-width="2"/>
+<text x="135" y="86" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">the prototype</text>
+<text x="135" y="106" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">"wood-plank", not in the world</text>
+<rect x="40" y="190" width="190" height="60" fill="#2e3338" rx="8" stroke="#2aa6a6" stroke-width="2"/>
+<text x="135" y="216" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">a clone</text>
+<text x="135" y="236" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">placed in the level</text>
+<line x1="135" y1="124" x2="135" y2="184" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="146" y="158" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">MemberwiseClone</text>
+<rect x="430" y="50" width="180" height="50" fill="#2e3338" rx="8" stroke="#565d65" stroke-width="2"/>
+<text x="520" y="71.25" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">the sprite</text>
+<text x="520" y="90" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">never changes</text>
+<rect x="430" y="200" width="180" height="50" fill="#2e3338" rx="8" stroke="#7fd46b" stroke-width="2"/>
+<text x="520" y="221.25" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#7fd46b" text-anchor="middle" font-weight="bold">its own body</text>
+<text x="520" y="240" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">created in Spawn</text>
+<line x1="236" y1="82" x2="424" y2="76" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<line x1="236" y1="210" x2="424" y2="92" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<text x="330" y="62" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Sprite</text>
+<rect x="267.02" y="157" width="157.96" height="19.5" fill="#22262b"/>
+<text x="346" y="170" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#2aa6a6" text-anchor="middle" font-weight="normal">the same sprite: fine</text>
+<line x1="236" y1="228" x2="424" y2="228" stroke="#7fd46b" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-7fd46b)"/>
+<text x="330" y="248" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#7fd46b" text-anchor="middle" font-weight="normal">Body</text>
+<rect x="430" y="122" width="180" height="44" fill="#14171a" rx="8" stroke="#d45d35" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="520" y="149" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="middle" font-weight="normal">a shared body</text>
+<text x="626" y="149" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#d45d35" text-anchor="start" font-weight="normal">never</text>
+<text x="360" y="296" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">A shallow copy copies references. Two blocks with one body would move as one,</text>
+<text x="360" y="316" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">so Clone clears the body and Spawn makes a new one.</text>
+</svg>

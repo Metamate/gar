@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" role="img"><title>Coyote time allows a jump for a moment after the player has left the ground</title><rect width="720" height="300" rx="10" fill="#22262b"/>
+<rect x="30" y="40" width="660" height="190" fill="#1b2733" rx="4"/>
+<rect x="30" y="150" width="60" height="60" fill="#8a5a3c"/>
+<rect x="30" y="150" width="60" height="16.8" fill="#6fbf4a"/>
+<rect x="30" y="150" width="60" height="60" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="90" y="150" width="60" height="60" fill="#8a5a3c"/>
+<rect x="90" y="150" width="60" height="16.8" fill="#6fbf4a"/>
+<rect x="90" y="150" width="60" height="60" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="150" y="150" width="60" height="60" fill="#8a5a3c"/>
+<rect x="150" y="150" width="60" height="16.8" fill="#6fbf4a"/>
+<rect x="150" y="150" width="60" height="60" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="210" y="150" width="60" height="60" fill="#8a5a3c"/>
+<rect x="210" y="150" width="60" height="16.8" fill="#6fbf4a"/>
+<rect x="210" y="150" width="60" height="60" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="270" y="150" width="60" height="60" fill="#8a5a3c"/>
+<rect x="270" y="150" width="60" height="16.8" fill="#6fbf4a"/>
+<rect x="270" y="150" width="60" height="60" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="30" y="210" width="300" height="20" fill="#8a5a3c"/>
+<rect x="236" y="104" width="28" height="46" fill="#e8c15a" opacity="0.9"/>
+<rect x="286" y="104" width="28" height="46" fill="#e8c15a" opacity="0.9"/>
+<rect x="336" y="106" width="28" height="46" fill="#e8c15a" opacity="0.9"/>
+<rect x="336" y="106" width="28" height="46" fill="none" stroke="#7fd46b" stroke-width="2.5"/>
+<rect x="381" y="116" width="28" height="46" fill="#e8c15a" opacity="0.9"/>
+<rect x="381" y="116" width="28" height="46" fill="none" stroke="#7fd46b" stroke-width="2.5"/>
+<rect x="421" y="136" width="28" height="46" fill="#e8c15a" opacity="0.45"/>
+<rect x="456" y="170" width="28" height="46" fill="#e8c15a" opacity="0.45"/>
+<line x1="330" y1="56" x2="330" y2="216" stroke="#565d65" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+<text x="330" y="248" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the ledge ends</text>
+<rect x="332" y="60" width="88" height="22" fill="#22402a" rx="4" stroke="#7fd46b" stroke-width="1.5"/>
+<text x="376" y="76" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#7fd46b" text-anchor="middle" font-weight="normal">0.1 s</text>
+<text x="430" y="76" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#7fd46b" text-anchor="start" font-weight="normal">a jump still counts here</text>
+<text x="500" y="150" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">too late: falling</text>
+<text x="60" y="76" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="start" font-weight="normal">on the ground: a jump works</text>
+<text x="360" y="282" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">The player pressed a moment too late, and still gets the jump. Nobody notices; it just feels fair.</text>
+</svg>

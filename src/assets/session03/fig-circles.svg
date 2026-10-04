@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" role="img"><title>Two circles overlap when the distance between their centres is less than the sum of their radii</title><rect width="720" height="300" rx="10" fill="#22262b"/>
+<text x="180" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A hit</text>
+<circle cx="120" cy="150" r="60" fill="none" stroke="#2aa6a6" stroke-width="2.5"/>
+<circle cx="200" cy="150" r="44" fill="none" stroke="#d45d35" stroke-width="2.5"/>
+<line x1="120" y1="150" x2="200" y2="150" stroke="#dee2e6" stroke-width="2" stroke-linecap="round"/>
+<circle cx="120" cy="150" r="3.5" fill="#2aa6a6"/>
+<circle cx="200" cy="150" r="3.5" fill="#d45d35"/>
+<text x="160" y="140" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">distance</text>
+<line x1="120" y1="150" x2="78" y2="192.6" stroke="#2aa6a6" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+<text x="114" y="184" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="middle" font-weight="normal">r₁</text>
+<line x1="200" y1="150" x2="230.8" y2="181.24" stroke="#d45d35" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+<text x="202" y="180" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="middle" font-weight="normal">r₂</text>
+<text x="180" y="256" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#7fd46b" text-anchor="middle" font-weight="bold">distance &lt; r₁ + r₂</text>
+<text x="540" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A miss</text>
+<circle cx="480" cy="150" r="60" fill="none" stroke="#2aa6a6" stroke-width="2.5"/>
+<circle cx="610" cy="150" r="44" fill="none" stroke="#d45d35" stroke-width="2.5"/>
+<line x1="480" y1="150" x2="610" y2="150" stroke="#dee2e6" stroke-width="2" stroke-linecap="round"/>
+<circle cx="480" cy="150" r="3.5" fill="#2aa6a6"/>
+<circle cx="610" cy="150" r="3.5" fill="#d45d35"/>
+<text x="545" y="140" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">distance</text>
+<line x1="480" y1="150" x2="438" y2="192.6" stroke="#2aa6a6" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+<text x="474" y="184" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="middle" font-weight="normal">r₁</text>
+<line x1="610" y1="150" x2="640.8" y2="181.24" stroke="#d45d35" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+<text x="612" y="180" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="middle" font-weight="normal">r₂</text>
+<text x="540" y="256" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#9aa3ab" text-anchor="middle" font-weight="bold">distance &gt; r₁ + r₂</text>
+<line x1="360" y1="20" x2="360" y2="270" stroke="#565d65" stroke-width="1" stroke-linecap="round"/>
+<text x="360" y="288" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Compare the squared values, and no square root is needed.</text>
+</svg>

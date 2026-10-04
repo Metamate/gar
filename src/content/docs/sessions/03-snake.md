@@ -75,6 +75,8 @@ Loading `body.png`, `head1.png`, `food1.png`… as separate textures means the G
 switch texture between draws, which breaks batching. A **texture atlas** (sprite sheet)
 packs many images into one texture.
 
+![A texture atlas is one image; a region is a named rectangle inside it.](../../../assets/session03/fig-atlas.svg)
+
 `Snake0` draws parts of the atlas by passing hardcoded source rectangles to
 `SpriteBatch.Draw()`, which gets hard to maintain as the number of sprites grows. In
 `Snake1`, an XML atlas definition gives each rectangle a name, and a **texture region** is
@@ -160,6 +162,8 @@ An **animation** is a list of regions and a frame delay, also defined in the atl
 A frame can repeat. Here the head keeps its eyes open for five frames and closes them for
 one, so it blinks.
 
+![An animation is a list of regions and a delay; a frame can repeat.](../../../assets/session03/fig-animation.svg)
+
 An `AnimatedSprite` is a `Sprite` that accumulates elapsed time in `Update()` and advances
 to the next frame when the delay has passed (`Snake3`).
 
@@ -195,6 +199,8 @@ its index. A sprite keeps its own position, but a tile gets its position from th
 Every tile comes from the same texture, so the whole room goes to the graphics card in one
 batch. A big level would only draw the cells on screen.
 
+![A tilemap is a grid of tile numbers; each number picks a tile from the tileset.](../../../assets/session03/fig-tilemap.svg)
+
 Here the tilemap is only a picture, and the walls are the cells outside the room's
 `Rectangle`. In [Sokoban](../04-sokoban/), the grid becomes the game's state itself.
 
@@ -228,6 +234,8 @@ This is the fixed timestep from [Pong](../01-pong/#fixed-vs-variable-timestep) i
 practice. An **accumulator** collects real time, and the simulation advances in fixed-size
 steps. Subtracting (instead of resetting `_elapsed` to zero) keeps the leftover time, so the
 ticks stay evenly spaced.
+
+![The accumulator collects frame time, and the snake moves once per full tick.](../../../assets/session03/fig-tick.svg)
 
 Moving is cheap on a grid. Add a new head in the current direction and remove the tail.
 
@@ -301,6 +309,8 @@ A new turn is checked against the _last buffered_ direction, so no combination o
 key presses can reverse the snake. The buffer is kept short (two
 turns), so the snake never acts on presses the player has long forgotten.
 
+![Two key presses between ticks: without a buffer the first is lost, with one both are used.](../../../assets/session03/fig-buffering.svg)
+
 Many games buffer input like this, so that a jump pressed just before landing, or a combo
 pressed slightly early, still counts.
 
@@ -338,6 +348,8 @@ MonoGame has no circle type, so GARCore has a `Circle` struct with `Intersects(C
 Both the snake's head and the food expose their `Bounds` as a `Circle`. The food stays in
 its cell, so comparing cells would work here too; circles also work for things that move
 freely, which the later games need.
+
+![Two circles overlap when the distance between their centres is less than the sum of their radii.](../../../assets/session03/fig-circles.svg)
 
 ### Collision response
 

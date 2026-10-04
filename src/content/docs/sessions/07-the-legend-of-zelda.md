@@ -78,6 +78,8 @@ and ends when its one-shot animation has played once. Press `F1` to see both dur
 swing, the hitbox in red and the hurtbox in green, drawn with the `DebugDraw` from
 [Super Mario Bros](../06-super-mario-bros/#debug-drawing).
 
+![The hitbox deals damage and the hurtbox receives it, and neither has to match the sprite.](../../../assets/session07/fig-hitboxes.svg)
+
 **Where does collision live?** There is no central collision system. Each kind of
 collision is checked where the knowledge it needs already is:
 
@@ -127,6 +129,8 @@ thing that happened shouldn't need to know what those other things are.
 
 **Observer** flips the dependency around. The _subject_ (publisher) just announces that
 something happened, and any number of _observers_ (subscribers) react.
+
+![An event travels up from the room to the play state; each class only knows the one below it.](../../../assets/session07/fig-event-flow.svg)
 
 ```mermaid
 classDiagram
@@ -222,6 +226,8 @@ pitfall above, since nothing is handled while the publisher is still busy. You'v
 one already: [Snake](../03-snake/#input-buffering) queues the player's turns and handles one
 per tick.
 
+![An event is handled inside the call that raises it; an event queue handles it later, at a safe point.](../../../assets/session07/fig-event-queue.svg)
+
 The classic example is audio. Many parts of the game ask for sounds, and the audio system
 plays them in one place, once per frame, merging duplicates. That is one of the exercises
 below. In [Angry Birds](../08-angry-birds/#contact-events), you'll meet a queue that a library
@@ -240,6 +246,8 @@ lerp(a, b, t) = a + (b - a) * t        where t goes from 0 to 1
 
 Non-linear curves (ease-in, ease-out, see [easings.net](https://easings.net)) often feel
 more natural.
+
+![To scroll between rooms, a tween moves the camera from one room to the next.](../../../assets/session07/fig-room-shift.svg)
 
 When the player walks through a door, the camera and the player move at the same time. The
 next room is placed one screen away, and the camera travelling towards it creates the
@@ -284,6 +292,8 @@ pixel. The dungeon draws in three passes:
 
 The player seems to walk _under_ the arch. All three passes use the same camera transform,
 so the mask follows the camera while the rooms scroll.
+
+![Three passes: draw the rooms, mark the door arches in the stencil buffer, then draw the player where it is unmarked.](../../../assets/session07/fig-stencil.svg)
 
 ## Data-Driven Design
 
@@ -353,6 +363,8 @@ to one of two problems:
   the player steps on it. There is no `SwitchObject` subclass.
 - **Enemy types as data:** enemy types (their size, speed, health and animations)
   come from a data file, so there is no class per enemy type.
+
+![With inheritance every combination needs a class; with composition an enemy has the parts it needs.](../../../assets/session07/fig-composition.svg)
 
 > "Favor object composition over class inheritance." — Gang of Four, _Design Patterns_
 

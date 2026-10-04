@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img"><title>A pool hands out bullets that are no longer in use, so the game stops allocating new ones</title><defs><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker><marker id="arrow-d45d35" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d45d35"/></marker></defs><rect width="720" height="320" rx="10" fill="#22262b"/>
+<rect x="40" y="70" width="190" height="190" fill="#14171a" rx="8" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="135" y="56" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#2aa6a6" text-anchor="middle" font-weight="bold">the pool</text>
+<rect x="62" y="104" width="40" height="18" fill="#2e3338" rx="9" stroke="#565d65" stroke-width="1.5"/>
+<rect x="114" y="104" width="40" height="18" fill="#2e3338" rx="9" stroke="#565d65" stroke-width="1.5"/>
+<rect x="166" y="104" width="40" height="18" fill="#2e3338" rx="9" stroke="#565d65" stroke-width="1.5"/>
+<rect x="62" y="164" width="40" height="18" fill="#2e3338" rx="9" stroke="#565d65" stroke-width="1.5"/>
+<rect x="114" y="164" width="40" height="18" fill="#2e3338" rx="9" stroke="#565d65" stroke-width="1.5"/>
+<rect x="166" y="164" width="40" height="18" fill="#2e3338" rx="9" stroke="#565d65" stroke-width="1.5"/>
+<text x="135" y="238" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">bullets waiting</text>
+<rect x="490" y="70" width="190" height="190" fill="#14171a" rx="8" stroke="#d45d35" stroke-width="1.5"/>
+<text x="585" y="56" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#d45d35" text-anchor="middle" font-weight="bold">the world</text>
+<g transform="rotate(-20 540 119)">
+<rect x="520" y="110" width="40" height="18" fill="#59d6e8" rx="9"/>
+</g>
+<g transform="rotate(15 610 149)">
+<rect x="590" y="140" width="40" height="18" fill="#59d6e8" rx="9"/>
+</g>
+<g transform="rotate(-40 560 199)">
+<rect x="540" y="190" width="40" height="18" fill="#59d6e8" rx="9"/>
+</g>
+<g transform="rotate(30 650 209)">
+<rect x="630" y="200" width="40" height="18" fill="#59d6e8" rx="9"/>
+</g>
+<text x="585" y="238" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">bullets in flight</text>
+<path d="M236 120 C 320 70, 400 70, 484 120" stroke="#2aa6a6" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-2aa6a6)"/>
+<text x="360" y="78" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="14" fill="#2aa6a6" text-anchor="middle" font-weight="normal">Get()</text>
+<text x="360" y="112" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">reset it, then fire</text>
+<path d="M484 210 C 400 260, 320 260, 236 210" stroke="#d45d35" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-d45d35)"/>
+<text x="360" y="228" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="14" fill="#d45d35" text-anchor="middle" font-weight="normal">Return()</text>
+<text x="360" y="262" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">it left the screen</text>
+<text x="360" y="300" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Only when the pool is empty is a new bullet made. After the first seconds, none are.</text>
+</svg>

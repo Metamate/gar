@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="720" height="340" role="img"><title>Gravity adds to the velocity every frame, and a flap sets it upwards</title><defs><marker id="arrow-d45d35" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d45d35"/></marker><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker></defs><rect width="720" height="340" rx="10" fill="#22262b"/>
+<line x1="40" y1="300" x2="680" y2="300" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<text x="680" y="320" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="end" font-weight="normal">time</text>
+<path d="M60 230 L88 216.975 L116 207.126 L144 200.451 L172 196.952 L200 196.628 L228 199.479 L256 205.506 L284 214.707 L312 227.084 L340 242.636 L368 261.363 L396 283.266 L424 270.241 L452 260.391 L480 253.717 L508 250.218 L536 249.894 L564 252.745 L592 258.771 L620 267.973 L648 280.35" stroke="#565d65" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 5"/>
+<image x="45" y="220" width="30" height="20" preserveAspectRatio="none" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAAxklEQVR4nO2Yyw0CMQxEJyMXQAEUQgGUsbVwoBaK4EABFEIBHDlY2r1biMh4pWUi3jFfSzMTJWnIM2NdWmUyIQ4hDiFOy3r8da1taEf/3G+Wyoi8AoQ4hDgter7q8arn3T2VCXkFCHGI0TLgwYM9okd7GeplIvLPwK9DiGPVBXrndszEG09nmYdSgBCHEMdig9+sdJfJ3qUe0y41fn95jqUAIQ4x+pv4fl53w8OpvEQbSgFCHEKctsFf6Dc1jKsAIQ63LqDKAqZ7JLYckqP3AAAAAElFTkSuQmCC"/>
+<text x="60" y="270" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="middle" font-weight="bold">flap</text>
+<line x1="60" y1="216" x2="60" y2="170" stroke="#d45d35" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<circle cx="88" cy="216.975" r="3" fill="#9aa3ab"/>
+<circle cx="116" cy="207.126" r="3" fill="#9aa3ab"/>
+<line x1="116" y1="201.126" x2="116" y2="187.062" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<circle cx="144" cy="200.451" r="3" fill="#9aa3ab"/>
+<circle cx="172" cy="196.952" r="3" fill="#9aa3ab"/>
+<line x1="172" y1="190.952" x2="172" y2="189.824" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<circle cx="200" cy="196.628" r="3" fill="#9aa3ab"/>
+<circle cx="228" cy="199.479" r="3" fill="#9aa3ab"/>
+<circle cx="256" cy="205.506" r="3" fill="#9aa3ab"/>
+<circle cx="284" cy="214.707" r="3" fill="#9aa3ab"/>
+<line x1="284" y1="220.707" x2="284" y2="233.451" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<circle cx="312" cy="227.084" r="3" fill="#9aa3ab"/>
+<circle cx="340" cy="242.636" r="3" fill="#9aa3ab"/>
+<line x1="340" y1="248.636" x2="340" y2="274.316" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<circle cx="368" cy="261.363" r="3" fill="#9aa3ab"/>
+<image x="381" y="273.266" width="30" height="20" preserveAspectRatio="none" style="image-rendering:pixelated" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAAxklEQVR4nO2Yyw0CMQxEJyMXQAEUQgGUsbVwoBaK4EABFEIBHDlY2r1biMh4pWUi3jFfSzMTJWnIM2NdWmUyIQ4hDiFOy3r8da1taEf/3G+Wyoi8AoQ4hDgter7q8arn3T2VCXkFCHGI0TLgwYM9okd7GeplIvLPwK9DiGPVBXrndszEG09nmYdSgBCHEMdig9+sdJfJ3qUe0y41fn95jqUAIQ4x+pv4fl53w8OpvEQbSgFCHEKctsFf6Dc1jKsAIQ63LqDKAqZ7JLYckqP3AAAAAElFTkSuQmCC"/>
+<text x="396" y="323.266" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="middle" font-weight="bold">flap</text>
+<line x1="396" y1="269.266" x2="396" y2="223.266" stroke="#d45d35" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<circle cx="424" cy="270.241" r="3" fill="#9aa3ab"/>
+<circle cx="452" cy="260.391" r="3" fill="#9aa3ab"/>
+<line x1="452" y1="254.391" x2="452" y2="240.327" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<circle cx="480" cy="253.717" r="3" fill="#9aa3ab"/>
+<circle cx="508" cy="250.218" r="3" fill="#9aa3ab"/>
+<line x1="508" y1="244.218" x2="508" y2="243.09" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<circle cx="536" cy="249.894" r="3" fill="#9aa3ab"/>
+<circle cx="564" cy="252.745" r="3" fill="#9aa3ab"/>
+<circle cx="592" cy="258.771" r="3" fill="#9aa3ab"/>
+<circle cx="620" cy="267.973" r="3" fill="#9aa3ab"/>
+<line x1="620" y1="273.973" x2="620" y2="286.717" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<circle cx="648" cy="280.35" r="3" fill="#9aa3ab"/>
+<text x="60" y="36" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="15" fill="#d45d35" text-anchor="start" font-weight="normal">velocity.Y = −300</text>
+<text x="60" y="58" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">a flap replaces the velocity, whatever it was</text>
+<text x="420" y="36" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="15" fill="#2aa6a6" text-anchor="start" font-weight="normal">velocity.Y += 980 × deltaTime</text>
+<text x="420" y="58" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">every frame, gravity pulls a little harder</text>
+</svg>

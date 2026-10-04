@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" width="720" height="350" role="img"><title>With a grid, an enemy is only checked against the enemies in its own cell and the cells around it</title><rect width="720" height="350" rx="10" fill="#22262b"/>
+<rect x="40" y="50" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="86" y="50" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="132" y="50" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="178" y="50" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="224" y="50" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="270" y="50" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="316" y="50" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="362" y="50" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="408" y="50" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="40" y="96" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="86" y="96" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="132" y="96" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="178" y="96" width="46" height="46" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<rect x="224" y="96" width="46" height="46" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<rect x="270" y="96" width="46" height="46" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<rect x="316" y="96" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="362" y="96" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="408" y="96" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="40" y="142" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="86" y="142" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="132" y="142" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="178" y="142" width="46" height="46" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<rect x="224" y="142" width="46" height="46" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<rect x="270" y="142" width="46" height="46" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<rect x="316" y="142" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="362" y="142" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="408" y="142" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="40" y="188" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="86" y="188" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="132" y="188" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="178" y="188" width="46" height="46" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<rect x="224" y="188" width="46" height="46" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<rect x="270" y="188" width="46" height="46" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<rect x="316" y="188" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="362" y="188" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="408" y="188" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="40" y="234" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="86" y="234" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="132" y="234" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="178" y="234" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="224" y="234" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="270" y="234" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="316" y="234" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="362" y="234" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="408" y="234" width="46" height="46" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<rect x="224" y="142" width="46" height="46" fill="none" stroke="#d45d35" stroke-width="2.5"/>
+<circle cx="174.067" cy="84.6953" r="5" fill="#5a4a66"/>
+<circle cx="309.487" cy="66.6603" r="5" fill="#5a4a66"/>
+<circle cx="261.855" cy="134.108" r="5" fill="#b98ad6"/>
+<circle cx="64.0116" cy="166.71" r="5" fill="#5a4a66"/>
+<circle cx="55.5232" cy="149.739" r="5" fill="#5a4a66"/>
+<circle cx="68.9201" cy="70.864" r="5" fill="#5a4a66"/>
+<circle cx="215.751" cy="240.176" r="5" fill="#5a4a66"/>
+<circle cx="91.254" cy="101.345" r="5" fill="#5a4a66"/>
+<circle cx="299.757" cy="267.973" r="5" fill="#5a4a66"/>
+<circle cx="278.921" cy="141.237" r="5" fill="#b98ad6"/>
+<circle cx="444.17" cy="60.714" r="5" fill="#5a4a66"/>
+<circle cx="395.406" cy="116.61" r="5" fill="#5a4a66"/>
+<circle cx="99.7216" cy="77.0922" r="5" fill="#5a4a66"/>
+<circle cx="167.711" cy="237.709" r="5" fill="#5a4a66"/>
+<circle cx="114.821" cy="183.768" r="5" fill="#5a4a66"/>
+<circle cx="304.51" cy="135.651" r="5" fill="#b98ad6"/>
+<circle cx="266.766" cy="64.4415" r="5" fill="#5a4a66"/>
+<circle cx="64.6749" cy="97.3705" r="5" fill="#5a4a66"/>
+<circle cx="321.686" cy="148.346" r="5" fill="#5a4a66"/>
+<circle cx="170.057" cy="184.679" r="5" fill="#5a4a66"/>
+<circle cx="227.618" cy="118.946" r="5" fill="#b98ad6"/>
+<circle cx="368.873" cy="210.769" r="5" fill="#5a4a66"/>
+<circle cx="141.056" cy="182.117" r="5" fill="#5a4a66"/>
+<circle cx="257.431" cy="251.282" r="5" fill="#5a4a66"/>
+<circle cx="341.99" cy="116.226" r="5" fill="#5a4a66"/>
+<circle cx="445.792" cy="77.1551" r="5" fill="#5a4a66"/>
+<circle cx="213.103" cy="224.142" r="5" fill="#b98ad6"/>
+<circle cx="102.922" cy="162.462" r="5" fill="#5a4a66"/>
+<circle cx="56.2318" cy="203.69" r="5" fill="#5a4a66"/>
+<circle cx="356.532" cy="181.796" r="5" fill="#5a4a66"/>
+<circle cx="402.448" cy="122.162" r="5" fill="#5a4a66"/>
+<circle cx="327.852" cy="186.705" r="5" fill="#5a4a66"/>
+<circle cx="280.077" cy="154.927" r="5" fill="#b98ad6"/>
+<circle cx="387.747" cy="267.277" r="5" fill="#5a4a66"/>
+<circle cx="236.277" cy="202.755" r="5" fill="#b98ad6"/>
+<circle cx="65.1171" cy="211.343" r="5" fill="#5a4a66"/>
+<circle cx="307.911" cy="278.412" r="5" fill="#5a4a66"/>
+<circle cx="380.277" cy="115.457" r="5" fill="#5a4a66"/>
+<circle cx="199.718" cy="203.79" r="5" fill="#b98ad6"/>
+<circle cx="49.3411" cy="156.19" r="5" fill="#5a4a66"/>
+<circle cx="109.572" cy="76.932" r="5" fill="#5a4a66"/>
+<circle cx="64.4071" cy="226.694" r="5" fill="#5a4a66"/>
+<circle cx="93.5469" cy="106.951" r="5" fill="#5a4a66"/>
+<circle cx="201.853" cy="250.427" r="5" fill="#5a4a66"/>
+<circle cx="73.3607" cy="153.313" r="5" fill="#5a4a66"/>
+<circle cx="267.468" cy="253.178" r="5" fill="#5a4a66"/>
+<circle cx="379.182" cy="248.716" r="5" fill="#5a4a66"/>
+<circle cx="155.266" cy="145.518" r="5" fill="#5a4a66"/>
+<circle cx="188.531" cy="253.364" r="5" fill="#5a4a66"/>
+<circle cx="436.501" cy="84.7118" r="5" fill="#5a4a66"/>
+<circle cx="112.954" cy="103.35" r="5" fill="#5a4a66"/>
+<circle cx="136.601" cy="161.541" r="5" fill="#5a4a66"/>
+<circle cx="283.897" cy="110.432" r="5" fill="#b98ad6"/>
+<circle cx="41.6948" cy="146.358" r="5" fill="#5a4a66"/>
+<circle cx="192.871" cy="180.258" r="5" fill="#b98ad6"/>
+<circle cx="434.583" cy="208.814" r="5" fill="#5a4a66"/>
+<circle cx="253.413" cy="192.046" r="5" fill="#b98ad6"/>
+<circle cx="319.947" cy="62.4184" r="5" fill="#5a4a66"/>
+<circle cx="412.407" cy="229.393" r="5" fill="#5a4a66"/>
+<circle cx="402.048" cy="233.511" r="5" fill="#5a4a66"/>
+<circle cx="246" cy="166" r="7" fill="#d45d35"/>
+<text x="480" y="70" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#d45d35" text-anchor="start" font-weight="bold">one enemy</text>
+<text x="480" y="94" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">only looks at its own cell</text>
+<text x="480" y="111.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">and the eight around it</text>
+<rect x="480" y="146" width="16" height="16" fill="#243a3c" stroke="#565d65" stroke-width="1"/>
+<text x="506" y="159" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="start" font-weight="normal">checked: a handful</text>
+<rect x="480" y="176" width="16" height="16" fill="#14171a" stroke="#565d65" stroke-width="1"/>
+<text x="506" y="189" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">never looked at</text>
+<text x="480" y="232" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">The grid is rebuilt every step,</text>
+<text x="480" y="249.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">after the enemies have moved.</text>
+<text x="360" y="326" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">The work now grows in step with the number of enemies, because each one has few neighbours.</text>
+</svg>

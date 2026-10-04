@@ -73,6 +73,8 @@ is the point inside its rectangle, or within its radius? When things overlap, th
 the checks decides what the click hits. Here, a coin floating over the field is checked
 first, then the cards, and only then the field.
 
+![Picking takes two steps: from the window to the game, then from a point to a cell.](../../../assets/session09/fig-picking.svg)
+
 The cell under the mouse is highlighted, with a faint copy of the chosen defender, so the
 player sees what a click will do.
 
@@ -128,6 +130,8 @@ It works, but try adding more kinds:
 
 Inheritance describes what something _is_. In this game, what each thing _can do_ matters
 more, and the abilities combine freely.
+
+![With a class per kind of thing, a defender that shoots and makes gold has no good place in the tree.](../../../assets/session09/fig-inheritance.svg)
 
 **Try it** (`Pvz1`): make a Wizard, an Archer that shoots two arrows, as a subclass. How
 far do you get before `Archer` has to change?
@@ -211,6 +215,8 @@ public Entity Shieldbearer(World world) => Goblin(world).With(new Armour(18, atl
 The Wizard and the Shieldbearer are new in `Pvz2`, and neither needed a class. A defender that
 shoots and makes gold is `.With(new Shooter(...)).With(new GoldProducer(...))`. Health is
 written once, and used by defenders and goblins alike.
+
+![An entity is a list of components, and each kind of thing is a different list.](../../../assets/session09/fig-components.svg)
 
 **Try it** (`Pvz2`): add a recipe for a defender that shoots and makes gold, and give it a
 card in `Game1`. How much new code did it take?
@@ -343,6 +349,8 @@ public class DefenderType
   It took one new component (`Explode`), one new property on `DefenderType`, and the data.
   Components and Type Object work together. Components are the building blocks, and the
   types are the data that combines them.
+
+![One type object holds what all archers share; each entity on the field holds what is its own.](../../../assets/session09/fig-type-object.svg)
 
 **Try it** (`Pvz3`): in `defenders.json`, make a Knight that costs 25 with twice the health,
 and a Chest that makes 50 gold. Did you compile anything?

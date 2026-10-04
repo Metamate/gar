@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="720" height="260" role="img"><title>Changing state calls Exit on the old state and Enter on the new one</title><defs><marker id="arrow-d45d35" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d45d35"/></marker><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker></defs><rect width="720" height="260" rx="10" fill="#22262b"/>
+<text x="40" y="40" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#dee2e6" text-anchor="start" font-weight="normal">ChangeState(play)</text>
+<rect x="40" y="96" width="150" height="56" fill="#2e3338" rx="8" stroke="#565d65" stroke-width="2"/>
+<text x="115" y="120" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">TitleState</text>
+<text x="115" y="140" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the current state</text>
+<line x1="196" y1="124" x2="262" y2="124" stroke="#d45d35" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<rect x="268" y="96" width="110" height="56" fill="#2e3338" rx="8" stroke="#d45d35" stroke-width="2"/>
+<text x="323" y="120" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="middle" font-weight="bold">Exit()</text>
+<text x="323" y="140" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">title cleans up</text>
+<line x1="384" y1="124" x2="432" y2="124" stroke="#d45d35" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<rect x="438" y="96" width="110" height="56" fill="#2e3338" rx="8" stroke="#d45d35" stroke-width="2"/>
+<text x="493" y="120" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="middle" font-weight="bold">Enter()</text>
+<text x="493" y="140" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">play sets up</text>
+<line x1="554" y1="124" x2="584" y2="124" stroke="#d45d35" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<rect x="590" y="96" width="100" height="56" fill="#2e3338" rx="8" stroke="#2aa6a6" stroke-width="2"/>
+<text x="640" y="120" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">PlayState</text>
+<text x="640" y="140" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">now current</text>
+<text x="40" y="206" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">then, every frame:</text>
+<rect x="190" y="184" width="120" height="40" fill="#2e3338" rx="8" stroke="#2aa6a6" stroke-width="2"/>
+<text x="250" y="209.25" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">Update()</text>
+<line x1="316" y1="204" x2="352" y2="204" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<rect x="358" y="184" width="120" height="40" fill="#2e3338" rx="8" stroke="#2aa6a6" stroke-width="2"/>
+<text x="418" y="209.25" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">Draw()</text>
+<path d="M478 196 C 540 150, 140 150, 196 190" stroke="#2aa6a6" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4" marker-end="url(#arrow-2aa6a6)"/>
+<text x="500" y="210" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">until the next ChangeState</text>
+</svg>

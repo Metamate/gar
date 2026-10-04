@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img"><title>The player moves first, then is snapped back to the edge of the tile it overlaps</title><defs><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker></defs><rect width="720" height="330" rx="10" fill="#22262b"/>
+<text x="120" y="38" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">1. Before</text>
+<rect x="20" y="60" width="200" height="150" fill="#1b2733" rx="4"/>
+<rect x="166" y="90" width="54" height="54" fill="#8a5a3c"/>
+<rect x="166" y="90" width="54" height="54" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="166" y="144" width="54" height="54" fill="#8a5a3c"/>
+<rect x="166" y="144" width="54" height="54" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="20" y="156" width="146" height="36" fill="#8a5a3c"/>
+<rect x="20" y="156" width="146" height="9" fill="#6fbf4a"/>
+<rect x="90" y="104" width="48" height="52" fill="none" stroke="#2aa6a6" stroke-width="2.5"/>
+<rect x="95" y="109" width="38" height="42" fill="#e8c15a" opacity="0.85"/>
+<line x1="166" y1="56" x2="166" y2="210" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<text x="120" y="262" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the hitbox is clear</text>
+<text x="120" y="279.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">of the wall</text>
+<text x="360" y="38" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">2. Move</text>
+<rect x="260" y="60" width="200" height="150" fill="#1b2733" rx="4"/>
+<rect x="406" y="90" width="54" height="54" fill="#8a5a3c"/>
+<rect x="406" y="90" width="54" height="54" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="406" y="144" width="54" height="54" fill="#8a5a3c"/>
+<rect x="406" y="144" width="54" height="54" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="260" y="156" width="146" height="36" fill="#8a5a3c"/>
+<rect x="260" y="156" width="146" height="9" fill="#6fbf4a"/>
+<rect x="372" y="104" width="48" height="52" fill="none" stroke="#d45d35" stroke-width="2.5"/>
+<rect x="377" y="109" width="38" height="42" fill="#e8c15a" opacity="0.85"/>
+<rect x="406" y="104" width="14" height="52" fill="#d45d35" opacity="0.55"/>
+<line x1="406" y1="56" x2="406" y2="210" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<text x="360" y="262" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">velocity × deltaTime takes it</text>
+<text x="360" y="279.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">14 pixels into the wall</text>
+<text x="600" y="38" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">3. Snap</text>
+<rect x="500" y="60" width="200" height="150" fill="#1b2733" rx="4"/>
+<rect x="646" y="90" width="54" height="54" fill="#8a5a3c"/>
+<rect x="646" y="90" width="54" height="54" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="646" y="144" width="54" height="54" fill="#8a5a3c"/>
+<rect x="646" y="144" width="54" height="54" fill="none" stroke="#00000055" stroke-width="1"/>
+<rect x="500" y="156" width="146" height="36" fill="#8a5a3c"/>
+<rect x="500" y="156" width="146" height="9" fill="#6fbf4a"/>
+<rect x="598" y="104" width="48" height="52" fill="none" stroke="#7fd46b" stroke-width="2.5"/>
+<rect x="603" y="109" width="38" height="42" fill="#e8c15a" opacity="0.85"/>
+<line x1="646" y1="56" x2="646" y2="210" stroke="#565d65" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 4"/>
+<text x="600" y="262" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">back to the tile's edge, and the</text>
+<text x="600" y="279.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">velocity on that axis becomes 0</text>
+<line x1="226" y1="130" x2="254" y2="130" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<line x1="466" y1="130" x2="494" y2="130" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="360" y="314" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">x is moved and snapped first, then y. One axis at a time, the snap always knows which edge to use.</text>
+</svg>

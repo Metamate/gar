@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img"><title>Two key presses between ticks: without a buffer the first is lost, with one both are used</title><rect width="720" height="330" rx="10" fill="#22262b"/>
+<text x="190" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="start" font-weight="normal">the snake moves right; the player presses Up, then Left, before the next tick</text>
+<text x="30" y="120" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="start" font-weight="bold">Snake6</text>
+<text x="30" y="140" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">one wanted direction</text>
+<line x1="190" y1="124" x2="650" y2="124" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="190" y1="112" x2="190" y2="136" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round"/>
+<text x="190" y="154" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">tick</text>
+<line x1="390" y1="112" x2="390" y2="136" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round"/>
+<text x="390" y="154" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">tick</text>
+<line x1="590" y1="112" x2="590" y2="136" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round"/>
+<text x="590" y="154" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">tick</text>
+<rect x="250" y="74" width="44" height="26" fill="#2e3338" rx="13"/>
+<text x="272" y="91.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">Up</text>
+<line x1="272" y1="100" x2="272" y2="120" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="310" y="74" width="52" height="26" fill="#2e3338" rx="13"/>
+<text x="336" y="91.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">Left</text>
+<line x1="336" y1="100" x2="336" y2="120" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<text x="400" y="108" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#d45d35" text-anchor="start" font-weight="bold">turns Left: into its own neck</text>
+<line x1="250" y1="86" x2="294" y2="86" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<text x="302" y="66" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#d45d35" text-anchor="start" font-weight="normal">overwritten</text>
+<text x="30" y="244" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="start" font-weight="bold">Snake7</text>
+<text x="30" y="264" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">a queue of turns</text>
+<line x1="190" y1="248" x2="650" y2="248" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="190" y1="236" x2="190" y2="260" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round"/>
+<text x="190" y="278" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">tick</text>
+<line x1="390" y1="236" x2="390" y2="260" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round"/>
+<text x="390" y="278" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">tick</text>
+<line x1="590" y1="236" x2="590" y2="260" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round"/>
+<text x="590" y="278" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">tick</text>
+<rect x="250" y="198" width="44" height="26" fill="#2e3338" rx="13"/>
+<text x="272" y="215.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">Up</text>
+<line x1="272" y1="224" x2="272" y2="244" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="310" y="198" width="52" height="26" fill="#2e3338" rx="13"/>
+<text x="336" y="215.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">Left</text>
+<line x1="336" y1="224" x2="336" y2="244" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round"/>
+<text x="400" y="232" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="start" font-weight="bold">turns Up</text>
+<text x="600" y="232" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="start" font-weight="bold">Left</text>
+<text x="30" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">A new turn is checked against the last one queued, so two quick presses can never reverse the snake.</text>
+</svg>

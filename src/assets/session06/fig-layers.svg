@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img"><title>A level is two tilemaps and a list of entities, drawn on top of each other</title><rect width="720" height="330" rx="10" fill="#22262b"/>
+<g transform="translate(104 50) skewX(-28)">
+<rect x="0" y="0" width="306" height="62" fill="#1b2733" stroke="#d45d35" stroke-width="1.5" opacity="0.92"/>
+<rect x="40" y="6" width="16" height="24" fill="#e8c15a"/>
+<rect x="210" y="14" width="22" height="16" fill="#7ad1c0" rx="6"/>
+<rect x="266" y="-6" width="22" height="22" fill="#d9a441" stroke="#7a5a1d" stroke-width="1.5"/>
+<circle cx="120" cy="12" r="7" fill="#f2d24b"/>
+</g>
+<text x="410" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="start" font-weight="bold">entities</text>
+<text x="410" y="102" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">a list: they move, and come and go</text>
+<g transform="translate(82 138) skewX(-28)">
+<rect x="0" y="0" width="306" height="62" fill="#1b2733" stroke="#2aa6a6" stroke-width="1.5" opacity="0.92"/>
+<rect x="0" y="30" width="34" height="10" fill="#6fbf4a"/>
+<rect x="34" y="30" width="34" height="10" fill="#6fbf4a"/>
+<rect x="68" y="30" width="34" height="10" fill="#6fbf4a"/>
+<rect x="102" y="30" width="34" height="10" fill="#6fbf4a"/>
+<rect x="170" y="30" width="34" height="10" fill="#6fbf4a"/>
+<rect x="204" y="30" width="34" height="10" fill="#6fbf4a"/>
+<rect x="238" y="30" width="34" height="10" fill="#6fbf4a"/>
+<rect x="272" y="30" width="34" height="10" fill="#6fbf4a"/>
+</g>
+<text x="410" y="168" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#2aa6a6" text-anchor="start" font-weight="bold">toppers</text>
+<text x="410" y="190" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">a second tilemap: grass or snow, only for looks</text>
+<g transform="translate(60 226) skewX(-28)">
+<rect x="0" y="0" width="306" height="62" fill="#1b2733" stroke="#9aa3ab" stroke-width="1.5" opacity="0.92"/>
+<rect x="0" y="30" width="34" height="32" fill="#8a5a3c" stroke="#00000055" stroke-width="1"/>
+<rect x="34" y="30" width="34" height="32" fill="#8a5a3c" stroke="#00000055" stroke-width="1"/>
+<rect x="68" y="30" width="34" height="32" fill="#8a5a3c" stroke="#00000055" stroke-width="1"/>
+<rect x="102" y="30" width="34" height="32" fill="#8a5a3c" stroke="#00000055" stroke-width="1"/>
+<rect x="170" y="30" width="34" height="32" fill="#8a5a3c" stroke="#00000055" stroke-width="1"/>
+<rect x="204" y="30" width="34" height="32" fill="#8a5a3c" stroke="#00000055" stroke-width="1"/>
+<rect x="238" y="30" width="34" height="32" fill="#8a5a3c" stroke="#00000055" stroke-width="1"/>
+<rect x="272" y="30" width="34" height="32" fill="#8a5a3c" stroke="#00000055" stroke-width="1"/>
+</g>
+<text x="410" y="256" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="start" font-weight="bold">tilemap</text>
+<text x="410" y="278" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">a grid of tiles: the ground, and what is solid</text>
+<text x="360" y="312" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">"Is this spot solid?" is one lookup in the tilemap. The entities are checked one by one.</text>
+</svg>

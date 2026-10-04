@@ -62,13 +62,7 @@ This lets us layer screens:
 - **Dialogue:** a message box sits on top of the battle scene.
 - **Battles:** the field (`PlayState`) is still there, untouched, when the battle ends.
 
-```mermaid
-block-beta
-    columns 1
-    top["BattleMenuState  ← Update + Draw"]
-    battle["BattleState  ← Draw"]
-    play["PlayState  ← Draw"]
-```
+![States are pushed on top of each other; only the top one updates, and all of them draw.](../../../assets/session10/fig-state-stack.svg)
 
 ### Trace it
 
@@ -119,6 +113,8 @@ A GUI is built from reusable widgets:
   cursor. Adding an option is one line.
 
 For inspiration, see [Interface in Game](https://interfaceingame.com/games/).
+
+![The battle screen is built from four small widgets.](../../../assets/session10/fig-widgets.svg)
 
 ### UI samples
 
@@ -171,6 +167,8 @@ _Steps `Pokemon0`, `Pokemon2` and `Pokemon3`_
 - **Battle flow:** `BattleMenuState` (Fight/Run) → `TakeTurnState` (faster monster
   attacks first) → back to the menu if both are alive, otherwise victory/defeat.
 
+![The tile position jumps at once; the pixel position is tweened to catch up.](../../../assets/session10/fig-tile-movement.svg)
+
 Each phase of a battle is its own state, with one job:
 
 | State | Owns |
@@ -215,6 +213,8 @@ SaveData loaded = JsonSerializer.Deserialize<SaveData>(File.ReadAllText(SavePath
 
 Save plain _data_. Store what you need to rebuild the game state (species name, level,
 current HP), and leave out textures and references to other game objects.
+
+![Saving turns the game's objects into plain data and then text; loading goes the other way.](../../../assets/session10/fig-save-load.svg)
 
 The game already reads its data this way. The JSON is deserialized into small `record`
 types with the same shape as the file, and the game builds its real objects from those.
@@ -280,6 +280,8 @@ Locator.Audio.PlayHit();
 - **Null object:** before a real service is registered, `NullAudio` (which does nothing)
   stands in, so callers never need null checks.
 - Dependencies are still hidden. You can't see from a constructor what a class uses.
+
+![Callers ask the locator for an interface, and whatever was registered answers.](../../../assets/session10/fig-locator.svg)
 
 **Try it** (`Pokemon4`): in `Game1`, provide a `NullAudio` instead of the `SoundManager`. The
 game runs silently. Which other classes did you change? Then write a `LoggingAudio` that

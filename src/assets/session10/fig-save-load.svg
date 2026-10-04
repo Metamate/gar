@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" width="720" height="250" role="img"><title>Saving turns the game's objects into plain data and then text; loading goes the other way</title><defs><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker></defs><rect width="720" height="250" rx="10" fill="#22262b"/>
+<rect x="30" y="76" width="170" height="64" fill="#2e3338" rx="8" stroke="#565d65" stroke-width="2"/>
+<text x="115" y="104" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">game objects</text>
+<text x="115" y="124" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Player, Party, Mon</text>
+<rect x="275" y="76" width="170" height="64" fill="#2e3338" rx="8" stroke="#2aa6a6" stroke-width="2"/>
+<text x="360" y="104" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#2aa6a6" text-anchor="middle" font-weight="bold">save data</text>
+<text x="360" y="124" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">records: plain values</text>
+<rect x="520" y="76" width="170" height="64" fill="#2e3338" rx="8" stroke="#d45d35" stroke-width="2"/>
+<text x="605" y="104" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="middle" font-weight="bold">JSON text</text>
+<text x="605" y="124" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">a file on disk</text>
+<line x1="206" y1="98" x2="269" y2="98" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<line x1="269" y1="120" x2="206" y2="120" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="237.5" y="68" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">pick what to keep</text>
+<text x="237.5" y="160" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">rebuild the objects</text>
+<line x1="451" y1="98" x2="514" y2="98" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<line x1="514" y1="120" x2="451" y2="120" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="482.5" y="68" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Serialize</text>
+<text x="482.5" y="160" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Deserialize</text>
+<text x="30" y="50" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="start" font-weight="bold">save</text>
+<line x1="70" y1="45" x2="120" y2="45" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="690" y="50" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="end" font-weight="bold">load</text>
+<line x1="646" y1="45" x2="596" y2="45" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="360" y="190" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13.5" fill="#2aa6a6" text-anchor="middle" font-weight="normal">species name, level, HP, position</text>
+<text x="360" y="212" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Textures and references to other objects are left out: they are rebuilt from the data.</text>
+<text x="360" y="234" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">A round-trip test saves, loads, and checks that the two records are equal.</text>
+</svg>

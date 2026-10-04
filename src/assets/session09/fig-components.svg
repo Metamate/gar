@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img"><title>An entity is a list of components, and each kind of thing is a different list</title><rect width="720" height="360" rx="10" fill="#22262b"/>
+<rect x="30" y="56" width="150" height="236" fill="#14171a" rx="8" stroke="#565d65" stroke-width="1.5"/>
+<text x="105" y="44" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">Chest</text>
+<text x="42" y="78" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="start" font-weight="normal">Entity</text>
+<rect x="42" y="90" width="126" height="30" fill="#2e3338" rx="6" stroke="#9aa3ab" stroke-width="1.5"/>
+<text x="105" y="110" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">SpriteRenderer</text>
+<rect x="42" y="128" width="126" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="105" y="148" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Health</text>
+<rect x="42" y="166" width="126" height="30" fill="#2e3338" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="105" y="186" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">GoldProducer</text>
+<rect x="200" y="56" width="150" height="236" fill="#14171a" rx="8" stroke="#565d65" stroke-width="1.5"/>
+<text x="275" y="44" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">Archer</text>
+<text x="212" y="78" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="start" font-weight="normal">Entity</text>
+<rect x="212" y="90" width="126" height="30" fill="#2e3338" rx="6" stroke="#9aa3ab" stroke-width="1.5"/>
+<text x="275" y="110" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">SpriteRenderer</text>
+<rect x="212" y="128" width="126" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="275" y="148" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Health</text>
+<rect x="212" y="166" width="126" height="30" fill="#2e3338" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="275" y="186" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Shooter</text>
+<rect x="370" y="56" width="150" height="236" fill="#14171a" rx="8" stroke="#565d65" stroke-width="1.5"/>
+<text x="445" y="44" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">Goblin</text>
+<text x="382" y="78" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="start" font-weight="normal">Entity</text>
+<rect x="382" y="90" width="126" height="30" fill="#2e3338" rx="6" stroke="#9aa3ab" stroke-width="1.5"/>
+<text x="445" y="110" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">SpriteRenderer</text>
+<rect x="382" y="128" width="126" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="445" y="148" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Health</text>
+<rect x="382" y="166" width="126" height="30" fill="#2e3338" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="445" y="186" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Walker</text>
+<rect x="382" y="204" width="126" height="30" fill="#2e3338" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="445" y="224" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Attacker</text>
+<rect x="540" y="56" width="150" height="236" fill="#14171a" rx="8" stroke="#565d65" stroke-width="1.5"/>
+<text x="615" y="44" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="middle" font-weight="bold">Shieldbearer</text>
+<text x="552" y="78" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="start" font-weight="normal">Entity</text>
+<rect x="552" y="90" width="126" height="30" fill="#2e3338" rx="6" stroke="#9aa3ab" stroke-width="1.5"/>
+<text x="615" y="110" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">SpriteRenderer</text>
+<rect x="552" y="128" width="126" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="615" y="148" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Health</text>
+<rect x="552" y="166" width="126" height="30" fill="#2e3338" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="615" y="186" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Walker</text>
+<rect x="552" y="204" width="126" height="30" fill="#2e3338" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="615" y="224" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Attacker</text>
+<rect x="552" y="242" width="126" height="30" fill="#2e3338" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="615" y="262" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Armour</text>
+<text x="30" y="320" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13.5" fill="#2aa6a6" text-anchor="start" font-weight="bold">Health</text>
+<text x="86" y="320" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">is written once, and defenders and goblins both use it.</text>
+<text x="30" y="342" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">A Shieldbearer is a Goblin with one more component. Neither needed a class.</text>
+</svg>

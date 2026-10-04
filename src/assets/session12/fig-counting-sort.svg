@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img"><title>The flat grid is built with a counting sort: count each cell, find where it starts, then copy</title><rect width="720" height="320" rx="10" fill="#22262b"/>
+<text x="30" y="56" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">the enemies, in any order</text>
+<rect x="230" y="36" width="42" height="30" fill="#2e3338" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="251" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">B</text>
+<rect x="278" y="36" width="42" height="30" fill="#2e3338" rx="5" stroke="#b98ad6" stroke-width="1.5"/>
+<text x="299" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">D</text>
+<rect x="326" y="36" width="42" height="30" fill="#2e3338" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="347" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">A</text>
+<rect x="374" y="36" width="42" height="30" fill="#2e3338" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="395" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">B</text>
+<rect x="422" y="36" width="42" height="30" fill="#2e3338" rx="5" stroke="#7fd46b" stroke-width="1.5"/>
+<text x="443" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">C</text>
+<rect x="470" y="36" width="42" height="30" fill="#2e3338" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="491" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">B</text>
+<rect x="518" y="36" width="42" height="30" fill="#2e3338" rx="5" stroke="#b98ad6" stroke-width="1.5"/>
+<text x="539" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">D</text>
+<rect x="566" y="36" width="42" height="30" fill="#2e3338" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="587" y="56" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">A</text>
+<text x="30" y="120" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="start" font-weight="bold">1. count each cell</text>
+<rect x="230" y="100" width="90" height="30" fill="#14171a" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="275" y="120" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">A: 2</text>
+<rect x="326" y="100" width="90" height="30" fill="#14171a" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="371" y="120" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">B: 3</text>
+<rect x="422" y="100" width="90" height="30" fill="#14171a" rx="5" stroke="#7fd46b" stroke-width="1.5"/>
+<text x="467" y="120" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">C: 1</text>
+<rect x="518" y="100" width="90" height="30" fill="#14171a" rx="5" stroke="#b98ad6" stroke-width="1.5"/>
+<text x="563" y="120" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">D: 2</text>
+<text x="30" y="180" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="start" font-weight="bold">2. where each cell starts</text>
+<rect x="230" y="160" width="90" height="30" fill="#14171a" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="275" y="180" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">A at 0</text>
+<rect x="326" y="160" width="90" height="30" fill="#14171a" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="371" y="180" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">B at 2</text>
+<rect x="422" y="160" width="90" height="30" fill="#14171a" rx="5" stroke="#7fd46b" stroke-width="1.5"/>
+<text x="467" y="180" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">C at 5</text>
+<rect x="518" y="160" width="90" height="30" fill="#14171a" rx="5" stroke="#b98ad6" stroke-width="1.5"/>
+<text x="563" y="180" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">D at 6</text>
+<text x="30" y="240" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="start" font-weight="bold">3. copy each enemy</text>
+<text x="30" y="258" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="start" font-weight="bold">into its cell's range</text>
+<rect x="230" y="222" width="42" height="30" fill="#243038" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="251" y="242" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">A</text>
+<text x="251" y="270" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">0</text>
+<rect x="278" y="222" width="42" height="30" fill="#243038" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="299" y="242" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">A</text>
+<text x="299" y="270" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">1</text>
+<rect x="326" y="222" width="42" height="30" fill="#243038" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="347" y="242" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">B</text>
+<text x="347" y="270" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">2</text>
+<rect x="374" y="222" width="42" height="30" fill="#243038" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="395" y="242" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">B</text>
+<text x="395" y="270" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">3</text>
+<rect x="422" y="222" width="42" height="30" fill="#243038" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="443" y="242" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">B</text>
+<text x="443" y="270" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">4</text>
+<rect x="470" y="222" width="42" height="30" fill="#243038" rx="5" stroke="#7fd46b" stroke-width="1.5"/>
+<text x="491" y="242" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">C</text>
+<text x="491" y="270" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">5</text>
+<rect x="518" y="222" width="42" height="30" fill="#243038" rx="5" stroke="#b98ad6" stroke-width="1.5"/>
+<text x="539" y="242" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">D</text>
+<text x="539" y="270" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">6</text>
+<rect x="566" y="222" width="42" height="30" fill="#243038" rx="5" stroke="#b98ad6" stroke-width="1.5"/>
+<text x="587" y="242" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">D</text>
+<text x="587" y="270" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">7</text>
+<text x="360" y="302" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Each cell's enemies now sit next to each other in memory, and nothing was allocated.</text>
+</svg>

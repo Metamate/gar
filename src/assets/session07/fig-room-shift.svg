@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="720" height="340" role="img"><title>To scroll between rooms, a tween moves the camera from one room to the next</title><defs><marker id="arrow-d45d35" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d45d35"/></marker><marker id="arrow-7fd46b" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#7fd46b"/></marker></defs><rect width="720" height="340" rx="10" fill="#22262b"/>
+<rect x="40" y="60" width="190" height="110" fill="#c98d5a" stroke="#5b4a3a" stroke-width="2" opacity="0.9"/>
+<text x="135" y="190" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">this room</text>
+<rect x="230" y="60" width="190" height="110" fill="#c98d5a" stroke="#5b4a3a" stroke-width="2" opacity="0.9"/>
+<text x="325" y="190" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the next room</text>
+<rect x="40" y="54" width="190" height="122" fill="none" rx="4" stroke="#d45d35" stroke-width="2.5" opacity="0.35"/>
+<rect x="135" y="54" width="190" height="122" fill="none" rx="4" stroke="#d45d35" stroke-width="2.5" opacity="0.6"/>
+<rect x="230" y="54" width="190" height="122" fill="none" rx="4" stroke="#d45d35" stroke-width="2.5" opacity="1"/>
+<line x1="60" y1="38" x2="400" y2="38" stroke="#d45d35" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<text x="230" y="30" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#d45d35" text-anchor="middle" font-weight="normal">the camera, at t = 0, 0.5 and 1</text>
+<rect x="218" y="104" width="14" height="22" fill="#6fbf4a"/>
+<line x1="238" y1="115" x2="274" y2="115" stroke="#7fd46b" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-7fd46b)"/>
+<rect x="480" y="60" width="200" height="140" fill="#14171a" rx="4"/>
+<line x1="480" y1="200" x2="680" y2="60" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round"/>
+<path d="M480 200 L490 186.35 L500 173.4 L510 161.15 L520 149.6 L530 138.75 L540 128.6 L550 119.15 L560 110.4 L570 102.35 L580 95 L590 88.35 L600 82.4 L610 77.15 L620 72.6 L630 68.75 L640 65.6 L650 63.15 L660 61.4 L670 60.35 L680 60" stroke="#2aa6a6" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="480" y="218" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="start" font-weight="normal">t = 0</text>
+<text x="680" y="218" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#9aa3ab" text-anchor="end" font-weight="normal">1</text>
+<text x="672" y="178" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="end" font-weight="normal">linear</text>
+<text x="496" y="86" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#2aa6a6" text-anchor="start" font-weight="normal">ease-out</text>
+<text x="40" y="250" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="15" fill="#dee2e6" text-anchor="start" font-weight="normal">lerp(a, b, t) = a + (b − a) × t</text>
+<text x="40" y="280" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">The tween runs t from 0 to 1 over a second, and moves the camera and the player together.</text>
+<text x="40" y="297.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">An easing curve changes how t grows: ease-out starts fast and settles.</text>
+</svg>

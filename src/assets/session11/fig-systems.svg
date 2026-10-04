@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="720" height="340" role="img"><title>A component is about its own entity; a system handles what spans many entities</title><rect width="720" height="340" rx="10" fill="#22262b"/>
+<text x="180" y="40" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#2aa6a6" text-anchor="middle" font-weight="bold">A component</text>
+<text x="180" y="62" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">about its owner, and its own state</text>
+<rect x="70" y="84" width="220" height="160" fill="#14171a" rx="8" stroke="#565d65" stroke-width="1.5"/>
+<text x="84" y="106" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">one entity</text>
+<rect x="90" y="118" width="180" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="180" y="138" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">Health</text>
+<rect x="90" y="158" width="180" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="180" y="178" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">Weapon</text>
+<rect x="90" y="198" width="180" height="30" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="180" y="218" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">SeekTarget</text>
+<text x="180" y="272" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">"has this entity run out of health?"</text>
+<line x1="360" y1="24" x2="360" y2="300" stroke="#565d65" stroke-width="1" stroke-linecap="round"/>
+<text x="540" y="40" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="middle" font-weight="bold">A system</text>
+<text x="540" y="62" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">rules across entities, or for the whole run</text>
+<circle cx="430" cy="120" r="11" fill="#2e3338" stroke="#59d6e8" stroke-width="1.5"/>
+<circle cx="500" cy="96" r="11" fill="#2e3338" stroke="#59d6e8" stroke-width="1.5"/>
+<circle cx="560" cy="136" r="11" fill="#2e3338" stroke="#59d6e8" stroke-width="1.5"/>
+<circle cx="630" cy="108" r="11" fill="#2e3338" stroke="#59d6e8" stroke-width="1.5"/>
+<circle cx="466" cy="186" r="11" fill="#2e3338" stroke="#59d6e8" stroke-width="1.5"/>
+<circle cx="540" cy="206" r="11" fill="#2e3338" stroke="#59d6e8" stroke-width="1.5"/>
+<circle cx="616" cy="178" r="11" fill="#2e3338" stroke="#59d6e8" stroke-width="1.5"/>
+<line x1="430" y1="120" x2="500" y2="96" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="500" y1="96" x2="560" y2="136" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="560" y1="136" x2="630" y2="108" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="466" y1="186" x2="540" y2="206" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="540" y1="206" x2="616" y2="178" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="560" y1="136" x2="540" y2="206" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="430" y1="120" x2="466" y2="186" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 4"/>
+<line x1="630" y1="108" x2="616" y2="178" stroke="#d45d35" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="3 4"/>
+<rect x="450" y="228" width="180" height="30" fill="#2e3338" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="540" y="248" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">CollisionSystem</text>
+<text x="540" y="280" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">"which pairs of entities touch?"</text>
+<text x="360" y="322" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">If a rule would make one entity reach into all the others, it belongs in a system.</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img"><title>Tightly coupled code depends on everything; decoupled code depends on little</title><rect width="720" height="320" rx="10" fill="#22262b"/>
+<text x="180" y="34" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="middle" font-weight="bold">Tightly coupled</text>
+<text x="180" y="56" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="middle" font-weight="normal">a change to one class touches the others</text>
+<line x1="102" y1="108" x2="262" y2="108" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<line x1="102" y1="108" x2="102" y2="198" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<line x1="102" y1="108" x2="262" y2="198" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<line x1="102" y1="108" x2="182" y2="268" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<line x1="262" y1="108" x2="102" y2="198" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<line x1="262" y1="108" x2="262" y2="198" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<line x1="262" y1="108" x2="182" y2="268" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<line x1="102" y1="198" x2="262" y2="198" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<line x1="102" y1="198" x2="182" y2="268" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<line x1="262" y1="198" x2="182" y2="268" stroke="#d45d35" stroke-width="2" stroke-linecap="round"/>
+<rect x="60" y="90" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="102" y="113" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Game1</text>
+<rect x="220" y="90" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="262" y="113" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Bird</text>
+<rect x="60" y="180" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="102" y="203" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Pipes</text>
+<rect x="220" y="180" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="262" y="203" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Audio</text>
+<rect x="140" y="250" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="182" y="273" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Score</text>
+<text x="540" y="34" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="17" fill="#dee2e6" text-anchor="middle" font-weight="bold">Loosely coupled</text>
+<text x="540" y="56" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="middle" font-weight="normal">each class knows as little as it can</text>
+<line x1="462" y1="108" x2="622" y2="108" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round"/>
+<line x1="462" y1="108" x2="462" y2="198" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round"/>
+<line x1="462" y1="108" x2="622" y2="198" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round"/>
+<line x1="462" y1="108" x2="542" y2="268" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round"/>
+<rect x="420" y="90" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="462" y="113" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Game1</text>
+<rect x="580" y="90" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="622" y="113" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Bird</text>
+<rect x="420" y="180" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="462" y="203" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Pipes</text>
+<rect x="580" y="180" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="622" y="203" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Audio</text>
+<rect x="500" y="250" width="84" height="36" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="542" y="273" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">Score</text>
+<line x1="360" y1="24" x2="360" y2="300" stroke="#565d65" stroke-width="1" stroke-linecap="round"/>
+</svg>

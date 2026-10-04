@@ -89,6 +89,8 @@ a fixed order every frame: `OnAdded` and `OnStart` once, then `PreUpdate`, `Upda
 the world. `OnRemoved` is housekeeping (unsubscribing, for example); it is not the same as
 a gameplay event such as an enemy being destroyed.
 
+![Every component can hook into the same phases, which the entity runs in a fixed order.](../../../assets/session11/fig-lifecycle.svg)
+
 **Local events.** The components of one entity talk through small events of their own,
 without a global event bus. `Health` announces `Damaged` and `Depleted`; other components on the same
 entity react: `PlayHitParticlesOnDamage` shows sparks, `DestroyWhenHealthDepleted` removes
@@ -108,6 +110,8 @@ and what happens to it. But some rules span **many entities** or the **whole run
 which pairs of entities collide, when the next enemies spawn, and what happens to the arena
 when the player dies. Putting those in a component means one entity reaching into all the others.
 They belong in **systems**.
+
+![A component is about its own entity; a system handles what spans many entities.](../../../assets/session11/fig-systems.svg)
 
 A rule of thumb from the codebase:
 
@@ -286,6 +290,8 @@ A bullet that leaves the screen goes back into the pool, and the next shot takes
 Only when the pool is empty is a new bullet made, so after the first seconds the game stops
 allocating bullets.
 
+![A pool hands out bullets that are no longer in use, so the game stops allocating new ones.](../../../assets/session11/fig-object-pool.svg)
+
 Pooled objects must be fully **reset** when reused, or old state leaks into the new
 "instance". `BulletSpawner` does that for every bullet it takes out:
 
@@ -338,6 +344,8 @@ changed. Every seeker is built from it. What each seeker owns is in its componen
 position, its velocity, whether it is still alive. The texture works the same way. It is
 loaded once in `GameAssets`, and 500 seekers hold 500 references to it.
 
+![What every seeker has in common is stored once; each seeker keeps only what is its own.](../../../assets/session11/fig-flyweight.svg)
+
 This is close to the [Type Object](../09-plants-vs-zombies/#type-object) from Plants vs.
 Zombies, and the two often turn up together. They answer different questions. Type Object is
 about design: a kind of thing is described by an object, so new kinds are data. Flyweight is
@@ -361,6 +369,8 @@ required for your project.
 - MonoGame uses HLSL `.fx` files. See [24: Shaders](https://docs.monogame.net/articles/tutorials/building_2d_games/24_shaders/).
 - **Bloom:** render the scene to a `RenderTarget2D`, keep only the bright pixels, blur
   them (horizontal, then vertical), and add them back over the scene.
+
+![Bloom: draw the scene, keep the bright pixels, blur them, and add them back.](../../../assets/session11/fig-bloom.svg)
 
 ## Summary
 

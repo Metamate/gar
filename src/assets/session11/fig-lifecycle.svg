@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" width="720" height="250" role="img"><title>Every component can hook into the same phases, which the entity runs in a fixed order</title><defs><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker></defs><rect width="720" height="250" rx="10" fill="#22262b"/>
+<text x="30" y="44" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">once</text>
+<rect x="30" y="56" width="80" height="38" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="70" y="80" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">OnAdded</text>
+<line x1="113" y1="75" x2="122" y2="75" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="125" y="56" width="80" height="38" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="165" y="80" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">OnStart</text>
+<line x1="208" y1="75" x2="217" y2="75" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="220" y="44" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#2aa6a6" text-anchor="start" font-weight="normal">every frame</text>
+<rect x="220" y="56" width="80" height="38" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="260" y="80" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">PreUpdate</text>
+<line x1="303" y1="75" x2="312" y2="75" stroke="#2aa6a6" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<rect x="315" y="56" width="80" height="38" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="355" y="80" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">Update</text>
+<line x1="398" y1="75" x2="407" y2="75" stroke="#2aa6a6" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<rect x="410" y="56" width="80" height="38" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="450" y="80" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">Simulate</text>
+<line x1="493" y1="75" x2="502" y2="75" stroke="#2aa6a6" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<rect x="505" y="56" width="80" height="38" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="545" y="80" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">PostUpdate</text>
+<line x1="588" y1="75" x2="597" y2="75" stroke="#2aa6a6" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<rect x="600" y="56" width="80" height="38" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="640" y="80" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">Draw</text>
+<path d="M640 98 C 640 136, 260 136, 260 100" stroke="#2aa6a6" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4" marker-end="url(#arrow-2aa6a6)"/>
+<rect x="370" y="150" width="140" height="38" fill="#2e3338" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="440" y="174" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">OnCollision</text>
+<text x="520" y="174" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">when the world reports a hit</text>
+<rect x="30" y="150" width="120" height="38" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="90" y="174" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">OnRemoved</text>
+<text x="30" y="210" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">once, when the entity</text>
+<text x="30" y="228" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">leaves the world</text>
+</svg>
