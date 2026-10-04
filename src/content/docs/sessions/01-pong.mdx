@@ -186,6 +186,8 @@ _spriteBatch.End();
   `PreferredBackBufferWidth` and `PreferredBackBufferHeight`.
 - **Texture filtering:** use `SamplerState.PointClamp` for crisp pixel art when scaling up.
 
+![Point filtering keeps the pixels of scaled-up art sharp; linear filtering blurs them.](../../../assets/session01/fig-filtering.svg)
+
 See [What is a sprite?](https://docs.monogame.net/articles/getting_to_know/whatis/graphics/WhatIs_Sprite.html).
 
 ### Virtual resolution
@@ -252,12 +254,16 @@ and `Draw` methods. `Game1` then just calls them. This is the
 [Update Method](https://gameprogrammingpatterns.com/update-method.html) pattern: each
 object knows how to simulate one frame of its own behaviour.
 
+![Encapsulation: the data of a thing and the code that uses it move into a class of their own.](../../../assets/session01/fig-encapsulation.svg)
+
 It has costs too. Objects are updated one after another, so the order matters. An object
 updated early sees the others as they were last frame, and one updated late sees them
 already moved. Objects that interact, like the ball and the paddles, need a reference to
 each other, or a place like `Game1` that checks them together. Every object is updated every
 frame even when it has nothing to do. And adding or removing objects while looping over them
 needs care ([Angry Birds](../08-angry-birds/#destroying-safely) shows how).
+
+![The Update Method pattern: the game calls Update on every object, and each object moves itself one frame on.](../../../assets/session01/fig-update-method.svg)
 
 ## Collision Detection (AABB)
 

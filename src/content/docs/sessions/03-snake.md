@@ -362,6 +362,8 @@ freely, which the later games need.
 - **Bouncing:** reflect the velocity off the surface, as the ball does in [Pong](../01-pong/).
   `Vector2.Reflect` does it for any angle, given the surface's normal.
 
+![Collision response is what happens after a hit: block, trigger or bounce.](../../../assets/session03/fig-response.svg)
+
 ### Many objects
 
 Snake checks one head against one piece of food. With many moving objects, every pair has
@@ -370,6 +372,8 @@ frame. Engines split the work in two. A **broad phase** finds the pairs that are
 other with something cheap and rough, and a **narrow phase** runs the exact check on those
 pairs only. [Vampire Survivors](../12-vampire-survivors/#spatial-partitioning) builds a
 broad phase from a grid.
+
+![A broad phase cheaply finds the pairs that are near each other; a narrow phase runs the exact check on those only.](../../../assets/session03/fig-phases.svg)
 
 ## Game Over
 

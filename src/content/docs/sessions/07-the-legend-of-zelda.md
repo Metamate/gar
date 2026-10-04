@@ -130,6 +130,8 @@ thing that happened shouldn't need to know what those other things are.
 **Observer** flips the dependency around. The _subject_ (publisher) just announces that
 something happened, and any number of _observers_ (subscribers) react.
 
+![The subject keeps a list of observers and tells each of them when something happens.](../../../assets/session07/fig-observer.svg)
+
 ![An event travels up from the room to the play state; each class only knows the one below it.](../../../assets/session07/fig-event-flow.svg)
 
 ```mermaid

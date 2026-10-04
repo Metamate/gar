@@ -46,6 +46,8 @@ Good software architecture makes **change** cheap. Much of that comes from
 **decoupling**. When you change one part of the code, you shouldn't have to understand or
 touch many other parts.
 
+![Every change to a program goes through the same four steps, and architecture shortens the second.](../../../assets/session02/fig-change-cycle.svg)
+
 - **Coupling:** how much one module depends on another. Aim for low.
 - **Cohesion:** how closely related the responsibilities inside one module are. Aim for
   high.
@@ -71,6 +73,8 @@ references MonoGame. Each game references the library, and its `Game1` derives f
 
 The reference only goes one way. Flappy uses GARCore, but nothing in GARCore may use a
 class from Flappy. If `Core` needed Flappy's `Bird`, no other game could use the library.
+
+![Code that every game needs moves into a class library that each game references.](../../../assets/session02/fig-class-library.svg)
 
 ```mermaid
 classDiagram
@@ -265,6 +269,8 @@ controversial:
 - They are **global state**: any code can reach them, so any code can depend on them.
 - Dependencies become hidden, which makes code hard to reason about and to test.
 - Games rarely need to guarantee "only one instance". Usually we only want easy access.
+
+![A Singleton is one instance that any code can reach through a global access point.](../../../assets/session02/fig-singleton.svg)
 
 > "Friends don't let friends create singletons."
 > — Robert Nystrom, _Game Programming Patterns_

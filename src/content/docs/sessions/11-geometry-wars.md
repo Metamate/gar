@@ -364,6 +364,8 @@ _Step `GeometryWars5`_
 Geometry Wars' neon glow and warping grid are shader work. Shaders are not
 required for your project.
 
+![The graphics pipeline: vertices go in, the two shaders run, and pixels come out.](../../../assets/session11/fig-shader-pipeline.svg)
+
 - **Vertex shaders** run once per vertex; **pixel shaders** run once per pixel. The GPU
   runs thousands of them in parallel.
 - MonoGame uses HLSL `.fx` files. See [24: Shaders](https://docs.monogame.net/articles/tutorials/building_2d_games/24_shaders/).

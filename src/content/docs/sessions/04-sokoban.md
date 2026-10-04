@@ -360,6 +360,8 @@ A move that is an object can be kept. `Sokoban2` only keeps a list, to count the
 - **Sent:** over the network, in a multiplayer game.
 - **Undone:** if a command knows how to reverse itself.
 
+![A method call is gone once it has run; a command is the same request as an object that can be kept.](../../../assets/session04/fig-command-idea.svg)
+
 The `GameController` from [Snake](../03-snake/#input-as-actions) maps keys to _actions_
 ("the player wants to go up"). A command is what the game _does_ with an action ("move the
 player up in this level"), and that is the object we keep.
@@ -455,8 +457,11 @@ the commands' changes are worth storing.
 ### Commands and input
 
 _Game Programming Patterns_ opens its Command chapter with input. Each button
-holds a command, and **rebinding** a button means giving it a different one. Our
-`GameController` already names actions instead of keys, but the mapping is code. To let a
+holds a command, and **rebinding** a button means giving it a different one.
+
+![With commands, a button holds an object, and rebinding the button means giving it a different one.](../../../assets/session04/fig-command-object.svg)
+
+Our `GameController` already names actions instead of keys, but the mapping is code. To let a
 player choose their keys, it has to become data, which the game can change while it runs,
 read from a settings file, or fill from an options screen:
 
