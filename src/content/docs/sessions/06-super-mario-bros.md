@@ -330,7 +330,8 @@ Start from `Mario8`.
 3. **Powerups:** add a diamond (for a few seconds, slimes can't hurt the player) and a
    mushroom (the player grows).
    Both are drawn in `images/extras.png`. How do you add these without piling flags onto
-   the `Player` class?
+   the `Player` class? Is "big" a player state, like jumping? The player can be big and
+   jumping at once, so what does that say about putting both in one state machine?
 4. **Debug drawing:** also draw the probe below the player that checks for ground
    (`IsOnGround` in `PlayerStateBase`), and show the player's current state and velocity
    on screen. Use it to find where coyote time starts and ends.

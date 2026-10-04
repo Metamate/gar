@@ -305,9 +305,13 @@ with the Service Locator pattern.
    GARCore, the `Pipe` and `PipePair` classes and the spawning in `Game1`), then stop the game when the bird hits a pipe, the ground or the
    ceiling. Can you make collisions more forgiving?
 5. **A state machine:** add `IState`, a `StateMachine`, a `TitleState` and a `PlayState`.
+   What goes in `PlayState`'s `Enter`, and what would go wrong if it ran in the constructor
+   instead? Compare with Pong's string field: where is the code for one mode now?
 6. **Audio as a Singleton:** bring your game up to `Flappy11` (the score and countdown
    states), then add background music (`Song` + `MediaPlayer.Play`) and flap, hurt and score
    sounds, organized in an `Audio` class made a Singleton (`Audio.Instance.PlayFlap()`).
+   Then list the classes that use `Audio`. Could you have found them from their
+   constructors? What would you have to change to run `PlayState` without sound?
 
 **Going further (optional):** a cave flyer. Hold the button to rise and let go to fall, through a cave whose ceiling and floor are generated as you go. What changes, and what stays: the states, the scrolling, the spawning?
 

@@ -308,13 +308,23 @@ Start from `Pokemon4`.
 4. **Save & load:** save the player's party and position to a JSON file (e.g. on a key
    press), and load it on startup if it exists. Then add a `Pokemon.Tests` project, set up
    like `Sokoban.Tests`, with a round-trip test for your save data.
-5. **Pause:** add a `PauseState` using the state stack.
-6. **Catching (stretch):** add a Catch option to the battle menu that can add a weakened wild
+5. **Pause:** add a `PauseState` using the state stack, built from the widgets: a `Panel`
+   with a `Menu` that offers Resume and Quit. Why does the field stop moving while it is
+   open, although `PlayState` is still on the stack?
+6. **Mute:** let a key swap the audio service for a `NullAudio` while the game runs, and
+   back again. Which classes did you change? What would the same feature take with a
+   Singleton, like the `Audio.Instance` in [Flappy Bird](../02-flappy-bird/#singleton-pattern)?
+7. **A bar that listens:** in a battle, `TakeTurnState` moves the health bar itself. Give
+   `Mon` an event that is raised when its HP changes, and let `BattleState` subscribe and
+   tween the bar. What does `TakeTurnState` no longer need to know? Where do you
+   unsubscribe, and what happens if you forget?
+8. **Catching (stretch):** add a Catch option to the battle menu that can add a weakened wild
    monster to your party (more likely the lower its HP), and a field menu to choose who goes
    first. Which states do you add, and which existing ones change?
-7. **Switching (stretch):** once the party holds more than one monster, add a Switch option
+9. **Switching (stretch):** once the party holds more than one monster, add a Switch option
    to the battle menu. It swaps the active monster for another one from the party, and uses
-   up the turn. Can you reuse the menu from the field?
+   up the turn, so only the opponent attacks. Can you reuse the menu from the field? What
+   in `BattleState` assumed that the player's monster never changes?
 
 ## Apply It to Your Project
 

@@ -401,9 +401,11 @@ x = 0, y = 240). Describing them is part of each exercise.
 
 1. **New types:** add a Guard (twice the Knight's health) and a Runner (a faster goblin,
    with an iron shield) to the data, and send a few Runners in `level1.json`. Did you need
-   any code?
+   any code? In [Angry Birds](../08-angry-birds/#prototype), a new kind was a new prefab. What
+   does a prefab copy, and what does a type share?
 2. **Frost Wizard:** a defender whose arrows slow the goblin they hit. Which new component do you need,
    where does it go (the arrow? the goblin?), and how does the data say which arrows are cold?
+   Write a test for the new component first, next to the others in `Pvz.Tests`.
 3. **A shield for defenders:** armour for the people on your side too. Can you reuse
    `Armour`? What needs to change?
 4. **A pitchfork:** a tool in the card bar that sends the defender you click back into the

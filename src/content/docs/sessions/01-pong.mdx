@@ -353,12 +353,15 @@ Build Pong step by step:
    white pixel. Switch to the retro font (`"font"`, also in `Content/Assets`) and the
    background colour `(40, 45, 52)`.
 4. **Input and delta time:** W/S and Up/Down move the paddles, at the same speed whatever
-   the frame rate.
+   the frame rate. Check it: set `TargetElapsedTime = TimeSpan.FromSeconds(1 / 30.0)` in the
+   constructor. Does a paddle still cross the screen in the same time? And without the
+   multiplication by delta time?
 5. **A moving ball:** launch the ball in a random direction on Enter. A `string` field
    remembers the game's mode (`"start"` or `"play"`), and the start mode shows "Press
    Enter to launch the ball". Keep the paddles on screen (`Math.Clamp`).
 6. **The Update Method:** refactor into `Paddle` and `Ball` classes using the Update Method
-   pattern. The game must behave as it did before.
+   pattern. The game must behave as it did before. In which order does `Game1` update the
+   three objects, and would another order change anything?
 7. **Collisions and the bounce:** bounce off paddles and walls with AABB. Where the ball
    hits the paddle sets the new angle: straight back from the middle, steeply from the
    ends. Speed up the ball by 10% on each paddle hit.
