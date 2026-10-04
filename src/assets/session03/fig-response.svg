@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img"><title>Collision response is what happens after a hit: block, trigger or bounce</title><defs><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker><marker id="arrow-d45d35" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d45d35"/></marker></defs><rect width="720" height="320" rx="10" fill="#22262b"/>
+<rect x="30" y="50" width="210" height="170" fill="#14171a" rx="6"/>
+<text x="135" y="250" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">Blocking</text>
+<text x="135" y="274" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the two are kept from</text>
+<text x="135" y="290.9" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">overlapping</text>
+<rect x="170" y="70" width="40" height="130" fill="#2e3338" stroke="#565d65" stroke-width="1.5"/>
+<rect x="140" y="118" width="44" height="44" fill="none" stroke="#d45d35" stroke-width="1.5" stroke-dasharray="4 3"/>
+<rect x="126" y="118" width="44" height="44" fill="none" stroke="#2aa6a6" stroke-width="2.5"/>
+<line x1="160" y1="104" x2="132" y2="104" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<text x="60" y="108" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#2aa6a6" text-anchor="start" font-weight="normal">pushed back</text>
+<rect x="255" y="50" width="210" height="170" fill="#14171a" rx="6"/>
+<text x="360" y="250" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">Triggering</text>
+<text x="360" y="274" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">something happens, such as</text>
+<text x="360" y="290.9" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the snake eating and growing</text>
+<rect x="300" y="122" width="40" height="40" fill="#78e65a" rx="3"/>
+<rect x="344" y="122" width="40" height="40" fill="#78e65a" rx="3"/>
+<circle cx="408" cy="142" r="14" fill="none" stroke="#d45d35" stroke-width="2.5"/>
+<text x="408" y="106" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="16" fill="#d45d35" text-anchor="middle" font-weight="bold">+1</text>
+<rect x="480" y="50" width="210" height="170" fill="#14171a" rx="6"/>
+<text x="585" y="250" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">Bouncing</text>
+<text x="585" y="274" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the velocity is reflected</text>
+<text x="585" y="290.9" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">off the surface</text>
+<line x1="500" y1="190" x2="670" y2="190" stroke="#9aa3ab" stroke-width="3" stroke-linecap="round"/>
+<line x1="524" y1="84" x2="580" y2="182" stroke="#2aa6a6" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<line x1="590" y1="182" x2="646" y2="84" stroke="#d45d35" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<line x1="585" y1="188" x2="585" y2="100" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+<text x="585" y="90" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">normal</text>
+</svg>

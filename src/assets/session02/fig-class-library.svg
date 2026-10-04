@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img"><title>Code that every game needs moves into a class library that each game references</title><defs><marker id="arrow-2aa6a6" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2aa6a6"/></marker></defs><rect width="720" height="320" rx="10" fill="#22262b"/>
+<text x="180" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A copy in every game</text>
+<rect x="30" y="56" width="140" height="200" fill="#14171a" rx="8" stroke="#565d65" stroke-width="1.5"/>
+<text x="100" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="bold">Pong</text>
+<rect x="42" y="94" width="116" height="30" fill="#2e3338" rx="5"/>
+<text x="100" y="114" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">game code</text>
+<rect x="42" y="134" width="116" height="30" fill="#4a2c22" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="100" y="154" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">screen scaling</text>
+<rect x="42" y="172" width="116" height="30" fill="#4a2c22" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="100" y="192" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">input</text>
+<rect x="42" y="210" width="116" height="30" fill="#4a2c22" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="100" y="230" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">window</text>
+<rect x="190" y="56" width="140" height="200" fill="#14171a" rx="8" stroke="#565d65" stroke-width="1.5"/>
+<text x="260" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="bold">Flappy Bird</text>
+<rect x="202" y="94" width="116" height="30" fill="#2e3338" rx="5"/>
+<text x="260" y="114" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">game code</text>
+<rect x="202" y="134" width="116" height="30" fill="#4a2c22" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="260" y="154" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">screen scaling</text>
+<rect x="202" y="172" width="116" height="30" fill="#4a2c22" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="260" y="192" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">input</text>
+<rect x="202" y="210" width="116" height="30" fill="#4a2c22" rx="5" stroke="#d45d35" stroke-width="1.5"/>
+<text x="260" y="230" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">window</text>
+<text x="180" y="286" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">a fix has to be made in every copy</text>
+<line x1="360" y1="24" x2="360" y2="300" stroke="#565d65" stroke-width="1" stroke-linecap="round"/>
+<text x="540" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">One library, referenced</text>
+<rect x="400" y="56" width="130" height="70" fill="#14171a" rx="8" stroke="#565d65" stroke-width="1.5"/>
+<text x="465" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="bold">Pong</text>
+<rect x="412" y="90" width="106" height="26" fill="#2e3338" rx="5"/>
+<text x="465" y="108" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">game code</text>
+<line x1="465" y1="130" x2="510" y2="170" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<rect x="550" y="56" width="130" height="70" fill="#14171a" rx="8" stroke="#565d65" stroke-width="1.5"/>
+<text x="615" y="80" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="bold">Flappy Bird</text>
+<rect x="562" y="90" width="106" height="26" fill="#2e3338" rx="5"/>
+<text x="615" y="108" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">game code</text>
+<line x1="615" y1="130" x2="570" y2="170" stroke="#2aa6a6" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-2aa6a6)"/>
+<rect x="430" y="176" width="220" height="80" fill="#14171a" rx="8" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="540" y="200" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="middle" font-weight="bold">GARCore</text>
+<rect x="442" y="212" width="62" height="30" fill="#24424a" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="473" y="232" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">scaling</text>
+<rect x="510" y="212" width="62" height="30" fill="#24424a" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="541" y="232" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">input</text>
+<rect x="578" y="212" width="62" height="30" fill="#24424a" rx="5" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="609" y="232" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">window</text>
+<text x="540" y="286" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the games know the library, never the reverse</text>
+</svg>

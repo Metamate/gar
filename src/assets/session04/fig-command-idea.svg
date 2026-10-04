@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="720" height="280" role="img"><title>A method call is gone once it has run; a command is the same request as an object that can be kept</title><defs><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker></defs><rect width="720" height="280" rx="10" fill="#22262b"/>
+<text x="180" y="40" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A method call</text>
+<rect x="50" y="64" width="260" height="44" fill="#14171a" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="180" y="92" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="14" fill="#dee2e6" text-anchor="middle" font-weight="normal">level.Move(direction)</text>
+<line x1="180" y1="112" x2="180" y2="150" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="180" y="178" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="middle" font-weight="normal">it runs, and it is gone</text>
+<line x1="360" y1="24" x2="360" y2="262" stroke="#565d65" stroke-width="1" stroke-linecap="round"/>
+<text x="540" y="40" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">A command</text>
+<rect x="400" y="64" width="280" height="44" fill="#14171a" rx="6" stroke="#d45d35" stroke-width="1.5"/>
+<text x="540" y="92" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">new MoveCommand(level, direction)</text>
+<text x="540" y="138" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#9aa3ab" text-anchor="middle" font-weight="normal">an object, so it can be</text>
+<rect x="394" y="156" width="68" height="56" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="428" y="180" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="bold">kept</text>
+<text x="428" y="198" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">in a list</text>
+<rect x="468" y="156" width="68" height="56" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="502" y="180" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="bold">queued</text>
+<text x="502" y="198" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">run later</text>
+<rect x="542" y="156" width="68" height="56" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="576" y="180" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="bold">replayed</text>
+<text x="576" y="198" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">run again</text>
+<rect x="616" y="156" width="68" height="56" fill="#2e3338" rx="6" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="650" y="180" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="bold">undone</text>
+<text x="650" y="198" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="11" fill="#9aa3ab" text-anchor="middle" font-weight="normal">reversed</text>
+<text x="180" y="250" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">nothing is left to undo</text>
+<text x="540" y="250" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the request still exists after it ran</text>
+</svg>

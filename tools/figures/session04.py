@@ -84,8 +84,92 @@ def what_to_remember():
     return f
 
 
+def command_idea():
+    f = Fig(720, 280, 'A method call is gone once it has run; a command is the same request as an object that can be kept')
+    f.text(180, 40, 'A method call', 16, TEXT, 'middle', 'bold')
+    f.rect(50, 64, 260, 44, SCREEN, FAINT, 1.5, 6)
+    f.text(180, 92, 'level.Move(direction)', 14, TEXT, 'middle', mono=True)
+    f.arrow(180, 112, 180, 150, MUTED, 2)
+    f.text(180, 178, 'it runs, and it is gone', 14, MUTED, 'middle')
+    f.line(360, 24, 360, 262, FAINT, 1)
+    f.text(540, 40, 'A command', 16, TEXT, 'middle', 'bold')
+    f.rect(400, 64, 280, 44, SCREEN, ACCENT, 1.5, 6)
+    f.text(540, 92, 'new MoveCommand(level, direction)', 13, TEXT, 'middle', mono=True)
+    f.text(540, 138, 'an object, so it can be', 14, MUTED, 'middle')
+    for i, (name, sub) in enumerate((('kept', 'in a list'), ('queued', 'run later'), ('replayed', 'run again'), ('undone', 'reversed'))):
+        x = 394 + i * 74
+        f.rect(x, 156, 68, 56, PANEL, TEAL, 1.5, 6)
+        f.text(x + 34, 180, name, 13, TEXT, 'middle', 'bold')
+        f.text(x + 34, 198, sub, 11, MUTED, 'middle')
+    f.text(180, 250, 'nothing is left to undo', 13.5, MUTED, 'middle')
+    f.text(540, 250, 'the request still exists after it ran', 13.5, MUTED, 'middle')
+    return f
+
+
+def command_object():
+    f = Fig(720, 320, 'With commands, a button holds an object, and rebinding the button means giving it a different one')
+    buttons = ['X', 'Y', 'A', 'B']
+    f.text(170, 36, 'Hardwired', 16, TEXT, 'middle', 'bold')
+    for i, (b, fn) in enumerate(zip(buttons, ('Jump()', 'Fire()', 'SwapWeapon()', 'Dodge()'))):
+        y = 62 + i * 52
+        f.circle(60, y + 16, 16, PANEL, FAINT, 1.5); f.text(60, y + 21, b, 14, TEXT, 'middle', 'bold')
+        f.line(80, y + 16, 150, y + 16, ACCENT, 2)
+        f.text(160, y + 21, fn, 13.5, TEXT, mono=True)
+    f.text(170, 292, 'the button is the call, fixed in code', 13.5, MUTED, 'middle')
+    f.line(350, 24, 350, 300, FAINT, 1)
+    f.text(535, 36, 'With commands', 16, TEXT, 'middle', 'bold')
+    for i, (b, c) in enumerate(zip(buttons, ('JumpCommand', 'FireCommand', 'SwapCommand', 'DodgeCommand'))):
+        y = 62 + i * 52
+        f.circle(400, y + 16, 16, PANEL, FAINT, 1.5); f.text(400, y + 21, b, 14, TEXT, 'middle', 'bold')
+        f.arrow(420, y + 16, 464, y + 16, TEAL, 2)
+        f.rect(470, y, 140, 32, SCREEN, TEAL, 1.5, 6)
+        f.text(540, y + 21, c, 13, TEXT, 'middle', mono=True)
+        f.text(622, y + 21, 'Execute()', 12, MUTED, mono=True)
+    f.text(535, 292, 'the button holds an object, which can be swapped', 13.5, MUTED, 'middle')
+    return f
+
+
+def command_structure():
+    f = Fig(720, 290, 'The history only knows that a command can be executed and undone; each command knows what it acts on')
+    f.text(360, 40, 'The history can run, undo and redo any command without knowing what it does.', 13.5, MUTED, 'middle')
+    f.box(30, 90, 160, 64, 'CommandHistory', 'the invoker', FAINT, size=14)
+    f.arrow(194, 122, 264, 122, MUTED, 2.5)
+    f.rect(270, 86, 170, 72, SCREEN, TEAL, 1.5, 8)
+    f.text(355, 112, 'ICommand', 15, TEAL, 'middle', 'bold', mono=True)
+    f.text(355, 136, 'Execute()  Undo()', 12.5, MUTED, 'middle', mono=True)
+    f.line(355, 158, 355, 196, FAINT, 1.5)
+    f.rect(270, 196, 170, 56, PANEL, FAINT, 1.5, 8)
+    f.text(355, 220, 'MoveCommand', 14, TEXT, 'middle', mono=True)
+    f.text(355, 240, 'level, direction, result', 12, MUTED, 'middle')
+    f.arrow(444, 224, 606, 160, ACCENT, 2.5)
+    f.box(540, 90, 150, 64, 'Level', 'the receiver', ACCENT, title_fill=ACCENT, size=14)
+    f.text(560, 222, 'level.Move(direction)', 12.5, ACCENT, mono=True)
+    return f
+
+
+def command_stream():
+    f = Fig(720, 280, 'Whatever produces the commands, the actor that carries them out does not have to know')
+    for i, (name, sub) in enumerate((('the player', 'keys and buttons'), ('an AI', 'decides what to do'), ('a replay', 'a saved list'))):
+        y = 30 + i * 74
+        f.box(30, y, 170, 54, name, sub, FAINT, size=15)
+        f.arrow(204, y + 27, 270, 131, MUTED, 2)
+    f.rect(276, 104, 250, 54, SCREEN, TEAL, 1.5, 27)
+    for k in range(4):
+        f.rect(288 + k * 58, 116, 50, 30, PANEL, TEAL, 1.5, 5)
+        f.text(313 + k * 58, 136, 'cmd', 12, TEXT, 'middle', mono=True)
+    f.text(401, 90, 'a stream of commands', 13.5, TEAL, 'middle')
+    f.arrow(530, 131, 574, 131, MUTED, 2.5)
+    f.box(580, 100, 110, 62, 'the actor', 'executes them', ACCENT, title_fill=ACCENT, size=15)
+    f.text(360, 262, 'The same character can be driven by a player, by the computer, or by a recording.', 13.5, MUTED, 'middle')
+    return f
+
+
 FIGURES = {
     'push-rule': push_rule,
     'undo-stacks': undo_stacks,
     'remember': what_to_remember,
+    'command-idea': command_idea,
+    'command-object': command_object,
+    'command-structure': command_structure,
+    'command-stream': command_stream,
 }

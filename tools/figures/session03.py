@@ -187,6 +187,56 @@ def circles():
     return f
 
 
+def response():
+    f = Fig(720, 320, 'Collision response is what happens after a hit: block, trigger or bounce')
+    def panel(ox, title, sub):
+        f.rect(ox, 50, 210, 170, SCREEN, r=6)
+        f.text(ox + 105, 250, title, 16, TEXT, 'middle', 'bold')
+        f.label(ox + 105, 274, sub, 13, MUTED, 'middle')
+    panel(30, 'Blocking', ['the two are kept from', 'overlapping'])
+    f.rect(170, 70, 40, 130, PANEL, FAINT, 1.5)
+    f.rect(140, 118, 44, 44, 'none', ACCENT, 1.5, dash='4 3')
+    f.rect(126, 118, 44, 44, 'none', TEAL, 2.5)
+    f.arrow(160, 104, 132, 104, TEAL, 2)
+    f.text(60, 108, 'pushed back', 12, TEAL)
+    panel(255, 'Triggering', ['something happens, such as', 'the snake eating and growing'])
+    f.rect(300, 122, 40, 40, LIT, r=3)
+    f.rect(344, 122, 40, 40, LIT, r=3)
+    f.circle(408, 142, 14, 'none', ACCENT, 2.5)
+    f.text(408, 106, '+1', 16, ACCENT, 'middle', 'bold', mono=True)
+    panel(480, 'Bouncing', ['the velocity is reflected', 'off the surface'])
+    f.line(500, 190, 670, 190, MUTED, 3)
+    f.arrow(524, 84, 580, 182, TEAL, 2.5)
+    f.arrow(590, 182, 646, 84, ACCENT, 2.5)
+    f.line(585, 188, 585, 100, MUTED, 1.5, '4 4')
+    f.text(585, 90, 'normal', 12, MUTED, 'middle')
+    return f
+
+
+def phases():
+    f = Fig(720, 320, 'A broad phase cheaply finds the pairs that are near each other; a narrow phase runs the exact check on those only')
+    def shapes(ox, boxes, hot):
+        f.rect(ox, 50, 320, 190, SCREEN, r=6)
+        pts = [(ox + 70, 112), (ox + 124, 150), (ox + 230, 96), (ox + 266, 192), (ox + 60, 200)]
+        for i, (x, y) in enumerate(pts):
+            pair = i in (0, 1)
+            if boxes:
+                f.rect(x - 34, y - 34, 68, 68, 'none', ACCENT if pair else FAINT, 1.5, dash=None if pair else '4 4')
+            color = TEAL if (not hot or pair) else FAINT
+            if i % 2 == 0:
+                f.add(f'<rect x="{x - 22}" y="{y - 22}" width="44" height="44" fill="none" stroke="{color}" stroke-width="2.5" transform="rotate(25 {x} {y})"/>')
+            else:
+                f.circle(x, y, 24, 'none', color, 2.5)
+    f.text(180, 36, '1. Broad phase', 16, TEXT, 'middle', 'bold')
+    shapes(20, True, False)
+    f.label(180, 268, ['a rough box around each shape,', 'and only one pair of boxes overlaps'], 13.5, MUTED, 'middle')
+    f.arrow(346, 145, 374, 145, MUTED, 2)
+    f.text(540, 36, '2. Narrow phase', 16, TEXT, 'middle', 'bold')
+    shapes(380, False, True)
+    f.label(540, 268, ['the exact, slower check,', 'for that one pair'], 13.5, MUTED, 'middle')
+    return f
+
+
 FIGURES = {
     'atlas': atlas,
     'animation': animation,
@@ -194,4 +244,6 @@ FIGURES = {
     'tick': tick,
     'buffering': buffering,
     'circles': circles,
+    'response': response,
+    'phases': phases,
 }

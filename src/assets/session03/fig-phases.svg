@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img"><title>A broad phase cheaply finds the pairs that are near each other; a narrow phase runs the exact check on those only</title><defs><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker></defs><rect width="720" height="320" rx="10" fill="#22262b"/>
+<text x="180" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">1. Broad phase</text>
+<rect x="20" y="50" width="320" height="190" fill="#14171a" rx="6"/>
+<rect x="56" y="78" width="68" height="68" fill="none" stroke="#d45d35" stroke-width="1.5"/>
+<rect x="68" y="90" width="44" height="44" fill="none" stroke="#2aa6a6" stroke-width="2.5" transform="rotate(25 90 112)"/>
+<rect x="110" y="116" width="68" height="68" fill="none" stroke="#d45d35" stroke-width="1.5"/>
+<circle cx="144" cy="150" r="24" fill="none" stroke="#2aa6a6" stroke-width="2.5"/>
+<rect x="216" y="62" width="68" height="68" fill="none" stroke="#565d65" stroke-width="1.5" stroke-dasharray="4 4"/>
+<rect x="228" y="74" width="44" height="44" fill="none" stroke="#2aa6a6" stroke-width="2.5" transform="rotate(25 250 96)"/>
+<rect x="252" y="158" width="68" height="68" fill="none" stroke="#565d65" stroke-width="1.5" stroke-dasharray="4 4"/>
+<circle cx="286" cy="192" r="24" fill="none" stroke="#2aa6a6" stroke-width="2.5"/>
+<rect x="46" y="166" width="68" height="68" fill="none" stroke="#565d65" stroke-width="1.5" stroke-dasharray="4 4"/>
+<rect x="58" y="178" width="44" height="44" fill="none" stroke="#2aa6a6" stroke-width="2.5" transform="rotate(25 80 200)"/>
+<text x="180" y="268" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">a rough box around each shape,</text>
+<text x="180" y="285.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">and only one pair of boxes overlaps</text>
+<line x1="346" y1="145" x2="374" y2="145" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="540" y="36" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#dee2e6" text-anchor="middle" font-weight="bold">2. Narrow phase</text>
+<rect x="380" y="50" width="320" height="190" fill="#14171a" rx="6"/>
+<rect x="428" y="90" width="44" height="44" fill="none" stroke="#2aa6a6" stroke-width="2.5" transform="rotate(25 450 112)"/>
+<circle cx="504" cy="150" r="24" fill="none" stroke="#2aa6a6" stroke-width="2.5"/>
+<rect x="588" y="74" width="44" height="44" fill="none" stroke="#565d65" stroke-width="2.5" transform="rotate(25 610 96)"/>
+<circle cx="646" cy="192" r="24" fill="none" stroke="#565d65" stroke-width="2.5"/>
+<rect x="418" y="178" width="44" height="44" fill="none" stroke="#565d65" stroke-width="2.5" transform="rotate(25 440 200)"/>
+<text x="540" y="268" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the exact, slower check,</text>
+<text x="540" y="285.55" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">for that one pair</text>
+</svg>

@@ -199,6 +199,118 @@ def bounce():
     return f
 
 
+def game_loop():
+    f = Fig(720, 250, 'Every game runs the same loop: process input, update the game, render, and again')
+    names = [('Process input', 'what did the player do?'), ('Update', 'move the world one step on'), ('Render', 'draw what the world looks like')]
+    for i, (n, sub) in enumerate(names):
+        x = 60 + i * 215
+        f.box(x, 80, 170, 70, n, None, ACCENT if i == 1 else FAINT, size=17)
+        f.text(x + 85, 176, sub, 13.5, MUTED, 'middle')
+        if i < 2:
+            f.arrow(x + 176, 115, x + 209, 115, MUTED, 2.5)
+    f.curve('M664 115 C 712 115, 712 34, 600 34 L 120 34 C 14 34, 14 115, 54 115', TEAL, 2.5)
+    f.text(360, 24, 'many times a second, until the game ends', 13.5, TEAL, 'middle')
+    f.text(360, 226, 'The loop never waits for the player. The game keeps moving when nobody presses anything.', 13.5, MUTED, 'middle')
+    return f
+
+
+def lifecycle():
+    f = Fig(720, 380, 'MonoGame calls Initialize and LoadContent once, then Update and Draw every frame')
+    f.box(60, 50, 150, 54, 'Initialize()', None, FAINT, size=15)
+    f.box(270, 50, 150, 54, 'LoadContent()', None, FAINT, size=15)
+    f.arrow(214, 77, 264, 77, MUTED, 2.5)
+    f.text(240, 36, 'once, at the start', 13, MUTED, 'middle')
+    f.rect(180, 140, 330, 216, SCREEN, TEAL, 1.5, 10)
+    f.text(196, 164, 'the game loop', 13.5, TEAL)
+    f.box(270, 180, 150, 50, 'Update()', None, TEAL, size=15)
+    f.box(270, 290, 150, 50, 'Draw()', None, TEAL, size=15)
+    f.arrow(345, 108, 345, 174, MUTED, 2.5)
+    f.arrow(345, 234, 345, 284, TEAL, 2.5)
+    f.curve('M266 315 C 206 315, 206 205, 264 205', TEAL, 2.5)
+    f.text(430, 266, 'every frame', 13, TEAL)
+    f.box(560, 180, 120, 50, 'Exit()', None, ACCENT, size=15, title_fill=ACCENT)
+    f.arrow(424, 205, 554, 205, ACCENT, 2, '5 4')
+    f.text(620, 252, 'when the game', 12.5, MUTED, 'middle')
+    f.text(620, 270, 'is closed', 12.5, MUTED, 'middle')
+    f.label(470, 60, ['Game1 overrides these four', 'methods. MonoGame decides', 'when to call them.'], 13, MUTED)
+    return f
+
+
+def filtering():
+    import base64
+    f = Fig(720, 320, 'Point filtering keeps the pixels of scaled-up art sharp; linear filtering blurs them')
+    art = GAMES + '02-flappy-bird/Content/Assets/images/bird.png'
+    data = base64.b64encode(open(art, 'rb').read()).decode()
+    f.rect(30, 100, 76, 56, SCREEN, r=4)
+    f.image(art, 49, 116, 38, 24)
+    f.text(68, 180, 'the art', 13, MUTED, 'middle')
+    f.arrow(116, 128, 160, 128, MUTED, 2)
+    f.text(138, 114, '× 6', 13, MUTED, 'middle')
+    for ox, name, sub, smooth, color in ((176, 'Point', 'SamplerState.PointClamp', False, TEAL), (450, 'Linear', 'SamplerState.LinearClamp', True, ACCENT)):
+        f.rect(ox, 44, 250, 172, SCREEN, color, 1.5, 6)
+        style = 'auto' if smooth else 'pixelated'
+        f.add(f'<image x="{ox + 11}" y="58" width="228" height="144" preserveAspectRatio="none" style="image-rendering:{style}" href="data:image/png;base64,{data}"/>')
+        f.text(ox + 125, 246, name, 16, color, 'middle', 'bold')
+        f.text(ox + 125, 268, sub, 13, MUTED, 'middle', mono=True)
+    f.text(360, 302, 'Each screen pixel takes the nearest art pixel, or a mix of the ones around it.', 13.5, MUTED, 'middle')
+    return f
+
+
+def encapsulation():
+    f = Fig(720, 340, 'Encapsulation: the data of a thing and the code that uses it move into a class of their own')
+    f.text(170, 36, 'Everything in Game1', 16, TEXT, 'middle', 'bold')
+    f.rect(40, 54, 260, 236, SCREEN, ACCENT, 1.5, 8)
+    f.text(56, 78, 'Game1', 13, ACCENT, mono=True)
+    for i, line in enumerate(('_player1Y', '_player2Y', '_ballX, _ballY', '_ballDX, _ballDY', 'MovePaddles()', 'MoveBall()', 'DrawPaddles()', 'DrawBall()')):
+        f.text(64, 104 + i * 23, line, 13, TEXT if i < 4 else MUTED, mono=True)
+    f.text(170, 316, 'every new thing makes Game1 longer', 13.5, MUTED, 'middle')
+    f.arrow(312, 172, 362, 172, MUTED, 2.5)
+    f.text(530, 36, 'A class per thing', 16, TEXT, 'middle', 'bold')
+    for ox, name, data, code in ((380, 'Paddle', ['Y', 'Speed'], ['Update()', 'Draw()']), (540, 'Ball', ['Position', 'Velocity'], ['Update()', 'Draw()'])):
+        f.rect(ox, 54, 140, 150, SCREEN, TEAL, 1.5, 8)
+        f.text(ox + 14, 78, name, 13, TEAL, mono=True)
+        for i, d in enumerate(data):
+            f.text(ox + 22, 104 + i * 23, d, 13, TEXT, mono=True)
+        f.line(ox + 10, 140, ox + 130, 140, FAINT, 1)
+        for i, c in enumerate(code):
+            f.text(ox + 22, 164 + i * 23, c, 13, MUTED, mono=True)
+    f.rect(380, 226, 300, 64, SCREEN, FAINT, 1.5, 8)
+    f.text(394, 250, 'Game1', 13, MUTED, mono=True)
+    f.text(394, 274, 'two paddles, a ball, and the rules', 13, TEXT)
+    f.text(530, 316, 'data and behaviour belong together', 13.5, MUTED, 'middle')
+    return f
+
+
+def update_method():
+    f = Fig(720, 330, 'The Update Method pattern: the game calls Update on every object, and each object moves itself one frame on')
+    f.box(40, 124, 160, 70, 'Game1.Update', 'once per frame', ACCENT, title_fill=ACCENT)
+    objs = [('paddle 1', 'reads W and S, and moves'), ('paddle 2', 'reads the arrows, and moves'), ('ball', 'moves by its velocity')]
+    for i, (name, what) in enumerate(objs):
+        y = 44 + i * 86
+        f.rect(340, y, 340, 62, SCREEN, TEAL, 1.5, 8)
+        f.text(356, y + 26, f'{i + 1}.  {name}', 14.5, TEXT, weight='bold')
+        f.text(380, y + 47, what, 13, MUTED)
+        f.text(666, y + 37, 'Update()', 13, TEAL, 'end', mono=True)
+        f.arrow(204, 159, 334, y + 31, MUTED, 2)
+    f.text(360, 308, 'One after another, in a fixed order. No object needs to know how the others move.', 13.5, MUTED, 'middle')
+    return f
+
+
+def modes():
+    f = Fig(720, 250, 'Pong has four modes: start, serve, play and done')
+    xs = {'start': 40, 'serve': 220, 'play': 400, 'done': 580}
+    for n, x in xs.items():
+        f.box(x, 90, 100, 56, n, None, ACCENT if n == 'play' else FAINT, size=17)
+    f.arrow(144, 118, 214, 118, MUTED, 2.5); f.text(179, 108, 'Enter', 13, MUTED, 'middle')
+    f.arrow(324, 106, 394, 106, MUTED, 2.5); f.text(359, 96, 'Enter', 13, MUTED, 'middle')
+    f.arrow(394, 132, 324, 132, MUTED, 2.5); f.text(359, 152, 'a point', 13, MUTED, 'middle')
+    f.arrow(504, 118, 574, 118, MUTED, 2.5); f.text(539, 108, '10 points', 13, MUTED, 'middle')
+    f.curve('M630 150 C 630 214, 270 214, 270 152', MUTED, 2.5)
+    f.text(450, 220, 'Enter', 13, MUTED, 'middle')
+    f.text(360, 50, 'the mode is a string field, checked with if in Update and in Draw', 13.5, MUTED, 'middle')
+    return f
+
+
 FIGURES = {
     'coordinates': coordinates,
     'virtual-resolution': virtual_resolution,
@@ -206,4 +318,10 @@ FIGURES = {
     'timestep': timestep,
     'aabb': aabb,
     'bounce': bounce,
+    'game-loop': game_loop,
+    'lifecycle': lifecycle,
+    'filtering': filtering,
+    'encapsulation': encapsulation,
+    'update-method': update_method,
+    'modes': modes,
 }

@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img"><title>Each room is generated when the player enters it: walls, a random floor, doorways, enemies and a switch</title><rect width="720" height="330" rx="10" fill="#22262b"/>
+<rect x="30" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="60" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="90" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="120" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="150" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="180" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="210" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="240" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="270" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="300" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="330" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="360" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="390" y="30" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="30" y="60" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="60" y="60" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="90" y="60" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="120" y="60" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="150" y="60" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="180" y="60" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="210" y="60" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="240" y="60" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="270" y="60" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="300" y="60" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="330" y="60" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="360" y="60" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="390" y="60" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="30" y="90" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="60" y="90" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="90" y="90" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="120" y="90" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="150" y="90" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="180" y="90" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="210" y="90" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="240" y="90" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="270" y="90" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="300" y="90" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="330" y="90" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="360" y="90" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="390" y="90" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="30" y="120" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="60" y="120" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="90" y="120" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="120" y="120" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="150" y="120" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="180" y="120" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="210" y="120" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="240" y="120" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="270" y="120" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="300" y="120" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="330" y="120" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="360" y="120" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="390" y="120" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="30" y="150" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="60" y="150" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="90" y="150" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="120" y="150" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="150" y="150" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="180" y="150" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="210" y="150" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="240" y="150" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="270" y="150" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="300" y="150" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="330" y="150" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="360" y="150" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="390" y="150" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="30" y="180" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="60" y="180" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="90" y="180" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="120" y="180" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="150" y="180" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="180" y="180" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="210" y="180" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="240" y="180" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="270" y="180" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="300" y="180" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="330" y="180" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="360" y="180" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="390" y="180" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="30" y="210" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="60" y="210" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="90" y="210" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="120" y="210" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="150" y="210" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="180" y="210" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="210" y="210" width="30" height="30" fill="#cf9460" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="240" y="210" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="270" y="210" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="300" y="210" width="30" height="30" fill="#c98d5a" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="330" y="210" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="360" y="210" width="30" height="30" fill="#c48755" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="390" y="210" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="30" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="60" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="90" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="120" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="150" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="180" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="210" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="240" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="270" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="300" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="330" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="360" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="390" y="240" width="30" height="30" fill="#55606b" stroke="#1a1a1a" stroke-width="0.5"/>
+<rect x="195" y="30" width="60" height="30" fill="#3a2f26" stroke="#d45d35" stroke-width="2"/>
+<rect x="195" y="240" width="60" height="30" fill="#3a2f26" stroke="#d45d35" stroke-width="2"/>
+<rect x="30" y="120" width="30" height="60" fill="#3a2f26" stroke="#d45d35" stroke-width="2"/>
+<rect x="390" y="120" width="30" height="60" fill="#3a2f26" stroke="#d45d35" stroke-width="2"/>
+<rect x="155" y="95" width="20" height="20" fill="#b98ad6" rx="4"/>
+<rect x="305" y="185" width="20" height="20" fill="#b98ad6" rx="4"/>
+<rect x="125" y="185" width="20" height="20" fill="#b98ad6" rx="4"/>
+<rect x="306" y="96" width="18" height="18" fill="#7b8794" rx="3" stroke="#d9534f" stroke-width="3"/>
+<rect x="215" y="153" width="20" height="24" fill="#6fbf4a" rx="3"/>
+<rect x="450" y="39" width="16" height="16" fill="#55606b" rx="3"/>
+<text x="476" y="52" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#dee2e6" text-anchor="start" font-weight="bold">walls and floor</text>
+<text x="476" y="71" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">a tilemap, floor tiles picked at random</text>
+<rect x="450" y="87" width="16" height="16" fill="#d45d35" rx="3"/>
+<text x="476" y="100" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#dee2e6" text-anchor="start" font-weight="bold">four doorways</text>
+<text x="476" y="119" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">closed until the switch is pressed</text>
+<rect x="450" y="135" width="16" height="16" fill="#b98ad6" rx="3"/>
+<text x="476" y="148" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#dee2e6" text-anchor="start" font-weight="bold">enemies</text>
+<text x="476" y="167" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">placed at random</text>
+<rect x="450" y="183" width="16" height="16" fill="#d9534f" rx="3"/>
+<text x="476" y="196" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#dee2e6" text-anchor="start" font-weight="bold">a switch</text>
+<text x="476" y="215" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">opens the doors</text>
+<rect x="450" y="231" width="16" height="16" fill="#6fbf4a" rx="3"/>
+<text x="476" y="244" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#dee2e6" text-anchor="start" font-weight="bold">the player</text>
+<text x="476" y="263" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">comes in through a doorway</text>
+<text x="360" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">The dungeon is an endless series of such rooms, and none of them is designed by hand.</text>
+</svg>

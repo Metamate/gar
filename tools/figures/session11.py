@@ -126,10 +126,32 @@ def bloom():
     return f
 
 
+def shader_pipeline():
+    f = Fig(720, 290, 'The graphics pipeline: vertices go in, the two shaders run, and pixels come out')
+    stages = [('Vertices', 'the corners of\nevery sprite', FAINT, TEXT), ('Vertex shader', 'once per vertex\nwhere on screen?', TEAL, TEAL),
+              ('Rasteriser', 'which pixels does\neach triangle cover?', FAINT, TEXT), ('Pixel shader', 'once per pixel\nwhich colour?', ACCENT, ACCENT),
+              ('The screen', 'or a render\ntarget', FAINT, TEXT)]
+    for i, (name, sub, stroke, color) in enumerate(stages):
+        x = 20 + i * 140
+        f.rect(x, 50, 120, 110, SCREEN, stroke, 1.5, 8)
+        f.text(x + 60, 82, name, 13.5, color, 'middle', 'bold')
+        for k, line in enumerate(sub.split('\n')):
+            f.text(x + 60, 112 + k * 18, line, 11.5, MUTED, 'middle')
+        if i < 4:
+            f.arrow(x + 122, 105, x + 137, 105, MUTED, 2)
+    f.rect(440, 200, 120, 44, SCREEN, FAINT, 1.5, 8)
+    f.text(500, 227, 'a texture', 13, TEXT, 'middle')
+    f.arrow(500, 196, 500, 166, MUTED, 2)
+    f.text(30, 220, 'The two coloured stages are the ones you write, in HLSL.', 13.5, MUTED)
+    f.text(30, 242, 'The GPU runs thousands of them at the same time.', 13.5, MUTED)
+    return f
+
+
 FIGURES = {
     'lifecycle': lifecycle,
     'systems': system_or_component,
     'object-pool': object_pool,
     'flyweight': flyweight,
     'bloom': bloom,
+    'shader-pipeline': shader_pipeline,
 }

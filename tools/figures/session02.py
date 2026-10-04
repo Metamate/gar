@@ -145,10 +145,89 @@ def lifecycle():
     return f
 
 
+def change_cycle():
+    f = Fig(720, 330, 'Every change to a program goes through the same four steps, and architecture shortens the second')
+    steps = [(250, 40, 'Get a problem', 'a feature, or a bug'), (480, 135, 'Learn the code', 'find what the change touches'),
+             (250, 230, 'Write the solution', 'the part that feels like work'), (20, 135, 'Clean up', 'so the next change is easy too')]
+    for i, (x, y, n, sub) in enumerate(steps):
+        f.box(x, y, 220, 64, n, sub, ACCENT if i == 1 else FAINT, title_fill=ACCENT if i == 1 else TEXT)
+    f.curve('M474 72 C 560 72, 590 100, 590 130', MUTED, 2.5)
+    f.curve('M590 204 C 590 240, 560 262, 476 262', MUTED, 2.5)
+    f.curve('M244 262 C 160 262, 130 240, 130 204', MUTED, 2.5)
+    f.curve('M130 130 C 130 100, 160 72, 244 72', MUTED, 2.5)
+    f.text(360, 158, 'Good architecture means', 13.5, MUTED, 'middle')
+    f.text(360, 178, 'less code to learn', 13.5, MUTED, 'middle')
+    f.text(360, 198, 'before each change.', 13.5, MUTED, 'middle')
+    return f
+
+
+def class_library():
+    f = Fig(720, 320, 'Code that every game needs moves into a class library that each game references')
+    f.text(180, 36, 'A copy in every game', 16, TEXT, 'middle', 'bold')
+    for i, name in enumerate(('Pong', 'Flappy Bird')):
+        ox = 30 + i * 160
+        f.rect(ox, 56, 140, 200, SCREEN, FAINT, 1.5, 8)
+        f.text(ox + 70, 80, name, 14, TEXT, 'middle', 'bold')
+        f.rect(ox + 12, 94, 116, 30, PANEL, r=5); f.text(ox + 70, 114, 'game code', 12.5, MUTED, 'middle')
+        for k, part in enumerate(('screen scaling', 'input', 'window')):
+            f.rect(ox + 12, 134 + k * 38, 116, 30, '#4a2c22', ACCENT, 1.5, 5)
+            f.text(ox + 70, 154 + k * 38, part, 12.5, TEXT, 'middle')
+    f.text(180, 286, 'a fix has to be made in every copy', 13.5, MUTED, 'middle')
+    f.line(360, 24, 360, 300, FAINT, 1)
+    f.text(540, 36, 'One library, referenced', 16, TEXT, 'middle', 'bold')
+    for i, name in enumerate(('Pong', 'Flappy Bird')):
+        ox = 400 + i * 150
+        f.rect(ox, 56, 130, 70, SCREEN, FAINT, 1.5, 8)
+        f.text(ox + 65, 80, name, 14, TEXT, 'middle', 'bold')
+        f.rect(ox + 12, 90, 106, 26, PANEL, r=5); f.text(ox + 65, 108, 'game code', 12.5, MUTED, 'middle')
+        f.arrow(ox + 65, 130, 540 + (i - 0.5) * 60, 170, TEAL, 2)
+    f.rect(430, 176, 220, 80, SCREEN, TEAL, 1.5, 8)
+    f.text(540, 200, 'GARCore', 14, TEAL, 'middle', 'bold')
+    for k, part in enumerate(('scaling', 'input', 'window')):
+        f.rect(442 + k * 68, 212, 62, 30, '#24424a', TEAL, 1.5, 5)
+        f.text(473 + k * 68, 232, part, 12, TEXT, 'middle')
+    f.text(540, 286, 'the games know the library, never the reverse', 13.5, MUTED, 'middle')
+    return f
+
+
+def states():
+    f = Fig(720, 270, 'Flappy Bird has four game states, and each is a class')
+    xs = [('Title', 40), ('Countdown', 220), ('Play', 400), ('Score', 580)]
+    for n, x in xs:
+        f.box(x, 100, 110, 60, n, n + 'State', ACCENT if n == 'Play' else FAINT, size=16)
+    f.arrow(154, 130, 214, 130, MUTED, 2.5); f.text(184, 120, 'Enter', 13, MUTED, 'middle')
+    f.arrow(334, 130, 394, 130, MUTED, 2.5); f.text(364, 120, '3, 2, 1', 13, MUTED, 'middle')
+    f.arrow(514, 130, 574, 130, MUTED, 2.5); f.text(544, 120, 'a hit', 13, MUTED, 'middle')
+    f.curve('M635 164 C 635 226, 275 226, 275 166', MUTED, 2.5)
+    f.text(455, 234, 'Enter, to try again', 13, MUTED, 'middle')
+    f.text(360, 56, 'only one state is current, and it gets every Update and Draw', 13.5, MUTED, 'middle')
+    return f
+
+
+def singleton():
+    f = Fig(720, 320, 'A Singleton is one instance that any code can reach through a global access point')
+    callers = ['Bird', 'PlayState', 'ScoreState', 'CountdownState']
+    for i, c in enumerate(callers):
+        y = 44 + i * 58
+        f.rect(40, y, 160, 40, PANEL, FAINT, 1.5, 6)
+        f.text(120, y + 25, c, 13.5, TEXT, 'middle', mono=True)
+        f.arrow(204, y + 20, 404, 150, ACCENT, 1.5)
+    f.text(310, 60, 'Audio.Instance', 13, ACCENT, 'middle', mono=True)
+    f.box(410, 112, 170, 76, 'Audio', 'the one instance', ACCENT, title_fill=ACCENT)
+    f.label(596, 136, ['made the first', 'time it is asked', 'for'], 13, MUTED)
+    f.text(360, 282, 'Any code can reach it, which is convenient.', 13.5, MUTED, 'middle')
+    f.text(360, 302, 'Any code can also come to depend on it, and no constructor shows that it does.', 13.5, MUTED, 'middle')
+    return f
+
+
 FIGURES = {
     'coupling': coupling,
     'parallax': parallax,
     'gravity': gravity,
     'pipes': pipes,
     'lifecycle': lifecycle,
+    'change-cycle': change_cycle,
+    'class-library': class_library,
+    'states': states,
+    'singleton': singleton,
 }

@@ -72,9 +72,7 @@ Tooling used in the course:
 Every game runs a loop: process input, update the simulation, render, repeat. In MonoGame,
 the `Game` class runs the loop and calls your `Update` and `Draw` overrides.
 
-![Lifecycle of a MonoGame game](../../../assets/session01/monogame-lifecycle.png)
-
-_Figure 1-1: Lifecycle of a MonoGame game_
+![MonoGame calls Initialize and LoadContent once, then Update and Draw every frame.](../../../assets/session01/fig-lifecycle.svg)
 
 Nothing calls `Update` on your objects for you. `Game1` gets one `Update` and one `Draw`
 call per frame, and everything else in your game only runs if you call it from there. For more detail, see

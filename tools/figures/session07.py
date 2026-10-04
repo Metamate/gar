@@ -178,6 +178,56 @@ def composition():
     return f
 
 
+def observer():
+    f = Fig(720, 330, 'The subject keeps a list of observers and tells each of them when something happens')
+    f.rect(40, 90, 230, 150, SCREEN, ACCENT, 1.5, 8)
+    f.text(155, 78, 'the subject', 15, ACCENT, 'middle', 'bold')
+    f.text(56, 118, 'event OnPlayerDied', 13, TEXT, mono=True)
+    f.text(56, 148, 'its subscribers', 12.5, MUTED)
+    for i in range(3):
+        f.rect(56 + i * 66, 160, 58, 26, PANEL, TEAL, 1.5, 5)
+        f.text(85 + i * 66, 178, 'handler', 11, TEXT, 'middle', mono=True)
+    f.text(56, 218, 'OnPlayerDied?.Invoke()', 12.5, ACCENT, mono=True)
+    names = [('the game over screen', 'takes over'), ('the sound', 'plays a jingle'), ('a later feature', 'needs no change to the subject')]
+    for i, (n, sub) in enumerate(names):
+        y = 66 + i * 76
+        f.rect(470, y, 220, 54, SCREEN, TEAL, 1.5, 8)
+        f.text(486, y + 24, n, 14, TEXT, weight='bold')
+        f.text(486, y + 43, sub, 12.5, MUTED)
+        f.arrow(276, 166, 464, y + 27, ACCENT, 2)
+    f.text(580, 50, 'the observers', 15, TEAL, 'middle', 'bold')
+    f.text(360, 304, 'An observer subscribes with +=. The subject never learns who they are, or how many.', 13.5, MUTED, 'middle')
+    return f
+
+
+def room():
+    import random
+    f = Fig(720, 330, 'Each room is generated when the player enters it: walls, a random floor, doorways, enemies and a switch')
+    ox, oy, cell, cols, rows = 30, 30, 30, 13, 8
+    random.seed(4)
+    for r in range(rows):
+        for c in range(cols):
+            wall = r in (0, rows - 1) or c in (0, cols - 1)
+            shade = random.choice(('#c98d5a', '#c48755', '#cf9460'))
+            f.rect(ox + c * cell, oy + r * cell, cell, cell, '#55606b' if wall else shade, '#1a1a1a', 0.5)
+    for c, r, w, h in ((5.5, 0, 2, 1), (5.5, rows - 1, 2, 1), (0, 3, 1, 2), (cols - 1, 3, 1, 2)):
+        f.rect(ox + c * cell, oy + r * cell, w * cell, h * cell, '#3a2f26', ACCENT, 2)
+    for x, y in ((4, 2), (9, 5), (3, 5)):
+        f.rect(ox + x * cell + 5, oy + y * cell + 5, 20, 20, ENEMY, r=4)
+    f.rect(ox + 9 * cell + 6, oy + 2 * cell + 6, 18, 18, '#7b8794', '#d9534f', 3, 3)
+    f.rect(ox + 6 * cell + 5, oy + 4 * cell + 3, 20, 24, HERO, r=3)
+    x = 450
+    items = [('walls and floor', 'a tilemap, floor tiles picked at random', '#55606b'), ('four doorways', 'closed until the switch is pressed', ACCENT),
+             ('enemies', 'placed at random', ENEMY), ('a switch', 'opens the doors', '#d9534f'), ('the player', 'comes in through a doorway', HERO)]
+    for i, (n, sub, color) in enumerate(items):
+        y = 52 + i * 48
+        f.rect(x, y - 13, 16, 16, color, r=3)
+        f.text(x + 26, y, n, 14.5, TEXT, weight='bold')
+        f.text(x + 26, y + 19, sub, 12.5, MUTED)
+    f.text(360, 308, 'The dungeon is an endless series of such rooms, and none of them is designed by hand.', 13.5, MUTED, 'middle')
+    return f
+
+
 FIGURES = {
     'hitboxes': hitboxes,
     'event-flow': event_flow,
@@ -185,4 +235,6 @@ FIGURES = {
     'room-shift': room_shift,
     'stencil': stencil,
     'composition': composition,
+    'observer': observer,
+    'room': room,
 }

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" width="720" height="320" role="img"><title>A Singleton is one instance that any code can reach through a global access point</title><defs><marker id="arrow-d45d35" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#d45d35"/></marker></defs><rect width="720" height="320" rx="10" fill="#22262b"/>
+<rect x="40" y="44" width="160" height="40" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="120" y="69" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">Bird</text>
+<line x1="204" y1="64" x2="404" y2="150" stroke="#d45d35" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<rect x="40" y="102" width="160" height="40" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="120" y="127" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">PlayState</text>
+<line x1="204" y1="122" x2="404" y2="150" stroke="#d45d35" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<rect x="40" y="160" width="160" height="40" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="120" y="185" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">ScoreState</text>
+<line x1="204" y1="180" x2="404" y2="150" stroke="#d45d35" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<rect x="40" y="218" width="160" height="40" fill="#2e3338" rx="6" stroke="#565d65" stroke-width="1.5"/>
+<text x="120" y="243" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13.5" fill="#dee2e6" text-anchor="middle" font-weight="normal">CountdownState</text>
+<line x1="204" y1="238" x2="404" y2="150" stroke="#d45d35" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-d45d35)"/>
+<text x="310" y="60" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#d45d35" text-anchor="middle" font-weight="normal">Audio.Instance</text>
+<rect x="410" y="112" width="170" height="76" fill="#2e3338" rx="8" stroke="#d45d35" stroke-width="2"/>
+<text x="495" y="146" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="middle" font-weight="bold">Audio</text>
+<text x="495" y="166" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the one instance</text>
+<text x="596" y="136" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">made the first</text>
+<text x="596" y="152.9" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">time it is asked</text>
+<text x="596" y="169.8" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">for</text>
+<text x="360" y="282" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Any code can reach it, which is convenient.</text>
+<text x="360" y="302" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">Any code can also come to depend on it, and no constructor shows that it does.</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" width="720" height="330" role="img"><title>The Update Method pattern: the game calls Update on every object, and each object moves itself one frame on</title><defs><marker id="arrow-9aa3ab" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#9aa3ab"/></marker></defs><rect width="720" height="330" rx="10" fill="#22262b"/>
+<rect x="40" y="124" width="160" height="70" fill="#2e3338" rx="8" stroke="#d45d35" stroke-width="2"/>
+<text x="120" y="155" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" fill="#d45d35" text-anchor="middle" font-weight="bold">Game1.Update</text>
+<text x="120" y="175" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">once per frame</text>
+<rect x="340" y="44" width="340" height="62" fill="#14171a" rx="8" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="356" y="70" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#dee2e6" text-anchor="start" font-weight="bold">1.  paddle 1</text>
+<text x="380" y="91" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">reads W and S, and moves</text>
+<text x="666" y="81" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#2aa6a6" text-anchor="end" font-weight="normal">Update()</text>
+<line x1="204" y1="159" x2="334" y2="75" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="340" y="130" width="340" height="62" fill="#14171a" rx="8" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="356" y="156" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#dee2e6" text-anchor="start" font-weight="bold">2.  paddle 2</text>
+<text x="380" y="177" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">reads the arrows, and moves</text>
+<text x="666" y="167" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#2aa6a6" text-anchor="end" font-weight="normal">Update()</text>
+<line x1="204" y1="159" x2="334" y2="161" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<rect x="340" y="216" width="340" height="62" fill="#14171a" rx="8" stroke="#2aa6a6" stroke-width="1.5"/>
+<text x="356" y="242" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#dee2e6" text-anchor="start" font-weight="bold">3.  ball</text>
+<text x="380" y="263" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">moves by its velocity</text>
+<text x="666" y="253" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#2aa6a6" text-anchor="end" font-weight="normal">Update()</text>
+<line x1="204" y1="159" x2="334" y2="247" stroke="#9aa3ab" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
+<text x="360" y="308" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#9aa3ab" text-anchor="middle" font-weight="normal">One after another, in a fixed order. No object needs to know how the others move.</text>
+</svg>
