@@ -307,11 +307,12 @@ Start from `Pokemon4`.
    press), and load it on startup if it exists. Then add a `Pokemon.Tests` project, set up
    like `Sokoban.Tests`, with a round-trip test for your save data.
 4. **Pause:** add a `PauseState` using the state stack, built from the widgets: a `Panel`
-   with a `Menu` that offers Resume and Quit. Why does the field stop moving while it is
+   with a `Menu` that offers Resume and Quit (back to the title screen). Why does the field stop moving while it is
    open, although `PlayState` is still on the stack?
 5. **Mute:** let a key swap the audio service for a `NullAudio` while the game runs, and
-   back again. Which classes did you change? What would the same feature take with a
-   Singleton, like the `Audio.Instance` in [Flappy Bird](../02-flappy-bird/#singleton-pattern)?
+   back again. Which classes did you change? What happens to the music that was already
+   playing, and to music that should have started while the game was muted? What would the
+   same feature take with a Singleton, like the `Audio.Instance` in [Flappy Bird](../02-flappy-bird/#singleton-pattern)?
 6. **A bar that listens:** in a battle, `TakeTurnState` moves the health bar itself. Give
    `Mon` an event that is raised when its HP changes, and let `BattleState` subscribe and
    tween the bar. What does `TakeTurnState` no longer need to know? Where do you
