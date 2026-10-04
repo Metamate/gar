@@ -100,7 +100,7 @@ def type_object():
         f.text(464, y + 20, f'an archer in row {i + 1}', 13.5, TEXT, weight='bold')
         f.text(464, y + 38, f'position, health so far: {(6, 4.5, 2)[i]:g}', 12.5, MUTED)
         f.arrow(276, 150, 444, y + 23, MUTED, 1.5)
-    f.text(360, 128, 'Create()', 13, TEXT, 'middle', mono=True)
+    f.text(350, 92, 'Create()', 13, TEXT, 'middle', mono=True)
     f.text(565, 56, 'entities: one per archer placed', 14, TEAL, 'middle', 'bold')
     f.text(565, 282, 'clicking the field makes one', 13, MUTED, 'middle')
     f.text(360, 322, 'A new kind of defender is a new block of data. The cost belongs to the kind, and the health to the one on the field.', 13, MUTED, 'middle')

@@ -21,6 +21,7 @@ def hitboxes():
     f.rect(ex, ey, 60, 60, ENEMY, opacity=0.75)
     f.rect(ex, ey, 60, 60, 'none', GREEN, 3)
     f.rect(ex, ey, 12, 50, ACCENT, opacity=0.35)
+    f.text(ex + 30, ey + 80, 'an enemy', 13, '#3a2a18', 'middle')
     x = 460
     f.rect(x, 74, 18, 18, 'none', ACCENT, 3)
     f.text(x + 30, 89, 'hitbox', 16, ACCENT, weight='bold')

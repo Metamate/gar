@@ -92,8 +92,9 @@ def flyweight():
     f.text(100, 212, 'one texture', 12.5, MUTED)
     f.text(150, 264, 'intrinsic state', 13, MUTED, 'middle')
     seekers = [(440, 84), (560, 96), (410, 150), (530, 160), (596, 206), (450, 216)]
-    for i, (x, y) in enumerate(seekers):
+    for x, y in seekers:
         f.line(264, 150, x - 4, y + 15, FAINT, 1, '3 4')
+    for i, (x, y) in enumerate(seekers):
         f.rect(x, y, 84, 30, PANEL, TEAL, 1.5, 6)
         f.text(x + 42, y + 20, f'({(x * 2) % 900}, {(y * 3) % 500})', 11.5, TEXT, 'middle', mono=True)
     f.text(545, 56, 'per seeker: position, velocity', 14, TEAL, 'middle', 'bold')

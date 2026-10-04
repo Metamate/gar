@@ -25,7 +25,7 @@
 <text x="464" y="220" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13.5" fill="#dee2e6" text-anchor="start" font-weight="bold">an archer in row 3</text>
 <text x="464" y="238" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12.5" fill="#9aa3ab" text-anchor="start" font-weight="normal">position, health so far: 2</text>
 <line x1="276" y1="150" x2="444" y2="223" stroke="#9aa3ab" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrow-9aa3ab)"/>
-<text x="360" y="128" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">Create()</text>
+<text x="350" y="92" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#dee2e6" text-anchor="middle" font-weight="normal">Create()</text>
 <text x="565" y="56" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#2aa6a6" text-anchor="middle" font-weight="bold">entities: one per archer placed</text>
 <text x="565" y="282" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">clicking the field makes one</text>
 <text x="360" y="322" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="middle" font-weight="normal">A new kind of defender is a new block of data. The cost belongs to the kind, and the health to the one on the field.</text>

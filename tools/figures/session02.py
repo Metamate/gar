@@ -47,16 +47,13 @@ def parallax():
     f.text(x0 + w + 20, 236, 'ground', 15, TEXT, weight='bold')
     f.text(x0 + w + 162, 263, '60 px/s', 14, ACCENT, mono=True)
     f.text(x0 + w + 20, 288, 'close, so it moves fast', 13, MUTED)
-    f.line(x0 + w + 8, 110, x0 + w + 16, 110, FAINT, 1.5)
-    f.line(x0 + w + 8, 152, x0 + w + 16, 174, FAINT, 1.5)
-    f.line(x0 + w + 8, 267, x0 + w + 16, 258, FAINT, 1.5)
     # looping
     y = 316
     f.text(x0, y + 4, 'looping:', 14, TEXT, weight='bold')
     f.rect(x0 + 80, y - 12, 200, 20, PANEL, TEAL, 1.5)
     f.rect(x0 + 280, y - 12, 200, 20, PANEL, TEAL, 1.5, dash='5 4')
-    f.text(x0 + 180, y + 3, 'the image', 12, MUTED, 'middle')
-    f.text(x0 + 380, y + 3, 'the same image again', 12, MUTED, 'middle')
+    f.text(x0 + 140, y + 32, 'the image', 12, MUTED, 'middle')
+    f.text(x0 + 410, y + 32, 'the same image again', 12, MUTED, 'middle')
     f.rect(x0 + 200, y - 18, 130, 32, 'none', TEXT, 2)
     f.text(x0 + 265, y + 32, 'the screen', 12, TEXT, 'middle')
     f.text(x0 + 80, y + 58, 'offset = (offset + speed × deltaTime) % loopingPoint', 13, MUTED, mono=True)

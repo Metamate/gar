@@ -58,11 +58,11 @@ def memory_layout():
     f.rect(40, 56, 640, 100, SCREEN, r=6)
     f.text(52, 76, 'the heap', 12, MUTED)
     spots = [(70, 96), (330, 84), (180, 120), (520, 104), (420, 124), (610, 86)]
+    for a, b in zip(spots, spots[1:]):
+        f.curve(f'M{a[0] + 28} {a[1] + 22} Q{(a[0] + b[0]) / 2 + 28} {max(a[1], b[1]) + 44}, {b[0] + 28} {b[1] + 22}', ACCENT, 1.2, '3 4')
     for i, (x, y) in enumerate(spots):
         f.rect(x, y, 56, 22, PANEL, ACCENT, 1.5, 4)
         f.text(x + 28, y + 16, 'Enemy', 11.5, TEXT, 'middle', mono=True)
-    for a, b in zip(spots, spots[1:]):
-        f.curve(f'M{a[0] + 28} {a[1] + 22} Q{(a[0] + b[0]) / 2 + 28} {max(a[1], b[1]) + 44}, {b[0] + 28} {b[1] + 22}', ACCENT, 1.2, '3 4')
     f.text(360, 176, 'a loop over the positions jumps from object to object: one cache miss after another', 13, ACCENT, 'middle')
     # arrays
     f.text(40, 214, 'Enemies: one array per field', 15, TEXT, weight='bold')

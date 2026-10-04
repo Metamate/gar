@@ -47,7 +47,7 @@ def junction():
     gx, gy = centre(ox, oy, size, 4, 3)
     tx, ty = centre(ox, oy, size, 7, 1)
     f.rect(tx - 16, ty - 16, 32, 32, 'none', ACCENT, 2, 4, dash='4 3')
-    f.text(tx, ty - 24, 'target', 13, ACCENT, 'middle')
+    f.text(tx - 24, ty + 5, 'target', 13, ACCENT, 'end')
     options = [((4, 2), 'up', 3.2, True), ((5, 3), 'right', 2.8, False), ((4, 4), 'down', 4.2, False)]
     best = min(options, key=lambda o: o[2])
     for (c, r), name, dist, _ in options:
@@ -59,10 +59,10 @@ def junction():
     f.line(bx - 8, by - 8, bx + 8, by + 8, MUTED, 2.5)
     f.line(bx - 8, by + 8, bx + 8, by - 8, MUTED, 2.5)
     ghost(f, gx, gy, RED, 13)
-    f.text(ox + 1.5 * size, by + 26, 'no turning back', 11.5, MUTED, 'middle')
+    f.text(bx, by - 14, 'no', 12, MUTED, 'middle')
     x = 430
     f.text(x, 70, 'The ghost is at a tile centre.', 15, TEXT, weight='bold')
-    f.label(x, 104, ['It never turns back, so three', 'directions are open.'], 14, MUTED)
+    f.label(x, 104, ['It never turns back (the cross),', 'so three directions are open.'], 14, MUTED)
     f.label(x, 164, ['For each, it measures the straight', 'line from the next tile to the target.'], 14, MUTED)
     f.text(x, 228, 'right is closest, so it goes right', 14.5, ACCENT, weight='bold')
     f.label(x, 266, ['The state decides the target.', 'This rule only gets the ghost there.'], 14, MUTED)
@@ -139,7 +139,7 @@ def schedule():
     for name, sec in phases:
         w = sec / total * 640
         f.rect(x + 1, y, w - 2, 40, '#24424a' if name == 'scatter' else '#4a2c22', TEAL if name == 'scatter' else ACCENT, 1.5, 5)
-        f.text(x + w / 2, y + 25, f'{name} {sec} s' if w > 70 else str(sec), 13, TEXT, 'middle')
+        f.text(x + w / 2, y + 25, f'{name} {sec} s' if w > 70 else f'{sec} s', 13, TEXT, 'middle')
         x += w
     f.text(x0, 50, 'ModeSchedule', 15, TEXT, mono=True)
     f.text(x0 + 130, 50, 'every ghost that is scattering or chasing follows it', 13, MUTED)

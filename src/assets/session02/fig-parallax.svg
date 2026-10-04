@@ -15,14 +15,11 @@
 <text x="460" y="236" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="15" fill="#dee2e6" text-anchor="start" font-weight="bold">ground</text>
 <text x="602" y="263" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="14" fill="#d45d35" text-anchor="start" font-weight="normal">60 px/s</text>
 <text x="460" y="288" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">close, so it moves fast</text>
-<line x1="448" y1="110" x2="456" y2="110" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="448" y1="152" x2="456" y2="174" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="448" y1="267" x2="456" y2="258" stroke="#565d65" stroke-width="1.5" stroke-linecap="round"/>
 <text x="40" y="320" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#dee2e6" text-anchor="start" font-weight="bold">looping:</text>
 <rect x="120" y="304" width="200" height="20" fill="#2e3338" stroke="#2aa6a6" stroke-width="1.5"/>
 <rect x="320" y="304" width="200" height="20" fill="#2e3338" stroke="#2aa6a6" stroke-width="1.5" stroke-dasharray="5 4"/>
-<text x="220" y="319" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the image</text>
-<text x="420" y="319" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the same image again</text>
+<text x="180" y="348" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the image</text>
+<text x="450" y="348" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#9aa3ab" text-anchor="middle" font-weight="normal">the same image again</text>
 <rect x="240" y="298" width="130" height="32" fill="none" stroke="#dee2e6" stroke-width="2"/>
 <text x="305" y="348" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="12" fill="#dee2e6" text-anchor="middle" font-weight="normal">the screen</text>
 <text x="120" y="374" font-family="Consolas, 'Cascadia Mono', Menlo, monospace" font-size="13" fill="#9aa3ab" text-anchor="start" font-weight="normal">offset = (offset + speed × deltaTime) % loopingPoint</text>
