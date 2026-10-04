@@ -309,10 +309,12 @@ Start from `Pokemon4`.
    press), and load it on startup if it exists. Then add a `Pokemon.Tests` project, set up
    like `Sokoban.Tests`, with a round-trip test for your save data.
 5. **Pause:** add a `PauseState` using the state stack.
-6. **Switching (stretch):** start the player with two monsters, and add a Switch option to
-   the battle menu that swaps the active one and uses up the turn. When the active monster
-   faints, the player has to choose another, and the battle is lost only when none are left.
-   Which states do you add, and which existing ones change?
+6. **Catching (stretch):** add a Catch option to the battle menu that can add a weakened wild
+   monster to your party (more likely the lower its HP), and a field menu to choose who goes
+   first. Which states do you add, and which existing ones change?
+7. **Switching (stretch):** once the party holds more than one monster, add a Switch option
+   to the battle menu. It swaps the active monster for another one from the party, and uses
+   up the turn. Can you reuse the menu from the field?
 
 ## Apply It to Your Project
 
