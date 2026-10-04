@@ -38,17 +38,17 @@ same rules for every session.
 | Session | Estimate | vs. 180 | Notes |
 | --- | --- | --- | --- |
 | 00 Course Intro + 01 Pong | ~40 + ~200 | +60 | the intro deck first, then 7 build steps; virtual resolution and steps 8–11 are demos |
-| 02 Flappy Bird | ~195 | +15 | 6 build steps; four stretches are demos with a try-it |
+| 02 Flappy Bird | ~200 | +20 | 6 build steps; four stretches are demos with a try-it |
 | 03 Snake | ~205 | +25 | 5 short tasks after the demos |
-| 04 Sokoban | ~180 | 0 | 5 short tasks; Command for undo and for input |
-| 05 Pac-Man | ~180 | 0 | 5 short tasks; routing is Strategy a second time |
+| 04 Sokoban | ~185 | +5 | 5 short tasks; Command for undo and for input |
+| 05 Pac-Man | ~185 | +5 | 5 short tasks; routing is Strategy a second time |
 | 06 Super Mario Bros | ~205 | +25 | 6 short tasks; physics first; player states only say what's new after Pac-Man |
-| 07 The Legend of Zelda | ~190 | +10 | 3 short tasks; events are the main topic, composition closes the session |
-| 08 Angry Birds | ~170 | −10 | 5 short tasks, and the physics samples |
-| 09 Plants vs. Zombies | ~170 | −10 | 5 short tasks, one a test with `Pvz.Tests` |
+| 07 The Legend of Zelda | ~195 | +15 | 3 short tasks; events are the main topic, composition closes the session |
+| 08 Angry Birds | ~175 | −5 | 5 short tasks, and the physics samples |
+| 09 Plants vs. Zombies | ~175 | −5 | 5 short tasks, one a test with `Pvz.Tests` |
 | 10 Pokemon | ~165 | −15 | trace-it tasks, and 4 short tasks (samples, stack, tweens, locator) |
-| 11 Geometry Wars | ~145 | −35 | 4 short tasks; the spare time goes to the project |
-| 12 Vampire Survivors | ~165 | −15 | 4 short tasks; the course recap also takes time |
+| 11 Geometry Wars | ~150 | −30 | 4 short tasks; the spare time goes to the project |
+| 12 Vampire Survivors | ~170 | −10 | 4 short tasks; the course recap also takes time |
 
 - **Pong and Flappy Bird:** students build the core steps in class and continue at home;
   the steps that are plumbing or repeat an idea (Pong's screen scaling, modes and sound, Flappy's images, gravity and input, spawning and
@@ -134,6 +134,12 @@ Notes for building it:
 ## Materials
 
 - **Slides:** the decks live in `slides/` (version controlled), named by session number.
+- **Figures:** the concept drawings on the pages and the decks are our own, drawn by `tools/figures`: one Python
+  function per figure, in `sessionNN.py`. `python tools/figures/build.py` writes each as an SVG in
+  `src/assets/sessionNN/` for the site and as a PNG in `tools/figures/out/` for the decks. One dark panel,
+  the site's orange for what the figure is about, teal for what it is compared with. A figure goes on a
+  slide at nearly full width, so its text stays readable when projected. Figures that show a game's art
+  read it from gar-games, cloned next to this repository.
 - **Code:** one repository, [gar-games](https://github.com/Metamate/gar-games), with one
   folder per game, numbered by session (`01-pong`, `03-snake`, …). Every game is
   split into step projects (`Snake0`,
