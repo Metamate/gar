@@ -12,8 +12,8 @@ in your own time.
 | 01 | [Pong](../sessions/01-pong/) | The game loop | Game Loop, Update Method | delta time, input, drawing, AABB collision |
 | 02 | [Flappy Bird](../sessions/02-flappy-bird/) | Structuring the code | State (game states), Singleton | a core library (GARCore), textures & parallax, procedural generation, keyboard & mouse input |
 | 03 | [Snake](../sessions/03-snake/) | Assets as data | — | texture atlases, sprites & animation, fixed-tick movement, input as actions & buffering |
-| 04 | [Sokoban](../sessions/04-sokoban/) | Command and undo | Command | levels as text files, rules apart from drawing, unit tests |
-| 05 | [Pac-Man](../sessions/05-pac-man/) | The State pattern | State, Strategy | State vs. Strategy, a second strategy for routes, testing each ghost |
+| 04 | [Sokoban](../sessions/04-sokoban/) | Undo and replay | Command | levels as text files, rules apart from drawing, unit tests |
+| 05 | [Pac-Man](../sessions/05-pac-man/) | Changing behaviour | State, Strategy | State vs. Strategy, a second strategy for routes, testing each ghost |
 | 06 | [Super Mario Bros](../sessions/06-super-mario-bros/) | The game world | Strategy (level makers), State (the player) | platformer physics & tile collision, debug drawing |
 | 07 | [The Legend of Zelda](../sessions/07-the-legend-of-zelda/) | Events | Observer | C# events and lambdas, an event queue, hitboxes, tweening, composition vs. inheritance |
 | 08 | [Angry Birds](../sessions/08-angry-birds/) | Using a physics library | Adapter, Facade, Prototype | physics world vs. game world, contact events, destroying safely |

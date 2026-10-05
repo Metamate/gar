@@ -77,8 +77,8 @@ same rules for every session.
 | 1 | Pong | The game loop | Game Loop, Update Method | delta time, input, drawing, AABB collision |
 | 2 | Flappy Bird | Structuring the code | State (game states), Singleton | a core library (GARCore), textures & parallax, procedural generation, keyboard & mouse input |
 | 3 | Snake | Assets as data | — | texture atlases, sprites & animation, fixed-tick movement, input as actions & buffering |
-| 4 | Sokoban | Command and undo | Command | levels as text files, rules apart from drawing, unit tests |
-| 5 | Pac-Man | The State pattern | State, Strategy | State vs. Strategy, a second strategy for routes, testing each ghost |
+| 4 | Sokoban | Undo and replay | Command | levels as text files, rules apart from drawing, unit tests |
+| 5 | Pac-Man | Changing behaviour | State, Strategy | State vs. Strategy, a second strategy for routes, testing each ghost |
 | 6 | Super Mario Bros | The game world | Strategy (level makers), State (the player) | platformer physics & tile collision, debug drawing |
 | 7 | The Legend of Zelda | Events | Observer | C# events and lambdas, an event queue, hitboxes, tweening, composition vs. inheritance |
 | 8 | Angry Birds | Using a physics library | Adapter, Facade, Prototype | physics world vs. game world, contact events, destroying safely |
