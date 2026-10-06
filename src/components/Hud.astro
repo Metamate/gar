@@ -3,10 +3,22 @@
 // this page, and the sessions read to the end. Footer.astro does the counting.
 import coin from "../assets/strip/coin.png"
 import diamond from "../assets/strip/diamond.png"
+
+// Coins are collected on the session pages only, one for each section. The number of sections
+// is known here, so the count is in the page from the start and never pops in.
+const { entry, headings } = Astro.locals.starlightRoute
+const sections = entry.id.startsWith("sessions/") ? headings.filter((h) => h.depth === 2).length : 0
 ---
 
 <div class="gar-hud" aria-hidden="true">
-  <span class="score coins" hidden><img class="hud-coin" src={coin.src} alt="" width="18" height="18" /><b>0/0</b></span>
+  {
+    sections > 0 && (
+      <span class="score coins">
+        <img class="hud-coin" src={coin.src} alt="" width="18" height="18" />
+        <b>0/{sections}</b>
+      </span>
+    )
+  }
   <span class="score sessions"><img class="hud-gem" src={diamond.src} alt="" width="18" height="18" /><b>0/12</b></span>
 </div>
 
@@ -21,7 +33,7 @@ import diamond from "../assets/strip/diamond.png"
 <script>
   const hud = document.querySelector<HTMLElement>(".gar-hud")
   if (hud) {
-    const coins = hud.querySelector<HTMLElement>(".coins")!
+    const coins = hud.querySelector<HTMLElement>(".coins")
     const sessions = hud.querySelector<HTMLElement>(".sessions b")!
 
     const showSessions = () => {
@@ -35,8 +47,8 @@ import diamond from "../assets/strip/diamond.png"
     }
 
     document.addEventListener("gar-score", (event) => {
+      if (!coins) return
       const { coins: got, of } = (event as CustomEvent<{ coins: number; of: number }>).detail
-      coins.hidden = of === 0
       const label = coins.querySelector("b")!
       if (label.textContent !== `${got}/${of}`) {
         label.textContent = `${got}/${of}`
