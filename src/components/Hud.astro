@@ -6,8 +6,8 @@ import diamond from "../assets/strip/diamond.png"
 ---
 
 <div class="gar-hud" aria-hidden="true">
-  <span class="score coins" hidden><img src={coin.src} alt="" width="18" height="18" /><b>0/0</b></span>
-  <span class="score sessions"><img src={diamond.src} alt="" width="18" height="18" /><b>0/12</b></span>
+  <span class="score coins" hidden><img class="hud-coin" src={coin.src} alt="" width="18" height="18" /><b>0/0</b></span>
+  <span class="score sessions"><img class="hud-gem" src={diamond.src} alt="" width="18" height="18" /><b>0/12</b></span>
 </div>
 
 <!-- Runs before the bar is first drawn, so the count never shows as 0 and then changes. -->
@@ -60,10 +60,22 @@ import diamond from "../assets/strip/diamond.png"
     color: #fff;
     white-space: nowrap;
   }
+  /* The icons stand on the line the digits stand on, as a letter would, instead of being
+     centred on them. Each image has a few transparent pixels under its drawing, and the
+     digits end a little above the font's baseline: the offsets make up the difference. */
   .gar-hud .score {
     display: inline-flex;
-    align-items: center;
+    align-items: baseline;
     gap: 0.4rem;
+  }
+  .gar-hud img {
+    position: relative;
+  }
+  .gar-hud img.hud-coin {
+    top: 2px;
+  }
+  .gar-hud img.hud-gem {
+    top: 1px;
   }
   .gar-hud .score[hidden] {
     display: none;
