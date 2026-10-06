@@ -13,6 +13,7 @@ import s09 from "../assets/home/09.png"
 import s10 from "../assets/home/10.png"
 import s11 from "../assets/home/11.png"
 import s12 from "../assets/home/12.png"
+import diamond from "../assets/strip/diamond.png"
 
 const games = [
   { slug: "01-pong", name: "Pong", topic: "The game loop", still: s01 },
@@ -30,10 +31,10 @@ const games = [
 ]
 ---
 
-<ol class="game-grid not-content">
+<ol class="game-grid not-content" style={`--done:url(${diamond.src})`}>
   {
     games.map((g, i) => (
-      <li>
+      <li data-session={g.slug}>
         <a href={`sessions/${g.slug}/`}>
           <Image src={g.still} alt="" width={320} loading={i < 4 ? "eager" : "lazy"} />
           <span class="num">{String(i + 1).padStart(2, "0")}</span>
@@ -44,6 +45,18 @@ const games = [
     ))
   }
 </ol>
+
+<script>
+  // A session that was read to the end gets a diamond (see Footer.astro).
+  try {
+    const done: string[] = JSON.parse(localStorage.getItem("gar-done") ?? "[]")
+    for (const li of document.querySelectorAll<HTMLElement>(".game-grid li")) {
+      if (done.includes(li.dataset.session ?? "")) li.classList.add("done")
+    }
+  } catch {
+    // No storage: no diamonds.
+  }
+</script>
 
 <style>
   .game-grid {
@@ -103,5 +116,19 @@ const games = [
     padding: 0.1rem 0.75rem 0.7rem;
     font-size: var(--sl-text-sm);
     color: var(--sl-color-gray-2);
+  }
+  .game-grid li {
+    position: relative;
+  }
+  .game-grid li.done::after {
+    content: "";
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    width: 27px;
+    height: 27px;
+    background: var(--done) center / 27px 27px no-repeat;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.6));
   }
 </style>

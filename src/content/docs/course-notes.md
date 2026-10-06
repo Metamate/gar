@@ -140,6 +140,12 @@ Notes for building it:
   the site's orange for what the figure is about, teal for what it is compared with. A figure goes on a
   slide at nearly full width, so its text stays readable when projected. Figures that show a game's art
   read it from gar-games, cloned next to this repository.
+- **The site's game look:** headings use the games' pixel font (Press Start 2P, SIL Open Font
+  License, in `src/assets/fonts`). Along the bottom of the window runs a strip of ground
+  (`src/components/Footer.astro`) with sprites from Kenney's Pixel Platformer pack (CC0), the
+  one the Mario game uses. A figure walks along it as the page scrolls and picks up a coin per
+  section; a session read to the end gets a diamond on the home page, remembered in the
+  browser only. The strip is hidden on narrow screens.
 - **Code:** one repository, [gar-games](https://github.com/Metamate/gar-games), with one
   folder per game, numbered by session (`01-pong`, `03-snake`, …). Every game is
   split into step projects (`Snake0`,

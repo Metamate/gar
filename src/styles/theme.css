@@ -222,3 +222,48 @@ header.header option {
 	border-color: var(--gar-orange);
 	color: #fff;
 }
+
+/*
+ * The games' own pixel font (Press Start 2P, SIL Open Font License) for the site
+ * title and the two top levels of headings. It is wide, so those are set smaller
+ * than Starlight's defaults.
+ */
+@font-face {
+	font-family: 'GAR Retro';
+	src: url('../assets/fonts/retro.ttf') format('truetype');
+	font-display: swap;
+}
+
+.site-title,
+.sl-markdown-content h2,
+h1#_top {
+	font-family: 'GAR Retro', var(--__sl-font);
+	font-weight: 400;
+	letter-spacing: -0.02em;
+}
+
+h1#_top {
+	font-size: clamp(1.25rem, 1rem + 1.6vw, 1.9rem);
+	line-height: 1.5;
+}
+
+.sl-markdown-content h2 {
+	font-size: clamp(0.95rem, 0.85rem + 0.6vw, 1.2rem);
+	line-height: 1.6;
+}
+
+.site-title {
+	font-size: 1.1rem;
+}
+
+/* Room for the strip of ground along the bottom of the window (see Footer.astro). */
+@media (min-width: 50rem) {
+	body {
+		padding-bottom: 2.75rem;
+	}
+
+	.sidebar-content,
+	.right-sidebar {
+		padding-bottom: 3.5rem;
+	}
+}

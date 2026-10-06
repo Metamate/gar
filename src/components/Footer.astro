@@ -1,0 +1,224 @@
+---
+// Starlight's footer, plus the strip of ground along the bottom of the window: a little
+// figure walks along it as the page scrolls, and picks up a coin for every section.
+import Default from "@astrojs/starlight/components/Footer.astro"
+import ground from "../assets/strip/ground.png"
+import player from "../assets/strip/player.png"
+import coin from "../assets/strip/coin.png"
+import diamond from "../assets/strip/diamond.png"
+import bush0 from "../assets/strip/bush0.png"
+import bush1 from "../assets/strip/bush1.png"
+import bush2 from "../assets/strip/bush2.png"
+import bush3 from "../assets/strip/bush3.png"
+import bush4 from "../assets/strip/bush4.png"
+
+const vars = [
+  `--strip-ground:url(${ground.src})`,
+  `--strip-player:url(${player.src})`,
+  `--strip-coin:url(${coin.src})`,
+  `--strip-goal:url(${diamond.src})`,
+].join(";")
+const bushes = [bush0, bush1, bush2, bush3, bush4].map((b) => b.src).join(",")
+---
+
+<Default><slot /></Default>
+
+<div class="gar-strip" aria-hidden="true" style={vars} data-bushes={bushes}>
+  <div class="track">
+    <div class="goal"></div>
+    <div class="hero"></div>
+  </div>
+</div>
+
+<script>
+  const strip = document.querySelector<HTMLElement>(".gar-strip")!
+  const track = strip.querySelector<HTMLElement>(".track")!
+  const hero = strip.querySelector<HTMLElement>(".hero")!
+  const goal = strip.querySelector<HTMLElement>(".goal")!
+  const HERO = 40
+
+  // Out of the page column, so that it spans the window and lies over the sidebars.
+  document.body.append(strip)
+
+  // The same page always gets the same plants.
+  let seed = [...location.pathname].reduce((sum, c) => (sum * 31 + c.charCodeAt(0)) >>> 0, 7)
+  const random = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32)
+
+  const bushes = (strip.dataset.bushes ?? "").split(",")
+  for (let i = 0; i < 5; i++) {
+    const bush = document.createElement("div")
+    bush.className = "bush"
+    bush.style.left = `${4 + random() * 90}%`
+    bush.style.backgroundImage = `url(${bushes[Math.floor(random() * bushes.length)]})`
+    track.prepend(bush)
+  }
+
+  const scrollable = () => document.documentElement.scrollHeight - window.innerHeight
+  const progress = () => (scrollable() > 40 ? Math.min(1, Math.max(0, window.scrollY / scrollable())) : 0)
+
+  // One coin per section, where the figure will be when that section reaches the top.
+  const coins: { at: number; el: HTMLElement }[] = []
+  if (scrollable() > 40) {
+    for (const heading of document.querySelectorAll<HTMLElement>(".sl-markdown-content h2")) {
+      const at = (heading.getBoundingClientRect().top + window.scrollY) / scrollable()
+      if (at < 0.04 || at > 0.96) continue
+      const el = document.createElement("div")
+      el.className = "coin"
+      el.style.left = `calc(${at} * (100% - ${HERO}px) + ${HERO / 2 - 9}px)`
+      track.append(el)
+      coins.push({ at, el })
+    }
+  } else {
+    goal.hidden = true
+  }
+
+  // A session read to the end is remembered, and marked on the home page.
+  const session = location.pathname.match(/sessions\/(\d\d-[\w-]+)/)?.[1]
+  const finish = () => {
+    if (!session) return
+    try {
+      const done = new Set<string>(JSON.parse(localStorage.getItem("gar-done") ?? "[]"))
+      done.add(session)
+      localStorage.setItem("gar-done", JSON.stringify([...done]))
+    } catch {
+      // No storage: the mark is only a nicety.
+    }
+  }
+
+  let last = progress()
+  let stop = 0
+  const update = () => {
+    const p = progress()
+    hero.style.left = `calc(${p} * (100% - ${HERO}px))`
+    if (p !== last) {
+      hero.classList.toggle("left", p < last)
+      hero.classList.add("walking")
+      clearTimeout(stop)
+      stop = window.setTimeout(() => hero.classList.remove("walking"), 160)
+    }
+    for (const c of coins) {
+      if (p >= c.at) c.el.classList.add("got")
+    }
+    if (p > 0.985 && !goal.classList.contains("got")) {
+      goal.classList.add("got")
+      finish()
+    }
+    last = p
+  }
+
+  let queued = false
+  const onScroll = () => {
+    if (queued) return
+    queued = true
+    requestAnimationFrame(() => {
+      queued = false
+      update()
+    })
+  }
+  window.addEventListener("scroll", onScroll, { passive: true })
+  window.addEventListener("resize", onScroll)
+  update()
+</script>
+
+<style is:global>
+  .gar-strip {
+    display: none;
+  }
+
+  @media (min-width: 50rem) {
+    .gar-strip {
+      display: block;
+      position: fixed;
+      inset: auto 0 0 0;
+      height: 2.75rem;
+      z-index: 20;
+      pointer-events: none;
+      background:
+        var(--strip-ground) left bottom / 36px 18px repeat-x,
+        var(--sl-color-black);
+      border-top: 1px solid var(--sl-color-gray-5);
+      image-rendering: pixelated;
+    }
+    .track {
+      position: absolute;
+      inset: 0 1rem 14px 1rem;
+    }
+    .hero,
+    .coin,
+    .goal,
+    .bush {
+      position: absolute;
+      bottom: 0;
+      background-repeat: no-repeat;
+      image-rendering: pixelated;
+    }
+    .hero {
+      width: 40px;
+      height: 48px;
+      background-image: var(--strip-player);
+      background-size: 80px 48px;
+      transition: left 120ms linear;
+    }
+    .hero.left {
+      transform: scaleX(-1);
+    }
+    .hero.walking {
+      animation: gar-walk 300ms steps(1) infinite;
+    }
+    .coin,
+    .goal,
+    .bush {
+      width: 18px;
+      height: 18px;
+      background-size: 18px 18px;
+    }
+    .bush {
+      width: 36px;
+      height: 36px;
+      background-size: 36px 36px;
+      opacity: 0.85;
+    }
+    .coin {
+      bottom: 8px;
+      background-image: var(--strip-coin);
+    }
+    .goal {
+      right: 0;
+      bottom: 8px;
+      background-image: var(--strip-goal);
+    }
+    .coin.got,
+    .goal.got {
+      animation: gar-collect 350ms ease-out forwards;
+    }
+  }
+
+  @keyframes gar-walk {
+    0% {
+      background-position: -40px 0;
+    }
+    50% {
+      background-position: 0 0;
+    }
+  }
+  @keyframes gar-collect {
+    to {
+      transform: translateY(-18px);
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero {
+      transition: none;
+    }
+    .hero.walking {
+      animation: none;
+    }
+    .coin.got,
+    .goal.got {
+      animation: none;
+      opacity: 0;
+    }
+  }
+</style>
