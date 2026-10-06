@@ -46,16 +46,15 @@ const games = [
   }
 </ol>
 
-<script>
+<!-- Runs before the grid is first drawn, so the diamonds do not pop in afterwards. -->
+<script is:inline>
   // A session that was read to the end gets a diamond (see Footer.astro).
   try {
-    const done: string[] = JSON.parse(localStorage.getItem("gar-done") ?? "[]")
-    for (const li of document.querySelectorAll<HTMLElement>(".game-grid li")) {
+    const done = JSON.parse(localStorage.getItem("gar-done") ?? "[]")
+    for (const li of document.querySelectorAll(".game-grid li")) {
       if (done.includes(li.dataset.session ?? "")) li.classList.add("done")
     }
-  } catch {
-    // No storage: no diamonds.
-  }
+  } catch {}
 </script>
 
 <style>

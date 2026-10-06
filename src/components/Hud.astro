@@ -10,6 +10,14 @@ import diamond from "../assets/strip/diamond.png"
   <span class="score sessions"><img src={diamond.src} alt="" width="18" height="18" /><b>0/12</b></span>
 </div>
 
+<!-- Runs before the bar is first drawn, so the count never shows as 0 and then changes. -->
+<script is:inline>
+  try {
+    const done = JSON.parse(localStorage.getItem("gar-done") ?? "[]")
+    document.querySelector(".gar-hud .sessions b").textContent = `${done.length}/12`
+  } catch {}
+</script>
+
 <script>
   const hud = document.querySelector<HTMLElement>(".gar-hud")
   if (hud) {

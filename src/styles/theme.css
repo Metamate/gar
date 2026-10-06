@@ -309,7 +309,13 @@ header.header button[data-open-modal] {
 	border-color: rgb(255 255 255 / 0.3);
 }
 
-header.header button[data-open-modal] kbd {
+/* The shortcut label is a kbd holding one kbd per key: only the outer one gets a field. */
+header.header button[data-open-modal] > kbd {
 	background-color: rgb(255 255 255 / 0.16);
 	color: #fff;
+}
+
+header.header button[data-open-modal] > kbd kbd {
+	background-color: transparent;
+	color: inherit;
 }
