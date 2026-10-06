@@ -36,7 +36,7 @@ const bushes = [bush0, bush1, bush2, bush3, bush4].map((b) => b.src).join(",")
   const track = strip.querySelector<HTMLElement>(".track")!
   const hero = strip.querySelector<HTMLElement>(".hero")!
   const goal = strip.querySelector<HTMLElement>(".goal")!
-  const HERO = 32
+  const HERO = 36
 
   // Out of the page column, so that it spans the window and lies over the sidebars.
   document.body.append(strip)
@@ -162,10 +162,10 @@ const bushes = [bush0, bush1, bush2, bush3, bush4].map((b) => b.src).join(",")
       image-rendering: pixelated;
     }
     .hero {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       background-image: var(--strip-player);
-      background-size: 64px 32px;
+      background-size: 72px 36px;
       transition: left 120ms linear;
     }
     .hero.left {
@@ -204,7 +204,7 @@ const bushes = [bush0, bush1, bush2, bush3, bush4].map((b) => b.src).join(",")
 
   @keyframes gar-walk {
     0% {
-      background-position: -32px 0;
+      background-position: -36px 0;
     }
     50% {
       background-position: 0 0;

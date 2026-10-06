@@ -149,7 +149,7 @@ Notes for building it:
   section; a session read to the end gets a diamond on the home page, remembered in the
   browser only. The top bar shows both counts (`src/components/Hud.astro`). The strip is hidden
   on narrow screens.
-- **The mascot** is our own: a small builder in a hard hat, drawn from a 16 × 16 pixel map in
+- **The mascot** is our own: a small builder in a hard hat, drawn from a pixel map in
   `tools/mascot/build.py`, which writes the logo, the favicons and the walking frames.
 - **Code:** one repository, [gar-games](https://github.com/Metamate/gar-games), with one
   folder per game, numbered by session (`01-pong`, `03-snake`, …). Every game is

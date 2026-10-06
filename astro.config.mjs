@@ -54,7 +54,7 @@ export default defineConfig({
         src: "./src/assets/logo.png",
         alt: "GAR",
       },
-      favicon: "/favicon.ico",
+      favicon: "/favicon.svg",
       head: [{ tag: "script", content: pauseAnimations }],
       sidebar: [
         { label: "Home", slug: "" },
