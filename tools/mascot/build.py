@@ -2,16 +2,15 @@
 in: the logo, the favicons, and the two frames that walk along the bottom of the window.
 
 The maps below hold only the inside of the figure. The outline is added around it, with the
-corners cut and nothing under the boots, so it stands on the ground. On the strip the outline is
-two pixels thick, which is how the sprites it walks among are drawn (Kenney's Pixel Platformer).
-The logo and the favicons get a thin, darker outline, which reads better on the orange bar.
+corners cut and nothing under the boots, so it stands on the ground. The outline is two pixels
+thick, which is how the sprites it walks among are drawn (Kenney's Pixel Platformer). The logo
+and the favicons are the same figure.
 Run it after changing a map: python tools/mascot/build.py"""
 import os
 from PIL import Image
 
 ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 OUTLINE = '#4a3531'      # a dark, warm brown: the pack tints its outlines the same way
-LOGO_OUTLINE = '#2a1f1c'
 
 COLOURS = {
     '.': None,
@@ -87,8 +86,8 @@ sheet = Image.new('RGBA', (stand.width * 2, stand.height), (0, 0, 0, 0))
 sheet.paste(stand, (0, 0)); sheet.paste(walk, (stand.width, 0))
 sheet.save(os.path.join(ROOT, 'src/assets/mascot/walk.png'))
 
-# the logo and the favicons: a thin outline
-logo = square(draw(STAND, 1, LOGO_OUTLINE))
+# the logo and the favicons: the same figure, standing
+logo = square(stand)
 big(logo, 8).save(os.path.join(ROOT, 'src/assets/logo.png'))
 big(logo, 8).save(os.path.join(ROOT, 'public/favicon.ico'), sizes=[(16, 16), (32, 32), (48, 48)])
 open(os.path.join(ROOT, 'public/favicon.svg'), 'w', encoding='utf-8', newline='\n').write(svg(logo))
