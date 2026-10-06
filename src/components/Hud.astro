@@ -1,14 +1,14 @@
 ---
 // The score in the top bar, in the place of Starlight's social icons: the coins picked up on
 // this page, and the sessions read to the end. Footer.astro does the counting.
-// The icons are cut to their drawing, so that their edges can be lined up with the digits.
-import coin from "../assets/strip/coin-trim.png"
-import diamond from "../assets/strip/diamond-trim.png"
+// Small versions of the strip's coin and gem, as tall as the digits (tools/mascot/hud_icons.py).
+import coin from "../assets/strip/coin-hud.png"
+import diamond from "../assets/strip/diamond-hud.png"
 ---
 
 <div class="gar-hud" aria-hidden="true">
-  <span class="score coins" hidden><img src={coin.src} alt="" width="12" height="12" /><b>0/0</b></span>
-  <span class="score sessions"><img src={diamond.src} alt="" width="14" height="13" /><b>0/12</b></span>
+  <span class="score coins" hidden><img src={coin.src} alt="" width="10" height="10" /><b>0/0</b></span>
+  <span class="score sessions"><img src={diamond.src} alt="" width="10" height="9" /><b>0/12</b></span>
 </div>
 
 <!-- Runs before the bar is first drawn, so the count never shows as 0 and then changes. -->
@@ -57,15 +57,15 @@ import diamond from "../assets/strip/diamond-trim.png"
     align-items: center;
     gap: 1rem;
     font-family: "GAR Retro", var(--__sl-font);
-    /* The digits of this font are 0.875 em tall: at this size that is 12 pixels, the height of the coin. */
-    font-size: 13.714px;
+    /* The digits of this font are 0.875 em tall: at this size that is 10 pixels, the height of the coin. */
+    font-size: 11.43px;
     color: #fff;
     white-space: nowrap;
   }
   .gar-hud .score {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
   .gar-hud .score[hidden] {
     display: none;
