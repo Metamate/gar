@@ -40,10 +40,7 @@ export default defineConfig({
       description: "Course site for Game Architecture (GAR).",
       lastUpdated: true,
       customCss: ["./src/styles/theme.css"],
-      components: {
-        Footer: "./src/components/Footer.astro",
-        Head: "./src/components/Head.astro",
-      },
+      components: { Footer: "./src/components/Footer.astro" },
       logo: {
         src: "./src/assets/logo.png",
         alt: "GAR",
