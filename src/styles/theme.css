@@ -267,3 +267,8 @@ h1#_top {
 		padding-bottom: 3.5rem;
 	}
 }
+
+/* Body text in IBM Plex Sans (SIL Open Font License), loaded in astro.config.mjs. */
+:root {
+	--sl-font: 'IBM Plex Sans Variable', sans-serif;
+}

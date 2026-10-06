@@ -39,7 +39,11 @@ export default defineConfig({
       title: "GAR",
       description: "Course site for Game Architecture (GAR).",
       lastUpdated: true,
-      customCss: ["./src/styles/theme.css"],
+      customCss: [
+        "@fontsource-variable/ibm-plex-sans/wght.css",
+        "@fontsource-variable/ibm-plex-sans/wght-italic.css",
+        "./src/styles/theme.css",
+      ],
       components: { Footer: "./src/components/Footer.astro" },
       logo: {
         src: "./src/assets/logo.png",
