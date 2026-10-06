@@ -231,7 +231,7 @@ header.header option {
 @font-face {
 	font-family: 'GAR Retro';
 	src: url('../assets/fonts/retro.ttf') format('truetype');
-	font-display: swap;
+	font-display: block;
 }
 
 .site-title,
@@ -268,7 +268,27 @@ h1#_top {
 	}
 }
 
-/* Body text in IBM Plex Sans (SIL Open Font License), loaded in astro.config.mjs. */
+/*
+ * Body text in IBM Plex Sans (SIL Open Font License): a variable font, so one file
+ * holds every weight. Both fonts are preloaded in Head.astro and block the text
+ * for a moment instead of swapping, so no page is first drawn in a fallback font.
+ */
+@font-face {
+	font-family: 'IBM Plex Sans';
+	src: url('../assets/fonts/ibm-plex-sans-latin-wght-normal.woff2') format('woff2');
+	font-weight: 100 700;
+	font-style: normal;
+	font-display: block;
+}
+
+@font-face {
+	font-family: 'IBM Plex Sans';
+	src: url('../assets/fonts/ibm-plex-sans-latin-wght-italic.woff2') format('woff2');
+	font-weight: 100 700;
+	font-style: italic;
+	font-display: block;
+}
+
 :root {
-	--sl-font: 'IBM Plex Sans Variable', sans-serif;
+	--sl-font: 'IBM Plex Sans', sans-serif;
 }
