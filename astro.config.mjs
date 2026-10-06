@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs"
 import { defineConfig } from "astro/config"
 import starlight from "@astrojs/starlight"
 import mermaid from "astro-mermaid"
+import { garDark, garLight } from "./src/styles/code-themes.mjs"
 
 // Inlined into every page, so it works under any base path.
 const pauseAnimations = readFileSync(
@@ -45,6 +46,7 @@ export default defineConfig({
         "./src/styles/theme.css",
       ],
       components: { Footer: "./src/components/Footer.astro" },
+      expressiveCode: { themes: [garDark, garLight], useStarlightUiThemeColors: true },
       logo: {
         src: "./src/assets/logo.png",
         alt: "GAR",
