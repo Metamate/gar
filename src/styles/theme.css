@@ -8,29 +8,26 @@
  *
  * Starlight derives every accent from three steps per colour scheme:
  * `accent` (links and controls), `accent-high` (emphasis) and `accent-low`
- * (tinted backgrounds). The light greys are Starlight's own ramp rotated from
- * its default blue hue to the warm hue of the palette above; the dark greys are
- * a cool ramp of their own.
+ * (tinted backgrounds). The greys are Starlight's own ramp rotated from its
+ * default blue hue to the warm hue of the palette above — delete the two grey
+ * blocks to go back to stock Starlight greys.
  */
 
-/*
- * Dark mode. The greys are a cool ramp built around rgb(108, 117, 125), which is
- * gray-4 here: the page is three steps darker, and the text three steps lighter.
- */
+/* Dark mode */
 :root {
-	--sl-color-accent-low: hsl(14, 38%, 24%);
+	--sl-color-accent-low: hsl(13, 40%, 20%);
 	--sl-color-accent: hsl(15, 65%, 52%);
-	/* 8.6:1 on the page background */
-	--sl-color-accent-high: hsl(17, 60%, 82%);
+	/* 10.5:1 on the page background */
+	--sl-color-accent-high: hsl(17, 49%, 80%);
 
 	--sl-color-white: hsl(0, 0%, 100%);
-	--sl-color-gray-1: hsl(210, 17%, 95%);
-	--sl-color-gray-2: hsl(210, 14%, 83%);
-	--sl-color-gray-3: hsl(210, 11%, 71%);
-	--sl-color-gray-4: hsl(208, 7%, 46%);
-	--sl-color-gray-5: hsl(210, 9%, 31%);
-	--sl-color-gray-6: hsl(210, 10%, 23%);
-	--sl-color-black: hsl(210, 10%, 18%);
+	--sl-color-gray-1: hsl(20, 20%, 94%);
+	--sl-color-gray-2: hsl(20, 6%, 77%);
+	--sl-color-gray-3: hsl(20, 6%, 56%);
+	--sl-color-gray-4: hsl(20, 7%, 36%);
+	--sl-color-gray-5: hsl(20, 10%, 23%);
+	--sl-color-gray-6: hsl(20, 14%, 16%);
+	--sl-color-black: hsl(20, 10%, 10%);
 }
 
 /* Light mode */
@@ -68,8 +65,8 @@
 	--gar-orange: #c6512a;
 	--gar-orange-vivid: #e73c00;
 	/* Surface the native theme-select dropdown paints itself on. */
-	--gar-option-bg: hsl(210, 10%, 23%);
-	--gar-option-text: hsl(210, 17%, 95%);
+	--gar-option-bg: hsl(20, 14%, 16%);
+	--gar-option-text: hsl(20, 20%, 94%);
 }
 
 :root[data-theme='light'] {
