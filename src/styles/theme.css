@@ -304,9 +304,34 @@ header.header .social-icons::after {
  * The search box in the bar has white text (see the tokens above), so it needs a dark
  * field in both themes: Starlight's own is the page colour, which is white in light mode.
  */
-header.header button[data-open-modal] {
-	background-color: rgb(28 25 23 / 0.82);
-	border-color: rgb(255 255 255 / 0.3);
+@media (min-width: 50rem) {
+	header.header button[data-open-modal] {
+		background-color: rgb(28 25 23 / 0.82);
+		border-color: rgb(255 255 255 / 0.3);
+	}
+}
+
+/*
+ * The search dialog is inside the header element but is drawn over the page, so it gets
+ * the page's own colours back in place of the bar's white ones.
+ */
+header.header dialog {
+	color: var(--sl-color-text);
+	--sl-color-text-accent: hsl(17, 49%, 80%);
+	--sl-color-white: hsl(0, 0%, 100%);
+	--sl-color-gray-1: hsl(20, 20%, 94%);
+	--sl-color-gray-2: hsl(20, 6%, 77%);
+	--sl-color-gray-3: hsl(20, 6%, 56%);
+	--sl-color-gray-5: hsl(20, 10%, 23%);
+}
+
+:root[data-theme='light'] header.header dialog {
+	--sl-color-text-accent: hsl(15, 70%, 45%);
+	--sl-color-white: hsl(20, 10%, 10%);
+	--sl-color-gray-1: hsl(20, 14%, 16%);
+	--sl-color-gray-2: hsl(20, 10%, 23%);
+	--sl-color-gray-3: hsl(20, 7%, 36%);
+	--sl-color-gray-5: hsl(20, 6%, 77%);
 }
 
 /* The shortcut label is a kbd holding one kbd per key: only the outer one gets a field. */

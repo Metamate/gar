@@ -26,13 +26,13 @@ const sections = entry.id.startsWith("sessions/") ? headings.filter((h) => h.dep
 <script is:inline>
   try {
     const done = JSON.parse(localStorage.getItem("gar-done") ?? "[]")
-    document.querySelector(".gar-hud .sessions b").textContent = `${done.length}/12`
+    for (const b of document.querySelectorAll(".gar-hud .sessions b")) b.textContent = `${done.length}/12`
   } catch {}
 </script>
 
 <script>
-  const hud = document.querySelector<HTMLElement>(".gar-hud")
-  if (hud) {
+  // The score is on the page twice: in the bar, and in the menu of a narrow window.
+  for (const hud of document.querySelectorAll<HTMLElement>(".gar-hud")) {
     const coins = hud.querySelector<HTMLElement>(".coins")
     const sessions = hud.querySelector<HTMLElement>(".sessions b")!
 
@@ -69,7 +69,8 @@ const sections = entry.id.startsWith("sessions/") ? headings.filter((h) => h.dep
     gap: 1rem;
     font-family: "GAR Retro", var(--__sl-font);
     font-size: 0.7rem;
-    color: #fff;
+    /* White in the bar, and the text colour in the menu of a narrow window. */
+    color: var(--sl-color-white);
     white-space: nowrap;
   }
   /* The icons stand on the line the digits stand on, as a letter would, instead of being
