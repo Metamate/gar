@@ -203,3 +203,22 @@ header.header option {
 .home-actions .sl-link-button svg {
   font-size: 1.1em;
 }
+
+/*
+ * In dark mode Starlight fills the current sidebar entry and the primary buttons
+ * with the light accent, which looks washed out next to the header. They take
+ * the header's orange instead, with white text (4.5:1), as in light mode.
+ * Links in the text keep the light accent, which the orange is too dark for.
+ */
+:root[data-theme='dark'] .sidebar-content a[aria-current='page'],
+:root[data-theme='dark'] .sidebar-content a[aria-current='page']:hover,
+:root[data-theme='dark'] .sidebar-content a[aria-current='page']:focus {
+	background-color: var(--gar-orange);
+	color: #fff;
+}
+
+:root[data-theme='dark'] .sl-link-button.primary {
+	background-color: var(--gar-orange);
+	border-color: var(--gar-orange);
+	color: #fff;
+}
