@@ -76,6 +76,9 @@ import diamond from "../assets/strip/diamond.png"
   .gar-hud b {
     font-weight: 400;
     min-width: 3.2em;
+    line-height: 1;
+    /* The pixel font's digits sit a little high in their line: this centres them on the icon. */
+    transform: translateY(1px);
   }
   .gar-hud .bump img {
     animation: gar-bump 260ms ease-out;
