@@ -45,7 +45,10 @@ export default defineConfig({
         "./src/styles/plex-font.css",
         "./src/styles/theme.css",
       ],
-      components: { Footer: "./src/components/Footer.astro" },
+      components: {
+        Footer: "./src/components/Footer.astro",
+        SocialIcons: "./src/components/Hud.astro",
+      },
       expressiveCode: { themes: [garDark, garLight], useStarlightUiThemeColors: true },
       logo: {
         src: "./src/assets/logo.png",

@@ -1,0 +1,85 @@
+---
+// The score in the top bar, in the place of Starlight's social icons: the coins picked up on
+// this page, and the sessions read to the end. Footer.astro does the counting.
+import coin from "../assets/strip/coin.png"
+import diamond from "../assets/strip/diamond.png"
+---
+
+<div class="gar-hud" aria-hidden="true">
+  <span class="score coins" hidden><img src={coin.src} alt="" width="18" height="18" /><b>0/0</b></span>
+  <span class="score sessions"><img src={diamond.src} alt="" width="18" height="18" /><b>0/12</b></span>
+</div>
+
+<script>
+  const hud = document.querySelector<HTMLElement>(".gar-hud")
+  if (hud) {
+    const coins = hud.querySelector<HTMLElement>(".coins")!
+    const sessions = hud.querySelector<HTMLElement>(".sessions b")!
+
+    const showSessions = () => {
+      let done: string[] = []
+      try {
+        done = JSON.parse(localStorage.getItem("gar-done") ?? "[]")
+      } catch {
+        // No storage: the count stays at zero.
+      }
+      sessions.textContent = `${done.length}/12`
+    }
+
+    document.addEventListener("gar-score", (event) => {
+      const { coins: got, of } = (event as CustomEvent<{ coins: number; of: number }>).detail
+      coins.hidden = of === 0
+      const label = coins.querySelector("b")!
+      if (label.textContent !== `${got}/${of}`) {
+        label.textContent = `${got}/${of}`
+        coins.classList.remove("bump")
+        void coins.offsetWidth
+        if (got > 0) coins.classList.add("bump")
+      }
+    })
+    document.addEventListener("gar-done", showSessions)
+    showSessions()
+  }
+</script>
+
+<style is:global>
+  .gar-hud {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: "GAR Retro", var(--__sl-font);
+    font-size: 0.7rem;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .gar-hud .score {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .gar-hud .score[hidden] {
+    display: none;
+  }
+  .gar-hud img {
+    width: 18px;
+    height: 18px;
+    image-rendering: pixelated;
+  }
+  .gar-hud b {
+    font-weight: 400;
+    min-width: 3.2em;
+  }
+  .gar-hud .bump img {
+    animation: gar-bump 260ms ease-out;
+  }
+  @keyframes gar-bump {
+    40% {
+      transform: translateY(-5px) scale(1.25);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gar-hud .bump img {
+      animation: none;
+    }
+  }
+</style>

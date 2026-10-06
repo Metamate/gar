@@ -264,3 +264,52 @@ h1#_top {
 		padding-bottom: 3.5rem;
 	}
 }
+
+/*
+ * The top bar as a game's status bar: the mascot and the title on the left, the score on
+ * the right (Hud.astro), and a stepped edge of darker orange along the bottom, drawn with
+ * two gradients so that it stays crisp at any zoom.
+ */
+header.header {
+	border-bottom: 0;
+	background-image:
+		linear-gradient(90deg, rgb(0 0 0 / 0.28) 50%, transparent 50%),
+		linear-gradient(rgb(0 0 0 / 0.28), rgb(0 0 0 / 0.28));
+	background-size:
+		8px 4px,
+		100% 4px;
+	background-position:
+		left bottom 4px,
+		left bottom;
+	background-repeat: repeat-x, no-repeat;
+}
+
+header.header .site-title {
+	gap: 0.7rem;
+	text-shadow: 2px 2px 0 rgb(0 0 0 / 0.3);
+}
+
+header.header .site-title img {
+	image-rendering: pixelated;
+	height: 2.25rem;
+	width: auto;
+}
+
+/* The score sits where the social icons would; their divider stays between it and the theme select. */
+header.header .social-icons::after {
+	border-color: rgb(255 255 255 / 0.35);
+}
+
+/*
+ * The search box in the bar has white text (see the tokens above), so it needs a dark
+ * field in both themes: Starlight's own is the page colour, which is white in light mode.
+ */
+header.header button[data-open-modal] {
+	background-color: rgb(28 25 23 / 0.82);
+	border-color: rgb(255 255 255 / 0.3);
+}
+
+header.header button[data-open-modal] kbd {
+	background-color: rgb(255 255 255 / 0.16);
+	color: #fff;
+}

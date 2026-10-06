@@ -145,9 +145,12 @@ Notes for building it:
   Latin characters and embedded in the stylesheet (`src/styles/*-font.css`), so a page is never
   first drawn in another font. Along the bottom of the window runs a strip of ground
   (`src/components/Footer.astro`) with sprites from Kenney's Pixel Platformer pack (CC0), the
-  one the Mario game uses. A figure walks along it as the page scrolls and picks up a coin per
+  one the Mario game uses. The mascot walks along it as the page scrolls and picks up a coin per
   section; a session read to the end gets a diamond on the home page, remembered in the
-  browser only. The strip is hidden on narrow screens.
+  browser only. The top bar shows both counts (`src/components/Hud.astro`). The strip is hidden
+  on narrow screens.
+- **The mascot** is our own: a small builder in a hard hat, drawn from a 16 × 16 pixel map in
+  `tools/mascot/build.py`, which writes the logo, the favicons and the walking frames.
 - **Code:** one repository, [gar-games](https://github.com/Metamate/gar-games), with one
   folder per game, numbered by session (`01-pong`, `03-snake`, …). Every game is
   split into step projects (`Snake0`,

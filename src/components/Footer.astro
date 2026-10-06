@@ -1,9 +1,10 @@
 ---
-// Starlight's footer, plus the strip of ground along the bottom of the window: a little
-// figure walks along it as the page scrolls, and picks up a coin for every section.
+// Starlight's footer, plus the strip of ground along the bottom of the window: the mascot
+// walks along it as the page scrolls, and picks up a coin for every section. The score is
+// shown in the top bar (see Hud.astro), which listens for the gar-score event.
 import Default from "@astrojs/starlight/components/Footer.astro"
 import ground from "../assets/strip/ground.png"
-import player from "../assets/strip/player.png"
+import player from "../assets/mascot/walk.png"
 import coin from "../assets/strip/coin.png"
 import diamond from "../assets/strip/diamond.png"
 import bush0 from "../assets/strip/bush0.png"
@@ -35,7 +36,7 @@ const bushes = [bush0, bush1, bush2, bush3, bush4].map((b) => b.src).join(",")
   const track = strip.querySelector<HTMLElement>(".track")!
   const hero = strip.querySelector<HTMLElement>(".hero")!
   const goal = strip.querySelector<HTMLElement>(".goal")!
-  const HERO = 40
+  const HERO = 32
 
   // Out of the page column, so that it spans the window and lies over the sidebars.
   document.body.append(strip)
@@ -86,6 +87,7 @@ const bushes = [bush0, bush1, bush2, bush3, bush4].map((b) => b.src).join(",")
   }
 
   let last = progress()
+  let shown = -1
   let stop = 0
   const update = () => {
     const p = progress()
@@ -96,12 +98,19 @@ const bushes = [bush0, bush1, bush2, bush3, bush4].map((b) => b.src).join(",")
       clearTimeout(stop)
       stop = window.setTimeout(() => hero.classList.remove("walking"), 160)
     }
+    let got = 0
     for (const c of coins) {
       if (p >= c.at) c.el.classList.add("got")
+      if (c.el.classList.contains("got")) got++
+    }
+    if (got !== shown) {
+      shown = got
+      document.dispatchEvent(new CustomEvent("gar-score", { detail: { coins: got, of: coins.length } }))
     }
     if (p > 0.985 && !goal.classList.contains("got")) {
       goal.classList.add("got")
       finish()
+      document.dispatchEvent(new CustomEvent("gar-done"))
     }
     last = p
   }
@@ -153,10 +162,10 @@ const bushes = [bush0, bush1, bush2, bush3, bush4].map((b) => b.src).join(",")
       image-rendering: pixelated;
     }
     .hero {
-      width: 40px;
-      height: 48px;
+      width: 32px;
+      height: 32px;
       background-image: var(--strip-player);
-      background-size: 80px 48px;
+      background-size: 64px 32px;
       transition: left 120ms linear;
     }
     .hero.left {
@@ -195,7 +204,7 @@ const bushes = [bush0, bush1, bush2, bush3, bush4].map((b) => b.src).join(",")
 
   @keyframes gar-walk {
     0% {
-      background-position: -40px 0;
+      background-position: -32px 0;
     }
     50% {
       background-position: 0 0;
