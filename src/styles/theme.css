@@ -226,14 +226,8 @@ header.header option {
 /*
  * The games' own pixel font (Press Start 2P, SIL Open Font License) for the site
  * title and the two top levels of headings. It is wide, so those are set smaller
- * than Starlight's defaults.
+ * than Starlight's defaults. The font itself is embedded in retro-font.css.
  */
-@font-face {
-	font-family: 'GAR Retro';
-	src: url('../assets/fonts/retro.ttf') format('truetype');
-	font-display: swap;
-}
-
 .site-title,
 .sl-markdown-content h2,
 h1#_top {
