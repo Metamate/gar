@@ -315,7 +315,36 @@ Enemy AI can be built from states too:
 
 Landing on a slime from above stomps it. Touching it any other way ends the game.
 
-`Mario8` adds music and sound effects, and is the finished game.
+## The Whole Game
+
+_Step `Mario8`_
+
+`Mario8` adds music and sound effects, and is the finished game. The play state asks a level
+maker for a `GameLevel`, which holds the two tilemaps, the entities and the camera. The
+player and each slime hold their current state.
+
+```mermaid
+classDiagram
+    Game1 --> GameStateBase : current
+    GameStateBase <|-- StartState
+    GameStateBase <|-- PlayState
+    PlayState --> LevelMakerBase
+    PlayState --> GameLevel
+    LevelMakerBase ..> GameLevel : builds
+    GameLevel --> Tilemap : ground and toppers
+    GameLevel --> Camera
+    GameLevel --> IEntity : many
+    IEntity <|.. Player
+    IEntity <|.. Slime
+    IEntity <|.. Coin
+    IEntity <|.. MysteryBox
+    IEntity <|.. Bush
+    Player --> PlayerStateBase : current
+    Slime --> SlimeStateBase : current
+```
+
+There are three kinds of state in one game. The game has states, the player has states, and
+every slime has states, each kind with a base class of its own.
 
 ## Summary
 

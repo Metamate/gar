@@ -334,6 +334,24 @@ Make your own 8-bit sounds with [bfxr.net](https://www.bfxr.net/).
 **Try it** (`Pong11`): `Play` also takes a volume, a pitch and a pan. Raise the paddle sound's
 pitch as the ball speeds up.
 
+## The Whole Game
+
+_Step `Pong11`_
+
+`Pong11` is the finished game. `Game1` still runs everything. It holds the two paddles and
+the ball, the mode string, the scores and the sounds, and it checks the ball against each
+paddle. `Paddle` and `Ball` only move and draw themselves.
+
+```mermaid
+classDiagram
+    Game <|-- Game1
+    Game1 --> Paddle : two
+    Game1 --> Ball
+    Ball ..> Paddle : collides with
+```
+
+The diagram is small because `Game1` is big. Every later session moves something out of it.
+
 ## Summary
 
 | Concern | Answer |

@@ -378,6 +378,39 @@ MonoGame has a built-in locator, `Game.Services`
 (`Services.AddService<IAudio>(audio)`, `Services.GetService<IAudio>()`). We roll our own
 here to see how it works.
 
+## The Whole Game
+
+_Step `Pokemon4`_
+
+`Pokemon4` registers a real audio service, and is the finished game. `Game1` owns the state
+stack and fills the locator. Every state is given the stack, so it can push and pop. The
+field and the battle each hold their own part of the game data.
+
+```mermaid
+classDiagram
+    Game1 --> StateStack
+    Game1 ..> Locator : provides the services
+    StateStack --> GameStateBase : many
+    GameStateBase <|-- PlayState
+    GameStateBase <|-- BattleState
+    GameStateBase <|-- BattleMenuState
+    GameStateBase <|-- TakeTurnState
+    GameStateBase <|-- FadeState
+    PlayState --> Level
+    Level --> Player
+    Player --> Party
+    Party --> Mon : many
+    Mon --> PokemonSpecies
+    BattleState --> Mon : two
+    BattleState --> ProgressBar : three
+    Locator --> IAudio
+    Locator --> ITweenManager
+    Locator --> GameAssets
+```
+
+`StartState`, `DialogueState` and `BattleMessageState` are left out to keep the diagram
+readable. They are states on the same stack.
+
 ## Summary
 
 | Concern | Answer |

@@ -394,6 +394,23 @@ castle, or when every goblin is gone.
 The falling coin is a coin with one more component, `Faller`. With components in place, many
 new features take a single new component.
 
+```mermaid
+classDiagram
+    Game1 --> StateMachine : game states
+    Game1 --> World
+    Game1 --> CardBar
+    Game1 --> Level
+    World --> Entity : defenders, goblins and the rest
+    Entity o-- Component
+    CardBar --> DefenderType : a card for each
+    DefenderType ..> Entity : creates
+    GoblinType ..> Entity : creates
+    Level ..> GoblinType : names
+```
+
+There is no class for an archer or a goblin anywhere in it. The types create entities,
+and the world only sees entities.
+
 ## Summary
 
 | Concern | Answer |

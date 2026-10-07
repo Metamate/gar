@@ -284,6 +284,34 @@ code that needs it.
 replace with a muted version for testing? [Pokemon](../10-pokemon/) picks this up again
 with the Service Locator pattern.
 
+## The Whole Game
+
+_Step `Flappy12`_
+
+`Flappy12` adds the music and the sounds, and is the finished game. `Game1` derives from
+`Core`, scrolls the background and the ground, and hands `Update` and `Draw` to the state
+machine. The play state owns the bird and the pipes.
+
+```mermaid
+classDiagram
+    Game <|-- Core
+    Core <|-- Game1
+    Game1 --> StateMachine
+    StateMachine --> IState : current
+    IState <|.. TitleState
+    IState <|.. CountdownState
+    IState <|.. PlayState
+    IState <|.. ScoreState
+    PlayState --> Bird
+    PlayState --> PipePair : many
+    PipePair --> Pipe : two
+    Bird ..> Art
+    Bird ..> Audio
+```
+
+The dotted lines to `Art` and `Audio` are the global access from the last section. Nothing
+hands them to the bird. It reaches for them.
+
 ## Summary
 
 | Concern | Answer |

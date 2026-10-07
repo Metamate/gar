@@ -375,6 +375,35 @@ subclass, ask whether you're describing _what something is_ or _what it can do_.
 is usually better as a part the object has. In [Plants vs. Zombies](../09-plants-vs-zombies/),
 we take this all the way with the **Component pattern**.
 
+## The Whole Game
+
+_Step `Zelda7`_
+
+`Zelda7` adds music and sound effects, and is the finished game. The play state holds the
+player and the dungeon. The dungeon holds the current room, and the next one while the
+screen scrolls. A room holds its enemies, objects and doorways.
+
+```mermaid
+classDiagram
+    Game1 --> GameStateBase : current
+    GameStateBase <|-- StartState
+    GameStateBase <|-- PlayState
+    GameStateBase <|-- GameOverState
+    PlayState --> Player
+    PlayState --> Dungeon
+    Dungeon --> Room : current and next
+    Dungeon --> Camera
+    Room --> Enemy : many
+    Room --> GameObject : many
+    Room --> Doorway : many
+    Entity <|-- Player
+    Entity <|-- Enemy
+    Entity --> EntityStateBase : current
+```
+
+The arrows point down, from the play state to the room. The events travel the other way,
+so a room can announce the player's death without an arrow up to the play state.
+
 ## Summary
 
 | Concern | Answer |

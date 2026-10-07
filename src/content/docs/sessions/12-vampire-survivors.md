@@ -324,6 +324,21 @@ as data, by one system, in bulk. Many engines mix the two in the same way.
 **Try it** (`Survivors3`, in Release): at 10,000 and 20,000 enemies, compare the profiler
 with `Survivors2`. Which sections changed the most?
 
+## When to Optimize
+
+> Programmers waste enormous amounts of time thinking about, or worrying about, the speed
+> of noncritical parts of their programs [...]. We should forget about small efficiencies,
+> say about 97% of the time: premature optimization is the root of all evil. Yet we should
+> not pass up our opportunities in that critical 3%. _(Donald Knuth)_
+
+The order of this session is the order to work in:
+
+1. **Measure.** Find the part that's slow. It's rarely where you'd guess.
+2. **Fix the algorithm.** O(n²) to O(n) beats any amount of tuning.
+3. **Fix the data**, where it's hot. Lay it out for the loop that reads it.
+4. **Measure again**, to see if it helped. Sometimes it doesn't, and that's worth knowing.
+5. **Keep a test** that checks the fast code against the simple code.
+
 ## The Whole Game
 
 _Step `Survivors4`_
@@ -360,21 +375,6 @@ classDiagram
 - The enemy **kinds** are type objects, and the logic runs at a **fixed timestep**
   (GARCore's `Core`, from Geometry Wars).
 - Survive five minutes to win. The profiler is still there (F3).
-
-## When to Optimize
-
-> Programmers waste enormous amounts of time thinking about, or worrying about, the speed
-> of noncritical parts of their programs [...]. We should forget about small efficiencies,
-> say about 97% of the time: premature optimization is the root of all evil. Yet we should
-> not pass up our opportunities in that critical 3%. _(Donald Knuth)_
-
-The order of this session is the order to work in:
-
-1. **Measure.** Find the part that's slow. It's rarely where you'd guess.
-2. **Fix the algorithm.** O(n²) to O(n) beats any amount of tuning.
-3. **Fix the data**, where it's hot. Lay it out for the loop that reads it.
-4. **Measure again**, to see if it helped. Sometimes it doesn't, and that's worth knowing.
-5. **Keep a test** that checks the fast code against the simple code.
 
 ## Summary
 

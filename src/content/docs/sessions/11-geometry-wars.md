@@ -374,6 +374,36 @@ required for your project.
 
 ![Bloom: draw the scene, keep the bright pixels, blur them, and add them back.](../../../assets/session11/fig-bloom.svg)
 
+## The Whole Game
+
+_Step `GeometryWars6`_
+
+`GeometryWars6` adds music and sound effects, and is the finished game. Audio is one more
+service in the `PlayContext`, and a sound is one more component (`PlaySoundOnWeaponFired`,
+`PlaySoundOnDestroyed`). This is the [architecture](#high-level-architecture) from the
+start of the session again, with the classes of one run filled in.
+
+```mermaid
+classDiagram
+    Game1 --> PlayState : on the state stack
+    Game1 ..> PlayContext : creates
+    PlayState --> PlayContext
+    PlayState --> PlaySession
+    PlaySession --> EntityWorld
+    PlaySession --> EntityFactory
+    PlaySession --> EnemyDirector
+    PlaySession --> BulletSpawner
+    PlaySession --> ScoreTracker
+    PlaySession --> ParticleManager
+    PlaySession --> Grid
+    EntityWorld --> Entity : many
+    Entity o-- Component
+    EntityFactory ..> Entity : composes
+    BulletSpawner --> ObjectPool
+```
+
+Everything under `PlaySession` is made new for each run.
+
 ## Summary
 
 | Concern | Answer |

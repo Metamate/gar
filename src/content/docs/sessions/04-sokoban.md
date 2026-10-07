@@ -505,6 +505,22 @@ _Step `Sokoban4`_
 level, a move counter, and a message when the level is solved. Loading a level parses a new `Level` and
 clears the history. Nothing in the rules or the commands changed.
 
+```mermaid
+classDiagram
+    Core <|-- Game1
+    Game1 --> Level
+    Game1 --> LevelView
+    Game1 --> CommandHistory
+    Game1 ..> GameController : asks for actions
+    CommandHistory --> ICommand : done and undone
+    ICommand <|.. MoveCommand
+    MoveCommand --> Level
+    LevelView ..> Level : reads
+```
+
+The rules, the view and the history don't refer to each other. `Game1` connects them, and
+a `MoveCommand` is the only other thing that changes the level.
+
 ## Summary
 
 | Concern | Answer |

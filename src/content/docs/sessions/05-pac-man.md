@@ -496,6 +496,27 @@ There are now two levels of state machine in one game, the game's states (title,
 play, dying, game over) and each ghost's states. The ghosts only get updated in `PlayState`, so while
 Pac-Man is dying, the ghosts' states are paused.
 
+```mermaid
+classDiagram
+    Game1 --> StateMachine : game states
+    Game1 --> World
+    Game1 --> MazeView
+    Game1 --> PacManView
+    Game1 --> GhostView
+    World --> Maze
+    World --> PacMan
+    World --> Ghost : four
+    World --> ModeSchedule
+    Actor <|-- PacMan
+    Actor <|-- Ghost
+    Ghost --> GhostState : current
+    Ghost --> ITargetStrategy
+    Ghost --> IRouteStrategy
+```
+
+`World` and everything it holds are the rules, and the three views draw them. A ghost
+holds one state at a time, and its two strategies for as long as it lives.
+
 ## Summary
 
 | Concern | Answer |

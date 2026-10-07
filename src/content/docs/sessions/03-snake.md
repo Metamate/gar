@@ -392,6 +392,31 @@ if (!_room.Contains(_snake.Head) || _snake.IsBitingItself)
 }
 ```
 
+## The Whole Game
+
+_Step `Snake9`_
+
+`Snake9` is the finished game. `Game1` holds the room, the snake and the food, and applies
+the rules between them, which are eating, scoring and game over. The snake and the food
+draw themselves with sprites from the one atlas.
+
+```mermaid
+classDiagram
+    Core <|-- Game1
+    Game1 --> Tilemap : the room
+    Game1 --> Snake
+    Game1 --> Food
+    Game1 ..> GameController : asks for actions
+    Snake --> AnimatedSprite : head
+    Snake --> Sprite : body
+    Food --> AnimatedSprite
+    TextureAtlas ..> Sprite : creates
+    TextureAtlas ..> AnimatedSprite : creates
+```
+
+`Tilemap`, `TextureAtlas`, `Sprite` and `AnimatedSprite` are GARCore classes, and the XML
+files fill them. The other classes in the diagram belong to this game.
+
 ## Summary
 
 | Concern | Answer |

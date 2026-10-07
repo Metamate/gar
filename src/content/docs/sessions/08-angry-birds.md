@@ -470,6 +470,25 @@ bodies.
 The aiming curve doesn't use the physics world at all. The bird flies in a parabola until
 it hits something, so its position at time _t_ is `start + velocity * t + gravity * t² / 2`.
 
+```mermaid
+classDiagram
+    Game1 --> StateMachine : game states
+    Game1 --> PhysicsWorld
+    Game1 --> Prefabs
+    Game1 --> Slingshot
+    Game1 --> Entity : many
+    Entity <|-- Block
+    Entity <|-- Pig
+    Entity <|-- Bird
+    Entity --> PhysicsBody
+    Prefabs ..> Entity : clones
+    Level ..> Prefabs : spawns from
+    PhysicsWorld ..> Box2D
+    PhysicsBody ..> Box2D
+```
+
+Box2D is reached from the `Physics` folder only.
+
 ## Summary
 
 | Concern | Answer |
