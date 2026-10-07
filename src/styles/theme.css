@@ -351,6 +351,7 @@ header.header button[data-open-modal] > kbd kbd {
  */
 .sl-markdown-content .sl-heading-wrapper {
 	--sl-anchor-icon-gap: 0.6em;
+	--sl-anchor-icon-size: 0.55em;
 }
 
 .sl-markdown-content .sl-anchor-link {
