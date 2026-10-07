@@ -396,6 +396,7 @@ new features take a single new component.
 
 ```mermaid
 classDiagram
+    Core <|-- Game1
     Game1 --> StateMachine : game states
     Game1 --> World
     Game1 --> CardBar

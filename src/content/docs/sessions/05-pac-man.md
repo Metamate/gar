@@ -498,6 +498,7 @@ Pac-Man is dying, the ghosts' states are paused.
 
 ```mermaid
 classDiagram
+    Core <|-- Game1
     Game1 --> StateMachine : game states
     Game1 --> World
     Game1 --> MazeView

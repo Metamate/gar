@@ -385,6 +385,7 @@ start of the session again, with the classes of one run filled in.
 
 ```mermaid
 classDiagram
+    Core <|-- Game1
     Game1 --> PlayState : on the state stack
     Game1 ..> PlayContext : creates
     PlayState --> PlayContext

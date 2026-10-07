@@ -294,7 +294,6 @@ machine. The play state owns the bird and the pipes.
 
 ```mermaid
 classDiagram
-    Game <|-- Core
     Core <|-- Game1
     Game1 --> StateMachine
     StateMachine --> IState : current

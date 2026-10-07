@@ -325,6 +325,7 @@ player and each slime hold their current state.
 
 ```mermaid
 classDiagram
+    Core <|-- Game1
     Game1 --> GameStateBase : current
     GameStateBase <|-- StartState
     GameStateBase <|-- PlayState

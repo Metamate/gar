@@ -472,6 +472,7 @@ it hits something, so its position at time _t_ is `start + velocity * t + gravit
 
 ```mermaid
 classDiagram
+    Core <|-- Game1
     Game1 --> StateMachine : game states
     Game1 --> PhysicsWorld
     Game1 --> Prefabs

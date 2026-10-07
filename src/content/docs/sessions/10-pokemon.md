@@ -388,6 +388,7 @@ field and the battle each hold their own part of the game data.
 
 ```mermaid
 classDiagram
+    Core <|-- Game1
     Game1 --> StateStack
     Game1 ..> Locator : provides the services
     StateStack --> GameStateBase : many

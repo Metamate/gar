@@ -385,6 +385,7 @@ screen scrolls. A room holds its enemies, objects and doorways.
 
 ```mermaid
 classDiagram
+    Core <|-- Game1
     Game1 --> GameStateBase : current
     GameStateBase <|-- StartState
     GameStateBase <|-- PlayState

@@ -348,12 +348,12 @@ game, and the states on the state stack decide when it runs:
 
 ```mermaid
 classDiagram
-    class Run {
-        +Player Player
-        +Swarm Swarm
-        +Gems Gems
-        +Update(deltaSeconds)
-    }
+    Core <|-- Game1
+    Game1 --> StateStack
+    Game1 --> Run : current
+    StateStack --> PlayState
+    StateStack --> LevelUpState
+    PlayState ..> Run : updates
     Run --> Player
     Run --> Swarm
     Run --> Gems
@@ -364,7 +364,6 @@ classDiagram
     Enemies ..> EnemyKind : kind index
     BoltWeapon ..> Swarm : asks
     Aura ..> Swarm : asks
-    PlayState --> Run
     LevelUpState ..> Run : upgrades
 ```
 
