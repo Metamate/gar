@@ -391,7 +391,7 @@ Start from `GeometryWars6`.
 
 1. **Composition:** create a new enemy type purely by combining existing components in
    `EntityFactory`. Then add one new component (e.g. a shield that absorbs one hit) and
-   give it to an existing enemy.
+   give it to an existing enemy. How many new classes did each of the two take?
 2. **Component or system?** Add a bomb (one per life, on a key) that destroys every enemy
    on screen. Which parts are components, and which belong in a system? Where does "one
    per life" live?
@@ -404,7 +404,8 @@ Start from `GeometryWars6`.
    uses `Random.Shared`.)
 5. **Measure pooling:** add an on-screen counter of allocated bytes and gen-0 GCs per
    second (`F3` already shows the memory). Temporarily replace the bullet pool with `new`
-   and compare.
+   and compare. What do the two numbers do while you hold the trigger, with the pool and
+   without it?
 
 ## Apply It to Your Project
 
@@ -450,6 +451,15 @@ has to replace global state, or can't be used at all.
 
 Object Pool reuses _instances_ to avoid allocation over time. Flyweight shares _data_
 between many instances to avoid duplicating it.
+
+</details>
+
+<details>
+<summary>What must happen to a pooled object when it is taken out again?</summary>
+
+It must be fully reset. It still holds the state of its last use, so any field that
+isn't set again leaks into the new bullet. `BulletSpawner` sets the expired flag, the
+position, the orientation and the velocity of every bullet it takes out.
 
 </details>
 

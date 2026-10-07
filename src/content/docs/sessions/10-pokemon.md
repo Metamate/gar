@@ -64,6 +64,54 @@ This lets us layer screens:
 
 ![States are pushed on top of each other; only the top one updates, and all of them draw.](../../../assets/session10/fig-state-stack.svg)
 
+The stack itself is short, and nothing in it is about monsters, so it lives in GARCore:
+
+```csharp title="StateStack.cs"
+public void Push(GameStateBase state)
+{
+    _states.Add(state);
+    state.Enter();
+}
+
+public void Pop()
+{
+    if (_states.Count == 0) return;
+    int last = _states.Count - 1;
+    var top = _states[last];
+    _states.RemoveAt(last);
+    top.Exit();
+}
+
+// Update only the top-most state.
+public void Update(GameTime gameTime)
+{
+    if (_states.Count > 0)
+        _states[^1].Update(gameTime);
+}
+
+// Render all states from bottom to top.
+public void Draw(SpriteBatch spriteBatch)
+{
+    foreach (var state in _states)
+        state.Draw(spriteBatch);
+}
+```
+
+A random encounter is three pushes. A fade to white goes on top of the field. When it is
+done, the battle goes on the stack, with a fade from white above it:
+
+```csharp title="PlayerWalkState.cs"
+_stateStack.Push(new FadeState(_stateStack, Color.White, GameSettings.FadeDuration, 0f, 1f,
+    () =>
+    {
+        _stateStack.Push(new BattleState(_player, _stateStack));
+        _stateStack.Push(new FadeState(_stateStack, Color.White, GameSettings.FadeDuration, 1f, 0f, () => { }));
+    }));
+```
+
+Each `FadeState` pops itself when it is done. `PlayState` is never told that a battle
+started. It stops getting `Update` because it is no longer on top.
+
 ### Trace it
 
 Files: `StateStack.cs`, `BattleState.cs`, `BattleMenuState.cs`, `FadeState.cs`
@@ -86,6 +134,26 @@ Pokemon leans heavily on the tween system from [Zelda](../07-the-legend-of-zelda
 walking between tiles, fades, the HP bar. A battle attack is a chain of tweens: pause →
 lunge → hit sound → blink → HP bar drops. Each step's `.Finish()` starts the next, and a
 callback can push or pop a state, with no `if`/`else` chain.
+
+This is the last step of an attack. The earlier steps are nested around it in the same way:
+
+```csharp title="TakeTurnState.cs"
+// Step 4: apply damage and animate the health bar dropping
+defenderSprite.Blinking = false;
+int dmg = attacker.CalcDamageTo(defender, move);
+float targetHp = Math.Max(0, defender.CurrentHp - dmg);
+
+Locator.Tweens.Tween(GameSettings.HpTweenDuration)
+    .Add(v => defenderBar.Value = v, defenderBar.Value, targetHp)
+    .Finish(() =>
+    {
+        defender.CurrentHp = (int)targetHp;
+        onEnd();
+    });
+```
+
+A tween doesn't block. The code that starts it carries on at once, so "do this, then
+that" is written as a callback that starts the next step when the current one finishes.
 
 Two details make this safe:
 
@@ -115,6 +183,20 @@ A GUI is built from reusable widgets:
 For inspiration, see [Interface in Game](https://interfaceingame.com/games/).
 
 ![The battle screen is built from four small widgets.](../../../assets/session10/fig-widgets.svg)
+
+The battle menu is a `Menu` with two options. Each option is a label and a method to call:
+
+```csharp title="BattleMenuState.cs"
+_menu = new Menu(
+    menuPos.X, menuPos.Y, 96, 64,
+    new List<Selection.MenuItem>
+    {
+        new("Fight", OnFightSelected),
+        new("Run",   OnRunSelected)
+    },
+    Locator.Assets.MediumFont,
+    Locator.Assets.CursorTex);
+```
 
 ### UI samples
 
@@ -150,6 +232,11 @@ the view observe the model through events (see
 patterns such as [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter)
 and [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel) formalize
 this idea.
+
+`Pokemon4` doesn't go all the way. In the [excerpt from `TakeTurnState`](#tweens-everywhere),
+the turn moves the defender's bar itself, and sets `CurrentHp` when the bar has arrived.
+The code that runs a turn has to know that a bar exists. [Exercise 6](#exercises) turns
+that round, with an event on `Mon`.
 
 ## Overworld & Turn-Based Battles
 
@@ -291,6 +378,18 @@ MonoGame has a built-in locator, `Game.Services`
 (`Services.AddService<IAudio>(audio)`, `Services.GetService<IAudio>()`). We roll our own
 here to see how it works.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| Screens on top of each other | A state stack |
+| Menus, bars and text boxes | Reusable widgets |
+| A bar that follows the data | The view observes the model |
+| One thing after another, over time | Chains of tweens |
+| Species and monsters | Type Object |
+| Keeping progress | Serialization to JSON, with a round-trip test |
+| Reaching shared services | Service Locator, with a null object |
+
 ## Exercises
 
 Start from `Pokemon4`.
@@ -355,6 +454,33 @@ dependencies stay hidden.
 
 When a class has few dependencies and they are needed close to where the object is
 created. Constructor parameters make dependencies explicit and easy to replace in tests.
+
+</details>
+
+<details>
+<summary>Why should the HP bar observe the monster, instead of the monster updating the bar?</summary>
+
+The monster is game data and rules, and it should work with no UI at all, in a test or
+behind a different screen. When the bar subscribes to the monster, the dependency only
+points from the view to the model.
+
+</details>
+
+<details>
+<summary>What is a null object, and what does NullAudio save?</summary>
+
+An object that implements the interface and does nothing. `NullAudio` stands in until a
+real service is registered, so callers never check for null, and providing it on purpose
+mutes the game.
+
+</details>
+
+<details>
+<summary>What belongs in a save file, and how do you check that saving works?</summary>
+
+Plain data, enough to rebuild the state: species name, level, current HP and position.
+Textures and references to other objects stay out. A round-trip test saves some data,
+loads it back and compares the two.
 
 </details>
 

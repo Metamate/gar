@@ -35,6 +35,10 @@ a card or a cell on the field.
 
 - [Component](https://gameprogrammingpatterns.com/component.html)
 - [Type Object](https://gameprogrammingpatterns.com/type-object.html)
+- Optional: [Evolve Your Hierarchy](https://cowboyprogramming.com/2007/01/05/evolve-your-heirachy/)
+  (Mick West), the article that made the case for components in games
+- Optional: [JSON serialization in .NET](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview),
+  the library that reads `defenders.json`
 
 ## Picking
 
@@ -392,6 +396,17 @@ castle, or when every goblin is gone.
 The falling coin is a coin with one more component, `Faller`. With components in place, many
 new features take a single new component.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| What the player clicked | Picking, from the window to the game to a cell |
+| What a thing can do | Components |
+| How the parts of one entity work together | Through their owner, and through the world |
+| What every defender of a kind shares | Type Object, loaded from JSON |
+| A new kind of thing | Data, plus one component for a new ability |
+| Checking one ability | A test with only the parts it needs |
+
 ## Exercises
 
 Start from `Pvz4`. The art for the exercises is already in `images/sprites.png`, but not in
@@ -457,6 +472,16 @@ health, its timers.
 On a grid, the cell is computed from the position with a division, however many cells
 there are. For separate objects, each one is checked, and the order of the checks decides
 which of two overlapping objects gets the click.
+
+</details>
+
+<details>
+<summary>What do components cost?</summary>
+
+Finding a sibling takes code and can come back empty, where a base class would have
+been checked by the compiler. The order in which components were added decides the
+order they update and draw in. And a rule that spans several entities has no obvious
+component to live in.
 
 </details>
 

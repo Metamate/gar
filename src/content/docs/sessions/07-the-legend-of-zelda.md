@@ -375,6 +375,17 @@ subclass, ask whether you're describing _what something is_ or _what it can do_.
 is usually better as a part the object has. In [Plants vs. Zombies](../09-plants-vs-zombies/),
 we take this all the way with the **Component pattern**.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| Reacting to something that happened elsewhere | Observer, as C# events |
+| Reacting later, at a safe point | An event queue |
+| Dealing and taking damage | A hitbox and a hurtbox |
+| A value that changes over time | A tween |
+| Many kinds of things | Parts an object has, where inheritance would need a class per combination |
+| Enemy and object types | Definitions in XML |
+
 ## Exercises
 
 Start from `Zelda7`.
@@ -449,6 +460,15 @@ the declaring class can invoke it or overwrite its subscriber list.
 
 Errors move from compile time to runtime, you need loading and validation code, and
 behaviour is split between code and data files.
+
+</details>
+
+<details>
+<summary>What does an event queue change, compared with a plain event?</summary>
+
+A plain event is handled at once, inside the publisher's call. A queue stores it and
+handles it later, at a safe point such as once per frame. Nothing is handled while the
+publisher is still busy, and duplicates can be merged.
 
 </details>
 

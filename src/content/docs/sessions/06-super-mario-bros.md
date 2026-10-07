@@ -33,6 +33,11 @@ but these share their physics and react to the world.
 - [State](https://gameprogrammingpatterns.com/state.html), the rest of the chapter. You read
   the first half for [Pac-Man](../05-pac-man/); "Hierarchical State Machines" is close to what
   the player's states do here.
+- Optional: [The guide to implementing 2D platformers](http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/)
+  (Rodrigo Monteiro), on how tile-based platformers handle collision, slopes and moving
+  platforms
+- Optional: [Scroll Back](https://www.gamedeveloper.com/design/scroll-back-the-theory-and-practice-of-cameras-in-side-scrollers)
+  (Itay Keren), a catalogue of the ways side-scrolling cameras follow the player
 
 ## Levels From Code
 
@@ -314,6 +319,18 @@ Landing on a slime from above stomps it. Touching it any other way ends the game
 
 `Mario8` adds music and sound effects, and is the finished game.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| What the level is made of | Tilemaps of `Tile` values, built by level makers (Strategy) |
+| Things that move | Entities, in a list |
+| Whether a spot is solid | One lookup in the grid, O(1) |
+| Stopping at a wall | Move, then snap, one axis at a time |
+| What the player is doing | States that share their physics in a base state |
+| A level wider than the screen | A camera transform |
+| Seeing what the collision code does | Debug drawing |
+
 ## Exercises
 
 Start from `Mario8`.
@@ -379,6 +396,24 @@ move freely, so we have to check them against each other.
 
 The next bug needs it too. Behind a switch it costs nothing when it is off, and anyone
 working on the game can turn it on to see what the collision code is doing.
+
+</details>
+
+<details>
+<summary>Why does tile collision move and snap one axis at a time?</summary>
+
+A hitbox that ends up inside a corner after moving on both axes could have come from the
+side or from above. With one axis at a time, the snap knows which way the player was
+moving, so it knows which edge to snap to.
+
+</details>
+
+<details>
+<summary>Why are the level makers an example of the Strategy pattern?</summary>
+
+Each one is a different algorithm for the same job, building a level, behind a common
+base. The game asks a level maker for a level without knowing which one it has, so a new
+kind of level is a new class.
 
 </details>
 

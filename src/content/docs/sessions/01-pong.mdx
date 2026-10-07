@@ -334,6 +334,17 @@ Make your own 8-bit sounds with [bfxr.net](https://www.bfxr.net/).
 **Try it** (`Pong11`): `Play` also takes a volume, a pitch and a pan. Raise the paddle sound's
 pitch as the ball speeds up.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| What runs every frame | The game loop, which calls `Update` and then `Draw` |
+| The same speed at any frame rate | Movement multiplied by delta time |
+| Who moves each object | The object itself, in its own `Update` (Update Method) |
+| Any window size | A virtual resolution, scaled with a matrix |
+| Whether two things touch | AABB |
+| Which phase the game is in | A string field, which Flappy Bird replaces with a state machine |
+
 ## Exercises
 
 Build Pong step by step:
@@ -401,6 +412,26 @@ So that movement per second is the same no matter how many frames are rendered p
 
 Typos aren't caught by the compiler, every `Update`/`Draw` needs an `if`-chain over all
 states, and adding a state means editing all of those chains.
+
+</details>
+
+<details>
+<summary>What does the Update Method pattern cost?</summary>
+
+Objects are updated one after another, so the order matters. An object updated early
+sees the others as they were last frame. Objects that interact need a reference to each
+other or a place that checks them together, and every object is updated every frame,
+even when it has nothing to do.
+
+</details>
+
+<details>
+<summary>How do a fixed and a variable timestep differ?</summary>
+
+A variable timestep updates once per rendered frame and scales movement by the elapsed
+time, so the simulation depends a little on the frame rate. A fixed timestep always
+advances the simulation by the same amount, running zero, one or several steps per
+frame, which keeps it stable and repeatable.
 
 </details>
 

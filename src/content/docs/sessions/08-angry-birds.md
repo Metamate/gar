@@ -470,6 +470,18 @@ bodies.
 The aiming curve doesn't use the physics world at all. The bird flies in a parabola until
 it hits something, so its position at time _t_ is `start + velocity * t + gravity * t² / 2`.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| A library that doesn't fit our code | Adapter (`PhysicsBody`) |
+| A big library, of which we need little | Facade (`PhysicsWorld`) |
+| Metres and pixels | One class converts (`Units`) |
+| Who owns a position | The physics world |
+| What hit what | The library's hit events, passed on as a C# event |
+| Removing things while the game is busy with them | Mark now, remove after the step |
+| Many kinds of blocks and pigs | Prototype |
+
 ## Exercises
 
 Start from `Birds4`.
@@ -480,7 +492,7 @@ Start from `Birds4`.
    `heavy` next to `bird` in `Prefabs`. Then let each level choose its birds. A level file
    starts with `birds 3`, which gives the player three shots, all with the same bird.
    Change that line to a list of prefab names, one per shot, such as `birds bird bird heavy`.
-   The player shoots them in that order.
+   The player shoots them in that order. Which part of this was data, and which needed code?
 3. **Explosive:** a crate that, when destroyed, pushes everything nearby away. What does
    the facade need to offer (e.g. `ApplyImpulse`)? Add it without letting Box2D types out.
    An explosive crate is drawn in `sprites.png` (50 × 50 at x = 120, y = 204), ready for a
@@ -542,6 +554,15 @@ looping over the list you remove from. Mark it, and remove it after the step.
 For every field that refers to an object, the copy points to the same object. Sharing an
 unchanging sprite is fine, but sharing a physics body would make two entities one. So the
 clone gets its own body.
+
+</details>
+
+<details>
+<summary>A block exists as an entity and as a physics body. Who owns its position?</summary>
+
+The physics world. The entity has no position of its own, and reads its body's position
+when it is drawn, because two copies would drift apart. The body knows its owner, so a
+hit reported about a body leads back to the entity.
 
 </details>
 

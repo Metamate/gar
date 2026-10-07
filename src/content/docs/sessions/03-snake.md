@@ -392,6 +392,17 @@ if (!_room.Contains(_snake.Head) || _snake.IsBitingItself)
 }
 ```
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| What the art and the room look like | XML files that the code reads |
+| Many images in few draw calls | A texture atlas with named regions |
+| Movement in steps | A fixed tick, kept by an accumulator |
+| Which key does what | Actions, in one `GameController` |
+| Key presses between two ticks | An input buffer |
+| What happens after a hit | Blocking, triggering or bouncing |
+
 ## Exercises
 
 Start from `Snake9`.
@@ -409,7 +420,7 @@ Start from `Snake9`.
    already updates the `InputManager` every frame). Then map the D-pad in `GameController`.
    Which files in the game itself did you change?
 4. **Pause:** add a pause action. While paused, the snake doesn't move and turns aren't
-   buffered.
+   buffered. Which class knows the key, and which one decides that the snake stands still?
 5. **Refactor (stretch):** the tick timer lives in `Snake`. Move it into a reusable
    `FixedTimer` class in GARCore that calls back on every tick, and use it for the snake.
 
@@ -451,6 +462,15 @@ AI drive the same entity means editing gameplay code in many places.
 
 The snake only turns on the next tick. Checking against its current direction would allow
 two quick turns that together reverse it into its own neck.
+
+</details>
+
+<details>
+<summary>What do you gain by describing assets in data files?</summary>
+
+A new sprite, animation frame or room is an edit to a file, made without touching the
+code, and the code stays smaller and more general. The builder copies the XML files as
+they are, because our own code reads them when the game runs.
 
 </details>
 

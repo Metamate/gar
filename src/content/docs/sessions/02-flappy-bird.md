@@ -284,6 +284,17 @@ code that needs it.
 replace with a muted version for testing? [Pokemon](../10-pokemon/) picks this up again
 with the Service Locator pattern.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| How cheap a change is | Low coupling and high cohesion |
+| Code that every game needs | A class library, GARCore |
+| Which screen the game is on | A state machine of `IState` objects |
+| Levels nobody drew | Procedural generation |
+| Depth on a flat screen | Parallax scrolling |
+| Reaching the audio from anywhere | Singleton, and what it costs |
+
 ## Exercises
 
 1. **A class library:** create your own repository from the
@@ -347,6 +358,23 @@ subscriptions stay alive and timers keep running.
 
 It is global state. It hides dependencies, couples code together and makes testing and
 reasoning harder, and games rarely need the guarantee of a single instance.
+
+</details>
+
+<details>
+<summary>What are coupling and cohesion, and which way should each go?</summary>
+
+Coupling is how much one module depends on another, and it should be low. Cohesion is
+how closely related the responsibilities inside one module are, and it should be high.
+Together they decide how much code a change touches.
+
+</details>
+
+<details>
+<summary>Why may nothing in GARCore use a class from the game?</summary>
+
+The reference goes one way, from the game to the library. A `Core` that needed Flappy's
+`Bird` could not be used by any other game.
 
 </details>
 

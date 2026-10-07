@@ -376,6 +376,16 @@ The order of this session is the order to work in:
 4. **Measure again**, to see if it helped. Sometimes it doesn't, and that's worth knowing.
 5. **Keep a test** that checks the fast code against the simple code.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| Where the time goes | Profiling |
+| Finding what is near | Spatial partitioning, with a uniform grid |
+| Fast loops over thousands of things | A struct of arrays (data-oriented design) |
+| Whether the fast code is still right | A test against the slow, obvious code |
+| When to optimize | After measuring. The algorithm first, then the data |
+
 ## Exercises
 
 Start from `Survivors4` (or `Survivors3` for the measuring exercises), in Release.
@@ -434,6 +444,14 @@ array, so a loop over one field reads memory in order, which the CPU's cache mak
 Readable objects and stable references. An entity is an index that can change, fields are
 spread over arrays, and adding a field touches more code. It's worth it where there are
 very many things and the loops over them are hot.
+
+</details>
+
+<details>
+<summary>With 1,000 enemies, the grid was no faster than checking every pair. Why?</summary>
+
+Building the grid every step costs something, and for a small number of enemies checking
+every pair is cheap. Spatial partitioning pays off when there are many objects.
 
 </details>
 

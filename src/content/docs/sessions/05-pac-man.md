@@ -496,6 +496,17 @@ There are now two levels of state machine in one game, the game's states (title,
 play, dying, game over) and each ghost's states. The ghosts only get updated in `PlayState`, so while
 Pac-Man is dying, the ghosts' states are paused.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| What a ghost is doing now | State, with a class for each mode |
+| How each ghost hunts | Strategy (`ITargetStrategy`) |
+| How a ghost finds its way | A second strategy (`IRouteStrategy`) |
+| Who picks the object behind the interface | The states pick the next state. `World` picks each strategy once |
+| Checking a ghost's rule | A unit test for each strategy and state |
+| The flow of the whole game | A state machine, one level above the ghosts |
+
 ## Exercises
 
 Start from `Pacman5`.

@@ -32,7 +32,13 @@ starting the game.
 
 - [Command](https://gameprogrammingpatterns.com/command.html) (the whole chapter, including
   undo and redo)
-- No reading on testing. This session introduces it from the start.
+- No required reading on testing. This session introduces it from the start.
+- Optional: [Command](https://refactoring.guru/design-patterns/command) (Refactoring Guru),
+  the same pattern with a class diagram and an example outside games
+- Optional: [Unit testing C# with xUnit](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-csharp-with-xunit)
+  (Microsoft), a walkthrough of a first test project, for after the session
+- Optional: [Level format](http://sokobano.de/wiki/index.php?title=Level_format) (Sokoban
+  Wiki), the text format our levels use
 
 ## Levels as Data
 
@@ -501,6 +507,17 @@ _Step `Sokoban4`_
 level, a move counter, and a message when the level is solved. Loading a level parses a new `Level` and
 clears the history. Nothing in the rules or the commands changed.
 
+## Summary
+
+| Concern | Answer |
+| --- | --- |
+| What a level looks like | A text file, one character per cell |
+| Rules that can be tested | `Level`, kept apart from `LevelView` |
+| Checking the rules | Unit tests that arrange, act and assert |
+| A move that can be kept | Command |
+| Undo and redo | Two stacks of commands |
+| Keys the player can change | A table from keys to moves, held as data |
+
 ## Exercises
 
 Start from `Sokoban4`.
@@ -515,7 +532,7 @@ Start from `Sokoban4`.
    it. Write the tests before the code, see them fail, then make them pass. The tilesheet
    already has an ice tile (number 9) for `LevelView`.
 4. **Replay:** when a level is solved, replay the solution from the start, one command
-   every 200 ms.
+   every 200 ms. How much new code for moving did the replay take?
 5. **Restart as a command:** make `R` a command too, so a restart can be undone. What must
    it remember?
 6. **Snapshot undo (stretch):** replace `CommandHistory` with a history of `Level`
