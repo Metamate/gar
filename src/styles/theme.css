@@ -344,3 +344,15 @@ header.header button[data-open-modal] > kbd kbd {
 	background-color: transparent;
 	color: inherit;
 }
+
+/*
+ * The link icon shown beside a hovered heading. Starlight measures its gap in the size it
+ * gives headings itself, and ours are smaller, so the icon touched the last letter.
+ */
+.sl-markdown-content .sl-heading-wrapper {
+	--sl-anchor-icon-gap: 0.6em;
+}
+
+.sl-markdown-content .sl-anchor-link {
+	margin-inline-start: calc(0.5rem - var(--sl-anchor-icon-size));
+}
