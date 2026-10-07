@@ -370,7 +370,7 @@ without a class for each. The two patterns solve that problem in different ways:
 | An instance knows its kind? | not unless you store it | yes: it can refer to its type |
 | Good for | "make more like this one" | kinds with their own data and rules |
 
-## The Whole Game
+## A Level From Data
 
 _Step `Pvz4`_
 
@@ -393,6 +393,13 @@ castle, or when every goblin is gone.
 
 The falling coin is a coin with one more component, `Faller`. With components in place, many
 new features take a single new component.
+
+## The Whole Game
+
+_Step `Pvz4`_
+
+`Pvz4` is the finished game. `Game1` holds the world, the card bar and the level, and sends
+the level's goblins into the world as time passes.
 
 ```mermaid
 classDiagram

@@ -324,6 +324,20 @@ as data, by one system, in bulk. Many engines mix the two in the same way.
 **Try it** (`Survivors3`, in Release): at 10,000 and 20,000 enemies, compare the profiler
 with `Survivors2`. Which sections changed the most?
 
+## Making It a Game
+
+_Step `Survivors4`_
+
+`Survivors4` makes it a game, reusing much of the course along the way:
+
+- Enemies drop **gems**, also stored as arrays. Gems near the player fly to them.
+- Enough experience and you **level up**. A `LevelUpState` is pushed on the **state stack**
+  ([Pokemon](../10-pokemon/#state-stack)), on top of the paused game, with three upgrades
+  to choose from.
+- The enemy **kinds** are type objects, and the logic runs at a **fixed timestep**
+  (GARCore's `Core`, from Geometry Wars).
+- Survive five minutes to win. The profiler is still there (F3).
+
 ## When to Optimize
 
 > Programmers waste enormous amounts of time thinking about, or worrying about, the speed
@@ -343,8 +357,8 @@ The order of this session is the order to work in:
 
 _Step `Survivors4`_
 
-`Survivors4` makes it a game, reusing much of the course along the way. A `Run` holds one
-game, and the states on the state stack decide when it runs:
+`Survivors4` is the finished game. A `Run` holds one game, and the states on the state
+stack decide when it runs.
 
 ```mermaid
 classDiagram
@@ -367,13 +381,8 @@ classDiagram
     LevelUpState ..> Run : upgrades
 ```
 
-- Enemies drop **gems**, also stored as arrays. Gems near the player fly to them.
-- Enough experience and you **level up**. A `LevelUpState` is pushed on the **state stack**
-  ([Pokemon](../10-pokemon/#state-stack)), on top of the paused game, with three upgrades
-  to choose from.
-- The enemy **kinds** are type objects, and the logic runs at a **fixed timestep**
-  (GARCore's `Core`, from Geometry Wars).
-- Survive five minutes to win. The profiler is still there (F3).
+Only the swarm and the gems are stored as arrays. The player, the weapons and the bolts
+are ordinary objects.
 
 ## Summary
 

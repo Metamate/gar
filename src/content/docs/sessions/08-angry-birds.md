@@ -446,13 +446,13 @@ them there.
 **Try it** (`Birds3`): put a `big-pig` on top of the hut in `level1.txt`, and a
 `glass-box` next to it. How much code did it take?
 
-## The Whole Game
+## Aiming & Game States
 
 _Step `Birds4`_
 
 `Birds4` adds three levels, a few birds per level (`birds 3` at the top of a level file),
 a curve that shows where the bird will fly while you aim, and game states like
-[Pac-Man's](../05-pac-man/#the-whole-game):
+[Pac-Man's](../05-pac-man/#game-states):
 
 ```mermaid
 stateDiagram-v2
@@ -469,6 +469,13 @@ bodies.
 
 The aiming curve doesn't use the physics world at all. The bird flies in a parabola until
 it hits something, so its position at time _t_ is `start + velocity * t + gravity * t² / 2`.
+
+## The Whole Game
+
+_Step `Birds4`_
+
+`Birds4` is the finished game. `Game1` holds the physics world, the prefabs and the
+entities, and its states decide when the player may aim.
 
 ```mermaid
 classDiagram

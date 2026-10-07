@@ -473,7 +473,7 @@ Assert.Equal(Direction.Left, new NearestTile().ChooseDirection(blinky, target, o
 Assert.Equal(Direction.Right, new ShortestPath().ChooseDirection(blinky, target, options));
 ```
 
-## The Whole Game
+## Game States
 
 _Step `Pacman5`_
 
@@ -495,6 +495,13 @@ stateDiagram-v2
 There are now two levels of state machine in one game, the game's states (title, ready,
 play, dying, game over) and each ghost's states. The ghosts only get updated in `PlayState`, so while
 Pac-Man is dying, the ghosts' states are paused.
+
+## The Whole Game
+
+_Step `Pacman5`_
+
+`Pacman5` is the finished game. `Game1` loads everything and hands the game over to its
+states.
 
 ```mermaid
 classDiagram
