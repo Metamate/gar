@@ -37,8 +37,6 @@ a card or a cell on the field.
 - [Type Object](https://gameprogrammingpatterns.com/type-object.html)
 - Optional: [Evolve Your Hierarchy](https://cowboyprogramming.com/2007/01/05/evolve-your-heirachy/)
   (Mick West), the article that made the case for components in games
-- Optional: [JSON serialization in .NET](https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/overview),
-  the library that reads `defenders.json`
 
 ## Picking
 

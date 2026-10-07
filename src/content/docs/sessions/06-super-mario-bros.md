@@ -36,8 +36,6 @@ but these share their physics and react to the world.
 - Optional: [The guide to implementing 2D platformers](http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/)
   (Rodrigo Monteiro), on how tile-based platformers handle collision, slopes and moving
   platforms
-- Optional: [Scroll Back](https://www.gamedeveloper.com/design/scroll-back-the-theory-and-practice-of-cameras-in-side-scrollers)
-  (Itay Keren), a catalogue of the ways side-scrolling cameras follow the player
 
 ## Levels From Code
 

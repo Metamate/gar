@@ -37,8 +37,6 @@ starting the game.
   the same pattern with a class diagram and an example outside games
 - Optional: [Unit testing C# with xUnit](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-csharp-with-xunit)
   (Microsoft), a walkthrough of a first test project, for after the session
-- Optional: [Level format](http://sokobano.de/wiki/index.php?title=Level_format) (Sokoban
-  Wiki), the text format our levels use
 
 ## Levels as Data
 
