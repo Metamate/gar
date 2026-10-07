@@ -357,3 +357,9 @@ header.header button[data-open-modal] > kbd kbd {
 .sl-markdown-content .sl-anchor-link {
 	margin-inline-start: calc(0.5rem - var(--sl-anchor-icon-size));
 }
+
+/* Starlight centres the icon on its own line height: two pixels down puts it level with our letters. */
+.sl-markdown-content .sl-anchor-icon > svg {
+	position: relative;
+	top: 2px;
+}
