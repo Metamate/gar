@@ -103,8 +103,12 @@ Threads that run through the plan (the recap page lists them for students):
 - **Order of 07 and 08:** Zelda comes before Angry Birds. Zelda teaches events, and Angry Birds' contact events use them; Mario's
   core leads straight into Zelda's; and Angry Birds' Prototype sits next to Plants vs.
   Zombies' Type Object.
-- **Recurring:** a Mermaid class diagram on every session page, "Apply It to Your Project"
-  in every session, and a design or refactoring exercise in most sessions from Sokoban on
+- **Recurring:** every session page closes with the same frame: "The Whole Game" (the last
+  step, one paragraph, one class diagram that starts at `Game1` with its base class and lists
+  no members, one closing sentence), then "Summary" (a table of concern and answer), the
+  exercises, "Apply It to Your Project" and "Check Yourself" (five questions, at least one
+  per pattern). A last step that teaches something of its own gets a section before "The
+  Whole Game". Also recurring: a design or refactoring exercise in most sessions from Sokoban on
   (they carry the syllabus's UML, analysis and refactoring competences). No references to other
   engines: the students haven't met Unity yet.
 
@@ -270,6 +274,9 @@ file should need editing.
   code, labelled screenshot) and a question. The site has the full explanation.
 - A dense bullet slide is a sign its text belongs on the site, or in the speaker notes as
   talking points. Exercise slides give a one-line goal; the instructions are on the site.
+- Before its exercise slides, every deck has a "The Whole Game" slide (who holds what in the
+  finished game, as a tree from `Game1`) and a "Summary" slide (a tile per concern, as on the
+  page).
 - Decks end with a few of the site's "Check yourself" questions, asked live.
 - All twelve decks follow this. Every slide has speaker notes written for
   presenting: what to say, what to ask (with the expected answer), and how to run each demo;

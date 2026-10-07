@@ -35,6 +35,8 @@ export default defineConfig({
       // Follows Starlight's light/dark toggle via the data-theme attribute.
       autoTheme: true,
       enableLog: false,
+      // A class with no members listed is drawn as a plain box, without empty compartments.
+      mermaidConfig: { class: { hideEmptyMembersBox: true } },
     }),
     starlight({
       title: "GAR",

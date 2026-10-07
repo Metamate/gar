@@ -6,6 +6,8 @@ description: Every pattern and topic in the course, the games that use it, and t
 This page collects the patterns and topics from all twelve games. For each one it shows
 where it is introduced, where it comes back, and which [exam question](../exam/) it belongs
 to. It is a good starting point for exam preparation (see [the project at the exam](../project/#the-project-at-the-exam)).
+Every session page also ends its material with a **Summary** table, which gives that
+session's concerns and its answer to each.
 
 ## Patterns
 

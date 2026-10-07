@@ -27,7 +27,9 @@ in your own time.
 Every session page has the same parts. **Prepare** lists chapters and tutorials to read
 beforehand. The main part builds the game, with exercises in between. Pong and Flappy
 Bird start from an empty project; from Snake on, you start from a working codebase, explore
-it and extend it. **Apply It to Your Project** takes the session's patterns into your own
+it and extend it. **The Whole Game** shows the finished game in one class diagram, and
+**Summary** lists what the session was about, with its answer to each concern in a line.
+**Apply It to Your Project** takes the session's patterns into your own
 [course project](../project/), and **Check Yourself** has short questions, linked to the
 [exam](../exam/) questions they prepare you for.
 
